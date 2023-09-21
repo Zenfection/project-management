@@ -35,7 +35,7 @@
 
 <ol class="breadcrumb">
     <li class="breadcrumb-item">Modules</li>
-    <li class="breadcrumb-item" >AppModule</li>
+    <li class="breadcrumb-item" >AuthenticationModule</li>
 </ol>
 
 <div class="text-center module-graph-container">
@@ -63,58 +63,42 @@
 <polygon fill="#fb8072" stroke="transparent" points="406,-10 406,-30 426,-30 426,-10 406,-10"/>
 <text text-anchor="start" x="429.73" y="-15.4" font-family="Times-12" font-size="14.00"> &#160;Exports</text>
 <g id="clust1" class="cluster">
-<title>cluster_AppModule</title>
-<polygon fill="none" stroke="black" stroke-dasharray="1,5" points="67.5,-70 67.5,-195 428.5,-195 428.5,-70 67.5,-70"/>
-</g>
-<g id="clust3" class="cluster">
-<title>cluster_AppModule_imports</title>
-<polygon fill="none" stroke="black" points="213.5,-78 213.5,-130 420.5,-130 420.5,-78 213.5,-78"/>
+<title>cluster_AuthenticationModule</title>
+<polygon fill="none" stroke="black" stroke-dasharray="1,5" points="30.5,-70 30.5,-195 465.5,-195 465.5,-70 30.5,-70"/>
 </g>
 <g id="clust6" class="cluster">
-<title>cluster_AppModule_providers</title>
-<polygon fill="none" stroke="black" points="75.5,-78 75.5,-130 205.5,-130 205.5,-78 75.5,-78"/>
+<title>cluster_AuthenticationModule_providers</title>
+<polygon fill="none" stroke="black" points="38.5,-78 38.5,-130 457.5,-130 457.5,-78 38.5,-78"/>
 </g>
-<!-- IamModule -->
+<!-- AccessTokenStrategy -->
 <g id="node1" class="node">
-<title>IamModule</title>
-<polygon fill="#8dd3c7" stroke="black" points="412.32,-122 409.32,-126 388.32,-126 385.32,-122 330.68,-122 330.68,-86 412.32,-86 412.32,-122"/>
-<text text-anchor="middle" x="371.5" y="-99.8" font-family="Times,serif" font-size="14.00">IamModule</text>
+<title>AccessTokenStrategy</title>
+<ellipse fill="#fdb462" stroke="black" cx="354.5" cy="-104" rx="95.46" ry="18"/>
+<text text-anchor="middle" x="354.5" y="-99.8" font-family="Times,serif" font-size="14.00">AccessTokenStrategy</text>
 </g>
-<!-- AppModule -->
+<!-- AuthenticationModule -->
 <g id="node3" class="node">
-<title>AppModule</title>
-<polygon fill="#8dd3c7" stroke="black" points="309.16,-187 306.16,-191 285.16,-191 282.16,-187 225.84,-187 225.84,-151 309.16,-151 309.16,-187"/>
-<text text-anchor="middle" x="267.5" y="-164.8" font-family="Times,serif" font-size="14.00">AppModule</text>
+<title>AuthenticationModule</title>
+<polygon fill="#8dd3c7" stroke="black" points="319.75,-187 316.75,-191 295.75,-191 292.75,-187 177.25,-187 177.25,-151 319.75,-151 319.75,-187"/>
+<text text-anchor="middle" x="248.5" y="-164.8" font-family="Times,serif" font-size="14.00">AuthenticationModule</text>
 </g>
-<!-- IamModule&#45;&gt;AppModule -->
+<!-- AccessTokenStrategy&#45;&gt;AuthenticationModule -->
 <g id="edge1" class="edge">
-<title>IamModule&#45;&gt;AppModule</title>
-<path fill="none" stroke="black" d="M371.5,-122.11C371.5,-141.34 371.5,-169 371.5,-169 371.5,-169 319.2,-169 319.2,-169"/>
-<polygon fill="black" stroke="black" points="319.2,-165.5 309.2,-169 319.2,-172.5 319.2,-165.5"/>
+<title>AccessTokenStrategy&#45;&gt;AuthenticationModule</title>
+<path fill="none" stroke="black" d="M289.57,-117.47C289.57,-117.47 289.57,-140.86 289.57,-140.86"/>
+<polygon fill="black" stroke="black" points="286.07,-140.86 289.57,-150.86 293.07,-140.86 286.07,-140.86"/>
 </g>
-<!-- UsersModule -->
+<!-- AuthenticationService -->
 <g id="node2" class="node">
-<title>UsersModule</title>
-<polygon fill="#8dd3c7" stroke="black" points="313.42,-122 310.42,-126 289.42,-126 286.42,-122 221.58,-122 221.58,-86 313.42,-86 313.42,-122"/>
-<text text-anchor="middle" x="267.5" y="-99.8" font-family="Times,serif" font-size="14.00">UsersModule</text>
+<title>AuthenticationService</title>
+<ellipse fill="#fdb462" stroke="black" cx="143.5" cy="-104" rx="97.27" ry="18"/>
+<text text-anchor="middle" x="143.5" y="-99.8" font-family="Times,serif" font-size="14.00">AuthenticationService</text>
 </g>
-<!-- UsersModule&#45;&gt;AppModule -->
+<!-- AuthenticationService&#45;&gt;AuthenticationModule -->
 <g id="edge2" class="edge">
-<title>UsersModule&#45;&gt;AppModule</title>
-<path fill="none" stroke="black" d="M267.5,-122.11C267.5,-122.11 267.5,-140.99 267.5,-140.99"/>
-<polygon fill="black" stroke="black" points="264,-140.99 267.5,-150.99 271,-140.99 264,-140.99"/>
-</g>
-<!-- AppService -->
-<g id="node4" class="node">
-<title>AppService</title>
-<ellipse fill="#fdb462" stroke="black" cx="140.5" cy="-104" rx="56.74" ry="18"/>
-<text text-anchor="middle" x="140.5" y="-99.8" font-family="Times,serif" font-size="14.00">AppService</text>
-</g>
-<!-- AppService&#45;&gt;AppModule -->
-<g id="edge3" class="edge">
-<title>AppService&#45;&gt;AppModule</title>
-<path fill="none" stroke="black" d="M140.5,-122.11C140.5,-141.34 140.5,-169 140.5,-169 140.5,-169 215.56,-169 215.56,-169"/>
-<polygon fill="black" stroke="black" points="215.56,-172.5 225.56,-169 215.56,-165.5 215.56,-172.5"/>
+<title>AuthenticationService&#45;&gt;AuthenticationModule</title>
+<path fill="none" stroke="black" d="M209,-117.47C209,-117.47 209,-140.86 209,-140.86"/>
+<polygon fill="black" stroke="black" points="205.5,-140.86 209,-150.86 212.5,-140.86 205.5,-140.86"/>
 </g>
 </g>
 </svg>
@@ -152,7 +136,7 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/app.module.ts</code>
+            <code>src/iam/authentication/authentication.module.ts</code>
         </p>
 
 
@@ -166,7 +150,10 @@
                             title="Official documentation about module providers"><span class="icon ion-ios-information-circle-outline"></a></h3>
                     <ul class="list-group">
                         <li class="list-group-item">
-                            <a href="../injectables/AppService.html">AppService</a>
+                            <a href="../injectables/AccessTokenStrategy.html">AccessTokenStrategy</a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="../injectables/AuthenticationService.html">AuthenticationService</a>
                         </li>
                     </ul>
                 </div>
@@ -176,20 +163,7 @@
                                 class="icon ion-ios-information-circle-outline"></a></h3>
                     <ul class="list-group">
                         <li class="list-group-item">
-                            <a href="../controllers/AppController.html">AppController</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-sm-3">
-                    <h3>Imports<a href="https://angular.io/api/core/NgModule#imports" target="_blank" rel="noopener noreferrer"
-                            title="Official documentation about module imports"><span
-                                class="icon ion-ios-information-circle-outline"></a></h3>
-                    <ul class="list-group">
-                        <li class="list-group-item">
-                            <a href="../modules/IamModule.html">IamModule</a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="../modules/UsersModule.html">UsersModule</a>
+                            <a href="../controllers/AuthenticationController.html">AuthenticationController</a>
                         </li>
                     </ul>
                 </div>
@@ -202,24 +176,43 @@
 
     <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Module } from &#x27;@nestjs/common&#x27;;
-import { AppController } from &#x27;./app.controller&#x27;;
-import { AppService } from &#x27;./app.service&#x27;;
-import { PrismaModule } from &#x27;nestjs-prisma&#x27;;
-import { IamModule } from &#x27;./iam/iam.module&#x27;;
+import { HashingService } from &#x27;../hashing/hashing.service&#x27;;
+import { BcryptService } from &#x27;../hashing/bcrypt/bcrypt.service&#x27;;
+import { PrismaService } from &#x27;nestjs-prisma&#x27;;
+import { PassportModule } from &#x27;@nestjs/passport&#x27;;
 import { ConfigModule } from &#x27;@nestjs/config&#x27;;
-import { UsersModule } from &#x27;./users/users.module&#x27;;
+import { JwtModule } from &#x27;@nestjs/jwt&#x27;;
+import { AuthenticationService } from &#x27;./services/authentication.service&#x27;;
+import { AuthenticationController } from &#x27;./controllers/authentication.controller&#x27;;
+import jwtConfig from &#x27;../config/jwt.config/jwt.config&#x27;;
+import { AccessTokenStrategy } from &#x27;./strategies/access-token/access-token.strategy&#x27;;
+import { AccessTokenGuard } from &#x27;./guards/access-token/access-token.guard&#x27;;
+import { AuthenticationGuard } from &#x27;./guards/authentication/authentication.guard&#x27;;
+import { APP_GUARD } from &#x27;@nestjs/core&#x27;;
 
 @Module({
-  imports: [
-    PrismaModule.forRoot(),
-    ConfigModule.forRoot(),
-    IamModule,
-    UsersModule,
+  providers: [
+    {
+      provide: HashingService,
+      useClass: BcryptService,
+    },
+    {
+      provide: APP_GUARD,
+      useClass: AuthenticationGuard,
+    },
+    AuthenticationService,
+    PrismaService,
+    AccessTokenStrategy,
+    AccessTokenGuard,
   ],
-  controllers: [AppController],
-  providers: [AppService],
+  imports: [
+    PassportModule,
+    ConfigModule.forFeature(jwtConfig),
+    JwtModule.registerAsync(jwtConfig.asProvider()),
+  ],
+  controllers: [AuthenticationController],
 })
-export class AppModule {}
+export class AuthenticationModule {}
 </code></pre>
     </div>
 </div>
@@ -266,7 +259,7 @@ export class AppModule {}
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'module';
-            var COMPODOC_CURRENT_PAGE_URL = 'AppModule.html';
+            var COMPODOC_CURRENT_PAGE_URL = 'AuthenticationModule.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 

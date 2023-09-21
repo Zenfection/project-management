@@ -6,7 +6,6 @@ import {
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { Observable } from 'rxjs';
-import { ActiveUserData } from '../../interfaces/active-user-data.interface';
 
 @Injectable()
 export class AccessTokenGuard extends AuthGuard('jwt') implements CanActivate {
