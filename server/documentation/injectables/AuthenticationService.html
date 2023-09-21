@@ -95,6 +95,10 @@
                             </li>
                             <li>
                                     <span class="modifier">Async</span>
+                                <a href="#refreshTokens" >refreshTokens</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
                                 <a href="#signIn" >signIn</a>
                             </li>
                             <li>
@@ -124,12 +128,12 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(hashService: <a href="../injectables/HashingService.html" target="_self">HashingService</a>, prismaService: PrismaService, jwtConfiguration: ConfigType<>, jwtService: JwtService)</code>
+<code>constructor(hashService: <a href="../injectables/HashingService.html" target="_self">HashingService</a>, prismaService: PrismaService, jwtConfiguration: ConfigType<>, jwtService: JwtService, refreshTokenIdsStorage: <a href="../injectables/RefreshTokenIdsStorage.html" target="_self">RefreshTokenIdsStorage</a>)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/iam/authentication/services/authentication.service.ts:20</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/iam/authentication/services/authentication.service.ts:25</a></div>
                             </td>
                         </tr>
 
@@ -194,6 +198,18 @@
                                                     </td>
                                                     
                                                 </tr>
+                                                <tr>
+                                                        <td>refreshTokenIdsStorage</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/RefreshTokenIdsStorage.html" target="_self" >RefreshTokenIdsStorage</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
                                         </tbody>
                                     </table>
                             </div>
@@ -231,8 +247,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="29"
-                            class="link-to-prism">src/iam/authentication/services/authentication.service.ts:29</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="35"
+                            class="link-to-prism">src/iam/authentication/services/authentication.service.ts:35</a></div>
                 </td>
             </tr>
 
@@ -302,8 +318,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="77"
-                            class="link-to-prism">src/iam/authentication/services/authentication.service.ts:77</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="83"
+                            class="link-to-prism">src/iam/authentication/services/authentication.service.ts:83</a></div>
                 </td>
             </tr>
 
@@ -355,6 +371,77 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
+                    <a name="refreshTokens"></a>
+                    <span class="name">
+                        <span class="modifier">Async</span>
+                        <span ><b>refreshTokens</b></span>
+                        <a href="#refreshTokens"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>refreshTokens(refreshToken: <a href="../classes/RefreshTokenDto.html" target="_self">RefreshTokenDto</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="112"
+                            class="link-to-prism">src/iam/authentication/services/authentication.service.ts:112</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>refreshToken</td>
+                                    <td>
+                                                <code><a href="../classes/RefreshTokenDto.html" target="_self" >RefreshTokenDto</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>unknown</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
                     <a name="signIn"></a>
                     <span class="name">
                         <span class="modifier">Async</span>
@@ -373,8 +460,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="37"
-                            class="link-to-prism">src/iam/authentication/services/authentication.service.ts:37</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="43"
+                            class="link-to-prism">src/iam/authentication/services/authentication.service.ts:43</a></div>
                 </td>
             </tr>
 
@@ -445,8 +532,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="103"
-                            class="link-to-prism">src/iam/authentication/services/authentication.service.ts:103</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="150"
+                            class="link-to-prism">src/iam/authentication/services/authentication.service.ts:150</a></div>
                 </td>
             </tr>
 
@@ -548,8 +635,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="51"
-                            class="link-to-prism">src/iam/authentication/services/authentication.service.ts:51</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="57"
+                            class="link-to-prism">src/iam/authentication/services/authentication.service.ts:57</a></div>
                 </td>
             </tr>
 
@@ -620,6 +707,11 @@ import jwtConfig from &#x27;../../config/jwt.config/jwt.config&#x27;;
 import { ConfigType } from &#x27;@nestjs/config&#x27;;
 import { JwtService } from &#x27;@nestjs/jwt&#x27;;
 import { ActiveUserData } from &#x27;../interfaces/active-user-data.interface&#x27;;
+import {
+  RefreshTokenIdsStorage,
+  RefreshTokenIdsStorageError,
+} from &#x27;../utils/refresh-token-ids.storage/refresh-token-ids.storage&#x27;;
+import { RefreshTokenDto } from &#x27;../dto/refresh-token.dto/refresh-token.dto&#x27;;
 
 @Injectable()
 export class AuthenticationService {
@@ -629,6 +721,7 @@ export class AuthenticationService {
     @Inject(jwtConfig.KEY)
     private readonly jwtConfiguration: ConfigType&lt;typeof jwtConfig&gt;,
     private readonly jwtService: JwtService,
+    private readonly refreshTokenIdsStorage: RefreshTokenIdsStorage,
   ) {}
 
   private async checkUserExist(email: string): Promise&lt;User | null&gt; {
@@ -697,12 +790,53 @@ export class AuthenticationService {
       this.signToken(user.id, this.jwtConfiguration.refreshTokenTtl, {
         refreshTokenId,
       }),
+
+      //* Insert refreshTokenId into storage
+      await this.refreshTokenIdsStorage.insert(user.id, refreshTokenId),
     ]);
 
     return {
       accessToken,
       refreshToken,
     };
+  }
+
+  async refreshTokens(refreshToken: RefreshTokenDto) {
+    try {
+      const { sub, refreshTokenId } &#x3D; await this.jwtService.verifyAsync&lt;
+        Pick&lt;ActiveUserData, &#x27;sub&#x27;&gt; &amp; { refreshTokenId: string }
+      &gt;(refreshToken.refreshToken, {
+        secret: this.jwtConfiguration.secret,
+        audience: this.jwtConfiguration.audience,
+        issuer: this.jwtConfiguration.issuer,
+      });
+
+      const user &#x3D; await this.prismaService.user.findUnique({
+        where: {
+          id: sub,
+        },
+      });
+
+      if (!user) throw new UnauthorizedException(&#x27;User not found&#x27;);
+
+      const isValid &#x3D; await this.refreshTokenIdsStorage.validate(
+        sub,
+        refreshTokenId,
+      );
+
+      if (isValid) {
+        await this.refreshTokenIdsStorage.invalidate(user.id);
+      } else {
+        throw new UnauthorizedException(&#x27;Invalid refresh token&#x27;);
+      }
+
+      return await this.generateToken(user);
+    } catch (error) {
+      if (error instanceof RefreshTokenIdsStorageError) {
+        throw new UnauthorizedException(&#x27;Invalid refresh token&#x27;);
+      }
+      throw new UnauthorizedException(error.message);
+    }
   }
 
   private async signToken&lt;T&gt;(userID: number, expiresIn: number, payload?: T) {

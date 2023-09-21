@@ -37,7 +37,7 @@
 
 <ol class="breadcrumb">
   <li class="breadcrumb-item">Controllers</li>
-  <li class="breadcrumb-item" >AuthenticationController</li>
+  <li class="breadcrumb-item" >SessionAuthenticationController</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -61,14 +61,14 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/iam/authentication/controllers/authentication.controller.ts</code>
+            <code>src/iam/authentication/controllers/session-authentication/session-authentication.controller.ts</code>
         </p>
 
             <p class="comment">
                 <h3>Prefix</h3>
             </p>
             <p class="comment">
-                <code>authentication</code>
+                <code>session-authentication</code>
             </p>
 
 
@@ -91,15 +91,14 @@
                         <ul class="index-list">
                             <li>
                                     <span class="modifier"></span>
-                                <a href="#refreshToken" >refreshToken</a>
+                                    <span class="modifier">Async</span>
+                                <a href="#sayHello" >sayHello</a>
                             </li>
                             <li>
                                     <span class="modifier"></span>
+                                    <span class="modifier"></span>
+                                    <span class="modifier">Async</span>
                                 <a href="#signIn" >signIn</a>
-                            </li>
-                            <li>
-                                    <span class="modifier"></span>
-                                <a href="#signUp" >signUp</a>
                             </li>
                         </ul>
                     </td>
@@ -122,18 +121,19 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="refreshToken"></a>
+                    <a name="sayHello"></a>
                     <span class="name">
                         <span class="modifier"></span>
-                        <span ><b>refreshToken</b></span>
-                        <a href="#refreshToken"><span class="icon ion-ios-link"></span></a>
+                        <span class="modifier">Async</span>
+                        <span ><b>sayHello</b></span>
+                        <a href="#sayHello"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>refreshToken(refreshTokenDto: <a href="../classes/RefreshTokenDto.html" target="_self">RefreshTokenDto</a>)</code>
+                    <code>sayHello(user: <a href="../interfaces/ActiveUserData.html" target="_self">ActiveUserData</a>)</code>
                 </td>
             </tr>
 
@@ -141,14 +141,14 @@
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@Post(&#x27;refresh-token&#x27;)<br /></code>
+                    <code>@Get(&#x27;test&#x27;)<br /></code>
                 </td>
             </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="25"
-                            class="link-to-prism">src/iam/authentication/controllers/authentication.controller.ts:25</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="34"
+                            class="link-to-prism">src/iam/authentication/controllers/session-authentication/session-authentication.controller.ts:34</a></div>
                 </td>
             </tr>
 
@@ -169,9 +169,9 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>refreshTokenDto</td>
+                                    <td>user</td>
                                     <td>
-                                                <code><a href="../classes/RefreshTokenDto.html" target="_self" >RefreshTokenDto</a></code>
+                                                <code><a href="../interfaces/ActiveUserData.html" target="_self" >ActiveUserData</a></code>
                                     </td>
 
                                     <td>
@@ -186,7 +186,7 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                        <b>Returns : </b>    <code>unknown</code>
 
                     </div>
                     <div class="io-description">
@@ -203,6 +203,8 @@
                     <a name="signIn"></a>
                     <span class="name">
                         <span class="modifier"></span>
+                        <span class="modifier"></span>
+                        <span class="modifier">Async</span>
                         <span ><b>signIn</b></span>
                         <a href="#signIn"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -211,7 +213,7 @@
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>signIn(signInDto: <a href="../classes/SignInDto.html" target="_self">SignInDto</a>)</code>
+                    <code>signIn(request: Request, signInDto: <a href="../classes/SignInDto.html" target="_self">SignInDto</a>)</code>
                 </td>
             </tr>
 
@@ -219,14 +221,14 @@
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@Post(&#x27;sign-in&#x27;)<br /></code>
+                    <code>@HttpCode(HttpStatus.OK)<br />@Post(&#x27;sign-in&#x27;)<br /></code>
                 </td>
             </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="20"
-                            class="link-to-prism">src/iam/authentication/controllers/authentication.controller.ts:20</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="28"
+                            class="link-to-prism">src/iam/authentication/controllers/session-authentication/session-authentication.controller.ts:28</a></div>
                 </td>
             </tr>
 
@@ -246,6 +248,18 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                <tr>
+                                    <td>request</td>
+                                    <td>
+                                            <code>Request</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
                                 <tr>
                                     <td>signInDto</td>
                                     <td>
@@ -274,114 +288,45 @@
             </tr>
         </tbody>
     </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="signUp"></a>
-                    <span class="name">
-                        <span class="modifier"></span>
-                        <span ><b>signUp</b></span>
-                        <a href="#signUp"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-                    <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>signUp(signUpDto: <a href="../classes/SignUpDto.html" target="_self">SignUpDto</a>)</code>
-                </td>
-            </tr>
-
-            <tr>
-                <td class="col-md-4">
-                    <b>Decorators : </b>
-                    <br />
-                    <code>@Post(&#x27;sign-up&#x27;)<br /></code>
-                </td>
-            </tr>
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="15"
-                            class="link-to-prism">src/iam/authentication/controllers/authentication.controller.ts:15</a></div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>signUpDto</td>
-                                    <td>
-                                                <code><a href="../classes/SignUpDto.html" target="_self" >SignUpDto</a></code>
-                                    </td>
-
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
-
-                    </div>
-                    <div class="io-description">
-                        
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
 </section>    </div>
 
 
     <div class="tab-pane fade  tab-source-code" id="source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Body, Controller, Post } from &#x27;@nestjs/common&#x27;;
-import { AuthenticationService } from &#x27;../services/authentication.service&#x27;;
-import { SignUpDto } from &#x27;../dto/sign-up.dto/sign-up.dto&#x27;;
-import { SignInDto } from &#x27;../dto/sign-in.dto/sign-in.dto&#x27;;
-import { Auth } from &#x27;../decorators/auth/auth.decorator&#x27;;
-import { AuthType } from &#x27;../enums/auth-type.enum&#x27;;
-import { RefreshTokenDto } from &#x27;../dto/refresh-token.dto/refresh-token.dto&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
+  Body,
+  Controller,
+  Get,
+  HttpCode,
+  HttpStatus,
+  Post,
+  Req,
+} from &#x27;@nestjs/common&#x27;;
+import { Request } from &#x27;express&#x27;;
+import { promisify } from &#x27;util&#x27;;
+import { AuthType } from &#x27;../../enums/auth-type.enum&#x27;;
+import { Auth } from &#x27;../../decorators/auth/auth.decorator&#x27;;
+import { SessionAuthenticationService } from &#x27;../../services/session-authentication/session-authentication.service&#x27;;
+import { SignInDto } from &#x27;../../dto/sign-in.dto/sign-in.dto&#x27;;
+import { ActiveUser } from &#x27;../../decorators/active-user/active-user.decorator&#x27;;
+import { ActiveUserData } from &#x27;../../interfaces/active-user-data.interface&#x27;;
 
 @Auth(AuthType.None)
-@Controller(&#x27;authentication&#x27;)
-export class AuthenticationController {
-  constructor(private readonly authService: AuthenticationService) {}
+@Controller(&#x27;session-authentication&#x27;)
+export class SessionAuthenticationController {
+  constructor(
+    private readonly sessionAuthService: SessionAuthenticationService,
+  ) {}
 
-  @Post(&#x27;sign-up&#x27;)
-  signUp(@Body() signUpDto: SignUpDto) {
-    return this.authService.signUp(signUpDto);
-  }
-
+  @HttpCode(HttpStatus.OK)
   @Post(&#x27;sign-in&#x27;)
-  signIn(@Body() signInDto: SignInDto) {
-    return this.authService.signIn(signInDto);
+  async signIn(@Req() request: Request, @Body() signInDto: SignInDto) {
+    const user &#x3D; await this.sessionAuthService.signIn(signInDto);
+    await promisify(request.logIn.bind(request))(user);
   }
 
-  @Post(&#x27;refresh-token&#x27;)
-  refreshToken(@Body() refreshTokenDto: RefreshTokenDto) {
-    return this.authService.refreshTokens(refreshTokenDto);
+  @Get(&#x27;test&#x27;)
+  async sayHello(@ActiveUser() user: ActiveUserData) {
+    return &#x60;Hello ${user.email}&#x60;;
   }
 }
 </code></pre>
@@ -429,7 +374,7 @@ export class AuthenticationController {
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'controller';
-            var COMPODOC_CURRENT_PAGE_URL = 'AuthenticationController.html';
+            var COMPODOC_CURRENT_PAGE_URL = 'SessionAuthenticationController.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 
