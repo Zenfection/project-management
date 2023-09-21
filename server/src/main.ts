@@ -1,9 +1,21 @@
-import { NestFactory } from '@nestjs/core';
+import { NestFactory, HttpAdapterHost } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
+import { HttpStatus } from '@nestjs/common';
+import { PrismaClientExceptionFilter } from 'nestjs-prisma';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+
+  const { httpAdapter } = app.get(HttpAdapterHost);
+  app.useGlobalFilters(
+    new PrismaClientExceptionFilter(httpAdapter, {
+      // Prisma Error Code: HTTP Status Response
+      P2000: HttpStatus.BAD_REQUEST,
+      P2002: HttpStatus.CONFLICT,
+      P2025: HttpStatus.NOT_FOUND,
+    }),
+  );
 
   const config = new DocumentBuilder()
     .setTitle('NestJS API')
