@@ -12,6 +12,7 @@ import { AccessTokenStrategy } from './strategies/access-token/access-token.stra
 import { AccessTokenGuard } from './guards/access-token/access-token.guard';
 import { AuthenticationGuard } from './guards/authentication/authentication.guard';
 import { APP_GUARD } from '@nestjs/core';
+import { RefreshTokenIdsStorage } from './utils/refresh-token-ids.storage/refresh-token-ids.storage';
 
 @Module({
   providers: [
@@ -23,6 +24,7 @@ import { APP_GUARD } from '@nestjs/core';
       provide: APP_GUARD,
       useClass: AuthenticationGuard,
     },
+    RefreshTokenIdsStorage,
     AuthenticationService,
     PrismaService,
     AccessTokenStrategy,
