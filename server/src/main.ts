@@ -1,11 +1,18 @@
 import { NestFactory, HttpAdapterHost } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
-import { HttpStatus } from '@nestjs/common';
+import { HttpStatus, ValidationPipe } from '@nestjs/common';
 import { PrismaClientExceptionFilter } from 'nestjs-prisma';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+
+  app.useGlobalPipes(
+    new ValidationPipe({
+      transform: true,
+      whitelist: true,
+    }),
+  );
 
   const { httpAdapter } = app.get(HttpAdapterHost);
   app.useGlobalFilters(
