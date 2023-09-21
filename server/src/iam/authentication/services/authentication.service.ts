@@ -14,7 +14,7 @@ import { randomUUID } from 'crypto';
 import jwtConfig from '../../config/jwt.config/jwt.config';
 import { ConfigType } from '@nestjs/config';
 import { JwtService } from '@nestjs/jwt';
-import { ActiveUser } from '../interfaces/active-user.interface';
+import { ActiveUserData } from '../interfaces/active-user-data.interface';
 
 @Injectable()
 export class AuthenticationService {
@@ -83,7 +83,7 @@ export class AuthenticationService {
 
     const [accessToken, refreshToken] = await Promise.all([
       //* accessToken
-      this.signToken<Partial<ActiveUser>>(
+      this.signToken<Partial<ActiveUserData>>(
         user.id,
         this.jwtConfiguration.accessTokenTtl,
         payload,

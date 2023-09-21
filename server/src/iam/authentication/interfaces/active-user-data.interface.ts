@@ -1,4 +1,4 @@
-export interface ActiveUser {
+export interface ActiveUserData {
   sub: number;
   email: string;
 }

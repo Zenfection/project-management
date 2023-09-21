@@ -3,7 +3,10 @@ import { AuthenticationService } from '../services/authentication.service';
 import { SignUpDto } from '../dto/sign-up.dto/sign-up.dto';
 import { SignInDto } from '../dto/sign-in.dto/sign-in.dto';
 import { AccessTokenStrategy } from '../strategies/access-token/access-token.strategy';
+import { Auth } from '../decorators/auth/auth.decorator';
+import { AuthType } from '../enums/auth-type.enum';
 
+@Auth(AuthType.None)
 @Controller('authentication')
 export class AuthenticationController {
   constructor(

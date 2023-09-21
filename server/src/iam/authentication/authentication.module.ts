@@ -9,6 +9,9 @@ import { AuthenticationService } from './services/authentication.service';
 import { AuthenticationController } from './controllers/authentication.controller';
 import jwtConfig from '../config/jwt.config/jwt.config';
 import { AccessTokenStrategy } from './strategies/access-token/access-token.strategy';
+import { AccessTokenGuard } from './guards/access-token/access-token.guard';
+import { AuthenticationGuard } from './guards/authentication/authentication.guard';
+import { APP_GUARD } from '@nestjs/core';
 
 @Module({
   providers: [
@@ -16,9 +19,14 @@ import { AccessTokenStrategy } from './strategies/access-token/access-token.stra
       provide: HashingService,
       useClass: BcryptService,
     },
+    {
+      provide: APP_GUARD,
+      useClass: AuthenticationGuard,
+    },
     AuthenticationService,
     PrismaService,
     AccessTokenStrategy,
+    AccessTokenGuard,
   ],
   imports: [
     PassportModule,
