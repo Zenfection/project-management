@@ -85,11 +85,6 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                    <span class="modifier">Private</span>
-                                    <span class="modifier">Async</span>
-                                <a href="#checkUserExist" >checkUserExist</a>
-                            </li>
-                            <li>
                                     <span class="modifier">Async</span>
                                 <a href="#generateToken" >generateToken</a>
                             </li>
@@ -128,12 +123,12 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(hashService: <a href="../injectables/HashingService.html" target="_self">HashingService</a>, prismaService: PrismaService, jwtConfiguration: ConfigType<>, jwtService: JwtService, refreshTokenIdsStorage: <a href="../injectables/RefreshTokenIdsStorage.html" target="_self">RefreshTokenIdsStorage</a>)</code>
+<code>constructor(hashService: <a href="../injectables/HashingService.html" target="_self">HashingService</a>, userService: <a href="../injectables/UsersService.html" target="_self">UsersService</a>, jwtConfiguration: ConfigType<>, jwtService: JwtService, refreshTokenIdsStorage: <a href="../injectables/RefreshTokenIdsStorage.html" target="_self">RefreshTokenIdsStorage</a>, tfaService: <a href="../injectables/TfaAuthenticationService.html" target="_self">TfaAuthenticationService</a>)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/iam/authentication/services/authentication.service.ts:25</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/iam/authentication/services/authentication.service.ts:26</a></div>
                             </td>
                         </tr>
 
@@ -163,10 +158,10 @@
                                                     
                                                 </tr>
                                                 <tr>
-                                                        <td>prismaService</td>
+                                                        <td>userService</td>
                                                   
                                                         <td>
-                                                                    <code>PrismaService</code>
+                                                                        <code><a href="../injectables/UsersService.html" target="_self" >UsersService</a></code>
                                                         </td>
                                                   
                                                     <td>
@@ -210,6 +205,18 @@
                                                     </td>
                                                     
                                                 </tr>
+                                                <tr>
+                                                        <td>tfaService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/TfaAuthenticationService.html" target="_self" >TfaAuthenticationService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
                                         </tbody>
                                     </table>
                             </div>
@@ -224,78 +231,6 @@
     <h3 id="methods">
         Methods
     </h3>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="checkUserExist"></a>
-                    <span class="name">
-                        <span class="modifier">Private</span>
-                        <span class="modifier">Async</span>
-                        <span ><b>checkUserExist</b></span>
-                        <a href="#checkUserExist"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-                    <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>checkUserExist(email: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="35"
-                            class="link-to-prism">src/iam/authentication/services/authentication.service.ts:35</a></div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>email</td>
-                                    <td>
-                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-                                    </td>
-
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>    <code>Promise&lt;User | null&gt;</code>
-
-                    </div>
-                    <div class="io-description">
-                        
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
     <table class="table table-sm table-bordered">
         <tbody>
             <tr>
@@ -318,8 +253,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="83"
-                            class="link-to-prism">src/iam/authentication/services/authentication.service.ts:83</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="82"
+                            class="link-to-prism">src/iam/authentication/services/authentication.service.ts:82</a></div>
                 </td>
             </tr>
 
@@ -389,8 +324,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="112"
-                            class="link-to-prism">src/iam/authentication/services/authentication.service.ts:112</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="111"
+                            class="link-to-prism">src/iam/authentication/services/authentication.service.ts:111</a></div>
                 </td>
             </tr>
 
@@ -460,8 +395,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="43"
-                            class="link-to-prism">src/iam/authentication/services/authentication.service.ts:43</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="37"
+                            class="link-to-prism">src/iam/authentication/services/authentication.service.ts:37</a></div>
                 </td>
             </tr>
 
@@ -532,8 +467,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="150"
-                            class="link-to-prism">src/iam/authentication/services/authentication.service.ts:150</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="145"
+                            class="link-to-prism">src/iam/authentication/services/authentication.service.ts:145</a></div>
                 </td>
             </tr>
 
@@ -635,8 +570,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="57"
-                            class="link-to-prism">src/iam/authentication/services/authentication.service.ts:57</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="59"
+                            class="link-to-prism">src/iam/authentication/services/authentication.service.ts:59</a></div>
                 </td>
             </tr>
 
@@ -697,11 +632,8 @@
   UnauthorizedException,
 } from &#x27;@nestjs/common&#x27;;
 import { HashingService } from &#x27;../../hashing/hashing.service&#x27;;
-import { PrismaService } from &#x27;nestjs-prisma&#x27;;
 import { SignInDto } from &#x27;../dto/sign-in.dto/sign-in.dto&#x27;;
 import { SignUpDto } from &#x27;../dto/sign-up.dto/sign-up.dto&#x27;;
-import { UserEntity } from &#x27;../../../users/entities/user.entity&#x27;;
-import { User } from &#x27;@prisma/client&#x27;;
 import { randomUUID } from &#x27;crypto&#x27;;
 import jwtConfig from &#x27;../../config/jwt.config/jwt.config&#x27;;
 import { ConfigType } from &#x27;@nestjs/config&#x27;;
@@ -712,30 +644,27 @@ import {
   RefreshTokenIdsStorageError,
 } from &#x27;../utils/refresh-token-ids.storage/refresh-token-ids.storage&#x27;;
 import { RefreshTokenDto } from &#x27;../dto/refresh-token.dto/refresh-token.dto&#x27;;
+import { UsersService } from &#x27;../../../users/users.service&#x27;;
+import { CreateUserDto } from &#x27;../../../users/dto/create-user.dto&#x27;;
+import { UserEntity } from &#x27;src/users/entity/user.entity&#x27;;
+import { TfaAuthenticationService } from &#x27;./tfa-authentication/tfa-authentication.service&#x27;;
 
 @Injectable()
 export class AuthenticationService {
   constructor(
     private readonly hashService: HashingService,
-    private readonly prismaService: PrismaService,
+    private readonly userService: UsersService,
     @Inject(jwtConfig.KEY)
     private readonly jwtConfiguration: ConfigType&lt;typeof jwtConfig&gt;,
     private readonly jwtService: JwtService,
     private readonly refreshTokenIdsStorage: RefreshTokenIdsStorage,
+    private readonly tfaService: TfaAuthenticationService,
   ) {}
-
-  private async checkUserExist(email: string): Promise&lt;User | null&gt; {
-    return await this.prismaService.user.findUnique({
-      where: {
-        email,
-      },
-    });
-  }
 
   async signIn(signInDto: SignInDto) {
     const { email, password } &#x3D; signInDto;
 
-    const user &#x3D; await this.checkUserExist(email);
+    const user &#x3D; await this.userService.findOne({ email });
 
     if (!user) throw new ConflictException(&#x27;Email not exists&#x27;);
 
@@ -743,27 +672,32 @@ export class AuthenticationService {
 
     if (!isMatch) throw new UnauthorizedException(&#x27;User or password not match&#x27;);
 
+    if (user.isTfaEnabled) {
+      const isValid &#x3D; this.tfaService.verifyCode(
+        signInDto.tfaCode,
+        user.tfaSecret,
+      );
+      if (!isValid) throw new UnauthorizedException(&#x27;Invalid TFA code&#x27;);
+    }
+
     return await this.generateToken(user);
   }
 
   async signUp(signUpDto: SignUpDto) {
     const { email, password } &#x3D; signUpDto;
 
-    if ((await this.checkUserExist(email)) !&#x3D;&#x3D; null)
+    if ((await this.userService.findOne({ email })) !&#x3D;&#x3D; null)
       throw new ConflictException(&#x27;Email already exists&#x27;);
 
     const hashedPassword &#x3D; await this.hashService.hash(password);
-    const user &#x3D; new UserEntity();
+    const user &#x3D; new CreateUserDto();
+
     user.email &#x3D; email;
     user.password &#x3D; hashedPassword;
     user.name &#x3D; &#x27;Anonymous&#x27;;
 
     try {
-      await this.prismaService.user.create({
-        data: {
-          ...user,
-        },
-      });
+      await this.userService.create(user);
     } catch (error) {
       if (error.code &#x3D;&#x3D;&#x3D; &#x27;P2002&#x27;) {
         throw new ConflictException(&#x27;Email already exists&#x27;);
@@ -811,11 +745,7 @@ export class AuthenticationService {
         issuer: this.jwtConfiguration.issuer,
       });
 
-      const user &#x3D; await this.prismaService.user.findUnique({
-        where: {
-          id: sub,
-        },
-      });
+      const user &#x3D; await this.userService.findOne({ id: sub });
 
       if (!user) throw new UnauthorizedException(&#x27;User not found&#x27;);
 

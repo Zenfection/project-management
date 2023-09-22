@@ -28,16 +28,19 @@
                    <compodoc-menu mode="normal"></compodoc-menu>
                </div>
                <!-- START CONTENT -->
-               <div class="content controller">
+               <div class="content injectable">
                    <div class="content-data">
 
 
 
 
 
+
+
+
 <ol class="breadcrumb">
-  <li class="breadcrumb-item">Controllers</li>
-  <li class="breadcrumb-item" >AuthenticationController</li>
+  <li class="breadcrumb-item">Injectables</li>
+  <li class="breadcrumb-item" >TfaAuthenticationService</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -61,16 +64,8 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/iam/authentication/controllers/authentication.controller.ts</code>
+            <code>src/iam/authentication/services/tfa-authentication/tfa-authentication.service.ts</code>
         </p>
-
-            <p class="comment">
-                <h3>Prefix</h3>
-            </p>
-            <p class="comment">
-                <code>authentication</code>
-            </p>
-
 
 
 
@@ -90,26 +85,15 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                    <span class="modifier"></span>
-                                    <span class="modifier"></span>
-                                    <span class="modifier"></span>
                                     <span class="modifier">Async</span>
-                                <a href="#generateQrCode" >generateQrCode</a>
+                                <a href="#enableTfaSecret" >enableTfaSecret</a>
                             </li>
                             <li>
-                                    <span class="modifier"></span>
-                                    <span class="modifier"></span>
-                                <a href="#refreshToken" >refreshToken</a>
+                                    <span class="modifier">Async</span>
+                                <a href="#generateSecret" >generateSecret</a>
                             </li>
                             <li>
-                                    <span class="modifier"></span>
-                                    <span class="modifier"></span>
-                                <a href="#signIn" >signIn</a>
-                            </li>
-                            <li>
-                                    <span class="modifier"></span>
-                                    <span class="modifier"></span>
-                                <a href="#signUp" >signUp</a>
+                                <a href="#verifyCode" >verifyCode</a>
                             </li>
                         </ul>
                     </td>
@@ -123,6 +107,67 @@
     </table>
 </section>
 
+            <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(configService: ConfigService, prismaService: PrismaService)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="7" class="link-to-prism">src/iam/authentication/services/tfa-authentication/tfa-authentication.service.ts:7</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>configService</td>
+                                                  
+                                                        <td>
+                                                                    <code>ConfigService</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>prismaService</td>
+                                                  
+                                                        <td>
+                                                                    <code>PrismaService</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
             <section data-compodoc="block-methods">
     
     <h3 id="methods">
@@ -132,36 +177,26 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="generateQrCode"></a>
+                    <a name="enableTfaSecret"></a>
                     <span class="name">
-                        <span class="modifier"></span>
-                        <span class="modifier"></span>
-                        <span class="modifier"></span>
                         <span class="modifier">Async</span>
-                        <span ><b>generateQrCode</b></span>
-                        <a href="#generateQrCode"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>enableTfaSecret</b></span>
+                        <a href="#enableTfaSecret"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>generateQrCode(response: Response, activeUser: <a href="../interfaces/ActiveUserData.html" target="_self">ActiveUserData</a>)</code>
+                    <code>enableTfaSecret(email: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, secret: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
-            <tr>
-                <td class="col-md-4">
-                    <b>Decorators : </b>
-                    <br />
-                    <code>@HttpCode(HttpStatus.OK)<br />@Auth(AuthType.Bearer)<br />@Post(&#x27;tfa/generate&#x27;)<br /></code>
-                </td>
-            </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="51"
-                            class="link-to-prism">src/iam/authentication/controllers/authentication.controller.ts:51</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="28"
+                            class="link-to-prism">src/iam/authentication/services/tfa-authentication/tfa-authentication.service.ts:28</a></div>
                 </td>
             </tr>
 
@@ -182,9 +217,9 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>response</td>
+                                    <td>email</td>
                                     <td>
-                                            <code>Response</code>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
                                     </td>
 
                                     <td>
@@ -194,9 +229,80 @@
 
                                 </tr>
                                 <tr>
-                                    <td>activeUser</td>
+                                    <td>secret</td>
                                     <td>
-                                                <code><a href="../interfaces/ActiveUserData.html" target="_self" >ActiveUserData</a></code>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="generateSecret"></a>
+                    <span class="name">
+                        <span class="modifier">Async</span>
+                        <span ><b>generateSecret</b></span>
+                        <a href="#generateSecret"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>generateSecret(email: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="13"
+                            class="link-to-prism">src/iam/authentication/services/tfa-authentication/tfa-authentication.service.ts:13</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>email</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
                                     </td>
 
                                     <td>
@@ -225,34 +331,24 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="refreshToken"></a>
+                    <a name="verifyCode"></a>
                     <span class="name">
-                        <span class="modifier"></span>
-                        <span class="modifier"></span>
-                        <span ><b>refreshToken</b></span>
-                        <a href="#refreshToken"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>verifyCode</b></span>
+                        <a href="#verifyCode"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
-                    <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>refreshToken(refreshTokenDto: <a href="../classes/RefreshTokenDto.html" target="_self">RefreshTokenDto</a>)</code>
+<code>verifyCode(code: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, secret: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
-            <tr>
-                <td class="col-md-4">
-                    <b>Decorators : </b>
-                    <br />
-                    <code>@HttpCode(HttpStatus.OK)<br />@Post(&#x27;refresh-token&#x27;)<br /></code>
-                </td>
-            </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="44"
-                            class="link-to-prism">src/iam/authentication/controllers/authentication.controller.ts:44</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="24"
+                            class="link-to-prism">src/iam/authentication/services/tfa-authentication/tfa-authentication.service.ts:24</a></div>
                 </td>
             </tr>
 
@@ -273,9 +369,21 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>refreshTokenDto</td>
+                                    <td>code</td>
                                     <td>
-                                                <code><a href="../classes/RefreshTokenDto.html" target="_self" >RefreshTokenDto</a></code>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>secret</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
                                     </td>
 
                                     <td>
@@ -300,238 +408,64 @@
             </tr>
         </tbody>
     </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="signIn"></a>
-                    <span class="name">
-                        <span class="modifier"></span>
-                        <span class="modifier"></span>
-                        <span ><b>signIn</b></span>
-                        <a href="#signIn"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-                    <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>signIn(signInDto: <a href="../classes/SignInDto.html" target="_self">SignInDto</a>)</code>
-                </td>
-            </tr>
+</section>
 
-            <tr>
-                <td class="col-md-4">
-                    <b>Decorators : </b>
-                    <br />
-                    <code>@HttpCode(HttpStatus.OK)<br />@Post(&#x27;sign-in&#x27;)<br /></code>
-                </td>
-            </tr>
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="38"
-                            class="link-to-prism">src/iam/authentication/controllers/authentication.controller.ts:38</a></div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>signInDto</td>
-                                    <td>
-                                                <code><a href="../classes/SignInDto.html" target="_self" >SignInDto</a></code>
-                                    </td>
-
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
-
-                    </div>
-                    <div class="io-description">
-                        
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="signUp"></a>
-                    <span class="name">
-                        <span class="modifier"></span>
-                        <span class="modifier"></span>
-                        <span ><b>signUp</b></span>
-                        <a href="#signUp"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-                    <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>signUp(signUpDto: <a href="../classes/SignUpDto.html" target="_self">SignUpDto</a>)</code>
-                </td>
-            </tr>
-
-            <tr>
-                <td class="col-md-4">
-                    <b>Decorators : </b>
-                    <br />
-                    <code>@HttpCode(HttpStatus.OK)<br />@Post(&#x27;sign-up&#x27;)<br /></code>
-                </td>
-            </tr>
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="32"
-                            class="link-to-prism">src/iam/authentication/controllers/authentication.controller.ts:32</a></div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>signUpDto</td>
-                                    <td>
-                                                <code><a href="../classes/SignUpDto.html" target="_self" >SignUpDto</a></code>
-                                    </td>
-
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
-
-                    </div>
-                    <div class="io-description">
-                        
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</section>    </div>
+    </div>
 
 
     <div class="tab-pane fade  tab-source-code" id="source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
-  Body,
-  Controller,
-  HttpCode,
-  HttpStatus,
-  Post,
-  Res,
-} from &#x27;@nestjs/common&#x27;;
-import { AuthenticationService } from &#x27;../services/authentication.service&#x27;;
-import { SignUpDto } from &#x27;../dto/sign-up.dto/sign-up.dto&#x27;;
-import { SignInDto } from &#x27;../dto/sign-in.dto/sign-in.dto&#x27;;
-import { Auth } from &#x27;../decorators/auth/auth.decorator&#x27;;
-import { AuthType } from &#x27;../enums/auth-type.enum&#x27;;
-import { RefreshTokenDto } from &#x27;../dto/refresh-token.dto/refresh-token.dto&#x27;;
-import { ActiveUser } from &#x27;../decorators/active-user/active-user.decorator&#x27;;
-import { ActiveUserData } from &#x27;../interfaces/active-user-data.interface&#x27;;
-import { TfaAuthenticationService } from &#x27;../services/tfa-authentication/tfa-authentication.service&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@nestjs/common&#x27;;
+import { ConfigService } from &#x27;@nestjs/config&#x27;;
+import { PrismaService } from &#x27;nestjs-prisma&#x27;;
+import { authenticator } from &#x27;otplib&#x27;;
 
-import { Response } from &#x27;express&#x27;;
-import { toFileStream } from &#x27;qrcode&#x27;;
-
-@Auth(AuthType.None)
-@Controller(&#x27;authentication&#x27;)
-export class AuthenticationController {
+@Injectable()
+export class TfaAuthenticationService {
   constructor(
-    private readonly authService: AuthenticationService,
-    private readonly tfaSerivce: TfaAuthenticationService,
+    private readonly configService: ConfigService,
+    private readonly prismaService: PrismaService,
   ) {}
 
-  @HttpCode(HttpStatus.OK)
-  @Post(&#x27;sign-up&#x27;)
-  signUp(@Body() signUpDto: SignUpDto) {
-    return this.authService.signUp(signUpDto);
+  async generateSecret(email: string) {
+    const secret &#x3D; authenticator.generateSecret();
+    const appName &#x3D; this.configService.getOrThrow&lt;string&gt;(&#x27;TFA_APP_NAME&#x27;);
+    const uri &#x3D; authenticator.keyuri(email, appName, secret);
+
+    return {
+      secret,
+      uri,
+    };
   }
 
-  @HttpCode(HttpStatus.OK)
-  @Post(&#x27;sign-in&#x27;)
-  signIn(@Body() signInDto: SignInDto) {
-    return this.authService.signIn(signInDto);
+  verifyCode(code: string, secret: string) {
+    return authenticator.verify({ token: code, secret });
   }
 
-  @HttpCode(HttpStatus.OK)
-  @Post(&#x27;refresh-token&#x27;)
-  refreshToken(@Body() refreshTokenDto: RefreshTokenDto) {
-    return this.authService.refreshTokens(refreshTokenDto);
-  }
+  async enableTfaSecret(email: string, secret: string) {
+    const id &#x3D; await this.prismaService.user.findUniqueOrThrow({
+      where: {
+        email,
+      },
+      select: {
+        id: true,
+      },
+    });
 
-  @HttpCode(HttpStatus.OK)
-  @Auth(AuthType.Bearer)
-  @Post(&#x27;tfa/generate&#x27;)
-  async generateQrCode(
-    @Res() response: Response,
-    @ActiveUser() activeUser: ActiveUserData,
-  ) {
-    const { uri, secret } &#x3D; await this.tfaSerivce.generateSecret(
-      activeUser.email,
-    );
-
-    await this.tfaSerivce.enableTfaSecret(activeUser.email, secret);
-
-    response.type(&#x27;png&#x27;);
-    return toFileStream(response, uri);
+    await this.prismaService.user.update({
+      where: {
+        id: id.id,
+      },
+      data: {
+        isTfaEnabled: true,
+        tfaSecret: secret,
+      },
+    });
   }
 }
 </code></pre>
     </div>
+
 </div>
-
-
-
 
 
 
@@ -570,8 +504,8 @@ export class AuthenticationController {
 
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
-            var COMPODOC_CURRENT_PAGE_CONTEXT = 'controller';
-            var COMPODOC_CURRENT_PAGE_URL = 'AuthenticationController.html';
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
+            var COMPODOC_CURRENT_PAGE_URL = 'TfaAuthenticationService.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 

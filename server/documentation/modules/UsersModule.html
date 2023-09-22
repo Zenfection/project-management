@@ -163,10 +163,11 @@
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Module } from &#x27;@nestjs/common&#x27;;
 import { UsersService } from &#x27;./users.service&#x27;;
 import { UsersController } from &#x27;./users.controller&#x27;;
+import { PrismaService } from &#x27;nestjs-prisma&#x27;;
 
 @Module({
   controllers: [UsersController],
-  providers: [UsersService],
+  providers: [UsersService, PrismaService],
 })
 export class UsersModule {}
 </code></pre>

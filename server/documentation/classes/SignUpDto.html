@@ -90,9 +90,11 @@
                         <ul class="index-list">
                             <li>
                                     <span class="modifier"></span>
+                                    <span class="modifier"></span>
                                 <a href="#email" >email</a>
                             </li>
                             <li>
+                                    <span class="modifier"></span>
                                     <span class="modifier"></span>
                                 <a href="#password" >password</a>
                             </li>
@@ -122,6 +124,7 @@
                     <a name="email"></a>
                     <span class="name">
                             <span class="modifier"></span>
+                            <span class="modifier"></span>
                         <span ><b>email</b></span>
                         <a href="#email"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -138,13 +141,13 @@
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @IsEmail()<br />
+                            @ApiProperty({example: &#x27;abc@gmail.com&#x27;})<br />@IsEmail()<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="5" class="link-to-prism">src/iam/authentication/dto/sign-up.dto/sign-up.dto.ts:5</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="9" class="link-to-prism">src/iam/authentication/dto/sign-up.dto/sign-up.dto.ts:9</a></div>
                         </td>
                     </tr>
 
@@ -157,6 +160,7 @@
                 <td class="col-md-4">
                     <a name="password"></a>
                     <span class="name">
+                            <span class="modifier"></span>
                             <span class="modifier"></span>
                         <span ><b>password</b></span>
                         <a href="#password"><span class="icon ion-ios-link"></span></a>
@@ -174,13 +178,13 @@
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @MinLength(8)<br />
+                            @ApiProperty({example: &#x27;12345678&#x27;})<br />@MinLength(8)<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="8" class="link-to-prism">src/iam/authentication/dto/sign-up.dto/sign-up.dto.ts:8</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/iam/authentication/dto/sign-up.dto/sign-up.dto.ts:15</a></div>
                         </td>
                     </tr>
 
@@ -200,11 +204,18 @@
 
     <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { IsEmail, MinLength } from &#x27;class-validator&#x27;;
+import { ApiProperty } from &#x27;@nestjs/swagger&#x27;;
 
 export class SignUpDto {
+  @ApiProperty({
+    example: &#x27;abc@gmail.com&#x27;,
+  })
   @IsEmail()
   email: string;
 
+  @ApiProperty({
+    example: &#x27;12345678&#x27;,
+  })
   @MinLength(8)
   password: string;
 }
