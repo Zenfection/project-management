@@ -1,7 +1,6 @@
 import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { HashingService } from '../hashing/hashing.service';
 import { BcryptService } from '../hashing/bcrypt/bcrypt.service';
-import { PrismaService } from 'nestjs-prisma';
 import { PassportModule } from '@nestjs/passport';
 import { ConfigModule } from '@nestjs/config';
 import { JwtModule } from '@nestjs/jwt';
@@ -21,6 +20,8 @@ import session from 'express-session';
 import Redis from 'ioredis';
 import createRedisStore from 'connect-redis';
 import { UserSerializer } from './utils/user-serializer/user-serializer';
+import { UsersService } from '../../users/users.service';
+import { PrismaService } from 'nestjs-prisma';
 
 @Module({
   providers: [
@@ -32,9 +33,10 @@ import { UserSerializer } from './utils/user-serializer/user-serializer';
       provide: APP_GUARD,
       useClass: AuthenticationGuard,
     },
+    PrismaService,
+    UsersService,
     RefreshTokenIdsStorage,
     AuthenticationService,
-    PrismaService,
     AccessTokenStrategy,
     AccessTokenGuard,
     SessionAuthenticationService,

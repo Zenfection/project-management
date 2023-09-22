@@ -5,11 +5,8 @@ import {
   UnauthorizedException,
 } from '@nestjs/common';
 import { HashingService } from '../../hashing/hashing.service';
-import { PrismaService } from 'nestjs-prisma';
 import { SignInDto } from '../dto/sign-in.dto/sign-in.dto';
 import { SignUpDto } from '../dto/sign-up.dto/sign-up.dto';
-import { UserEntity } from '../../../users/entities/user.entity';
-import { User } from '@prisma/client';
 import { randomUUID } from 'crypto';
 import jwtConfig from '../../config/jwt.config/jwt.config';
 import { ConfigType } from '@nestjs/config';
@@ -20,30 +17,24 @@ import {
   RefreshTokenIdsStorageError,
 } from '../utils/refresh-token-ids.storage/refresh-token-ids.storage';
 import { RefreshTokenDto } from '../dto/refresh-token.dto/refresh-token.dto';
+import { UsersService } from '../../../users/users.service';
+import { Prisma, User } from '@prisma/client';
 
 @Injectable()
 export class AuthenticationService {
   constructor(
     private readonly hashService: HashingService,
-    private readonly prismaService: PrismaService,
+    private readonly userService: UsersService,
     @Inject(jwtConfig.KEY)
     private readonly jwtConfiguration: ConfigType<typeof jwtConfig>,
     private readonly jwtService: JwtService,
     private readonly refreshTokenIdsStorage: RefreshTokenIdsStorage,
   ) {}
 
-  private async checkUserExist(email: string): Promise<User | null> {
-    return await this.prismaService.user.findUnique({
-      where: {
-        email,
-      },
-    });
-  }
-
   async signIn(signInDto: SignInDto) {
     const { email, password } = signInDto;
 
-    const user = await this.checkUserExist(email);
+    const user = await this.userService.findOne({ email });
 
     if (!user) throw new ConflictException('Email not exists');
 
@@ -57,21 +48,18 @@ export class AuthenticationService {
   async signUp(signUpDto: SignUpDto) {
     const { email, password } = signUpDto;
 
-    if ((await this.checkUserExist(email)) !== null)
+    if ((await this.userService.findOne({ email })) !== null)
       throw new ConflictException('Email already exists');
 
     const hashedPassword = await this.hashService.hash(password);
-    const user = new UserEntity();
-    user.email = email;
-    user.password = hashedPassword;
-    user.name = 'Anonymous';
+    const userData = {
+      email,
+      password: hashedPassword,
+      name: 'Anonymous',
+    } as Prisma.UserCreateInput;
 
     try {
-      await this.prismaService.user.create({
-        data: {
-          ...user,
-        },
-      });
+      await this.userService.create(userData);
     } catch (error) {
       if (error.code === 'P2002') {
         throw new ConflictException('Email already exists');
@@ -80,7 +68,7 @@ export class AuthenticationService {
     }
   }
 
-  async generateToken(user: UserEntity) {
+  async generateToken(user: User) {
     const refreshTokenId = randomUUID();
 
     const payload = {
@@ -119,11 +107,7 @@ export class AuthenticationService {
         issuer: this.jwtConfiguration.issuer,
       });
 
-      const user = await this.prismaService.user.findUnique({
-        where: {
-          id: sub,
-        },
-      });
+      const user = await this.userService.findOne({ id: sub });
 
       if (!user) throw new UnauthorizedException('User not found');
 
