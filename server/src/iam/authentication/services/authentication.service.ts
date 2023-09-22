@@ -18,7 +18,8 @@ import {
 } from '../utils/refresh-token-ids.storage/refresh-token-ids.storage';
 import { RefreshTokenDto } from '../dto/refresh-token.dto/refresh-token.dto';
 import { UsersService } from '../../../users/users.service';
-import { Prisma, User } from '@prisma/client';
+import { CreateUserDto } from '../../../users/dto/create-user.dto';
+import { UserEntity } from 'src/users/entity/user.entity';
 
 @Injectable()
 export class AuthenticationService {
@@ -52,14 +53,14 @@ export class AuthenticationService {
       throw new ConflictException('Email already exists');
 
     const hashedPassword = await this.hashService.hash(password);
-    const userData = {
-      email,
-      password: hashedPassword,
-      name: 'Anonymous',
-    } as Prisma.UserCreateInput;
+    const user = new CreateUserDto();
+
+    user.email = email;
+    user.password = hashedPassword;
+    user.name = 'Anonymous';
 
     try {
-      await this.userService.create(userData);
+      await this.userService.create(user);
     } catch (error) {
       if (error.code === 'P2002') {
         throw new ConflictException('Email already exists');
@@ -68,7 +69,7 @@ export class AuthenticationService {
     }
   }
 
-  async generateToken(user: User) {
+  async generateToken(user: UserEntity) {
     const refreshTokenId = randomUUID();
 
     const payload = {

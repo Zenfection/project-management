@@ -10,18 +10,137 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-enum Role {
-  USER
-  ADMIN
+model Role {
+  id          Int          @id @default(autoincrement()) @map("role_id")
+  name        String       @unique
+  description String?
+  permissions Permission[]
+  policies    Policy[]
+  User        User?        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId      Int?
+}
+
+model Permission {
+  id          Int     @id @default(autoincrement()) @map("permission_id")
+  name        String  @unique
+  description String?
+  roles       Role[]
+}
+
+model Policy {
+  id         Int         @id @default(autoincrement()) @map("policy_id")
+  name       String      @unique
+  effect     PolicyType
+  conditions Condition[]
+  roles      Role[]
+}
+
+model Condition {
+  id        Int      @id @default(autoincrement()) @map("condition_id")
+  attribute String
+  operator  Operator
+  value     String
+  policyId  Int
+  policy    Policy   @relation(fields: [policyId], references: [id], onDelete: Cascade)
+
+  @@index([attribute, operator])
+}
+
+enum PolicyType {
+  ALLOW
+  DENY
+}
+
+enum Operator {
+  EQUALS
+  NOT_EQUALS
+  GREATER_THAN
+  LESS_THAN
+  CONTAINS
+  NOT_CONTAINS
+  STARTS_WITH
+  ENDS_WITH
 }
 
 model User {
-  id           Int      @id @default(autoincrement())
+  id           Int        @id @default(autoincrement()) @map("user_id")
   name         String
-  email        String   @unique
+  email        String     @unique @db.VarChar(255)
   password     String
-  role         Role     @default(USER)
-  permissions  String[] @default([])
-  isTfaEnabled Boolean  @default(false)
+  roles        Role[]
+  isTfaEnabled Boolean    @default(false)
   tfaSecret    String?
+  Task         Task[]
+  Activity     Activity[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([email], name: "user_email_idx")
+}
+
+enum TaskStatus {
+  OPEN
+  IN_PROGRESS
+  RESOLVED
+  CLOSED
+}
+
+model Task {
+  id          Int        @id @default(autoincrement()) @map("task_id")
+  title       String
+  description String?
+  dueDate     DateTime?
+  status      TaskStatus @default(OPEN)
+  assignees   User?      @relation(fields: [assigneeId], references: [id])
+  assigneeId  Int?
+  labels      Label[]
+  comments    Comment[]
+  Activity    Activity[]
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+}
+
+model Comment {
+  id        Int      @id @default(autoincrement()) @map("comment_id")
+  content   String
+  task      Task     @relation(fields: [taskId], references: [id])
+  taskId    Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+enum LabelType {
+  BUG
+  FEATURE
+  IMPROVEMENT
+  QUESTION
+}
+
+model Label {
+  id    Int       @id @default(autoincrement())
+  name  String    @unique
+  type  LabelType
+  tasks Task[]
+}
+
+enum ActivityType {
+  COMMENT
+  STATUS_CHANGE
+  LABEL_CHANGE
+  ASSIGNMENT_CHANGE
+  CLOSE
+}
+
+model Activity {
+  id     Int          @id @default(autoincrement()) @map("activity_id")
+  type   ActivityType
+  data   Json
+  taskId Int
+  task   Task         @relation(fields: [taskId], references: [id])
+  user   User         @relation(fields: [userId], references: [id])
+  userId Int
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
