@@ -24,6 +24,7 @@ import { RefreshTokenIdsStorage } from './utils/refresh-token-ids.storage/refres
 
 import { UsersService } from '../../users/users.service';
 import { PrismaService } from 'nestjs-prisma';
+import { TfaAuthenticationService } from './services/tfa-authentication/tfa-authentication.service';
 
 @Module({
   providers: [
@@ -41,6 +42,7 @@ import { PrismaService } from 'nestjs-prisma';
     AuthenticationService,
     AccessTokenStrategy,
     AccessTokenGuard,
+    TfaAuthenticationService,
     // UserSerializer,
     // SessionAuthenticationService,
   ],

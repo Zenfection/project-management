@@ -20,6 +20,7 @@ import { RefreshTokenDto } from '../dto/refresh-token.dto/refresh-token.dto';
 import { UsersService } from '../../../users/users.service';
 import { CreateUserDto } from '../../../users/dto/create-user.dto';
 import { UserEntity } from 'src/users/entity/user.entity';
+import { TfaAuthenticationService } from './tfa-authentication/tfa-authentication.service';
 
 @Injectable()
 export class AuthenticationService {
@@ -30,6 +31,7 @@ export class AuthenticationService {
     private readonly jwtConfiguration: ConfigType<typeof jwtConfig>,
     private readonly jwtService: JwtService,
     private readonly refreshTokenIdsStorage: RefreshTokenIdsStorage,
+    private readonly tfaService: TfaAuthenticationService,
   ) {}
 
   async signIn(signInDto: SignInDto) {
@@ -42,6 +44,14 @@ export class AuthenticationService {
     const isMatch = await this.hashService.compare(password, user.password);
 
     if (!isMatch) throw new UnauthorizedException('User or password not match');
+
+    if (user.isTfaEnabled) {
+      const isValid = this.tfaService.verifyCode(
+        signInDto.tfaCode,
+        user.tfaSecret,
+      );
+      if (!isValid) throw new UnauthorizedException('Invalid TFA code');
+    }
 
     return await this.generateToken(user);
   }
