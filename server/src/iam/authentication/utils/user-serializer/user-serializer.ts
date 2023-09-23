@@ -1,5 +1,5 @@
 import { PassportSerializer } from '@nestjs/passport';
-import { User } from '@prisma/client';
+import { UserEntity } from 'src/users/entity/user.entity';
 import passport from 'passport';
 import { ActiveUserData } from '../../interfaces/active-user-data.interface';
 
@@ -7,7 +7,7 @@ export class UserSerializer implements PassportSerializer {
   constructor() {
     const passportInstance = this.getPassportInstance();
     passportInstance.serializeUser((user, done) =>
-      this.serializeUser(user as User, done),
+      this.serializeUser(user as UserEntity, done),
     );
     passportInstance.deserializeUser((payload, done) =>
       this.deserializeUser(payload as ActiveUserData, done),
@@ -18,12 +18,15 @@ export class UserSerializer implements PassportSerializer {
     return passport;
   }
 
-  serializeUser(user: User, done: (err: Error, user: ActiveUserData) => void) {
+  serializeUser(
+    user: UserEntity,
+    done: (err: Error, user: ActiveUserData) => void,
+  ) {
     // store user info authenticated in session
     done(null, {
       sub: user.id,
       email: user.email,
-      //   role: user.role,
+      role: user.roles,
       //   permissions: user.permissions as any,
     });
   }

@@ -84,6 +84,7 @@ export class AuthenticationService {
 
     const payload = {
       email: user.email,
+      roles: user.roles.map((role) => role.name),
     };
 
     const [accessToken, refreshToken] = await Promise.all([
@@ -133,7 +134,7 @@ export class AuthenticationService {
         throw new UnauthorizedException('Invalid refresh token');
       }
 
-      return await this.generateToken(user);
+      return await this.generateToken(user as UserEntity);
     } catch (error) {
       if (error instanceof RefreshTokenIdsStorageError) {
         throw new UnauthorizedException('Invalid refresh token');

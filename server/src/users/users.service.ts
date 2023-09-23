@@ -35,9 +35,12 @@ export class UsersService {
     });
   }
 
-  async findOne(where: Prisma.UserWhereUniqueInput): Promise<User | null> {
+  async findOne(where: Prisma.UserWhereUniqueInput) {
     return this.prismaService.user.findUnique({
       where,
+      include: {
+        roles: true,
+      },
     });
   }
 

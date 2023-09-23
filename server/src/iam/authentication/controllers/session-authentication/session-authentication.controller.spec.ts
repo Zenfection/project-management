@@ -9,7 +9,9 @@ describe('SessionAuthenticationController', () => {
       controllers: [SessionAuthenticationController],
     }).compile();
 
-    controller = module.get<SessionAuthenticationController>(SessionAuthenticationController);
+    controller = module.get<SessionAuthenticationController>(
+      SessionAuthenticationController,
+    );
   });
 
   it('should be defined', () => {

@@ -9,7 +9,9 @@ describe('SessionAuthenticationService', () => {
       providers: [SessionAuthenticationService],
     }).compile();
 
-    service = module.get<SessionAuthenticationService>(SessionAuthenticationService);
+    service = module.get<SessionAuthenticationService>(
+      SessionAuthenticationService,
+    );
   });
 
   it('should be defined', () => {

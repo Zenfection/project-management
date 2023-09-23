@@ -16,8 +16,7 @@ model Role {
   description String?
   permissions Permission[]
   policies    Policy[]
-  User        User?        @relation(fields: [userId], references: [id], onDelete: Cascade)
-  userId      Int?
+  User        User[]
 }
 
 model Permission {

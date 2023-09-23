@@ -18,7 +18,6 @@ CREATE TABLE "Role" (
     "role_id" SERIAL NOT NULL,
     "name" TEXT NOT NULL,
     "description" TEXT,
-    "userId" INTEGER,
 
     CONSTRAINT "Role_pkey" PRIMARY KEY ("role_id")
 );
@@ -114,6 +113,12 @@ CREATE TABLE "Activity" (
 );
 
 -- CreateTable
+CREATE TABLE "_RoleToUser" (
+    "A" INTEGER NOT NULL,
+    "B" INTEGER NOT NULL
+);
+
+-- CreateTable
 CREATE TABLE "_PermissionToRole" (
     "A" INTEGER NOT NULL,
     "B" INTEGER NOT NULL
@@ -153,6 +158,12 @@ CREATE INDEX "user_email_idx" ON "User"("email");
 CREATE UNIQUE INDEX "Label_name_key" ON "Label"("name");
 
 -- CreateIndex
+CREATE UNIQUE INDEX "_RoleToUser_AB_unique" ON "_RoleToUser"("A", "B");
+
+-- CreateIndex
+CREATE INDEX "_RoleToUser_B_index" ON "_RoleToUser"("B");
+
+-- CreateIndex
 CREATE UNIQUE INDEX "_PermissionToRole_AB_unique" ON "_PermissionToRole"("A", "B");
 
 -- CreateIndex
@@ -171,9 +182,6 @@ CREATE UNIQUE INDEX "_LabelToTask_AB_unique" ON "_LabelToTask"("A", "B");
 CREATE INDEX "_LabelToTask_B_index" ON "_LabelToTask"("B");
 
 -- AddForeignKey
-ALTER TABLE "Role" ADD CONSTRAINT "Role_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("user_id") ON DELETE CASCADE ON UPDATE CASCADE;
-
--- AddForeignKey
 ALTER TABLE "Condition" ADD CONSTRAINT "Condition_policyId_fkey" FOREIGN KEY ("policyId") REFERENCES "Policy"("policy_id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
@@ -187,6 +195,12 @@ ALTER TABLE "Activity" ADD CONSTRAINT "Activity_taskId_fkey" FOREIGN KEY ("taskI
 
 -- AddForeignKey
 ALTER TABLE "Activity" ADD CONSTRAINT "Activity_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("user_id") ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "_RoleToUser" ADD CONSTRAINT "_RoleToUser_A_fkey" FOREIGN KEY ("A") REFERENCES "Role"("role_id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "_RoleToUser" ADD CONSTRAINT "_RoleToUser_B_fkey" FOREIGN KEY ("B") REFERENCES "User"("user_id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "_PermissionToRole" ADD CONSTRAINT "_PermissionToRole_A_fkey" FOREIGN KEY ("A") REFERENCES "Permission"("permission_id") ON DELETE CASCADE ON UPDATE CASCADE;

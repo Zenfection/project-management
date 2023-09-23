@@ -11,6 +11,8 @@ import { UsersService } from './users.service';
 import { Prisma } from '@prisma/client';
 import { CreateUserDto } from './dto/create-user.dto';
 import { updateUserDto } from './dto/update-user.dto';
+import { Roles } from '../iam/authorization/decorators/roles/roles.decorator';
+import { RoleEntity } from './entity/role.entity';
 
 @Controller('users')
 export class UsersController {
@@ -21,6 +23,8 @@ export class UsersController {
     return this.usersService.create(createUserDto);
   }
 
+  @Get()
+  @Roles(new RoleEntity('ADMIN'))
   @Get()
   async findAll() {
     return this.usersService.findAll();
