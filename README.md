@@ -9,8 +9,6 @@
 
 ### 2. Changelog Optimize Code
 
-
-
 ### 3. Note
 
 ## <img src="https://raw.githubusercontent.com/Zenfection/Image/master/2023/09/21-11-18-12-icons8-nestjs.png" title="" alt="icons8-nestjs.png" width="50"> Backend (NestJS 10)
@@ -31,7 +29,9 @@
 | ✅      | Use cookie express store token via Redis                                                 | [#d060876](https://github.com/Zenfection/project-management/commit/d06087658fb38222bff39c49db6d114432a00fa7) | [express-session](https://github.com/expressjs/session)<br>[connect-redis](https://github.com/tj/connect-redis)                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
 | ✅      | Add 2FA Authentication Method                                                            | [#cb7d0c7](https://github.com/Zenfection/project-management/commit/cb7d0c746f48d227f4bd9f58883a0d67f34f6237) | [otplib](https://www.npmjs.com/package/otplib)<br>[qrcode](https://www.npmjs.com/package/qrcode)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 |        | Add Google Authentication Method                                                         |                                                                                                              |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
-|        | Build RBAC and ABAC Authorization with `roles`, `permissions`, `policies`                |                                                                                                              |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| ✅      | Build Roles Authorization with Decorator and Guard                                       | [#4ea237a](https://github.com/Zenfection/project-management/commit/4ea237a5fcda91d111a8cbc7abccd2da6be2619c) |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+
+
 
 ### 2. Changelog Optimize Code
 
@@ -41,7 +41,7 @@
 
 #### Database
 
-![task_db.png](https://raw.githubusercontent.com/Zenfection/Image/master/2023/09/22-23-24-22-task_db.png)
+![task_db.png](https://raw.githubusercontent.com/Zenfection/Image/master/2023/09/23-12-53-33-task_db.png)
 
 #### .env
 
