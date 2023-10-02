@@ -26,7 +26,7 @@ export class UserSerializer implements PassportSerializer {
     done(null, {
       sub: user.id,
       email: user.email,
-      role: user.roles,
+      // roles: user.roles as RoleEntity[],
       //   permissions: user.permissions as any,
     });
   }

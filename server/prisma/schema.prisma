@@ -61,13 +61,22 @@ enum Operator {
   ENDS_WITH
 }
 
+enum UserStatus {
+  ACTIVE
+  BUSY
+  AWAY
+  OFFLINE
+}
+
 model User {
-  id           Int        @id @default(autoincrement()) @map("user_id")
+  id           Int         @id @default(autoincrement()) @map("user_id")
   name         String
-  email        String     @unique @db.VarChar(255)
+  email        String      @unique @db.VarChar(255)
+  avatar       String?
+  status       UserStatus?
   password     String
   roles        Role[]
-  isTfaEnabled Boolean    @default(false)
+  isTfaEnabled Boolean     @default(false)
   tfaSecret    String?
   Task         Task[]
   Activity     Activity[]
