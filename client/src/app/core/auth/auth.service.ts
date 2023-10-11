@@ -3,21 +3,20 @@ import { Injectable } from '@angular/core';
 import { AuthUtils } from 'app/core/auth/auth.utils';
 import { UserService } from 'app/core/user/user.service';
 import { catchError, Observable, of, switchMap, throwError } from 'rxjs';
+import { User } from 'app/core/user/user.types';
+import { SettingsService } from 'app/core/setting/setting.service';
+import { Setting } from 'app/core/setting/setting.types';
 
 @Injectable({providedIn: 'root'})
 export class AuthService
 {
     private _authenticated = false;
 
-    /**
-     * Constructor
-     */
     constructor(
-        private _httpClient: HttpClient,
-        private _userService: UserService,
-    )
-    {
-    }
+        private readonly _httpClient: HttpClient,
+        private readonly _userService: UserService,
+        private readonly _settingService: SettingsService
+    ){}
 
     // -----------------------------------------------------------------------------------------------------
     // @ Accessors
@@ -35,6 +34,7 @@ export class AuthService
     {
         return localStorage.getItem('accessToken') ?? '';
     }
+
 
     // -----------------------------------------------------------------------------------------------------
     // @ Public methods
@@ -73,7 +73,7 @@ export class AuthService
             return throwError('User is already logged in.');
         }
 
-        return this._httpClient.post('api/auth/sign-in', credentials).pipe(
+        return this._httpClient.post('api/authentication/sign-in', credentials).pipe(
             switchMap((response: any) =>
             {
                 // Store the access token in the local storage
@@ -83,7 +83,24 @@ export class AuthService
                 this._authenticated = true;
 
                 // Store the user on the user service
-                this._userService.user = response.user;
+                const userInfo: User = {
+                  id: response.id,
+                  name: response.info.name,
+                  email: response.info.email,
+                  avatar: response.info.avatar,
+                  status: response.info.status,
+                }
+                this._userService.user = userInfo;
+
+                // Store the setting on the setting service
+                const settingInfo: Setting = {
+                  id: response.id,
+                  language: response.setting.language,
+                  theme: response.setting.theme,
+                  scheme: response.setting.scheme,
+                  layout: response.setting.layout,
+                }
+                this._settingService.setting = settingInfo;
 
                 // Return a new observable with the response
                 return of(response);
@@ -97,12 +114,10 @@ export class AuthService
     signInUsingToken(): Observable<any>
     {
         // Sign in using the token
-        return this._httpClient.post('api/auth/sign-in-with-token', {
+        return this._httpClient.post('api/authentication/sign-in-with-token', {
             accessToken: this.accessToken,
         }).pipe(
             catchError(() =>
-
-                // Return false
                 of(false),
             ),
             switchMap((response: any) =>
@@ -114,16 +129,35 @@ export class AuthService
                 // in using the token, you should generate a new one on the server
                 // side and attach it to the response object. Then the following
                 // piece of code can replace the token with the refreshed one.
-                if ( response.accessToken )
-                {
-                    this.accessToken = response.accessToken;
-                }
+                // if ( response.accessToken )
+                // {
+                //     this.accessToken = response.accessToken;
+                // }
 
                 // Set the authenticated flag to true
                 this._authenticated = true;
 
+
                 // Store the user on the user service
-                this._userService.user = response.user;
+                // Store the user on the user service
+                const userInfo: User = {
+                  id: response.id,
+                  name: response.info.name,
+                  email: response.info.email,
+                  avatar: response.info.avatar,
+                  status: response.info.status,
+                }
+                this._userService.user = userInfo;
+
+                // Store the setting on the setting service
+                const settingInfo: Setting = {
+                  id: response.id,
+                  language: response.setting.language,
+                  theme: response.setting.theme,
+                  scheme: response.setting.scheme,
+                  layout: response.setting.layout,
+                }
+                this._settingService.setting = settingInfo;
 
                 // Return true
                 return of(true);
@@ -172,22 +206,13 @@ export class AuthService
     check(): Observable<boolean>
     {
         // Check if the user is logged in
-        if ( this._authenticated )
-        {
-            return of(true);
-        }
+        if ( this._authenticated ) return of(true)
 
         // Check the access token availability
-        if ( !this.accessToken )
-        {
-            return of(false);
-        }
+        if ( !this.accessToken ) return of(false)
 
         // Check the access token expire date
-        if ( AuthUtils.isTokenExpired(this.accessToken) )
-        {
-            return of(false);
-        }
+        if ( AuthUtils.isTokenExpired(this.accessToken) ) return of(false)
 
         // If the access token exists, and it didn't expire, sign in using it
         return this.signInUsingToken();

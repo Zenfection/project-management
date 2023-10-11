@@ -31,6 +31,9 @@ export class AuthSignInComponent implements OnInit
     signInForm: UntypedFormGroup;
     showAlert = false;
 
+    /**
+     * Constructor
+     */
     constructor(
         private _activatedRoute: ActivatedRoute,
         private _authService: AuthService,
@@ -40,17 +43,30 @@ export class AuthSignInComponent implements OnInit
     {
     }
 
+    // -----------------------------------------------------------------------------------------------------
+    // @ Lifecycle hooks
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * On init
+     */
     ngOnInit(): void
     {
         // Create the form
         this.signInForm = this._formBuilder.group({
-            email     : ['hughes.brian@company.com', [Validators.required, Validators.email]],
-            password  : ['admin', Validators.required],
+            email     : ['', [Validators.required, Validators.email]],
+            password  : ['', Validators.required],
             rememberMe: [''],
         });
     }
 
+    // -----------------------------------------------------------------------------------------------------
+    // @ Public methods
+    // -----------------------------------------------------------------------------------------------------
 
+    /**
+     * Sign in
+     */
     signIn(): void
     {
         // Return if the form is invalid

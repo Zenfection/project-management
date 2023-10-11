@@ -21,5 +21,25 @@ export class IconsService
         matIconRegistry.addSvgIconSetInNamespace('heroicons_outline', domSanitizer.bypassSecurityTrustResourceUrl('assets/icons/heroicons-outline.svg'));
         matIconRegistry.addSvgIconSetInNamespace('heroicons_solid', domSanitizer.bypassSecurityTrustResourceUrl('assets/icons/heroicons-solid.svg'));
         matIconRegistry.addSvgIconSetInNamespace('heroicons_mini', domSanitizer.bypassSecurityTrustResourceUrl('assets/icons/heroicons-mini.svg'));
+
+
+        //TODO Font Awesome Pro
+        matIconRegistry.addSvgIconSetInNamespace('duotone', domSanitizer.bypassSecurityTrustResourceUrl('assets/icons/fontawesome/duotone.svg'));
+
+        matIconRegistry.addSvgIconSetInNamespace('brands', domSanitizer.bypassSecurityTrustResourceUrl('assets/icons/fontawesome/brands.svg'));
+
+        matIconRegistry.addSvgIconSetInNamespace('light', domSanitizer.bypassSecurityTrustResourceUrl('assets/icons/fontawesome/light.svg'));
+
+        matIconRegistry.addSvgIconSetInNamespace('regular', domSanitizer.bypassSecurityTrustResourceUrl('assets/icons/fontawesome/regular.svg'));
+
+        matIconRegistry.addSvgIconSetInNamespace('solid', domSanitizer.bypassSecurityTrustResourceUrl('assets/icons/fontawesome/solid.svg'));
+
+        matIconRegistry.addSvgIconSetInNamespace('thin', domSanitizer.bypassSecurityTrustResourceUrl('assets/icons/fontawesome/thin.svg'));
+
+        matIconRegistry.addSvgIconSetInNamespace('sharp-light', domSanitizer.bypassSecurityTrustResourceUrl('assets/icons/fontawesome/sharp-light.svg'));
+
+        matIconRegistry.addSvgIconSetInNamespace('sharp-regular', domSanitizer.bypassSecurityTrustResourceUrl('assets/icons/fontawesome/sharp-regular.svg'));
+
+        matIconRegistry.addSvgIconSetInNamespace('sharp-solid', domSanitizer.bypassSecurityTrustResourceUrl('assets/icons/fontawesome/sharp-solid.svg'));
     }
 }

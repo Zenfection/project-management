@@ -100,7 +100,8 @@
               "browserTarget": "fuse:build:production"
             },
             "development": {
-              "browserTarget": "fuse:build:development"
+              "browserTarget": "fuse:build:development",
+              "proxyConfig": "src/proxy.conf.json"
             }
           },
           "defaultConfiguration": "development"
