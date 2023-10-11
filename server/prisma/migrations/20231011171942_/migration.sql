@@ -11,7 +11,7 @@ CREATE TYPE "UserStatus" AS ENUM ('ONLINE', 'AWAY', 'BUSY', 'INVISIBLE');
 CREATE TYPE "LanguageSetting" AS ENUM ('en', 'vi');
 
 -- CreateEnum
-CREATE TYPE "ThemeSetting" AS ENUM ('DEFAULT', 'BRAND', 'TEAL', 'ROSE', 'PURPLE', 'AMBER');
+CREATE TYPE "ThemeSetting" AS ENUM ('default', 'brand', 'teal', 'rose', 'purple', 'amber');
 
 -- CreateEnum
 CREATE TYPE "SchemeSetting" AS ENUM ('dark', 'light', 'auto');
@@ -94,7 +94,7 @@ CREATE TABLE "Info" (
 -- CreateTable
 CREATE TABLE "Setting" (
     "userId" INTEGER NOT NULL,
-    "theme" "ThemeSetting" NOT NULL DEFAULT 'DEFAULT',
+    "theme" "ThemeSetting" NOT NULL DEFAULT 'default',
     "scheme" "SchemeSetting" NOT NULL DEFAULT 'light',
     "language" "LanguageSetting" NOT NULL DEFAULT 'en',
     "layout" "LayoutSetting" NOT NULL DEFAULT 'modern',

@@ -43,12 +43,12 @@ enum LanguageSetting {
 }
 
 enum ThemeSetting {
-  DEFAULT
-  BRAND
-  TEAL
-  ROSE
-  PURPLE
-  AMBER
+  default
+  brand
+  teal
+  rose
+  purple
+  amber
 }
 
 enum SchemeSetting {
@@ -142,7 +142,7 @@ model Info {
 model Setting {
   userId   Int             @unique
   user     User            @relation(fields: [userId], references: [id], onDelete: Cascade)
-  theme    ThemeSetting    @default(DEFAULT)
+  theme    ThemeSetting    @default(default)
   scheme   SchemeSetting   @default(light)
   language LanguageSetting @default(en)
   layout   LayoutSetting   @default(modern)
