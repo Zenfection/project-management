@@ -10,6 +10,69 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+//! ENUMS
+// ? enum policy
+enum PolicyType {
+  ALLOW
+  DENY
+}
+
+enum Operator {
+  EQUALS
+  NOT_EQUALS
+  GREATER_THAN
+  LESS_THAN
+  CONTAINS
+  NOT_CONTAINS
+  STARTS_WITH
+  ENDS_WITH
+}
+
+enum UserStatus {
+  ONLINE
+  AWAY
+  BUSY
+  INVISIBLE
+}
+
+//? enum setting user
+
+enum LanguageSetting {
+  en
+  vi
+}
+
+enum ThemeSetting {
+  DEFAULT
+  BRAND
+  TEAL
+  ROSE
+  PURPLE
+  AMBER
+}
+
+enum SchemeSetting {
+  dark
+  light
+  auto
+}
+
+enum LayoutSetting {
+  empty
+  classic
+  classy
+  compact
+  dense
+  futuristic
+  thin
+  centered
+  enterpise
+  material
+  modern
+}
+
+//! MODELS
+
 model Role {
   id          Int          @id @default(autoincrement()) @map("role_id")
   name        String       @unique
@@ -45,38 +108,14 @@ model Condition {
   @@index([attribute, operator])
 }
 
-enum PolicyType {
-  ALLOW
-  DENY
-}
-
-enum Operator {
-  EQUALS
-  NOT_EQUALS
-  GREATER_THAN
-  LESS_THAN
-  CONTAINS
-  NOT_CONTAINS
-  STARTS_WITH
-  ENDS_WITH
-}
-
-enum UserStatus {
-  ACTIVE
-  BUSY
-  AWAY
-  OFFLINE
-}
-
 model User {
-  id           Int         @id @default(autoincrement()) @map("user_id")
-  name         String
-  email        String      @unique @db.VarChar(255)
-  avatar       String?
-  status       UserStatus?
+  id           Int        @id @default(autoincrement()) @map("user_id")
+  email        String     @unique @db.VarChar(255)
   password     String
+  info         Info?
+  setting      Setting?
   roles        Role[]
-  isTfaEnabled Boolean     @default(false)
+  isTfaEnabled Boolean    @default(false)
   tfaSecret    String?
   Task         Task[]
   Activity     Activity[]
@@ -85,6 +124,31 @@ model User {
   updatedAt DateTime @updatedAt
 
   @@index([email], name: "user_email_idx")
+}
+
+model Info {
+  userId Int         @unique
+  user   User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  name   String      @default("New User")
+  email  String
+  status UserStatus? @default(ONLINE)
+  avatar String?
+  phone  String?     @unique
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Setting {
+  userId   Int             @unique
+  user     User            @relation(fields: [userId], references: [id], onDelete: Cascade)
+  theme    ThemeSetting    @default(DEFAULT)
+  scheme   SchemeSetting   @default(light)
+  language LanguageSetting @default(en)
+  layout   LayoutSetting   @default(modern)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 enum TaskStatus {

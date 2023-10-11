@@ -5,6 +5,21 @@ CREATE TYPE "PolicyType" AS ENUM ('ALLOW', 'DENY');
 CREATE TYPE "Operator" AS ENUM ('EQUALS', 'NOT_EQUALS', 'GREATER_THAN', 'LESS_THAN', 'CONTAINS', 'NOT_CONTAINS', 'STARTS_WITH', 'ENDS_WITH');
 
 -- CreateEnum
+CREATE TYPE "UserStatus" AS ENUM ('ONLINE', 'AWAY', 'BUSY', 'INVISIBLE');
+
+-- CreateEnum
+CREATE TYPE "LanguageSetting" AS ENUM ('en', 'vi');
+
+-- CreateEnum
+CREATE TYPE "ThemeSetting" AS ENUM ('DEFAULT', 'BRAND', 'TEAL', 'ROSE', 'PURPLE', 'AMBER');
+
+-- CreateEnum
+CREATE TYPE "SchemeSetting" AS ENUM ('dark', 'light', 'auto');
+
+-- CreateEnum
+CREATE TYPE "LayoutSetting" AS ENUM ('empty', 'classic', 'classy', 'compact', 'dense', 'futuristic', 'thin', 'centered', 'enterpise', 'material', 'modern');
+
+-- CreateEnum
 CREATE TYPE "TaskStatus" AS ENUM ('OPEN', 'IN_PROGRESS', 'RESOLVED', 'CLOSED');
 
 -- CreateEnum
@@ -54,7 +69,6 @@ CREATE TABLE "Condition" (
 -- CreateTable
 CREATE TABLE "User" (
     "user_id" SERIAL NOT NULL,
-    "name" TEXT NOT NULL,
     "email" VARCHAR(255) NOT NULL,
     "password" TEXT NOT NULL,
     "isTfaEnabled" BOOLEAN NOT NULL DEFAULT false,
@@ -63,6 +77,29 @@ CREATE TABLE "User" (
     "updatedAt" TIMESTAMP(3) NOT NULL,
 
     CONSTRAINT "User_pkey" PRIMARY KEY ("user_id")
+);
+
+-- CreateTable
+CREATE TABLE "Info" (
+    "userId" INTEGER NOT NULL,
+    "name" TEXT NOT NULL DEFAULT 'New User',
+    "email" TEXT NOT NULL,
+    "status" "UserStatus" DEFAULT 'ONLINE',
+    "avatar" TEXT,
+    "phone" TEXT,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL
+);
+
+-- CreateTable
+CREATE TABLE "Setting" (
+    "userId" INTEGER NOT NULL,
+    "theme" "ThemeSetting" NOT NULL DEFAULT 'DEFAULT',
+    "scheme" "SchemeSetting" NOT NULL DEFAULT 'light',
+    "language" "LanguageSetting" NOT NULL DEFAULT 'en',
+    "layout" "LayoutSetting" NOT NULL DEFAULT 'modern',
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL
 );
 
 -- CreateTable
@@ -155,6 +192,15 @@ CREATE UNIQUE INDEX "User_email_key" ON "User"("email");
 CREATE INDEX "user_email_idx" ON "User"("email");
 
 -- CreateIndex
+CREATE UNIQUE INDEX "Info_userId_key" ON "Info"("userId");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "Info_phone_key" ON "Info"("phone");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "Setting_userId_key" ON "Setting"("userId");
+
+-- CreateIndex
 CREATE UNIQUE INDEX "Label_name_key" ON "Label"("name");
 
 -- CreateIndex
@@ -183,6 +229,12 @@ CREATE INDEX "_LabelToTask_B_index" ON "_LabelToTask"("B");
 
 -- AddForeignKey
 ALTER TABLE "Condition" ADD CONSTRAINT "Condition_policyId_fkey" FOREIGN KEY ("policyId") REFERENCES "Policy"("policy_id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "Info" ADD CONSTRAINT "Info_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("user_id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "Setting" ADD CONSTRAINT "Setting_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("user_id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "Task" ADD CONSTRAINT "Task_assigneeId_fkey" FOREIGN KEY ("assigneeId") REFERENCES "User"("user_id") ON DELETE SET NULL ON UPDATE CASCADE;

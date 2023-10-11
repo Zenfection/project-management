@@ -21,6 +21,7 @@ import { UsersService } from '../../../users/users.service';
 import { CreateUserDto } from '../../../users/dto/create-user.dto';
 import { UserEntity } from 'src/users/entity/user.entity';
 import { TfaAuthenticationService } from './tfa-authentication/tfa-authentication.service';
+import { SignInWithTokenDto } from '../dto/sign-in-with-token.dto/sign-in-with-token.dto';
 
 @Injectable()
 export class AuthenticationService {
@@ -37,7 +38,10 @@ export class AuthenticationService {
   async signIn(signInDto: SignInDto) {
     const { email, password } = signInDto;
 
-    const user = await this.userService.findOne({ email });
+    const user = await this.userService.findOne(
+      { email },
+      { roles: true, info: true, setting: true },
+    );
 
     if (!user) throw new ConflictException('Email not exists');
 
@@ -53,7 +57,38 @@ export class AuthenticationService {
       if (!isValid) throw new UnauthorizedException('Invalid TFA code');
     }
 
-    return await this.generateToken(user);
+    const { accessToken, refreshToken } = await this.generateToken(user);
+
+    return {
+      ...user,
+      accessToken,
+      refreshToken,
+    };
+  }
+
+  async signInWithToken(signInWithToken: SignInWithTokenDto) {
+    const { accessToken } = signInWithToken;
+    const { sub } = await this.jwtService.verifyAsync<ActiveUserData>(
+      accessToken,
+      {
+        secret: this.jwtConfiguration.secret,
+        audience: this.jwtConfiguration.audience,
+        issuer: this.jwtConfiguration.issuer,
+      },
+    );
+
+    const user = await this.userService.findOne(
+      { id: sub },
+      { info: true, setting: true },
+    );
+
+    if (!user) throw new UnauthorizedException('User not found');
+
+    // return ...user.info but map userID to id
+    return {
+      ...user,
+      password: undefined,
+    };
   }
 
   async signUp(signUpDto: SignUpDto) {
@@ -67,7 +102,6 @@ export class AuthenticationService {
 
     user.email = email;
     user.password = hashedPassword;
-    user.name = 'Anonymous';
 
     try {
       await this.userService.create(user);
@@ -119,7 +153,7 @@ export class AuthenticationService {
         issuer: this.jwtConfiguration.issuer,
       });
 
-      const user = await this.userService.findOne({ id: sub });
+      const user = await this.userService.findOne({ id: sub }, { roles: true });
 
       if (!user) throw new UnauthorizedException('User not found');
 

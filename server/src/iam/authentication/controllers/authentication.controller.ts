@@ -18,6 +18,7 @@ import { TfaAuthenticationService } from '../services/tfa-authentication/tfa-aut
 
 import { Response } from 'express';
 import { toFileStream } from 'qrcode';
+import { SignInWithTokenDto } from '../dto/sign-in-with-token.dto/sign-in-with-token.dto';
 
 @Auth(AuthType.None)
 @Controller('authentication')
@@ -37,6 +38,12 @@ export class AuthenticationController {
   @Post('sign-in')
   signIn(@Body() signInDto: SignInDto) {
     return this.authService.signIn(signInDto);
+  }
+
+  @HttpCode(HttpStatus.OK)
+  @Post('sign-in-with-token')
+  signInWithToken(@Body() signInWithToken: SignInWithTokenDto) {
+    return this.authService.signInWithToken(signInWithToken);
   }
 
   @HttpCode(HttpStatus.OK)
