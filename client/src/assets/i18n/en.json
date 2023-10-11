@@ -1,5 +1,22 @@
 {
     "welcome-back": "Welcome back",
     "Project": "Project",
-    "Analytics": "Analytics"
+    "Analytics": "Analytics",
+
+
+    "Messages": "Messages",
+    "Settings": "Settings",
+    "Logout": "Log out",
+    "Profile": "Profile",
+    "Status": "Status",
+    "Online": "Online",
+    "Away": "Away",
+    "Busy": "Busy",
+    "Invisible": "Invisible",
+
+
+    "you-have": "You have",
+    "and": "and",
+    "new-messages": "new message",
+    "new-tasks": "new tasks"
 }
