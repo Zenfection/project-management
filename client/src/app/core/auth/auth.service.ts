@@ -10,7 +10,7 @@ import { Setting } from 'app/core/setting/setting.types';
 @Injectable({providedIn: 'root'})
 export class AuthService
 {
-    private _authenticated = false;
+    _authenticated = false;
 
     constructor(
         private readonly _httpClient: HttpClient,

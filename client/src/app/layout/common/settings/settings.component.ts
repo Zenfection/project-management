@@ -1,19 +1,21 @@
 import { NgClass, NgFor } from '@angular/common';
-import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectorRef, Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { Router } from '@angular/router';
 import { FuseDrawerComponent } from '@fuse/components/drawer';
 import { FuseConfig, FuseConfigService, Scheme, Theme, Themes } from '@fuse/services/config';
+import { SettingsService } from 'app/core/setting/setting.service';
+import { Setting } from 'app/core/setting/setting.types';
 
 import { Subject, takeUntil } from 'rxjs';
 
 @Component({
-    selector     : 'settings',
-    templateUrl  : './settings.component.html',
-    styles       : [
-        `
+  selector: 'settings',
+  templateUrl: './settings.component.html',
+  styles: [
+    `
             settings {
                 position: static;
                 display: block;
@@ -28,100 +30,124 @@ import { Subject, takeUntil } from 'rxjs';
                 }
             }
         `,
-    ],
-    encapsulation: ViewEncapsulation.None,
-    standalone   : true,
-    imports      : [MatIconModule, FuseDrawerComponent, MatButtonModule, NgFor, NgClass, MatTooltipModule],
+  ],
+  encapsulation: ViewEncapsulation.None,
+  standalone: true,
+  imports: [MatIconModule, FuseDrawerComponent, MatButtonModule, NgFor, NgClass, MatTooltipModule],
 })
-export class SettingsComponent implements OnInit, OnDestroy
-{
-    config: FuseConfig;
-    layout: string;
-    scheme: 'dark' | 'light';
-    theme: string;
-    themes: Themes;
-    private _unsubscribeAll: Subject<any> = new Subject<any>();
+export class SettingsComponent implements OnInit, OnDestroy {
+  config: FuseConfig;
+  layout: string;
+  scheme: 'dark' | 'light' | 'auto';
+  theme: string;
+  themes: Themes;
+  setting: Setting;
+  private _unsubscribeAll: Subject<any> = new Subject<any>();
 
-    /**
-     * Constructor
-     */
-    constructor(
-        private _router: Router,
-        private _fuseConfigService: FuseConfigService,
-    )
-    {
-    }
+  constructor(
+    private _router: Router,
+    private _fuseConfigService: FuseConfigService,
+    private _settingSerivce: SettingsService,
+    private _changeDetectorRef: ChangeDetectorRef,
+  ) { }
 
-    // -----------------------------------------------------------------------------------------------------
-    // @ Lifecycle hooks
-    // -----------------------------------------------------------------------------------------------------
+  ngOnInit(): void {
+    // Subscribe to config changes
+    // combineLatest([this._fuseConfigService.config$, this._settingSerivce.setting$]).pipe(takeUntil(this._unsubscribeAll)).subscribe(([config, setting]) => {
 
-    /**
-     * On init
-     */
-    ngOnInit(): void
-    {
-        // Subscribe to config changes
-        this._fuseConfigService.config$
-            .pipe(takeUntil(this._unsubscribeAll))
-            .subscribe((config: FuseConfig) =>
-            {
-                // Store the config
-                this.config = config;
-            });
-    }
+    //   this.config = config;
+    //   this.config.scheme = setting.scheme
 
-    /**
-     * On destroy
-     */
-    ngOnDestroy(): void
-    {
-        // Unsubscribe from all subscriptions
-        this._unsubscribeAll.next(null);
-        this._unsubscribeAll.complete();
-    }
 
-    // -----------------------------------------------------------------------------------------------------
-    // @ Public methods
-    // -----------------------------------------------------------------------------------------------------
+    // })
 
-    /**
-     * Set the layout on the config
-     *
-     * @param layout
-     */
-    setLayout(layout: string): void
-    {
-        // Clear the 'layout' query param to allow layout changes
-        this._router.navigate([], {
-            queryParams        : {
-                layout: null,
-            },
-            queryParamsHandling: 'merge',
-        }).then(() =>
-        {
-            // Set the config
-            this._fuseConfigService.config = {layout};
-        });
-    }
 
-    /**
-     * Set the scheme on the config
-     *
-     * @param scheme
-     */
-    setScheme(scheme: Scheme): void
-    {
-        this._fuseConfigService.config = {scheme};
-    }
+    this._fuseConfigService.config$
+      .pipe(takeUntil(this._unsubscribeAll))
+      .subscribe((config: FuseConfig) => {
+        // Store the config
+        this.config = config;
 
-    /**
-     * Set the theme on the config
-     *
-     * @param theme
-     */
-    setTheme(theme: Theme): void
-    {
-        this._fuseConfigService.config = {theme};
-    }
+      });
+
+    // Subscribe to user changes
+    this._settingSerivce.setting$
+      .pipe(takeUntil(this._unsubscribeAll))
+      .subscribe((setting: Setting) => {
+        this.setting = setting;
+
+        // Mark for check
+        this._changeDetectorRef.markForCheck();
+      });
+  }
+
+  /**
+   * On destroy
+   */
+  ngOnDestroy(): void {
+    // Unsubscribe from all subscriptions
+    this._unsubscribeAll.next(null);
+    this._unsubscribeAll.complete();
+  }
+
+  // -----------------------------------------------------------------------------------------------------
+  // @ Public methods
+  // -----------------------------------------------------------------------------------------------------
+
+  /**
+   * Set the layout on the config
+   *
+   * @param layout
+   */
+  setLayout(layout: string): void {
+    // Clear the 'layout' query param to allow layout changes
+    this._router.navigate([], {
+      queryParams: {
+        layout: null,
+      },
+      queryParamsHandling: 'merge',
+    }).then(() => {
+
+    if (!this.setting) return
+
+    this._settingSerivce.update({
+      layout
+    }).subscribe();
+
+      // Set the config
+      this._fuseConfigService.config = { layout };
+    });
+  }
+
+  /**
+   * Set the scheme on the config
+   *
+   * @param scheme
+   */
+  setScheme(scheme: Scheme): void {
+    if (!this.setting) return
+
+    this._settingSerivce.update({
+      scheme
+    }).subscribe();
+
+    this._fuseConfigService.config = { scheme: scheme as Scheme };
+  }
+
+  /**
+   * Set the theme on the config
+   *
+   * @param theme
+   */
+  setTheme(theme: string): void {
+    if(!this.setting) return
+
+    theme = theme.replace('theme-', '');
+
+    this._settingSerivce.update({
+      theme
+    }).subscribe();
+
+    this._fuseConfigService.config = { theme };
+  }
 }

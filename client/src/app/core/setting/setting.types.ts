@@ -9,24 +9,11 @@ enum Theme {
   AMBER
 }
 
-enum Layout {
-  empty,
-  classic,
-  classy,
-  compact,
-  dense,
-  futuristic,
-  thin,
-  centered,
-  enterpise,
-  material,
-  modern
-}
 
 export interface Setting {
   id: string;
   language: string;
-  theme: Theme;
+  theme: string;
   scheme: Scheme;
-  layout: Layout;
+  layout: string;
 }

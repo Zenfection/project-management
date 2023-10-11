@@ -49,7 +49,7 @@ import { mockApiServices } from './mock-api';
             services: mockApiServices,
         },
         fuse   : {
-            layout : 'classy',
+            layout : 'modern',
             scheme : 'light',
             screens: {
                 sm: '600px',
@@ -85,6 +85,7 @@ import { mockApiServices } from './mock-api';
                 },
             ],
         },
+
     }),
   ],
   bootstrap: [AppComponent],

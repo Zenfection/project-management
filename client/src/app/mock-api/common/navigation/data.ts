@@ -3,37 +3,38 @@ import { FuseNavigationItem } from '@fuse/components/navigation';
 
 export const defaultNavigation: FuseNavigationItem[] = [
     {
-        id   : 'example',
-        title: 'Example',
+        id   : 'project',
+        title: 'Project',
         type : 'basic',
-        icon : 'heroicons_outline:chart-pie',
-        link : '/example'
+        icon : 'duotone:square-kanban',
+        link : '/project'
     }
 ];
 export const compactNavigation: FuseNavigationItem[] = [
-    {
-        id   : 'example',
-        title: 'Example',
-        type : 'basic',
-        icon : 'heroicons_outline:chart-pie',
-        link : '/example'
-    }
+  {
+    id   : 'project',
+    title: 'Project',
+    type : 'basic',
+    icon : 'duotone:square-kanban',
+    link : '/project'
+}
 ];
 export const futuristicNavigation: FuseNavigationItem[] = [
-    {
-        id   : 'example',
-        title: 'Example',
-        type : 'basic',
-        icon : 'heroicons_outline:chart-pie',
-        link : '/example'
-    }
+  {
+    id   : 'project',
+    title: 'Project',
+    type : 'basic',
+    icon : 'duotone:square-kanban',
+    link : '/project'
+}
 ];
 export const horizontalNavigation: FuseNavigationItem[] = [
-    {
-        id   : 'example',
-        title: 'Example',
-        type : 'basic',
-        icon : 'heroicons_outline:chart-pie',
-        link : '/example'
-    }
+  {
+    id   : 'project',
+    title: 'Project',
+    type : 'basic',
+    icon : 'duotone:square-kanban',
+    link : '/project'
+
+  }
 ];

@@ -7,14 +7,14 @@ import { NoAuthGuard } from './core/auth/guards/noAuth.guard';
 
 const routes: Routes = [
   // Redirect empty path to '/example'
-  {path: '', pathMatch : 'full', redirectTo: 'dashboards/project'},
+  {path: '', pathMatch : 'full', redirectTo: 'example'},
 
   // Redirect signed-in user to the '/example'
   //
   // After the user signs in, the sign-in page will redirect the user to the 'signed-in-redirect'
   // path. Below is another redirection for that path to redirect the user to the desired
   // location. This is a small convenience to keep all main routes together here on this file.
-  {path: 'signed-in-redirect', pathMatch : 'full', redirectTo: 'dashboards/project'},
+  {path: 'signed-in-redirect', pathMatch : 'full', redirectTo: 'example'},
 
   // Auth routes for guests
   {
@@ -71,11 +71,7 @@ const routes: Routes = [
           initialData: initialDataResolver
       },
       children: [
-        {
-          path: 'dashboards', children: [
-            { path: 'project', loadChildren: () => import('app/modules/admin/dashboards/project/project.routes') },
-          ]
-        },
+          {path: 'example', loadChildren: () => import('app/modules/admin/example/example.routes')},
       ]
   }
 ];

@@ -64,9 +64,7 @@ export class LanguagesComponent implements OnInit, OnDestroy
     /**
      * On destroy
      */
-    ngOnDestroy(): void
-    {
-    }
+    ngOnDestroy(): void {}
 
     // -----------------------------------------------------------------------------------------------------
     // @ Public methods

@@ -4,25 +4,13 @@ import { User } from 'app/core/user/user.types';
 import { map, Observable, ReplaySubject, tap } from 'rxjs';
 
 @Injectable({providedIn: 'root'})
-export class UserService
-{
+export class UserService {
     private _user: ReplaySubject<User> = new ReplaySubject<User>(1);
 
-    /**
-     * Constructor
-     */
-    constructor(private _httpClient: HttpClient)
-    {
-    }
-
-    // -----------------------------------------------------------------------------------------------------
-    // @ Accessors
-    // -----------------------------------------------------------------------------------------------------
+    constructor(private _httpClient: HttpClient) {}
 
     /**
-     * Setter & getter for user
-     *
-     * @param value
+     * ? Setter & getter for user
      */
     set user(value: User)
     {
@@ -35,13 +23,7 @@ export class UserService
         return this._user.asObservable();
     }
 
-    // -----------------------------------------------------------------------------------------------------
-    // @ Public methods
-    // -----------------------------------------------------------------------------------------------------
 
-    /**
-     * Get the current logged in user data
-     */
     get(): Observable<User>
     {
         return this._httpClient.get<User>('api/common/user').pipe(
@@ -52,14 +34,12 @@ export class UserService
         );
     }
 
-    /**
-     * Update the user
-     *
-     * @param user
-     */
-    update(user: User): Observable<any>
-    {
-        return this._httpClient.patch<User>('api/common/user', {user}).pipe(
+    update(user: User): Observable<any> {
+        return this._httpClient.patch<User>('api/users/info', user, {
+          headers: {
+            'Authorization': 'Bearer ' + localStorage.getItem('accessToken') ?? ''
+          },
+        }).pipe(
             map((response) =>
             {
                 this._user.next(response);

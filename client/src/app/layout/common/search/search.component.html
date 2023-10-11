@@ -4,7 +4,7 @@
         mat-icon-button
         *ngIf="!opened"
         (click)="open()">
-        <mat-icon [svgIcon]="'heroicons_outline:magnifying-glass'"></mat-icon>
+        <mat-icon [svgIcon]="'duotone:magnifying-glass'"></mat-icon>
     </button>
     <div
         class="absolute inset-0 flex items-center shrink-0 z-99 bg-card"
@@ -13,7 +13,7 @@
         @slideOutTop>
         <mat-icon
             class="absolute ml-6 sm:ml-8"
-            [svgIcon]="'heroicons_outline:magnifying-glass'"></mat-icon>
+            [svgIcon]="'duotone:magnifying-glass'"></mat-icon>
         <input
             class="w-full h-full px-16 sm:px-18"
             [formControl]="searchControl"
@@ -60,7 +60,7 @@
             class="absolute top-1/2 right-5 sm:right-7 shrink-0 w-10 h-10 -mt-5"
             mat-icon-button
             (click)="close()">
-            <mat-icon [svgIcon]="'heroicons_outline:x-mark'"></mat-icon>
+            <mat-icon [svgIcon]="'duotone:xmark'"></mat-icon>
         </button>
     </div>
 </ng-container>
@@ -73,7 +73,7 @@
             [subscriptSizing]="'dynamic'">
             <mat-icon
                 matPrefix
-                [svgIcon]="'heroicons_outline:magnifying-glass'"></mat-icon>
+                [svgIcon]="'duotone:magnifying-glass'"></mat-icon>
             <input
                 matInput
                 [formControl]="searchControl"
@@ -127,11 +127,11 @@
         <div class="flex shrink-0 items-center justify-center w-8 h-8 rounded-full overflow-hidden bg-primary-100 dark:bg-primary-800">
             <img
                 *ngIf="result.avatar"
-                [src]="result.avatar">
+                [src]="result.avatar" alt="Result Avatar">
             <mat-icon
                 class="m-0 icon-size-5 text-primary dark:text-primary-400"
                 *ngIf="!result.avatar"
-                [svgIcon]="'heroicons_outline:user-circle'"></mat-icon>
+                [svgIcon]="'duotone:circle-user'"></mat-icon>
         </div>
         <div class="ml-3 truncate">
             <span [innerHTML]="result.name"></span>
@@ -161,12 +161,12 @@
         <ng-container *ngIf="result.completed">
             <mat-icon
                 class="mr-0 text-primary dark:text-primary-400"
-                [svgIcon]="'heroicons_outline:check-circle'"></mat-icon>
+                [svgIcon]="'duotone:circle-check'"></mat-icon>
         </ng-container>
         <ng-container *ngIf="!result.completed">
             <mat-icon
                 class="mr-0 text-hint"
-                [svgIcon]="'heroicons_outline:check-circle'"></mat-icon>
+                [svgIcon]="'duotone:circle-check'"></mat-icon>
         </ng-container>
         <div
             class="ml-3 truncate leading-normal"

@@ -6,17 +6,18 @@
         <img
             class="w-7 h-7 rounded-full"
             *ngIf="showAvatar && user.avatar"
-            [src]="user.avatar">
+            [src]="user.avatar"
+            alt="User Avatar">
         <mat-icon
             *ngIf="!showAvatar || !user.avatar"
-            [svgIcon]="'heroicons_outline:user-circle'"></mat-icon>
+            [svgIcon]="'duotone:circle-user'" ></mat-icon>
         <span
             class="absolute right-0 bottom-0 w-2 h-2 rounded-full"
             [ngClass]="{'mr-px mb-px': !showAvatar || !user.avatar,
-                          'bg-green-500': user.status === 'online',
-                          'bg-amber-500': user.status === 'away',
-                          'bg-red-500': user.status === 'busy',
-                          'bg-gray-400': user.status === 'not-visible'}"
+                          'bg-green-500': user.status === 'ONLINE',
+                          'bg-amber-500': user.status === 'AWAY',
+                          'bg-red-500': user.status === 'BUSY',
+                          'bg-gray-400': user.status === 'INVISIBLE'}"
         ></span>
     </span>
 </button>
@@ -32,25 +33,29 @@
     </button>
     <mat-divider class="my-2"></mat-divider>
     <button mat-menu-item>
-        <mat-icon [svgIcon]="'heroicons_outline:user-circle'"></mat-icon>
-        <span>Profile</span>
+        <mat-icon [svgIcon]="'duotone:address-card'"></mat-icon>
+        <span *transloco="let t">{{t('Profile')}}</span>
     </button>
     <button mat-menu-item>
-        <mat-icon [svgIcon]="'heroicons_outline:cog-8-tooth'"></mat-icon>
-        <span>Settings</span>
+        <mat-icon [svgIcon]="'duotone:gear'"></mat-icon>
+        <span *transloco="let t">{{t('Settings')}}</span>
     </button>
     <button
         mat-menu-item
         [matMenuTriggerFor]="userStatus">
-        <mat-icon [svgIcon]="'heroicons_outline:ellipsis-horizontal-circle'"></mat-icon>
-        <span>Status</span>
+        <mat-icon *ngIf="user.status === 'ONLINE'" [svgIcon]="'duotone:globe'"></mat-icon>
+        <mat-icon *ngIf="user.status === 'AWAY'" [svgIcon]="'duotone:house-person-leave'"></mat-icon>
+        <mat-icon *ngIf="user.status === 'BUSY'" [svgIcon]="'duotone:face-sleeping'"></mat-icon>
+        <mat-icon *ngIf="user.status === 'INVISIBLE'" [svgIcon]="'duotone:eye-slash'"></mat-icon>
+
+        <span *transloco="let t">{{t('Status')}}</span>
     </button>
     <mat-divider class="my-2"></mat-divider>
     <button
         mat-menu-item
         (click)="signOut()">
-        <mat-icon [svgIcon]="'heroicons_outline:arrow-right-on-rectangle'"></mat-icon>
-        <span>Sign out</span>
+        <mat-icon [svgIcon]="'duotone:right-from-bracket'"></mat-icon>
+        <span *transloco="let t">{{t('Logout')}}</span>
     </button>
 </mat-menu>
 
@@ -59,26 +64,26 @@
     #userStatus="matMenu">
     <button
         mat-menu-item
-        (click)="updateUserStatus('online')">
+        (click)="updateUserStatus('ONLINE')">
         <span class="w-4 h-4 mr-3 rounded-full bg-green-500"></span>
-        <span>Online</span>
+        <span *transloco="let t">{{t('Online')}}</span>
     </button>
     <button
         mat-menu-item
-        (click)="updateUserStatus('away')">
+        (click)="updateUserStatus('AWAY')">
         <span class="w-4 h-4 mr-3 rounded-full bg-amber-500"></span>
-        <span>Away</span>
+        <span *transloco="let t">{{t('Away')}}</span>
     </button>
     <button
         mat-menu-item
-        (click)="updateUserStatus('busy')">
+        (click)="updateUserStatus('BUSY')">
         <span class="w-4 h-4 mr-3 rounded-full bg-red-500"></span>
-        <span>Busy</span>
+        <span *transloco="let t">{{t('Busy')}}</span>
     </button>
     <button
         mat-menu-item
-        (click)="updateUserStatus('not-visible')">
+        (click)="updateUserStatus('INVISIBLE')">
         <span class="w-4 h-4 mr-3 rounded-full bg-gray-400"></span>
-        <span>Invisible</span>
+        <span *transloco="let t">{{t('Invisible')}}</span>
     </button>
 </mat-menu>
