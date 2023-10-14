@@ -1,23 +1,13 @@
-import { NgClass, NgFor, NgSwitch, NgSwitchCase } from '@angular/common';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
-import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
-import { MatDrawer, MatSidenavModule } from '@angular/material/sidenav';
+import { MatDrawer } from '@angular/material/sidenav';
 import { FuseMediaWatcherService } from '@fuse/services/media-watcher';
 import { Subject, takeUntil } from 'rxjs';
-import { SettingsAccountComponent } from './account/account.component';
-import { SettingsNotificationsComponent } from './notifications/notifications.component';
-import { SettingsPlanBillingComponent } from './plan-billing/plan-billing.component';
-import { SettingsSecurityComponent } from './security/security.component';
-import { SettingsTeamComponent } from './team/team.component';
 
 @Component({
     selector       : 'settings',
     templateUrl    : './settings.component.html',
     encapsulation  : ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone     : true,
-    imports        : [MatSidenavModule, MatButtonModule, MatIconModule, NgFor, NgClass, NgSwitch, NgSwitchCase, SettingsAccountComponent, SettingsSecurityComponent, SettingsPlanBillingComponent, SettingsNotificationsComponent, SettingsTeamComponent],
 })
 export class SettingsComponent implements OnInit, OnDestroy
 {
@@ -51,33 +41,33 @@ export class SettingsComponent implements OnInit, OnDestroy
         this.panels = [
             {
                 id         : 'account',
-                icon       : 'heroicons_outline:user-circle',
-                title      : 'Account',
-                description: 'Manage your public profile and private information',
+                icon       : 'duotone:user-tie',
+                title      : 'settings.account.title',
+                description: 'settings.account.description',
             },
             {
                 id         : 'security',
-                icon       : 'heroicons_outline:lock-closed',
-                title      : 'Security',
-                description: 'Manage your password and 2-step verification preferences',
+                icon       : 'duotone:lock',
+                title      : 'settings.security.title',
+                description: 'settings.security.description',
             },
-            {
-                id         : 'plan-billing',
-                icon       : 'heroicons_outline:credit-card',
-                title      : 'Plan & Billing',
-                description: 'Manage your subscription plan, payment method and billing information',
-            },
+            // {
+            //     id         : 'plan-billing',
+            //     icon       : 'heroicons_outline:credit-card',
+            //     title      : 'Plan & Billing',
+            //     description: 'Manage your subscription plan, payment method and billing information',
+            // },
             {
                 id         : 'notifications',
-                icon       : 'heroicons_outline:bell',
-                title      : 'Notifications',
-                description: 'Manage when you\'ll be notified on which channels',
+                icon       : 'duotone:envelope',
+                title      : 'settings.notifications.title',
+                description: 'settings.notifications.description',
             },
             {
                 id         : 'team',
-                icon       : 'heroicons_outline:user-group',
-                title      : 'Team',
-                description: 'Manage your existing team and change roles/permissions',
+                icon       : 'duotone:users-medical',
+                title      : 'settings.team.title',
+                description: 'settings.team.description',
             },
         ];
 

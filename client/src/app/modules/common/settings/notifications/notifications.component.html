@@ -4,15 +4,15 @@
     <form [formGroup]="notificationsForm">
 
         <!-- Section -->
-        <div class="w-full text-xl">Alerts</div>
+        <div class="w-full text-xl" *transloco="let t">{{t('settings.notifications.alerts.title')}}</div>
         <div class="grid grid-cols-1 gap-6 w-full mt-8">
             <!-- Communication -->
             <div class="flex items-center justify-between">
                 <div
                     class="flex-auto cursor-pointer"
                     (click)="communication.toggle()">
-                    <div class="leading-6 font-medium">Communication</div>
-                    <div class="text-md text-secondary">Get news, announcements, and product updates.</div>
+                    <div class="leading-6 font-medium" *transloco="let t">{{t('settings.notifications.alerts.communication.title')}}</div>
+                    <div class="text-md text-secondary" *transloco="let t">{{t('settings.notifications.alerts.communication.description')}}</div>
                 </div>
                 <mat-slide-toggle
                     class="ml-2"
@@ -26,9 +26,8 @@
                 <div
                     class="flex-auto cursor-pointer"
                     (click)="securityToggle.toggle()">
-                    <div class="leading-6 font-medium">Security</div>
-                    <div class="text-md text-secondary">
-                        Get important notifications about your account security.
+                    <div class="leading-6 font-medium" *transloco="let t">{{t('settings.notifications.alerts.security.title')}}</div>
+                    <div class="text-md text-secondary" *transloco="let t">{{t('settings.notifications.alerts.security.description')}}
                     </div>
                 </div>
                 <mat-slide-toggle
@@ -43,9 +42,8 @@
                 <div
                     class="flex-auto cursor-pointer"
                     (click)="meetupsToggle.toggle()">
-                    <div class="leading-6 font-medium">Meetups</div>
-                    <div class="text-md text-secondary">
-                        Get an email when a Meetup is posted close to my location.
+                    <div class="leading-6 font-medium" *transloco="let t">{{t('settings.notifications.alerts.meetups.title')}}</div>
+                    <div class="text-md text-secondary" *transloco="let t">{{t('settings.notifications.alerts.meetups.description')}}
                     </div>
                 </div>
                 <mat-slide-toggle
@@ -61,15 +59,14 @@
         <div class="my-10 border-t"></div>
 
         <!-- Section -->
-        <div class="w-full text-xl">Account Activity</div>
+        <div class="w-full text-xl" *transloco="let t">{{t('settings.notifications.account_activity.title')}}</div>
         <div class="w-full mt-8 font-medium">Email me when:</div>
         <div class="grid grid-cols-1 gap-4 w-full mt-4">
             <!-- Comments -->
             <div class="flex items-center justify-between">
                 <div
                     class="flex-auto leading-6 cursor-pointer"
-                    (click)="comments.toggle()">
-                    someone comments on one of my items
+                    (click)="comments.toggle()" *transloco="let t">{{t('settings.notifications.account_activity.comment_to_me')}}
                 </div>
                 <mat-slide-toggle
                     class="ml-2"
@@ -82,8 +79,7 @@
             <div class="flex items-center justify-between">
                 <div
                     class="flex-auto leading-6 cursor-pointer"
-                    (click)="mention.toggle()">
-                    someone mentions me
+                    (click)="mention.toggle()" *transloco="let t">{{t('settings.notifications.account_activity.mention_to_me')}}
                 </div>
                 <mat-slide-toggle
                     class="ml-2"
@@ -96,8 +92,7 @@
             <div class="flex items-center justify-between">
                 <div
                     class="flex-auto leading-6 cursor-pointer"
-                    (click)="follow.toggle()">
-                    someone follows me
+                    (click)="follow.toggle()" *transloco="let t">{{t('settings.notifications.account_activity.follow_to_me')}}
                 </div>
                 <mat-slide-toggle
                     class="ml-2"
@@ -110,8 +105,7 @@
             <div class="flex items-center justify-between">
                 <div
                     class="flex-auto leading-6 cursor-pointer"
-                    (click)="inquiry.toggle()">
-                    someone replies to my job posting
+                    (click)="inquiry.toggle()" *transloco="let t">{{t('settings.notifications.account_activity.reply_to_me')}}
                 </div>
                 <mat-slide-toggle
                     class="ml-2"
@@ -129,14 +123,13 @@
         <div class="flex items-center justify-end">
             <button
                 mat-stroked-button
-                type="button">
-                Cancel
+                type="button" *transloco="let t">{{t('Cancel')}}
             </button>
             <button
                 class="ml-4"
                 mat-flat-button
                 type="button"
-                [color]="'primary'">Save
+                [color]="'primary'" *transloco="let t">{{t('Save')}}
             </button>
         </div>
     </form>

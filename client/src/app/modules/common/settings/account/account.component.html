@@ -5,8 +5,8 @@
 
         <!-- Section -->
         <div class="w-full">
-            <div class="text-xl">Profile</div>
-            <div class="text-secondary">Following information is publicly displayed, be careful!</div>
+            <div class="text-xl" *transloco="let t">{{t('settings.account.profile.title')}}</div>
+            <div class="text-secondary" *transloco="let t">{{t('settings.account.profile.description')}}</div>
         </div>
         <div class="grid sm:grid-cols-4 gap-6 w-full mt-8">
             <!-- Name -->
@@ -14,10 +14,10 @@
                 <mat-form-field
                     class="w-full"
                     [subscriptSizing]="'dynamic'">
-                    <mat-label>Name</mat-label>
+                    <mat-label *transloco="let t">{{t('settings.account.name')}}</mat-label>
                     <mat-icon
                         class="icon-size-5"
-                        [svgIcon]="'heroicons_solid:user'"
+                        [svgIcon]="'duotone:user'"
                         matPrefix></mat-icon>
                     <input
                         [formControlName]="'name'"
@@ -29,11 +29,11 @@
                 <mat-form-field
                     class="fuse-mat-emphasized-affix w-full"
                     [subscriptSizing]="'dynamic'">
-                    <mat-label>Username</mat-label>
+                    <mat-label *transloco="let t">{{t('settings.account.username')}}</mat-label>
                     <div
                         class="text-secondary"
                         matPrefix>
-                        fusetheme.com/
+                        ctu.vn.com/
                     </div>
                     <input
                         [formControlName]="'username'"
@@ -45,10 +45,10 @@
                 <mat-form-field
                     class="w-full"
                     [subscriptSizing]="'dynamic'">
-                    <mat-label>Title</mat-label>
+                    <mat-label *transloco="let t">{{t('settings.account.position')}}</mat-label>
                     <mat-icon
                         class="icon-size-5"
-                        [svgIcon]="'heroicons_solid:briefcase'"
+                        [svgIcon]="'duotone:briefcase'"
                         matPrefix></mat-icon>
                     <input
                         [formControlName]="'title'"
@@ -60,10 +60,10 @@
                 <mat-form-field
                     class="w-full"
                     [subscriptSizing]="'dynamic'">
-                    <mat-label>Company</mat-label>
+                    <mat-label *transloco="let t">{{t('settings.account.company')}}</mat-label>
                     <mat-icon
                         class="icon-size-5"
-                        [svgIcon]="'heroicons_solid:building-office-2'"
+                        [svgIcon]="'duotone:buildings'"
                         matPrefix></mat-icon>
                     <input
                         [formControlName]="'company'"
@@ -75,7 +75,7 @@
                 <mat-form-field
                     class="w-full"
                     [subscriptSizing]="'dynamic'">
-                    <mat-label>About</mat-label>
+                    <mat-label *transloco="let t">{{t('settings.account.about')}}</mat-label>
                     <textarea
                         matInput
                         [formControlName]="'about'"
@@ -91,8 +91,8 @@
 
         <!-- Section -->
         <div class="w-full">
-            <div class="text-xl">Personal Information</div>
-            <div class="text-secondary">Communication details in case we want to connect with you. These will be kept private.</div>
+            <div class="text-xl" *transloco="let t">{{t('settings.account.personal_information.title')}}</div>
+            <div class="text-secondary" *transloco="let t">{{t('settings.account.personal_information.description')}}</div>
         </div>
         <div class="grid sm:grid-cols-4 gap-6 w-full mt-8">
             <!-- Email -->
@@ -100,10 +100,10 @@
                 <mat-form-field
                     class="w-full"
                     [subscriptSizing]="'dynamic'">
-                    <mat-label>Email</mat-label>
+                    <mat-label *transloco="let t">{{t('settings.account.email')}}</mat-label>
                     <mat-icon
                         class="icon-size-5"
-                        [svgIcon]="'heroicons_solid:envelope'"
+                        [svgIcon]="'duotone:envelope'"
                         matPrefix></mat-icon>
                     <input
                         [formControlName]="'email'"
@@ -115,10 +115,10 @@
                 <mat-form-field
                     class="w-full"
                     [subscriptSizing]="'dynamic'">
-                    <mat-label>Phone</mat-label>
+                    <mat-label *transloco="let t">{{t('settings.account.phone')}}</mat-label>
                     <mat-icon
                         class="icon-size-5"
-                        [svgIcon]="'heroicons_solid:phone'"
+                        [svgIcon]="'duotone:phone-volume'"
                         matPrefix></mat-icon>
                     <input
                         [formControlName]="'phone'"
@@ -133,7 +133,7 @@
                     <mat-label>Country</mat-label>
                     <mat-icon
                         class="icon-size-5"
-                        [svgIcon]="'heroicons_solid:map-pin'"
+                        [svgIcon]="'duotone:location-dot'"
                         matPrefix></mat-icon>
                     <mat-select [formControlName]="'country'">
                         <mat-option [value]="'usa'">United States</mat-option>
@@ -150,17 +150,14 @@
                 <mat-form-field
                     class="w-full"
                     [subscriptSizing]="'dynamic'">
-                    <mat-label>Language</mat-label>
+                    <mat-label *transloco="let t">{{t('settings.account.language')}}</mat-label>
                     <mat-icon
                         class="icon-size-5"
-                        [svgIcon]="'heroicons_solid:globe-alt'"
+                        [svgIcon]="'duotone:language'"
                         matPrefix></mat-icon>
                     <mat-select [formControlName]="'language'">
-                        <mat-option [value]="'english'">English</mat-option>
-                        <mat-option [value]="'french'">French</mat-option>
-                        <mat-option [value]="'spanish'">Spanish</mat-option>
-                        <mat-option [value]="'german'">German</mat-option>
-                        <mat-option [value]="'italian'">Italian</mat-option>
+                        <mat-option [value]="'en'">English</mat-option>
+                        <mat-option [value]="'vi'">Tiếng Việt</mat-option>
                     </mat-select>
                 </mat-form-field>
             </div>
@@ -173,14 +170,14 @@
         <div class="flex items-center justify-end">
             <button
                 mat-stroked-button
-                type="button">
-                Cancel
+                type="button" *transloco="let t">
+                {{t('Cancel')}}
             </button>
             <button
                 class="ml-4"
                 mat-flat-button
                 type="button"
-                [color]="'primary'">Save
+                [color]="'primary'" *transloco="let t">{{t('Save')}}
             </button>
         </div>
     </form>

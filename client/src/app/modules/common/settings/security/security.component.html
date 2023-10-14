@@ -1,111 +1,117 @@
 <div class="w-full max-w-3xl">
-
-    <!-- Form -->
-    <form [formGroup]="securityForm">
-
-        <!-- Section -->
-        <div class="w-full">
-            <div class="text-xl">Change your password</div>
-            <div class="text-secondary">You can only change your password twice within 24 hours!</div>
+  <!-- Form -->
+  <form [formGroup]="securityForm">
+    <!-- Section -->
+    <div class="w-full">
+      <div class="text-xl" *transloco="let t">
+        {{ t('settings.security.change_password.title') }}
+      </div>
+      <div class="text-secondary" *transloco="let t">
+        {{ t('settings.security.change_password.description') }}
+      </div>
+    </div>
+    <div class="mt-8 grid w-full gap-6 sm:grid-cols-4">
+      <!-- Current password -->
+      <div class="sm:col-span-4">
+        <mat-form-field class="w-full" [subscriptSizing]="'dynamic'">
+          <mat-label *transloco="let t">{{
+            t('settings.security.current_password')
+          }}</mat-label>
+          <mat-icon
+            class="icon-size-5"
+            [svgIcon]="'heroicons_solid:key'"
+            matPrefix></mat-icon>
+          <input
+            [formControlName]="'currentPassword'"
+            type="password"
+            matInput />
+        </mat-form-field>
+      </div>
+      <!-- New password -->
+      <div class="sm:col-span-4">
+        <mat-form-field class="w-full" [subscriptSizing]="'dynamic'">
+          <mat-label *transloco="let t">{{
+            t('settings.security.new_password')
+          }}</mat-label>
+          <mat-icon
+            class="icon-size-5"
+            [svgIcon]="'heroicons_solid:key'"
+            matPrefix></mat-icon>
+          <input [formControlName]="'newPassword'" type="password" matInput />
+        </mat-form-field>
+        <div class="text-hint mt-1 text-md" *transloco="let t">
+          {{ t('settings.security.hint_password') }}
         </div>
-        <div class="grid sm:grid-cols-4 gap-6 w-full mt-8">
-            <!-- Current password -->
-            <div class="sm:col-span-4">
-                <mat-form-field
-                    class="w-full"
-                    [subscriptSizing]="'dynamic'">
-                    <mat-label>Current password</mat-label>
-                    <mat-icon
-                        class="icon-size-5"
-                        [svgIcon]="'heroicons_solid:key'"
-                        matPrefix></mat-icon>
-                    <input
-                        [formControlName]="'currentPassword'"
-                        type="password"
-                        matInput>
-                </mat-form-field>
-            </div>
-            <!-- New password -->
-            <div class="sm:col-span-4">
-                <mat-form-field
-                    class="w-full"
-                    [subscriptSizing]="'dynamic'">
-                    <mat-label>New password</mat-label>
-                    <mat-icon
-                        class="icon-size-5"
-                        [svgIcon]="'heroicons_solid:key'"
-                        matPrefix></mat-icon>
-                    <input
-                        [formControlName]="'newPassword'"
-                        type="password"
-                        matInput>
-                </mat-form-field>
-                <div class="mt-1 text-md text-hint">Minimum 8 characters. Must include numbers, letters and special characters.</div>
-            </div>
+      </div>
+    </div>
+
+    <!-- Divider -->
+    <div class="my-10 border-t"></div>
+
+    <!-- Section -->
+    <div class="w-full">
+      <div class="text-xl" *transloco="let t">
+        {{ t('settings.security.preferences.title') }}
+      </div>
+      <div class="text-secondary" *transloco="let t">
+        {{ t('settings.security.preferences.description') }}
+      </div>
+    </div>
+    <div class="mt-8 grid w-full gap-6 sm:grid-cols-4">
+      <!-- 2-step auth -->
+      <div class="flex items-center justify-between sm:col-span-4">
+        <div class="flex-auto cursor-pointer" (click)="twoStepToggle.toggle()">
+          <div class="font-medium leading-6" *transloco="let t">
+            {{ t('settings.security.preferences.two_step_verification.title') }}
+          </div>
+          <div class="text-secondary text-md" *transloco="let t">
+            {{ t('settings.security.preferences.two_step_verification.description') }}
+          </div>
         </div>
-
-        <!-- Divider -->
-        <div class="my-10 border-t"></div>
-
-        <!-- Section -->
-        <div class="w-full">
-            <div class="text-xl">Security preferences</div>
-            <div class="text-secondary">Keep your account more secure with following preferences.</div>
+        <mat-slide-toggle
+          class="ml-4"
+          [color]="'primary'"
+          [formControlName]="'twoStep'"
+          #twoStepToggle>
+        </mat-slide-toggle>
+      </div>
+      <!-- Ask to change password -->
+      <div class="flex items-center justify-between sm:col-span-4">
+        <div
+          class="flex-auto cursor-pointer"
+          (click)="askPasswordChangeToggle.toggle()">
+          <div class="font-medium leading-6" *transloco="let t">
+            {{ t('settings.security.preferences.prompt_change_password.title') }}
+          </div>
+          <div class="text-secondary text-md" *transloco="let t">
+            {{ t('settings.security.preferences.prompt_change_password.description') }}
+          </div>
         </div>
-        <div class="grid sm:grid-cols-4 gap-6 w-full mt-8">
-            <!-- 2-step auth -->
-            <div class="sm:col-span-4 flex items-center justify-between">
-                <div
-                    class="flex-auto cursor-pointer"
-                    (click)="twoStepToggle.toggle()">
-                    <div class="leading-6 font-medium">Enable 2-step authentication</div>
-                    <div class="text-md text-secondary">
-                        Protects you against password theft by requesting an authentication code via SMS on every login.
-                    </div>
-                </div>
-                <mat-slide-toggle
-                    class="ml-4"
-                    [color]="'primary'"
-                    [formControlName]="'twoStep'"
-                    #twoStepToggle>
-                </mat-slide-toggle>
-            </div>
-            <!-- Ask to change password -->
-            <div class="sm:col-span-4 flex items-center justify-between">
-                <div
-                    class="flex-auto cursor-pointer"
-                    (click)="askPasswordChangeToggle.toggle()">
-                    <div class="leading-6 font-medium">Ask to change password on every 6 months</div>
-                    <div class="text-md text-secondary">
-                        A simple but an effective way to be protected against data leaks and password theft.
-                    </div>
-                </div>
-                <mat-slide-toggle
-                    class="ml-4"
-                    [color]="'primary'"
-                    [formControlName]="'askPasswordChange'"
-                    #askPasswordChangeToggle>
-                </mat-slide-toggle>
-            </div>
-        </div>
+        <mat-slide-toggle
+          class="ml-4"
+          [color]="'primary'"
+          [formControlName]="'askPasswordChange'"
+          #askPasswordChangeToggle>
+        </mat-slide-toggle>
+      </div>
+    </div>
 
-        <!-- Divider -->
-        <div class="my-10 border-t"></div>
+    <!-- Divider -->
+    <div class="my-10 border-t"></div>
 
-        <!-- Actions -->
-        <div class="flex items-center justify-end">
-            <button
-                mat-stroked-button
-                type="button">
-                Cancel
-            </button>
-            <button
-                class="ml-4"
-                mat-flat-button
-                type="button"
-                [color]="'primary'">Save
-            </button>
-        </div>
-    </form>
-
+    <!-- Actions -->
+    <div class="flex items-center justify-end">
+      <button mat-stroked-button type="button" *transloco="let t">
+        {{ t('Cancel') }}
+      </button>
+      <button
+        class="ml-4"
+        mat-flat-button
+        type="button"
+        [color]="'primary'"
+        *transloco="let t">
+        {{ t('Save') }}
+      </button>
+    </div>
+  </form>
 </div>

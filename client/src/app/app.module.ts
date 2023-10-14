@@ -13,11 +13,12 @@ import { provideIcons } from './core/icons/icons.provider';
 import { provideFuse } from '@fuse';
 import { mockApiServices } from './mock-api';
 import { ProjectModule } from './modules/admin/dashboards/project/project.module';
-import { TranslocoRootModule } from './transloco-root.module';
+import { SettingsModule } from './modules/common/settings/settings.module';
+import { TranslocoModule } from '@ngneat/transloco';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, HttpClientModule, AppRoutingModule, ProjectModule],
+  imports: [BrowserModule, HttpClientModule, AppRoutingModule, ProjectModule, SettingsModule, TranslocoModule],
   providers: [
     {
       provide: DateAdapter,
@@ -39,7 +40,7 @@ import { TranslocoRootModule } from './transloco-root.module';
         },
     },
 
-    // // Transloco Config
+    // Transloco Config
     provideTransloco(),
 
     // Fuse

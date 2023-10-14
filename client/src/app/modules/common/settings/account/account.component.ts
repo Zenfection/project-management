@@ -7,6 +7,11 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
+import { TranslocoModule } from '@ngneat/transloco';
+import { SettingsService } from 'app/core/setting/setting.service';
+import { Setting } from 'app/core/setting/setting.types';
+import { UserService } from 'app/core/user/user.service';
+import { User } from 'app/core/user/user.types';
 
 @Component({
     selector       : 'settings-account',
@@ -14,17 +19,21 @@ import { MatSelectModule } from '@angular/material/select';
     encapsulation  : ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     standalone     : true,
-    imports        : [FormsModule, ReactiveFormsModule, MatFormFieldModule, MatIconModule, MatInputModule, TextFieldModule, MatSelectModule, MatOptionModule, MatButtonModule],
+    imports        : [TranslocoModule,FormsModule, ReactiveFormsModule, MatFormFieldModule, MatIconModule, MatInputModule, TextFieldModule, MatSelectModule, MatOptionModule, MatButtonModule],
 })
 export class SettingsAccountComponent implements OnInit
 {
     accountForm: UntypedFormGroup;
+    user: User;
+    setting: Setting;
 
     /**
      * Constructor
      */
     constructor(
         private _formBuilder: UntypedFormBuilder,
+        private _userSerivce: UserService,
+        private _settingService: SettingsService
     )
     {
     }
@@ -38,17 +47,25 @@ export class SettingsAccountComponent implements OnInit
      */
     ngOnInit(): void
     {
+        this._userSerivce.user$.subscribe((user) => {
+          this.user = user
+        });
+
+        this._settingService.setting$.subscribe((setting) => {
+          this.setting = setting
+        });
+
         // Create the form
         this.accountForm = this._formBuilder.group({
-            name    : ['Brian Hughes'],
-            username: ['brianh'],
+            name    : [this.user.name, Validators.required],
+            username: ['zenfection'],
             title   : ['Senior Frontend Developer'],
-            company : ['YXZ Software'],
-            about   : ['Hey! This is Brian; husband, father and gamer. I\'m mostly passionate about bleeding edge tech and chocolate! 🍫'],
-            email   : ['hughes.brian@mail.com', Validators.email],
-            phone   : ['121-490-33-12'],
+            company : ['CIT Can Tho Software'],
+            about   : ['Hello My name is Zenfection, and I am a senior frontend developer with over 100 years of experience.'],
+            email   : [this.user.email, Validators.email],
+            phone   : ['0123-456-789'],
             country : ['usa'],
-            language: ['english'],
+            language: [this.setting.language, Validators.required],
         });
     }
 }

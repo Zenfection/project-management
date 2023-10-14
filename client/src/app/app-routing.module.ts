@@ -123,7 +123,7 @@ const routes: Routes = [
       {
         path: 'settings',
         loadChildren: () =>
-          import('app/modules/common/settings/settings.routes'),
+          import('app/modules/common/settings/settings.module').then(m => m.SettingsModule),
       },
 
       // 404 & Catch all

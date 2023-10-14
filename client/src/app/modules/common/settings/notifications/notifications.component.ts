@@ -1,3 +1,4 @@
+import { TranslocoModule } from '@ngneat/transloco';
 import { ChangeDetectionStrategy, Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormsModule, ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
@@ -9,7 +10,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
     encapsulation  : ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     standalone     : true,
-    imports        : [FormsModule, ReactiveFormsModule, MatSlideToggleModule, MatButtonModule],
+    imports        : [TranslocoModule, FormsModule, ReactiveFormsModule, MatSlideToggleModule, MatButtonModule],
 })
 export class SettingsNotificationsComponent implements OnInit
 {

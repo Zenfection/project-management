@@ -3,6 +3,8 @@
     "Project": "Dự Án",
     "Analytics": "Phân Tích",
 
+    "Save": "Lưu",
+    "Cancel": "Hủy",
 
     "Messages": "Tin Nhắn",
     "Settings": "Cài Đặt",
@@ -17,5 +19,85 @@
     "you-have": "Bạn có",
     "and": "và",
     "new-messages": "tin nhắn mới",
-    "new-tasks": "task mới"
+    "new-tasks": "task mới",
+
+    "settings": {
+      "account": {
+        "title": "Tài Khoản",
+        "description": "Cập nhật thông tin cá nhân của bạn",
+        "profile": {
+          "title": "Thông Tin",
+          "description": "Thông tin được hiển thị công khai, hãy cẩn thận khi cập nhật"
+        },
+          "name": "Họ và tên",
+          "email": "Email",
+          "phone": "Số điện thoại",
+          "address": "Địa chỉ",
+          "username": "Tên Người Dùng",
+          "language": "Ngôn Ngữ",
+          "company": "Công Ty",
+          "about": "Giới Thiệu",
+          "personal_information": {
+            "title": "Thông Tin Cá Nhân",
+            "description": "Chi tiết liên lạc trong trường hợp chúng tôi muốn kết nối với bạn. Những điều này sẽ được giữ kín."
+          }
+      },
+      "security": {
+        "title": "Bảo Mật",
+        "description": "Quản lý mật khẩu, phiên đăng nhập và thiết bị, 2FA",
+        "change_password": {
+          "title": "Đổi mật khẩu của bạn",
+          "description": "Để đảm bảo tài khoản của bạn an toàn, hãy sử dụng mật khẩu mạnh và không bao giờ chia sẻ nó với bất kỳ ai."
+        },
+        "current_password": "Mật khẩu hiện tại",
+        "new_password": "Mật khẩu mới",
+        "confirm_new_password": "Xác nhận mật khẩu mới",
+        "hint_password": "Ít nhất 8 chữ cái, phải bao gồm một chữ số, một chữ cái viết hoa và 1 ký tự đặc biệt.",
+        "preferences": {
+          "title": "Tùy chọn bảo mật khác",
+          "description": "Các tùy chọn bảo mật khác để giữ cho tài khoản của bạn an toàn.",
+          "two_step_verification": {
+            "title": "Bật Xác Thức 2FA",
+            "description": "Khi bật, bạn sẽ được yêu cầu nhập mã xác thực 6 chữ số được tạo bởi ứng dụng Authentication của bạn."
+          },
+          "prompt_change_password": {
+            "title": "Nhắc nhở thay đổi mật khẩu",
+            "description": "Khi bật, bạn sẽ được yêu cầu thay đổi mật khẩu của mình mỗi 6 tháng."
+          }
+        }
+      },
+      "notifications": {
+        "title": "Thông Báo",
+        "description": "Quản lý thông báo email và thông báo trên trang web",
+        "alerts": {
+          "title": "Gửi Thông Báo",
+          "description": "Chọn loại thông báo bạn muốn nhận",
+          "communication": {
+            "title": "Cơ bản",
+            "description": "Nhận tin tức, báo cáo cập nhật của task"
+          },
+          "security": {
+            "title": "Bảo Mật",
+            "description": "Nhận thông báo về các hoạt động bảo mật như đăng nhập, đăng xuất, thay đổi mật khẩu, ..."
+          },
+          "meetups": {
+            "title": "Cuộc họp",
+            "description": "Nhận thông báo về các sự kiện, hội thảo, buổi họp, .."
+          }
+        },
+
+        "account_activity": {
+          "title": "Hoạt Động Tài Khoản",
+          "description": "Nhận thông tin khi ai đó tương tác với tài khoản.",
+          "comment_to_me": "Ai đó bình luận trong bài issues/task của tôi",
+          "mention_to_me": "Ai đó nhắc đến tôi trong bài issues/task",
+          "follow_to_me": "Ai đó theo dõi tôi",
+          "reply_to_me": "Ai đó trả lời bình luận của tôi"
+        }
+      },
+      "team": {
+        "title": "Nhóm",
+        "description": "Quản lý thành viên, vai trò và quyền  của họ"
+      }
+    }
 }
