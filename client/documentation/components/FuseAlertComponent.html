@@ -1,0 +1,2823 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>ctu-task-management documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
+            <a href="../" class="navbar-brand">ctu-task-management documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  FuseAlertComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#styleData" class="nav-link"
+                role="tab" id="styleData-tab" data-bs-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/@fuse/components/alert/alert.component.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code>OnChanges</code>
+                <code>OnInit</code>
+                <code>OnDestroy</code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+            <tr>
+                <td class="col-md-3">changeDetection</td>
+                <td class="col-md-9"><code>ChangeDetectionStrategy.OnPush</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">encapsulation</td>
+                <td class="col-md-9"><code>ViewEncapsulation.None</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">exportAs</td>
+                <td class="col-md-9"><code>fuseAlert</code></td>
+            </tr>
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>fuse-alert</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">Standalone</td>
+                <td class="col-md-9"><code>true</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                            <code>NgIf</code>
+                            <code>MatIconModule</code>
+                            <code>MatButtonModule</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./alert.component.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./alert.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_unsubscribeAll" >_unsubscribeAll</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Static</span>
+                                <a href="#ngAcceptInputType_dismissed" >ngAcceptInputType_dismissed</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Static</span>
+                                <a href="#ngAcceptInputType_dismissible" >ngAcceptInputType_dismissible</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Static</span>
+                                <a href="#ngAcceptInputType_showIcon" >ngAcceptInputType_showIcon</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_toggleDismiss" >_toggleDismiss</a>
+                            </li>
+                            <li>
+                                <a href="#dismiss" >dismiss</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnChanges" >ngOnChanges</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnDestroy" >ngOnDestroy</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#show" >show</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Inputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#appearance" >appearance</a>
+                            </li>
+                            <li>
+                                <a href="#dismissed" >dismissed</a>
+                            </li>
+                            <li>
+                                <a href="#dismissible" >dismissible</a>
+                            </li>
+                            <li>
+                                <a href="#name" >name</a>
+                            </li>
+                            <li>
+                                <a href="#showIcon" >showIcon</a>
+                            </li>
+                            <li>
+                                <a href="#type" >type</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Outputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#dismissedChanged" >dismissedChanged</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>HostBindings</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#class" >class</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Accessors</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                    <a href="#classList" >classList</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(_changeDetectorRef: ChangeDetectorRef, _fuseAlertService: <a href="../injectables/FuseAlertService.html" target="_self">FuseAlertService</a>, _fuseUtilsService: <a href="../injectables/FuseUtilsService.html" target="_self">FuseUtilsService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/@fuse/components/alert/alert.component.ts:39</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Constructor</p>
+</div>
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>_changeDetectorRef</td>
+                                                  
+                                                        <td>
+                                                                    <code>ChangeDetectorRef</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>_fuseAlertService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/FuseAlertService.html" target="_self" >FuseAlertService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>_fuseUtilsService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/FuseUtilsService.html" target="_self" >FuseUtilsService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+    <section data-compodoc="block-inputs">
+    <h3 id="inputs">Inputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="appearance"></a>
+                        <b>appearance</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../miscellaneous/typealiases.html#FuseAlertAppearance" target="_self" >FuseAlertAppearance</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;soft&#x27;</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/@fuse/components/alert/alert.component.ts:31</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="dismissed"></a>
+                        <b>dismissed</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/@fuse/components/alert/alert.component.ts:32</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="dismissible"></a>
+                        <b>dismissible</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">src/@fuse/components/alert/alert.component.ts:33</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="name"></a>
+                        <b>name</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>this._fuseUtilsService.randomId()</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">src/@fuse/components/alert/alert.component.ts:34</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="showIcon"></a>
+                        <b>showIcon</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>true</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/@fuse/components/alert/alert.component.ts:35</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="type"></a>
+                        <b>type</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../miscellaneous/typealiases.html#FuseAlertType" target="_self" >FuseAlertType</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;primary&#x27;</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/@fuse/components/alert/alert.component.ts:36</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
+    <section data-compodoc="block-outputs">
+    <h3 id="outputs">Outputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="dismissedChanged"></a>
+                        <b>dismissedChanged</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>EventEmitter&lt;boolean&gt;</code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">src/@fuse/components/alert/alert.component.ts:37</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
+    <section data-compodoc="block-properties">
+    <h3>HostBindings</h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="class"></a>
+                    <span class="name">
+                        <span ><b>class</b></span>
+                        <a href="#class"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="59" class="link-to-prism">src/@fuse/components/alert/alert.component.ts:59</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Host binding for component classes</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_toggleDismiss"></a>
+                    <span class="name">
+                        <span class="modifier">Private</span>
+                        <span ><b>_toggleDismiss</b></span>
+                        <a href="#_toggleDismiss"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>_toggleDismiss(dismissed: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="202"
+                            class="link-to-prism">src/@fuse/components/alert/alert.component.ts:202</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Dismiss/show the alert</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>dismissed</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="dismiss"></a>
+                    <span class="name">
+                        <span ><b>dismiss</b></span>
+                        <a href="#dismiss"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>dismiss()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="165"
+                            class="link-to-prism">src/@fuse/components/alert/alert.component.ts:165</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Dismiss the alert</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnChanges"></a>
+                    <span class="name">
+                        <span ><b>ngOnChanges</b></span>
+                        <a href="#ngOnChanges"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnChanges(changes: SimpleChanges)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="91"
+                            class="link-to-prism">src/@fuse/components/alert/alert.component.ts:91</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>On changes</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>changes</td>
+                                    <td>
+                                            <code>SimpleChanges</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnDestroy"></a>
+                    <span class="name">
+                        <span ><b>ngOnDestroy</b></span>
+                        <a href="#ngOnDestroy"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnDestroy()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="151"
+                            class="link-to-prism">src/@fuse/components/alert/alert.component.ts:151</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>On destroy</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="121"
+                            class="link-to-prism">src/@fuse/components/alert/alert.component.ts:121</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>On init</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="show"></a>
+                    <span class="name">
+                        <span ><b>show</b></span>
+                        <a href="#show"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>show()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="180"
+                            class="link-to-prism">src/@fuse/components/alert/alert.component.ts:180</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Show the dismissed alert</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_unsubscribeAll"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>_unsubscribeAll</b></span>
+                        <a href="#_unsubscribeAll"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Subject&lt;any&gt;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new Subject&lt;any&gt;()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/@fuse/components/alert/alert.component.ts:39</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngAcceptInputType_dismissed"></a>
+                    <span class="name">
+                            <span class="modifier">Static</span>
+                        <span ><b>ngAcceptInputType_dismissed</b></span>
+                        <a href="#ngAcceptInputType_dismissed"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>BooleanInput</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/@fuse/components/alert/alert.component.ts:27</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngAcceptInputType_dismissible"></a>
+                    <span class="name">
+                            <span class="modifier">Static</span>
+                        <span ><b>ngAcceptInputType_dismissible</b></span>
+                        <a href="#ngAcceptInputType_dismissible"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>BooleanInput</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/@fuse/components/alert/alert.component.ts:26</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngAcceptInputType_showIcon"></a>
+                    <span class="name">
+                            <span class="modifier">Static</span>
+                        <span ><b>ngAcceptInputType_showIcon</b></span>
+                        <a href="#ngAcceptInputType_showIcon"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>BooleanInput</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/@fuse/components/alert/alert.component.ts:28</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-accessors">
+    <h3 id="accessors">
+        Accessors
+    </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="classList"></a>
+                        <span class="name"><b>classList</b><a href="#classList"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>classList()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="59" class="link-to-prism">src/@fuse/components/alert/alert.component.ts:59</a></div>
+                                </td>
+                            </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>Host binding for component classes</p>
+</div>
+
+                                <div class="io-description">
+                                    <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                                </div>
+                        </td>
+                    </tr>
+
+            </tbody>
+        </table>
+</section>
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { BooleanInput, coerceBooleanProperty } from &#x27;@angular/cdk/coercion&#x27;;
+import { NgIf } from &#x27;@angular/common&#x27;;
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, HostBinding, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges, ViewEncapsulation } from &#x27;@angular/core&#x27;;
+import { MatButtonModule } from &#x27;@angular/material/button&#x27;;
+import { MatIconModule } from &#x27;@angular/material/icon&#x27;;
+import { fuseAnimations } from &#x27;@fuse/animations&#x27;;
+import { FuseAlertService } from &#x27;@fuse/components/alert/alert.service&#x27;;
+import { FuseAlertAppearance, FuseAlertType } from &#x27;@fuse/components/alert/alert.types&#x27;;
+import { FuseUtilsService } from &#x27;@fuse/services/utils/utils.service&#x27;;
+import { filter, Subject, takeUntil } from &#x27;rxjs&#x27;;
+
+@Component({
+    selector       : &#x27;fuse-alert&#x27;,
+    templateUrl    : &#x27;./alert.component.html&#x27;,
+    styleUrls      : [&#x27;./alert.component.scss&#x27;],
+    encapsulation  : ViewEncapsulation.None,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    animations     : fuseAnimations,
+    exportAs       : &#x27;fuseAlert&#x27;,
+    standalone     : true,
+    imports        : [NgIf, MatIconModule, MatButtonModule],
+})
+export class FuseAlertComponent implements OnChanges, OnInit, OnDestroy
+{
+    /* eslint-disable @typescript-eslint/naming-convention */
+    static ngAcceptInputType_dismissible: BooleanInput;
+    static ngAcceptInputType_dismissed: BooleanInput;
+    static ngAcceptInputType_showIcon: BooleanInput;
+    /* eslint-enable @typescript-eslint/naming-convention */
+
+    @Input() appearance: FuseAlertAppearance &#x3D; &#x27;soft&#x27;;
+    @Input() dismissed &#x3D; false;
+    @Input() dismissible &#x3D; false;
+    @Input() name: string &#x3D; this._fuseUtilsService.randomId();
+    @Input() showIcon &#x3D; true;
+    @Input() type: FuseAlertType &#x3D; &#x27;primary&#x27;;
+    @Output() readonly dismissedChanged: EventEmitter&lt;boolean&gt; &#x3D; new EventEmitter&lt;boolean&gt;();
+
+    private _unsubscribeAll: Subject&lt;any&gt; &#x3D; new Subject&lt;any&gt;();
+
+    /**
+     * Constructor
+     */
+    constructor(
+        private _changeDetectorRef: ChangeDetectorRef,
+        private _fuseAlertService: FuseAlertService,
+        private _fuseUtilsService: FuseUtilsService,
+    )
+    {
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Accessors
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Host binding for component classes
+     */
+    @HostBinding(&#x27;class&#x27;) get classList(): any
+    {
+        /* eslint-disable @typescript-eslint/naming-convention */
+        return {
+            &#x27;fuse-alert-appearance-border&#x27; : this.appearance &#x3D;&#x3D;&#x3D; &#x27;border&#x27;,
+            &#x27;fuse-alert-appearance-fill&#x27;   : this.appearance &#x3D;&#x3D;&#x3D; &#x27;fill&#x27;,
+            &#x27;fuse-alert-appearance-outline&#x27;: this.appearance &#x3D;&#x3D;&#x3D; &#x27;outline&#x27;,
+            &#x27;fuse-alert-appearance-soft&#x27;   : this.appearance &#x3D;&#x3D;&#x3D; &#x27;soft&#x27;,
+            &#x27;fuse-alert-dismissed&#x27;         : this.dismissed,
+            &#x27;fuse-alert-dismissible&#x27;       : this.dismissible,
+            &#x27;fuse-alert-show-icon&#x27;         : this.showIcon,
+            &#x27;fuse-alert-type-primary&#x27;      : this.type &#x3D;&#x3D;&#x3D; &#x27;primary&#x27;,
+            &#x27;fuse-alert-type-accent&#x27;       : this.type &#x3D;&#x3D;&#x3D; &#x27;accent&#x27;,
+            &#x27;fuse-alert-type-warn&#x27;         : this.type &#x3D;&#x3D;&#x3D; &#x27;warn&#x27;,
+            &#x27;fuse-alert-type-basic&#x27;        : this.type &#x3D;&#x3D;&#x3D; &#x27;basic&#x27;,
+            &#x27;fuse-alert-type-info&#x27;         : this.type &#x3D;&#x3D;&#x3D; &#x27;info&#x27;,
+            &#x27;fuse-alert-type-success&#x27;      : this.type &#x3D;&#x3D;&#x3D; &#x27;success&#x27;,
+            &#x27;fuse-alert-type-warning&#x27;      : this.type &#x3D;&#x3D;&#x3D; &#x27;warning&#x27;,
+            &#x27;fuse-alert-type-error&#x27;        : this.type &#x3D;&#x3D;&#x3D; &#x27;error&#x27;,
+        };
+        /* eslint-enable @typescript-eslint/naming-convention */
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Lifecycle hooks
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * On changes
+     *
+     * @param changes
+     */
+    ngOnChanges(changes: SimpleChanges): void
+    {
+        // Dismissed
+        if ( &#x27;dismissed&#x27; in changes )
+        {
+            // Coerce the value to a boolean
+            this.dismissed &#x3D; coerceBooleanProperty(changes.dismissed.currentValue);
+
+            // Dismiss/show the alert
+            this._toggleDismiss(this.dismissed);
+        }
+
+        // Dismissible
+        if ( &#x27;dismissible&#x27; in changes )
+        {
+            // Coerce the value to a boolean
+            this.dismissible &#x3D; coerceBooleanProperty(changes.dismissible.currentValue);
+        }
+
+        // Show icon
+        if ( &#x27;showIcon&#x27; in changes )
+        {
+            // Coerce the value to a boolean
+            this.showIcon &#x3D; coerceBooleanProperty(changes.showIcon.currentValue);
+        }
+    }
+
+    /**
+     * On init
+     */
+    ngOnInit(): void
+    {
+        // Subscribe to the dismiss calls
+        this._fuseAlertService.onDismiss
+            .pipe(
+                filter(name &#x3D;&gt; this.name &#x3D;&#x3D;&#x3D; name),
+                takeUntil(this._unsubscribeAll),
+            )
+            .subscribe(() &#x3D;&gt;
+            {
+                // Dismiss the alert
+                this.dismiss();
+            });
+
+        // Subscribe to the show calls
+        this._fuseAlertService.onShow
+            .pipe(
+                filter(name &#x3D;&gt; this.name &#x3D;&#x3D;&#x3D; name),
+                takeUntil(this._unsubscribeAll),
+            )
+            .subscribe(() &#x3D;&gt;
+            {
+                // Show the alert
+                this.show();
+            });
+    }
+
+    /**
+     * On destroy
+     */
+    ngOnDestroy(): void
+    {
+        // Unsubscribe from all subscriptions
+        this._unsubscribeAll.next(null);
+        this._unsubscribeAll.complete();
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Public methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Dismiss the alert
+     */
+    dismiss(): void
+    {
+        // Return if the alert is already dismissed
+        if ( this.dismissed )
+        {
+            return;
+        }
+
+        // Dismiss the alert
+        this._toggleDismiss(true);
+    }
+
+    /**
+     * Show the dismissed alert
+     */
+    show(): void
+    {
+        // Return if the alert is already showing
+        if ( !this.dismissed )
+        {
+            return;
+        }
+
+        // Show the alert
+        this._toggleDismiss(false);
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Private methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Dismiss/show the alert
+     *
+     * @param dismissed
+     * @private
+     */
+    private _toggleDismiss(dismissed: boolean): void
+    {
+        // Return if the alert is not dismissible
+        if ( !this.dismissible )
+        {
+            return;
+        }
+
+        // Set the dismissed
+        this.dismissed &#x3D; dismissed;
+
+        // Execute the observable
+        this.dismissedChanged.next(this.dismissed);
+
+        // Notify the change detector
+        this._changeDetectorRef.markForCheck();
+    }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div
+    class&#x3D;&quot;fuse-alert-container&quot;
+    *ngIf&#x3D;&quot;!dismissible || dismissible &amp;&amp; !dismissed&quot;
+    [@fadeIn]&#x3D;&quot;!dismissed&quot;
+    [@fadeOut]&#x3D;&quot;!dismissed&quot;&gt;
+
+    &lt;!-- Border --&gt;
+    &lt;div
+        class&#x3D;&quot;fuse-alert-border&quot;
+        *ngIf&#x3D;&quot;appearance &#x3D;&#x3D;&#x3D; &#x27;border&#x27;&quot;&gt;&lt;/div&gt;
+
+    &lt;!-- Icon --&gt;
+    &lt;div
+        class&#x3D;&quot;fuse-alert-icon&quot;
+        *ngIf&#x3D;&quot;showIcon&quot;&gt;
+
+        &lt;!-- Custom icon --&gt;
+        &lt;div class&#x3D;&quot;fuse-alert-custom-icon&quot;&gt;
+            &lt;ng-content select&#x3D;&quot;[fuseAlertIcon]&quot;&gt;&lt;/ng-content&gt;
+        &lt;/div&gt;
+
+        &lt;!-- Default icons --&gt;
+        &lt;div class&#x3D;&quot;fuse-alert-default-icon&quot;&gt;
+
+            &lt;mat-icon
+                *ngIf&#x3D;&quot;type &#x3D;&#x3D;&#x3D; &#x27;primary&#x27;&quot;
+                [svgIcon]&#x3D;&quot;&#x27;heroicons_solid:check-circle&#x27;&quot;&gt;&lt;/mat-icon&gt;
+
+            &lt;mat-icon
+                *ngIf&#x3D;&quot;type &#x3D;&#x3D;&#x3D; &#x27;accent&#x27;&quot;
+                [svgIcon]&#x3D;&quot;&#x27;heroicons_solid:check-circle&#x27;&quot;&gt;&lt;/mat-icon&gt;
+
+            &lt;mat-icon
+                *ngIf&#x3D;&quot;type &#x3D;&#x3D;&#x3D; &#x27;warn&#x27;&quot;
+                [svgIcon]&#x3D;&quot;&#x27;heroicons_solid:x-circle&#x27;&quot;&gt;&lt;/mat-icon&gt;
+
+            &lt;mat-icon
+                *ngIf&#x3D;&quot;type &#x3D;&#x3D;&#x3D; &#x27;basic&#x27;&quot;
+                [svgIcon]&#x3D;&quot;&#x27;heroicons_solid:check-circle&#x27;&quot;&gt;&lt;/mat-icon&gt;
+
+            &lt;mat-icon
+                *ngIf&#x3D;&quot;type &#x3D;&#x3D;&#x3D; &#x27;info&#x27;&quot;
+                [svgIcon]&#x3D;&quot;&#x27;heroicons_solid:information-circle&#x27;&quot;&gt;&lt;/mat-icon&gt;
+
+            &lt;mat-icon
+                *ngIf&#x3D;&quot;type &#x3D;&#x3D;&#x3D; &#x27;success&#x27;&quot;
+                [svgIcon]&#x3D;&quot;&#x27;heroicons_solid:check-circle&#x27;&quot;&gt;&lt;/mat-icon&gt;
+
+            &lt;mat-icon
+                *ngIf&#x3D;&quot;type &#x3D;&#x3D;&#x3D; &#x27;warning&#x27;&quot;
+                [svgIcon]&#x3D;&quot;&#x27;heroicons_solid:exclamation-triangle&#x27;&quot;&gt;&lt;/mat-icon&gt;
+
+            &lt;mat-icon
+                *ngIf&#x3D;&quot;type &#x3D;&#x3D;&#x3D; &#x27;error&#x27;&quot;
+                [svgIcon]&#x3D;&quot;&#x27;heroicons_solid:x-circle&#x27;&quot;&gt;&lt;/mat-icon&gt;
+
+        &lt;/div&gt;
+
+    &lt;/div&gt;
+
+    &lt;!-- Content --&gt;
+    &lt;div class&#x3D;&quot;fuse-alert-content&quot;&gt;
+
+        &lt;div class&#x3D;&quot;fuse-alert-title&quot;&gt;
+            &lt;ng-content select&#x3D;&quot;[fuseAlertTitle]&quot;&gt;&lt;/ng-content&gt;
+        &lt;/div&gt;
+
+        &lt;div class&#x3D;&quot;fuse-alert-message&quot;&gt;
+            &lt;ng-content&gt;&lt;/ng-content&gt;
+        &lt;/div&gt;
+
+    &lt;/div&gt;
+
+    &lt;!-- Dismiss button --&gt;
+    &lt;button
+        class&#x3D;&quot;fuse-alert-dismiss-button&quot;
+        mat-icon-button
+        (click)&#x3D;&quot;dismiss()&quot;&gt;
+        &lt;mat-icon [svgIcon]&#x3D;&quot;&#x27;heroicons_solid:x-mark&#x27;&quot;&gt;&lt;/mat-icon&gt;
+    &lt;/button&gt;
+
+&lt;/div&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="styleData">
+                <p class="comment">
+                    <code>./alert.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">fuse-alert {
+    display: block;
+
+    /* Common */
+    .fuse-alert-container {
+        position: relative;
+        display: flex;
+        padding: 16px;
+        font-size: 14px;
+        line-height: 1;
+
+        /* All icons */
+        .mat-icon {
+            color: currentColor !important;
+        }
+
+        /* Icon */
+        .fuse-alert-icon {
+            display: flex;
+            align-items: flex-start;
+
+            .fuse-alert-custom-icon,
+            .fuse-alert-default-icon {
+                display: none;
+                align-items: center;
+                justify-content: center;
+                border-radius: 50%;
+
+                &amp;:not(:empty) {
+                    display: flex;
+                    margin-right: 12px;
+                }
+            }
+
+            .fuse-alert-default-icon {
+
+                .mat-icon {
+                    @apply icon-size-5;
+                }
+            }
+
+            .fuse-alert-custom-icon {
+                display: none;
+
+                &amp;:not(:empty) {
+                    display: flex;
+
+                    + .fuse-alert-default-icon {
+                        display: none;
+                    }
+                }
+            }
+        }
+
+        /* Content */
+        .fuse-alert-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            line-height: 1;
+
+            /* Title */
+            .fuse-alert-title {
+                display: none;
+                font-weight: 600;
+                line-height: 20px;
+
+                &amp;:not(:empty) {
+                    display: block;
+
+                    /* Alert that comes after the title */
+                    + .fuse-alert-message {
+
+                        &amp;:not(:empty) {
+                            margin-top: 4px;
+                        }
+                    }
+                }
+            }
+
+            /* Alert */
+            .fuse-alert-message {
+                display: none;
+                line-height: 20px;
+
+                &amp;:not(:empty) {
+                    display: block;
+                }
+            }
+        }
+
+        /* Dismiss button */
+        .fuse-alert-dismiss-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 32px !important;
+            min-width: 32px !important;
+            height: 32px !important;
+            min-height: 32px !important;
+            line-height: 32px !important;
+
+            .mat-icon {
+                @apply icon-size-4;
+            }
+        }
+    }
+
+    /* Dismissible */
+    &amp;.fuse-alert-dismissible {
+
+        .fuse-alert-container {
+
+            .fuse-alert-content {
+                margin-right: 32px;
+            }
+        }
+    }
+
+    &amp;:not(.fuse-alert-dismissible) {
+
+        .fuse-alert-container {
+
+            .fuse-alert-dismiss-button {
+                display: none !important;
+            }
+        }
+    }
+
+    /* Border */
+    &amp;.fuse-alert-appearance-border {
+
+        .fuse-alert-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 6px;
+            @apply shadow-md bg-card;
+
+            .fuse-alert-border {
+                position: absolute;
+                left: 0;
+                top: 0;
+                bottom: 0;
+                width: 4px;
+            }
+
+            .fuse-alert-message {
+                @apply text-gray-600;
+            }
+        }
+
+        /* Primary */
+        &amp;.fuse-alert-type-primary {
+
+            .fuse-alert-container {
+
+                .fuse-alert-border {
+                    @apply bg-primary;
+                }
+
+                .fuse-alert-title,
+                .fuse-alert-icon {
+                    @apply text-primary;
+                }
+
+                .dark &amp; {
+                    @apply bg-gray-700;
+
+                    .fuse-alert-border {
+                        @apply bg-primary-400;
+                    }
+
+                    .fuse-alert-title,
+                    .fuse-alert-icon {
+                        @apply text-primary-400;
+                    }
+
+                    .fuse-alert-message {
+                        @apply text-gray-300;
+                    }
+
+                    code {
+                        @apply bg-gray-400 text-gray-800;
+                    }
+                }
+            }
+        }
+
+        /* Accent */
+        &amp;.fuse-alert-type-accent {
+
+            .fuse-alert-container {
+
+                .fuse-alert-border {
+                    @apply bg-accent;
+                }
+
+                .fuse-alert-title,
+                .fuse-alert-icon {
+                    @apply text-accent;
+                }
+
+                .dark &amp; {
+                    @apply bg-gray-700;
+
+                    .fuse-alert-border {
+                        @apply bg-accent-400;
+                    }
+
+                    .fuse-alert-title,
+                    .fuse-alert-icon {
+                        @apply text-accent-400;
+                    }
+
+                    .fuse-alert-message {
+                        @apply text-gray-300;
+                    }
+
+                    code {
+                        @apply bg-gray-400 text-gray-800;
+                    }
+                }
+            }
+        }
+
+        /* Warn */
+        &amp;.fuse-alert-type-warn {
+
+            .fuse-alert-container {
+
+                .fuse-alert-border {
+                    @apply bg-warn;
+                }
+
+                .fuse-alert-title,
+                .fuse-alert-icon {
+                    @apply text-warn;
+                }
+
+                .dark &amp; {
+                    @apply bg-gray-700;
+
+                    .fuse-alert-border {
+                        @apply bg-warn-400;
+                    }
+
+                    .fuse-alert-title,
+                    .fuse-alert-icon {
+                        @apply text-warn-400;
+                    }
+
+                    .fuse-alert-message {
+                        @apply text-gray-300;
+                    }
+
+                    code {
+                        @apply bg-gray-400 text-gray-800;
+                    }
+                }
+            }
+        }
+
+        /* Basic */
+        &amp;.fuse-alert-type-basic {
+
+            .fuse-alert-container {
+
+                .fuse-alert-border {
+                    @apply bg-gray-600;
+                }
+
+                .fuse-alert-title,
+                .fuse-alert-icon {
+                    @apply text-gray-600;
+                }
+
+                .dark &amp; {
+                    @apply bg-gray-700;
+
+                    .fuse-alert-border {
+                        @apply bg-gray-400;
+                    }
+
+                    .fuse-alert-title,
+                    .fuse-alert-icon {
+                        @apply text-gray-400;
+                    }
+
+                    .fuse-alert-message {
+                        @apply text-gray-300;
+                    }
+
+                    code {
+                        @apply bg-gray-400 text-gray-800;
+                    }
+                }
+            }
+        }
+
+        /* Info */
+        &amp;.fuse-alert-type-info {
+
+            .fuse-alert-container {
+
+                .fuse-alert-border {
+                    @apply bg-blue-600;
+                }
+
+                .fuse-alert-title,
+                .fuse-alert-icon {
+                    @apply text-blue-700;
+                }
+
+                .dark &amp; {
+                    @apply bg-gray-700;
+
+                    .fuse-alert-border {
+                        @apply bg-blue-400;
+                    }
+
+                    .fuse-alert-title,
+                    .fuse-alert-icon {
+                        @apply text-blue-400;
+                    }
+
+                    .fuse-alert-message {
+                        @apply text-gray-300;
+                    }
+
+                    code {
+                        @apply bg-gray-400 text-gray-800;
+                    }
+                }
+            }
+        }
+
+        /* Success */
+        &amp;.fuse-alert-type-success {
+
+            .fuse-alert-container {
+
+                .fuse-alert-border {
+                    @apply bg-green-500;
+                }
+
+                .fuse-alert-title,
+                .fuse-alert-icon {
+                    @apply text-green-500;
+                }
+
+                .dark &amp; {
+                    @apply bg-gray-700;
+
+                    .fuse-alert-border {
+                        @apply bg-green-400;
+                    }
+
+                    .fuse-alert-title,
+                    .fuse-alert-icon {
+                        @apply text-green-400;
+                    }
+
+                    .fuse-alert-message {
+                        @apply text-gray-300;
+                    }
+
+                    code {
+                        @apply bg-gray-400 text-gray-800;
+                    }
+                }
+            }
+        }
+
+        /* Warning */
+        &amp;.fuse-alert-type-warning {
+
+            .fuse-alert-container {
+
+                .fuse-alert-border {
+                    @apply bg-amber-500;
+                }
+
+                .fuse-alert-title,
+                .fuse-alert-icon {
+                    @apply text-amber-500;
+                }
+
+                .dark &amp; {
+                    @apply bg-gray-700;
+
+                    .fuse-alert-border {
+                        @apply bg-amber-400;
+                    }
+
+                    .fuse-alert-title,
+                    .fuse-alert-icon {
+                        @apply text-amber-400;
+                    }
+
+                    .fuse-alert-message {
+                        @apply text-gray-300;
+                    }
+
+                    code {
+                        @apply bg-gray-400 text-gray-800;
+                    }
+                }
+            }
+        }
+
+        /* Error */
+        &amp;.fuse-alert-type-error {
+
+            .fuse-alert-container {
+
+                .fuse-alert-border {
+                    @apply bg-red-600;
+                }
+
+                .fuse-alert-title,
+                .fuse-alert-icon {
+                    @apply text-red-700;
+                }
+
+                .dark &amp; {
+                    @apply bg-gray-700;
+
+                    .fuse-alert-border {
+                        @apply bg-red-400;
+                    }
+
+                    .fuse-alert-title,
+                    .fuse-alert-icon {
+                        @apply text-red-400;
+                    }
+
+                    .fuse-alert-message {
+                        @apply text-gray-300;
+                    }
+
+                    code {
+                        @apply bg-gray-400 text-gray-800;
+                    }
+                }
+            }
+        }
+    }
+
+    /* Fill */
+    &amp;.fuse-alert-appearance-fill {
+
+        .fuse-alert-container {
+            border-radius: 6px;
+
+            .fuse-alert-dismiss-button {
+                @apply text-white;
+            }
+        }
+
+        /* Primary */
+        &amp;.fuse-alert-type-primary {
+
+            .fuse-alert-container {
+                @apply bg-primary-600;
+
+                .fuse-alert-icon {
+                    @apply text-white;
+                }
+
+                .fuse-alert-title {
+                    @apply text-white;
+                }
+
+                .fuse-alert-message {
+                    @apply text-primary-100;
+                }
+
+                code {
+                    @apply text-primary-800 bg-primary-200;
+                }
+            }
+        }
+
+        /* Accent */
+        &amp;.fuse-alert-type-accent {
+
+            .fuse-alert-container {
+                @apply bg-accent-600;
+
+                .fuse-alert-icon {
+                    @apply text-white;
+                }
+
+                .fuse-alert-title {
+                    @apply text-white;
+                }
+
+                .fuse-alert-message {
+                    @apply text-accent-100;
+                }
+
+                code {
+                    @apply text-accent-800 bg-accent-200;
+                }
+            }
+        }
+
+        /* Warn */
+        &amp;.fuse-alert-type-warn {
+
+            .fuse-alert-container {
+                @apply bg-warn-600;
+
+                .fuse-alert-icon {
+                    @apply text-white;
+                }
+
+                .fuse-alert-title {
+                    @apply text-white;
+                }
+
+                .fuse-alert-message {
+                    @apply text-warn-100;
+                }
+
+                code {
+                    @apply text-warn-800 bg-warn-200;
+                }
+            }
+        }
+
+        /* Basic */
+        &amp;.fuse-alert-type-basic {
+
+            .fuse-alert-container {
+                @apply bg-gray-600;
+
+                .fuse-alert-icon {
+                    @apply text-white;
+                }
+
+                .fuse-alert-title {
+                    @apply text-white;
+                }
+
+                .fuse-alert-message {
+                    @apply text-gray-100;
+                }
+
+                code {
+                    @apply bg-gray-200 text-gray-800;
+                }
+            }
+        }
+
+        /* Info */
+        &amp;.fuse-alert-type-info {
+
+            .fuse-alert-container {
+                @apply bg-blue-600;
+
+                .fuse-alert-icon {
+                    @apply text-white;
+                }
+
+                .fuse-alert-title {
+                    @apply text-white;
+                }
+
+                .fuse-alert-message {
+                    @apply text-blue-100;
+                }
+
+                code {
+                    @apply bg-blue-200 text-blue-800;
+                }
+            }
+        }
+
+        /* Success */
+        &amp;.fuse-alert-type-success {
+
+            .fuse-alert-container {
+                @apply bg-green-600;
+
+                .fuse-alert-icon {
+                    @apply text-white;
+                }
+
+                .fuse-alert-title {
+                    @apply text-white;
+                }
+
+                .fuse-alert-message {
+                    @apply text-green-100;
+                }
+
+                code {
+                    @apply bg-green-200 text-gray-800;
+                }
+            }
+        }
+
+        /* Warning */
+        &amp;.fuse-alert-type-warning {
+
+            .fuse-alert-container {
+                @apply bg-amber-500;
+
+                .fuse-alert-icon {
+                    @apply text-white;
+                }
+
+                .fuse-alert-title {
+                    @apply text-white;
+                }
+
+                .fuse-alert-message {
+                    @apply text-amber-100;
+                }
+
+                code {
+                    @apply bg-amber-200 text-amber-800;
+                }
+            }
+        }
+
+        /* Error */
+        &amp;.fuse-alert-type-error {
+
+            .fuse-alert-container {
+                @apply bg-red-600;
+
+                .fuse-alert-icon {
+                    @apply text-white;
+                }
+
+                .fuse-alert-title {
+                    @apply text-white;
+                }
+
+                .fuse-alert-message {
+                    @apply text-red-100;
+                }
+
+                code {
+                    @apply bg-red-200 text-red-800;
+                }
+            }
+        }
+    }
+
+    /* Outline */
+    &amp;.fuse-alert-appearance-outline {
+
+        .fuse-alert-container {
+            border-radius: 6px;
+        }
+
+        /* Primary */
+        &amp;.fuse-alert-type-primary {
+
+            .fuse-alert-container {
+                @apply bg-primary-50 ring-1 ring-primary-400 ring-inset;
+
+                .fuse-alert-icon {
+                    @apply text-primary-600;
+                }
+
+                .fuse-alert-title,
+                .fuse-alert-dismiss-button {
+                    @apply text-primary-900;
+                }
+
+                .fuse-alert-message {
+                    @apply text-primary-700;
+                }
+
+                code {
+                    @apply text-primary-800 bg-primary-200;
+                }
+
+                .dark &amp; {
+                    @apply bg-primary-600;
+
+                    .fuse-alert-icon {
+                        @apply text-white;
+                    }
+
+                    .fuse-alert-title,
+                    .fuse-alert-dismiss-button {
+                        @apply text-white;
+                    }
+
+                    .fuse-alert-message {
+                        @apply text-primary-200;
+                    }
+                }
+            }
+        }
+
+        /* Accent */
+        &amp;.fuse-alert-type-accent {
+
+            .fuse-alert-container {
+                @apply bg-accent-100 ring-1 ring-accent-400 ring-inset;
+
+                .fuse-alert-icon {
+                    @apply text-accent-600;
+                }
+
+                .fuse-alert-title,
+                .fuse-alert-dismiss-button {
+                    @apply text-accent-900;
+                }
+
+                .fuse-alert-message {
+                    @apply text-accent-700;
+                }
+
+                code {
+                    @apply text-accent-800 bg-accent-200;
+                }
+
+                .dark &amp; {
+                    @apply bg-accent-600;
+
+                    .fuse-alert-icon {
+                        @apply text-white;
+                    }
+
+                    .fuse-alert-title,
+                    .fuse-alert-dismiss-button {
+                        @apply text-white;
+                    }
+
+                    .fuse-alert-message {
+                        @apply text-accent-200;
+                    }
+                }
+            }
+        }
+
+        /* Warn */
+        &amp;.fuse-alert-type-warn {
+
+            .fuse-alert-container {
+                @apply bg-warn-50 ring-1 ring-warn-400 ring-inset;
+
+                .fuse-alert-icon {
+                    @apply text-warn-600;
+                }
+
+                .fuse-alert-title,
+                .fuse-alert-dismiss-button {
+                    @apply text-warn-900;
+                }
+
+                .fuse-alert-message {
+                    @apply text-warn-700;
+                }
+
+                code {
+                    @apply text-warn-800 bg-warn-200;
+                }
+
+                .dark &amp; {
+                    @apply bg-warn-600;
+
+                    .fuse-alert-icon {
+                        @apply text-white;
+                    }
+
+                    .fuse-alert-title,
+                    .fuse-alert-dismiss-button {
+                        @apply text-white;
+                    }
+
+                    .fuse-alert-message {
+                        @apply text-warn-200;
+                    }
+                }
+            }
+        }
+
+        /* Basic */
+        &amp;.fuse-alert-type-basic {
+
+            .fuse-alert-container {
+                @apply bg-gray-100 ring-1 ring-gray-400 ring-inset;
+
+                .fuse-alert-icon {
+                    @apply text-gray-600;
+                }
+
+                .fuse-alert-title,
+                .fuse-alert-dismiss-button {
+                    @apply text-gray-900;
+                }
+
+                .fuse-alert-message {
+                    @apply text-gray-700;
+                }
+
+                code {
+                    @apply bg-gray-200 text-gray-800;
+                }
+
+                .dark &amp; {
+                    @apply bg-gray-600;
+
+                    .fuse-alert-icon {
+                        @apply text-white;
+                    }
+
+                    .fuse-alert-title,
+                    .fuse-alert-dismiss-button {
+                        @apply text-white;
+                    }
+
+                    .fuse-alert-message {
+                        @apply text-gray-200;
+                    }
+                }
+            }
+        }
+
+        /* Info */
+        &amp;.fuse-alert-type-info {
+
+            .fuse-alert-container {
+                @apply bg-blue-50 ring-1 ring-blue-400 ring-inset;
+
+                .fuse-alert-icon {
+                    @apply text-blue-600;
+                }
+
+                .fuse-alert-title,
+                .fuse-alert-dismiss-button {
+                    @apply text-blue-900;
+                }
+
+                .fuse-alert-message {
+                    @apply text-blue-700;
+                }
+
+                code {
+                    @apply bg-blue-200 text-blue-800;
+                }
+
+                .dark &amp; {
+                    @apply bg-blue-600;
+
+                    .fuse-alert-icon {
+                        @apply text-white;
+                    }
+
+                    .fuse-alert-title,
+                    .fuse-alert-dismiss-button {
+                        @apply text-white;
+                    }
+
+                    .fuse-alert-message {
+                        @apply text-blue-200;
+                    }
+                }
+            }
+        }
+
+        /* Success */
+        &amp;.fuse-alert-type-success {
+
+            .fuse-alert-container {
+                @apply bg-green-50 ring-1 ring-green-400 ring-inset;
+
+                .fuse-alert-icon {
+                    @apply text-green-600;
+                }
+
+                .fuse-alert-title,
+                .fuse-alert-dismiss-button {
+                    @apply text-green-900;
+                }
+
+                .fuse-alert-message {
+                    @apply text-green-700;
+                }
+
+                code {
+                    @apply bg-green-200 text-green-800;
+                }
+
+                .dark &amp; {
+                    @apply bg-green-600;
+
+                    .fuse-alert-icon {
+                        @apply text-white;
+                    }
+
+                    .fuse-alert-title,
+                    .fuse-alert-dismiss-button {
+                        @apply text-white;
+                    }
+
+                    .fuse-alert-message {
+                        @apply text-green-200;
+                    }
+                }
+            }
+        }
+
+        /* Warning */
+        &amp;.fuse-alert-type-warning {
+
+            .fuse-alert-container {
+                @apply bg-amber-50 ring-1 ring-amber-400 ring-inset;
+
+                .fuse-alert-icon {
+                    @apply text-amber-600;
+                }
+
+                .fuse-alert-title,
+                .fuse-alert-dismiss-button {
+                    @apply text-amber-900;
+                }
+
+                .fuse-alert-message {
+                    @apply text-amber-700;
+                }
+
+                code {
+                    @apply bg-amber-200 text-amber-800;
+                }
+
+                .dark &amp; {
+                    @apply bg-amber-600;
+
+                    .fuse-alert-icon {
+                        @apply text-white;
+                    }
+
+                    .fuse-alert-title,
+                    .fuse-alert-dismiss-button {
+                        @apply text-white;
+                    }
+
+                    .fuse-alert-message {
+                        @apply text-amber-200;
+                    }
+                }
+            }
+        }
+
+        /* Error */
+        &amp;.fuse-alert-type-error {
+
+            .fuse-alert-container {
+                @apply bg-red-50 ring-1 ring-red-400 ring-inset;
+
+                .fuse-alert-icon {
+                    @apply text-red-600;
+                }
+
+                .fuse-alert-title,
+                .fuse-alert-dismiss-button {
+                    @apply text-red-900;
+                }
+
+                .fuse-alert-message {
+                    @apply text-red-700;
+                }
+
+                code {
+                    @apply bg-red-200 text-red-800;
+                }
+
+                .dark &amp; {
+                    @apply bg-red-600;
+
+                    .fuse-alert-icon {
+                        @apply text-white;
+                    }
+
+                    .fuse-alert-title,
+                    .fuse-alert-dismiss-button {
+                        @apply text-white;
+                    }
+
+                    .fuse-alert-message {
+                        @apply text-red-200;
+                    }
+                }
+            }
+        }
+    }
+
+    /* Soft */
+    &amp;.fuse-alert-appearance-soft {
+
+        .fuse-alert-container {
+            border-radius: 6px;
+        }
+
+        /* Primary */
+        &amp;.fuse-alert-type-primary {
+
+            .fuse-alert-container {
+                @apply bg-primary-50;
+
+                .fuse-alert-icon {
+                    @apply text-primary-600;
+                }
+
+                .fuse-alert-title,
+                .fuse-alert-dismiss-button {
+                    @apply text-primary-900;
+                }
+
+                .fuse-alert-message {
+                    @apply text-primary-700;
+                }
+
+                code {
+                    @apply text-primary-800 bg-primary-200;
+                }
+
+                .dark &amp; {
+                    @apply bg-primary-600;
+
+                    .fuse-alert-icon {
+                        @apply text-white;
+                    }
+
+                    .fuse-alert-title,
+                    .fuse-alert-dismiss-button {
+                        @apply text-white;
+                    }
+
+                    .fuse-alert-message {
+                        @apply text-primary-200;
+                    }
+                }
+            }
+        }
+
+        /* Accent */
+        &amp;.fuse-alert-type-accent {
+
+            .fuse-alert-container {
+                @apply bg-accent-100;
+
+                .fuse-alert-icon {
+                    @apply text-accent-600;
+                }
+
+                .fuse-alert-title,
+                .fuse-alert-dismiss-button {
+                    @apply text-accent-900;
+                }
+
+                .fuse-alert-message {
+                    @apply text-accent-700;
+                }
+
+                code {
+                    @apply text-accent-800 bg-accent-200;
+                }
+
+                .dark &amp; {
+                    @apply bg-accent-600;
+
+                    .fuse-alert-icon {
+                        @apply text-white;
+                    }
+
+                    .fuse-alert-title,
+                    .fuse-alert-dismiss-button {
+                        @apply text-white;
+                    }
+
+                    .fuse-alert-message {
+                        @apply text-accent-200;
+                    }
+                }
+            }
+        }
+
+        /* Warn */
+        &amp;.fuse-alert-type-warn {
+
+            .fuse-alert-container {
+                @apply bg-warn-50;
+
+                .fuse-alert-icon {
+                    @apply text-warn-600;
+                }
+
+                .fuse-alert-title,
+                .fuse-alert-dismiss-button {
+                    @apply text-warn-900;
+                }
+
+                .fuse-alert-message {
+                    @apply text-warn-700;
+                }
+
+                code {
+                    @apply text-warn-800 bg-warn-200;
+                }
+
+                .dark &amp; {
+                    @apply bg-warn-600;
+
+                    .fuse-alert-icon {
+                        @apply text-white;
+                    }
+
+                    .fuse-alert-title,
+                    .fuse-alert-dismiss-button {
+                        @apply text-white;
+                    }
+
+                    .fuse-alert-message {
+                        @apply text-warn-200;
+                    }
+                }
+            }
+        }
+
+        /* Basic */
+        &amp;.fuse-alert-type-basic {
+
+            .fuse-alert-container {
+                @apply bg-gray-100;
+
+                .fuse-alert-icon {
+                    @apply text-gray-600;
+                }
+
+                .fuse-alert-title,
+                .fuse-alert-dismiss-button {
+                    @apply text-gray-900;
+                }
+
+                .fuse-alert-message {
+                    @apply text-gray-700;
+                }
+
+                code {
+                    @apply bg-gray-200 text-gray-800;
+                }
+
+                .dark &amp; {
+                    @apply bg-gray-600;
+
+                    .fuse-alert-icon {
+                        @apply text-white;
+                    }
+
+                    .fuse-alert-title,
+                    .fuse-alert-dismiss-button {
+                        @apply text-white;
+                    }
+
+                    .fuse-alert-message {
+                        @apply text-gray-200;
+                    }
+                }
+            }
+        }
+
+        /* Info */
+        &amp;.fuse-alert-type-info {
+
+            .fuse-alert-container {
+                @apply bg-blue-50;
+
+                .fuse-alert-icon {
+                    @apply text-blue-600;
+                }
+
+                .fuse-alert-title,
+                .fuse-alert-dismiss-button {
+                    @apply text-blue-900;
+                }
+
+                .fuse-alert-message {
+                    @apply text-blue-700;
+                }
+
+                code {
+                    @apply bg-blue-200 text-blue-800;
+                }
+
+                .dark &amp; {
+                    @apply bg-blue-600;
+
+                    .fuse-alert-icon {
+                        @apply text-white;
+                    }
+
+                    .fuse-alert-title,
+                    .fuse-alert-dismiss-button {
+                        @apply text-white;
+                    }
+
+                    .fuse-alert-message {
+                        @apply text-blue-200;
+                    }
+                }
+            }
+        }
+
+        /* Success */
+        &amp;.fuse-alert-type-success {
+
+            .fuse-alert-container {
+                @apply bg-green-50;
+
+                .fuse-alert-icon {
+                    @apply text-green-600;
+                }
+
+                .fuse-alert-title,
+                .fuse-alert-dismiss-button {
+                    @apply text-green-900;
+                }
+
+                .fuse-alert-message {
+                    @apply text-green-700;
+                }
+
+                code {
+                    @apply bg-green-200 text-green-800;
+                }
+
+                .dark &amp; {
+                    @apply bg-green-600;
+
+                    .fuse-alert-icon {
+                        @apply text-white;
+                    }
+
+                    .fuse-alert-title,
+                    .fuse-alert-dismiss-button {
+                        @apply text-white;
+                    }
+
+                    .fuse-alert-message {
+                        @apply text-green-200;
+                    }
+                }
+            }
+        }
+
+        /* Warning */
+        &amp;.fuse-alert-type-warning {
+
+            .fuse-alert-container {
+                @apply bg-amber-50;
+
+                .fuse-alert-icon {
+                    @apply text-amber-600;
+                }
+
+                .fuse-alert-title,
+                .fuse-alert-dismiss-button {
+                    @apply text-amber-900;
+                }
+
+                .fuse-alert-message {
+                    @apply text-amber-700;
+                }
+
+                code {
+                    @apply bg-amber-200 text-amber-800;
+                }
+
+                .dark &amp; {
+                    @apply bg-amber-600;
+
+                    .fuse-alert-icon {
+                        @apply text-white;
+                    }
+
+                    .fuse-alert-title,
+                    .fuse-alert-dismiss-button {
+                        @apply text-white;
+                    }
+
+                    .fuse-alert-message {
+                        @apply text-amber-200;
+                    }
+                }
+            }
+        }
+
+        /* Error */
+        &amp;.fuse-alert-type-error {
+
+            .fuse-alert-container {
+                @apply bg-red-50;
+
+                .fuse-alert-icon {
+                    @apply text-red-600;
+                }
+
+                .fuse-alert-title,
+                .fuse-alert-dismiss-button {
+                    @apply text-red-900;
+                }
+
+                .fuse-alert-message {
+                    @apply text-red-700;
+                }
+
+                code {
+                    @apply bg-red-200 text-red-800;
+                }
+
+                .dark &amp; {
+                    @apply bg-red-600;
+
+                    .fuse-alert-icon {
+                        @apply text-white;
+                    }
+
+                    .fuse-alert-title,
+                    .fuse-alert-dismiss-button {
+                        @apply text-white;
+                    }
+
+                    .fuse-alert-message {
+                        @apply text-red-200;
+                    }
+                }
+            }
+        }
+    }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div    class="fuse-alert-container"    *ngIf="!dismissible || dismissible && !dismissed"    [@fadeIn]="!dismissed"    [@fadeOut]="!dismissed">    <!-- Border -->    <div        class="fuse-alert-border"        *ngIf="appearance === \'border\'"></div>    <!-- Icon -->    <div        class="fuse-alert-icon"        *ngIf="showIcon">        <!-- Custom icon -->        <div class="fuse-alert-custom-icon">            <ng-content select="[fuseAlertIcon]"></ng-content>        </div>        <!-- Default icons -->        <div class="fuse-alert-default-icon">            <mat-icon                *ngIf="type === \'primary\'"                [svgIcon]="\'heroicons_solid:check-circle\'"></mat-icon>            <mat-icon                *ngIf="type === \'accent\'"                [svgIcon]="\'heroicons_solid:check-circle\'"></mat-icon>            <mat-icon                *ngIf="type === \'warn\'"                [svgIcon]="\'heroicons_solid:x-circle\'"></mat-icon>            <mat-icon                *ngIf="type === \'basic\'"                [svgIcon]="\'heroicons_solid:check-circle\'"></mat-icon>            <mat-icon                *ngIf="type === \'info\'"                [svgIcon]="\'heroicons_solid:information-circle\'"></mat-icon>            <mat-icon                *ngIf="type === \'success\'"                [svgIcon]="\'heroicons_solid:check-circle\'"></mat-icon>            <mat-icon                *ngIf="type === \'warning\'"                [svgIcon]="\'heroicons_solid:exclamation-triangle\'"></mat-icon>            <mat-icon                *ngIf="type === \'error\'"                [svgIcon]="\'heroicons_solid:x-circle\'"></mat-icon>        </div>    </div>    <!-- Content -->    <div class="fuse-alert-content">        <div class="fuse-alert-title">            <ng-content select="[fuseAlertTitle]"></ng-content>        </div>        <div class="fuse-alert-message">            <ng-content></ng-content>        </div>    </div>    <!-- Dismiss button -->    <button        class="fuse-alert-dismiss-button"        mat-icon-button        (click)="dismiss()">        <mat-icon [svgIcon]="\'heroicons_solid:x-mark\'"></mat-icon>    </button></div></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AuthConfirmationRequiredComponent', 'selector': 'auth-confirmation-required'},{'name': 'AuthForgotPasswordComponent', 'selector': 'auth-forgot-password'},{'name': 'AuthResetPasswordComponent', 'selector': 'auth-reset-password'},{'name': 'AuthSignInComponent', 'selector': 'auth-sign-in'},{'name': 'AuthSignOutComponent', 'selector': 'auth-sign-out'},{'name': 'AuthSignUpComponent', 'selector': 'auth-sign-up'},{'name': 'AuthUnlockSessionComponent', 'selector': 'auth-unlock-session'},{'name': 'CenteredLayoutComponent', 'selector': 'centered-layout'},{'name': 'ClassicLayoutComponent', 'selector': 'classic-layout'},{'name': 'ClassyLayoutComponent', 'selector': 'classy-layout'},{'name': 'CompactLayoutComponent', 'selector': 'compact-layout'},{'name': 'DenseLayoutComponent', 'selector': 'dense-layout'},{'name': 'EmptyLayoutComponent', 'selector': 'empty-layout'},{'name': 'EnterpriseLayoutComponent', 'selector': 'enterprise-layout'},{'name': 'Error404Component', 'selector': 'error-404'},{'name': 'Error500Component', 'selector': 'error-500'},{'name': 'ExampleComponent', 'selector': 'example'},{'name': 'FuseAlertComponent', 'selector': 'fuse-alert'},{'name': 'FuseCardComponent', 'selector': 'fuse-card'},{'name': 'FuseConfirmationDialogComponent', 'selector': 'fuse-confirmation-dialog'},{'name': 'FuseDrawerComponent', 'selector': 'fuse-drawer'},{'name': 'FuseFullscreenComponent', 'selector': 'fuse-fullscreen'},{'name': 'FuseHighlightComponent', 'selector': 'textarea[fuse-highlight]'},{'name': 'FuseHorizontalNavigationBasicItemComponent', 'selector': 'fuse-horizontal-navigation-basic-item'},{'name': 'FuseHorizontalNavigationBranchItemComponent', 'selector': 'fuse-horizontal-navigation-branch-item'},{'name': 'FuseHorizontalNavigationComponent', 'selector': 'fuse-horizontal-navigation'},{'name': 'FuseHorizontalNavigationDividerItemComponent', 'selector': 'fuse-horizontal-navigation-divider-item'},{'name': 'FuseHorizontalNavigationSpacerItemComponent', 'selector': 'fuse-horizontal-navigation-spacer-item'},{'name': 'FuseLoadingBarComponent', 'selector': 'fuse-loading-bar'},{'name': 'FuseMasonryComponent', 'selector': 'fuse-masonry'},{'name': 'FuseVerticalNavigationAsideItemComponent', 'selector': 'fuse-vertical-navigation-aside-item'},{'name': 'FuseVerticalNavigationBasicItemComponent', 'selector': 'fuse-vertical-navigation-basic-item'},{'name': 'FuseVerticalNavigationCollapsableItemComponent', 'selector': 'fuse-vertical-navigation-collapsable-item'},{'name': 'FuseVerticalNavigationComponent', 'selector': 'fuse-vertical-navigation'},{'name': 'FuseVerticalNavigationDividerItemComponent', 'selector': 'fuse-vertical-navigation-divider-item'},{'name': 'FuseVerticalNavigationGroupItemComponent', 'selector': 'fuse-vertical-navigation-group-item'},{'name': 'FuseVerticalNavigationSpacerItemComponent', 'selector': 'fuse-vertical-navigation-spacer-item'},{'name': 'FuturisticLayoutComponent', 'selector': 'futuristic-layout'},{'name': 'LandingHomeComponent', 'selector': 'landing-home'},{'name': 'LanguagesComponent', 'selector': 'languages'},{'name': 'LayoutComponent', 'selector': 'layout'},{'name': 'MaterialLayoutComponent', 'selector': 'material-layout'},{'name': 'MessagesComponent', 'selector': 'messages'},{'name': 'ModernLayoutComponent', 'selector': 'modern-layout'},{'name': 'NotificationsComponent', 'selector': 'notifications'},{'name': 'ProjectComponent', 'selector': 'project'},{'name': 'QuickChatComponent', 'selector': 'quick-chat'},{'name': 'SearchComponent', 'selector': 'search'},{'name': 'SettingsAccountComponent', 'selector': 'settings-account'},{'name': 'SettingsComponent', 'selector': 'settings'},{'name': 'SettingsComponent', 'selector': 'settings'},{'name': 'SettingsNotificationsComponent', 'selector': 'settings-notifications'},{'name': 'SettingsPlanBillingComponent', 'selector': 'settings-plan-billing'},{'name': 'SettingsSecurityComponent', 'selector': 'settings-security'},{'name': 'SettingsTeamComponent', 'selector': 'settings-team'},{'name': 'ShortcutsComponent', 'selector': 'shortcuts'},{'name': 'ThinLayoutComponent', 'selector': 'thin-layout'},{'name': 'UserComponent', 'selector': 'user'}];
+    var DIRECTIVES = [{'name': 'FuseScrollbarDirective', 'selector': '[fuseScrollbar]'},{'name': 'FuseScrollResetDirective', 'selector': '[fuseScrollReset]'}];
+    var ACTUAL_COMPONENT = {'name': 'FuseAlertComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'FuseAlertComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

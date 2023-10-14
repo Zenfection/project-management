@@ -1,18 +1,9 @@
-import { CurrencyPipe, NgClass, NgFor, NgIf } from '@angular/common';
 import { ChangeDetectionStrategy, Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
-import { MatButtonModule } from '@angular/material/button';
-import { MatButtonToggleModule } from '@angular/material/button-toggle';
-import { MatRippleModule } from '@angular/material/core';
-import { MatIconModule } from '@angular/material/icon';
-import { MatMenuModule } from '@angular/material/menu';
-import { MatTableModule } from '@angular/material/table';
-import { MatTabsModule } from '@angular/material/tabs';
 import { Router } from '@angular/router';
-import { TranslocoModule } from '@ngneat/transloco';
 import { UserService } from 'app/core/user/user.service';
 import { User } from 'app/core/user/user.types';
 import { ProjectService } from 'app/modules/admin/dashboards/project/project.service';
-import { ApexOptions, NgApexchartsModule } from 'ng-apexcharts';
+import { ApexOptions } from 'ng-apexcharts';
 import { Subject, takeUntil } from 'rxjs';
 
 @Component({
@@ -20,8 +11,6 @@ import { Subject, takeUntil } from 'rxjs';
     templateUrl    : './project.component.html',
     encapsulation  : ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone     : true,
-    imports        : [TranslocoModule, MatIconModule, MatButtonModule, MatRippleModule, MatMenuModule, MatTabsModule, MatButtonToggleModule, NgApexchartsModule, NgFor, NgIf, MatTableModule, NgClass, CurrencyPipe],
 })
 export class ProjectComponent implements OnInit, OnDestroy
 {

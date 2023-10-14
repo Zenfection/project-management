@@ -47,13 +47,13 @@ export class SettingsComponent implements OnInit, OnDestroy {
   constructor(
     private _router: Router,
     private _fuseConfigService: FuseConfigService,
-    private _settingSerivce: SettingsService,
+    private _settingService: SettingsService,
     private _changeDetectorRef: ChangeDetectorRef,
   ) { }
 
   ngOnInit(): void {
     // Subscribe to config changes
-    // combineLatest([this._fuseConfigService.config$, this._settingSerivce.setting$]).pipe(takeUntil(this._unsubscribeAll)).subscribe(([config, setting]) => {
+    // combineLatest([this._fuseConfigService.config$, this._settingService.setting$]).pipe(takeUntil(this._unsubscribeAll)).subscribe(([config, setting]) => {
 
     //   this.config = config;
     //   this.config.scheme = setting.scheme
@@ -70,8 +70,8 @@ export class SettingsComponent implements OnInit, OnDestroy {
 
       });
 
-    // Subscribe to user changes
-    this._settingSerivce.setting$
+    // Subscribe to setting changes
+    this._settingService.setting$
       .pipe(takeUntil(this._unsubscribeAll))
       .subscribe((setting: Setting) => {
         this.setting = setting;
@@ -110,7 +110,7 @@ export class SettingsComponent implements OnInit, OnDestroy {
 
     if (!this.setting) return
 
-    this._settingSerivce.update({
+    this._settingService.update({
       layout
     }).subscribe();
 
@@ -127,7 +127,7 @@ export class SettingsComponent implements OnInit, OnDestroy {
   setScheme(scheme: Scheme): void {
     if (!this.setting) return
 
-    this._settingSerivce.update({
+    this._settingService.update({
       scheme
     }).subscribe();
 
@@ -144,7 +144,7 @@ export class SettingsComponent implements OnInit, OnDestroy {
 
     theme = theme.replace('theme-', '');
 
-    this._settingSerivce.update({
+    this._settingService.update({
       theme
     }).subscribe();
 

@@ -44,7 +44,7 @@
                         <mat-icon
                             class="icon-size-5"
                             [svgIcon]="'heroicons_solid:cog-8-tooth'"></mat-icon>
-                        <span class="ml-2" *transloco="let t">{{t('Settings')}}</span>
+                        <span [routerLink]="['/settings']" class="ml-2" *transloco="let t">{{t('Settings')}}</span>
                     </button>
                 </div>
             </div>

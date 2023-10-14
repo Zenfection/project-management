@@ -1,0 +1,2163 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>ctu-task-management documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
+            <a href="../" class="navbar-brand">ctu-task-management documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  QuickChatComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#styleData" class="nav-link"
+                role="tab" id="styleData-tab" data-bs-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/layout/common/quick-chat/quick-chat.component.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code>OnInit</code>
+                <code>AfterViewInit</code>
+                <code>OnDestroy</code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+            <tr>
+                <td class="col-md-3">encapsulation</td>
+                <td class="col-md-9"><code>ViewEncapsulation.None</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">exportAs</td>
+                <td class="col-md-9"><code>quickChat</code></td>
+            </tr>
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>quick-chat</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">Standalone</td>
+                <td class="col-md-9"><code>true</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                            <code>NgClass</code>
+                            <code>NgIf</code>
+                            <code>MatIconModule</code>
+                            <code>MatButtonModule</code>
+                                <code><a href="../directives/FuseScrollbarDirective.html" target="_self" >FuseScrollbarDirective</a></code>
+                            <code>NgFor</code>
+                            <code>NgTemplateOutlet</code>
+                            <code>MatFormFieldModule</code>
+                            <code>MatInputModule</code>
+                            <code>TextFieldModule</code>
+                            <code>DatePipe</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./quick-chat.component.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./quick-chat.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_mutationObserver" >_mutationObserver</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_overlay" >_overlay</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_scrollStrategy" >_scrollStrategy</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_unsubscribeAll" >_unsubscribeAll</a>
+                            </li>
+                            <li>
+                                <a href="#chat" >chat</a>
+                            </li>
+                            <li>
+                                <a href="#chats" >chats</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                <a href="#messageInput" >messageInput</a>
+                            </li>
+                            <li>
+                                <a href="#opened" >opened</a>
+                            </li>
+                            <li>
+                                <a href="#selectedChat" >selectedChat</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_hideOverlay" >_hideOverlay</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                    <span class="modifier"></span>
+                                    <span class="modifier">Private</span>
+                                <a href="#_resizeMessageInput" >_resizeMessageInput</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_showOverlay" >_showOverlay</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_toggleOpened" >_toggleOpened</a>
+                            </li>
+                            <li>
+                                <a href="#close" >close</a>
+                            </li>
+                            <li>
+                                <a href="#ngAfterViewInit" >ngAfterViewInit</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnDestroy" >ngOnDestroy</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#open" >open</a>
+                            </li>
+                            <li>
+                                <a href="#selectChat" >selectChat</a>
+                            </li>
+                            <li>
+                                <a href="#toggle" >toggle</a>
+                            </li>
+                            <li>
+                                <a href="#trackByFn" >trackByFn</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>HostBindings</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#class" >class</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>HostListeners</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#input" >input</a>
+                            </li>
+                            <li>
+                                <a href="#ngModelChange" >ngModelChange</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Accessors</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                    <a href="#classList" >classList</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(_document: Document, _elementRef: ElementRef, _renderer2: Renderer2, _ngZone: NgZone, _quickChatService: <a href="../injectables/QuickChatService.html" target="_self">QuickChatService</a>, _scrollStrategyOptions: ScrollStrategyOptions)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">src/app/layout/common/quick-chat/quick-chat.component.ts:33</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Constructor</p>
+</div>
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>_document</td>
+                                                  
+                                                        <td>
+                                                                    <code>Document</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>_elementRef</td>
+                                                  
+                                                        <td>
+                                                                    <code>ElementRef</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>_renderer2</td>
+                                                  
+                                                        <td>
+                                                                    <code>Renderer2</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>_ngZone</td>
+                                                  
+                                                        <td>
+                                                                    <code>NgZone</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>_quickChatService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/QuickChatService.html" target="_self" >QuickChatService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>_scrollStrategyOptions</td>
+                                                  
+                                                        <td>
+                                                                    <code>ScrollStrategyOptions</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+    <section data-compodoc="block-properties">
+    <h3>HostBindings</h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="class"></a>
+                    <span class="name">
+                        <span ><b>class</b></span>
+                        <a href="#class"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="56" class="link-to-prism">src/app/layout/common/quick-chat/quick-chat.component.ts:56</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Host binding for component classes</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-methods">
+    <h3>HostListeners</h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="input"></a>
+                    <span class="name">
+                        <span ><b>input</b></span>
+                        <a href="#input"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>input()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="70"
+                            class="link-to-prism">src/app/layout/common/quick-chat/quick-chat.component.ts:70</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Resize on &#39;input&#39; and &#39;ngModelChange&#39; events</p>
+</div>
+
+                    <div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngModelChange"></a>
+                    <span class="name">
+                        <span ><b>ngModelChange</b></span>
+                        <a href="#ngModelChange"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngModelChange()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="70"
+                            class="link-to-prism">src/app/layout/common/quick-chat/quick-chat.component.ts:70</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Resize on &#39;input&#39; and &#39;ngModelChange&#39; events</p>
+</div>
+
+                    <div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_hideOverlay"></a>
+                    <span class="name">
+                        <span class="modifier">Private</span>
+                        <span ><b>_hideOverlay</b></span>
+                        <a href="#_hideOverlay"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>_hideOverlay()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="287"
+                            class="link-to-prism">src/app/layout/common/quick-chat/quick-chat.component.ts:287</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Hide the backdrop</p>
+</div>
+
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_resizeMessageInput"></a>
+                    <span class="name">
+                        <span class="modifier"></span>
+                        <span class="modifier"></span>
+                        <span class="modifier">Private</span>
+                        <span ><b>_resizeMessageInput</b></span>
+                        <a href="#_resizeMessageInput"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>_resizeMessageInput()</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@HostListener(&#x27;input&#x27;)<br />@HostListener(&#x27;ngModelChange&#x27;)<br /></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="70"
+                            class="link-to-prism">src/app/layout/common/quick-chat/quick-chat.component.ts:70</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Resize on &#39;input&#39; and &#39;ngModelChange&#39; events</p>
+</div>
+
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_showOverlay"></a>
+                    <span class="name">
+                        <span class="modifier">Private</span>
+                        <span ><b>_showOverlay</b></span>
+                        <a href="#_showOverlay"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>_showOverlay()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="252"
+                            class="link-to-prism">src/app/layout/common/quick-chat/quick-chat.component.ts:252</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Show the backdrop</p>
+</div>
+
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_toggleOpened"></a>
+                    <span class="name">
+                        <span class="modifier">Private</span>
+                        <span ><b>_toggleOpened</b></span>
+                        <a href="#_toggleOpened"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>_toggleOpened(open: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="312"
+                            class="link-to-prism">src/app/layout/common/quick-chat/quick-chat.component.ts:312</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Open/close the panel</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>open</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="close"></a>
+                    <span class="name">
+                        <span ><b>close</b></span>
+                        <a href="#close"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>close()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="191"
+                            class="link-to-prism">src/app/layout/common/quick-chat/quick-chat.component.ts:191</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Close the panel</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngAfterViewInit"></a>
+                    <span class="name">
+                        <span ><b>ngAfterViewInit</b></span>
+                        <a href="#ngAfterViewInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngAfterViewInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="123"
+                            class="link-to-prism">src/app/layout/common/quick-chat/quick-chat.component.ts:123</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>After view init</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnDestroy"></a>
+                    <span class="name">
+                        <span ><b>ngOnDestroy</b></span>
+                        <a href="#ngOnDestroy"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnDestroy()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="159"
+                            class="link-to-prism">src/app/layout/common/quick-chat/quick-chat.component.ts:159</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>On destroy</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="93"
+                            class="link-to-prism">src/app/layout/common/quick-chat/quick-chat.component.ts:93</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>On init</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="open"></a>
+                    <span class="name">
+                        <span ><b>open</b></span>
+                        <a href="#open"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>open()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="176"
+                            class="link-to-prism">src/app/layout/common/quick-chat/quick-chat.component.ts:176</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Open the panel</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="selectChat"></a>
+                    <span class="name">
+                        <span ><b>selectChat</b></span>
+                        <a href="#selectChat"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>selectChat(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="223"
+                            class="link-to-prism">src/app/layout/common/quick-chat/quick-chat.component.ts:223</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Select the chat</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>id</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="toggle"></a>
+                    <span class="name">
+                        <span ><b>toggle</b></span>
+                        <a href="#toggle"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>toggle()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="206"
+                            class="link-to-prism">src/app/layout/common/quick-chat/quick-chat.component.ts:206</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Toggle the panel</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="trackByFn"></a>
+                    <span class="name">
+                        <span ><b>trackByFn</b></span>
+                        <a href="#trackByFn"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>trackByFn(index: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, item: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="238"
+                            class="link-to-prism">src/app/layout/common/quick-chat/quick-chat.component.ts:238</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Track by function for ngFor loops</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>index</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>item</td>
+                                    <td>
+                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_mutationObserver"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>_mutationObserver</b></span>
+                        <a href="#_mutationObserver"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>MutationObserver</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/app/layout/common/quick-chat/quick-chat.component.ts:30</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_overlay"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>_overlay</b></span>
+                        <a href="#_overlay"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>HTMLElement</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/app/layout/common/quick-chat/quick-chat.component.ts:32</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_scrollStrategy"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>_scrollStrategy</b></span>
+                        <a href="#_scrollStrategy"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>ScrollStrategy</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>this._scrollStrategyOptions.block()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/app/layout/common/quick-chat/quick-chat.component.ts:31</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_unsubscribeAll"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>_unsubscribeAll</b></span>
+                        <a href="#_unsubscribeAll"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Subject&lt;any&gt;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new Subject&lt;any&gt;()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">src/app/layout/common/quick-chat/quick-chat.component.ts:33</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="chat"></a>
+                    <span class="name">
+                        <span ><b>chat</b></span>
+                        <a href="#chat"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Chat.html" target="_self" >Chat</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/app/layout/common/quick-chat/quick-chat.component.ts:26</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="chats"></a>
+                    <span class="name">
+                        <span ><b>chats</b></span>
+                        <a href="#chats"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Chat.html" target="_self" >Chat[]</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/app/layout/common/quick-chat/quick-chat.component.ts:27</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="messageInput"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                        <span ><b>messageInput</b></span>
+                        <a href="#messageInput"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>ElementRef</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @ViewChild(&#x27;messageInput&#x27;)<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/app/layout/common/quick-chat/quick-chat.component.ts:25</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="opened"></a>
+                    <span class="name">
+                        <span ><b>opened</b></span>
+                        <a href="#opened"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/layout/common/quick-chat/quick-chat.component.ts:28</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="selectedChat"></a>
+                    <span class="name">
+                        <span ><b>selectedChat</b></span>
+                        <a href="#selectedChat"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Chat.html" target="_self" >Chat</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/app/layout/common/quick-chat/quick-chat.component.ts:29</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-accessors">
+    <h3 id="accessors">
+        Accessors
+    </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="classList"></a>
+                        <span class="name"><b>classList</b><a href="#classList"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>classList()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="56" class="link-to-prism">src/app/layout/common/quick-chat/quick-chat.component.ts:56</a></div>
+                                </td>
+                            </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>Host binding for component classes</p>
+</div>
+
+                                <div class="io-description">
+                                    <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                                </div>
+                        </td>
+                    </tr>
+
+            </tbody>
+        </table>
+</section>
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { ScrollStrategy, ScrollStrategyOptions } from &#x27;@angular/cdk/overlay&#x27;;
+import { TextFieldModule } from &#x27;@angular/cdk/text-field&#x27;;
+import { DatePipe, DOCUMENT, NgClass, NgFor, NgIf, NgTemplateOutlet } from &#x27;@angular/common&#x27;;
+import { AfterViewInit, Component, ElementRef, HostBinding, HostListener, Inject, NgZone, OnDestroy, OnInit, Renderer2, ViewChild, ViewEncapsulation } from &#x27;@angular/core&#x27;;
+import { MatButtonModule } from &#x27;@angular/material/button&#x27;;
+import { MatFormFieldModule } from &#x27;@angular/material/form-field&#x27;;
+import { MatIconModule } from &#x27;@angular/material/icon&#x27;;
+import { MatInputModule } from &#x27;@angular/material/input&#x27;;
+import { FuseScrollbarDirective } from &#x27;@fuse/directives/scrollbar&#x27;;
+import { QuickChatService } from &#x27;app/layout/common/quick-chat/quick-chat.service&#x27;;
+import { Chat } from &#x27;app/layout/common/quick-chat/quick-chat.types&#x27;;
+import { Subject, takeUntil } from &#x27;rxjs&#x27;;
+
+@Component({
+    selector     : &#x27;quick-chat&#x27;,
+    templateUrl  : &#x27;./quick-chat.component.html&#x27;,
+    styleUrls    : [&#x27;./quick-chat.component.scss&#x27;],
+    encapsulation: ViewEncapsulation.None,
+    exportAs     : &#x27;quickChat&#x27;,
+    standalone   : true,
+    imports      : [NgClass, NgIf, MatIconModule, MatButtonModule, FuseScrollbarDirective, NgFor, NgTemplateOutlet, MatFormFieldModule, MatInputModule, TextFieldModule, DatePipe],
+})
+export class QuickChatComponent implements OnInit, AfterViewInit, OnDestroy
+{
+    @ViewChild(&#x27;messageInput&#x27;) messageInput: ElementRef;
+    chat: Chat;
+    chats: Chat[];
+    opened &#x3D; false;
+    selectedChat: Chat;
+    private _mutationObserver: MutationObserver;
+    private _scrollStrategy: ScrollStrategy &#x3D; this._scrollStrategyOptions.block();
+    private _overlay: HTMLElement;
+    private _unsubscribeAll: Subject&lt;any&gt; &#x3D; new Subject&lt;any&gt;();
+
+    /**
+     * Constructor
+     */
+    constructor(
+        @Inject(DOCUMENT) private _document: Document,
+        private _elementRef: ElementRef,
+        private _renderer2: Renderer2,
+        private _ngZone: NgZone,
+        private _quickChatService: QuickChatService,
+        private _scrollStrategyOptions: ScrollStrategyOptions,
+    )
+    {
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Decorated methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Host binding for component classes
+     */
+    @HostBinding(&#x27;class&#x27;) get classList(): any
+    {
+        return {
+            &#x27;quick-chat-opened&#x27;: this.opened,
+        };
+    }
+
+    /**
+     * Resize on &#x27;input&#x27; and &#x27;ngModelChange&#x27; events
+     *
+     * @private
+     */
+    @HostListener(&#x27;input&#x27;)
+    @HostListener(&#x27;ngModelChange&#x27;)
+    private _resizeMessageInput(): void
+    {
+        // This doesn&#x27;t need to trigger Angular&#x27;s change detection by itself
+        this._ngZone.runOutsideAngular(() &#x3D;&gt;
+        {
+            setTimeout(() &#x3D;&gt;
+            {
+                // Set the height to &#x27;auto&#x27; so we can correctly read the scrollHeight
+                this.messageInput.nativeElement.style.height &#x3D; &#x27;auto&#x27;;
+
+                // Get the scrollHeight and subtract the vertical padding
+                this.messageInput.nativeElement.style.height &#x3D; &#x60;${this.messageInput.nativeElement.scrollHeight}px&#x60;;
+            });
+        });
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Lifecycle hooks
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * On init
+     */
+    ngOnInit(): void
+    {
+        // Chat
+        this._quickChatService.chat$
+            .pipe(takeUntil(this._unsubscribeAll))
+            .subscribe((chat: Chat) &#x3D;&gt;
+            {
+                this.chat &#x3D; chat;
+            });
+
+        // Chats
+        this._quickChatService.chats$
+            .pipe(takeUntil(this._unsubscribeAll))
+            .subscribe((chats: Chat[]) &#x3D;&gt;
+            {
+                this.chats &#x3D; chats;
+            });
+
+        // Selected chat
+        this._quickChatService.chat$
+            .pipe(takeUntil(this._unsubscribeAll))
+            .subscribe((chat: Chat) &#x3D;&gt;
+            {
+                this.selectedChat &#x3D; chat;
+            });
+    }
+
+    /**
+     * After view init
+     */
+    ngAfterViewInit(): void
+    {
+        // Fix for Firefox.
+        //
+        // Because &#x27;position: sticky&#x27; doesn&#x27;t work correctly inside a &#x27;position: fixed&#x27; parent,
+        // adding the &#x27;.cdk-global-scrollblock&#x27; to the html element breaks the navigation&#x27;s position.
+        // This fixes the problem by reading the &#x27;top&#x27; value from the html element and adding it as a
+        // &#x27;marginTop&#x27; to the navigation itself.
+        this._mutationObserver &#x3D; new MutationObserver((mutations) &#x3D;&gt;
+        {
+            mutations.forEach((mutation) &#x3D;&gt;
+            {
+                const mutationTarget &#x3D; mutation.target as HTMLElement;
+                if ( mutation.attributeName &#x3D;&#x3D;&#x3D; &#x27;class&#x27; )
+                {
+                    if ( mutationTarget.classList.contains(&#x27;cdk-global-scrollblock&#x27;) )
+                    {
+                        const top &#x3D; parseInt(mutationTarget.style.top, 10);
+                        this._renderer2.setStyle(this._elementRef.nativeElement, &#x27;margin-top&#x27;, &#x60;${Math.abs(top)}px&#x60;);
+                    }
+                    else
+                    {
+                        this._renderer2.setStyle(this._elementRef.nativeElement, &#x27;margin-top&#x27;, null);
+                    }
+                }
+            });
+        });
+        this._mutationObserver.observe(this._document.documentElement, {
+            attributes     : true,
+            attributeFilter: [&#x27;class&#x27;],
+        });
+    }
+
+    /**
+     * On destroy
+     */
+    ngOnDestroy(): void
+    {
+        // Disconnect the mutation observer
+        this._mutationObserver.disconnect();
+
+        // Unsubscribe from all subscriptions
+        this._unsubscribeAll.next(null);
+        this._unsubscribeAll.complete();
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Public methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Open the panel
+     */
+    open(): void
+    {
+        // Return if the panel has already opened
+        if ( this.opened )
+        {
+            return;
+        }
+
+        // Open the panel
+        this._toggleOpened(true);
+    }
+
+    /**
+     * Close the panel
+     */
+    close(): void
+    {
+        // Return if the panel has already closed
+        if ( !this.opened )
+        {
+            return;
+        }
+
+        // Close the panel
+        this._toggleOpened(false);
+    }
+
+    /**
+     * Toggle the panel
+     */
+    toggle(): void
+    {
+        if ( this.opened )
+        {
+            this.close();
+        }
+        else
+        {
+            this.open();
+        }
+    }
+
+    /**
+     * Select the chat
+     *
+     * @param id
+     */
+    selectChat(id: string): void
+    {
+        // Open the panel
+        this._toggleOpened(true);
+
+        // Get the chat data
+        this._quickChatService.getChatById(id).subscribe();
+    }
+
+    /**
+     * Track by function for ngFor loops
+     *
+     * @param index
+     * @param item
+     */
+    trackByFn(index: number, item: any): any
+    {
+        return item.id || index;
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Private methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Show the backdrop
+     *
+     * @private
+     */
+    private _showOverlay(): void
+    {
+        // Try hiding the overlay in case there is one already opened
+        this._hideOverlay();
+
+        // Create the backdrop element
+        this._overlay &#x3D; this._renderer2.createElement(&#x27;div&#x27;);
+
+        // Return if overlay couldn&#x27;t be create for some reason
+        if ( !this._overlay )
+        {
+            return;
+        }
+
+        // Add a class to the backdrop element
+        this._overlay.classList.add(&#x27;quick-chat-overlay&#x27;);
+
+        // Append the backdrop to the parent of the panel
+        this._renderer2.appendChild(this._elementRef.nativeElement.parentElement, this._overlay);
+
+        // Enable block scroll strategy
+        this._scrollStrategy.enable();
+
+        // Add an event listener to the overlay
+        this._overlay.addEventListener(&#x27;click&#x27;, () &#x3D;&gt;
+        {
+            this.close();
+        });
+    }
+
+    /**
+     * Hide the backdrop
+     *
+     * @private
+     */
+    private _hideOverlay(): void
+    {
+        if ( !this._overlay )
+        {
+            return;
+        }
+
+        // If the backdrop still exists...
+        if ( this._overlay )
+        {
+            // Remove the backdrop
+            this._overlay.parentNode.removeChild(this._overlay);
+            this._overlay &#x3D; null;
+        }
+
+        // Disable block scroll strategy
+        this._scrollStrategy.disable();
+    }
+
+    /**
+     * Open/close the panel
+     *
+     * @param open
+     * @private
+     */
+    private _toggleOpened(open: boolean): void
+    {
+        // Set the opened
+        this.opened &#x3D; open;
+
+        // If the panel opens, show the overlay
+        if ( open )
+        {
+            this._showOverlay();
+        }
+        // Otherwise, hide the overlay
+        else
+        {
+            this._hideOverlay();
+        }
+    }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;fixed lg:sticky top-0 bottom-0 lg:left-full w-full sm:w-96 lg:w-16 lg:h-screen lg:shadow&quot;&gt;
+    &lt;div
+        class&#x3D;&quot;flex flex-col w-full sm:w-96 h-full transition-transform duration-400 ease-drawer bg-card&quot;
+        [ngClass]&#x3D;&quot;{&#x27;-translate-x-full sm:-translate-x-96 lg:-translate-x-80 shadow&#x27;: opened, &#x27;translate-x-0&#x27;: !opened}&quot;&gt;
+
+        &lt;!-- Header --&gt;
+        &lt;div
+            class&#x3D;&quot;quick-chat-header flex flex-0 items-center justify-start cursor-pointer&quot;
+            (click)&#x3D;&quot;toggle()&quot;&gt;
+
+            &lt;!-- Toggle --&gt;
+            &lt;ng-container *ngIf&#x3D;&quot;!opened || (opened &amp;&amp; !selectedChat)&quot;&gt;
+                &lt;div class&#x3D;&quot;flex flex-auto items-center justify-center&quot;&gt;
+                    &lt;div class&#x3D;&quot;flex flex-0 items-center justify-center w-16&quot;&gt;
+                        &lt;mat-icon
+                            class&#x3D;&quot;icon-size-6&quot;
+                            [svgIcon]&#x3D;&quot;&#x27;heroicons_outline:chat-bubble-left-right&#x27;&quot;&gt;&lt;/mat-icon&gt;
+                    &lt;/div&gt;
+                    &lt;div class&#x3D;&quot;text-lg font-medium text-secondary&quot;&gt;Team Chat&lt;/div&gt;
+                    &lt;button
+                        class&#x3D;&quot;ml-auto mr-4&quot;
+                        mat-icon-button&gt;
+                        &lt;mat-icon [svgIcon]&#x3D;&quot;&#x27;heroicons_outline:x-mark&#x27;&quot;&gt;&lt;/mat-icon&gt;
+                    &lt;/button&gt;
+                &lt;/div&gt;
+            &lt;/ng-container&gt;
+
+            &lt;!-- Contact info --&gt;
+            &lt;ng-container *ngIf&#x3D;&quot;opened &amp;&amp; selectedChat&quot;&gt;
+                &lt;div class&#x3D;&quot;flex flex-auto items-center ml-3&quot;&gt;
+                    &lt;div class&#x3D;&quot;relative flex flex-0 items-center justify-center w-10 h-10&quot;&gt;
+                        &lt;ng-container *ngIf&#x3D;&quot;chat.contact.avatar&quot;&gt;
+                            &lt;img
+                                class&#x3D;&quot;w-full h-full rounded-full object-cover&quot;
+                                [src]&#x3D;&quot;chat.contact.avatar&quot;
+                                alt&#x3D;&quot;Contact avatar&quot;/&gt;
+                        &lt;/ng-container&gt;
+                        &lt;ng-container *ngIf&#x3D;&quot;!chat.contact.avatar&quot;&gt;
+                            &lt;div class&#x3D;&quot;flex items-center justify-center w-full h-full rounded-full text-lg uppercase bg-gray-200 text-gray-600 dark:bg-gray-700 dark:text-gray-200&quot;&gt;
+                                {{chat.contact.name.charAt(0)}}
+                            &lt;/div&gt;
+                        &lt;/ng-container&gt;
+                    &lt;/div&gt;
+                    &lt;div class&#x3D;&quot;ml-4 text-lg font-medium leading-5 truncate&quot;&gt;{{chat.contact.name}}&lt;/div&gt;
+                    &lt;button
+                        class&#x3D;&quot;ml-auto mr-4&quot;
+                        mat-icon-button&gt;
+                        &lt;mat-icon [svgIcon]&#x3D;&quot;&#x27;heroicons_outline:x-mark&#x27;&quot;&gt;&lt;/mat-icon&gt;
+                    &lt;/button&gt;
+                &lt;/div&gt;
+            &lt;/ng-container&gt;
+        &lt;/div&gt;
+
+        &lt;!-- Content --&gt;
+        &lt;div class&#x3D;&quot;flex flex-auto border-t overflow-hidden&quot;&gt;
+
+            &lt;!-- Chat list --&gt;
+            &lt;div
+                class&#x3D;&quot;flex-0 w-16 h-full overflow-y-auto overscroll-y-contain sm:overflow-hidden sm:overscroll-auto&quot;
+                fuseScrollbar
+                [fuseScrollbarOptions]&#x3D;&quot;{wheelPropagation: false}&quot;&gt;
+                &lt;div class&#x3D;&quot;flex-auto&quot;&gt;
+                    &lt;ng-container *ngFor&#x3D;&quot;let chat of chats; trackBy: trackByFn&quot;&gt;
+                        &lt;div
+                            class&#x3D;&quot;flex items-center py-3 px-4 cursor-pointer&quot;
+                            [ngClass]&#x3D;&quot;{&#x27;hover:bg-gray-100 dark:hover:bg-hover&#x27;: !selectedChat || selectedChat.id !&#x3D;&#x3D; chat.id,
+                                        &#x27;bg-primary-50 dark:bg-hover&#x27;: selectedChat &amp;&amp; selectedChat.id &#x3D;&#x3D;&#x3D; chat.id}&quot;
+                            (click)&#x3D;&quot;selectChat(chat.id)&quot;&gt;
+                            &lt;div class&#x3D;&quot;relative flex flex-0 items-center justify-center w-8 h-8&quot;&gt;
+                                &lt;ng-container *ngIf&#x3D;&quot;chat.unreadCount &gt; 0&quot;&gt;
+                                    &lt;div
+                                        class&#x3D;&quot;absolute bottom-0 right-0 flex-0 w-2 h-2 -ml-0.5 rounded-full ring-2 ring-bg-card dark:ring-gray-900 bg-primary dark:bg-primary-500 text-on-primary&quot;
+                                        [class.ring-primary-50]&#x3D;&quot;selectedChat &amp;&amp; selectedChat.id &#x3D;&#x3D;&#x3D; chat.id&quot;&gt;&lt;/div&gt;
+                                &lt;/ng-container&gt;
+                                &lt;ng-container *ngIf&#x3D;&quot;chat.contact.avatar&quot;&gt;
+                                    &lt;img
+                                        class&#x3D;&quot;w-full h-full rounded-full object-cover&quot;
+                                        [src]&#x3D;&quot;chat.contact.avatar&quot;
+                                        alt&#x3D;&quot;Contact avatar&quot;/&gt;
+                                &lt;/ng-container&gt;
+                                &lt;ng-container *ngIf&#x3D;&quot;!chat.contact.avatar&quot;&gt;
+                                    &lt;div class&#x3D;&quot;flex items-center justify-center w-full h-full rounded-full text-lg uppercase bg-gray-200 text-gray-600 dark:bg-gray-700 dark:text-gray-200&quot;&gt;
+                                        {{chat.contact.name.charAt(0)}}
+                                    &lt;/div&gt;
+                                &lt;/ng-container&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/ng-container&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;!-- Conversation --&gt;
+            &lt;div class&#x3D;&quot;flex flex-col flex-auto border-l overflow-hidden bg-gray-50 dark:bg-transparent&quot;&gt;
+                &lt;ng-container *ngIf&#x3D;&quot;chat; else selectChatOrStartNew&quot;&gt;
+                    &lt;div class&#x3D;&quot;flex flex-col-reverse overflow-y-auto overscroll-y-contain&quot;&gt;
+                        &lt;div class&#x3D;&quot;flex flex-col flex-auto shrink p-6&quot;&gt;
+                            &lt;ng-container *ngFor&#x3D;&quot;let message of chat.messages; let i &#x3D; index; let first &#x3D; first; let last &#x3D; last; trackBy: trackByFn&quot;&gt;
+                                &lt;!-- Start of the day --&gt;
+                                &lt;ng-container *ngIf&#x3D;&quot;first || (chat.messages[i - 1].createdAt | date:&#x27;d&#x27;) !&#x3D;&#x3D; (message.createdAt | date:&#x27;d&#x27;)&quot;&gt;
+                                    &lt;div class&#x3D;&quot;flex items-center justify-center my-3 -mx-6&quot;&gt;
+                                        &lt;div class&#x3D;&quot;flex-auto border-b&quot;&gt;&lt;/div&gt;
+                                        &lt;div class&#x3D;&quot;flex-0 mx-4 text-sm font-medium leading-5 text-secondary&quot;&gt;
+                                            {{message.createdAt | date: &#x27;longDate&#x27;}}
+                                        &lt;/div&gt;
+                                        &lt;div class&#x3D;&quot;flex-auto border-b&quot;&gt;&lt;/div&gt;
+                                    &lt;/div&gt;
+                                &lt;/ng-container&gt;
+                                &lt;div
+                                    class&#x3D;&quot;flex flex-col&quot;
+                                    [ngClass]&#x3D;&quot;{&#x27;items-end&#x27;: message.isMine,
+                                                &#x27;items-start&#x27;: !message.isMine,
+                                                &#x27;mt-0.5&#x27;: i &gt; 0 &amp;&amp; chat.messages[i - 1].isMine &#x3D;&#x3D;&#x3D; message.isMine,
+                                                &#x27;mt-3&#x27;: i &gt; 0 &amp;&amp; chat.messages[i - 1].isMine !&#x3D;&#x3D; message.isMine}&quot;&gt;
+                                    &lt;!-- Bubble --&gt;
+                                    &lt;div
+                                        class&#x3D;&quot;relative max-w-3/4 px-3 py-2 rounded-lg&quot;
+                                        [ngClass]&#x3D;&quot;{&#x27;bg-blue-500 text-blue-50&#x27;: message.isMine,
+                                                    &#x27;bg-gray-500 text-gray-50&#x27;: !message.isMine}&quot;&gt;
+                                        &lt;!-- Speech bubble tail --&gt;
+                                        &lt;ng-container *ngIf&#x3D;&quot;last || chat.messages[i + 1].isMine !&#x3D;&#x3D; message.isMine&quot;&gt;
+                                            &lt;div
+                                                class&#x3D;&quot;absolute bottom-0 w-3&quot;
+                                                [ngClass]&#x3D;&quot;{&#x27;text-blue-500 -right-1 -mr-px mb-px&#x27;: message.isMine,
+                                                            &#x27;text-gray-500 -left-1 -ml-px mb-px -scale-x-1&#x27;: !message.isMine}&quot;&gt;
+                                                &lt;ng-container *ngTemplateOutlet&#x3D;&quot;speechBubbleExtension&quot;&gt;&lt;/ng-container&gt;
+                                            &lt;/div&gt;
+                                        &lt;/ng-container&gt;
+                                        &lt;!-- Message --&gt;
+                                        &lt;div
+                                            class&#x3D;&quot;min-w-4 leading-5&quot;
+                                            [innerHTML]&#x3D;&quot;message.value&quot;&gt;
+                                        &lt;/div&gt;
+                                    &lt;/div&gt;
+                                    &lt;!-- Time --&gt;
+                                    &lt;ng-container
+                                        *ngIf&#x3D;&quot;first
+                                       || last
+                                       || chat.messages[i + 1].isMine !&#x3D;&#x3D; message.isMine
+                                       || chat.messages[i + 1].createdAt !&#x3D;&#x3D; message.createdAt&quot;&gt;
+                                        &lt;div
+                                            class&#x3D;&quot;my-0.5 text-sm font-medium text-secondary&quot;
+                                            [ngClass]&#x3D;&quot;{&#x27;mr-3&#x27;: message.isMine,
+                                                        &#x27;ml-3&#x27;: !message.isMine}&quot;&gt;
+                                            {{message.createdAt | date:&#x27;HH:mm&#x27;}}
+                                        &lt;/div&gt;
+                                    &lt;/ng-container&gt;
+                                &lt;/div&gt;
+                            &lt;/ng-container&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+
+                    &lt;!-- Message field --&gt;
+                    &lt;div class&#x3D;&quot;flex items-end p-4 border-t bg-gray-50 dark:bg-transparent&quot;&gt;
+                        &lt;mat-form-field
+                            class&#x3D;&quot;fuse-mat-dense fuse-mat-rounded fuse-mat-bold w-full&quot;
+                            [subscriptSizing]&#x3D;&quot;&#x27;dynamic&#x27;&quot;&gt;
+                            &lt;textarea
+                                matInput
+                                cdkTextareaAutosize
+                                #messageInput&gt;&lt;/textarea&gt;
+                        &lt;/mat-form-field&gt;
+                        &lt;div class&#x3D;&quot;flex items-center h-11 my-px ml-4&quot;&gt;
+                            &lt;button
+                                mat-icon-button&gt;
+                                &lt;mat-icon
+                                    class&#x3D;&quot;rotate-90&quot;
+                                    [svgIcon]&#x3D;&quot;&#x27;heroicons_outline:paper-airplane&#x27;&quot;&gt;&lt;/mat-icon&gt;
+                            &lt;/button&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/ng-container&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Select chat or start new template --&gt;
+&lt;ng-template #selectChatOrStartNew&gt;
+    &lt;div class&#x3D;&quot;flex flex-col flex-auto items-center justify-center w-full h-full p-4&quot;&gt;
+        &lt;mat-icon
+            class&#x3D;&quot;icon-size-24&quot;
+            [svgIcon]&#x3D;&quot;&#x27;heroicons_outline:chat-bubble-bottom-center-text&#x27;&quot;&gt;&lt;/mat-icon&gt;
+        &lt;div class&#x3D;&quot;mt-4 text-xl text-center font-medium tracking-tight text-secondary&quot;&gt;Select a conversation&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/ng-template&gt;
+
+&lt;!-- Speech bubble tail SVG --&gt;
+&lt;!-- @formatter:off --&gt;
+&lt;ng-template #speechBubbleExtension&gt;
+    &lt;svg width&#x3D;&quot;100%&quot; height&#x3D;&quot;100%&quot; viewBox&#x3D;&quot;0 0 66 66&quot; xmlns&#x3D;&quot;http://www.w3.org/2000/svg&quot;&gt;
+        &lt;g id&#x3D;&quot;Page-1&quot; stroke&#x3D;&quot;none&quot; stroke-width&#x3D;&quot;1&quot; fill&#x3D;&quot;none&quot; fill-rule&#x3D;&quot;evenodd&quot;&gt;
+            &lt;path d&#x3D;&quot;M1.01522827,0.516204834 C-8.83532715,54.3062744 61.7609863,70.5215302 64.8009949,64.3061218 C68.8074951,54.8859711 30.1663208,52.9997559 37.5036011,0.516204834 L1.01522827,0.516204834 Z&quot; fill&#x3D;&quot;currentColor&quot; fill-rule&#x3D;&quot;nonzero&quot;&gt;&lt;/path&gt;
+        &lt;/g&gt;
+    &lt;/svg&gt;
+&lt;/ng-template&gt;
+&lt;!-- @formatter:on --&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="styleData">
+                <p class="comment">
+                    <code>./quick-chat.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">quick-chat {
+    z-index: 399;
+
+    &gt; div {
+        overflow: hidden;
+    }
+
+    &amp;.quick-chat-opened {
+
+        &gt; div {
+            overflow: visible;
+        }
+    }
+
+    &amp;:not(.quick-chat-opened) {
+
+        &gt; div {
+            overflow: visible;
+            animation: addOverflowHidden 1ms linear 400ms;
+            animation-fill-mode: forwards;
+        }
+    }
+}
+
+/* Adjustments depending on the selected layout */
+.quick-chat-header {
+    height: 64px;
+
+    enterprise-layout &amp;,
+    modern-layout &amp; {
+        height: 80px !important;
+    }
+}
+
+
+/* Overlay */
+.quick-chat-overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 299;
+    opacity: 1;
+    background-color: transparent;
+}
+
+@keyframes addOverflowHidden {
+    0% {
+        overflow: visible
+    }
+    99% {
+        overflow: visible;
+    }
+    100% {
+        overflow: hidden;
+    }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="fixed lg:sticky top-0 bottom-0 lg:left-full w-full sm:w-96 lg:w-16 lg:h-screen lg:shadow">    <div        class="flex flex-col w-full sm:w-96 h-full transition-transform duration-400 ease-drawer bg-card"        [ngClass]="{\'-translate-x-full sm:-translate-x-96 lg:-translate-x-80 shadow\': opened, \'translate-x-0\': !opened}">        <!-- Header -->        <div            class="quick-chat-header flex flex-0 items-center justify-start cursor-pointer"            (click)="toggle()">            <!-- Toggle -->            <ng-container *ngIf="!opened || (opened && !selectedChat)">                <div class="flex flex-auto items-center justify-center">                    <div class="flex flex-0 items-center justify-center w-16">                        <mat-icon                            class="icon-size-6"                            [svgIcon]="\'heroicons_outline:chat-bubble-left-right\'"></mat-icon>                    </div>                    <div class="text-lg font-medium text-secondary">Team Chat</div>                    <button                        class="ml-auto mr-4"                        mat-icon-button>                        <mat-icon [svgIcon]="\'heroicons_outline:x-mark\'"></mat-icon>                    </button>                </div>            </ng-container>            <!-- Contact info -->            <ng-container *ngIf="opened && selectedChat">                <div class="flex flex-auto items-center ml-3">                    <div class="relative flex flex-0 items-center justify-center w-10 h-10">                        <ng-container *ngIf="chat.contact.avatar">                            <img                                class="w-full h-full rounded-full object-cover"                                [src]="chat.contact.avatar"                                alt="Contact avatar"/>                        </ng-container>                        <ng-container *ngIf="!chat.contact.avatar">                            <div class="flex items-center justify-center w-full h-full rounded-full text-lg uppercase bg-gray-200 text-gray-600 dark:bg-gray-700 dark:text-gray-200">                                {{chat.contact.name.charAt(0)}}                            </div>                        </ng-container>                    </div>                    <div class="ml-4 text-lg font-medium leading-5 truncate">{{chat.contact.name}}</div>                    <button                        class="ml-auto mr-4"                        mat-icon-button>                        <mat-icon [svgIcon]="\'heroicons_outline:x-mark\'"></mat-icon>                    </button>                </div>            </ng-container>        </div>        <!-- Content -->        <div class="flex flex-auto border-t overflow-hidden">            <!-- Chat list -->            <div                class="flex-0 w-16 h-full overflow-y-auto overscroll-y-contain sm:overflow-hidden sm:overscroll-auto"                fuseScrollbar                [fuseScrollbarOptions]="{wheelPropagation: false}">                <div class="flex-auto">                    <ng-container *ngFor="let chat of chats; trackBy: trackByFn">                        <div                            class="flex items-center py-3 px-4 cursor-pointer"                            [ngClass]="{\'hover:bg-gray-100 dark:hover:bg-hover\': !selectedChat || selectedChat.id !== chat.id,                                        \'bg-primary-50 dark:bg-hover\': selectedChat && selectedChat.id === chat.id}"                            (click)="selectChat(chat.id)">                            <div class="relative flex flex-0 items-center justify-center w-8 h-8">                                <ng-container *ngIf="chat.unreadCount > 0">                                    <div                                        class="absolute bottom-0 right-0 flex-0 w-2 h-2 -ml-0.5 rounded-full ring-2 ring-bg-card dark:ring-gray-900 bg-primary dark:bg-primary-500 text-on-primary"                                        [class.ring-primary-50]="selectedChat && selectedChat.id === chat.id"></div>                                </ng-container>                                <ng-container *ngIf="chat.contact.avatar">                                    <img                                        class="w-full h-full rounded-full object-cover"                                        [src]="chat.contact.avatar"                                        alt="Contact avatar"/>                                </ng-container>                                <ng-container *ngIf="!chat.contact.avatar">                                    <div class="flex items-center justify-center w-full h-full rounded-full text-lg uppercase bg-gray-200 text-gray-600 dark:bg-gray-700 dark:text-gray-200">                                        {{chat.contact.name.charAt(0)}}                                    </div>                                </ng-container>                            </div>                        </div>                    </ng-container>                </div>            </div>            <!-- Conversation -->            <div class="flex flex-col flex-auto border-l overflow-hidden bg-gray-50 dark:bg-transparent">                <ng-container *ngIf="chat; else selectChatOrStartNew">                    <div class="flex flex-col-reverse overflow-y-auto overscroll-y-contain">                        <div class="flex flex-col flex-auto shrink p-6">                            <ng-container *ngFor="let message of chat.messages; let i = index; let first = first; let last = last; trackBy: trackByFn">                                <!-- Start of the day -->                                <ng-container *ngIf="first || (chat.messages[i - 1].createdAt | date:\'d\') !== (message.createdAt | date:\'d\')">                                    <div class="flex items-center justify-center my-3 -mx-6">                                        <div class="flex-auto border-b"></div>                                        <div class="flex-0 mx-4 text-sm font-medium leading-5 text-secondary">                                            {{message.createdAt | date: \'longDate\'}}                                        </div>                                        <div class="flex-auto border-b"></div>                                    </div>                                </ng-container>                                <div                                    class="flex flex-col"                                    [ngClass]="{\'items-end\': message.isMine,                                                \'items-start\': !message.isMine,                                                \'mt-0.5\': i > 0 && chat.messages[i - 1].isMine === message.isMine,                                                \'mt-3\': i > 0 && chat.messages[i - 1].isMine !== message.isMine}">                                    <!-- Bubble -->                                    <div                                        class="relative max-w-3/4 px-3 py-2 rounded-lg"                                        [ngClass]="{\'bg-blue-500 text-blue-50\': message.isMine,                                                    \'bg-gray-500 text-gray-50\': !message.isMine}">                                        <!-- Speech bubble tail -->                                        <ng-container *ngIf="last || chat.messages[i + 1].isMine !== message.isMine">                                            <div                                                class="absolute bottom-0 w-3"                                                [ngClass]="{\'text-blue-500 -right-1 -mr-px mb-px\': message.isMine,                                                            \'text-gray-500 -left-1 -ml-px mb-px -scale-x-1\': !message.isMine}">                                                <ng-container *ngTemplateOutlet="speechBubbleExtension"></ng-container>                                            </div>                                        </ng-container>                                        <!-- Message -->                                        <div                                            class="min-w-4 leading-5"                                            [innerHTML]="message.value">                                        </div>                                    </div>                                    <!-- Time -->                                    <ng-container                                        *ngIf="first                                       || last                                       || chat.messages[i + 1].isMine !== message.isMine                                       || chat.messages[i + 1].createdAt !== message.createdAt">                                        <div                                            class="my-0.5 text-sm font-medium text-secondary"                                            [ngClass]="{\'mr-3\': message.isMine,                                                        \'ml-3\': !message.isMine}">                                            {{message.createdAt | date:\'HH:mm\'}}                                        </div>                                    </ng-container>                                </div>                            </ng-container>                        </div>                    </div>                    <!-- Message field -->                    <div class="flex items-end p-4 border-t bg-gray-50 dark:bg-transparent">                        <mat-form-field                            class="fuse-mat-dense fuse-mat-rounded fuse-mat-bold w-full"                            [subscriptSizing]="\'dynamic\'">                            <textarea                                matInput                                cdkTextareaAutosize                                #messageInput></textarea>                        </mat-form-field>                        <div class="flex items-center h-11 my-px ml-4">                            <button                                mat-icon-button>                                <mat-icon                                    class="rotate-90"                                    [svgIcon]="\'heroicons_outline:paper-airplane\'"></mat-icon>                            </button>                        </div>                    </div>                </ng-container>            </div>        </div>    </div></div><!-- Select chat or start new template --><ng-template #selectChatOrStartNew>    <div class="flex flex-col flex-auto items-center justify-center w-full h-full p-4">        <mat-icon            class="icon-size-24"            [svgIcon]="\'heroicons_outline:chat-bubble-bottom-center-text\'"></mat-icon>        <div class="mt-4 text-xl text-center font-medium tracking-tight text-secondary">Select a conversation</div>    </div></ng-template><!-- Speech bubble tail SVG --><!-- @formatter:off --><ng-template #speechBubbleExtension>    <svg width="100%" height="100%" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">        <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">            <path d="M1.01522827,0.516204834 C-8.83532715,54.3062744 61.7609863,70.5215302 64.8009949,64.3061218 C68.8074951,54.8859711 30.1663208,52.9997559 37.5036011,0.516204834 L1.01522827,0.516204834 Z" fill="currentColor" fill-rule="nonzero"></path>        </g>    </svg></ng-template><!-- @formatter:on --></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AuthConfirmationRequiredComponent', 'selector': 'auth-confirmation-required'},{'name': 'AuthForgotPasswordComponent', 'selector': 'auth-forgot-password'},{'name': 'AuthResetPasswordComponent', 'selector': 'auth-reset-password'},{'name': 'AuthSignInComponent', 'selector': 'auth-sign-in'},{'name': 'AuthSignOutComponent', 'selector': 'auth-sign-out'},{'name': 'AuthSignUpComponent', 'selector': 'auth-sign-up'},{'name': 'AuthUnlockSessionComponent', 'selector': 'auth-unlock-session'},{'name': 'CenteredLayoutComponent', 'selector': 'centered-layout'},{'name': 'ClassicLayoutComponent', 'selector': 'classic-layout'},{'name': 'ClassyLayoutComponent', 'selector': 'classy-layout'},{'name': 'CompactLayoutComponent', 'selector': 'compact-layout'},{'name': 'DenseLayoutComponent', 'selector': 'dense-layout'},{'name': 'EmptyLayoutComponent', 'selector': 'empty-layout'},{'name': 'EnterpriseLayoutComponent', 'selector': 'enterprise-layout'},{'name': 'Error404Component', 'selector': 'error-404'},{'name': 'Error500Component', 'selector': 'error-500'},{'name': 'ExampleComponent', 'selector': 'example'},{'name': 'FuseAlertComponent', 'selector': 'fuse-alert'},{'name': 'FuseCardComponent', 'selector': 'fuse-card'},{'name': 'FuseConfirmationDialogComponent', 'selector': 'fuse-confirmation-dialog'},{'name': 'FuseDrawerComponent', 'selector': 'fuse-drawer'},{'name': 'FuseFullscreenComponent', 'selector': 'fuse-fullscreen'},{'name': 'FuseHighlightComponent', 'selector': 'textarea[fuse-highlight]'},{'name': 'FuseHorizontalNavigationBasicItemComponent', 'selector': 'fuse-horizontal-navigation-basic-item'},{'name': 'FuseHorizontalNavigationBranchItemComponent', 'selector': 'fuse-horizontal-navigation-branch-item'},{'name': 'FuseHorizontalNavigationComponent', 'selector': 'fuse-horizontal-navigation'},{'name': 'FuseHorizontalNavigationDividerItemComponent', 'selector': 'fuse-horizontal-navigation-divider-item'},{'name': 'FuseHorizontalNavigationSpacerItemComponent', 'selector': 'fuse-horizontal-navigation-spacer-item'},{'name': 'FuseLoadingBarComponent', 'selector': 'fuse-loading-bar'},{'name': 'FuseMasonryComponent', 'selector': 'fuse-masonry'},{'name': 'FuseVerticalNavigationAsideItemComponent', 'selector': 'fuse-vertical-navigation-aside-item'},{'name': 'FuseVerticalNavigationBasicItemComponent', 'selector': 'fuse-vertical-navigation-basic-item'},{'name': 'FuseVerticalNavigationCollapsableItemComponent', 'selector': 'fuse-vertical-navigation-collapsable-item'},{'name': 'FuseVerticalNavigationComponent', 'selector': 'fuse-vertical-navigation'},{'name': 'FuseVerticalNavigationDividerItemComponent', 'selector': 'fuse-vertical-navigation-divider-item'},{'name': 'FuseVerticalNavigationGroupItemComponent', 'selector': 'fuse-vertical-navigation-group-item'},{'name': 'FuseVerticalNavigationSpacerItemComponent', 'selector': 'fuse-vertical-navigation-spacer-item'},{'name': 'FuturisticLayoutComponent', 'selector': 'futuristic-layout'},{'name': 'LandingHomeComponent', 'selector': 'landing-home'},{'name': 'LanguagesComponent', 'selector': 'languages'},{'name': 'LayoutComponent', 'selector': 'layout'},{'name': 'MaterialLayoutComponent', 'selector': 'material-layout'},{'name': 'MessagesComponent', 'selector': 'messages'},{'name': 'ModernLayoutComponent', 'selector': 'modern-layout'},{'name': 'NotificationsComponent', 'selector': 'notifications'},{'name': 'ProjectComponent', 'selector': 'project'},{'name': 'QuickChatComponent', 'selector': 'quick-chat'},{'name': 'SearchComponent', 'selector': 'search'},{'name': 'SettingsAccountComponent', 'selector': 'settings-account'},{'name': 'SettingsComponent', 'selector': 'settings'},{'name': 'SettingsComponent', 'selector': 'settings'},{'name': 'SettingsNotificationsComponent', 'selector': 'settings-notifications'},{'name': 'SettingsPlanBillingComponent', 'selector': 'settings-plan-billing'},{'name': 'SettingsSecurityComponent', 'selector': 'settings-security'},{'name': 'SettingsTeamComponent', 'selector': 'settings-team'},{'name': 'ShortcutsComponent', 'selector': 'shortcuts'},{'name': 'ThinLayoutComponent', 'selector': 'thin-layout'},{'name': 'UserComponent', 'selector': 'user'}];
+    var DIRECTIVES = [{'name': 'FuseScrollbarDirective', 'selector': '[fuseScrollbar]'},{'name': 'FuseScrollResetDirective', 'selector': '[fuseScrollReset]'}];
+    var ACTUAL_COMPONENT = {'name': 'QuickChatComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'QuickChatComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

@@ -1,0 +1,1763 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>ctu-task-management documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
+            <a href="../" class="navbar-brand">ctu-task-management documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  SearchComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/layout/common/search/search.component.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code>OnChanges</code>
+                <code>OnInit</code>
+                <code>OnDestroy</code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+            <tr>
+                <td class="col-md-3">encapsulation</td>
+                <td class="col-md-9"><code>ViewEncapsulation.None</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">exportAs</td>
+                <td class="col-md-9"><code>fuseSearch</code></td>
+            </tr>
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">providers</td>
+                <td class="col-md-9">
+                            <code>{
+    provide: MAT_AUTOCOMPLETE_SCROLL_STRATEGY, useFactory: () &#x3D;&gt; {
+        const overlay &#x3D; inject(Overlay);
+        return () &#x3D;&gt; overlay.scrollStrategies.block();
+    },
+}</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>search</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">Standalone</td>
+                <td class="col-md-9"><code>true</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                            <code>NgIf</code>
+                            <code>MatButtonModule</code>
+                            <code>MatIconModule</code>
+                            <code>FormsModule</code>
+                            <code>MatAutocompleteModule</code>
+                            <code>ReactiveFormsModule</code>
+                            <code>MatOptionModule</code>
+                            <code>NgFor</code>
+                            <code>RouterLink</code>
+                            <code>NgTemplateOutlet</code>
+                            <code>MatFormFieldModule</code>
+                            <code>MatInputModule</code>
+                            <code>NgClass</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./search.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_matAutocomplete" >_matAutocomplete</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_unsubscribeAll" >_unsubscribeAll</a>
+                            </li>
+                            <li>
+                                <a href="#opened" >opened</a>
+                            </li>
+                            <li>
+                                <a href="#resultSets" >resultSets</a>
+                            </li>
+                            <li>
+                                <a href="#searchControl" >searchControl</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#close" >close</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnChanges" >ngOnChanges</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnDestroy" >ngOnDestroy</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#onKeydown" >onKeydown</a>
+                            </li>
+                            <li>
+                                <a href="#open" >open</a>
+                            </li>
+                            <li>
+                                <a href="#trackByFn" >trackByFn</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Inputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#appearance" >appearance</a>
+                            </li>
+                            <li>
+                                <a href="#debounce" >debounce</a>
+                            </li>
+                            <li>
+                                <a href="#minLength" >minLength</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Outputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#search" >search</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>HostBindings</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#class" >class</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Accessors</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                    <a href="#classList" >classList</a>
+                                </li>
+                                <li>
+                                    <a href="#barSearchInput" >barSearchInput</a>
+                                </li>
+                                <li>
+                                    <a href="#matAutocomplete" >matAutocomplete</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(_elementRef: ElementRef, _httpClient: HttpClient, _renderer2: Renderer2)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">src/app/layout/common/search/search.component.ts:46</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Constructor</p>
+</div>
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>_elementRef</td>
+                                                  
+                                                        <td>
+                                                                    <code>ElementRef</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>_httpClient</td>
+                                                  
+                                                        <td>
+                                                                    <code>HttpClient</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>_renderer2</td>
+                                                  
+                                                        <td>
+                                                                    <code>Renderer2</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+    <section data-compodoc="block-inputs">
+    <h3 id="inputs">Inputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="appearance"></a>
+                        <b>appearance</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>&quot;basic&quot; | &quot;bar&quot;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;basic&#x27;</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">src/app/layout/common/search/search.component.ts:37</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="debounce"></a>
+                        <b>debounce</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>300</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">src/app/layout/common/search/search.component.ts:38</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="minLength"></a>
+                        <b>minLength</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>2</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/app/layout/common/search/search.component.ts:39</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
+    <section data-compodoc="block-outputs">
+    <h3 id="outputs">Outputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="search"></a>
+                        <b>search</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>EventEmitter&lt;any&gt;</code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">src/app/layout/common/search/search.component.ts:40</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
+    <section data-compodoc="block-properties">
+    <h3>HostBindings</h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="class"></a>
+                    <span class="name">
+                        <span ><b>class</b></span>
+                        <a href="#class"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="66" class="link-to-prism">src/app/layout/common/search/search.component.ts:66</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Host binding for component classes</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="close"></a>
+                    <span class="name">
+                        <span ><b>close</b></span>
+                        <a href="#close"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>close()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="220"
+                            class="link-to-prism">src/app/layout/common/search/search.component.ts:220</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Close the search</p>
+<ul>
+<li>Used in &#39;bar&#39;</li>
+</ul>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnChanges"></a>
+                    <span class="name">
+                        <span ><b>ngOnChanges</b></span>
+                        <a href="#ngOnChanges"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnChanges(changes: SimpleChanges)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="116"
+                            class="link-to-prism">src/app/layout/common/search/search.component.ts:116</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>On changes</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>changes</td>
+                                    <td>
+                                            <code>SimpleChanges</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnDestroy"></a>
+                    <span class="name">
+                        <span ><b>ngOnDestroy</b></span>
+                        <a href="#ngOnDestroy"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnDestroy()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="171"
+                            class="link-to-prism">src/app/layout/common/search/search.component.ts:171</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>On destroy</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="130"
+                            class="link-to-prism">src/app/layout/common/search/search.component.ts:130</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>On init</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onKeydown"></a>
+                    <span class="name">
+                        <span ><b>onKeydown</b></span>
+                        <a href="#onKeydown"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onKeydown(event: KeyboardEvent)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="187"
+                            class="link-to-prism">src/app/layout/common/search/search.component.ts:187</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>On keydown of the search input</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>event</td>
+                                    <td>
+                                            <code>KeyboardEvent</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="open"></a>
+                    <span class="name">
+                        <span ><b>open</b></span>
+                        <a href="#open"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>open()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="204"
+                            class="link-to-prism">src/app/layout/common/search/search.component.ts:204</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Open the search
+Used in &#39;bar&#39;</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="trackByFn"></a>
+                    <span class="name">
+                        <span ><b>trackByFn</b></span>
+                        <a href="#trackByFn"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>trackByFn(index: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, item: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="241"
+                            class="link-to-prism">src/app/layout/common/search/search.component.ts:241</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Track by function for ngFor loops</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>index</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>item</td>
+                                    <td>
+                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_matAutocomplete"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>_matAutocomplete</b></span>
+                        <a href="#_matAutocomplete"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>MatAutocomplete</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">src/app/layout/common/search/search.component.ts:45</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_unsubscribeAll"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>_unsubscribeAll</b></span>
+                        <a href="#_unsubscribeAll"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Subject&lt;any&gt;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new Subject&lt;any&gt;()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">src/app/layout/common/search/search.component.ts:46</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="opened"></a>
+                    <span class="name">
+                        <span ><b>opened</b></span>
+                        <a href="#opened"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">src/app/layout/common/search/search.component.ts:42</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="resultSets"></a>
+                    <span class="name">
+                        <span ><b>resultSets</b></span>
+                        <a href="#resultSets"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>any[]</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">src/app/layout/common/search/search.component.ts:43</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="searchControl"></a>
+                    <span class="name">
+                        <span ><b>searchControl</b></span>
+                        <a href="#searchControl"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>UntypedFormControl</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new UntypedFormControl()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">src/app/layout/common/search/search.component.ts:44</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-accessors">
+    <h3 id="accessors">
+        Accessors
+    </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="classList"></a>
+                        <span class="name"><b>classList</b><a href="#classList"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>classList()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="66" class="link-to-prism">src/app/layout/common/search/search.component.ts:66</a></div>
+                                </td>
+                            </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>Host binding for component classes</p>
+</div>
+
+                                <div class="io-description">
+                                    <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                                </div>
+                        </td>
+                    </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="barSearchInput"></a>
+                        <span class="name"><b>barSearchInput</b><a href="#barSearchInput"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>set</b><code>barSearchInput(value: ElementRef)</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="81" class="link-to-prism">src/app/layout/common/search/search.component.ts:81</a></div>
+                                </td>
+                            </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>Setter for bar search input</p>
+</div>
+
+                                <div class="io-description">
+                                        <b>Parameters :</b>
+                                        <table class="params">
+                                            <thead>
+                                                <tr>
+                                                    <td>Name</td>
+                                                        <td>Type</td>
+                                                    <td>Optional</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                    <tr>
+                                                            <td>value</td>
+                                                    
+                                                            <td>
+                                                                        <code>ElementRef</code>
+                                                            </td>
+                                                    
+                                                        <td>
+                                                                No
+                                                        </td>
+                                                        
+                                                    </tr>
+                                            </tbody>
+                                        </table>
+                                </div>
+                                <div>
+                                </div>
+                                <div class="io-description">
+                                    <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                                </div>
+                        </td>
+                    </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="matAutocomplete"></a>
+                        <span class="name"><b>matAutocomplete</b><a href="#matAutocomplete"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>set</b><code>matAutocomplete(value: MatAutocomplete)</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="102" class="link-to-prism">src/app/layout/common/search/search.component.ts:102</a></div>
+                                </td>
+                            </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>Setter for mat-autocomplete element reference</p>
+</div>
+
+                                <div class="io-description">
+                                        <b>Parameters :</b>
+                                        <table class="params">
+                                            <thead>
+                                                <tr>
+                                                    <td>Name</td>
+                                                        <td>Type</td>
+                                                    <td>Optional</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                    <tr>
+                                                            <td>value</td>
+                                                    
+                                                            <td>
+                                                                        <code>MatAutocomplete</code>
+                                                            </td>
+                                                    
+                                                        <td>
+                                                                No
+                                                        </td>
+                                                        
+                                                    </tr>
+                                            </tbody>
+                                        </table>
+                                </div>
+                                <div>
+                                </div>
+                                <div class="io-description">
+                                    <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                                </div>
+                        </td>
+                    </tr>
+            </tbody>
+        </table>
+</section>
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Overlay } from &#x27;@angular/cdk/overlay&#x27;;
+import { NgClass, NgFor, NgIf, NgTemplateOutlet } from &#x27;@angular/common&#x27;;
+import { HttpClient } from &#x27;@angular/common/http&#x27;;
+import { Component, ElementRef, EventEmitter, HostBinding, inject, Input, OnChanges, OnDestroy, OnInit, Output, Renderer2, SimpleChanges, ViewChild, ViewEncapsulation } from &#x27;@angular/core&#x27;;
+import { FormsModule, ReactiveFormsModule, UntypedFormControl } from &#x27;@angular/forms&#x27;;
+import { MAT_AUTOCOMPLETE_SCROLL_STRATEGY, MatAutocomplete, MatAutocompleteModule } from &#x27;@angular/material/autocomplete&#x27;;
+import { MatButtonModule } from &#x27;@angular/material/button&#x27;;
+import { MatOptionModule } from &#x27;@angular/material/core&#x27;;
+import { MatFormFieldModule } from &#x27;@angular/material/form-field&#x27;;
+import { MatIconModule } from &#x27;@angular/material/icon&#x27;;
+import { MatInputModule } from &#x27;@angular/material/input&#x27;;
+import { RouterLink } from &#x27;@angular/router&#x27;;
+import { fuseAnimations } from &#x27;@fuse/animations/public-api&#x27;;
+import { debounceTime, filter, map, Subject, takeUntil } from &#x27;rxjs&#x27;;
+
+@Component({
+    selector     : &#x27;search&#x27;,
+    templateUrl  : &#x27;./search.component.html&#x27;,
+    encapsulation: ViewEncapsulation.None,
+    exportAs     : &#x27;fuseSearch&#x27;,
+    animations   : fuseAnimations,
+    standalone   : true,
+    imports      : [NgIf, MatButtonModule, MatIconModule, FormsModule, MatAutocompleteModule, ReactiveFormsModule, MatOptionModule, NgFor, RouterLink, NgTemplateOutlet, MatFormFieldModule, MatInputModule, NgClass],
+    providers    : [
+        {
+            provide   : MAT_AUTOCOMPLETE_SCROLL_STRATEGY,
+            useFactory: () &#x3D;&gt;
+            {
+                const overlay &#x3D; inject(Overlay);
+                return () &#x3D;&gt; overlay.scrollStrategies.block();
+            },
+        },
+    ],
+})
+export class SearchComponent implements OnChanges, OnInit, OnDestroy
+{
+    @Input() appearance: &#x27;basic&#x27; | &#x27;bar&#x27; &#x3D; &#x27;basic&#x27;;
+    @Input() debounce &#x3D; 300;
+    @Input() minLength &#x3D; 2;
+    @Output() search: EventEmitter&lt;any&gt; &#x3D; new EventEmitter&lt;any&gt;();
+
+    opened &#x3D; false;
+    resultSets: any[];
+    searchControl: UntypedFormControl &#x3D; new UntypedFormControl();
+    private _matAutocomplete: MatAutocomplete;
+    private _unsubscribeAll: Subject&lt;any&gt; &#x3D; new Subject&lt;any&gt;();
+
+    /**
+     * Constructor
+     */
+    constructor(
+        private _elementRef: ElementRef,
+        private _httpClient: HttpClient,
+        private _renderer2: Renderer2,
+    )
+    {
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Accessors
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Host binding for component classes
+     */
+    @HostBinding(&#x27;class&#x27;) get classList(): any
+    {
+        return {
+            &#x27;search-appearance-bar&#x27;  : this.appearance &#x3D;&#x3D;&#x3D; &#x27;bar&#x27;,
+            &#x27;search-appearance-basic&#x27;: this.appearance &#x3D;&#x3D;&#x3D; &#x27;basic&#x27;,
+            &#x27;search-opened&#x27;          : this.opened,
+        };
+    }
+
+    /**
+     * Setter for bar search input
+     *
+     * @param value
+     */
+    @ViewChild(&#x27;barSearchInput&#x27;)
+    set barSearchInput(value: ElementRef)
+    {
+        // If the value exists, it means that the search input
+        // is now in the DOM, and we can focus on the input..
+        if ( value )
+        {
+            // Give Angular time to complete the change detection cycle
+            setTimeout(() &#x3D;&gt;
+            {
+                // Focus to the input element
+                value.nativeElement.focus();
+            });
+        }
+    }
+
+    /**
+     * Setter for mat-autocomplete element reference
+     *
+     * @param value
+     */
+    @ViewChild(&#x27;matAutocomplete&#x27;)
+    set matAutocomplete(value: MatAutocomplete)
+    {
+        this._matAutocomplete &#x3D; value;
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Lifecycle hooks
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * On changes
+     *
+     * @param changes
+     */
+    ngOnChanges(changes: SimpleChanges): void
+    {
+        // Appearance
+        if ( &#x27;appearance&#x27; in changes )
+        {
+            // To prevent any issues, close the
+            // search after changing the appearance
+            this.close();
+        }
+    }
+
+    /**
+     * On init
+     */
+    ngOnInit(): void
+    {
+        // Subscribe to the search field value changes
+        this.searchControl.valueChanges
+            .pipe(
+                debounceTime(this.debounce),
+                takeUntil(this._unsubscribeAll),
+                map((value) &#x3D;&gt;
+                {
+                    // Set the resultSets to null if there is no value or
+                    // the length of the value is smaller than the minLength
+                    // so the autocomplete panel can be closed
+                    if ( !value || value.length &lt; this.minLength )
+                    {
+                        this.resultSets &#x3D; null;
+                    }
+
+                    // Continue
+                    return value;
+                }),
+                // Filter out undefined/null/false statements and also
+                // filter out the values that are smaller than minLength
+                filter(value &#x3D;&gt; value &amp;&amp; value.length &gt;&#x3D; this.minLength),
+            )
+            .subscribe((value) &#x3D;&gt;
+            {
+                this._httpClient.post(&#x27;api/common/search&#x27;, {query: value})
+                    .subscribe((resultSets: any) &#x3D;&gt;
+                    {
+                        // Store the result sets
+                        this.resultSets &#x3D; resultSets;
+
+                        // Execute the event
+                        this.search.next(resultSets);
+                    });
+            });
+    }
+
+    /**
+     * On destroy
+     */
+    ngOnDestroy(): void
+    {
+        // Unsubscribe from all subscriptions
+        this._unsubscribeAll.next(null);
+        this._unsubscribeAll.complete();
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Public methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * On keydown of the search input
+     *
+     * @param event
+     */
+    onKeydown(event: KeyboardEvent): void
+    {
+        // Escape
+        if ( event.code &#x3D;&#x3D;&#x3D; &#x27;Escape&#x27; )
+        {
+            // If the appearance is &#x27;bar&#x27; and the mat-autocomplete is not open, close the search
+            if ( this.appearance &#x3D;&#x3D;&#x3D; &#x27;bar&#x27; &amp;&amp; !this._matAutocomplete.isOpen )
+            {
+                this.close();
+            }
+        }
+    }
+
+    /**
+     * Open the search
+     * Used in &#x27;bar&#x27;
+     */
+    open(): void
+    {
+        // Return if it&#x27;s already opened
+        if ( this.opened )
+        {
+            return;
+        }
+
+        // Open the search
+        this.opened &#x3D; true;
+    }
+
+    /**
+     * Close the search
+     * * Used in &#x27;bar&#x27;
+     */
+    close(): void
+    {
+        // Return if it&#x27;s already closed
+        if ( !this.opened )
+        {
+            return;
+        }
+
+        // Clear the search input
+        this.searchControl.setValue(&#x27;&#x27;);
+
+        // Close the search
+        this.opened &#x3D; false;
+    }
+
+    /**
+     * Track by function for ngFor loops
+     *
+     * @param index
+     * @param item
+     */
+    trackByFn(index: number, item: any): any
+    {
+        return item.id || index;
+    }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;!-- Bar search --&gt;
+&lt;ng-container *ngIf&#x3D;&quot;appearance &#x3D;&#x3D;&#x3D; &#x27;bar&#x27;&quot;&gt;
+    &lt;button
+        mat-icon-button
+        *ngIf&#x3D;&quot;!opened&quot;
+        (click)&#x3D;&quot;open()&quot;&gt;
+        &lt;mat-icon [svgIcon]&#x3D;&quot;&#x27;duotone:magnifying-glass&#x27;&quot;&gt;&lt;/mat-icon&gt;
+    &lt;/button&gt;
+    &lt;div
+        class&#x3D;&quot;absolute inset-0 flex items-center shrink-0 z-99 bg-card&quot;
+        *ngIf&#x3D;&quot;opened&quot;
+        @slideInTop
+        @slideOutTop&gt;
+        &lt;mat-icon
+            class&#x3D;&quot;absolute ml-6 sm:ml-8&quot;
+            [svgIcon]&#x3D;&quot;&#x27;duotone:magnifying-glass&#x27;&quot;&gt;&lt;/mat-icon&gt;
+        &lt;input
+            class&#x3D;&quot;w-full h-full px-16 sm:px-18&quot;
+            [formControl]&#x3D;&quot;searchControl&quot;
+            [matAutocomplete]&#x3D;&quot;matAutocomplete&quot;
+            [placeholder]&#x3D;&quot;&#x27;Search...&#x27;&quot;
+            (keydown)&#x3D;&quot;onKeydown($event)&quot;
+            #barSearchInput&gt;
+        &lt;mat-autocomplete
+            class&#x3D;&quot;max-h-128 sm:px-2 border-t rounded-b shadow-md&quot;
+            [autoSelectActiveOption]&#x3D;&quot;true&quot;
+            [disableRipple]&#x3D;&quot;true&quot;
+            #matAutocomplete&#x3D;&quot;matAutocomplete&quot;&gt;
+            &lt;mat-option
+                class&#x3D;&quot;py-0 px-6 text-md pointer-events-none text-secondary bg-transparent&quot;
+                *ngIf&#x3D;&quot;resultSets &amp;&amp; !resultSets.length&quot;&gt;
+                No results found!
+            &lt;/mat-option&gt;
+            &lt;ng-container *ngFor&#x3D;&quot;let resultSet of resultSets; trackBy: trackByFn&quot;&gt;
+                &lt;mat-optgroup class&#x3D;&quot;flex items-center mt-2 px-2&quot;&gt;
+                    &lt;span class&#x3D;&quot;text-sm font-semibold tracking-wider text-secondary&quot;&gt;{{resultSet.label.toUpperCase()}}&lt;/span&gt;
+                &lt;/mat-optgroup&gt;
+                &lt;ng-container *ngFor&#x3D;&quot;let result of resultSet.results; trackBy: trackByFn&quot;&gt;
+                    &lt;mat-option
+                        class&#x3D;&quot;group relative mb-1 py-0 px-6 text-md rounded-md hover:bg-gray-100 dark:hover:bg-hover&quot;
+                        [routerLink]&#x3D;&quot;result.link&quot;
+                        [value]&#x3D;&quot;result.value&quot;&gt;
+                        &lt;!-- Contacts --&gt;
+                        &lt;ng-container *ngIf&#x3D;&quot;resultSet.id &#x3D;&#x3D;&#x3D; &#x27;contacts&#x27;&quot;&gt;
+                            &lt;ng-container *ngTemplateOutlet&#x3D;&quot;contactResult; context: {$implicit: result}&quot;&gt;&lt;/ng-container&gt;
+                        &lt;/ng-container&gt;
+                        &lt;!-- Pages --&gt;
+                        &lt;ng-container *ngIf&#x3D;&quot;resultSet.id &#x3D;&#x3D;&#x3D; &#x27;pages&#x27;&quot;&gt;
+                            &lt;ng-container *ngTemplateOutlet&#x3D;&quot;pageResult; context: {$implicit: result}&quot;&gt;&lt;/ng-container&gt;
+                        &lt;/ng-container&gt;
+                        &lt;!-- Tasks --&gt;
+                        &lt;ng-container *ngIf&#x3D;&quot;resultSet.id &#x3D;&#x3D;&#x3D; &#x27;tasks&#x27;&quot;&gt;
+                            &lt;ng-container *ngTemplateOutlet&#x3D;&quot;taskResult; context: {$implicit: result}&quot;&gt;&lt;/ng-container&gt;
+                        &lt;/ng-container&gt;
+                    &lt;/mat-option&gt;
+                &lt;/ng-container&gt;
+            &lt;/ng-container&gt;
+        &lt;/mat-autocomplete&gt;
+        &lt;button
+            class&#x3D;&quot;absolute top-1/2 right-5 sm:right-7 shrink-0 w-10 h-10 -mt-5&quot;
+            mat-icon-button
+            (click)&#x3D;&quot;close()&quot;&gt;
+            &lt;mat-icon [svgIcon]&#x3D;&quot;&#x27;duotone:xmark&#x27;&quot;&gt;&lt;/mat-icon&gt;
+        &lt;/button&gt;
+    &lt;/div&gt;
+&lt;/ng-container&gt;
+
+&lt;!-- Basic search --&gt;
+&lt;ng-container *ngIf&#x3D;&quot;appearance &#x3D;&#x3D;&#x3D; &#x27;basic&#x27;&quot;&gt;
+    &lt;div class&#x3D;&quot;w-full sm:min-w-80&quot;&gt;
+        &lt;mat-form-field
+            class&#x3D;&quot;w-full&quot;
+            [subscriptSizing]&#x3D;&quot;&#x27;dynamic&#x27;&quot;&gt;
+            &lt;mat-icon
+                matPrefix
+                [svgIcon]&#x3D;&quot;&#x27;duotone:magnifying-glass&#x27;&quot;&gt;&lt;/mat-icon&gt;
+            &lt;input
+                matInput
+                [formControl]&#x3D;&quot;searchControl&quot;
+                [matAutocomplete]&#x3D;&quot;matAutocomplete&quot;
+                [placeholder]&#x3D;&quot;&#x27;Search...&#x27;&quot;
+                (keydown)&#x3D;&quot;onKeydown($event)&quot;&gt;
+        &lt;/mat-form-field&gt;
+        &lt;mat-autocomplete
+            class&#x3D;&quot;max-h-128 mt-1 rounded&quot;
+            [autoSelectActiveOption]&#x3D;&quot;true&quot;
+            [disableRipple]&#x3D;&quot;true&quot;
+            #matAutocomplete&#x3D;&quot;matAutocomplete&quot;&gt;
+            &lt;mat-option
+                class&#x3D;&quot;py-0 px-6 text-md pointer-events-none text-secondary bg-transparent&quot;
+                *ngIf&#x3D;&quot;resultSets &amp;&amp; !resultSets.length&quot;&gt;
+                No results found!
+            &lt;/mat-option&gt;
+            &lt;ng-container *ngFor&#x3D;&quot;let resultSet of resultSets; trackBy: trackByFn&quot;&gt;
+                &lt;mat-optgroup class&#x3D;&quot;flex items-center mt-2 px-2&quot;&gt;
+                    &lt;span class&#x3D;&quot;text-sm font-semibold tracking-wider text-secondary&quot;&gt;{{resultSet.label.toUpperCase()}}&lt;/span&gt;
+                &lt;/mat-optgroup&gt;
+                &lt;ng-container *ngFor&#x3D;&quot;let result of resultSet.results; trackBy: trackByFn&quot;&gt;
+                    &lt;mat-option
+                        class&#x3D;&quot;group relative mb-1 py-0 px-6 text-md rounded-md hover:bg-gray-100 dark:hover:bg-hover&quot;
+                        [routerLink]&#x3D;&quot;result.link&quot;
+                        [value]&#x3D;&quot;result.value&quot;&gt;
+                        &lt;!-- Contacts --&gt;
+                        &lt;ng-container *ngIf&#x3D;&quot;resultSet.id &#x3D;&#x3D;&#x3D; &#x27;contacts&#x27;&quot;&gt;
+                            &lt;ng-container *ngTemplateOutlet&#x3D;&quot;contactResult; context: {$implicit: result}&quot;&gt;&lt;/ng-container&gt;
+                        &lt;/ng-container&gt;
+                        &lt;!-- Pages --&gt;
+                        &lt;ng-container *ngIf&#x3D;&quot;resultSet.id &#x3D;&#x3D;&#x3D; &#x27;pages&#x27;&quot;&gt;
+                            &lt;ng-container *ngTemplateOutlet&#x3D;&quot;pageResult; context: {$implicit: result}&quot;&gt;&lt;/ng-container&gt;
+                        &lt;/ng-container&gt;
+                        &lt;!-- Tasks --&gt;
+                        &lt;ng-container *ngIf&#x3D;&quot;resultSet.id &#x3D;&#x3D;&#x3D; &#x27;tasks&#x27;&quot;&gt;
+                            &lt;ng-container *ngTemplateOutlet&#x3D;&quot;taskResult; context: {$implicit: result}&quot;&gt;&lt;/ng-container&gt;
+                        &lt;/ng-container&gt;
+                    &lt;/mat-option&gt;
+                &lt;/ng-container&gt;
+            &lt;/ng-container&gt;
+        &lt;/mat-autocomplete&gt;
+    &lt;/div&gt;
+&lt;/ng-container&gt;
+
+&lt;!-- Contact result template --&gt;
+&lt;ng-template
+    #contactResult
+    let-result&gt;
+    &lt;div class&#x3D;&quot;flex items-center&quot;&gt;
+        &lt;div class&#x3D;&quot;flex shrink-0 items-center justify-center w-8 h-8 rounded-full overflow-hidden bg-primary-100 dark:bg-primary-800&quot;&gt;
+            &lt;img
+                *ngIf&#x3D;&quot;result.avatar&quot;
+                [src]&#x3D;&quot;result.avatar&quot; alt&#x3D;&quot;Result Avatar&quot;&gt;
+            &lt;mat-icon
+                class&#x3D;&quot;m-0 icon-size-5 text-primary dark:text-primary-400&quot;
+                *ngIf&#x3D;&quot;!result.avatar&quot;
+                [svgIcon]&#x3D;&quot;&#x27;duotone:circle-user&#x27;&quot;&gt;&lt;/mat-icon&gt;
+        &lt;/div&gt;
+        &lt;div class&#x3D;&quot;ml-3 truncate&quot;&gt;
+            &lt;span [innerHTML]&#x3D;&quot;result.name&quot;&gt;&lt;/span&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/ng-template&gt;
+
+&lt;!-- Page result template --&gt;
+&lt;ng-template
+    #pageResult
+    let-result&gt;
+    &lt;div class&#x3D;&quot;flex flex-col&quot;&gt;
+        &lt;div
+            class&#x3D;&quot;truncate leading-normal&quot;
+            [innerHTML]&#x3D;&quot;result.title&quot;&gt;&lt;/div&gt;
+        &lt;div class&#x3D;&quot;truncate leading-normal text-sm text-secondary&quot;&gt;
+            {{result.link}}
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/ng-template&gt;
+
+&lt;!-- Task result template --&gt;
+&lt;ng-template
+    #taskResult
+    let-result&gt;
+    &lt;div class&#x3D;&quot;flex items-center&quot;&gt;
+        &lt;ng-container *ngIf&#x3D;&quot;result.completed&quot;&gt;
+            &lt;mat-icon
+                class&#x3D;&quot;mr-0 text-primary dark:text-primary-400&quot;
+                [svgIcon]&#x3D;&quot;&#x27;duotone:circle-check&#x27;&quot;&gt;&lt;/mat-icon&gt;
+        &lt;/ng-container&gt;
+        &lt;ng-container *ngIf&#x3D;&quot;!result.completed&quot;&gt;
+            &lt;mat-icon
+                class&#x3D;&quot;mr-0 text-hint&quot;
+                [svgIcon]&#x3D;&quot;&#x27;duotone:circle-check&#x27;&quot;&gt;&lt;/mat-icon&gt;
+        &lt;/ng-container&gt;
+        &lt;div
+            class&#x3D;&quot;ml-3 truncate leading-normal&quot;
+            [ngClass]&#x3D;&quot;{&#x27;line-through text-hint&#x27;: result.completed}&quot;
+            [innerHTML]&#x3D;&quot;result.title&quot;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/ng-template&gt;
+</code></pre>
+    </div>
+
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><!-- Bar search --><ng-container *ngIf="appearance === \'bar\'">    <button        mat-icon-button        *ngIf="!opened"        (click)="open()">        <mat-icon [svgIcon]="\'duotone:magnifying-glass\'"></mat-icon>    </button>    <div        class="absolute inset-0 flex items-center shrink-0 z-99 bg-card"        *ngIf="opened"        @slideInTop        @slideOutTop>        <mat-icon            class="absolute ml-6 sm:ml-8"            [svgIcon]="\'duotone:magnifying-glass\'"></mat-icon>        <input            class="w-full h-full px-16 sm:px-18"            [formControl]="searchControl"            [matAutocomplete]="matAutocomplete"            [placeholder]="\'Search...\'"            (keydown)="onKeydown($event)"            #barSearchInput>        <mat-autocomplete            class="max-h-128 sm:px-2 border-t rounded-b shadow-md"            [autoSelectActiveOption]="true"            [disableRipple]="true"            #matAutocomplete="matAutocomplete">            <mat-option                class="py-0 px-6 text-md pointer-events-none text-secondary bg-transparent"                *ngIf="resultSets && !resultSets.length">                No results found!            </mat-option>            <ng-container *ngFor="let resultSet of resultSets; trackBy: trackByFn">                <mat-optgroup class="flex items-center mt-2 px-2">                    <span class="text-sm font-semibold tracking-wider text-secondary">{{resultSet.label.toUpperCase()}}</span>                </mat-optgroup>                <ng-container *ngFor="let result of resultSet.results; trackBy: trackByFn">                    <mat-option                        class="group relative mb-1 py-0 px-6 text-md rounded-md hover:bg-gray-100 dark:hover:bg-hover"                        [routerLink]="result.link"                        [value]="result.value">                        <!-- Contacts -->                        <ng-container *ngIf="resultSet.id === \'contacts\'">                            <ng-container *ngTemplateOutlet="contactResult; context: {$implicit: result}"></ng-container>                        </ng-container>                        <!-- Pages -->                        <ng-container *ngIf="resultSet.id === \'pages\'">                            <ng-container *ngTemplateOutlet="pageResult; context: {$implicit: result}"></ng-container>                        </ng-container>                        <!-- Tasks -->                        <ng-container *ngIf="resultSet.id === \'tasks\'">                            <ng-container *ngTemplateOutlet="taskResult; context: {$implicit: result}"></ng-container>                        </ng-container>                    </mat-option>                </ng-container>            </ng-container>        </mat-autocomplete>        <button            class="absolute top-1/2 right-5 sm:right-7 shrink-0 w-10 h-10 -mt-5"            mat-icon-button            (click)="close()">            <mat-icon [svgIcon]="\'duotone:xmark\'"></mat-icon>        </button>    </div></ng-container><!-- Basic search --><ng-container *ngIf="appearance === \'basic\'">    <div class="w-full sm:min-w-80">        <mat-form-field            class="w-full"            [subscriptSizing]="\'dynamic\'">            <mat-icon                matPrefix                [svgIcon]="\'duotone:magnifying-glass\'"></mat-icon>            <input                matInput                [formControl]="searchControl"                [matAutocomplete]="matAutocomplete"                [placeholder]="\'Search...\'"                (keydown)="onKeydown($event)">        </mat-form-field>        <mat-autocomplete            class="max-h-128 mt-1 rounded"            [autoSelectActiveOption]="true"            [disableRipple]="true"            #matAutocomplete="matAutocomplete">            <mat-option                class="py-0 px-6 text-md pointer-events-none text-secondary bg-transparent"                *ngIf="resultSets && !resultSets.length">                No results found!            </mat-option>            <ng-container *ngFor="let resultSet of resultSets; trackBy: trackByFn">                <mat-optgroup class="flex items-center mt-2 px-2">                    <span class="text-sm font-semibold tracking-wider text-secondary">{{resultSet.label.toUpperCase()}}</span>                </mat-optgroup>                <ng-container *ngFor="let result of resultSet.results; trackBy: trackByFn">                    <mat-option                        class="group relative mb-1 py-0 px-6 text-md rounded-md hover:bg-gray-100 dark:hover:bg-hover"                        [routerLink]="result.link"                        [value]="result.value">                        <!-- Contacts -->                        <ng-container *ngIf="resultSet.id === \'contacts\'">                            <ng-container *ngTemplateOutlet="contactResult; context: {$implicit: result}"></ng-container>                        </ng-container>                        <!-- Pages -->                        <ng-container *ngIf="resultSet.id === \'pages\'">                            <ng-container *ngTemplateOutlet="pageResult; context: {$implicit: result}"></ng-container>                        </ng-container>                        <!-- Tasks -->                        <ng-container *ngIf="resultSet.id === \'tasks\'">                            <ng-container *ngTemplateOutlet="taskResult; context: {$implicit: result}"></ng-container>                        </ng-container>                    </mat-option>                </ng-container>            </ng-container>        </mat-autocomplete>    </div></ng-container><!-- Contact result template --><ng-template    #contactResult    let-result>    <div class="flex items-center">        <div class="flex shrink-0 items-center justify-center w-8 h-8 rounded-full overflow-hidden bg-primary-100 dark:bg-primary-800">            <img                *ngIf="result.avatar"                [src]="result.avatar" alt="Result Avatar">            <mat-icon                class="m-0 icon-size-5 text-primary dark:text-primary-400"                *ngIf="!result.avatar"                [svgIcon]="\'duotone:circle-user\'"></mat-icon>        </div>        <div class="ml-3 truncate">            <span [innerHTML]="result.name"></span>        </div>    </div></ng-template><!-- Page result template --><ng-template    #pageResult    let-result>    <div class="flex flex-col">        <div            class="truncate leading-normal"            [innerHTML]="result.title"></div>        <div class="truncate leading-normal text-sm text-secondary">            {{result.link}}        </div>    </div></ng-template><!-- Task result template --><ng-template    #taskResult    let-result>    <div class="flex items-center">        <ng-container *ngIf="result.completed">            <mat-icon                class="mr-0 text-primary dark:text-primary-400"                [svgIcon]="\'duotone:circle-check\'"></mat-icon>        </ng-container>        <ng-container *ngIf="!result.completed">            <mat-icon                class="mr-0 text-hint"                [svgIcon]="\'duotone:circle-check\'"></mat-icon>        </ng-container>        <div            class="ml-3 truncate leading-normal"            [ngClass]="{\'line-through text-hint\': result.completed}"            [innerHTML]="result.title"></div>    </div></ng-template></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AuthConfirmationRequiredComponent', 'selector': 'auth-confirmation-required'},{'name': 'AuthForgotPasswordComponent', 'selector': 'auth-forgot-password'},{'name': 'AuthResetPasswordComponent', 'selector': 'auth-reset-password'},{'name': 'AuthSignInComponent', 'selector': 'auth-sign-in'},{'name': 'AuthSignOutComponent', 'selector': 'auth-sign-out'},{'name': 'AuthSignUpComponent', 'selector': 'auth-sign-up'},{'name': 'AuthUnlockSessionComponent', 'selector': 'auth-unlock-session'},{'name': 'CenteredLayoutComponent', 'selector': 'centered-layout'},{'name': 'ClassicLayoutComponent', 'selector': 'classic-layout'},{'name': 'ClassyLayoutComponent', 'selector': 'classy-layout'},{'name': 'CompactLayoutComponent', 'selector': 'compact-layout'},{'name': 'DenseLayoutComponent', 'selector': 'dense-layout'},{'name': 'EmptyLayoutComponent', 'selector': 'empty-layout'},{'name': 'EnterpriseLayoutComponent', 'selector': 'enterprise-layout'},{'name': 'Error404Component', 'selector': 'error-404'},{'name': 'Error500Component', 'selector': 'error-500'},{'name': 'ExampleComponent', 'selector': 'example'},{'name': 'FuseAlertComponent', 'selector': 'fuse-alert'},{'name': 'FuseCardComponent', 'selector': 'fuse-card'},{'name': 'FuseConfirmationDialogComponent', 'selector': 'fuse-confirmation-dialog'},{'name': 'FuseDrawerComponent', 'selector': 'fuse-drawer'},{'name': 'FuseFullscreenComponent', 'selector': 'fuse-fullscreen'},{'name': 'FuseHighlightComponent', 'selector': 'textarea[fuse-highlight]'},{'name': 'FuseHorizontalNavigationBasicItemComponent', 'selector': 'fuse-horizontal-navigation-basic-item'},{'name': 'FuseHorizontalNavigationBranchItemComponent', 'selector': 'fuse-horizontal-navigation-branch-item'},{'name': 'FuseHorizontalNavigationComponent', 'selector': 'fuse-horizontal-navigation'},{'name': 'FuseHorizontalNavigationDividerItemComponent', 'selector': 'fuse-horizontal-navigation-divider-item'},{'name': 'FuseHorizontalNavigationSpacerItemComponent', 'selector': 'fuse-horizontal-navigation-spacer-item'},{'name': 'FuseLoadingBarComponent', 'selector': 'fuse-loading-bar'},{'name': 'FuseMasonryComponent', 'selector': 'fuse-masonry'},{'name': 'FuseVerticalNavigationAsideItemComponent', 'selector': 'fuse-vertical-navigation-aside-item'},{'name': 'FuseVerticalNavigationBasicItemComponent', 'selector': 'fuse-vertical-navigation-basic-item'},{'name': 'FuseVerticalNavigationCollapsableItemComponent', 'selector': 'fuse-vertical-navigation-collapsable-item'},{'name': 'FuseVerticalNavigationComponent', 'selector': 'fuse-vertical-navigation'},{'name': 'FuseVerticalNavigationDividerItemComponent', 'selector': 'fuse-vertical-navigation-divider-item'},{'name': 'FuseVerticalNavigationGroupItemComponent', 'selector': 'fuse-vertical-navigation-group-item'},{'name': 'FuseVerticalNavigationSpacerItemComponent', 'selector': 'fuse-vertical-navigation-spacer-item'},{'name': 'FuturisticLayoutComponent', 'selector': 'futuristic-layout'},{'name': 'LandingHomeComponent', 'selector': 'landing-home'},{'name': 'LanguagesComponent', 'selector': 'languages'},{'name': 'LayoutComponent', 'selector': 'layout'},{'name': 'MaterialLayoutComponent', 'selector': 'material-layout'},{'name': 'MessagesComponent', 'selector': 'messages'},{'name': 'ModernLayoutComponent', 'selector': 'modern-layout'},{'name': 'NotificationsComponent', 'selector': 'notifications'},{'name': 'ProjectComponent', 'selector': 'project'},{'name': 'QuickChatComponent', 'selector': 'quick-chat'},{'name': 'SearchComponent', 'selector': 'search'},{'name': 'SettingsAccountComponent', 'selector': 'settings-account'},{'name': 'SettingsComponent', 'selector': 'settings'},{'name': 'SettingsComponent', 'selector': 'settings'},{'name': 'SettingsNotificationsComponent', 'selector': 'settings-notifications'},{'name': 'SettingsPlanBillingComponent', 'selector': 'settings-plan-billing'},{'name': 'SettingsSecurityComponent', 'selector': 'settings-security'},{'name': 'SettingsTeamComponent', 'selector': 'settings-team'},{'name': 'ShortcutsComponent', 'selector': 'shortcuts'},{'name': 'ThinLayoutComponent', 'selector': 'thin-layout'},{'name': 'UserComponent', 'selector': 'user'}];
+    var DIRECTIVES = [{'name': 'FuseScrollbarDirective', 'selector': '[fuseScrollbar]'},{'name': 'FuseScrollResetDirective', 'selector': '[fuseScrollReset]'}];
+    var ACTUAL_COMPONENT = {'name': 'SearchComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'SearchComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

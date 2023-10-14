@@ -16,9 +16,9 @@ export const provideTransloco = (): Array<Provider | EnvironmentProviders> =>
                         label: 'English',
                     },
                     {
-                        id   : 'tr',
-                        label: 'Turkish',
-                    },
+                      id: 'vi',
+                      label: 'Vietnamese'
+                    }
                 ],
                 defaultLang         : 'en',
                 fallbackLang        : 'en',
@@ -46,3 +46,5 @@ export const provideTransloco = (): Array<Provider | EnvironmentProviders> =>
         },
     ];
 };
+
+

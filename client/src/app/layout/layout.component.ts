@@ -1,4 +1,3 @@
-import { settings } from './../mock-api/apps/mailbox/data';
 import { DOCUMENT, NgIf } from '@angular/common';
 import { Component, Inject, OnDestroy, OnInit, Renderer2, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
@@ -6,7 +5,7 @@ import { FuseConfig, FuseConfigService, Scheme } from '@fuse/services/config';
 import { FuseMediaWatcherService } from '@fuse/services/media-watcher';
 import { FusePlatformService } from '@fuse/services/platform';
 import { FUSE_VERSION } from '@fuse/version';
-import { combineLatest, filter, map, Subject, takeUntil } from 'rxjs';
+import { combineLatest, filter, map, merge, Observable, of, Subject, switchMap, takeUntil } from 'rxjs';
 import { SettingsComponent } from './common/settings/settings.component';
 import { EmptyLayoutComponent } from './layouts/empty/empty.component';
 import { CenteredLayoutComponent } from './layouts/horizontal/centered/centered.component';
@@ -59,81 +58,12 @@ export class LayoutComponent implements OnInit, OnDestroy {
    */
   ngOnInit(): void {
     // Set the theme and scheme based on the configuration
-    combineLatest([
-      this._fuseConfigService.config$,
-      this._fuseMediaWatcherService.onMediaQueryChange$(['(prefers-color-scheme: dark)', '(prefers-color-scheme: light)']),
-    ]).pipe(
-      takeUntil(this._unsubscribeAll),
-      map(([config, mql]) => {
-        const options = {
-          scheme: config.scheme,
-          theme: config.theme,
-        };
-
-        // If the scheme is set to 'auto'...
-        if (config.scheme === 'auto') {
-          // Decide the scheme using the media query
-          options.scheme = mql.breakpoints['(prefers-color-scheme: dark)'] ? 'dark' : 'light';
-        }
-
-        return options;
-      }),
-    ).subscribe((options) => {
-      // Store the options
-      this.scheme = options.scheme;
-      this.theme = options.theme;
-
-      // Update the scheme and theme
-      this._updateScheme();
-      this._updateTheme();
-    });
-
+    this._handleThemeChanges()
 
     // Subscribe to config changes
-    this._fuseConfigService.config$
-      .pipe(takeUntil(this._unsubscribeAll))
-      .subscribe((config: FuseConfig) => {
-        // Store the config
-        this.config = config;
+    this._handleConfigChanges()
 
-        // Update the layout
-        this._updateLayout();
-      });
-
-      //! Zen Custom
-      this._settingSerivce.setting$.pipe(takeUntil(this._unsubscribeAll)).subscribe((setting) => {
-        if(setting.scheme != this.scheme && setting.scheme !== 'auto'){
-          this.scheme = setting.scheme
-          this.config.scheme = setting.scheme
-
-          this._updateScheme();
-        }
-
-        if(setting.layout != this.layout){
-          this.layout = setting.layout
-          this.config.layout = setting.layout
-
-          this._updateLayout();
-        }
-
-
-        if(this.theme != `theme-${setting.theme}`) {
-
-          this.theme = `theme-${setting.theme}`
-          this.config.theme = `theme-${setting.theme}`
-
-          this._updateTheme();
-        }
-
-        // if(setting.theme != this.theme) {
-        //   this.layout = `theme-${setting.theme}`
-        //   this.config.theme = `theme-${setting.theme}`
-
-        //   console.log(this.layout)
-
-        //   // this._updateTheme();
-        // }
-      })
+    this._handleSettingChanges()
 
     // Subscribe to NavigationEnd event
     this._router.events.pipe(
@@ -141,14 +71,13 @@ export class LayoutComponent implements OnInit, OnDestroy {
       takeUntil(this._unsubscribeAll),
     ).subscribe(() => {
       // Update the layout
-      this._updateLayout();
+      this._updateLayout()
     });
 
     // Set the app version
-    this._renderer2.setAttribute(this._document.querySelector('[ng-version]'), 'fuse-version', FUSE_VERSION);
-
+    this._handleNavigationEnd()
     // Set the OS name
-    this._renderer2.addClass(this._document.body, this._fusePlatformService.osName);
+    this._setAppVersionAndOsName()
   }
 
   /**
@@ -163,6 +92,91 @@ export class LayoutComponent implements OnInit, OnDestroy {
   // -----------------------------------------------------------------------------------------------------
   // @ Private methods
   // -----------------------------------------------------------------------------------------------------
+
+  private _handleThemeChanges(): void {
+    combineLatest([
+      this._fuseConfigService.config$,
+      this._fuseMediaWatcherService.onMediaQueryChange$(['(prefers-color-scheme: dark)', '(prefers-color-scheme: light)']),
+    ]).pipe(
+      takeUntil(this._unsubscribeAll),
+      map(([config, mql]) => {
+        const options = {
+          scheme: config.scheme,
+          theme: config.theme,
+        };
+
+        if (config.scheme === 'auto') {
+          options.scheme = mql.breakpoints['(prefers-color-scheme: dark)'] ? 'dark' : 'light';
+        }
+
+        return options;
+      }),
+    ).subscribe((options: { scheme: Scheme; theme: string }) => {
+      this.scheme = options.scheme;
+      this.theme = options.theme;
+      this._updateScheme();
+      this._updateTheme();
+    });
+  }
+
+  private _handleConfigChanges(): void {
+    this._fuseConfigService.config$
+      .pipe(takeUntil(this._unsubscribeAll))
+      .subscribe((config: FuseConfig) => {
+        this.config = config;
+        this._updateLayout();
+      });
+  }
+
+  private _handleSettingChanges(): void {
+    if (this._settingSerivce) {
+      combineLatest([
+        this._settingSerivce.setting$,
+        this._fuseMediaWatcherService.onMediaQueryChange$(['(prefers-color-scheme: dark)', '(prefers-color-scheme: light)']),
+      ]).pipe(takeUntil(this._unsubscribeAll)).subscribe(([setting, mql]) => {
+        this._updateSettings(setting, mql);
+      });
+    }
+  }
+
+  private _updateSettings(setting: any, mql: any): void {
+    if (setting.scheme !== this.scheme) {
+      if (setting.scheme === 'auto') {
+        this.scheme = mql.breakpoints['(prefers-color-scheme: dark)'] ? 'dark' : 'light';
+      } else {
+        this.scheme = setting.scheme;
+      }
+      this.config.scheme = setting.scheme;
+      this._updateScheme();
+    }
+
+    if (setting.layout !== this.layout) {
+      this.layout = setting.layout;
+      this.config.layout = setting.layout;
+      this._updateLayout();
+    }
+
+    const themeClass = `theme-${setting.theme}`;
+    if (this.theme !== themeClass) {
+      this.theme = themeClass;
+      this.config.theme = themeClass;
+      this._updateTheme();
+    }
+  }
+
+  private _handleNavigationEnd(): void {
+    this._router.events.pipe(
+      filter(event => event instanceof NavigationEnd),
+      takeUntil(this._unsubscribeAll),
+    ).subscribe(() => {
+      this._updateLayout();
+    });
+  }
+
+  private _setAppVersionAndOsName(): void {
+    this._renderer2.setAttribute(this._document.querySelector('[ng-version]'), 'fuse-version', FUSE_VERSION);
+    this._renderer2.addClass(this._document.body, this._fusePlatformService.osName);
+  }
 
   /**
    * Update the selected layout

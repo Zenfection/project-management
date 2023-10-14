@@ -12,7 +12,10 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "lint": "ng lint",
-    "lint:fix": "ng lint --fix"
+    "lint:fix": "ng lint --fix",
+    "compodoc:build": "compodoc -p tsconfig.doc.json",
+    "compodoc:build-and-serve": "compodoc -p tsconfig.doc.json -s",
+    "compodoc:serve": "compodoc -s"
   },
   "dependencies": {
     "@angular/animations": "16.2.7",
@@ -49,6 +52,8 @@
     "@angular-eslint/template-parser": "16.2.0",
     "@angular/cli": "16.2.4",
     "@angular/compiler-cli": "16.2.7",
+    "@babel/plugin-proposal-private-methods": "^7.18.6",
+    "@compodoc/compodoc": "1.1.21",
     "@tailwindcss/typography": "0.5.9",
     "@types/chroma-js": "2.4.1",
     "@types/crypto-js": "3.1.47",

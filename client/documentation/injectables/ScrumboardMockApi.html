@@ -1,0 +1,929 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>ctu-task-management documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
+            <a href="../" class="navbar-brand">ctu-task-management documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content injectable">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Injectables</li>
+  <li class="breadcrumb-item" >ScrumboardMockApi</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" 
+                class="nav-link"
+                class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" 
+                class="nav-link"
+                
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>src/app/mock-api/apps/scrumboard/api.ts</code>
+        </p>
+
+
+
+
+
+            <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_boards" >_boards</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_cards" >_cards</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_labels" >_labels</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_lists" >_lists</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_members" >_members</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#registerHandlers" >registerHandlers</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+            <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(_fuseMockApiService: <a href="../injectables/FuseMockApiService.html" target="_self">FuseMockApiService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/mock-api/apps/scrumboard/api.ts:14</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Constructor</p>
+</div>
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>_fuseMockApiService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/FuseMockApiService.html" target="_self" >FuseMockApiService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+            <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="registerHandlers"></a>
+                    <span class="name">
+                        <span ><b>registerHandlers</b></span>
+                        <a href="#registerHandlers"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>registerHandlers()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="32"
+                            class="link-to-prism">src/app/mock-api/apps/scrumboard/api.ts:32</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Register Mock API handlers</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+            <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_boards"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>_boards</b></span>
+                        <a href="#_boards"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>any[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>boardsData</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">src/app/mock-api/apps/scrumboard/api.ts:10</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_cards"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>_cards</b></span>
+                        <a href="#_cards"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>any[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>cardsData</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/app/mock-api/apps/scrumboard/api.ts:11</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_labels"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>_labels</b></span>
+                        <a href="#_labels"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>any[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>labelsData</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/app/mock-api/apps/scrumboard/api.ts:12</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_lists"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>_lists</b></span>
+                        <a href="#_lists"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>any[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>listsData</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/app/mock-api/apps/scrumboard/api.ts:13</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_members"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>_members</b></span>
+                        <a href="#_members"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>any[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>membersData</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/mock-api/apps/scrumboard/api.ts:14</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
+import { FuseMockApiService, FuseMockApiUtils } from &#x27;@fuse/lib/mock-api&#x27;;
+import { boards as boardsData, cards as cardsData, labels as labelsData, lists as listsData, members as membersData } from &#x27;app/mock-api/apps/scrumboard/data&#x27;;
+import { assign, cloneDeep } from &#x27;lodash-es&#x27;;
+
+@Injectable({providedIn: &#x27;root&#x27;})
+export class ScrumboardMockApi
+{
+    // Private
+    private _boards: any[] &#x3D; boardsData;
+    private _cards: any[] &#x3D; cardsData;
+    private _labels: any[] &#x3D; labelsData;
+    private _lists: any[] &#x3D; listsData;
+    private _members: any[] &#x3D; membersData;
+
+    /**
+     * Constructor
+     */
+    constructor(private _fuseMockApiService: FuseMockApiService)
+    {
+        // Register Mock API handlers
+        this.registerHandlers();
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Public methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Register Mock API handlers
+     */
+    registerHandlers(): void
+    {
+        // -----------------------------------------------------------------------------------------------------
+        // @ Boards - GET
+        // -----------------------------------------------------------------------------------------------------
+        this._fuseMockApiService
+            .onGet(&#x27;api/apps/scrumboard/boards&#x27;)
+            .reply(({request}) &#x3D;&gt;
+            {
+                // Clone the boards
+                let boards &#x3D; cloneDeep(this._boards);
+
+                // Go through the boards and inject the members
+                boards &#x3D; boards.map(board &#x3D;&gt; ({
+                    ...board,
+                    members: board.members.map(boardMember &#x3D;&gt; this._members.find(member &#x3D;&gt; boardMember &#x3D;&#x3D;&#x3D; member.id)),
+                }));
+
+                return [
+                    200,
+                    boards,
+                ];
+            });
+
+        // -----------------------------------------------------------------------------------------------------
+        // @ Board - GET
+        // -----------------------------------------------------------------------------------------------------
+        this._fuseMockApiService
+            .onGet(&#x27;api/apps/scrumboard/board&#x27;)
+            .reply(({request}) &#x3D;&gt;
+            {
+                // Get the id
+                const id &#x3D; request.params.get(&#x27;id&#x27;);
+
+                // Find the board
+                const board &#x3D; this._boards.find(item &#x3D;&gt; item.id &#x3D;&#x3D;&#x3D; id);
+
+                // Attach the board lists
+                board.lists &#x3D; this._lists.filter(item &#x3D;&gt; item.boardId &#x3D;&#x3D;&#x3D; id).sort((a, b) &#x3D;&gt; a.position - b.position);
+
+                // Grab all cards that belong to this board and attach labels to them
+                let cards &#x3D; this._cards.filter(item &#x3D;&gt; item.boardId &#x3D;&#x3D;&#x3D; id);
+                cards &#x3D; cards.map(card &#x3D;&gt; (
+                    {
+                        ...card,
+                        labels: card.labels.map(cardLabelId &#x3D;&gt; this._labels.find(label &#x3D;&gt; label.id &#x3D;&#x3D;&#x3D; cardLabelId)),
+                    }
+                ));
+
+                // Attach the board cards into corresponding lists
+                board.lists.forEach((list, index, array) &#x3D;&gt;
+                {
+                    array[index].cards &#x3D; cards.filter(item &#x3D;&gt; item.boardId &#x3D;&#x3D;&#x3D; id &amp;&amp; item.listId &#x3D;&#x3D;&#x3D; list.id).sort((a, b) &#x3D;&gt; a.position - b.position);
+                });
+
+                // Attach the board labels
+                board.labels &#x3D; this._labels.filter(item &#x3D;&gt; item.boardId &#x3D;&#x3D;&#x3D; id);
+
+                return [
+                    200,
+                    cloneDeep(board),
+                ];
+            });
+
+        // -----------------------------------------------------------------------------------------------------
+        // @ List - POST
+        // -----------------------------------------------------------------------------------------------------
+        this._fuseMockApiService
+            .onPost(&#x27;api/apps/scrumboard/board/list&#x27;)
+            .reply(({request}) &#x3D;&gt;
+            {
+                // Get the list
+                const newList &#x3D; cloneDeep(request.body.list);
+
+                // Generate a new GUID
+                newList.id &#x3D; FuseMockApiUtils.guid();
+
+                // Store the new list
+                this._lists.push(newList);
+
+                return [
+                    200,
+                    newList,
+                ];
+            });
+
+        // -----------------------------------------------------------------------------------------------------
+        // @ List - PATCH
+        // -----------------------------------------------------------------------------------------------------
+        this._fuseMockApiService
+            .onPatch(&#x27;api/apps/scrumboard/board/list&#x27;)
+            .reply(({request}) &#x3D;&gt;
+            {
+                // Get the list
+                const list &#x3D; cloneDeep(request.body.list);
+
+                // Prepare the updated list
+                let updatedList &#x3D; null;
+
+                // Find the list and update it
+                this._lists.forEach((item, index, lists) &#x3D;&gt;
+                {
+                    if ( item.id &#x3D;&#x3D;&#x3D; list.id )
+                    {
+                        // Update the list
+                        lists[index] &#x3D; assign({}, lists[index], list);
+
+                        // Store the updated list
+                        updatedList &#x3D; lists[index];
+                    }
+                });
+
+                return [
+                    200,
+                    updatedList,
+                ];
+            });
+
+        // -----------------------------------------------------------------------------------------------------
+        // @ Lists - PATCH
+        // -----------------------------------------------------------------------------------------------------
+        this._fuseMockApiService
+            .onPatch(&#x27;api/apps/scrumboard/board/lists&#x27;)
+            .reply(({request}) &#x3D;&gt;
+            {
+                // Get the lists
+                const lists &#x3D; cloneDeep(request.body.lists);
+
+                // Prepare the updated lists
+                const updatedLists &#x3D; [];
+
+                // Go through the lists
+                lists.forEach((item) &#x3D;&gt;
+                {
+                    // Find the list
+                    const index &#x3D; this._lists.findIndex(list &#x3D;&gt; item.id &#x3D;&#x3D;&#x3D; list.id);
+
+                    // Update the list
+                    this._lists[index] &#x3D; assign({}, this._lists[index], item);
+
+                    // Store in the updated lists
+                    updatedLists.push(item);
+                });
+
+                return [
+                    200,
+                    updatedLists,
+                ];
+            });
+
+        // -----------------------------------------------------------------------------------------------------
+        // @ List - DELETE
+        // -----------------------------------------------------------------------------------------------------
+        this._fuseMockApiService
+            .onDelete(&#x27;api/apps/scrumboard/board/list&#x27;)
+            .reply(({request}) &#x3D;&gt;
+            {
+                // Get the id
+                const id &#x3D; request.params.get(&#x27;id&#x27;);
+
+                // Find the list and delete it
+                const index &#x3D; this._lists.findIndex(item &#x3D;&gt; item.id &#x3D;&#x3D;&#x3D; id);
+                this._lists.splice(index, 1);
+
+                // Filter out the cards that belonged to the list to delete them
+                this._cards &#x3D; this._cards.filter(card &#x3D;&gt; card.listId !&#x3D;&#x3D; id);
+
+                return [
+                    200,
+                    true,
+                ];
+            });
+
+        // -----------------------------------------------------------------------------------------------------
+        // @ Card - PUT
+        // -----------------------------------------------------------------------------------------------------
+        this._fuseMockApiService
+            .onPut(&#x27;api/apps/scrumboard/board/card&#x27;)
+            .reply(({request}) &#x3D;&gt;
+            {
+                // Get the card
+                const newCard &#x3D; cloneDeep(request.body.card);
+
+                // Generate a new GUID
+                newCard.id &#x3D; FuseMockApiUtils.guid();
+
+                // Unshift the new card
+                this._cards.push(newCard);
+
+                return [
+                    200,
+                    newCard,
+                ];
+            });
+
+        // -----------------------------------------------------------------------------------------------------
+        // @ Card - PATCH
+        // -----------------------------------------------------------------------------------------------------
+        this._fuseMockApiService
+            .onPatch(&#x27;api/apps/scrumboard/board/card&#x27;)
+            .reply(({request}) &#x3D;&gt;
+            {
+                // Get the id and card
+                const id &#x3D; request.body.id;
+                const card &#x3D; cloneDeep(request.body.card);
+
+                // Prepare the updated card
+                let updatedCard &#x3D; null;
+
+                // Go through the labels and leave only ids of them
+                card.labels &#x3D; card.labels.map(itemLabel &#x3D;&gt; itemLabel.id);
+
+                // Find the card and update it
+                this._cards.forEach((item, index, cards) &#x3D;&gt;
+                {
+                    if ( item.id &#x3D;&#x3D;&#x3D; id )
+                    {
+                        // Update the card
+                        cards[index] &#x3D; assign({}, cards[index], card);
+
+                        // Store the updated card
+                        updatedCard &#x3D; cloneDeep(cards[index]);
+                    }
+                });
+
+                // Attach the labels of the card
+                updatedCard.labels &#x3D; updatedCard.labels.map(cardLabelId &#x3D;&gt; this._labels.find(label &#x3D;&gt; label.id &#x3D;&#x3D;&#x3D; cardLabelId));
+
+                return [
+                    200,
+                    updatedCard,
+                ];
+            });
+
+        // -----------------------------------------------------------------------------------------------------
+        // @ Cards - PATCH
+        // -----------------------------------------------------------------------------------------------------
+        this._fuseMockApiService
+            .onPatch(&#x27;api/apps/scrumboard/board/cards&#x27;)
+            .reply(({request}) &#x3D;&gt;
+            {
+                // Get the cards
+                const cards &#x3D; cloneDeep(request.body.cards);
+
+                // Prepare the updated cards
+                const updatedCards &#x3D; [];
+
+                // Go through the cards
+                cards.forEach((item) &#x3D;&gt;
+                {
+                    // Find the card
+                    const index &#x3D; this._cards.findIndex(card &#x3D;&gt; item.id &#x3D;&#x3D;&#x3D; card.id);
+
+                    // Go through the labels and leave only ids of them
+                    item.labels &#x3D; item.labels.map(itemLabel &#x3D;&gt; itemLabel.id);
+
+                    // Update the card
+                    this._cards[index] &#x3D; assign({}, this._cards[index], item);
+
+                    // Attach the labels of the card
+                    item.labels &#x3D; item.labels.map(cardLabelId &#x3D;&gt; this._labels.find(label &#x3D;&gt; label.id &#x3D;&#x3D;&#x3D; cardLabelId));
+
+                    // Store in the updated cards
+                    updatedCards.push(item);
+                });
+
+                return [
+                    200,
+                    updatedCards,
+                ];
+            });
+
+        // -----------------------------------------------------------------------------------------------------
+        // @ Card - DELETE
+        // -----------------------------------------------------------------------------------------------------
+        this._fuseMockApiService
+            .onDelete(&#x27;api/apps/scrumboard/board/card&#x27;)
+            .reply(({request}) &#x3D;&gt;
+            {
+                // Get the id
+                const id &#x3D; request.params.get(&#x27;id&#x27;);
+
+                // Find the card and delete it
+                const index &#x3D; this._cards.findIndex(item &#x3D;&gt; item.id &#x3D;&#x3D;&#x3D; id);
+                this._cards.splice(index, 1);
+
+                return [
+                    200,
+                    true,
+                ];
+            });
+
+        // -----------------------------------------------------------------------------------------------------
+        // @ Card Positions - PATCH
+        // -----------------------------------------------------------------------------------------------------
+        this._fuseMockApiService
+            .onPatch(&#x27;api/apps/scrumboard/board/card/positions&#x27;)
+            .reply(({request}) &#x3D;&gt;
+            {
+                // Get the cards
+                const cards &#x3D; request.body.cards;
+
+                // Go through the cards
+                this._cards.forEach((card) &#x3D;&gt;
+                {
+                    // Find this card&#x27;s index within the cards array that comes with the request
+                    // and assign that index as the new position number for the card
+                    card.position &#x3D; cards.findIndex(item &#x3D;&gt; item.id &#x3D;&#x3D;&#x3D; card.id &amp;&amp; item.listId &#x3D;&#x3D;&#x3D; card.listId &amp;&amp; item.boardId &#x3D;&#x3D;&#x3D; card.boardId);
+                });
+
+                // Clone the cards
+                const updatedCards &#x3D; cloneDeep(this._cards);
+
+                return [
+                    200,
+                    updatedCards,
+                ];
+            });
+
+        // -----------------------------------------------------------------------------------------------------
+        // @ Labels - GET
+        // -----------------------------------------------------------------------------------------------------
+        this._fuseMockApiService
+            .onGet(&#x27;api/apps/scrumboard/board/labels&#x27;)
+            .reply(({request}) &#x3D;&gt;
+            {
+                // Get the board id
+                const boardId &#x3D; request.params.get(&#x27;boardId&#x27;);
+
+                // Filter the labels
+                const labels &#x3D; this._labels.filter(item &#x3D;&gt; item.boardId &#x3D;&#x3D;&#x3D; boardId);
+
+                return [
+                    200,
+                    cloneDeep(labels),
+                ];
+            });
+
+        // -----------------------------------------------------------------------------------------------------
+        // @ Label - PUT
+        // -----------------------------------------------------------------------------------------------------
+        this._fuseMockApiService
+            .onPut(&#x27;api/apps/scrumboard/board/label&#x27;)
+            .reply(({request}) &#x3D;&gt;
+            {
+                // Get the label
+                const newLabel &#x3D; cloneDeep(request.body.label);
+
+                // Generate a new GUID
+                newLabel.id &#x3D; FuseMockApiUtils.guid();
+
+                // Unshift the new label
+                this._labels.unshift(newLabel);
+
+                return [
+                    200,
+                    newLabel,
+                ];
+            });
+
+        // -----------------------------------------------------------------------------------------------------
+        // @ Label - PATCH
+        // -----------------------------------------------------------------------------------------------------
+        this._fuseMockApiService
+            .onPatch(&#x27;api/apps/scrumboard/board/label&#x27;)
+            .reply(({request}) &#x3D;&gt;
+            {
+                // Get the id and label
+                const id &#x3D; request.body.id;
+                const label &#x3D; cloneDeep(request.body.label);
+
+                // Prepare the updated label
+                let updatedLabel &#x3D; null;
+
+                // Find the label and update it
+                this._labels.forEach((item, index, labels) &#x3D;&gt;
+                {
+                    if ( item.id &#x3D;&#x3D;&#x3D; id )
+                    {
+                        // Update the label
+                        labels[index] &#x3D; assign({}, labels[index], label);
+
+                        // Store the updated label
+                        updatedLabel &#x3D; labels[index];
+                    }
+                });
+
+                return [
+                    200,
+                    updatedLabel,
+                ];
+            });
+
+        // -----------------------------------------------------------------------------------------------------
+        // @ Label - DELETE
+        // -----------------------------------------------------------------------------------------------------
+        this._fuseMockApiService
+            .onDelete(&#x27;api/apps/scrumboard/board/label&#x27;)
+            .reply(({request}) &#x3D;&gt;
+            {
+                // Get the id
+                const id &#x3D; request.params.get(&#x27;id&#x27;);
+
+                // Find the label and delete it
+                const index &#x3D; this._labels.findIndex(item &#x3D;&gt; item.id &#x3D;&#x3D;&#x3D; id);
+                this._labels.splice(index, 1);
+
+                // Get the cards that have the label
+                const cardsWithLabel &#x3D; this._cards.filter(card &#x3D;&gt; card.labels.indexOf(id) &gt; -1);
+
+                // Iterate through them and remove the label
+                cardsWithLabel.forEach((card) &#x3D;&gt;
+                {
+                    card.tags.splice(card.tags.indexOf(id), 1);
+                });
+
+                return [
+                    200,
+                    true,
+                ];
+            });
+    }
+}
+</code></pre>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
+            var COMPODOC_CURRENT_PAGE_URL = 'ScrumboardMockApi.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

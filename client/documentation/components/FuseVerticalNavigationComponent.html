@@ -1,0 +1,3909 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>ctu-task-management documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
+            <a href="../" class="navbar-brand">ctu-task-management documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  FuseVerticalNavigationComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#styleData" class="nav-link"
+                role="tab" id="styleData-tab" data-bs-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/@fuse/components/navigation/vertical/vertical.component.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code>OnChanges</code>
+                <code>OnInit</code>
+                <code>AfterViewInit</code>
+                <code>OnDestroy</code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+            <tr>
+                <td class="col-md-3">changeDetection</td>
+                <td class="col-md-9"><code>ChangeDetectionStrategy.OnPush</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">encapsulation</td>
+                <td class="col-md-9"><code>ViewEncapsulation.None</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">exportAs</td>
+                <td class="col-md-9"><code>fuseVerticalNavigation</code></td>
+            </tr>
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>fuse-vertical-navigation</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">Standalone</td>
+                <td class="col-md-9"><code>true</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                                <code><a href="../directives/FuseScrollbarDirective.html" target="_self" >FuseScrollbarDirective</a></code>
+                            <code>NgFor</code>
+                            <code>NgIf</code>
+                                <code><a href="../components/FuseVerticalNavigationAsideItemComponent.html" target="_self" >FuseVerticalNavigationAsideItemComponent</a></code>
+                                <code><a href="../components/FuseVerticalNavigationBasicItemComponent.html" target="_self" >FuseVerticalNavigationBasicItemComponent</a></code>
+                                <code><a href="../components/FuseVerticalNavigationCollapsableItemComponent.html" target="_self" >FuseVerticalNavigationCollapsableItemComponent</a></code>
+                                <code><a href="../components/FuseVerticalNavigationDividerItemComponent.html" target="_self" >FuseVerticalNavigationDividerItemComponent</a></code>
+                                <code><a href="../components/FuseVerticalNavigationGroupItemComponent.html" target="_self" >FuseVerticalNavigationGroupItemComponent</a></code>
+                                <code><a href="../components/FuseVerticalNavigationSpacerItemComponent.html" target="_self" >FuseVerticalNavigationSpacerItemComponent</a></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./vertical.component.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./vertical.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_animationsEnabled" >_animationsEnabled</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_asideOverlay" >_asideOverlay</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_fuseScrollbarDirectives" >_fuseScrollbarDirectives</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_fuseScrollbarDirectivesSubscription" >_fuseScrollbarDirectivesSubscription</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#_handleAsideOverlayClick" >_handleAsideOverlayClick</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#_handleOverlayClick" >_handleOverlayClick</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_hovered" >_hovered</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_mutationObserver" >_mutationObserver</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                    <span class="modifier">Private</span>
+                                <a href="#_navigationContentEl" >_navigationContentEl</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_overlay" >_overlay</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_player" >_player</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_scrollStrategy" >_scrollStrategy</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_unsubscribeAll" >_unsubscribeAll</a>
+                            </li>
+                            <li>
+                                <a href="#activeAsideItemId" >activeAsideItemId</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Static</span>
+                                <a href="#ngAcceptInputType_inner" >ngAcceptInputType_inner</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Static</span>
+                                <a href="#ngAcceptInputType_opened" >ngAcceptInputType_opened</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Static</span>
+                                <a href="#ngAcceptInputType_transparentOverlay" >ngAcceptInputType_transparentOverlay</a>
+                            </li>
+                            <li>
+                                <a href="#onCollapsableItemCollapsed" >onCollapsableItemCollapsed</a>
+                            </li>
+                            <li>
+                                <a href="#onCollapsableItemExpanded" >onCollapsableItemExpanded</a>
+                            </li>
+                            <li>
+                                <a href="#onRefreshed" >onRefreshed</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_disableAnimations" >_disableAnimations</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_enableAnimations" >_enableAnimations</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_hideAsideOverlay" >_hideAsideOverlay</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_hideOverlay" >_hideOverlay</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                    <span class="modifier">Private</span>
+                                <a href="#_onMouseenter" >_onMouseenter</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                    <span class="modifier">Private</span>
+                                <a href="#_onMouseleave" >_onMouseleave</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_showAsideOverlay" >_showAsideOverlay</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_showOverlay" >_showOverlay</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_toggleOpened" >_toggleOpened</a>
+                            </li>
+                            <li>
+                                <a href="#close" >close</a>
+                            </li>
+                            <li>
+                                <a href="#closeAside" >closeAside</a>
+                            </li>
+                            <li>
+                                <a href="#ngAfterViewInit" >ngAfterViewInit</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnChanges" >ngOnChanges</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnDestroy" >ngOnDestroy</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#open" >open</a>
+                            </li>
+                            <li>
+                                <a href="#openAside" >openAside</a>
+                            </li>
+                            <li>
+                                <a href="#refresh" >refresh</a>
+                            </li>
+                            <li>
+                                <a href="#toggle" >toggle</a>
+                            </li>
+                            <li>
+                                <a href="#toggleAside" >toggleAside</a>
+                            </li>
+                            <li>
+                                <a href="#trackByFn" >trackByFn</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Inputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#appearance" >appearance</a>
+                            </li>
+                            <li>
+                                <a href="#autoCollapse" >autoCollapse</a>
+                            </li>
+                            <li>
+                                <a href="#inner" >inner</a>
+                            </li>
+                            <li>
+                                <a href="#mode" >mode</a>
+                            </li>
+                            <li>
+                                <a href="#name" >name</a>
+                            </li>
+                            <li>
+                                <a href="#navigation" >navigation</a>
+                            </li>
+                            <li>
+                                <a href="#opened" >opened</a>
+                            </li>
+                            <li>
+                                <a href="#position" >position</a>
+                            </li>
+                            <li>
+                                <a href="#transparentOverlay" >transparentOverlay</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Outputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#appearanceChanged" >appearanceChanged</a>
+                            </li>
+                            <li>
+                                <a href="#modeChanged" >modeChanged</a>
+                            </li>
+                            <li>
+                                <a href="#openedChanged" >openedChanged</a>
+                            </li>
+                            <li>
+                                <a href="#positionChanged" >positionChanged</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>HostBindings</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#class" >class</a>
+                            </li>
+                            <li>
+                                <a href="#style" >style</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>HostListeners</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#mouseenter" >mouseenter</a>
+                            </li>
+                            <li>
+                                <a href="#mouseleave" >mouseleave</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Accessors</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                    <a href="#classList" >classList</a>
+                                </li>
+                                <li>
+                                    <a href="#styleList" >styleList</a>
+                                </li>
+                                <li>
+                                    <a href="#fuseScrollbarDirectives" >fuseScrollbarDirectives</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(_animationBuilder: AnimationBuilder, _changeDetectorRef: ChangeDetectorRef, _document: Document, _elementRef: ElementRef, _renderer2: Renderer2, _router: Router, _scrollStrategyOptions: ScrollStrategyOptions, _fuseNavigationService: <a href="../injectables/FuseNavigationService.html" target="_self">FuseNavigationService</a>, _fuseUtilsService: <a href="../injectables/FuseUtilsService.html" target="_self">FuseUtilsService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="69" class="link-to-prism">src/@fuse/components/navigation/vertical/vertical.component.ts:69</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Constructor</p>
+</div>
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>_animationBuilder</td>
+                                                  
+                                                        <td>
+                                                                    <code>AnimationBuilder</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>_changeDetectorRef</td>
+                                                  
+                                                        <td>
+                                                                    <code>ChangeDetectorRef</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>_document</td>
+                                                  
+                                                        <td>
+                                                                    <code>Document</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>_elementRef</td>
+                                                  
+                                                        <td>
+                                                                    <code>ElementRef</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>_renderer2</td>
+                                                  
+                                                        <td>
+                                                                    <code>Renderer2</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>_router</td>
+                                                  
+                                                        <td>
+                                                                    <code>Router</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>_scrollStrategyOptions</td>
+                                                  
+                                                        <td>
+                                                                    <code>ScrollStrategyOptions</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>_fuseNavigationService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/FuseNavigationService.html" target="_self" >FuseNavigationService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>_fuseUtilsService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/FuseUtilsService.html" target="_self" >FuseUtilsService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+    <section data-compodoc="block-inputs">
+    <h3 id="inputs">Inputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="appearance"></a>
+                        <b>appearance</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../miscellaneous/typealiases.html#FuseVerticalNavigationAppearance" target="_self" >FuseVerticalNavigationAppearance</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;default&#x27;</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/@fuse/components/navigation/vertical/vertical.component.ts:39</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="autoCollapse"></a>
+                        <b>autoCollapse</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>true</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">src/@fuse/components/navigation/vertical/vertical.component.ts:40</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="inner"></a>
+                        <b>inner</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">src/@fuse/components/navigation/vertical/vertical.component.ts:41</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="mode"></a>
+                        <b>mode</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../miscellaneous/typealiases.html#FuseVerticalNavigationMode" target="_self" >FuseVerticalNavigationMode</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;side&#x27;</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">src/@fuse/components/navigation/vertical/vertical.component.ts:42</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="name"></a>
+                        <b>name</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>this._fuseUtilsService.randomId()</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">src/@fuse/components/navigation/vertical/vertical.component.ts:43</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="navigation"></a>
+                        <b>navigation</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>FuseNavigationItem[]</code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">src/@fuse/components/navigation/vertical/vertical.component.ts:44</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="opened"></a>
+                        <b>opened</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>true</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">src/@fuse/components/navigation/vertical/vertical.component.ts:45</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="position"></a>
+                        <b>position</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../miscellaneous/typealiases.html#FuseVerticalNavigationPosition" target="_self" >FuseVerticalNavigationPosition</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;left&#x27;</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">src/@fuse/components/navigation/vertical/vertical.component.ts:46</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="transparentOverlay"></a>
+                        <b>transparentOverlay</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">src/@fuse/components/navigation/vertical/vertical.component.ts:47</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
+    <section data-compodoc="block-outputs">
+    <h3 id="outputs">Outputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="appearanceChanged"></a>
+                        <b>appearanceChanged</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Navigation.html" target="_self" >EventEmitter&lt;FuseVerticalNavigationAppearance&gt;</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">src/@fuse/components/navigation/vertical/vertical.component.ts:48</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="modeChanged"></a>
+                        <b>modeChanged</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Navigation.html" target="_self" >EventEmitter&lt;FuseVerticalNavigationMode&gt;</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">src/@fuse/components/navigation/vertical/vertical.component.ts:49</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="openedChanged"></a>
+                        <b>openedChanged</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>EventEmitter&lt;boolean&gt;</code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="50" class="link-to-prism">src/@fuse/components/navigation/vertical/vertical.component.ts:50</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="positionChanged"></a>
+                        <b>positionChanged</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Navigation.html" target="_self" >EventEmitter&lt;FuseVerticalNavigationPosition&gt;</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="51" class="link-to-prism">src/@fuse/components/navigation/vertical/vertical.component.ts:51</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
+    <section data-compodoc="block-properties">
+    <h3>HostBindings</h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="class"></a>
+                    <span class="name">
+                        <span ><b>class</b></span>
+                        <a href="#class"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="103" class="link-to-prism">src/@fuse/components/navigation/vertical/vertical.component.ts:103</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Host binding for component classes</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="style"></a>
+                    <span class="name">
+                        <span ><b>style</b></span>
+                        <a href="#style"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="123" class="link-to-prism">src/@fuse/components/navigation/vertical/vertical.component.ts:123</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Host binding for component inline styles</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-methods">
+    <h3>HostListeners</h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="mouseenter"></a>
+                    <span class="name">
+                        <span ><b>mouseenter</b></span>
+                        <a href="#mouseenter"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>mouseenter()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="181"
+                            class="link-to-prism">src/@fuse/components/navigation/vertical/vertical.component.ts:181</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>On mouseenter</p>
+</div>
+
+                    <div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="mouseleave"></a>
+                    <span class="name">
+                        <span ><b>mouseleave</b></span>
+                        <a href="#mouseleave"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>mouseleave()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="196"
+                            class="link-to-prism">src/@fuse/components/navigation/vertical/vertical.component.ts:196</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>On mouseleave</p>
+</div>
+
+                    <div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_disableAnimations"></a>
+                    <span class="name">
+                        <span class="modifier">Private</span>
+                        <span ><b>_disableAnimations</b></span>
+                        <a href="#_disableAnimations"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>_disableAnimations()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="596"
+                            class="link-to-prism">src/@fuse/components/navigation/vertical/vertical.component.ts:596</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Disable the animations</p>
+</div>
+
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_enableAnimations"></a>
+                    <span class="name">
+                        <span class="modifier">Private</span>
+                        <span ><b>_enableAnimations</b></span>
+                        <a href="#_enableAnimations"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>_enableAnimations()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="579"
+                            class="link-to-prism">src/@fuse/components/navigation/vertical/vertical.component.ts:579</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Enable the animations</p>
+</div>
+
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_hideAsideOverlay"></a>
+                    <span class="name">
+                        <span class="modifier">Private</span>
+                        <span ><b>_hideAsideOverlay</b></span>
+                        <a href="#_hideAsideOverlay"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>_hideAsideOverlay()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="731"
+                            class="link-to-prism">src/@fuse/components/navigation/vertical/vertical.component.ts:731</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Hide the aside overlay</p>
+</div>
+
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_hideOverlay"></a>
+                    <span class="name">
+                        <span class="modifier">Private</span>
+                        <span ><b>_hideOverlay</b></span>
+                        <a href="#_hideOverlay"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>_hideOverlay()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="656"
+                            class="link-to-prism">src/@fuse/components/navigation/vertical/vertical.component.ts:656</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Hide the overlay</p>
+</div>
+
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_onMouseenter"></a>
+                    <span class="name">
+                        <span class="modifier"></span>
+                        <span class="modifier">Private</span>
+                        <span ><b>_onMouseenter</b></span>
+                        <a href="#_onMouseenter"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>_onMouseenter()</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@HostListener(&#x27;mouseenter&#x27;)<br /></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="181"
+                            class="link-to-prism">src/@fuse/components/navigation/vertical/vertical.component.ts:181</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>On mouseenter</p>
+</div>
+
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_onMouseleave"></a>
+                    <span class="name">
+                        <span class="modifier"></span>
+                        <span class="modifier">Private</span>
+                        <span ><b>_onMouseleave</b></span>
+                        <a href="#_onMouseleave"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>_onMouseleave()</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@HostListener(&#x27;mouseleave&#x27;)<br /></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="196"
+                            class="link-to-prism">src/@fuse/components/navigation/vertical/vertical.component.ts:196</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>On mouseleave</p>
+</div>
+
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_showAsideOverlay"></a>
+                    <span class="name">
+                        <span class="modifier">Private</span>
+                        <span ><b>_showAsideOverlay</b></span>
+                        <a href="#_showAsideOverlay"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>_showAsideOverlay()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="695"
+                            class="link-to-prism">src/@fuse/components/navigation/vertical/vertical.component.ts:695</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Show the aside overlay</p>
+</div>
+
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_showOverlay"></a>
+                    <span class="name">
+                        <span class="modifier">Private</span>
+                        <span ><b>_showOverlay</b></span>
+                        <a href="#_showOverlay"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>_showOverlay()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="613"
+                            class="link-to-prism">src/@fuse/components/navigation/vertical/vertical.component.ts:613</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Show the overlay</p>
+</div>
+
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_toggleOpened"></a>
+                    <span class="name">
+                        <span class="modifier">Private</span>
+                        <span ><b>_toggleOpened</b></span>
+                        <a href="#_toggleOpened"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>_toggleOpened(open: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="770"
+                            class="link-to-prism">src/@fuse/components/navigation/vertical/vertical.component.ts:770</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Open/close the navigation</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>open</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="close"></a>
+                    <span class="name">
+                        <span ><b>close</b></span>
+                        <a href="#close"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>close()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="472"
+                            class="link-to-prism">src/@fuse/components/navigation/vertical/vertical.component.ts:472</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Close the navigation</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="closeAside"></a>
+                    <span class="name">
+                        <span ><b>closeAside</b></span>
+                        <a href="#closeAside"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>closeAside()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="529"
+                            class="link-to-prism">src/@fuse/components/navigation/vertical/vertical.component.ts:529</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Close the aside</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngAfterViewInit"></a>
+                    <span class="name">
+                        <span ><b>ngAfterViewInit</b></span>
+                        <a href="#ngAfterViewInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngAfterViewInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="346"
+                            class="link-to-prism">src/@fuse/components/navigation/vertical/vertical.component.ts:346</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>After view init</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnChanges"></a>
+                    <span class="name">
+                        <span ><b>ngOnChanges</b></span>
+                        <a href="#ngOnChanges"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnChanges(changes: SimpleChanges)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="214"
+                            class="link-to-prism">src/@fuse/components/navigation/vertical/vertical.component.ts:214</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>On changes</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>changes</td>
+                                    <td>
+                                            <code>SimpleChanges</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnDestroy"></a>
+                    <span class="name">
+                        <span ><b>ngOnDestroy</b></span>
+                        <a href="#ngOnDestroy"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnDestroy()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="421"
+                            class="link-to-prism">src/@fuse/components/navigation/vertical/vertical.component.ts:421</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>On destroy</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="308"
+                            class="link-to-prism">src/@fuse/components/navigation/vertical/vertical.component.ts:308</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>On init</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="open"></a>
+                    <span class="name">
+                        <span ><b>open</b></span>
+                        <a href="#open"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>open()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="457"
+                            class="link-to-prism">src/@fuse/components/navigation/vertical/vertical.component.ts:457</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Open the navigation</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="openAside"></a>
+                    <span class="name">
+                        <span ><b>openAside</b></span>
+                        <a href="#openAside"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>openAside(item: <a href="../interfaces/FuseNavigationItem.html" target="_self">FuseNavigationItem</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="508"
+                            class="link-to-prism">src/@fuse/components/navigation/vertical/vertical.component.ts:508</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Open the aside</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>item</td>
+                                    <td>
+                                                <code><a href="../interfaces/FuseNavigationItem.html" target="_self" >FuseNavigationItem</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="refresh"></a>
+                    <span class="name">
+                        <span ><b>refresh</b></span>
+                        <a href="#refresh"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>refresh()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="445"
+                            class="link-to-prism">src/@fuse/components/navigation/vertical/vertical.component.ts:445</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Refresh the component to apply the changes</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="toggle"></a>
+                    <span class="name">
+                        <span ><b>toggle</b></span>
+                        <a href="#toggle"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>toggle()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="490"
+                            class="link-to-prism">src/@fuse/components/navigation/vertical/vertical.component.ts:490</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Toggle the navigation</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="toggleAside"></a>
+                    <span class="name">
+                        <span ><b>toggleAside</b></span>
+                        <a href="#toggleAside"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>toggleAside(item: <a href="../interfaces/FuseNavigationItem.html" target="_self">FuseNavigationItem</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="546"
+                            class="link-to-prism">src/@fuse/components/navigation/vertical/vertical.component.ts:546</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Toggle the aside</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>item</td>
+                                    <td>
+                                                <code><a href="../interfaces/FuseNavigationItem.html" target="_self" >FuseNavigationItem</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="trackByFn"></a>
+                    <span class="name">
+                        <span ><b>trackByFn</b></span>
+                        <a href="#trackByFn"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>trackByFn(index: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, item: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="565"
+                            class="link-to-prism">src/@fuse/components/navigation/vertical/vertical.component.ts:565</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Track by function for ngFor loops</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>index</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>item</td>
+                                    <td>
+                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_animationsEnabled"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>_animationsEnabled</b></span>
+                        <a href="#_animationsEnabled"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="58" class="link-to-prism">src/@fuse/components/navigation/vertical/vertical.component.ts:58</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_asideOverlay"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>_asideOverlay</b></span>
+                        <a href="#_asideOverlay"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>HTMLElement</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="59" class="link-to-prism">src/@fuse/components/navigation/vertical/vertical.component.ts:59</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_fuseScrollbarDirectives"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>_fuseScrollbarDirectives</b></span>
+                        <a href="#_fuseScrollbarDirectives"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../directives/FuseScrollbarDirective.html" target="_self" >QueryList&lt;FuseScrollbarDirective&gt;</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="67" class="link-to-prism">src/@fuse/components/navigation/vertical/vertical.component.ts:67</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_fuseScrollbarDirectivesSubscription"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>_fuseScrollbarDirectivesSubscription</b></span>
+                        <a href="#_fuseScrollbarDirectivesSubscription"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Subscription</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="68" class="link-to-prism">src/@fuse/components/navigation/vertical/vertical.component.ts:68</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_handleAsideOverlayClick"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>_handleAsideOverlayClick</b></span>
+                        <a href="#_handleAsideOverlayClick"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="60" class="link-to-prism">src/@fuse/components/navigation/vertical/vertical.component.ts:60</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_handleOverlayClick"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>_handleOverlayClick</b></span>
+                        <a href="#_handleOverlayClick"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="61" class="link-to-prism">src/@fuse/components/navigation/vertical/vertical.component.ts:61</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_hovered"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>_hovered</b></span>
+                        <a href="#_hovered"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="62" class="link-to-prism">src/@fuse/components/navigation/vertical/vertical.component.ts:62</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_mutationObserver"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>_mutationObserver</b></span>
+                        <a href="#_mutationObserver"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>MutationObserver</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="63" class="link-to-prism">src/@fuse/components/navigation/vertical/vertical.component.ts:63</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_navigationContentEl"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                            <span class="modifier">Private</span>
+                        <span ><b>_navigationContentEl</b></span>
+                        <a href="#_navigationContentEl"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>ElementRef</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @ViewChild(&#x27;navigationContent&#x27;)<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="52" class="link-to-prism">src/@fuse/components/navigation/vertical/vertical.component.ts:52</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_overlay"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>_overlay</b></span>
+                        <a href="#_overlay"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>HTMLElement</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="64" class="link-to-prism">src/@fuse/components/navigation/vertical/vertical.component.ts:64</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_player"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>_player</b></span>
+                        <a href="#_player"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>AnimationPlayer</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="65" class="link-to-prism">src/@fuse/components/navigation/vertical/vertical.component.ts:65</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_scrollStrategy"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>_scrollStrategy</b></span>
+                        <a href="#_scrollStrategy"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>ScrollStrategy</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>this._scrollStrategyOptions.block()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="66" class="link-to-prism">src/@fuse/components/navigation/vertical/vertical.component.ts:66</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_unsubscribeAll"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>_unsubscribeAll</b></span>
+                        <a href="#_unsubscribeAll"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Subject&lt;any&gt;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new Subject&lt;any&gt;()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="69" class="link-to-prism">src/@fuse/components/navigation/vertical/vertical.component.ts:69</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="activeAsideItemId"></a>
+                    <span class="name">
+                        <span ><b>activeAsideItemId</b></span>
+                        <a href="#activeAsideItemId"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>string | null</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="54" class="link-to-prism">src/@fuse/components/navigation/vertical/vertical.component.ts:54</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngAcceptInputType_inner"></a>
+                    <span class="name">
+                            <span class="modifier">Static</span>
+                        <span ><b>ngAcceptInputType_inner</b></span>
+                        <a href="#ngAcceptInputType_inner"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>BooleanInput</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">src/@fuse/components/navigation/vertical/vertical.component.ts:34</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngAcceptInputType_opened"></a>
+                    <span class="name">
+                            <span class="modifier">Static</span>
+                        <span ><b>ngAcceptInputType_opened</b></span>
+                        <a href="#ngAcceptInputType_opened"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>BooleanInput</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/@fuse/components/navigation/vertical/vertical.component.ts:35</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngAcceptInputType_transparentOverlay"></a>
+                    <span class="name">
+                            <span class="modifier">Static</span>
+                        <span ><b>ngAcceptInputType_transparentOverlay</b></span>
+                        <a href="#ngAcceptInputType_transparentOverlay"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>BooleanInput</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/@fuse/components/navigation/vertical/vertical.component.ts:36</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onCollapsableItemCollapsed"></a>
+                    <span class="name">
+                        <span ><b>onCollapsableItemCollapsed</b></span>
+                        <a href="#onCollapsableItemCollapsed"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>ReplaySubject&lt;FuseNavigationItem&gt;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new ReplaySubject&lt;FuseNavigationItem&gt;(1)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="55" class="link-to-prism">src/@fuse/components/navigation/vertical/vertical.component.ts:55</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onCollapsableItemExpanded"></a>
+                    <span class="name">
+                        <span ><b>onCollapsableItemExpanded</b></span>
+                        <a href="#onCollapsableItemExpanded"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>ReplaySubject&lt;FuseNavigationItem&gt;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new ReplaySubject&lt;FuseNavigationItem&gt;(1)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="56" class="link-to-prism">src/@fuse/components/navigation/vertical/vertical.component.ts:56</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onRefreshed"></a>
+                    <span class="name">
+                        <span ><b>onRefreshed</b></span>
+                        <a href="#onRefreshed"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>ReplaySubject&lt;boolean&gt;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new ReplaySubject&lt;boolean&gt;(1)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="57" class="link-to-prism">src/@fuse/components/navigation/vertical/vertical.component.ts:57</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-accessors">
+    <h3 id="accessors">
+        Accessors
+    </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="classList"></a>
+                        <span class="name"><b>classList</b><a href="#classList"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>classList()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="103" class="link-to-prism">src/@fuse/components/navigation/vertical/vertical.component.ts:103</a></div>
+                                </td>
+                            </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>Host binding for component classes</p>
+</div>
+
+                                <div class="io-description">
+                                    <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                                </div>
+                        </td>
+                    </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="styleList"></a>
+                        <span class="name"><b>styleList</b><a href="#styleList"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>styleList()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="123" class="link-to-prism">src/@fuse/components/navigation/vertical/vertical.component.ts:123</a></div>
+                                </td>
+                            </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>Host binding for component inline styles</p>
+</div>
+
+                                <div class="io-description">
+                                    <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                                </div>
+                        </td>
+                    </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="fuseScrollbarDirectives"></a>
+                        <span class="name"><b>fuseScrollbarDirectives</b><a href="#fuseScrollbarDirectives"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>set</b><code>fuseScrollbarDirectives(fuseScrollbarDirectives: <a href="../directives/FuseScrollbarDirective.html" target="_self">QueryList&lt;FuseScrollbarDirective&gt;</a>)</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="134" class="link-to-prism">src/@fuse/components/navigation/vertical/vertical.component.ts:134</a></div>
+                                </td>
+                            </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>Setter for fuseScrollbarDirectives</p>
+</div>
+
+                                <div class="io-description">
+                                        <b>Parameters :</b>
+                                        <table class="params">
+                                            <thead>
+                                                <tr>
+                                                    <td>Name</td>
+                                                        <td>Type</td>
+                                                    <td>Optional</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                    <tr>
+                                                            <td>fuseScrollbarDirectives</td>
+                                                    
+                                                            <td>
+                                                                            <code><a href="../directives/FuseScrollbarDirective.html" target="_self" >QueryList&lt;FuseScrollbarDirective&gt;</a></code>
+                                                            </td>
+                                                    
+                                                        <td>
+                                                                No
+                                                        </td>
+                                                        
+                                                    </tr>
+                                            </tbody>
+                                        </table>
+                                </div>
+                                <div>
+                                </div>
+                                <div class="io-description">
+                                    <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                                </div>
+                        </td>
+                    </tr>
+            </tbody>
+        </table>
+</section>
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { animate, AnimationBuilder, AnimationPlayer, style } from &#x27;@angular/animations&#x27;;
+import { BooleanInput, coerceBooleanProperty } from &#x27;@angular/cdk/coercion&#x27;;
+import { ScrollStrategy, ScrollStrategyOptions } from &#x27;@angular/cdk/overlay&#x27;;
+import { DOCUMENT, NgFor, NgIf } from &#x27;@angular/common&#x27;;
+import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, EventEmitter, HostBinding, HostListener, Inject, Input, OnChanges, OnDestroy, OnInit, Output, QueryList, Renderer2, SimpleChanges, ViewChild, ViewChildren, ViewEncapsulation } from &#x27;@angular/core&#x27;;
+import { NavigationEnd, Router } from &#x27;@angular/router&#x27;;
+import { fuseAnimations } from &#x27;@fuse/animations&#x27;;
+import { FuseNavigationService } from &#x27;@fuse/components/navigation/navigation.service&#x27;;
+import { FuseNavigationItem, FuseVerticalNavigationAppearance, FuseVerticalNavigationMode, FuseVerticalNavigationPosition } from &#x27;@fuse/components/navigation/navigation.types&#x27;;
+import { FuseVerticalNavigationAsideItemComponent } from &#x27;@fuse/components/navigation/vertical/components/aside/aside.component&#x27;;
+import { FuseVerticalNavigationBasicItemComponent } from &#x27;@fuse/components/navigation/vertical/components/basic/basic.component&#x27;;
+import { FuseVerticalNavigationCollapsableItemComponent } from &#x27;@fuse/components/navigation/vertical/components/collapsable/collapsable.component&#x27;;
+import { FuseVerticalNavigationDividerItemComponent } from &#x27;@fuse/components/navigation/vertical/components/divider/divider.component&#x27;;
+import { FuseVerticalNavigationGroupItemComponent } from &#x27;@fuse/components/navigation/vertical/components/group/group.component&#x27;;
+import { FuseVerticalNavigationSpacerItemComponent } from &#x27;@fuse/components/navigation/vertical/components/spacer/spacer.component&#x27;;
+import { FuseScrollbarDirective } from &#x27;@fuse/directives/scrollbar/scrollbar.directive&#x27;;
+import { FuseUtilsService } from &#x27;@fuse/services/utils/utils.service&#x27;;
+import { delay, filter, merge, ReplaySubject, Subject, Subscription, takeUntil } from &#x27;rxjs&#x27;;
+
+@Component({
+    selector       : &#x27;fuse-vertical-navigation&#x27;,
+    templateUrl    : &#x27;./vertical.component.html&#x27;,
+    styleUrls      : [&#x27;./vertical.component.scss&#x27;],
+    animations     : fuseAnimations,
+    encapsulation  : ViewEncapsulation.None,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    exportAs       : &#x27;fuseVerticalNavigation&#x27;,
+    standalone     : true,
+    imports        : [FuseScrollbarDirective, NgFor, NgIf, FuseVerticalNavigationAsideItemComponent, FuseVerticalNavigationBasicItemComponent, FuseVerticalNavigationCollapsableItemComponent, FuseVerticalNavigationDividerItemComponent, FuseVerticalNavigationGroupItemComponent, FuseVerticalNavigationSpacerItemComponent],
+})
+export class FuseVerticalNavigationComponent implements OnChanges, OnInit, AfterViewInit, OnDestroy
+{
+    /* eslint-disable @typescript-eslint/naming-convention */
+    static ngAcceptInputType_inner: BooleanInput;
+    static ngAcceptInputType_opened: BooleanInput;
+    static ngAcceptInputType_transparentOverlay: BooleanInput;
+    /* eslint-enable @typescript-eslint/naming-convention */
+
+    @Input() appearance: FuseVerticalNavigationAppearance &#x3D; &#x27;default&#x27;;
+    @Input() autoCollapse &#x3D; true;
+    @Input() inner &#x3D; false;
+    @Input() mode: FuseVerticalNavigationMode &#x3D; &#x27;side&#x27;;
+    @Input() name: string &#x3D; this._fuseUtilsService.randomId();
+    @Input() navigation: FuseNavigationItem[];
+    @Input() opened &#x3D; true;
+    @Input() position: FuseVerticalNavigationPosition &#x3D; &#x27;left&#x27;;
+    @Input() transparentOverlay &#x3D; false;
+    @Output() readonly appearanceChanged: EventEmitter&lt;FuseVerticalNavigationAppearance&gt; &#x3D; new EventEmitter&lt;FuseVerticalNavigationAppearance&gt;();
+    @Output() readonly modeChanged: EventEmitter&lt;FuseVerticalNavigationMode&gt; &#x3D; new EventEmitter&lt;FuseVerticalNavigationMode&gt;();
+    @Output() readonly openedChanged: EventEmitter&lt;boolean&gt; &#x3D; new EventEmitter&lt;boolean&gt;();
+    @Output() readonly positionChanged: EventEmitter&lt;FuseVerticalNavigationPosition&gt; &#x3D; new EventEmitter&lt;FuseVerticalNavigationPosition&gt;();
+    @ViewChild(&#x27;navigationContent&#x27;) private _navigationContentEl: ElementRef;
+
+    activeAsideItemId: string | null &#x3D; null;
+    onCollapsableItemCollapsed: ReplaySubject&lt;FuseNavigationItem&gt; &#x3D; new ReplaySubject&lt;FuseNavigationItem&gt;(1);
+    onCollapsableItemExpanded: ReplaySubject&lt;FuseNavigationItem&gt; &#x3D; new ReplaySubject&lt;FuseNavigationItem&gt;(1);
+    onRefreshed: ReplaySubject&lt;boolean&gt; &#x3D; new ReplaySubject&lt;boolean&gt;(1);
+    private _animationsEnabled &#x3D; false;
+    private _asideOverlay: HTMLElement;
+    private readonly _handleAsideOverlayClick: any;
+    private readonly _handleOverlayClick: any;
+    private _hovered &#x3D; false;
+    private _mutationObserver: MutationObserver;
+    private _overlay: HTMLElement;
+    private _player: AnimationPlayer;
+    private _scrollStrategy: ScrollStrategy &#x3D; this._scrollStrategyOptions.block();
+    private _fuseScrollbarDirectives!: QueryList&lt;FuseScrollbarDirective&gt;;
+    private _fuseScrollbarDirectivesSubscription: Subscription;
+    private _unsubscribeAll: Subject&lt;any&gt; &#x3D; new Subject&lt;any&gt;();
+
+    /**
+     * Constructor
+     */
+    constructor(
+        private _animationBuilder: AnimationBuilder,
+        private _changeDetectorRef: ChangeDetectorRef,
+        @Inject(DOCUMENT) private _document: Document,
+        private _elementRef: ElementRef,
+        private _renderer2: Renderer2,
+        private _router: Router,
+        private _scrollStrategyOptions: ScrollStrategyOptions,
+        private _fuseNavigationService: FuseNavigationService,
+        private _fuseUtilsService: FuseUtilsService,
+    )
+    {
+        this._handleAsideOverlayClick &#x3D; (): void &#x3D;&gt;
+        {
+            this.closeAside();
+        };
+        this._handleOverlayClick &#x3D; (): void &#x3D;&gt;
+        {
+            this.close();
+        };
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Accessors
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Host binding for component classes
+     */
+    @HostBinding(&#x27;class&#x27;) get classList(): any
+    {
+        /* eslint-disable @typescript-eslint/naming-convention */
+        return {
+            &#x27;fuse-vertical-navigation-animations-enabled&#x27;             : this._animationsEnabled,
+            [&#x60;fuse-vertical-navigation-appearance-${this.appearance}&#x60;]: true,
+            &#x27;fuse-vertical-navigation-hover&#x27;                          : this._hovered,
+            &#x27;fuse-vertical-navigation-inner&#x27;                          : this.inner,
+            &#x27;fuse-vertical-navigation-mode-over&#x27;                      : this.mode &#x3D;&#x3D;&#x3D; &#x27;over&#x27;,
+            &#x27;fuse-vertical-navigation-mode-side&#x27;                      : this.mode &#x3D;&#x3D;&#x3D; &#x27;side&#x27;,
+            &#x27;fuse-vertical-navigation-opened&#x27;                         : this.opened,
+            &#x27;fuse-vertical-navigation-position-left&#x27;                  : this.position &#x3D;&#x3D;&#x3D; &#x27;left&#x27;,
+            &#x27;fuse-vertical-navigation-position-right&#x27;                 : this.position &#x3D;&#x3D;&#x3D; &#x27;right&#x27;,
+        };
+        /* eslint-enable @typescript-eslint/naming-convention */
+    }
+
+    /**
+     * Host binding for component inline styles
+     */
+    @HostBinding(&#x27;style&#x27;) get styleList(): any
+    {
+        return {
+            &#x27;visibility&#x27;: this.opened ? &#x27;visible&#x27; : &#x27;hidden&#x27;,
+        };
+    }
+
+    /**
+     * Setter for fuseScrollbarDirectives
+     */
+    @ViewChildren(FuseScrollbarDirective)
+    set fuseScrollbarDirectives(fuseScrollbarDirectives: QueryList&lt;FuseScrollbarDirective&gt;)
+    {
+        // Store the directives
+        this._fuseScrollbarDirectives &#x3D; fuseScrollbarDirectives;
+
+        // Return if there are no directives
+        if ( fuseScrollbarDirectives.length &#x3D;&#x3D;&#x3D; 0 )
+        {
+            return;
+        }
+
+        // Unsubscribe the previous subscriptions
+        if ( this._fuseScrollbarDirectivesSubscription )
+        {
+            this._fuseScrollbarDirectivesSubscription.unsubscribe();
+        }
+
+        // Update the scrollbars on collapsable items&#x27; collapse/expand
+        this._fuseScrollbarDirectivesSubscription &#x3D;
+            merge(
+                this.onCollapsableItemCollapsed,
+                this.onCollapsableItemExpanded,
+            )
+                .pipe(
+                    takeUntil(this._unsubscribeAll),
+                    delay(250),
+                )
+                .subscribe(() &#x3D;&gt;
+                {
+                    // Loop through the scrollbars and update them
+                    fuseScrollbarDirectives.forEach((fuseScrollbarDirective) &#x3D;&gt;
+                    {
+                        fuseScrollbarDirective.update();
+                    });
+                });
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Decorated methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * On mouseenter
+     *
+     * @private
+     */
+    @HostListener(&#x27;mouseenter&#x27;)
+    private _onMouseenter(): void
+    {
+        // Enable the animations
+        this._enableAnimations();
+
+        // Set the hovered
+        this._hovered &#x3D; true;
+    }
+
+    /**
+     * On mouseleave
+     *
+     * @private
+     */
+    @HostListener(&#x27;mouseleave&#x27;)
+    private _onMouseleave(): void
+    {
+        // Enable the animations
+        this._enableAnimations();
+
+        // Set the hovered
+        this._hovered &#x3D; false;
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Lifecycle hooks
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * On changes
+     *
+     * @param changes
+     */
+    ngOnChanges(changes: SimpleChanges): void
+    {
+        // Appearance
+        if ( &#x27;appearance&#x27; in changes )
+        {
+            // Execute the observable
+            this.appearanceChanged.next(changes.appearance.currentValue);
+        }
+
+        // Inner
+        if ( &#x27;inner&#x27; in changes )
+        {
+            // Coerce the value to a boolean
+            this.inner &#x3D; coerceBooleanProperty(changes.inner.currentValue);
+        }
+
+        // Mode
+        if ( &#x27;mode&#x27; in changes )
+        {
+            // Get the previous and current values
+            const currentMode &#x3D; changes.mode.currentValue;
+            const previousMode &#x3D; changes.mode.previousValue;
+
+            // Disable the animations
+            this._disableAnimations();
+
+            // If the mode changes: &#x27;over -&gt; side&#x27;
+            if ( previousMode &#x3D;&#x3D;&#x3D; &#x27;over&#x27; &amp;&amp; currentMode &#x3D;&#x3D;&#x3D; &#x27;side&#x27; )
+            {
+                // Hide the overlay
+                this._hideOverlay();
+            }
+
+            // If the mode changes: &#x27;side -&gt; over&#x27;
+            if ( previousMode &#x3D;&#x3D;&#x3D; &#x27;side&#x27; &amp;&amp; currentMode &#x3D;&#x3D;&#x3D; &#x27;over&#x27; )
+            {
+                // Close the aside
+                this.closeAside();
+
+                // If the navigation is opened
+                if ( this.opened )
+                {
+                    // Show the overlay
+                    this._showOverlay();
+                }
+            }
+
+            // Execute the observable
+            this.modeChanged.next(currentMode);
+
+            // Enable the animations after a delay
+            // The delay must be bigger than the current transition-duration
+            // to make sure nothing will be animated while the mode changing
+            setTimeout(() &#x3D;&gt;
+            {
+                this._enableAnimations();
+            }, 500);
+        }
+
+        // Navigation
+        if ( &#x27;navigation&#x27; in changes )
+        {
+            // Mark for check
+            this._changeDetectorRef.markForCheck();
+        }
+
+        // Opened
+        if ( &#x27;opened&#x27; in changes )
+        {
+            // Coerce the value to a boolean
+            this.opened &#x3D; coerceBooleanProperty(changes.opened.currentValue);
+
+            // Open/close the navigation
+            this._toggleOpened(this.opened);
+        }
+
+        // Position
+        if ( &#x27;position&#x27; in changes )
+        {
+            // Execute the observable
+            this.positionChanged.next(changes.position.currentValue);
+        }
+
+        // Transparent overlay
+        if ( &#x27;transparentOverlay&#x27; in changes )
+        {
+            // Coerce the value to a boolean
+            this.transparentOverlay &#x3D; coerceBooleanProperty(changes.transparentOverlay.currentValue);
+        }
+    }
+
+    /**
+     * On init
+     */
+    ngOnInit(): void
+    {
+        // Make sure the name input is not an empty string
+        if ( this.name &#x3D;&#x3D;&#x3D; &#x27;&#x27; )
+        {
+            this.name &#x3D; this._fuseUtilsService.randomId();
+        }
+
+        // Register the navigation component
+        this._fuseNavigationService.registerComponent(this.name, this);
+
+        // Subscribe to the &#x27;NavigationEnd&#x27; event
+        this._router.events
+            .pipe(
+                filter(event &#x3D;&gt; event instanceof NavigationEnd),
+                takeUntil(this._unsubscribeAll),
+            )
+            .subscribe(() &#x3D;&gt;
+            {
+                // If the mode is &#x27;over&#x27; and the navigation is opened...
+                if ( this.mode &#x3D;&#x3D;&#x3D; &#x27;over&#x27; &amp;&amp; this.opened )
+                {
+                    // Close the navigation
+                    this.close();
+                }
+
+                // If the mode is &#x27;side&#x27; and the aside is active...
+                if ( this.mode &#x3D;&#x3D;&#x3D; &#x27;side&#x27; &amp;&amp; this.activeAsideItemId )
+                {
+                    // Close the aside
+                    this.closeAside();
+                }
+            });
+    }
+
+    /**
+     * After view init
+     */
+    ngAfterViewInit(): void
+    {
+        // Fix for Firefox.
+        //
+        // Because &#x27;position: sticky&#x27; doesn&#x27;t work correctly inside a &#x27;position: fixed&#x27; parent,
+        // adding the &#x27;.cdk-global-scrollblock&#x27; to the html element breaks the navigation&#x27;s position.
+        // This fixes the problem by reading the &#x27;top&#x27; value from the html element and adding it as a
+        // &#x27;marginTop&#x27; to the navigation itself.
+        this._mutationObserver &#x3D; new MutationObserver((mutations) &#x3D;&gt;
+        {
+            mutations.forEach((mutation) &#x3D;&gt;
+            {
+                const mutationTarget &#x3D; mutation.target as HTMLElement;
+                if ( mutation.attributeName &#x3D;&#x3D;&#x3D; &#x27;class&#x27; )
+                {
+                    if ( mutationTarget.classList.contains(&#x27;cdk-global-scrollblock&#x27;) )
+                    {
+                        const top &#x3D; parseInt(mutationTarget.style.top, 10);
+                        this._renderer2.setStyle(this._elementRef.nativeElement, &#x27;margin-top&#x27;, &#x60;${Math.abs(top)}px&#x60;);
+                    }
+                    else
+                    {
+                        this._renderer2.setStyle(this._elementRef.nativeElement, &#x27;margin-top&#x27;, null);
+                    }
+                }
+            });
+        });
+        this._mutationObserver.observe(this._document.documentElement, {
+            attributes     : true,
+            attributeFilter: [&#x27;class&#x27;],
+        });
+
+        setTimeout(() &#x3D;&gt;
+        {
+            // Return if &#x27;navigation content&#x27; element does not exist
+            if ( !this._navigationContentEl )
+            {
+                return;
+            }
+
+            // If &#x27;navigation content&#x27; element doesn&#x27;t have
+            // perfect scrollbar activated on it...
+            if ( !this._navigationContentEl.nativeElement.classList.contains(&#x27;ps&#x27;) )
+            {
+                // Find the active item
+                const activeItem &#x3D; this._navigationContentEl.nativeElement.querySelector(&#x27;.fuse-vertical-navigation-item-active&#x27;);
+
+                // If the active item exists, scroll it into view
+                if ( activeItem )
+                {
+                    activeItem.scrollIntoView();
+                }
+            }
+            // Otherwise
+            else
+            {
+                // Go through all the scrollbar directives
+                this._fuseScrollbarDirectives.forEach((fuseScrollbarDirective) &#x3D;&gt;
+                {
+                    // Skip if not enabled
+                    if ( !fuseScrollbarDirective.isEnabled() )
+                    {
+                        return;
+                    }
+
+                    // Scroll to the active element
+                    fuseScrollbarDirective.scrollToElement(&#x27;.fuse-vertical-navigation-item-active&#x27;, -120, true);
+                });
+            }
+        });
+    }
+
+    /**
+     * On destroy
+     */
+    ngOnDestroy(): void
+    {
+        // Disconnect the mutation observer
+        this._mutationObserver.disconnect();
+
+        // Forcefully close the navigation and aside in case they are opened
+        this.close();
+        this.closeAside();
+
+        // Deregister the navigation component from the registry
+        this._fuseNavigationService.deregisterComponent(this.name);
+
+        // Unsubscribe from all subscriptions
+        this._unsubscribeAll.next(null);
+        this._unsubscribeAll.complete();
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Public methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Refresh the component to apply the changes
+     */
+    refresh(): void
+    {
+        // Mark for check
+        this._changeDetectorRef.markForCheck();
+
+        // Execute the observable
+        this.onRefreshed.next(true);
+    }
+
+    /**
+     * Open the navigation
+     */
+    open(): void
+    {
+        // Return if the navigation is already open
+        if ( this.opened )
+        {
+            return;
+        }
+
+        // Set the opened
+        this._toggleOpened(true);
+    }
+
+    /**
+     * Close the navigation
+     */
+    close(): void
+    {
+        // Return if the navigation is already closed
+        if ( !this.opened )
+        {
+            return;
+        }
+
+        // Close the aside
+        this.closeAside();
+
+        // Set the opened
+        this._toggleOpened(false);
+    }
+
+    /**
+     * Toggle the navigation
+     */
+    toggle(): void
+    {
+        // Toggle
+        if ( this.opened )
+        {
+            this.close();
+        }
+        else
+        {
+            this.open();
+        }
+    }
+
+    /**
+     * Open the aside
+     *
+     * @param item
+     */
+    openAside(item: FuseNavigationItem): void
+    {
+        // Return if the item is disabled
+        if ( item.disabled || !item.id )
+        {
+            return;
+        }
+
+        // Open
+        this.activeAsideItemId &#x3D; item.id;
+
+        // Show the aside overlay
+        this._showAsideOverlay();
+
+        // Mark for check
+        this._changeDetectorRef.markForCheck();
+    }
+
+    /**
+     * Close the aside
+     */
+    closeAside(): void
+    {
+        // Close
+        this.activeAsideItemId &#x3D; null;
+
+        // Hide the aside overlay
+        this._hideAsideOverlay();
+
+        // Mark for check
+        this._changeDetectorRef.markForCheck();
+    }
+
+    /**
+     * Toggle the aside
+     *
+     * @param item
+     */
+    toggleAside(item: FuseNavigationItem): void
+    {
+        // Toggle
+        if ( this.activeAsideItemId &#x3D;&#x3D;&#x3D; item.id )
+        {
+            this.closeAside();
+        }
+        else
+        {
+            this.openAside(item);
+        }
+    }
+
+    /**
+     * Track by function for ngFor loops
+     *
+     * @param index
+     * @param item
+     */
+    trackByFn(index: number, item: any): any
+    {
+        return item.id || index;
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Private methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Enable the animations
+     *
+     * @private
+     */
+    private _enableAnimations(): void
+    {
+        // Return if the animations are already enabled
+        if ( this._animationsEnabled )
+        {
+            return;
+        }
+
+        // Enable the animations
+        this._animationsEnabled &#x3D; true;
+    }
+
+    /**
+     * Disable the animations
+     *
+     * @private
+     */
+    private _disableAnimations(): void
+    {
+        // Return if the animations are already disabled
+        if ( !this._animationsEnabled )
+        {
+            return;
+        }
+
+        // Disable the animations
+        this._animationsEnabled &#x3D; false;
+    }
+
+    /**
+     * Show the overlay
+     *
+     * @private
+     */
+    private _showOverlay(): void
+    {
+        // Return if there is already an overlay
+        if ( this._asideOverlay )
+        {
+            return;
+        }
+
+        // Create the overlay element
+        this._overlay &#x3D; this._renderer2.createElement(&#x27;div&#x27;);
+
+        // Add a class to the overlay element
+        this._overlay.classList.add(&#x27;fuse-vertical-navigation-overlay&#x27;);
+
+        // Add a class depending on the transparentOverlay option
+        if ( this.transparentOverlay )
+        {
+            this._overlay.classList.add(&#x27;fuse-vertical-navigation-overlay-transparent&#x27;);
+        }
+
+        // Append the overlay to the parent of the navigation
+        this._renderer2.appendChild(this._elementRef.nativeElement.parentElement, this._overlay);
+
+        // Enable block scroll strategy
+        this._scrollStrategy.enable();
+
+        // Create the enter animation and attach it to the player
+        this._player &#x3D; this._animationBuilder.build([
+            animate(&#x27;300ms cubic-bezier(0.25, 0.8, 0.25, 1)&#x27;, style({opacity: 1})),
+        ]).create(this._overlay);
+
+        // Play the animation
+        this._player.play();
+
+        // Add an event listener to the overlay
+        this._overlay.addEventListener(&#x27;click&#x27;, this._handleOverlayClick);
+    }
+
+    /**
+     * Hide the overlay
+     *
+     * @private
+     */
+    private _hideOverlay(): void
+    {
+        if ( !this._overlay )
+        {
+            return;
+        }
+
+        // Create the leave animation and attach it to the player
+        this._player &#x3D; this._animationBuilder.build([
+            animate(&#x27;300ms cubic-bezier(0.25, 0.8, 0.25, 1)&#x27;, style({opacity: 0})),
+        ]).create(this._overlay);
+
+        // Play the animation
+        this._player.play();
+
+        // Once the animation is done...
+        this._player.onDone(() &#x3D;&gt;
+        {
+            // If the overlay still exists...
+            if ( this._overlay )
+            {
+                // Remove the event listener
+                this._overlay.removeEventListener(&#x27;click&#x27;, this._handleOverlayClick);
+
+                // Remove the overlay
+                this._overlay.parentNode.removeChild(this._overlay);
+                this._overlay &#x3D; null;
+            }
+
+            // Disable block scroll strategy
+            this._scrollStrategy.disable();
+        });
+    }
+
+    /**
+     * Show the aside overlay
+     *
+     * @private
+     */
+    private _showAsideOverlay(): void
+    {
+        // Return if there is already an overlay
+        if ( this._asideOverlay )
+        {
+            return;
+        }
+
+        // Create the aside overlay element
+        this._asideOverlay &#x3D; this._renderer2.createElement(&#x27;div&#x27;);
+
+        // Add a class to the aside overlay element
+        this._asideOverlay.classList.add(&#x27;fuse-vertical-navigation-aside-overlay&#x27;);
+
+        // Append the aside overlay to the parent of the navigation
+        this._renderer2.appendChild(this._elementRef.nativeElement.parentElement, this._asideOverlay);
+
+        // Create the enter animation and attach it to the player
+        this._player &#x3D;
+            this._animationBuilder
+                .build([
+                    animate(&#x27;300ms cubic-bezier(0.25, 0.8, 0.25, 1)&#x27;, style({opacity: 1})),
+                ]).create(this._asideOverlay);
+
+        // Play the animation
+        this._player.play();
+
+        // Add an event listener to the aside overlay
+        this._asideOverlay.addEventListener(&#x27;click&#x27;, this._handleAsideOverlayClick);
+    }
+
+    /**
+     * Hide the aside overlay
+     *
+     * @private
+     */
+    private _hideAsideOverlay(): void
+    {
+        if ( !this._asideOverlay )
+        {
+            return;
+        }
+
+        // Create the leave animation and attach it to the player
+        this._player &#x3D;
+            this._animationBuilder
+                .build([
+                    animate(&#x27;300ms cubic-bezier(0.25, 0.8, 0.25, 1)&#x27;, style({opacity: 0})),
+                ]).create(this._asideOverlay);
+
+        // Play the animation
+        this._player.play();
+
+        // Once the animation is done...
+        this._player.onDone(() &#x3D;&gt;
+        {
+            // If the aside overlay still exists...
+            if ( this._asideOverlay )
+            {
+                // Remove the event listener
+                this._asideOverlay.removeEventListener(&#x27;click&#x27;, this._handleAsideOverlayClick);
+
+                // Remove the aside overlay
+                this._asideOverlay.parentNode.removeChild(this._asideOverlay);
+                this._asideOverlay &#x3D; null;
+            }
+        });
+    }
+
+    /**
+     * Open/close the navigation
+     *
+     * @param open
+     * @private
+     */
+    private _toggleOpened(open: boolean): void
+    {
+        // Set the opened
+        this.opened &#x3D; open;
+
+        // Enable the animations
+        this._enableAnimations();
+
+        // If the navigation opened, and the mode
+        // is &#x27;over&#x27;, show the overlay
+        if ( this.mode &#x3D;&#x3D;&#x3D; &#x27;over&#x27; )
+        {
+            if ( this.opened )
+            {
+                this._showOverlay();
+            }
+            else
+            {
+                this._hideOverlay();
+            }
+        }
+
+        // Execute the observable
+        this.openedChanged.next(open);
+    }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;fuse-vertical-navigation-wrapper&quot;&gt;
+
+    &lt;!-- Header --&gt;
+    &lt;div class&#x3D;&quot;fuse-vertical-navigation-header&quot;&gt;
+        &lt;ng-content select&#x3D;&quot;[fuseVerticalNavigationHeader]&quot;&gt;&lt;/ng-content&gt;
+    &lt;/div&gt;
+
+    &lt;!-- Content --&gt;
+    &lt;div
+        class&#x3D;&quot;fuse-vertical-navigation-content&quot;
+        fuseScrollbar
+        [fuseScrollbarOptions]&#x3D;&quot;{wheelPropagation: inner, suppressScrollX: true}&quot;
+        #navigationContent&gt;
+
+        &lt;!-- Content header --&gt;
+        &lt;div class&#x3D;&quot;fuse-vertical-navigation-content-header&quot;&gt;
+            &lt;ng-content select&#x3D;&quot;[fuseVerticalNavigationContentHeader]&quot;&gt;&lt;/ng-content&gt;
+        &lt;/div&gt;
+
+        &lt;!-- Items --&gt;
+        &lt;ng-container *ngFor&#x3D;&quot;let item of navigation; trackBy: trackByFn&quot;&gt;
+
+            &lt;!-- Skip the hidden items --&gt;
+            &lt;ng-container *ngIf&#x3D;&quot;(item.hidden &amp;&amp; !item.hidden(item)) || !item.hidden&quot;&gt;
+
+                &lt;!-- Aside --&gt;
+                &lt;ng-container *ngIf&#x3D;&quot;item.type &#x3D;&#x3D;&#x3D; &#x27;aside&#x27;&quot;&gt;
+                    &lt;fuse-vertical-navigation-aside-item
+                        [item]&#x3D;&quot;item&quot;
+                        [name]&#x3D;&quot;name&quot;
+                        [activeItemId]&#x3D;&quot;activeAsideItemId&quot;
+                        [autoCollapse]&#x3D;&quot;autoCollapse&quot;
+                        [skipChildren]&#x3D;&quot;true&quot;
+                        (click)&#x3D;&quot;toggleAside(item)&quot;&gt;&lt;/fuse-vertical-navigation-aside-item&gt;
+                &lt;/ng-container&gt;
+
+                &lt;!-- Basic --&gt;
+                &lt;ng-container *ngIf&#x3D;&quot;item.type &#x3D;&#x3D;&#x3D; &#x27;basic&#x27;&quot;&gt;
+                    &lt;fuse-vertical-navigation-basic-item
+                        [item]&#x3D;&quot;item&quot;
+                        [name]&#x3D;&quot;name&quot;&gt;&lt;/fuse-vertical-navigation-basic-item&gt;
+                &lt;/ng-container&gt;
+
+                &lt;!-- Collapsable --&gt;
+                &lt;ng-container *ngIf&#x3D;&quot;item.type &#x3D;&#x3D;&#x3D; &#x27;collapsable&#x27;&quot;&gt;
+                    &lt;fuse-vertical-navigation-collapsable-item
+                        [item]&#x3D;&quot;item&quot;
+                        [name]&#x3D;&quot;name&quot;
+                        [autoCollapse]&#x3D;&quot;autoCollapse&quot;&gt;&lt;/fuse-vertical-navigation-collapsable-item&gt;
+                &lt;/ng-container&gt;
+
+                &lt;!-- Divider --&gt;
+                &lt;ng-container *ngIf&#x3D;&quot;item.type &#x3D;&#x3D;&#x3D; &#x27;divider&#x27;&quot;&gt;
+                    &lt;fuse-vertical-navigation-divider-item
+                        [item]&#x3D;&quot;item&quot;
+                        [name]&#x3D;&quot;name&quot;&gt;&lt;/fuse-vertical-navigation-divider-item&gt;
+                &lt;/ng-container&gt;
+
+                &lt;!-- Group --&gt;
+                &lt;ng-container *ngIf&#x3D;&quot;item.type &#x3D;&#x3D;&#x3D; &#x27;group&#x27;&quot;&gt;
+                    &lt;fuse-vertical-navigation-group-item
+                        [item]&#x3D;&quot;item&quot;
+                        [name]&#x3D;&quot;name&quot;
+                        [autoCollapse]&#x3D;&quot;autoCollapse&quot;&gt;&lt;/fuse-vertical-navigation-group-item&gt;
+                &lt;/ng-container&gt;
+
+                &lt;!-- Spacer --&gt;
+                &lt;ng-container *ngIf&#x3D;&quot;item.type &#x3D;&#x3D;&#x3D; &#x27;spacer&#x27;&quot;&gt;
+                    &lt;fuse-vertical-navigation-spacer-item
+                        [item]&#x3D;&quot;item&quot;
+                        [name]&#x3D;&quot;name&quot;&gt;&lt;/fuse-vertical-navigation-spacer-item&gt;
+                &lt;/ng-container&gt;
+
+            &lt;/ng-container&gt;
+
+        &lt;/ng-container&gt;
+
+        &lt;!-- Content footer --&gt;
+        &lt;div class&#x3D;&quot;fuse-vertical-navigation-content-footer&quot;&gt;
+            &lt;ng-content select&#x3D;&quot;[fuseVerticalNavigationContentFooter]&quot;&gt;&lt;/ng-content&gt;
+        &lt;/div&gt;
+
+    &lt;/div&gt;
+
+    &lt;!-- Footer --&gt;
+    &lt;div class&#x3D;&quot;fuse-vertical-navigation-footer&quot;&gt;
+        &lt;ng-content select&#x3D;&quot;[fuseVerticalNavigationFooter]&quot;&gt;&lt;/ng-content&gt;
+    &lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;!-- Aside --&gt;
+&lt;ng-container *ngIf&#x3D;&quot;activeAsideItemId&quot;&gt;
+    &lt;div
+        class&#x3D;&quot;fuse-vertical-navigation-aside-wrapper&quot;
+        fuseScrollbar
+        [fuseScrollbarOptions]&#x3D;&quot;{wheelPropagation: false, suppressScrollX: true}&quot;
+        [@fadeInLeft]&#x3D;&quot;position &#x3D;&#x3D;&#x3D; &#x27;left&#x27;&quot;
+        [@fadeInRight]&#x3D;&quot;position &#x3D;&#x3D;&#x3D; &#x27;right&#x27;&quot;
+        [@fadeOutLeft]&#x3D;&quot;position &#x3D;&#x3D;&#x3D; &#x27;left&#x27;&quot;
+        [@fadeOutRight]&#x3D;&quot;position &#x3D;&#x3D;&#x3D; &#x27;right&#x27;&quot;&gt;
+
+        &lt;!-- Items --&gt;
+        &lt;ng-container *ngFor&#x3D;&quot;let item of navigation; trackBy: trackByFn&quot;&gt;
+
+            &lt;!-- Skip the hidden items --&gt;
+            &lt;ng-container *ngIf&#x3D;&quot;(item.hidden &amp;&amp; !item.hidden(item)) || !item.hidden&quot;&gt;
+
+                &lt;!-- Aside --&gt;
+                &lt;ng-container *ngIf&#x3D;&quot;item.type &#x3D;&#x3D;&#x3D; &#x27;aside&#x27; &amp;&amp; item.id &#x3D;&#x3D;&#x3D; activeAsideItemId&quot;&gt;
+                    &lt;fuse-vertical-navigation-aside-item
+                        [item]&#x3D;&quot;item&quot;
+                        [name]&#x3D;&quot;name&quot;
+                        [autoCollapse]&#x3D;&quot;autoCollapse&quot;&gt;&lt;/fuse-vertical-navigation-aside-item&gt;
+                &lt;/ng-container&gt;
+
+            &lt;/ng-container&gt;
+
+        &lt;/ng-container&gt;
+
+    &lt;/div&gt;
+&lt;/ng-container&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="styleData">
+                <p class="comment">
+                    <code>./vertical.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">@use &#x27;styles/appearances/default&#x27;;
+@use &#x27;styles/appearances/compact&#x27;;
+@use &#x27;styles/appearances/dense&#x27;;
+@use &#x27;styles/appearances/thin&#x27;;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="fuse-vertical-navigation-wrapper">    <!-- Header -->    <div class="fuse-vertical-navigation-header">        <ng-content select="[fuseVerticalNavigationHeader]"></ng-content>    </div>    <!-- Content -->    <div        class="fuse-vertical-navigation-content"        fuseScrollbar        [fuseScrollbarOptions]="{wheelPropagation: inner, suppressScrollX: true}"        #navigationContent>        <!-- Content header -->        <div class="fuse-vertical-navigation-content-header">            <ng-content select="[fuseVerticalNavigationContentHeader]"></ng-content>        </div>        <!-- Items -->        <ng-container *ngFor="let item of navigation; trackBy: trackByFn">            <!-- Skip the hidden items -->            <ng-container *ngIf="(item.hidden && !item.hidden(item)) || !item.hidden">                <!-- Aside -->                <ng-container *ngIf="item.type === \'aside\'">                    <fuse-vertical-navigation-aside-item                        [item]="item"                        [name]="name"                        [activeItemId]="activeAsideItemId"                        [autoCollapse]="autoCollapse"                        [skipChildren]="true"                        (click)="toggleAside(item)"></fuse-vertical-navigation-aside-item>                </ng-container>                <!-- Basic -->                <ng-container *ngIf="item.type === \'basic\'">                    <fuse-vertical-navigation-basic-item                        [item]="item"                        [name]="name"></fuse-vertical-navigation-basic-item>                </ng-container>                <!-- Collapsable -->                <ng-container *ngIf="item.type === \'collapsable\'">                    <fuse-vertical-navigation-collapsable-item                        [item]="item"                        [name]="name"                        [autoCollapse]="autoCollapse"></fuse-vertical-navigation-collapsable-item>                </ng-container>                <!-- Divider -->                <ng-container *ngIf="item.type === \'divider\'">                    <fuse-vertical-navigation-divider-item                        [item]="item"                        [name]="name"></fuse-vertical-navigation-divider-item>                </ng-container>                <!-- Group -->                <ng-container *ngIf="item.type === \'group\'">                    <fuse-vertical-navigation-group-item                        [item]="item"                        [name]="name"                        [autoCollapse]="autoCollapse"></fuse-vertical-navigation-group-item>                </ng-container>                <!-- Spacer -->                <ng-container *ngIf="item.type === \'spacer\'">                    <fuse-vertical-navigation-spacer-item                        [item]="item"                        [name]="name"></fuse-vertical-navigation-spacer-item>                </ng-container>            </ng-container>        </ng-container>        <!-- Content footer -->        <div class="fuse-vertical-navigation-content-footer">            <ng-content select="[fuseVerticalNavigationContentFooter]"></ng-content>        </div>    </div>    <!-- Footer -->    <div class="fuse-vertical-navigation-footer">        <ng-content select="[fuseVerticalNavigationFooter]"></ng-content>    </div></div><!-- Aside --><ng-container *ngIf="activeAsideItemId">    <div        class="fuse-vertical-navigation-aside-wrapper"        fuseScrollbar        [fuseScrollbarOptions]="{wheelPropagation: false, suppressScrollX: true}"        [@fadeInLeft]="position === \'left\'"        [@fadeInRight]="position === \'right\'"        [@fadeOutLeft]="position === \'left\'"        [@fadeOutRight]="position === \'right\'">        <!-- Items -->        <ng-container *ngFor="let item of navigation; trackBy: trackByFn">            <!-- Skip the hidden items -->            <ng-container *ngIf="(item.hidden && !item.hidden(item)) || !item.hidden">                <!-- Aside -->                <ng-container *ngIf="item.type === \'aside\' && item.id === activeAsideItemId">                    <fuse-vertical-navigation-aside-item                        [item]="item"                        [name]="name"                        [autoCollapse]="autoCollapse"></fuse-vertical-navigation-aside-item>                </ng-container>            </ng-container>        </ng-container>    </div></ng-container></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AuthConfirmationRequiredComponent', 'selector': 'auth-confirmation-required'},{'name': 'AuthForgotPasswordComponent', 'selector': 'auth-forgot-password'},{'name': 'AuthResetPasswordComponent', 'selector': 'auth-reset-password'},{'name': 'AuthSignInComponent', 'selector': 'auth-sign-in'},{'name': 'AuthSignOutComponent', 'selector': 'auth-sign-out'},{'name': 'AuthSignUpComponent', 'selector': 'auth-sign-up'},{'name': 'AuthUnlockSessionComponent', 'selector': 'auth-unlock-session'},{'name': 'CenteredLayoutComponent', 'selector': 'centered-layout'},{'name': 'ClassicLayoutComponent', 'selector': 'classic-layout'},{'name': 'ClassyLayoutComponent', 'selector': 'classy-layout'},{'name': 'CompactLayoutComponent', 'selector': 'compact-layout'},{'name': 'DenseLayoutComponent', 'selector': 'dense-layout'},{'name': 'EmptyLayoutComponent', 'selector': 'empty-layout'},{'name': 'EnterpriseLayoutComponent', 'selector': 'enterprise-layout'},{'name': 'Error404Component', 'selector': 'error-404'},{'name': 'Error500Component', 'selector': 'error-500'},{'name': 'ExampleComponent', 'selector': 'example'},{'name': 'FuseAlertComponent', 'selector': 'fuse-alert'},{'name': 'FuseCardComponent', 'selector': 'fuse-card'},{'name': 'FuseConfirmationDialogComponent', 'selector': 'fuse-confirmation-dialog'},{'name': 'FuseDrawerComponent', 'selector': 'fuse-drawer'},{'name': 'FuseFullscreenComponent', 'selector': 'fuse-fullscreen'},{'name': 'FuseHighlightComponent', 'selector': 'textarea[fuse-highlight]'},{'name': 'FuseHorizontalNavigationBasicItemComponent', 'selector': 'fuse-horizontal-navigation-basic-item'},{'name': 'FuseHorizontalNavigationBranchItemComponent', 'selector': 'fuse-horizontal-navigation-branch-item'},{'name': 'FuseHorizontalNavigationComponent', 'selector': 'fuse-horizontal-navigation'},{'name': 'FuseHorizontalNavigationDividerItemComponent', 'selector': 'fuse-horizontal-navigation-divider-item'},{'name': 'FuseHorizontalNavigationSpacerItemComponent', 'selector': 'fuse-horizontal-navigation-spacer-item'},{'name': 'FuseLoadingBarComponent', 'selector': 'fuse-loading-bar'},{'name': 'FuseMasonryComponent', 'selector': 'fuse-masonry'},{'name': 'FuseVerticalNavigationAsideItemComponent', 'selector': 'fuse-vertical-navigation-aside-item'},{'name': 'FuseVerticalNavigationBasicItemComponent', 'selector': 'fuse-vertical-navigation-basic-item'},{'name': 'FuseVerticalNavigationCollapsableItemComponent', 'selector': 'fuse-vertical-navigation-collapsable-item'},{'name': 'FuseVerticalNavigationComponent', 'selector': 'fuse-vertical-navigation'},{'name': 'FuseVerticalNavigationDividerItemComponent', 'selector': 'fuse-vertical-navigation-divider-item'},{'name': 'FuseVerticalNavigationGroupItemComponent', 'selector': 'fuse-vertical-navigation-group-item'},{'name': 'FuseVerticalNavigationSpacerItemComponent', 'selector': 'fuse-vertical-navigation-spacer-item'},{'name': 'FuturisticLayoutComponent', 'selector': 'futuristic-layout'},{'name': 'LandingHomeComponent', 'selector': 'landing-home'},{'name': 'LanguagesComponent', 'selector': 'languages'},{'name': 'LayoutComponent', 'selector': 'layout'},{'name': 'MaterialLayoutComponent', 'selector': 'material-layout'},{'name': 'MessagesComponent', 'selector': 'messages'},{'name': 'ModernLayoutComponent', 'selector': 'modern-layout'},{'name': 'NotificationsComponent', 'selector': 'notifications'},{'name': 'ProjectComponent', 'selector': 'project'},{'name': 'QuickChatComponent', 'selector': 'quick-chat'},{'name': 'SearchComponent', 'selector': 'search'},{'name': 'SettingsAccountComponent', 'selector': 'settings-account'},{'name': 'SettingsComponent', 'selector': 'settings'},{'name': 'SettingsComponent', 'selector': 'settings'},{'name': 'SettingsNotificationsComponent', 'selector': 'settings-notifications'},{'name': 'SettingsPlanBillingComponent', 'selector': 'settings-plan-billing'},{'name': 'SettingsSecurityComponent', 'selector': 'settings-security'},{'name': 'SettingsTeamComponent', 'selector': 'settings-team'},{'name': 'ShortcutsComponent', 'selector': 'shortcuts'},{'name': 'ThinLayoutComponent', 'selector': 'thin-layout'},{'name': 'UserComponent', 'selector': 'user'}];
+    var DIRECTIVES = [{'name': 'FuseScrollbarDirective', 'selector': '[fuseScrollbar]'},{'name': 'FuseScrollResetDirective', 'selector': '[fuseScrollReset]'}];
+    var ACTUAL_COMPONENT = {'name': 'FuseVerticalNavigationComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'FuseVerticalNavigationComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

@@ -34,7 +34,13 @@ export const horizontalNavigation: FuseNavigationItem[] = [
     title: 'Project',
     type : 'basic',
     icon : 'duotone:square-kanban',
-    link : '/project'
-
+    link : '/dashboards/project'
+  },
+  {
+    id: 'settings',
+    title: 'Settings',
+    type: 'basic',
+    icon: 'duotone:gear',
+    link: '/settings'
   }
 ];

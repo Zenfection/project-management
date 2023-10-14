@@ -1,0 +1,1736 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>ctu-task-management documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
+            <a href="../" class="navbar-brand">ctu-task-management documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  ShortcutsComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/layout/common/shortcuts/shortcuts.component.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code>OnInit</code>
+                <code>OnDestroy</code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+            <tr>
+                <td class="col-md-3">changeDetection</td>
+                <td class="col-md-9"><code>ChangeDetectionStrategy.OnPush</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">encapsulation</td>
+                <td class="col-md-9"><code>ViewEncapsulation.None</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">exportAs</td>
+                <td class="col-md-9"><code>shortcuts</code></td>
+            </tr>
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>shortcuts</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">Standalone</td>
+                <td class="col-md-9"><code>true</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                            <code>MatButtonModule</code>
+                            <code>MatIconModule</code>
+                            <code>NgIf</code>
+                            <code>MatTooltipModule</code>
+                            <code>NgFor</code>
+                            <code>NgClass</code>
+                            <code>NgTemplateOutlet</code>
+                            <code>RouterLink</code>
+                            <code>FormsModule</code>
+                            <code>ReactiveFormsModule</code>
+                            <code>MatFormFieldModule</code>
+                            <code>MatInputModule</code>
+                            <code>MatSlideToggleModule</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./shortcuts.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_overlayRef" >_overlayRef</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                    <span class="modifier">Private</span>
+                                <a href="#_shortcutsOrigin" >_shortcutsOrigin</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                    <span class="modifier">Private</span>
+                                <a href="#_shortcutsPanel" >_shortcutsPanel</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_unsubscribeAll" >_unsubscribeAll</a>
+                            </li>
+                            <li>
+                                <a href="#mode" >mode</a>
+                            </li>
+                            <li>
+                                <a href="#shortcutForm" >shortcutForm</a>
+                            </li>
+                            <li>
+                                <a href="#shortcuts" >shortcuts</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_createOverlay" >_createOverlay</a>
+                            </li>
+                            <li>
+                                <a href="#changeMode" >changeMode</a>
+                            </li>
+                            <li>
+                                <a href="#closePanel" >closePanel</a>
+                            </li>
+                            <li>
+                                <a href="#delete" >delete</a>
+                            </li>
+                            <li>
+                                <a href="#editShortcut" >editShortcut</a>
+                            </li>
+                            <li>
+                                <a href="#newShortcut" >newShortcut</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnDestroy" >ngOnDestroy</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#openPanel" >openPanel</a>
+                            </li>
+                            <li>
+                                <a href="#save" >save</a>
+                            </li>
+                            <li>
+                                <a href="#trackByFn" >trackByFn</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(_changeDetectorRef: ChangeDetectorRef, _formBuilder: UntypedFormBuilder, _shortcutsService: <a href="../injectables/ShortcutsService.html" target="_self">ShortcutsService</a>, _overlay: Overlay, _viewContainerRef: ViewContainerRef)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/app/layout/common/shortcuts/shortcuts.component.ts:35</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Constructor</p>
+</div>
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>_changeDetectorRef</td>
+                                                  
+                                                        <td>
+                                                                    <code>ChangeDetectorRef</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>_formBuilder</td>
+                                                  
+                                                        <td>
+                                                                    <code>UntypedFormBuilder</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>_shortcutsService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/ShortcutsService.html" target="_self" >ShortcutsService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>_overlay</td>
+                                                  
+                                                        <td>
+                                                                    <code>Overlay</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>_viewContainerRef</td>
+                                                  
+                                                        <td>
+                                                                    <code>ViewContainerRef</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_createOverlay"></a>
+                    <span class="name">
+                        <span class="modifier">Private</span>
+                        <span ><b>_createOverlay</b></span>
+                        <a href="#_createOverlay"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>_createOverlay()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="223"
+                            class="link-to-prism">src/app/layout/common/shortcuts/shortcuts.component.ts:223</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Create the overlay</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="changeMode"></a>
+                    <span class="name">
+                        <span ><b>changeMode</b></span>
+                        <a href="#changeMode"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>changeMode(mode: "view" | "modify" | "add" | "edit")</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="137"
+                            class="link-to-prism">src/app/layout/common/shortcuts/shortcuts.component.ts:137</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Change the mode</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>mode</td>
+                                    <td>
+                                            <code>&quot;view&quot; | &quot;modify&quot; | &quot;add&quot; | &quot;edit&quot;</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="closePanel"></a>
+                    <span class="name">
+                        <span ><b>closePanel</b></span>
+                        <a href="#closePanel"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>closePanel()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="129"
+                            class="link-to-prism">src/app/layout/common/shortcuts/shortcuts.component.ts:129</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Close the shortcuts panel</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="delete"></a>
+                    <span class="name">
+                        <span ><b>delete</b></span>
+                        <a href="#delete"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>delete()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="193"
+                            class="link-to-prism">src/app/layout/common/shortcuts/shortcuts.component.ts:193</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Delete shortcut</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="editShortcut"></a>
+                    <span class="name">
+                        <span ><b>editShortcut</b></span>
+                        <a href="#editShortcut"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>editShortcut(shortcut: <a href="../interfaces/Shortcut.html" target="_self">Shortcut</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="158"
+                            class="link-to-prism">src/app/layout/common/shortcuts/shortcuts.component.ts:158</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Edit a shortcut</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>shortcut</td>
+                                    <td>
+                                                <code><a href="../interfaces/Shortcut.html" target="_self" >Shortcut</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="newShortcut"></a>
+                    <span class="name">
+                        <span ><b>newShortcut</b></span>
+                        <a href="#newShortcut"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>newShortcut()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="146"
+                            class="link-to-prism">src/app/layout/common/shortcuts/shortcuts.component.ts:146</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Prepare for a new shortcut</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnDestroy"></a>
+                    <span class="name">
+                        <span ><b>ngOnDestroy</b></span>
+                        <a href="#ngOnDestroy"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnDestroy()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="85"
+                            class="link-to-prism">src/app/layout/common/shortcuts/shortcuts.component.ts:85</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>On destroy</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="57"
+                            class="link-to-prism">src/app/layout/common/shortcuts/shortcuts.component.ts:57</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>On init</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="openPanel"></a>
+                    <span class="name">
+                        <span ><b>openPanel</b></span>
+                        <a href="#openPanel"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>openPanel()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="105"
+                            class="link-to-prism">src/app/layout/common/shortcuts/shortcuts.component.ts:105</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Open the shortcuts panel</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="save"></a>
+                    <span class="name">
+                        <span ><b>save</b></span>
+                        <a href="#save"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>save()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="170"
+                            class="link-to-prism">src/app/layout/common/shortcuts/shortcuts.component.ts:170</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Save shortcut</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="trackByFn"></a>
+                    <span class="name">
+                        <span ><b>trackByFn</b></span>
+                        <a href="#trackByFn"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>trackByFn(index: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, item: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="211"
+                            class="link-to-prism">src/app/layout/common/shortcuts/shortcuts.component.ts:211</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Track by function for ngFor loops</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>index</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>item</td>
+                                    <td>
+                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_overlayRef"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>_overlayRef</b></span>
+                        <a href="#_overlayRef"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>OverlayRef</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">src/app/layout/common/shortcuts/shortcuts.component.ts:34</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_shortcutsOrigin"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                            <span class="modifier">Private</span>
+                        <span ><b>_shortcutsOrigin</b></span>
+                        <a href="#_shortcutsOrigin"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>MatButton</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @ViewChild(&#x27;shortcutsOrigin&#x27;)<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/layout/common/shortcuts/shortcuts.component.ts:28</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_shortcutsPanel"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                            <span class="modifier">Private</span>
+                        <span ><b>_shortcutsPanel</b></span>
+                        <a href="#_shortcutsPanel"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>TemplateRef&lt;any&gt;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @ViewChild(&#x27;shortcutsPanel&#x27;)<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/app/layout/common/shortcuts/shortcuts.component.ts:29</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_unsubscribeAll"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>_unsubscribeAll</b></span>
+                        <a href="#_unsubscribeAll"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Subject&lt;any&gt;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new Subject&lt;any&gt;()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/app/layout/common/shortcuts/shortcuts.component.ts:35</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="mode"></a>
+                    <span class="name">
+                        <span ><b>mode</b></span>
+                        <a href="#mode"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>&quot;view&quot; | &quot;modify&quot; | &quot;add&quot; | &quot;edit&quot;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;view&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/app/layout/common/shortcuts/shortcuts.component.ts:31</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="shortcutForm"></a>
+                    <span class="name">
+                        <span ><b>shortcutForm</b></span>
+                        <a href="#shortcutForm"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>UntypedFormGroup</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/app/layout/common/shortcuts/shortcuts.component.ts:32</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="shortcuts"></a>
+                    <span class="name">
+                        <span ><b>shortcuts</b></span>
+                        <a href="#shortcuts"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Shortcut.html" target="_self" >Shortcut[]</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">src/app/layout/common/shortcuts/shortcuts.component.ts:33</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Overlay, OverlayRef } from &#x27;@angular/cdk/overlay&#x27;;
+import { TemplatePortal } from &#x27;@angular/cdk/portal&#x27;;
+import { NgClass, NgFor, NgIf, NgTemplateOutlet } from &#x27;@angular/common&#x27;;
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit, TemplateRef, ViewChild, ViewContainerRef, ViewEncapsulation } from &#x27;@angular/core&#x27;;
+import { FormsModule, ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup, Validators } from &#x27;@angular/forms&#x27;;
+import { MatButton, MatButtonModule } from &#x27;@angular/material/button&#x27;;
+import { MatFormFieldModule } from &#x27;@angular/material/form-field&#x27;;
+import { MatIconModule } from &#x27;@angular/material/icon&#x27;;
+import { MatInputModule } from &#x27;@angular/material/input&#x27;;
+import { MatSlideToggleModule } from &#x27;@angular/material/slide-toggle&#x27;;
+import { MatTooltipModule } from &#x27;@angular/material/tooltip&#x27;;
+import { RouterLink } from &#x27;@angular/router&#x27;;
+import { ShortcutsService } from &#x27;app/layout/common/shortcuts/shortcuts.service&#x27;;
+import { Shortcut } from &#x27;app/layout/common/shortcuts/shortcuts.types&#x27;;
+import { Subject, takeUntil } from &#x27;rxjs&#x27;;
+
+@Component({
+    selector       : &#x27;shortcuts&#x27;,
+    templateUrl    : &#x27;./shortcuts.component.html&#x27;,
+    encapsulation  : ViewEncapsulation.None,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    exportAs       : &#x27;shortcuts&#x27;,
+    standalone     : true,
+    imports        : [MatButtonModule, MatIconModule, NgIf, MatTooltipModule, NgFor, NgClass, NgTemplateOutlet, RouterLink, FormsModule, ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatSlideToggleModule],
+})
+export class ShortcutsComponent implements OnInit, OnDestroy
+{
+    @ViewChild(&#x27;shortcutsOrigin&#x27;) private _shortcutsOrigin: MatButton;
+    @ViewChild(&#x27;shortcutsPanel&#x27;) private _shortcutsPanel: TemplateRef&lt;any&gt;;
+
+    mode: &#x27;view&#x27; | &#x27;modify&#x27; | &#x27;add&#x27; | &#x27;edit&#x27; &#x3D; &#x27;view&#x27;;
+    shortcutForm: UntypedFormGroup;
+    shortcuts: Shortcut[];
+    private _overlayRef: OverlayRef;
+    private _unsubscribeAll: Subject&lt;any&gt; &#x3D; new Subject&lt;any&gt;();
+
+    /**
+     * Constructor
+     */
+    constructor(
+        private _changeDetectorRef: ChangeDetectorRef,
+        private _formBuilder: UntypedFormBuilder,
+        private _shortcutsService: ShortcutsService,
+        private _overlay: Overlay,
+        private _viewContainerRef: ViewContainerRef,
+    )
+    {
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Lifecycle hooks
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * On init
+     */
+    ngOnInit(): void
+    {
+        // Initialize the form
+        this.shortcutForm &#x3D; this._formBuilder.group({
+            id         : [null],
+            label      : [&#x27;&#x27;, Validators.required],
+            description: [&#x27;&#x27;],
+            icon       : [&#x27;&#x27;, Validators.required],
+            link       : [&#x27;&#x27;, Validators.required],
+            useRouter  : [&#x27;&#x27;, Validators.required],
+        });
+
+        // Get the shortcuts
+        this._shortcutsService.shortcuts$
+            .pipe(takeUntil(this._unsubscribeAll))
+            .subscribe((shortcuts: Shortcut[]) &#x3D;&gt;
+            {
+                // Load the shortcuts
+                this.shortcuts &#x3D; shortcuts;
+
+                // Mark for check
+                this._changeDetectorRef.markForCheck();
+            });
+    }
+
+    /**
+     * On destroy
+     */
+    ngOnDestroy(): void
+    {
+        // Unsubscribe from all subscriptions
+        this._unsubscribeAll.next(null);
+        this._unsubscribeAll.complete();
+
+        // Dispose the overlay
+        if ( this._overlayRef )
+        {
+            this._overlayRef.dispose();
+        }
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Public methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Open the shortcuts panel
+     */
+    openPanel(): void
+    {
+        // Return if the shortcuts panel or its origin is not defined
+        if ( !this._shortcutsPanel || !this._shortcutsOrigin )
+        {
+            return;
+        }
+
+        // Make sure to start in &#x27;view&#x27; mode
+        this.mode &#x3D; &#x27;view&#x27;;
+
+        // Create the overlay if it doesn&#x27;t exist
+        if ( !this._overlayRef )
+        {
+            this._createOverlay();
+        }
+
+        // Attach the portal to the overlay
+        this._overlayRef.attach(new TemplatePortal(this._shortcutsPanel, this._viewContainerRef));
+    }
+
+    /**
+     * Close the shortcuts panel
+     */
+    closePanel(): void
+    {
+        this._overlayRef.detach();
+    }
+
+    /**
+     * Change the mode
+     */
+    changeMode(mode: &#x27;view&#x27; | &#x27;modify&#x27; | &#x27;add&#x27; | &#x27;edit&#x27;): void
+    {
+        // Change the mode
+        this.mode &#x3D; mode;
+    }
+
+    /**
+     * Prepare for a new shortcut
+     */
+    newShortcut(): void
+    {
+        // Reset the form
+        this.shortcutForm.reset();
+
+        // Enter the add mode
+        this.mode &#x3D; &#x27;add&#x27;;
+    }
+
+    /**
+     * Edit a shortcut
+     */
+    editShortcut(shortcut: Shortcut): void
+    {
+        // Reset the form with the shortcut
+        this.shortcutForm.reset(shortcut);
+
+        // Enter the edit mode
+        this.mode &#x3D; &#x27;edit&#x27;;
+    }
+
+    /**
+     * Save shortcut
+     */
+    save(): void
+    {
+        // Get the data from the form
+        const shortcut &#x3D; this.shortcutForm.value;
+
+        // If there is an id, update it...
+        if ( shortcut.id )
+        {
+            this._shortcutsService.update(shortcut.id, shortcut).subscribe();
+        }
+        // Otherwise, create a new shortcut...
+        else
+        {
+            this._shortcutsService.create(shortcut).subscribe();
+        }
+
+        // Go back the modify mode
+        this.mode &#x3D; &#x27;modify&#x27;;
+    }
+
+    /**
+     * Delete shortcut
+     */
+    delete(): void
+    {
+        // Get the data from the form
+        const shortcut &#x3D; this.shortcutForm.value;
+
+        // Delete
+        this._shortcutsService.delete(shortcut.id).subscribe();
+
+        // Go back the modify mode
+        this.mode &#x3D; &#x27;modify&#x27;;
+    }
+
+    /**
+     * Track by function for ngFor loops
+     *
+     * @param index
+     * @param item
+     */
+    trackByFn(index: number, item: any): any
+    {
+        return item.id || index;
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Private methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Create the overlay
+     */
+    private _createOverlay(): void
+    {
+        // Create the overlay
+        this._overlayRef &#x3D; this._overlay.create({
+            hasBackdrop     : true,
+            backdropClass   : &#x27;fuse-backdrop-on-mobile&#x27;,
+            scrollStrategy  : this._overlay.scrollStrategies.block(),
+            positionStrategy: this._overlay.position()
+                .flexibleConnectedTo(this._shortcutsOrigin._elementRef.nativeElement)
+                .withLockedPosition(true)
+                .withPush(true)
+                .withPositions([
+                    {
+                        originX : &#x27;start&#x27;,
+                        originY : &#x27;bottom&#x27;,
+                        overlayX: &#x27;start&#x27;,
+                        overlayY: &#x27;top&#x27;,
+                    },
+                    {
+                        originX : &#x27;start&#x27;,
+                        originY : &#x27;top&#x27;,
+                        overlayX: &#x27;start&#x27;,
+                        overlayY: &#x27;bottom&#x27;,
+                    },
+                    {
+                        originX : &#x27;end&#x27;,
+                        originY : &#x27;bottom&#x27;,
+                        overlayX: &#x27;end&#x27;,
+                        overlayY: &#x27;top&#x27;,
+                    },
+                    {
+                        originX : &#x27;end&#x27;,
+                        originY : &#x27;top&#x27;,
+                        overlayX: &#x27;end&#x27;,
+                        overlayY: &#x27;bottom&#x27;,
+                    },
+                ]),
+        });
+
+        // Detach the overlay from the portal on backdrop click
+        this._overlayRef.backdropClick().subscribe(() &#x3D;&gt;
+        {
+            this._overlayRef.detach();
+        });
+    }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;!-- Shortcuts toggle --&gt;
+&lt;button
+    mat-icon-button
+    (click)&#x3D;&quot;openPanel()&quot;
+    #shortcutsOrigin&gt;
+    &lt;mat-icon [svgIcon]&#x3D;&quot;&#x27;heroicons_outline:squares-plus&#x27;&quot;&gt;&lt;/mat-icon&gt;
+&lt;/button&gt;
+
+&lt;!-- Shortcuts panel --&gt;
+&lt;ng-template #shortcutsPanel&gt;
+    &lt;div class&#x3D;&quot;fixed inset-0 sm:static sm:inset-auto flex flex-col sm:min-w-90 sm:w-90 sm:rounded-2xl overflow-hidden shadow-lg&quot;&gt;
+
+        &lt;!-- Header --&gt;
+        &lt;div class&#x3D;&quot;flex shrink-0 items-center py-4 pr-4 pl-6 bg-primary text-on-primary&quot;&gt;
+            &lt;div class&#x3D;&quot;sm:hidden -ml-1 mr-3&quot;&gt;
+                &lt;button
+                    mat-icon-button
+                    (click)&#x3D;&quot;closePanel()&quot;&gt;
+                    &lt;mat-icon
+                        class&#x3D;&quot;icon-size-5 text-current&quot;
+                        [svgIcon]&#x3D;&quot;&#x27;heroicons_solid:x-mark&#x27;&quot;&gt;&lt;/mat-icon&gt;
+                &lt;/button&gt;
+            &lt;/div&gt;
+            &lt;div class&#x3D;&quot;flex items-center text-lg font-medium leading-10&quot;&gt;
+                &lt;span class&#x3D;&quot;&quot;&gt;Shortcuts&lt;/span&gt;
+                &lt;ng-container *ngIf&#x3D;&quot;mode !&#x3D;&#x3D; &#x27;view&#x27;&quot;&gt;
+                    &lt;span class&#x3D;&quot;ml-1&quot;&gt;
+                        &lt;ng-container *ngIf&#x3D;&quot;mode &#x3D;&#x3D;&#x3D; &#x27;add&#x27;&quot;&gt;- Add new&lt;/ng-container&gt;
+                        &lt;ng-container *ngIf&#x3D;&quot;mode &#x3D;&#x3D;&#x3D; &#x27;modify&#x27; || mode &#x3D;&#x3D;&#x3D; &#x27;edit&#x27;&quot;&gt;- Editing&lt;/ng-container&gt;
+                    &lt;/span&gt;
+                &lt;/ng-container&gt;
+            &lt;/div&gt;
+            &lt;div class&#x3D;&quot;ml-auto&quot;&gt;
+
+                &lt;!-- View mode --&gt;
+                &lt;ng-container *ngIf&#x3D;&quot;mode &#x3D;&#x3D;&#x3D; &#x27;view&#x27;&quot;&gt;
+                    &lt;!-- Enter &#x27;modify&#x27; mode --&gt;
+                    &lt;button
+                        mat-icon-button
+                        (click)&#x3D;&quot;changeMode(&#x27;modify&#x27;)&quot;
+                        [matTooltip]&#x3D;&quot;&#x27;Enter edit mode&#x27;&quot;&gt;
+                        &lt;mat-icon
+                            class&#x3D;&quot;icon-size-5 text-current&quot;
+                            [svgIcon]&#x3D;&quot;&#x27;heroicons_solid:pencil-square&#x27;&quot;&gt;&lt;/mat-icon&gt;
+                    &lt;/button&gt;
+                    &lt;!-- Enter &#x27;add&#x27; mode --&gt;
+                    &lt;button
+                        mat-icon-button
+                        (click)&#x3D;&quot;newShortcut()&quot;
+                        [matTooltip]&#x3D;&quot;&#x27;Add shortcut&#x27;&quot;&gt;
+                        &lt;mat-icon
+                            class&#x3D;&quot;icon-size-5 text-current&quot;
+                            [svgIcon]&#x3D;&quot;&#x27;heroicons_solid:plus-circle&#x27;&quot;&gt;&lt;/mat-icon&gt;
+                    &lt;/button&gt;
+                &lt;/ng-container&gt;
+
+                &lt;!-- Modify mode --&gt;
+                &lt;ng-container *ngIf&#x3D;&quot;mode &#x3D;&#x3D;&#x3D; &#x27;modify&#x27;&quot;&gt;
+                    &lt;!-- Enter &#x27;view&#x27; mode --&gt;
+                    &lt;button
+                        mat-icon-button
+                        (click)&#x3D;&quot;changeMode(&#x27;view&#x27;)&quot;
+                        [matTooltip]&#x3D;&quot;&#x27;Exit edit mode&#x27;&quot;&gt;
+                        &lt;mat-icon
+                            class&#x3D;&quot;icon-size-5 text-current&quot;
+                            [svgIcon]&#x3D;&quot;&#x27;heroicons_solid:check-circle&#x27;&quot;&gt;&lt;/mat-icon&gt;
+                    &lt;/button&gt;
+                &lt;/ng-container&gt;
+
+                &lt;!-- Add mode --&gt;
+                &lt;ng-container *ngIf&#x3D;&quot;mode &#x3D;&#x3D;&#x3D; &#x27;add&#x27;&quot;&gt;
+                    &lt;!-- Enter &#x27;view&#x27; mode --&gt;
+                    &lt;button
+                        mat-icon-button
+                        (click)&#x3D;&quot;changeMode(&#x27;view&#x27;)&quot;
+                        [matTooltip]&#x3D;&quot;&#x27;Cancel&#x27;&quot;&gt;
+                        &lt;mat-icon
+                            class&#x3D;&quot;icon-size-5 text-current&quot;
+                            [svgIcon]&#x3D;&quot;&#x27;heroicons_solid:x-circle&#x27;&quot;&gt;&lt;/mat-icon&gt;
+                    &lt;/button&gt;
+                &lt;/ng-container&gt;
+
+                &lt;!-- Edit mode --&gt;
+                &lt;ng-container *ngIf&#x3D;&quot;mode &#x3D;&#x3D;&#x3D; &#x27;edit&#x27;&quot;&gt;
+                    &lt;!-- Enter &#x27;modify&#x27; mode --&gt;
+                    &lt;button
+                        mat-icon-button
+                        (click)&#x3D;&quot;changeMode(&#x27;modify&#x27;)&quot;
+                        [matTooltip]&#x3D;&quot;&#x27;Cancel&#x27;&quot;&gt;
+                        &lt;mat-icon
+                            class&#x3D;&quot;icon-size-5 text-current&quot;
+                            [svgIcon]&#x3D;&quot;&#x27;heroicons_solid:x-circle&#x27;&quot;&gt;&lt;/mat-icon&gt;
+                    &lt;/button&gt;
+                &lt;/ng-container&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class&#x3D;&quot;relative flex flex-col flex-auto sm:max-h-120 -mb-px overflow-y-auto bg-card&quot;&gt;
+
+            &lt;!-- View mode --&gt;
+            &lt;ng-container *ngIf&#x3D;&quot;mode &#x3D;&#x3D;&#x3D; &#x27;view&#x27; || mode &#x3D;&#x3D;&#x3D; &#x27;modify&#x27;&quot;&gt;
+
+                &lt;!-- Shortcuts --&gt;
+                &lt;div class&#x3D;&quot;grid grid-cols-2 grid-flow-row&quot;&gt;
+                    &lt;!-- Shortcut --&gt;
+                    &lt;ng-container *ngFor&#x3D;&quot;let shortcut of shortcuts; trackBy: trackByFn&quot;&gt;
+                        &lt;div class&#x3D;&quot;relative group flex flex-col overflow-hidden bg-card border-r border-b even:border-r-0 hover:bg-gray-50 dark:hover:bg-black dark:hover:bg-opacity-5&quot;&gt;
+                            &lt;ng-container *ngIf&#x3D;&quot;mode &#x3D;&#x3D;&#x3D; &#x27;modify&#x27;&quot;&gt;
+                                &lt;div
+                                    class&#x3D;&quot;absolute inset-0 z-99 cursor-pointer&quot;
+                                    (click)&#x3D;&quot;editShortcut(shortcut)&quot;&gt;
+                                &lt;/div&gt;
+                            &lt;/ng-container&gt;
+                            &lt;!-- Normal links --&gt;
+                            &lt;a
+                                class&#x3D;&quot;flex flex-col items-center justify-center w-full h-full py-6 no-underline&quot;
+                                *ngIf&#x3D;&quot;!shortcut.useRouter&quot;
+                                [ngClass]&#x3D;&quot;{&#x27;pointer-events-none&#x27;: mode &#x3D;&#x3D;&#x3D; &#x27;modify&#x27;}&quot;
+                                [href]&#x3D;&quot;shortcut.link&quot;&gt;
+                                &lt;ng-container *ngTemplateOutlet&#x3D;&quot;linkContent&quot;&gt;&lt;/ng-container&gt;
+                            &lt;/a&gt;
+                            &lt;!-- Router links --&gt;
+                            &lt;a
+                                class&#x3D;&quot;flex flex-col items-center justify-center w-full h-full py-6 no-underline&quot;
+                                *ngIf&#x3D;&quot;shortcut.useRouter&quot;
+                                [ngClass]&#x3D;&quot;{&#x27;pointer-events-none&#x27;: mode &#x3D;&#x3D;&#x3D; &#x27;modify&#x27;}&quot;
+                                [routerLink]&#x3D;&quot;shortcut.link&quot;&gt;
+                                &lt;ng-container *ngTemplateOutlet&#x3D;&quot;linkContent&quot;&gt;&lt;/ng-container&gt;
+                            &lt;/a&gt;
+                            &lt;!-- Link content template --&gt;
+                            &lt;ng-template #linkContent&gt;
+                                &lt;div class&#x3D;&quot;relative flex shrink-0 items-center justify-center w-12 h-12 mb-3 rounded-full bg-gray-100 dark:bg-gray-700&quot;&gt;
+                                    &lt;mat-icon
+                                        class&#x3D;&quot;absolute opacity-0 group-hover:opacity-100 z-20 icon-size-5&quot;
+                                        *ngIf&#x3D;&quot;mode &#x3D;&#x3D;&#x3D; &#x27;modify&#x27;&quot;
+                                        [svgIcon]&#x3D;&quot;&#x27;heroicons_solid:pencil&#x27;&quot;&gt;&lt;/mat-icon&gt;
+                                    &lt;mat-icon
+                                        class&#x3D;&quot;z-10&quot;
+                                        [ngClass]&#x3D;&quot;{&#x27;group-hover:opacity-0&#x27;: mode &#x3D;&#x3D;&#x3D; &#x27;modify&#x27;}&quot;
+                                        [svgIcon]&#x3D;&quot;shortcut.icon&quot;&gt;&lt;/mat-icon&gt;
+                                &lt;/div&gt;
+                                &lt;div class&#x3D;&quot;font-medium text-center&quot;&gt;{{shortcut.label}}&lt;/div&gt;
+                                &lt;div class&#x3D;&quot;text-md text-center text-secondary&quot;&gt;{{shortcut.description}}&lt;/div&gt;
+                            &lt;/ng-template&gt;
+                        &lt;/div&gt;
+                    &lt;/ng-container&gt;
+                &lt;/div&gt;
+
+                &lt;!-- No shortcuts --&gt;
+                &lt;ng-container *ngIf&#x3D;&quot;!shortcuts || !shortcuts.length&quot;&gt;
+                    &lt;div class&#x3D;&quot;flex flex-col flex-auto items-center justify-center sm:justify-start py-12 px-8&quot;&gt;
+                        &lt;div class&#x3D;&quot;flex flex-0 items-center justify-center w-14 h-14 rounded-full bg-primary-100 dark:bg-primary-600&quot;&gt;
+                            &lt;mat-icon
+                                class&#x3D;&quot;text-primary-700 dark:text-primary-50&quot;
+                                [svgIcon]&#x3D;&quot;&#x27;heroicons_outline:bookmark&#x27;&quot;&gt;&lt;/mat-icon&gt;
+                        &lt;/div&gt;
+                        &lt;div class&#x3D;&quot;mt-5 text-2xl font-semibold tracking-tight&quot;&gt;No shortcuts&lt;/div&gt;
+                        &lt;div class&#x3D;&quot;w-full max-w-60 mt-1 text-md text-center text-secondary&quot;&gt;When you have shortcuts, they will appear here.&lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/ng-container&gt;
+            &lt;/ng-container&gt;
+
+            &lt;!-- Add/Edit mode --&gt;
+            &lt;ng-container *ngIf&#x3D;&quot;mode &#x3D;&#x3D;&#x3D; &#x27;add&#x27; || mode &#x3D;&#x3D;&#x3D; &#x27;edit&#x27;&quot;&gt;
+                &lt;form
+                    class&#x3D;&quot;p-6&quot;
+                    [formGroup]&#x3D;&quot;shortcutForm&quot;&gt;
+                    &lt;mat-form-field class&#x3D;&quot;w-full&quot;&gt;
+                        &lt;mat-label&gt;Label&lt;/mat-label&gt;
+                        &lt;input
+                            matInput
+                            [formControlName]&#x3D;&quot;&#x27;label&#x27;&quot;
+                            required&gt;
+                    &lt;/mat-form-field&gt;
+                    &lt;mat-form-field class&#x3D;&quot;w-full&quot;&gt;
+                        &lt;mat-label&gt;Description&lt;/mat-label&gt;
+                        &lt;input
+                            matInput
+                            [formControlName]&#x3D;&quot;&#x27;description&#x27;&quot;&gt;
+                    &lt;/mat-form-field&gt;
+                    &lt;mat-form-field class&#x3D;&quot;w-full&quot;&gt;
+                        &lt;mat-label&gt;Icon&lt;/mat-label&gt;
+                        &lt;input
+                            matInput
+                            [formControlName]&#x3D;&quot;&#x27;icon&#x27;&quot;
+                            required&gt;
+                    &lt;/mat-form-field&gt;
+                    &lt;mat-form-field class&#x3D;&quot;w-full&quot;&gt;
+                        &lt;mat-label&gt;Link&lt;/mat-label&gt;
+                        &lt;input
+                            matInput
+                            [formControlName]&#x3D;&quot;&#x27;link&#x27;&quot;
+                            required&gt;
+                    &lt;/mat-form-field&gt;
+                    &lt;mat-slide-toggle
+                        [color]&#x3D;&quot;&#x27;primary&#x27;&quot;
+                        [formControlName]&#x3D;&quot;&#x27;useRouter&#x27;&quot;&gt;
+                        Use router for the link
+                    &lt;/mat-slide-toggle&gt;
+                    &lt;!-- Actions --&gt;
+                    &lt;div class&#x3D;&quot;flex items-center justify-end mt-4&quot;&gt;
+                        &lt;button
+                            class&#x3D;&quot;mr-2&quot;
+                            *ngIf&#x3D;&quot;mode &#x3D;&#x3D;&#x3D; &#x27;edit&#x27;&quot;
+                            mat-flat-button
+                            type&#x3D;&quot;button&quot;
+                            (click)&#x3D;&quot;delete()&quot;&gt;
+                            Delete
+                        &lt;/button&gt;
+                        &lt;button
+                            mat-flat-button
+                            [color]&#x3D;&quot;&#x27;primary&#x27;&quot;
+                            [disabled]&#x3D;&quot;!shortcutForm.valid&quot;
+                            type&#x3D;&quot;button&quot;
+                            (click)&#x3D;&quot;save()&quot;&gt;
+                            &lt;ng-container *ngIf&#x3D;&quot;mode &#x3D;&#x3D;&#x3D; &#x27;add&#x27;&quot;&gt;Add&lt;/ng-container&gt;
+                            &lt;ng-container *ngIf&#x3D;&quot;mode &#x3D;&#x3D;&#x3D; &#x27;edit&#x27;&quot;&gt;Update&lt;/ng-container&gt;
+                        &lt;/button&gt;
+                    &lt;/div&gt;
+                &lt;/form&gt;
+            &lt;/ng-container&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/ng-template&gt;
+</code></pre>
+    </div>
+
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><!-- Shortcuts toggle --><button    mat-icon-button    (click)="openPanel()"    #shortcutsOrigin>    <mat-icon [svgIcon]="\'heroicons_outline:squares-plus\'"></mat-icon></button><!-- Shortcuts panel --><ng-template #shortcutsPanel>    <div class="fixed inset-0 sm:static sm:inset-auto flex flex-col sm:min-w-90 sm:w-90 sm:rounded-2xl overflow-hidden shadow-lg">        <!-- Header -->        <div class="flex shrink-0 items-center py-4 pr-4 pl-6 bg-primary text-on-primary">            <div class="sm:hidden -ml-1 mr-3">                <button                    mat-icon-button                    (click)="closePanel()">                    <mat-icon                        class="icon-size-5 text-current"                        [svgIcon]="\'heroicons_solid:x-mark\'"></mat-icon>                </button>            </div>            <div class="flex items-center text-lg font-medium leading-10">                <span class="">Shortcuts</span>                <ng-container *ngIf="mode !== \'view\'">                    <span class="ml-1">                        <ng-container *ngIf="mode === \'add\'">- Add new</ng-container>                        <ng-container *ngIf="mode === \'modify\' || mode === \'edit\'">- Editing</ng-container>                    </span>                </ng-container>            </div>            <div class="ml-auto">                <!-- View mode -->                <ng-container *ngIf="mode === \'view\'">                    <!-- Enter \'modify\' mode -->                    <button                        mat-icon-button                        (click)="changeMode(\'modify\')"                        [matTooltip]="\'Enter edit mode\'">                        <mat-icon                            class="icon-size-5 text-current"                            [svgIcon]="\'heroicons_solid:pencil-square\'"></mat-icon>                    </button>                    <!-- Enter \'add\' mode -->                    <button                        mat-icon-button                        (click)="newShortcut()"                        [matTooltip]="\'Add shortcut\'">                        <mat-icon                            class="icon-size-5 text-current"                            [svgIcon]="\'heroicons_solid:plus-circle\'"></mat-icon>                    </button>                </ng-container>                <!-- Modify mode -->                <ng-container *ngIf="mode === \'modify\'">                    <!-- Enter \'view\' mode -->                    <button                        mat-icon-button                        (click)="changeMode(\'view\')"                        [matTooltip]="\'Exit edit mode\'">                        <mat-icon                            class="icon-size-5 text-current"                            [svgIcon]="\'heroicons_solid:check-circle\'"></mat-icon>                    </button>                </ng-container>                <!-- Add mode -->                <ng-container *ngIf="mode === \'add\'">                    <!-- Enter \'view\' mode -->                    <button                        mat-icon-button                        (click)="changeMode(\'view\')"                        [matTooltip]="\'Cancel\'">                        <mat-icon                            class="icon-size-5 text-current"                            [svgIcon]="\'heroicons_solid:x-circle\'"></mat-icon>                    </button>                </ng-container>                <!-- Edit mode -->                <ng-container *ngIf="mode === \'edit\'">                    <!-- Enter \'modify\' mode -->                    <button                        mat-icon-button                        (click)="changeMode(\'modify\')"                        [matTooltip]="\'Cancel\'">                        <mat-icon                            class="icon-size-5 text-current"                            [svgIcon]="\'heroicons_solid:x-circle\'"></mat-icon>                    </button>                </ng-container>            </div>        </div>        <div class="relative flex flex-col flex-auto sm:max-h-120 -mb-px overflow-y-auto bg-card">            <!-- View mode -->            <ng-container *ngIf="mode === \'view\' || mode === \'modify\'">                <!-- Shortcuts -->                <div class="grid grid-cols-2 grid-flow-row">                    <!-- Shortcut -->                    <ng-container *ngFor="let shortcut of shortcuts; trackBy: trackByFn">                        <div class="relative group flex flex-col overflow-hidden bg-card border-r border-b even:border-r-0 hover:bg-gray-50 dark:hover:bg-black dark:hover:bg-opacity-5">                            <ng-container *ngIf="mode === \'modify\'">                                <div                                    class="absolute inset-0 z-99 cursor-pointer"                                    (click)="editShortcut(shortcut)">                                </div>                            </ng-container>                            <!-- Normal links -->                            <a                                class="flex flex-col items-center justify-center w-full h-full py-6 no-underline"                                *ngIf="!shortcut.useRouter"                                [ngClass]="{\'pointer-events-none\': mode === \'modify\'}"                                [href]="shortcut.link">                                <ng-container *ngTemplateOutlet="linkContent"></ng-container>                            </a>                            <!-- Router links -->                            <a                                class="flex flex-col items-center justify-center w-full h-full py-6 no-underline"                                *ngIf="shortcut.useRouter"                                [ngClass]="{\'pointer-events-none\': mode === \'modify\'}"                                [routerLink]="shortcut.link">                                <ng-container *ngTemplateOutlet="linkContent"></ng-container>                            </a>                            <!-- Link content template -->                            <ng-template #linkContent>                                <div class="relative flex shrink-0 items-center justify-center w-12 h-12 mb-3 rounded-full bg-gray-100 dark:bg-gray-700">                                    <mat-icon                                        class="absolute opacity-0 group-hover:opacity-100 z-20 icon-size-5"                                        *ngIf="mode === \'modify\'"                                        [svgIcon]="\'heroicons_solid:pencil\'"></mat-icon>                                    <mat-icon                                        class="z-10"                                        [ngClass]="{\'group-hover:opacity-0\': mode === \'modify\'}"                                        [svgIcon]="shortcut.icon"></mat-icon>                                </div>                                <div class="font-medium text-center">{{shortcut.label}}</div>                                <div class="text-md text-center text-secondary">{{shortcut.description}}</div>                            </ng-template>                        </div>                    </ng-container>                </div>                <!-- No shortcuts -->                <ng-container *ngIf="!shortcuts || !shortcuts.length">                    <div class="flex flex-col flex-auto items-center justify-center sm:justify-start py-12 px-8">                        <div class="flex flex-0 items-center justify-center w-14 h-14 rounded-full bg-primary-100 dark:bg-primary-600">                            <mat-icon                                class="text-primary-700 dark:text-primary-50"                                [svgIcon]="\'heroicons_outline:bookmark\'"></mat-icon>                        </div>                        <div class="mt-5 text-2xl font-semibold tracking-tight">No shortcuts</div>                        <div class="w-full max-w-60 mt-1 text-md text-center text-secondary">When you have shortcuts, they will appear here.</div>                    </div>                </ng-container>            </ng-container>            <!-- Add/Edit mode -->            <ng-container *ngIf="mode === \'add\' || mode === \'edit\'">                <form                    class="p-6"                    [formGroup]="shortcutForm">                    <mat-form-field class="w-full">                        <mat-label>Label</mat-label>                        <input                            matInput                            [formControlName]="\'label\'"                            required>                    </mat-form-field>                    <mat-form-field class="w-full">                        <mat-label>Description</mat-label>                        <input                            matInput                            [formControlName]="\'description\'">                    </mat-form-field>                    <mat-form-field class="w-full">                        <mat-label>Icon</mat-label>                        <input                            matInput                            [formControlName]="\'icon\'"                            required>                    </mat-form-field>                    <mat-form-field class="w-full">                        <mat-label>Link</mat-label>                        <input                            matInput                            [formControlName]="\'link\'"                            required>                    </mat-form-field>                    <mat-slide-toggle                        [color]="\'primary\'"                        [formControlName]="\'useRouter\'">                        Use router for the link                    </mat-slide-toggle>                    <!-- Actions -->                    <div class="flex items-center justify-end mt-4">                        <button                            class="mr-2"                            *ngIf="mode === \'edit\'"                            mat-flat-button                            type="button"                            (click)="delete()">                            Delete                        </button>                        <button                            mat-flat-button                            [color]="\'primary\'"                            [disabled]="!shortcutForm.valid"                            type="button"                            (click)="save()">                            <ng-container *ngIf="mode === \'add\'">Add</ng-container>                            <ng-container *ngIf="mode === \'edit\'">Update</ng-container>                        </button>                    </div>                </form>            </ng-container>        </div>    </div></ng-template></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AuthConfirmationRequiredComponent', 'selector': 'auth-confirmation-required'},{'name': 'AuthForgotPasswordComponent', 'selector': 'auth-forgot-password'},{'name': 'AuthResetPasswordComponent', 'selector': 'auth-reset-password'},{'name': 'AuthSignInComponent', 'selector': 'auth-sign-in'},{'name': 'AuthSignOutComponent', 'selector': 'auth-sign-out'},{'name': 'AuthSignUpComponent', 'selector': 'auth-sign-up'},{'name': 'AuthUnlockSessionComponent', 'selector': 'auth-unlock-session'},{'name': 'CenteredLayoutComponent', 'selector': 'centered-layout'},{'name': 'ClassicLayoutComponent', 'selector': 'classic-layout'},{'name': 'ClassyLayoutComponent', 'selector': 'classy-layout'},{'name': 'CompactLayoutComponent', 'selector': 'compact-layout'},{'name': 'DenseLayoutComponent', 'selector': 'dense-layout'},{'name': 'EmptyLayoutComponent', 'selector': 'empty-layout'},{'name': 'EnterpriseLayoutComponent', 'selector': 'enterprise-layout'},{'name': 'Error404Component', 'selector': 'error-404'},{'name': 'Error500Component', 'selector': 'error-500'},{'name': 'ExampleComponent', 'selector': 'example'},{'name': 'FuseAlertComponent', 'selector': 'fuse-alert'},{'name': 'FuseCardComponent', 'selector': 'fuse-card'},{'name': 'FuseConfirmationDialogComponent', 'selector': 'fuse-confirmation-dialog'},{'name': 'FuseDrawerComponent', 'selector': 'fuse-drawer'},{'name': 'FuseFullscreenComponent', 'selector': 'fuse-fullscreen'},{'name': 'FuseHighlightComponent', 'selector': 'textarea[fuse-highlight]'},{'name': 'FuseHorizontalNavigationBasicItemComponent', 'selector': 'fuse-horizontal-navigation-basic-item'},{'name': 'FuseHorizontalNavigationBranchItemComponent', 'selector': 'fuse-horizontal-navigation-branch-item'},{'name': 'FuseHorizontalNavigationComponent', 'selector': 'fuse-horizontal-navigation'},{'name': 'FuseHorizontalNavigationDividerItemComponent', 'selector': 'fuse-horizontal-navigation-divider-item'},{'name': 'FuseHorizontalNavigationSpacerItemComponent', 'selector': 'fuse-horizontal-navigation-spacer-item'},{'name': 'FuseLoadingBarComponent', 'selector': 'fuse-loading-bar'},{'name': 'FuseMasonryComponent', 'selector': 'fuse-masonry'},{'name': 'FuseVerticalNavigationAsideItemComponent', 'selector': 'fuse-vertical-navigation-aside-item'},{'name': 'FuseVerticalNavigationBasicItemComponent', 'selector': 'fuse-vertical-navigation-basic-item'},{'name': 'FuseVerticalNavigationCollapsableItemComponent', 'selector': 'fuse-vertical-navigation-collapsable-item'},{'name': 'FuseVerticalNavigationComponent', 'selector': 'fuse-vertical-navigation'},{'name': 'FuseVerticalNavigationDividerItemComponent', 'selector': 'fuse-vertical-navigation-divider-item'},{'name': 'FuseVerticalNavigationGroupItemComponent', 'selector': 'fuse-vertical-navigation-group-item'},{'name': 'FuseVerticalNavigationSpacerItemComponent', 'selector': 'fuse-vertical-navigation-spacer-item'},{'name': 'FuturisticLayoutComponent', 'selector': 'futuristic-layout'},{'name': 'LandingHomeComponent', 'selector': 'landing-home'},{'name': 'LanguagesComponent', 'selector': 'languages'},{'name': 'LayoutComponent', 'selector': 'layout'},{'name': 'MaterialLayoutComponent', 'selector': 'material-layout'},{'name': 'MessagesComponent', 'selector': 'messages'},{'name': 'ModernLayoutComponent', 'selector': 'modern-layout'},{'name': 'NotificationsComponent', 'selector': 'notifications'},{'name': 'ProjectComponent', 'selector': 'project'},{'name': 'QuickChatComponent', 'selector': 'quick-chat'},{'name': 'SearchComponent', 'selector': 'search'},{'name': 'SettingsAccountComponent', 'selector': 'settings-account'},{'name': 'SettingsComponent', 'selector': 'settings'},{'name': 'SettingsComponent', 'selector': 'settings'},{'name': 'SettingsNotificationsComponent', 'selector': 'settings-notifications'},{'name': 'SettingsPlanBillingComponent', 'selector': 'settings-plan-billing'},{'name': 'SettingsSecurityComponent', 'selector': 'settings-security'},{'name': 'SettingsTeamComponent', 'selector': 'settings-team'},{'name': 'ShortcutsComponent', 'selector': 'shortcuts'},{'name': 'ThinLayoutComponent', 'selector': 'thin-layout'},{'name': 'UserComponent', 'selector': 'user'}];
+    var DIRECTIVES = [{'name': 'FuseScrollbarDirective', 'selector': '[fuseScrollbar]'},{'name': 'FuseScrollResetDirective', 'selector': '[fuseScrollReset]'}];
+    var ACTUAL_COMPONENT = {'name': 'ShortcutsComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'ShortcutsComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

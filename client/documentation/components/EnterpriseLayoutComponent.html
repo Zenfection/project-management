@@ -1,0 +1,943 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>ctu-task-management documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
+            <a href="../" class="navbar-brand">ctu-task-management documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  EnterpriseLayoutComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/layout/layouts/horizontal/enterprise/enterprise.component.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code>OnInit</code>
+                <code>OnDestroy</code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+            <tr>
+                <td class="col-md-3">encapsulation</td>
+                <td class="col-md-9"><code>ViewEncapsulation.None</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>enterprise-layout</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">Standalone</td>
+                <td class="col-md-9"><code>true</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                                <code><a href="../components/FuseLoadingBarComponent.html" target="_self" >FuseLoadingBarComponent</a></code>
+                            <code>NgIf</code>
+                                <code><a href="../components/FuseVerticalNavigationComponent.html" target="_self" >FuseVerticalNavigationComponent</a></code>
+                            <code>MatButtonModule</code>
+                            <code>MatIconModule</code>
+                                <code><a href="../components/LanguagesComponent.html" target="_self" >LanguagesComponent</a></code>
+                                <code><a href="../components/FuseFullscreenComponent.html" target="_self" >FuseFullscreenComponent</a></code>
+                                <code><a href="../components/SearchComponent.html" target="_self" >SearchComponent</a></code>
+                                <code><a href="../components/ShortcutsComponent.html" target="_self" >ShortcutsComponent</a></code>
+                                <code><a href="../components/MessagesComponent.html" target="_self" >MessagesComponent</a></code>
+                                <code><a href="../components/NotificationsComponent.html" target="_self" >NotificationsComponent</a></code>
+                                <code><a href="../components/UserComponent.html" target="_self" >UserComponent</a></code>
+                                <code><a href="../components/FuseHorizontalNavigationComponent.html" target="_self" >FuseHorizontalNavigationComponent</a></code>
+                            <code>RouterOutlet</code>
+                                <code><a href="../components/QuickChatComponent.html" target="_self" >QuickChatComponent</a></code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./enterprise.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_unsubscribeAll" >_unsubscribeAll</a>
+                            </li>
+                            <li>
+                                <a href="#isScreenSmall" >isScreenSmall</a>
+                            </li>
+                            <li>
+                                <a href="#navigation" >navigation</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#ngOnDestroy" >ngOnDestroy</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#toggleNavigation" >toggleNavigation</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Accessors</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                    <a href="#currentYear" >currentYear</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(_activatedRoute: ActivatedRoute, _router: Router, _navigationService: <a href="../injectables/NavigationService.html" target="_self">NavigationService</a>, _fuseMediaWatcherService: <a href="../injectables/FuseMediaWatcherService.html" target="_self">FuseMediaWatcherService</a>, _fuseNavigationService: <a href="../injectables/FuseNavigationService.html" target="_self">FuseNavigationService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/app/layout/layouts/horizontal/enterprise/enterprise.component.ts:32</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Constructor</p>
+</div>
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>_activatedRoute</td>
+                                                  
+                                                        <td>
+                                                                    <code>ActivatedRoute</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>_router</td>
+                                                  
+                                                        <td>
+                                                                    <code>Router</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>_navigationService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/NavigationService.html" target="_self" >NavigationService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>_fuseMediaWatcherService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/FuseMediaWatcherService.html" target="_self" >FuseMediaWatcherService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>_fuseNavigationService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/FuseNavigationService.html" target="_self" >FuseNavigationService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnDestroy"></a>
+                    <span class="name">
+                        <span ><b>ngOnDestroy</b></span>
+                        <a href="#ngOnDestroy"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnDestroy()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="89"
+                            class="link-to-prism">src/app/layout/layouts/horizontal/enterprise/enterprise.component.ts:89</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>On destroy</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="66"
+                            class="link-to-prism">src/app/layout/layouts/horizontal/enterprise/enterprise.component.ts:66</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>On init</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="toggleNavigation"></a>
+                    <span class="name">
+                        <span ><b>toggleNavigation</b></span>
+                        <a href="#toggleNavigation"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>toggleNavigation(name: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="105"
+                            class="link-to-prism">src/app/layout/layouts/horizontal/enterprise/enterprise.component.ts:105</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Toggle navigation</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>name</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_unsubscribeAll"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>_unsubscribeAll</b></span>
+                        <a href="#_unsubscribeAll"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Subject&lt;any&gt;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new Subject&lt;any&gt;()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/app/layout/layouts/horizontal/enterprise/enterprise.component.ts:32</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isScreenSmall"></a>
+                    <span class="name">
+                        <span ><b>isScreenSmall</b></span>
+                        <a href="#isScreenSmall"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/app/layout/layouts/horizontal/enterprise/enterprise.component.ts:30</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="navigation"></a>
+                    <span class="name">
+                        <span ><b>navigation</b></span>
+                        <a href="#navigation"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Navigation.html" target="_self" >Navigation</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/app/layout/layouts/horizontal/enterprise/enterprise.component.ts:31</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-accessors">
+    <h3 id="accessors">
+        Accessors
+    </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="currentYear"></a>
+                        <span class="name"><b>currentYear</b><a href="#currentYear"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>currentYear()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="54" class="link-to-prism">src/app/layout/layouts/horizontal/enterprise/enterprise.component.ts:54</a></div>
+                                </td>
+                            </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>Getter for current year</p>
+</div>
+
+                                <div class="io-description">
+                                    <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                                </div>
+                        </td>
+                    </tr>
+
+            </tbody>
+        </table>
+</section>
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { NgIf } from &#x27;@angular/common&#x27;;
+import { Component, OnDestroy, OnInit, ViewEncapsulation } from &#x27;@angular/core&#x27;;
+import { MatButtonModule } from &#x27;@angular/material/button&#x27;;
+import { MatIconModule } from &#x27;@angular/material/icon&#x27;;
+import { ActivatedRoute, Router, RouterOutlet } from &#x27;@angular/router&#x27;;
+import { FuseFullscreenComponent } from &#x27;@fuse/components/fullscreen&#x27;;
+import { FuseLoadingBarComponent } from &#x27;@fuse/components/loading-bar&#x27;;
+import { FuseHorizontalNavigationComponent, FuseNavigationService, FuseVerticalNavigationComponent } from &#x27;@fuse/components/navigation&#x27;;
+import { FuseMediaWatcherService } from &#x27;@fuse/services/media-watcher&#x27;;
+import { NavigationService } from &#x27;app/core/navigation/navigation.service&#x27;;
+import { Navigation } from &#x27;app/core/navigation/navigation.types&#x27;;
+import { LanguagesComponent } from &#x27;app/layout/common/languages/languages.component&#x27;;
+import { MessagesComponent } from &#x27;app/layout/common/messages/messages.component&#x27;;
+import { NotificationsComponent } from &#x27;app/layout/common/notifications/notifications.component&#x27;;
+import { QuickChatComponent } from &#x27;app/layout/common/quick-chat/quick-chat.component&#x27;;
+import { SearchComponent } from &#x27;app/layout/common/search/search.component&#x27;;
+import { ShortcutsComponent } from &#x27;app/layout/common/shortcuts/shortcuts.component&#x27;;
+import { UserComponent } from &#x27;app/layout/common/user/user.component&#x27;;
+import { Subject, takeUntil } from &#x27;rxjs&#x27;;
+
+@Component({
+    selector     : &#x27;enterprise-layout&#x27;,
+    templateUrl  : &#x27;./enterprise.component.html&#x27;,
+    encapsulation: ViewEncapsulation.None,
+    standalone   : true,
+    imports      : [FuseLoadingBarComponent, NgIf, FuseVerticalNavigationComponent, MatButtonModule, MatIconModule, LanguagesComponent, FuseFullscreenComponent, SearchComponent, ShortcutsComponent, MessagesComponent, NotificationsComponent, UserComponent, FuseHorizontalNavigationComponent, RouterOutlet, QuickChatComponent],
+})
+export class EnterpriseLayoutComponent implements OnInit, OnDestroy
+{
+    isScreenSmall: boolean;
+    navigation: Navigation;
+    private _unsubscribeAll: Subject&lt;any&gt; &#x3D; new Subject&lt;any&gt;();
+
+    /**
+     * Constructor
+     */
+    constructor(
+        private _activatedRoute: ActivatedRoute,
+        private _router: Router,
+        private _navigationService: NavigationService,
+        private _fuseMediaWatcherService: FuseMediaWatcherService,
+        private _fuseNavigationService: FuseNavigationService,
+    )
+    {
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Accessors
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Getter for current year
+     */
+    get currentYear(): number
+    {
+        return new Date().getFullYear();
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Lifecycle hooks
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * On init
+     */
+    ngOnInit(): void
+    {
+        // Subscribe to navigation data
+        this._navigationService.navigation$
+            .pipe(takeUntil(this._unsubscribeAll))
+            .subscribe((navigation: Navigation) &#x3D;&gt;
+            {
+                this.navigation &#x3D; navigation;
+            });
+
+        // Subscribe to media changes
+        this._fuseMediaWatcherService.onMediaChange$
+            .pipe(takeUntil(this._unsubscribeAll))
+            .subscribe(({matchingAliases}) &#x3D;&gt;
+            {
+                // Check if the screen is small
+                this.isScreenSmall &#x3D; !matchingAliases.includes(&#x27;md&#x27;);
+            });
+    }
+
+    /**
+     * On destroy
+     */
+    ngOnDestroy(): void
+    {
+        // Unsubscribe from all subscriptions
+        this._unsubscribeAll.next(null);
+        this._unsubscribeAll.complete();
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Public methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Toggle navigation
+     *
+     * @param name
+     */
+    toggleNavigation(name: string): void
+    {
+        // Get the navigation
+        const navigation &#x3D; this._fuseNavigationService.getComponent&lt;FuseVerticalNavigationComponent&gt;(name);
+
+        if ( navigation )
+        {
+            // Toggle the opened status
+            navigation.toggle();
+        }
+    }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;!-- Loading bar --&gt;
+&lt;fuse-loading-bar&gt;&lt;/fuse-loading-bar&gt;
+
+&lt;!-- Navigation --&gt;
+&lt;ng-container *ngIf&#x3D;&quot;isScreenSmall&quot;&gt;
+    &lt;fuse-vertical-navigation
+        class&#x3D;&quot;dark bg-gray-900 print:hidden&quot;
+        [mode]&#x3D;&quot;&#x27;over&#x27;&quot;
+        [name]&#x3D;&quot;&#x27;mainNavigation&#x27;&quot;
+        [navigation]&#x3D;&quot;navigation.default&quot;
+        [opened]&#x3D;&quot;false&quot;&gt;
+        &lt;!-- Navigation header hook --&gt;
+        &lt;ng-container fuseVerticalNavigationContentHeader&gt;
+            &lt;!-- Logo --&gt;
+            &lt;div class&#x3D;&quot;flex items-center h-20 pt-6 px-8&quot;&gt;
+                &lt;img
+                    class&#x3D;&quot;w-24&quot;
+                    src&#x3D;&quot;assets/images/logo/logo-text-on-dark.svg&quot;
+                    alt&#x3D;&quot;Logo image&quot;&gt;
+            &lt;/div&gt;
+        &lt;/ng-container&gt;
+    &lt;/fuse-vertical-navigation&gt;
+&lt;/ng-container&gt;
+
+&lt;!-- Wrapper --&gt;
+&lt;div class&#x3D;&quot;flex flex-col flex-auto items-center w-full min-w-0 bg-gray-200 dark:bg-card&quot;&gt;
+
+    &lt;!-- Header --&gt;
+    &lt;div class&#x3D;&quot;relative flex flex-col flex-0 justify-center w-full h-16 sm:h-20 md:h-36 overflow-hidden z-49 shadow dark:shadow-none print:hidden&quot;&gt;
+        &lt;!-- Top bar --&gt;
+        &lt;div class&#x3D;&quot;relative dark flex flex-auto justify-center w-full px-4 md:px-8 bg-gray-800 dark:bg-gray-900&quot;&gt;
+            &lt;div class&#x3D;&quot;flex items-center w-full max-w-360 h-16 sm:h-20&quot;&gt;
+                &lt;!-- Logo --&gt;
+                &lt;ng-container *ngIf&#x3D;&quot;!isScreenSmall&quot;&gt;
+                    &lt;div class&#x3D;&quot;flex items-center&quot;&gt;
+                        &lt;img
+                            class&#x3D;&quot;w-24&quot;
+                            src&#x3D;&quot;assets/images/logo/logo-text-on-dark.svg&quot;
+                            alt&#x3D;&quot;Logo image&quot;&gt;
+                    &lt;/div&gt;
+                &lt;/ng-container&gt;
+                &lt;!-- Navigation toggle button --&gt;
+                &lt;ng-container *ngIf&#x3D;&quot;isScreenSmall&quot;&gt;
+                    &lt;button
+                        mat-icon-button
+                        (click)&#x3D;&quot;toggleNavigation(&#x27;mainNavigation&#x27;)&quot;&gt;
+                        &lt;mat-icon [svgIcon]&#x3D;&quot;&#x27;heroicons_outline:bars-3&#x27;&quot;&gt;&lt;/mat-icon&gt;
+                    &lt;/button&gt;
+                &lt;/ng-container&gt;
+                &lt;!-- Components --&gt;
+                &lt;div class&#x3D;&quot;flex items-center pl-2 ml-auto space-x-0.5 sm:space-x-2&quot;&gt;
+                    &lt;languages&gt;&lt;/languages&gt;
+                    &lt;fuse-fullscreen class&#x3D;&quot;hidden md:block&quot;&gt;&lt;/fuse-fullscreen&gt;
+                    &lt;search [appearance]&#x3D;&quot;&#x27;bar&#x27;&quot;&gt;&lt;/search&gt;
+                    &lt;shortcuts&gt;&lt;/shortcuts&gt;
+                    &lt;messages&gt;&lt;/messages&gt;
+                    &lt;notifications&gt;&lt;/notifications&gt;
+                    &lt;button
+                        class&#x3D;&quot;lg:hidden&quot;
+                        mat-icon-button
+                        (click)&#x3D;&quot;quickChat.toggle()&quot;&gt;
+                        &lt;mat-icon [svgIcon]&#x3D;&quot;&#x27;heroicons_outline:chat-bubble-left-right&#x27;&quot;&gt;&lt;/mat-icon&gt;
+                    &lt;/button&gt;
+                    &lt;user&gt;&lt;/user&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;!-- Bottom bar --&gt;
+        &lt;ng-container *ngIf&#x3D;&quot;!isScreenSmall&quot;&gt;
+            &lt;div class&#x3D;&quot;flex flex-auto justify-center px-4 md:px-8 bg-card dark:bg-gray-700&quot;&gt;
+                &lt;div class&#x3D;&quot;relative flex items-center w-full max-w-360 h-16&quot;&gt;
+                    &lt;fuse-horizontal-navigation
+                        class&#x3D;&quot;-mx-4&quot;
+                        [name]&#x3D;&quot;&#x27;mainNavigation&#x27;&quot;
+                        [navigation]&#x3D;&quot;navigation.horizontal&quot;&gt;&lt;/fuse-horizontal-navigation&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/ng-container&gt;
+    &lt;/div&gt;
+
+    &lt;!-- Content --&gt;
+    &lt;div class&#x3D;&quot;flex flex-auto justify-center w-full sm:p-6 md:p-8&quot;&gt;
+        &lt;div class&#x3D;&quot;flex flex-col flex-auto w-full sm:max-w-360 sm:shadow-lg sm:rounded-lg sm:overflow-hidden bg-default&quot;&gt;
+            &lt;!-- *ngIf&#x3D;&quot;true&quot; hack is required here for router-outlet to work correctly.
+                 Otherwise, layout changes won&#x27;t be registered and the view won&#x27;t be updated! --&gt;
+            &lt;router-outlet *ngIf&#x3D;&quot;true&quot;&gt;&lt;/router-outlet&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;!-- Footer --&gt;
+    &lt;div class&#x3D;&quot;relative flex flex-0 justify-center w-full px-6 md:px-8 z-49 border-t bg-card print:hidden&quot;&gt;
+        &lt;div class&#x3D;&quot;flex items-center w-full max-w-360 h-14 sm:h-20&quot;&gt;
+            &lt;span class&#x3D;&quot;font-medium text-secondary&quot;&gt;Fuse &amp;copy; {{currentYear}}&lt;/span&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;!-- Quick chat --&gt;
+&lt;quick-chat #quickChat&#x3D;&quot;quickChat&quot;&gt;&lt;/quick-chat&gt;
+</code></pre>
+    </div>
+
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><!-- Loading bar --><fuse-loading-bar></fuse-loading-bar><!-- Navigation --><ng-container *ngIf="isScreenSmall">    <fuse-vertical-navigation        class="dark bg-gray-900 print:hidden"        [mode]="\'over\'"        [name]="\'mainNavigation\'"        [navigation]="navigation.default"        [opened]="false">        <!-- Navigation header hook -->        <ng-container fuseVerticalNavigationContentHeader>            <!-- Logo -->            <div class="flex items-center h-20 pt-6 px-8">                <img                    class="w-24"                    src="assets/images/logo/logo-text-on-dark.svg"                    alt="Logo image">            </div>        </ng-container>    </fuse-vertical-navigation></ng-container><!-- Wrapper --><div class="flex flex-col flex-auto items-center w-full min-w-0 bg-gray-200 dark:bg-card">    <!-- Header -->    <div class="relative flex flex-col flex-0 justify-center w-full h-16 sm:h-20 md:h-36 overflow-hidden z-49 shadow dark:shadow-none print:hidden">        <!-- Top bar -->        <div class="relative dark flex flex-auto justify-center w-full px-4 md:px-8 bg-gray-800 dark:bg-gray-900">            <div class="flex items-center w-full max-w-360 h-16 sm:h-20">                <!-- Logo -->                <ng-container *ngIf="!isScreenSmall">                    <div class="flex items-center">                        <img                            class="w-24"                            src="assets/images/logo/logo-text-on-dark.svg"                            alt="Logo image">                    </div>                </ng-container>                <!-- Navigation toggle button -->                <ng-container *ngIf="isScreenSmall">                    <button                        mat-icon-button                        (click)="toggleNavigation(\'mainNavigation\')">                        <mat-icon [svgIcon]="\'heroicons_outline:bars-3\'"></mat-icon>                    </button>                </ng-container>                <!-- Components -->                <div class="flex items-center pl-2 ml-auto space-x-0.5 sm:space-x-2">                    <languages></languages>                    <fuse-fullscreen class="hidden md:block"></fuse-fullscreen>                    <search [appearance]="\'bar\'"></search>                    <shortcuts></shortcuts>                    <messages></messages>                    <notifications></notifications>                    <button                        class="lg:hidden"                        mat-icon-button                        (click)="quickChat.toggle()">                        <mat-icon [svgIcon]="\'heroicons_outline:chat-bubble-left-right\'"></mat-icon>                    </button>                    <user></user>                </div>            </div>        </div>        <!-- Bottom bar -->        <ng-container *ngIf="!isScreenSmall">            <div class="flex flex-auto justify-center px-4 md:px-8 bg-card dark:bg-gray-700">                <div class="relative flex items-center w-full max-w-360 h-16">                    <fuse-horizontal-navigation                        class="-mx-4"                        [name]="\'mainNavigation\'"                        [navigation]="navigation.horizontal"></fuse-horizontal-navigation>                </div>            </div>        </ng-container>    </div>    <!-- Content -->    <div class="flex flex-auto justify-center w-full sm:p-6 md:p-8">        <div class="flex flex-col flex-auto w-full sm:max-w-360 sm:shadow-lg sm:rounded-lg sm:overflow-hidden bg-default">            <!-- *ngIf="true" hack is required here for router-outlet to work correctly.                 Otherwise, layout changes won\'t be registered and the view won\'t be updated! -->            <router-outlet *ngIf="true"></router-outlet>        </div>    </div>    <!-- Footer -->    <div class="relative flex flex-0 justify-center w-full px-6 md:px-8 z-49 border-t bg-card print:hidden">        <div class="flex items-center w-full max-w-360 h-14 sm:h-20">            <span class="font-medium text-secondary">Fuse &copy; {{currentYear}}</span>        </div>    </div></div><!-- Quick chat --><quick-chat #quickChat="quickChat"></quick-chat></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AuthConfirmationRequiredComponent', 'selector': 'auth-confirmation-required'},{'name': 'AuthForgotPasswordComponent', 'selector': 'auth-forgot-password'},{'name': 'AuthResetPasswordComponent', 'selector': 'auth-reset-password'},{'name': 'AuthSignInComponent', 'selector': 'auth-sign-in'},{'name': 'AuthSignOutComponent', 'selector': 'auth-sign-out'},{'name': 'AuthSignUpComponent', 'selector': 'auth-sign-up'},{'name': 'AuthUnlockSessionComponent', 'selector': 'auth-unlock-session'},{'name': 'CenteredLayoutComponent', 'selector': 'centered-layout'},{'name': 'ClassicLayoutComponent', 'selector': 'classic-layout'},{'name': 'ClassyLayoutComponent', 'selector': 'classy-layout'},{'name': 'CompactLayoutComponent', 'selector': 'compact-layout'},{'name': 'DenseLayoutComponent', 'selector': 'dense-layout'},{'name': 'EmptyLayoutComponent', 'selector': 'empty-layout'},{'name': 'EnterpriseLayoutComponent', 'selector': 'enterprise-layout'},{'name': 'Error404Component', 'selector': 'error-404'},{'name': 'Error500Component', 'selector': 'error-500'},{'name': 'ExampleComponent', 'selector': 'example'},{'name': 'FuseAlertComponent', 'selector': 'fuse-alert'},{'name': 'FuseCardComponent', 'selector': 'fuse-card'},{'name': 'FuseConfirmationDialogComponent', 'selector': 'fuse-confirmation-dialog'},{'name': 'FuseDrawerComponent', 'selector': 'fuse-drawer'},{'name': 'FuseFullscreenComponent', 'selector': 'fuse-fullscreen'},{'name': 'FuseHighlightComponent', 'selector': 'textarea[fuse-highlight]'},{'name': 'FuseHorizontalNavigationBasicItemComponent', 'selector': 'fuse-horizontal-navigation-basic-item'},{'name': 'FuseHorizontalNavigationBranchItemComponent', 'selector': 'fuse-horizontal-navigation-branch-item'},{'name': 'FuseHorizontalNavigationComponent', 'selector': 'fuse-horizontal-navigation'},{'name': 'FuseHorizontalNavigationDividerItemComponent', 'selector': 'fuse-horizontal-navigation-divider-item'},{'name': 'FuseHorizontalNavigationSpacerItemComponent', 'selector': 'fuse-horizontal-navigation-spacer-item'},{'name': 'FuseLoadingBarComponent', 'selector': 'fuse-loading-bar'},{'name': 'FuseMasonryComponent', 'selector': 'fuse-masonry'},{'name': 'FuseVerticalNavigationAsideItemComponent', 'selector': 'fuse-vertical-navigation-aside-item'},{'name': 'FuseVerticalNavigationBasicItemComponent', 'selector': 'fuse-vertical-navigation-basic-item'},{'name': 'FuseVerticalNavigationCollapsableItemComponent', 'selector': 'fuse-vertical-navigation-collapsable-item'},{'name': 'FuseVerticalNavigationComponent', 'selector': 'fuse-vertical-navigation'},{'name': 'FuseVerticalNavigationDividerItemComponent', 'selector': 'fuse-vertical-navigation-divider-item'},{'name': 'FuseVerticalNavigationGroupItemComponent', 'selector': 'fuse-vertical-navigation-group-item'},{'name': 'FuseVerticalNavigationSpacerItemComponent', 'selector': 'fuse-vertical-navigation-spacer-item'},{'name': 'FuturisticLayoutComponent', 'selector': 'futuristic-layout'},{'name': 'LandingHomeComponent', 'selector': 'landing-home'},{'name': 'LanguagesComponent', 'selector': 'languages'},{'name': 'LayoutComponent', 'selector': 'layout'},{'name': 'MaterialLayoutComponent', 'selector': 'material-layout'},{'name': 'MessagesComponent', 'selector': 'messages'},{'name': 'ModernLayoutComponent', 'selector': 'modern-layout'},{'name': 'NotificationsComponent', 'selector': 'notifications'},{'name': 'ProjectComponent', 'selector': 'project'},{'name': 'QuickChatComponent', 'selector': 'quick-chat'},{'name': 'SearchComponent', 'selector': 'search'},{'name': 'SettingsAccountComponent', 'selector': 'settings-account'},{'name': 'SettingsComponent', 'selector': 'settings'},{'name': 'SettingsComponent', 'selector': 'settings'},{'name': 'SettingsNotificationsComponent', 'selector': 'settings-notifications'},{'name': 'SettingsPlanBillingComponent', 'selector': 'settings-plan-billing'},{'name': 'SettingsSecurityComponent', 'selector': 'settings-security'},{'name': 'SettingsTeamComponent', 'selector': 'settings-team'},{'name': 'ShortcutsComponent', 'selector': 'shortcuts'},{'name': 'ThinLayoutComponent', 'selector': 'thin-layout'},{'name': 'UserComponent', 'selector': 'user'}];
+    var DIRECTIVES = [{'name': 'FuseScrollbarDirective', 'selector': '[fuseScrollbar]'},{'name': 'FuseScrollResetDirective', 'selector': '[fuseScrollReset]'}];
+    var ACTUAL_COMPONENT = {'name': 'EnterpriseLayoutComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'EnterpriseLayoutComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

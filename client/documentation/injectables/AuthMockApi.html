@@ -1,0 +1,822 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>ctu-task-management documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
+            <a href="../" class="navbar-brand">ctu-task-management documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content injectable">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Injectables</li>
+  <li class="breadcrumb-item" >AuthMockApi</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" 
+                class="nav-link"
+                class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" 
+                class="nav-link"
+                
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>src/app/mock-api/common/auth/api.ts</code>
+        </p>
+
+
+
+
+
+            <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#_secret" >_secret</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_user" >_user</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_base64url" >_base64url</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_generateJWTToken" >_generateJWTToken</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_verifyJWTToken" >_verifyJWTToken</a>
+                            </li>
+                            <li>
+                                <a href="#registerHandlers" >registerHandlers</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+            <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(_fuseMockApiService: <a href="../injectables/FuseMockApiService.html" target="_self">FuseMockApiService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/app/mock-api/common/auth/api.ts:13</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Constructor</p>
+</div>
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>_fuseMockApiService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/FuseMockApiService.html" target="_self" >FuseMockApiService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+            <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_base64url"></a>
+                    <span class="name">
+                        <span class="modifier">Private</span>
+                        <span ><b>_base64url</b></span>
+                        <a href="#_base64url"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>_base64url(source: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="171"
+                            class="link-to-prism">src/app/mock-api/common/auth/api.ts:171</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Return base64 encoded version of the given string</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>source</td>
+                                    <td>
+                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_generateJWTToken"></a>
+                    <span class="name">
+                        <span class="modifier">Private</span>
+                        <span ><b>_generateJWTToken</b></span>
+                        <a href="#_generateJWTToken"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>_generateJWTToken()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="195"
+                            class="link-to-prism">src/app/mock-api/common/auth/api.ts:195</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Generates a JWT token using CryptoJS library.</p>
+<p>This generator is for mocking purposes only and it is NOT
+safe to use it in production frontend applications!</p>
+</div>
+
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_verifyJWTToken"></a>
+                    <span class="name">
+                        <span class="modifier">Private</span>
+                        <span ><b>_verifyJWTToken</b></span>
+                        <a href="#_verifyJWTToken"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>_verifyJWTToken(token: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="238"
+                            class="link-to-prism">src/app/mock-api/common/auth/api.ts:238</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Verify the given token</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>token</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="registerHandlers"></a>
+                    <span class="name">
+                        <span ><b>registerHandlers</b></span>
+                        <a href="#registerHandlers"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>registerHandlers()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="34"
+                            class="link-to-prism">src/app/mock-api/common/auth/api.ts:34</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Register Mock API handlers</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+            <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_secret"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>_secret</b></span>
+                        <a href="#_secret"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/app/mock-api/common/auth/api.ts:12</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_user"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>_user</b></span>
+                        <a href="#_user"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>userData</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/app/mock-api/common/auth/api.ts:13</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
+import { FuseMockApiService } from &#x27;@fuse/lib/mock-api&#x27;;
+import { user as userData } from &#x27;app/mock-api/common/user/data&#x27;;
+import Base64 from &#x27;crypto-js/enc-base64&#x27;;
+import Utf8 from &#x27;crypto-js/enc-utf8&#x27;;
+import HmacSHA256 from &#x27;crypto-js/hmac-sha256&#x27;;
+import { cloneDeep } from &#x27;lodash-es&#x27;;
+
+@Injectable({providedIn: &#x27;root&#x27;})
+export class AuthMockApi
+{
+    private readonly _secret: any;
+    private _user: any &#x3D; userData;
+
+    /**
+     * Constructor
+     */
+    constructor(private _fuseMockApiService: FuseMockApiService)
+    {
+        // Set the mock-api
+        this._secret &#x3D; &#x27;YOUR_VERY_CONFIDENTIAL_SECRET_FOR_SIGNING_JWT_TOKENS!!!&#x27;;
+
+        // Register Mock API handlers
+        this.registerHandlers();
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Public methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Register Mock API handlers
+     */
+    registerHandlers(): void
+    {
+        // -----------------------------------------------------------------------------------------------------
+        // @ Forgot password - POST
+        // -----------------------------------------------------------------------------------------------------
+        this._fuseMockApiService
+            .onPost(&#x27;api/auth/forgot-password&#x27;, 1000)
+            .reply(() &#x3D;&gt;
+                [
+                    200,
+                    true,
+                ],
+            );
+
+        // -----------------------------------------------------------------------------------------------------
+        // @ Reset password - POST
+        // -----------------------------------------------------------------------------------------------------
+        this._fuseMockApiService
+            .onPost(&#x27;api/auth/reset-password&#x27;, 1000)
+            .reply(() &#x3D;&gt;
+                [
+                    200,
+                    true,
+                ],
+            );
+
+        // -----------------------------------------------------------------------------------------------------
+        // @ Sign in - POST
+        // -----------------------------------------------------------------------------------------------------
+        // this._fuseMockApiService
+        //     .onPost(&#x27;api/auth/sign-in&#x27;, 1500)
+        //     .reply(({request}) &#x3D;&gt;
+        //     {
+        //         // Sign in successful
+        //         if ( request.body.email &#x3D;&#x3D;&#x3D; &#x27;hughes.brian@company.com&#x27; &amp;&amp; request.body.password &#x3D;&#x3D;&#x3D; &#x27;admin&#x27; )
+        //         {
+        //             return [
+        //                 200,
+        //                 {
+        //                     user       : cloneDeep(this._user),
+        //                     accessToken: this._generateJWTToken(),
+        //                     tokenType  : &#x27;bearer&#x27;,
+        //                 },
+        //             ];
+        //         }
+
+        //         // Invalid credentials
+        //         return [
+        //             404,
+        //             false,
+        //         ];
+        //     });
+
+        // -----------------------------------------------------------------------------------------------------
+        // @ Sign in using the access token - POST
+        // -----------------------------------------------------------------------------------------------------
+        // this._fuseMockApiService
+        //     .onPost(&#x27;api/auth/sign-in-with-token&#x27;)
+        //     .reply(({request}) &#x3D;&gt;
+        //     {
+        //         // Get the access token
+        //         const accessToken &#x3D; request.body.accessToken;
+
+        //         // Verify the token
+        //         if ( this._verifyJWTToken(accessToken) )
+        //         {
+        //             return [
+        //                 200,
+        //                 {
+        //                     user       : cloneDeep(this._user),
+        //                     accessToken: this._generateJWTToken(),
+        //                     tokenType  : &#x27;bearer&#x27;,
+        //                 },
+        //             ];
+        //         }
+
+        //         // Invalid token
+        //         return [
+        //             401,
+        //             {
+        //                 error: &#x27;Invalid token&#x27;,
+        //             },
+        //         ];
+        //     });
+
+        // -----------------------------------------------------------------------------------------------------
+        // @ Sign up - POST
+        // -----------------------------------------------------------------------------------------------------
+        this._fuseMockApiService
+            .onPost(&#x27;api/auth/sign-up&#x27;, 1500)
+            .reply(() &#x3D;&gt;
+
+                // Simply return true
+                [
+                    200,
+                    true,
+                ],
+            );
+
+        // -----------------------------------------------------------------------------------------------------
+        // @ Unlock session - POST
+        // -----------------------------------------------------------------------------------------------------
+        this._fuseMockApiService
+            .onPost(&#x27;api/auth/unlock-session&#x27;, 1500)
+            .reply(({request}) &#x3D;&gt;
+            {
+                // Sign in successful
+                if ( request.body.email &#x3D;&#x3D;&#x3D; &#x27;hughes.brian@company.com&#x27; &amp;&amp; request.body.password &#x3D;&#x3D;&#x3D; &#x27;admin&#x27; )
+                {
+                    return [
+                        200,
+                        {
+                            user       : cloneDeep(this._user),
+                            accessToken: this._generateJWTToken(),
+                            tokenType  : &#x27;bearer&#x27;,
+                        },
+                    ];
+                }
+
+                // Invalid credentials
+                return [
+                    404,
+                    false,
+                ];
+            });
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Private methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Return base64 encoded version of the given string
+     *
+     * @param source
+     * @private
+     */
+    private _base64url(source: any): string
+    {
+        // Encode in classical base64
+        let encodedSource &#x3D; Base64.stringify(source);
+
+        // Remove padding equal characters
+        encodedSource &#x3D; encodedSource.replace(/&#x3D;+$/, &#x27;&#x27;);
+
+        // Replace characters according to base64url specifications
+        encodedSource &#x3D; encodedSource.replace(/\+/g, &#x27;-&#x27;);
+        encodedSource &#x3D; encodedSource.replace(/\//g, &#x27;_&#x27;);
+
+        // Return the base64 encoded string
+        return encodedSource;
+    }
+
+    /**
+     * Generates a JWT token using CryptoJS library.
+     *
+     * This generator is for mocking purposes only and it is NOT
+     * safe to use it in production frontend applications!
+     *
+     * @private
+     */
+    private _generateJWTToken(): string
+    {
+        // Define token header
+        const header &#x3D; {
+            alg: &#x27;HS256&#x27;,
+            typ: &#x27;JWT&#x27;,
+        };
+
+        // Calculate the issued at and expiration dates
+        const date &#x3D; new Date();
+        const iat &#x3D; Math.floor(date.getTime() / 1000);
+        const exp &#x3D; Math.floor((date.setDate(date.getDate() + 7)) / 1000);
+
+        // Define token payload
+        const payload &#x3D; {
+            iat: iat,
+            iss: &#x27;Fuse&#x27;,
+            exp: exp,
+        };
+
+        // Stringify and encode the header
+        const stringifiedHeader &#x3D; Utf8.parse(JSON.stringify(header));
+        const encodedHeader &#x3D; this._base64url(stringifiedHeader);
+
+        // Stringify and encode the payload
+        const stringifiedPayload &#x3D; Utf8.parse(JSON.stringify(payload));
+        const encodedPayload &#x3D; this._base64url(stringifiedPayload);
+
+        // Sign the encoded header and mock-api
+        let signature: any &#x3D; encodedHeader + &#x27;.&#x27; + encodedPayload;
+        signature &#x3D; HmacSHA256(signature, this._secret);
+        signature &#x3D; this._base64url(signature);
+
+        // Build and return the token
+        return encodedHeader + &#x27;.&#x27; + encodedPayload + &#x27;.&#x27; + signature;
+    }
+
+    /**
+     * Verify the given token
+     *
+     * @param token
+     * @private
+     */
+    private _verifyJWTToken(token: string): boolean
+    {
+        // Split the token into parts
+        const parts &#x3D; token.split(&#x27;.&#x27;);
+        const header &#x3D; parts[0];
+        const payload &#x3D; parts[1];
+        const signature &#x3D; parts[2];
+
+        // Re-sign and encode the header and payload using the secret
+        const signatureCheck &#x3D; this._base64url(HmacSHA256(header + &#x27;.&#x27; + payload, this._secret));
+
+        // Verify that the resulting signature is valid
+        return (signature &#x3D;&#x3D;&#x3D; signatureCheck);
+    }
+}
+</code></pre>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
+            var COMPODOC_CURRENT_PAGE_URL = 'AuthMockApi.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

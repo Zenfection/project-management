@@ -5,6 +5,9 @@ import { Setting } from './setting.types';
 
 @Injectable({providedIn: 'root'})
 export class SettingsService {
+    static pipe(arg0: any, arg1: any) {
+      throw new Error('Method not implemented.');
+    }
     private _setting: ReplaySubject<Setting> = new ReplaySubject<Setting>(1);
 
     constructor(private readonly _httpClient: HttpClient) {}
