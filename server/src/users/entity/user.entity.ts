@@ -1,6 +1,6 @@
 import { User } from '@prisma/client';
 import { ApiProperty } from '@nestjs/swagger';
-import { IsDate, IsOptional } from 'class-validator';
+import { IsDate, IsNumber, IsOptional } from 'class-validator';
 import { RoleEntity } from './role.entity';
 
 export class UserEntity implements User {
@@ -25,6 +25,10 @@ export class UserEntity implements User {
 
   @ApiProperty()
   roles: RoleEntity[];
+
+  @ApiProperty()
+  @IsNumber()
+  deparmentId: number;
 
   @IsDate()
   createdAt: Date;

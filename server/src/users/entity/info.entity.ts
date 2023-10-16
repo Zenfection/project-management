@@ -6,6 +6,7 @@ import {
   IsEnum,
   IsOptional,
   IsPhoneNumber,
+  IsString,
   IsUrl,
   MinLength,
 } from 'class-validator';
@@ -13,6 +14,14 @@ import {
 export class InfoEntity implements Info {
   @ApiProperty()
   userId: number;
+
+  @ApiProperty()
+  @IsString()
+  about: string;
+
+  @ApiProperty()
+  @IsString()
+  address: string;
 
   @ApiProperty()
   @MinLength(8)

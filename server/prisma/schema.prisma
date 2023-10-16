@@ -114,11 +114,14 @@ model User {
   password     String
   info         Info?
   setting      Setting?
-  roles        Role[]
   isTfaEnabled Boolean    @default(false)
   tfaSecret    String?
-  Task         Task[]
-  Activity     Activity[]
+  roles        Role[]
+  tasks        Task[]
+  activities   Activity[]
+  positions    Position[]
+  deparmentId  Int?
+  Deparment    Deparment? @relation(fields: [deparmentId], references: [id])
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -126,14 +129,35 @@ model User {
   @@index([email], name: "user_email_idx")
 }
 
+model Deparment {
+  id    Int    @id @default(autoincrement()) @map("department_id")
+  name  String @unique
+  users User[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Position {
+  id   Int    @id @default(autoincrement()) @map("position_id")
+  name String @unique
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  User      User?    @relation(fields: [userId], references: [id])
+  userId    Int?
+}
+
 model Info {
-  userId Int         @unique
-  user   User        @relation(fields: [userId], references: [id], onDelete: Cascade)
-  name   String      @default("New User")
-  email  String
-  status UserStatus? @default(ONLINE)
-  avatar String?
-  phone  String?     @unique
+  userId  Int         @unique
+  user    User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  about   String?
+  address String?
+  name    String      @default("New User")
+  email   String
+  status  UserStatus? @default(ONLINE)
+  avatar  String?
+  phone   String?     @unique
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
