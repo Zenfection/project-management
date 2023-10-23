@@ -4,10 +4,14 @@ import { Prisma, User } from '@prisma/client';
 import { CreateUserDto } from './dto/create-user.dto';
 import { updateUserDto } from './dto/update-user.dto';
 import { updateInfoDto } from './dto/update-info.dto';
+import { CloudService } from '../cloud/cloud.service';
 
 @Injectable()
 export class UsersService {
-  constructor(private readonly prismaService: PrismaService) {}
+  constructor(
+    private readonly prismaService: PrismaService,
+    private readonly cloudService: CloudService,
+  ) {}
 
   private checkEmptyData(data: updateInfoDto) {
     if (Object.keys(data).length === 0) {
@@ -126,6 +130,33 @@ export class UsersService {
   remove(where: Prisma.UserWhereUniqueInput): Promise<User> {
     return this.prismaService.user.delete({
       where,
+    });
+  }
+
+  async uploadAvatar(
+    where: Prisma.UserWhereUniqueInput,
+    email: string,
+    fileName: string,
+    fileBuffer: Buffer,
+  ) {
+    const prefix = `data/${email}/avatar`;
+    return Promise.all([
+      this.cloudService.upload(fileName, fileBuffer, prefix),
+      this.prismaService.user.update({
+        where,
+        data: {
+          info: {
+            update: {
+              avatar: `${prefix}/${fileName}`,
+            },
+          },
+        },
+        include: {
+          info: true,
+        },
+      }),
+    ]).then((result) => {
+      return result[1].info;
     });
   }
 }

@@ -25,6 +25,7 @@ import { RefreshTokenIdsStorage } from './utils/refresh-token-ids.storage/refres
 import { UsersService } from '../../users/users.service';
 import { PrismaService } from 'nestjs-prisma';
 import { TfaAuthenticationService } from './services/tfa-authentication/tfa-authentication.service';
+import { CloudModule } from '../../cloud/cloud.module';
 
 @Module({
   providers: [
@@ -43,16 +44,19 @@ import { TfaAuthenticationService } from './services/tfa-authentication/tfa-auth
     AccessTokenStrategy,
     AccessTokenGuard,
     TfaAuthenticationService,
+    // ! SESSION DEPRECATED
     // UserSerializer,
     // SessionAuthenticationService,
   ],
   imports: [
+    CloudModule,
     PassportModule,
     ConfigModule.forFeature(jwtConfig),
     JwtModule.registerAsync(jwtConfig.asProvider()),
   ],
   controllers: [
     AuthenticationController,
+    // ! SESSION DEPRECATED
     // SessionAuthenticationController
   ],
 })

@@ -40,7 +40,7 @@ export class AuthenticationService {
 
     const user = await this.userService.findOne(
       { email },
-      { roles: true, info: true, setting: true },
+      { roles: true, info: true, setting: true, positions: true },
     );
 
     if (!user) throw new ConflictException('Email not exists');
@@ -79,7 +79,7 @@ export class AuthenticationService {
 
     const user = await this.userService.findOne(
       { id: sub },
-      { info: true, setting: true },
+      { info: true, setting: true, positions: true },
     );
 
     if (!user) throw new UnauthorizedException('User not found');

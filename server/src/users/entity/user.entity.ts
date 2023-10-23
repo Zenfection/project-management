@@ -1,6 +1,6 @@
-import { User } from '@prisma/client';
+import { $Enums, User } from '@prisma/client';
 import { ApiProperty } from '@nestjs/swagger';
-import { IsDate, IsNumber, IsOptional } from 'class-validator';
+import { IsDate, IsEnum, IsOptional } from 'class-validator';
 import { RoleEntity } from './role.entity';
 
 export class UserEntity implements User {
@@ -27,8 +27,8 @@ export class UserEntity implements User {
   roles: RoleEntity[];
 
   @ApiProperty()
-  @IsNumber()
-  deparmentId: number;
+  @IsEnum($Enums.Deparment)
+  department: $Enums.Deparment;
 
   @IsDate()
   createdAt: Date;
