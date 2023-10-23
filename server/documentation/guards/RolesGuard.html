@@ -42,7 +42,7 @@
 
 <ol class="breadcrumb">
     <li class="breadcrumb-item">Guards</li>
-    <li class="breadcrumb-item" >AccessTokenGuard</li>
+    <li class="breadcrumb-item" >RolesGuard</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -66,7 +66,7 @@
             <h3>File</h3>
             </p>
             <p class="comment">
-                <code>src/iam/authentication/guards/access-token/access-token.guard.ts</code>
+                <code>src/iam/authorization/guards/roles/roles.guard.ts</code>
             </p>
 
 
@@ -90,9 +90,6 @@
                             <li>
                                 <a href="#canActivate" >canActivate</a>
                             </li>
-                            <li>
-                                <a href="#handleRequest" >handleRequest</a>
-                            </li>
                         </ul>
                     </td>
                 </tr>
@@ -111,15 +108,45 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor()</code>
+<code>constructor(reflector: Reflector)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/iam/authentication/guards/access-token/access-token.guard.ts:11</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">src/iam/authorization/guards/roles/roles.guard.ts:10</a></div>
                             </td>
                         </tr>
 
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>reflector</td>
+                                                  
+                                                        <td>
+                                                                    <code>Reflector</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
             </tbody>
         </table>
 </section>
@@ -149,8 +176,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="15"
-                            class="link-to-prism">src/iam/authentication/guards/access-token/access-token.guard.ts:15</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="12"
+                            class="link-to-prism">src/iam/authorization/guards/roles/roles.guard.ts:12</a></div>
                 </td>
             </tr>
 
@@ -198,130 +225,39 @@
             </tr>
         </tbody>
     </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="handleRequest"></a>
-                    <span class="name">
-                        <span ><b>handleRequest</b></span>
-                        <a href="#handleRequest"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-<code>handleRequest(err: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>, user: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>, info: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="21"
-                            class="link-to-prism">src/iam/authentication/guards/access-token/access-token.guard.ts:21</a></div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>err</td>
-                                    <td>
-                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
-                                    </td>
-
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                </tr>
-                                <tr>
-                                    <td>user</td>
-                                    <td>
-                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
-                                    </td>
-
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                </tr>
-                                <tr>
-                                    <td>info</td>
-                                    <td>
-                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
-                                    </td>
-
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
-
-                    </div>
-                    <div class="io-description">
-                        
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
 </section>
         </div>
 
 
         <div class="tab-pane fade  tab-source-code" id="source">
-            <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
-  CanActivate,
-  ExecutionContext,
-  Injectable,
-  UnauthorizedException,
-} from &#x27;@nestjs/common&#x27;;
-import { AuthGuard } from &#x27;@nestjs/passport&#x27;;
+            <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { CanActivate, ExecutionContext, Injectable } from &#x27;@nestjs/common&#x27;;
+import { Reflector } from &#x27;@nestjs/core&#x27;;
 import { Observable } from &#x27;rxjs&#x27;;
+import { RoleEntity } from &#x27;src/users/entity/role.entity&#x27;;
+import { ActiveUserData } from &#x27;src/iam/authentication/interfaces/active-user-data.interface&#x27;;
+import { REQUEST_USER_KEY } from &#x27;../../../constants/iam.contant&#x27;;
+import { ROLES_KEY } from &#x27;../../decorators/roles/roles.decorator&#x27;;
 
 @Injectable()
-export class AccessTokenGuard extends AuthGuard(&#x27;jwt&#x27;) implements CanActivate {
-  constructor() {
-    super();
-  }
+export class RolesGuard implements CanActivate {
+  constructor(private readonly reflector: Reflector) {}
   canActivate(
     context: ExecutionContext,
   ): boolean | Promise&lt;boolean&gt; | Observable&lt;boolean&gt; {
-    return super.canActivate(context);
-  }
+    const contextRole &#x3D; this.reflector.getAllAndOverride&lt;RoleEntity[]&gt;(
+      ROLES_KEY,
+      [context.getHandler(), context.getClass()],
+    );
 
-  handleRequest(err: any, user: any, info: any) {
-    // You can throw an exception based on either &quot;info&quot; or &quot;err&quot; arguments
-    if (err || !user || info) {
-      throw err || new UnauthorizedException(&#x27;No access token found&#x27;);
+    if (contextRole) {
+      const user: ActiveUserData &#x3D; context.switchToHttp().getRequest()[
+        REQUEST_USER_KEY
+      ];
+
+      return contextRole.some((role) &#x3D;&gt; user.roles?.includes(role.name));
     }
-    return user;
+
+    return true;
   }
 }
 </code></pre>
@@ -364,7 +300,7 @@ export class AccessTokenGuard extends AuthGuard(&#x27;jwt&#x27;) implements CanA
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'guard';
-            var COMPODOC_CURRENT_PAGE_URL = 'AccessTokenGuard.html';
+            var COMPODOC_CURRENT_PAGE_URL = 'RolesGuard.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 

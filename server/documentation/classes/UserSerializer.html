@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>server documentation</title>
+        <title>server-ctu-task-management documentation</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -14,7 +14,7 @@
     <body>
 
         <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
-            <a href="../" class="navbar-brand">server documentation</a>
+            <a href="../" class="navbar-brand">server-ctu-task-management documentation</a>
             <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
         </div>
 
@@ -164,8 +164,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="31"
-                            class="link-to-prism">src/iam/authentication/utils/user-serializer/user-serializer.ts:31</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="34"
+                            class="link-to-prism">src/iam/authentication/utils/user-serializer/user-serializer.ts:34</a></div>
                 </td>
             </tr>
 
@@ -275,7 +275,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>serializeUser(user: User, done: (err: Error,user: <a href="../interfaces/ActiveUserData.html">ActiveUserData</a>) => void)</code>
+<code>serializeUser(user: <a href="../classes/UserEntity.html" target="_self">UserEntity</a>, done: (err: Error,user: <a href="../interfaces/ActiveUserData.html">ActiveUserData</a>) => void)</code>
                 </td>
             </tr>
 
@@ -306,7 +306,7 @@
                                 <tr>
                                     <td>user</td>
                                     <td>
-                                            <code>User</code>
+                                                <code><a href="../classes/UserEntity.html" target="_self" >UserEntity</a></code>
                                     </td>
 
                                     <td>
@@ -354,7 +354,7 @@
 
     <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { PassportSerializer } from &#x27;@nestjs/passport&#x27;;
-import { User } from &#x27;@prisma/client&#x27;;
+import { UserEntity } from &#x27;src/users/entity/user.entity&#x27;;
 import passport from &#x27;passport&#x27;;
 import { ActiveUserData } from &#x27;../../interfaces/active-user-data.interface&#x27;;
 
@@ -362,7 +362,7 @@ export class UserSerializer implements PassportSerializer {
   constructor() {
     const passportInstance &#x3D; this.getPassportInstance();
     passportInstance.serializeUser((user, done) &#x3D;&gt;
-      this.serializeUser(user as User, done),
+      this.serializeUser(user as UserEntity, done),
     );
     passportInstance.deserializeUser((payload, done) &#x3D;&gt;
       this.deserializeUser(payload as ActiveUserData, done),
@@ -373,12 +373,15 @@ export class UserSerializer implements PassportSerializer {
     return passport;
   }
 
-  serializeUser(user: User, done: (err: Error, user: ActiveUserData) &#x3D;&gt; void) {
+  serializeUser(
+    user: UserEntity,
+    done: (err: Error, user: ActiveUserData) &#x3D;&gt; void,
+  ) {
     // store user info authenticated in session
     done(null, {
       sub: user.id,
       email: user.email,
-      //   role: user.role,
+      // roles: user.roles as RoleEntity[],
       //   permissions: user.permissions as any,
     });
   }

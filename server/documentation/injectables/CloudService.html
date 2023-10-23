@@ -40,7 +40,7 @@
 
 <ol class="breadcrumb">
   <li class="breadcrumb-item">Injectables</li>
-  <li class="breadcrumb-item" >TfaAuthenticationService</li>
+  <li class="breadcrumb-item" >CloudService</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -64,7 +64,7 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/iam/authentication/services/tfa-authentication/tfa-authentication.service.ts</code>
+            <code>src/cloud/cloud.service.ts</code>
         </p>
 
 
@@ -75,6 +75,22 @@
     <h3 id="index">Index</h3>
     <table class="table table-sm table-bordered index-table">
         <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#S3" >S3</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
 
                 <tr>
                     <td class="col-md-4">
@@ -86,14 +102,15 @@
                         <ul class="index-list">
                             <li>
                                     <span class="modifier">Async</span>
-                                <a href="#enableTfaSecret" >enableTfaSecret</a>
+                                <a href="#listAllBuckets" >listAllBuckets</a>
                             </li>
                             <li>
                                     <span class="modifier">Async</span>
-                                <a href="#generateSecret" >generateSecret</a>
+                                <a href="#listAllObjects" >listAllObjects</a>
                             </li>
                             <li>
-                                <a href="#verifyCode" >verifyCode</a>
+                                    <span class="modifier">Async</span>
+                                <a href="#upload" >upload</a>
                             </li>
                         </ul>
                     </td>
@@ -113,12 +130,12 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(configService: ConfigService, prismaService: PrismaService)</code>
+<code>constructor(cloudflare_r2ConfigService: ConfigType<>)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="7" class="link-to-prism">src/iam/authentication/services/tfa-authentication/tfa-authentication.service.ts:7</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/cloud/cloud.service.ts:20</a></div>
                             </td>
                         </tr>
 
@@ -136,22 +153,10 @@
                                         </thead>
                                         <tbody>
                                                 <tr>
-                                                        <td>configService</td>
+                                                        <td>cloudflare_r2ConfigService</td>
                                                   
                                                         <td>
-                                                                    <code>ConfigService</code>
-                                                        </td>
-                                                  
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-                                                </tr>
-                                                <tr>
-                                                        <td>prismaService</td>
-                                                  
-                                                        <td>
-                                                                    <code>PrismaService</code>
+                                                                    <code>ConfigType&lt;&gt;</code>
                                                         </td>
                                                   
                                                     <td>
@@ -177,18 +182,18 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="enableTfaSecret"></a>
+                    <a name="listAllBuckets"></a>
                     <span class="name">
                         <span class="modifier">Async</span>
-                        <span ><b>enableTfaSecret</b></span>
-                        <a href="#enableTfaSecret"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>listAllBuckets</b></span>
+                        <a href="#listAllBuckets"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>enableTfaSecret(email: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, secret: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                    <code>listAllBuckets()</code>
                 </td>
             </tr>
 
@@ -196,7 +201,7 @@
             <tr>
                 <td class="col-md-4">
                     <div class="io-line">Defined in <a href="" data-line="28"
-                            class="link-to-prism">src/iam/authentication/services/tfa-authentication/tfa-authentication.service.ts:28</a></div>
+                            class="link-to-prism">src/cloud/cloud.service.ts:28</a></div>
                 </td>
             </tr>
 
@@ -205,52 +210,8 @@
                 <td class="col-md-4">
 
                     <div class="io-description">
-                        <b>Parameters :</b>
-                        
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>email</td>
-                                    <td>
-                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-                                    </td>
+                        <b>Returns : </b>    <code>unknown</code>
 
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                </tr>
-                                <tr>
-                                    <td>secret</td>
-                                    <td>
-                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-                                    </td>
-
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
-
-                    </div>
-                    <div class="io-description">
-                        
                     </div>
                 </td>
             </tr>
@@ -260,26 +221,26 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="generateSecret"></a>
+                    <a name="listAllObjects"></a>
                     <span class="name">
                         <span class="modifier">Async</span>
-                        <span ><b>generateSecret</b></span>
-                        <a href="#generateSecret"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>listAllObjects</b></span>
+                        <a href="#listAllObjects"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>generateSecret(email: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                    <code>listAllObjects(prefix?: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="13"
-                            class="link-to-prism">src/iam/authentication/services/tfa-authentication/tfa-authentication.service.ts:13</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="32"
+                            class="link-to-prism">src/cloud/cloud.service.ts:32</a></div>
                 </td>
             </tr>
 
@@ -300,13 +261,13 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>email</td>
+                                    <td>prefix</td>
                                     <td>
                                                 <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
                                     </td>
 
                                     <td>
-                                        No
+                                        Yes
                                     </td>
 
 
@@ -331,24 +292,26 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="verifyCode"></a>
+                    <a name="upload"></a>
                     <span class="name">
-                        <span ><b>verifyCode</b></span>
-                        <a href="#verifyCode"><span class="icon ion-ios-link"></span></a>
+                        <span class="modifier">Async</span>
+                        <span ><b>upload</b></span>
+                        <a href="#upload"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>verifyCode(code: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, secret: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>upload(fileName: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, file: Buffer, prefix?: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="24"
-                            class="link-to-prism">src/iam/authentication/services/tfa-authentication/tfa-authentication.service.ts:24</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="41"
+                            class="link-to-prism">src/cloud/cloud.service.ts:41</a></div>
                 </td>
             </tr>
 
@@ -369,7 +332,7 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>code</td>
+                                    <td>fileName</td>
                                     <td>
                                                 <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
                                     </td>
@@ -381,13 +344,25 @@
 
                                 </tr>
                                 <tr>
-                                    <td>secret</td>
+                                    <td>file</td>
+                                    <td>
+                                            <code>Buffer</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>prefix</td>
                                     <td>
                                                 <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
                                     </td>
 
                                     <td>
-                                        No
+                                        Yes
                                     </td>
 
 
@@ -409,57 +384,99 @@
         </tbody>
     </table>
 </section>
+            <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="S3"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>S3</b></span>
+                        <a href="#S3"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new S3Client({
+    region: &#x27;auto&#x27;,
+    endpoint: &#x60;https://${this.cloudflare_r2ConfigService.account_id}.r2.cloudflarestorage.com&#x60;,
+    credentials: {
+      accessKeyId: this.cloudflare_r2ConfigService.access_key_id,
+      secretAccessKey: this.cloudflare_r2ConfigService.secret_access_key,
+    },
+  })</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/cloud/cloud.service.ts:13</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
 
     </div>
 
 
     <div class="tab-pane fade  tab-source-code" id="source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@nestjs/common&#x27;;
-import { ConfigService } from &#x27;@nestjs/config&#x27;;
-import { PrismaService } from &#x27;nestjs-prisma&#x27;;
-import { authenticator } from &#x27;otplib&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
+  ListBucketsCommand,
+  ListObjectsV2Command,
+  PutObjectCommand,
+  S3Client,
+} from &#x27;@aws-sdk/client-s3&#x27;;
+import { Inject, Injectable } from &#x27;@nestjs/common&#x27;;
+import cloudflare_r2Config from &#x27;./config/cloudflare_r2.config&#x27;;
+import { ConfigType } from &#x27;@nestjs/config&#x27;;
 
 @Injectable()
-export class TfaAuthenticationService {
+export class CloudService {
+  private readonly S3 &#x3D; new S3Client({
+    region: &#x27;auto&#x27;,
+    endpoint: &#x60;https://${this.cloudflare_r2ConfigService.account_id}.r2.cloudflarestorage.com&#x60;,
+    credentials: {
+      accessKeyId: this.cloudflare_r2ConfigService.access_key_id,
+      secretAccessKey: this.cloudflare_r2ConfigService.secret_access_key,
+    },
+  });
   constructor(
-    private readonly configService: ConfigService,
-    private readonly prismaService: PrismaService,
+    @Inject(cloudflare_r2Config.KEY)
+    private readonly cloudflare_r2ConfigService: ConfigType&lt;
+      typeof cloudflare_r2Config
+    &gt;,
   ) {}
 
-  async generateSecret(email: string) {
-    const secret &#x3D; authenticator.generateSecret();
-    const appName &#x3D; this.configService.getOrThrow&lt;string&gt;(&#x27;TFA_APP_NAME&#x27;);
-    const uri &#x3D; authenticator.keyuri(email, appName, secret);
-
-    return {
-      secret,
-      uri,
-    };
+  async listAllBuckets() {
+    return await this.S3.send(new ListBucketsCommand(&#x27;&#x27;));
   }
 
-  verifyCode(code: string, secret: string) {
-    return authenticator.verify({ token: code, secret });
+  async listAllObjects(prefix?: string) {
+    return await this.S3.send(
+      new ListObjectsV2Command({
+        Bucket: this.cloudflare_r2ConfigService.bucket_name,
+        Prefix: prefix ?? &#x27;&#x27;,
+      }),
+    );
   }
 
-  async enableTfaSecret(email: string, secret: string) {
-    const id &#x3D; await this.prismaService.user.findUniqueOrThrow({
-      where: {
-        email,
-      },
-      select: {
-        id: true,
-      },
-    });
-
-    await this.prismaService.user.update({
-      where: {
-        id: id.id,
-      },
-      data: {
-        isTfaEnabled: true,
-        tfaSecret: secret,
-      },
-    });
+  async upload(fileName: string, file: Buffer, prefix?: string) {
+    await this.S3.send(
+      new PutObjectCommand({
+        Bucket: this.cloudflare_r2ConfigService.bucket_name,
+        Key: &#x60;${prefix ? &#x60;${prefix}/&#x60; : &#x27;&#x27;}${fileName}&#x60;,
+        Body: file,
+      }),
+    );
   }
 }
 </code></pre>
@@ -505,7 +522,7 @@ export class TfaAuthenticationService {
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
-            var COMPODOC_CURRENT_PAGE_URL = 'TfaAuthenticationService.html';
+            var COMPODOC_CURRENT_PAGE_URL = 'CloudService.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 

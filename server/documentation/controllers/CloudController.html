@@ -28,21 +28,16 @@
                    <compodoc-menu mode="normal"></compodoc-menu>
                </div>
                <!-- START CONTENT -->
-               <div class="content guard">
+               <div class="content controller">
                    <div class="content-data">
 
 
 
 
 
-
-
-
-
-
 <ol class="breadcrumb">
-    <li class="breadcrumb-item">Guards</li>
-    <li class="breadcrumb-item" >AccessTokenGuard</li>
+  <li class="breadcrumb-item">Controllers</li>
+  <li class="breadcrumb-item" >CloudController</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -61,12 +56,19 @@
 </ul>
 
 <div class="tab-content">
-        <div class="tab-pane fade active in" id="info">
-            <p class="comment">
+    <div class="tab-pane fade active in" id="info">
+        <p class="comment">
             <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>src/cloud/cloud.controller.ts</code>
+        </p>
+
+            <p class="comment">
+                <h3>Prefix</h3>
             </p>
             <p class="comment">
-                <code>src/iam/authentication/guards/access-token/access-token.guard.ts</code>
+                <code>cloud</code>
             </p>
 
 
@@ -74,7 +76,7 @@
 
 
 
-                <section data-compodoc="block-index">
+            <section data-compodoc="block-index">
     <h3 id="index">Index</h3>
     <table class="table table-sm table-bordered index-table">
         <tbody>
@@ -88,10 +90,19 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <a href="#canActivate" >canActivate</a>
+                                    <span class="modifier"></span>
+                                    <span class="modifier">Async</span>
+                                <a href="#listAllObjects" >listAllObjects</a>
                             </li>
                             <li>
-                                <a href="#handleRequest" >handleRequest</a>
+                                    <span class="modifier"></span>
+                                    <span class="modifier">Async</span>
+                                <a href="#listAllObjectsWithPrefix" >listAllObjectsWithPrefix</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                    <span class="modifier"></span>
+                                <a href="#uploadFile" >uploadFile</a>
                             </li>
                         </ul>
                     </td>
@@ -105,26 +116,7 @@
     </table>
 </section>
 
-                <section data-compodoc="block-constructor">
-    <h3 id="constructor">Constructor</h3>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-<code>constructor()</code>
-                    </td>
-                </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/iam/authentication/guards/access-token/access-token.guard.ts:11</a></div>
-                            </td>
-                        </tr>
-
-            </tbody>
-        </table>
-</section>
-
-                <section data-compodoc="block-methods">
+            <section data-compodoc="block-methods">
     
     <h3 id="methods">
         Methods
@@ -133,24 +125,81 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="canActivate"></a>
+                    <a name="listAllObjects"></a>
                     <span class="name">
-                        <span ><b>canActivate</b></span>
-                        <a href="#canActivate"><span class="icon ion-ios-link"></span></a>
+                        <span class="modifier"></span>
+                        <span class="modifier">Async</span>
+                        <span ><b>listAllObjects</b></span>
+                        <a href="#listAllObjects"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>canActivate(context: ExecutionContext)</code>
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>listAllObjects()</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@Get(&#x27;objects&#x27;)<br /></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="23"
+                            class="link-to-prism">src/cloud/cloud.controller.ts:23</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="15"
-                            class="link-to-prism">src/iam/authentication/guards/access-token/access-token.guard.ts:15</a></div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>unknown</code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="listAllObjectsWithPrefix"></a>
+                    <span class="name">
+                        <span class="modifier"></span>
+                        <span class="modifier">Async</span>
+                        <span ><b>listAllObjectsWithPrefix</b></span>
+                        <a href="#listAllObjectsWithPrefix"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>listAllObjectsWithPrefix(prefix: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@Get(&#x27;objects/:prefix&#x27;)<br /></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="29"
+                            class="link-to-prism">src/cloud/cloud.controller.ts:29</a></div>
                 </td>
             </tr>
 
@@ -171,9 +220,9 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>context</td>
+                                    <td>prefix</td>
                                     <td>
-                                            <code>ExecutionContext</code>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
                                     </td>
 
                                     <td>
@@ -188,7 +237,7 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>    <code>boolean | Promise | Observable</code>
+                        <b>Returns : </b>    <code>unknown</code>
 
                     </div>
                     <div class="io-description">
@@ -202,24 +251,34 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="handleRequest"></a>
+                    <a name="uploadFile"></a>
                     <span class="name">
-                        <span ><b>handleRequest</b></span>
-                        <a href="#handleRequest"><span class="icon ion-ios-link"></span></a>
+                        <span class="modifier"></span>
+                        <span class="modifier"></span>
+                        <span ><b>uploadFile</b></span>
+                        <a href="#uploadFile"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>handleRequest(err: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>, user: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>, info: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>uploadFile(file: Express.Multer.File)</code>
                 </td>
             </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@Post(&#x27;upload&#x27;)<br />@UseInterceptors(undefined)<br /></code>
+                </td>
+            </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="21"
-                            class="link-to-prism">src/iam/authentication/guards/access-token/access-token.guard.ts:21</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="36"
+                            class="link-to-prism">src/cloud/cloud.controller.ts:36</a></div>
                 </td>
             </tr>
 
@@ -240,33 +299,9 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>err</td>
+                                    <td>file</td>
                                     <td>
-                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
-                                    </td>
-
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                </tr>
-                                <tr>
-                                    <td>user</td>
-                                    <td>
-                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
-                                    </td>
-
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                </tr>
-                                <tr>
-                                    <td>info</td>
-                                    <td>
-                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                            <code>Express.Multer.File</code>
                                     </td>
 
                                     <td>
@@ -281,7 +316,7 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
 
                     </div>
                     <div class="io-description">
@@ -291,42 +326,60 @@
             </tr>
         </tbody>
     </table>
-</section>
-        </div>
+</section>    </div>
 
 
-        <div class="tab-pane fade  tab-source-code" id="source">
-            <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
-  CanActivate,
-  ExecutionContext,
-  Injectable,
-  UnauthorizedException,
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
+  Controller,
+  Get,
+  Param,
+  Post,
+  UploadedFile,
+  UseInterceptors,
 } from &#x27;@nestjs/common&#x27;;
-import { AuthGuard } from &#x27;@nestjs/passport&#x27;;
-import { Observable } from &#x27;rxjs&#x27;;
+import { CloudService } from &#x27;./cloud.service&#x27;;
+import { FileInterceptor } from &#x27;@nestjs/platform-express&#x27;;
 
-@Injectable()
-export class AccessTokenGuard extends AuthGuard(&#x27;jwt&#x27;) implements CanActivate {
-  constructor() {
-    super();
-  }
-  canActivate(
-    context: ExecutionContext,
-  ): boolean | Promise&lt;boolean&gt; | Observable&lt;boolean&gt; {
-    return super.canActivate(context);
+@Controller(&#x27;cloud&#x27;)
+export class CloudController {
+  constructor(private readonly cloudService: CloudService) {}
+
+  //   @Get(&#x27;buckets&#x27;)
+  //   async listAllBuckets() {
+  //     const buckets &#x3D; await this.cloudService.listAllBuckets();
+  //     return buckets.Buckets;
+  //   }
+
+  @Get(&#x27;objects&#x27;)
+  async listAllObjects() {
+    const objects &#x3D; await this.cloudService.listAllObjects();
+    return objects.Contents;
   }
 
-  handleRequest(err: any, user: any, info: any) {
-    // You can throw an exception based on either &quot;info&quot; or &quot;err&quot; arguments
-    if (err || !user || info) {
-      throw err || new UnauthorizedException(&#x27;No access token found&#x27;);
-    }
-    return user;
+  @Get(&#x27;objects/:prefix&#x27;)
+  async listAllObjectsWithPrefix(@Param(&#x27;prefix&#x27;) prefix: string) {
+    const objects &#x3D; await this.cloudService.listAllObjects(prefix);
+    return objects.Contents;
+  }
+
+  @Post(&#x27;upload&#x27;)
+  @UseInterceptors(FileInterceptor(&#x27;file&#x27;))
+  uploadFile(
+    @UploadedFile()
+    file: Express.Multer.File,
+  ) {
+    this.cloudService.upload(file.originalname, file.buffer);
   }
 }
 </code></pre>
-        </div>
+    </div>
 </div>
+
+
+
+
+
 
 
 
@@ -363,8 +416,8 @@ export class AccessTokenGuard extends AuthGuard(&#x27;jwt&#x27;) implements CanA
 
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
-            var COMPODOC_CURRENT_PAGE_CONTEXT = 'guard';
-            var COMPODOC_CURRENT_PAGE_URL = 'AccessTokenGuard.html';
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'controller';
+            var COMPODOC_CURRENT_PAGE_URL = 'CloudController.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 

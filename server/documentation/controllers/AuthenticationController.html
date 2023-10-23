@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>server documentation</title>
+        <title>server-ctu-task-management documentation</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -14,7 +14,7 @@
     <body>
 
         <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
-            <a href="../" class="navbar-brand">server documentation</a>
+            <a href="../" class="navbar-brand">server-ctu-task-management documentation</a>
             <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
         </div>
 
@@ -109,6 +109,11 @@
                             <li>
                                     <span class="modifier"></span>
                                     <span class="modifier"></span>
+                                <a href="#signInWithToken" >signInWithToken</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                    <span class="modifier"></span>
                                 <a href="#signUp" >signUp</a>
                             </li>
                         </ul>
@@ -160,8 +165,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="51"
-                            class="link-to-prism">src/iam/authentication/controllers/authentication.controller.ts:51</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="58"
+                            class="link-to-prism">src/iam/authentication/controllers/authentication.controller.ts:58</a></div>
                 </td>
             </tr>
 
@@ -251,8 +256,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="44"
-                            class="link-to-prism">src/iam/authentication/controllers/authentication.controller.ts:44</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="51"
+                            class="link-to-prism">src/iam/authentication/controllers/authentication.controller.ts:51</a></div>
                 </td>
             </tr>
 
@@ -330,8 +335,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="38"
-                            class="link-to-prism">src/iam/authentication/controllers/authentication.controller.ts:38</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="39"
+                            class="link-to-prism">src/iam/authentication/controllers/authentication.controller.ts:39</a></div>
                 </td>
             </tr>
 
@@ -355,6 +360,85 @@
                                     <td>signInDto</td>
                                     <td>
                                                 <code><a href="../classes/SignInDto.html" target="_self" >SignInDto</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="signInWithToken"></a>
+                    <span class="name">
+                        <span class="modifier"></span>
+                        <span class="modifier"></span>
+                        <span ><b>signInWithToken</b></span>
+                        <a href="#signInWithToken"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>signInWithToken(signInWithToken: <a href="../classes/SignInWithTokenDto.html" target="_self">SignInWithTokenDto</a>)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@HttpCode(HttpStatus.OK)<br />@Post(&#x27;sign-in-with-token&#x27;)<br /></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="45"
+                            class="link-to-prism">src/iam/authentication/controllers/authentication.controller.ts:45</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>signInWithToken</td>
+                                    <td>
+                                                <code><a href="../classes/SignInWithTokenDto.html" target="_self" >SignInWithTokenDto</a></code>
                                     </td>
 
                                     <td>
@@ -409,8 +493,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="32"
-                            class="link-to-prism">src/iam/authentication/controllers/authentication.controller.ts:32</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="33"
+                            class="link-to-prism">src/iam/authentication/controllers/authentication.controller.ts:33</a></div>
                 </td>
             </tr>
 
@@ -482,6 +566,7 @@ import { TfaAuthenticationService } from &#x27;../services/tfa-authentication/tf
 
 import { Response } from &#x27;express&#x27;;
 import { toFileStream } from &#x27;qrcode&#x27;;
+import { SignInWithTokenDto } from &#x27;../dto/sign-in-with-token.dto/sign-in-with-token.dto&#x27;;
 
 @Auth(AuthType.None)
 @Controller(&#x27;authentication&#x27;)
@@ -501,6 +586,12 @@ export class AuthenticationController {
   @Post(&#x27;sign-in&#x27;)
   signIn(@Body() signInDto: SignInDto) {
     return this.authService.signIn(signInDto);
+  }
+
+  @HttpCode(HttpStatus.OK)
+  @Post(&#x27;sign-in-with-token&#x27;)
+  signInWithToken(@Body() signInWithToken: SignInWithTokenDto) {
+    return this.authService.signInWithToken(signInWithToken);
   }
 
   @HttpCode(HttpStatus.OK)

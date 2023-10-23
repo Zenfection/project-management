@@ -44,7 +44,7 @@
 
 <ol class="breadcrumb">
   <li class="breadcrumb-item">Classes</li>
-  <li class="breadcrumb-item" >UserEntity</li>
+  <li class="breadcrumb-item" >SettingEntity</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -68,7 +68,7 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/users/entity/user.entity.ts</code>
+            <code>src/users/entity/setting.entity.ts</code>
         </p>
 
 
@@ -78,7 +78,7 @@
                 <h3>Implements</h3>
             </p>
             <p class="comment">
-                        <code>User</code>
+                        <code>Setting</code>
             </p>
 
 
@@ -95,42 +95,35 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                    <span class="modifier"></span>
                                 <a href="#createdAt" >createdAt</a>
                             </li>
                             <li>
                                     <span class="modifier"></span>
                                     <span class="modifier"></span>
-                                <a href="#department" >department</a>
-                            </li>
-                            <li>
-                                    <span class="modifier"></span>
-                                <a href="#email" >email</a>
-                            </li>
-                            <li>
-                                    <span class="modifier"></span>
-                                <a href="#id" >id</a>
-                            </li>
-                            <li>
-                                    <span class="modifier"></span>
-                                <a href="#isTfaEnabled" >isTfaEnabled</a>
-                            </li>
-                            <li>
-                                    <span class="modifier"></span>
-                                <a href="#password" >password</a>
-                            </li>
-                            <li>
-                                    <span class="modifier"></span>
-                                <a href="#roles" >roles</a>
+                                <a href="#language" >language</a>
                             </li>
                             <li>
                                     <span class="modifier"></span>
                                     <span class="modifier"></span>
-                                <a href="#tfaSecret" >tfaSecret</a>
+                                <a href="#layout" >layout</a>
                             </li>
                             <li>
                                     <span class="modifier"></span>
+                                    <span class="modifier"></span>
+                                <a href="#scheme" >scheme</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                    <span class="modifier"></span>
+                                <a href="#theme" >theme</a>
+                            </li>
+                            <li>
                                 <a href="#updatedAt" >updatedAt</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                    <span class="modifier"></span>
+                                <a href="#userId" >userId</a>
                             </li>
                         </ul>
                     </td>
@@ -157,7 +150,6 @@
                 <td class="col-md-4">
                     <a name="createdAt"></a>
                     <span class="name">
-                            <span class="modifier"></span>
                         <span ><b>createdAt</b></span>
                         <a href="#createdAt"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -169,18 +161,9 @@
 
                     </td>
                 </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <b>Decorators : </b>
-                        <br />
-                        <code>
-                            @IsDate()<br />
-                        </code>
-                    </td>
-                </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">src/users/entity/user.entity.ts:34</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/users/entity/setting.entity.ts:26</a></div>
                         </td>
                     </tr>
 
@@ -191,18 +174,18 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="department"></a>
+                    <a name="language"></a>
                     <span class="name">
                             <span class="modifier"></span>
                             <span class="modifier"></span>
-                        <span ><b>department</b></span>
-                        <a href="#department"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>language</b></span>
+                        <a href="#language"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Type : </i>    <code>$Enums.Deparment</code>
+                        <i>Type : </i>    <code>$Enums.LanguageSetting</code>
 
                     </td>
                 </tr>
@@ -211,13 +194,13 @@
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @ApiProperty()<br />@IsEnum($Enums.Deparment)<br />
+                            @ApiProperty()<br />@IsEnum($Enums.LanguageSetting)<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/users/entity/user.entity.ts:31</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/users/entity/setting.entity.ts:20</a></div>
                         </td>
                     </tr>
 
@@ -228,17 +211,18 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="email"></a>
+                    <a name="layout"></a>
                     <span class="name">
                             <span class="modifier"></span>
-                        <span ><b>email</b></span>
-                        <a href="#email"><span class="icon ion-ios-link"></span></a>
+                            <span class="modifier"></span>
+                        <span ><b>layout</b></span>
+                        <a href="#layout"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                        <i>Type : </i>    <code>$Enums.LayoutSetting</code>
 
                     </td>
                 </tr>
@@ -247,13 +231,13 @@
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @ApiProperty()<br />
+                            @ApiProperty()<br />@IsEnum($Enums.LayoutSetting)<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/users/entity/user.entity.ts:11</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/users/entity/setting.entity.ts:24</a></div>
                         </td>
                     </tr>
 
@@ -264,11 +248,112 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="id"></a>
+                    <a name="scheme"></a>
                     <span class="name">
                             <span class="modifier"></span>
-                        <span ><b>id</b></span>
-                        <a href="#id"><span class="icon ion-ios-link"></span></a>
+                            <span class="modifier"></span>
+                        <span ><b>scheme</b></span>
+                        <a href="#scheme"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>$Enums.SchemeSetting</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @ApiProperty()<br />@IsEnum($Enums.SchemeSetting)<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/users/entity/setting.entity.ts:16</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="theme"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                            <span class="modifier"></span>
+                        <span ><b>theme</b></span>
+                        <a href="#theme"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>$Enums.ThemeSetting</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @ApiProperty()<br />@IsEnum($Enums.ThemeSetting)<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/users/entity/setting.entity.ts:12</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updatedAt"></a>
+                    <span class="name">
+                        <span ><b>updatedAt</b></span>
+                        <a href="#updatedAt"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date" target="_blank" >Date</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/users/entity/setting.entity.ts:27</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="userId"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                            <span class="modifier"></span>
+                        <span ><b>userId</b></span>
+                        <a href="#userId"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
@@ -283,194 +368,13 @@
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @ApiProperty()<br />
+                            @ApiProperty()<br />@IsInt()<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="8" class="link-to-prism">src/users/entity/user.entity.ts:8</a></div>
-                        </td>
-                    </tr>
-
-
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="isTfaEnabled"></a>
-                    <span class="name">
-                            <span class="modifier"></span>
-                        <span ><b>isTfaEnabled</b></span>
-                        <a href="#isTfaEnabled"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
-
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <b>Decorators : </b>
-                        <br />
-                        <code>
-                            @ApiProperty()<br />
-                        </code>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/users/entity/user.entity.ts:17</a></div>
-                        </td>
-                    </tr>
-
-
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="password"></a>
-                    <span class="name">
-                            <span class="modifier"></span>
-                        <span ><b>password</b></span>
-                        <a href="#password"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <b>Decorators : </b>
-                        <br />
-                        <code>
-                            @ApiProperty()<br />
-                        </code>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/users/entity/user.entity.ts:14</a></div>
-                        </td>
-                    </tr>
-
-
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="roles"></a>
-                    <span class="name">
-                            <span class="modifier"></span>
-                        <span ><b>roles</b></span>
-                        <a href="#roles"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="../classes/RoleEntity.html" target="_self" >RoleEntity[]</a></code>
-
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <b>Decorators : </b>
-                        <br />
-                        <code>
-                            @ApiProperty()<br />
-                        </code>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/users/entity/user.entity.ts:27</a></div>
-                        </td>
-                    </tr>
-
-
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="tfaSecret"></a>
-                    <span class="name">
-                            <span class="modifier"></span>
-                            <span class="modifier"></span>
-                        <span ><b>tfaSecret</b></span>
-                        <a href="#tfaSecret"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Type : </i>    <code>string | null</code>
-
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <b>Decorators : </b>
-                        <br />
-                        <code>
-                            @ApiProperty({required: false, nullable: true})<br />@IsOptional()<br />
-                        </code>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/users/entity/user.entity.ts:24</a></div>
-                        </td>
-                    </tr>
-
-
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="updatedAt"></a>
-                    <span class="name">
-                            <span class="modifier"></span>
-                        <span ><b>updatedAt</b></span>
-                        <a href="#updatedAt"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date" target="_blank" >Date</a></code>
-
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <b>Decorators : </b>
-                        <br />
-                        <code>
-                            @IsDate()<br />
-                        </code>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">src/users/entity/user.entity.ts:37</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="8" class="link-to-prism">src/users/entity/setting.entity.ts:8</a></div>
                         </td>
                     </tr>
 
@@ -489,42 +393,32 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { $Enums, User } from &#x27;@prisma/client&#x27;;
-import { ApiProperty } from &#x27;@nestjs/swagger&#x27;;
-import { IsDate, IsEnum, IsOptional } from &#x27;class-validator&#x27;;
-import { RoleEntity } from &#x27;./role.entity&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { ApiProperty } from &#x27;@nestjs/swagger&#x27;;
+import { $Enums, Setting } from &#x27;@prisma/client&#x27;;
+import { IsEnum, IsInt } from &#x27;class-validator&#x27;;
 
-export class UserEntity implements User {
+export class SettingEntity implements Setting {
   @ApiProperty()
-  id: number;
-
-  @ApiProperty()
-  email: string;
+  @IsInt()
+  userId: number;
 
   @ApiProperty()
-  password: string;
+  @IsEnum($Enums.ThemeSetting)
+  theme: $Enums.ThemeSetting;
 
   @ApiProperty()
-  isTfaEnabled: boolean;
-
-  @ApiProperty({
-    required: false,
-    nullable: true,
-  })
-  @IsOptional()
-  tfaSecret: string | null;
+  @IsEnum($Enums.SchemeSetting)
+  scheme: $Enums.SchemeSetting;
 
   @ApiProperty()
-  roles: RoleEntity[];
+  @IsEnum($Enums.LanguageSetting)
+  language: $Enums.LanguageSetting;
 
   @ApiProperty()
-  @IsEnum($Enums.Deparment)
-  department: $Enums.Deparment;
+  @IsEnum($Enums.LayoutSetting)
+  layout: $Enums.LayoutSetting;
 
-  @IsDate()
   createdAt: Date;
-
-  @IsDate()
   updatedAt: Date;
 }
 </code></pre>
@@ -565,7 +459,7 @@ export class UserEntity implements User {
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'class';
-            var COMPODOC_CURRENT_PAGE_URL = 'UserEntity.html';
+            var COMPODOC_CURRENT_PAGE_URL = 'SettingEntity.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 

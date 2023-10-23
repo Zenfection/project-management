@@ -31,25 +31,21 @@
 |        | Add Google Authentication Method                                                         |                                                                                                              |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
 | ✅      | Build Roles Authorization with Decorator and Guard                                       | [#4ea237a](https://github.com/Zenfection/project-management/commit/4ea237a5fcda91d111a8cbc7abccd2da6be2619c) |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
 |        | Build SMTP Mailer                                                                        |                                                                                                              |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
-| ✅      | Build Cloud Storage with Cloudflare R2 and Rate Limiting                                 |                                                                                                              | <img title="" src="https://raw.githubusercontent.com/Zenfection/Image/master/2023/10/23-15-36-56-cloudflare-r2.png" alt="cloudflare-r2.png" width="50">[CloudFlare R2](https://www.cloudflare.com/developer-platform/r2/)<br>[throtter](https://github.com/nestjs/throttler)                                                                                                                                                                                                                                                                                                              |
-
-
-
-
+| ✅      | Build Cloud Storage with Cloudflare R2 and Rate Limiting                                 | [#24a599b](https://github.com/Zenfection/project-management/tree/24a599b3f593fe4f3705c2877edad64e565362b3)   | <img title="" src="https://raw.githubusercontent.com/Zenfection/Image/master/2023/10/23-15-36-56-cloudflare-r2.png" alt="cloudflare-r2.png" width="50">[CloudFlare R2](https://www.cloudflare.com/developer-platform/r2/)<br>[throtter](https://github.com/nestjs/throttler)                                                                                                                                                                                                                                                                                                              |
 
 
 
 ### 2. Changelog Optimize Code
 
 - Build UserService with Prisma Serivce without DTO and Entity [#d57cf4e](https://github.com/Zenfection/project-management/commit/d57cf4e0c3c3af89b3d81d5987814abeea0666fe), [#f813be6](https://github.com/Zenfection/project-management/commit/f813be633cca6bce8a116e877e7eae567e6c6a59)
-- Improve database and build seed data
-- Add upload avatar method for users
+- Improve database and build seed data [#4929b8b](https://github.com/Zenfection/project-management/commit/4929b8b5e2c745b0132a73542edd8d43da620b40)
+- Add upload avatar method for users [#8034221](https://github.com/Zenfection/project-management/tree/80342212963289bf09a3447276c11f7e0a407072)
 
 ### 3. Note
 
 #### Database
 
-![task_db.png](https://raw.githubusercontent.com/Zenfection/Image/master/2023/09/23-12-53-33-task_db.png)
+![db.png](https://raw.githubusercontent.com/Zenfection/Image/master/2023/10/23-15-48-30-db.png)
 
 #### .env
 
