@@ -31,6 +31,15 @@
 |        | Add Google Authentication Method                                                         |                                                                                                              |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
 | ✅      | Build Roles Authorization with Decorator and Guard                                       | [#4ea237a](https://github.com/Zenfection/project-management/commit/4ea237a5fcda91d111a8cbc7abccd2da6be2619c) |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
 |        | Build SMTP Mailer                                                                        |                                                                                                              |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| ✅      | Build Cloud Storage with Cloudflare R2 and Rate Limiting.                                |                                                                                                              | <img title="" src="https://raw.githubusercontent.com/Zenfection/Image/master/2023/10/23-15-36-56-cloudflare-r2.png" alt="cloudflare-r2.png" width="50">[CloudFlare R2](https://www.cloudflare.com/developer-platform/r2/)<br>[throtter](https://github.com/nestjs/throttler)                                                                                                                                                                                                                                                                                                              |
+
+
+
+
+
+
+
+
 
 ### 2. Changelog Optimize Code
 
@@ -68,4 +77,15 @@ SESSION_SECRET=<YOUR SECRET>
 
 # TFA SECRET
 TFA_APP_NAME=<YOUR TFA NAME>
+
+
+# Cloudflare R2
+ACCOUNT_ID=<YOUR ACCOUNT ID>
+ACCESS_KEY_ID=<YOUR ACCESS ID>
+SECRET_ACCESS_KEY=<YOUR SECRET ACCESS KEY>
+BUCKET_NAME=<YOUR NAME BUCKET>
+
+# Rate Limit
+UPLOAD_RATE_TTL=60
+UPLOAD_RATE_LIMIT=10
 ```

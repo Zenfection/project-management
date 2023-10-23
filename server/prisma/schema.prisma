@@ -120,8 +120,7 @@ model User {
   tasks        Task[]
   activities   Activity[]
   positions    Position[]
-  deparmentId  Int?
-  Deparment    Deparment? @relation(fields: [deparmentId], references: [id])
+  department   Deparment?
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -129,23 +128,22 @@ model User {
   @@index([email], name: "user_email_idx")
 }
 
-model Deparment {
-  id    Int    @id @default(autoincrement()) @map("department_id")
+enum Deparment {
+  CONG_NGHE_PHAN_MEM
+  CONG_NGHE_THONG_TIN
+  HE_THONG_THONG_TIN
+  KHOA_HOC_MAY_TINH
+  MANG_MAY_TINH_VA_TRUYEN_THONG
+  TRUYEN_THONG_DA_PHUONG_TIEN
+}
+
+model Position {
+  id    Int    @id @default(autoincrement()) @map("position_id")
   name  String @unique
   users User[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-}
-
-model Position {
-  id   Int    @id @default(autoincrement()) @map("position_id")
-  name String @unique
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  User      User?    @relation(fields: [userId], references: [id])
-  userId    Int?
 }
 
 model Info {

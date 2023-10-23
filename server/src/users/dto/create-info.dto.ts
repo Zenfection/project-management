@@ -5,7 +5,6 @@ import {
   IsOptional,
   IsPhoneNumber,
   IsString,
-  IsUrl,
 } from 'class-validator';
 
 export class CreateInfoDto implements Prisma.InfoCreateInput {
@@ -20,7 +19,7 @@ export class CreateInfoDto implements Prisma.InfoCreateInput {
   status?: $Enums.UserStatus;
 
   @IsOptional()
-  @IsUrl()
+  @IsString()
   avatar?: string;
 
   @IsOptional()

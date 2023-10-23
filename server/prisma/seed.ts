@@ -1,9 +1,8 @@
-import { Info, Prisma, PrismaClient } from '@prisma/client';
+import { PrismaClient, $Enums } from '@prisma/client';
 const prisma = new PrismaClient();
 
 async function main() {
-  //   createDeparment();
-  //   createPosition();
+  createPosition();
   //   createRole();
   createUser();
 }
@@ -17,28 +16,6 @@ main()
     await prisma.$disconnect();
     process.exit(1);
   });
-
-async function createDeparment() {
-  const dataDeparment = [
-    { name: 'CONG_NGHE_PHAN_MEM' },
-    { name: 'CONG_NGHE_THONG_TIN' },
-    { name: 'HE_THONG_THONG_TIN' },
-    { name: 'KHOA_HOC_MAY_TINH' },
-    { name: 'MANG_MAY_TINH_VA_TRUYEN_THONG' },
-    { name: 'TRUYEN_THONG_DA_PHUONG_TIEN' },
-  ];
-
-  const deparment = await prisma.deparment.createMany({
-    data: dataDeparment,
-    skipDuplicates: true,
-  });
-  console.log(
-    'Created ' +
-      deparment.count +
-      ' deparment includes: ' +
-      dataDeparment.map((item) => item.name).join(', '),
-  );
-}
 
 async function createPosition() {
   const dataPosition = [
@@ -92,7 +69,8 @@ async function createUser() {
           name: 'TS. Trương Minh Thái',
           about:
             'Cấu trúc dữ liệu, Quản lý dự án phần mềm - Nguyên lý xây dựng phần mềm - Nền tảng phần mềm nhúng và IoT',
-          avatar: '',
+          avatar: 'avatar/TMTHAI.jpg',
+          address: 'Đường 3/2 Khu II Đại học Cần Thơ',
           email: 'tmthai@cit.ctu.edu.vn',
         },
       },
@@ -103,9 +81,7 @@ async function createUser() {
       positions: {
         connect: [{ name: 'TRUONG_KHOA' }, { name: 'GIANG_VIEN_CHINH' }],
       },
-      Deparment: {
-        connect: { name: 'CONG_NGHE_PHAN_MEM' },
-      },
+      department: 'CONG_NGHE_PHAN_MEM' as $Enums.Deparment,
     },
     {
       email: 'vhtram@cit.ctu.edu.vn',
@@ -115,8 +91,9 @@ async function createUser() {
           name: 'ThS. Võ Huỳnh Trâm',
           about:
             'Lập trình căn bản, Cấu trúc dữ liệu - Phân tích và thiết kế thuật toán - Phân tích yêu cầu phần mềm, Quản lý dự án phần mềm',
-          avatar: '',
-          email: 'vhtram@cit.ctu.edu.vns',
+          avatar: 'avatar/VHTram.jpg',
+          address: 'Đường 3/2 Khu II Đại học Cần Thơ',
+          email: 'vhtram@cit.ctu.edu.vn',
         },
       },
       setting: {
@@ -126,9 +103,7 @@ async function createUser() {
       positions: {
         connect: [{ name: 'BI_THU_CHI_BO' }, { name: 'PHO_TRUONG_KHOA' }],
       },
-      Deparment: {
-        connect: { name: 'CONG_NGHE_PHAN_MEM' },
-      },
+      department: 'CONG_NGHE_PHAN_MEM' as $Enums.Deparment,
     },
     {
       email: 'hxhiep@cit.ctu.edu.vn',
@@ -138,7 +113,8 @@ async function createUser() {
           name: 'PGs. TS. Huỳnh Xuân Hiệp',
           about:
             'Nhập môn công nghệ phần mềm, Quản lý dự án phần mềm - Phân tích yêu cầu phần mềm, Kiến trúc và thiết kế phần mềm - Phát triển phần mềm nhúng',
-          avatar: '',
+          avatar: 'avatar/HXHiep.jpg',
+          address: 'Đường 3/2 Khu II Đại học Cần Thơ',
           email: 'hxhiep@cit.ctu.edu.vn',
         },
       },
@@ -149,9 +125,7 @@ async function createUser() {
       positions: {
         connect: [{ name: 'GIANG_VIEN_CAO_CAP' }, { name: 'PHO_HIEU_TRUONG' }],
       },
-      Deparment: {
-        connect: { name: 'CONG_NGHE_PHAN_MEM' },
-      },
+      department: 'CONG_NGHE_PHAN_MEM' as $Enums.Deparment,
     },
     {
       email: 'ttttuyen@cit.ctu.edu.vn',
@@ -161,7 +135,8 @@ async function createUser() {
           name: 'ThS. Trương Thị Thanh Tuyền',
           about:
             'Lập trình căn bản, Cấu trúc dữ liệu - Hệ thống Multi-Agent, Nguyên lý lập trình mô phỏng',
-          avatar: '',
+          avatar: 'avatar/TTTTuyen.jpg',
+          address: 'Đường 3/2 Khu II Đại học Cần Thơ',
           email: 'ttttuyen@cit.ctu.edu.vn',
         },
       },
@@ -172,9 +147,7 @@ async function createUser() {
       positions: {
         connect: [{ name: 'GIANG_VIEN_CHINH' }, { name: 'PHO_CHU_TICH_BCHCĐ' }],
       },
-      Deparment: {
-        connect: { name: 'CONG_NGHE_PHAN_MEM' },
-      },
+      department: 'CONG_NGHE_PHAN_MEM' as $Enums.Deparment,
     },
     {
       email: 'pplan@cit.ctu.edu.vn',
@@ -184,7 +157,8 @@ async function createUser() {
           name: 'TS. Phan Phương Lan',
           about:
             'Lập trình căn bản, Cấu trúc dữ liệu - Nhập môn công nghệ phần mềm, Quản lý dự án phần mềm - Bảo trì phần mềm',
-          avatar: '',
+          avatar: 'avatar/PPLan.jpg',
+          address: 'Đường 3/2 Khu II Đại học Cần Thơ',
           email: 'pplan@cit.ctu.edu.vn',
         },
       },
@@ -195,9 +169,7 @@ async function createUser() {
       positions: {
         connect: [{ name: 'GIANG_VIEN_CHINH' }, { name: 'CHU_TICH_CĐ_KHOA' }],
       },
-      Deparment: {
-        connect: { name: 'CONG_NGHE_PHAN_MEM' },
-      },
+      department: 'CONG_NGHE_PHAN_MEM' as $Enums.Deparment,
     },
     {
       email: 'ncdanh@cit.ctu.edu.vn',
@@ -207,7 +179,8 @@ async function createUser() {
           name: 'TS. Nguyễn Công Danh',
           about:
             'Lập trình căn bản, Cấu trúc dữ liệu - Phát triển phần mềm tác nghiệp, Phát triển ứng dụng Windows - Đảm bảo chất lượng và kiểm thử phần mềm',
-          avatar: '',
+          avatar: 'avatar/NCDanh.jpg',
+          address: 'Đường 3/2 Khu II Đại học Cần Thơ',
           email: 'ncdanh@cit.ctu.edu.vn',
         },
       },
@@ -218,9 +191,7 @@ async function createUser() {
       positions: {
         connect: [{ name: 'GIANG_VIEN' }, { name: 'PHO_CHU_TICH_CĐ' }],
       },
-      Deparment: {
-        connect: { name: 'CONG_NGHE_PHAN_MEM' },
-      },
+      department: 'CONG_NGHE_PHAN_MEM' as $Enums.Deparment,
     },
     {
       email: 'txviet@ctu.edu.vn',
@@ -229,7 +200,8 @@ async function createUser() {
         create: {
           name: 'TS. Trương Xuân Việt',
           about: 'Phân tích yêu cầu phần mềm - Nguyên lý xây dựng phần mềm',
-          avatar: '',
+          avatar: 'avatar/TXViet.jpg',
+          address: 'Đường 3/2 Khu II Đại học Cần Thơ',
           email: 'txviet@ctu.edu.vn',
         },
       },
@@ -240,9 +212,7 @@ async function createUser() {
       positions: {
         connect: [{ name: 'GIANG_VIEN' }, { name: 'PHO_GIAM_DOC_TT_CNPM' }],
       },
-      Deparment: {
-        connect: { name: 'CONG_NGHE_PHAN_MEM' },
-      },
+      department: 'CONG_NGHE_PHAN_MEM' as $Enums.Deparment,
     },
     {
       email: 'cvloc@ctu.edu.vn',
@@ -252,7 +222,8 @@ async function createUser() {
           name: 'TS. Cù Vĩnh Lộc',
           about:
             'Cấu trúc dữ liệu - Lập trình Java - Kiến trúc thiết kế phần mềm',
-          avatar: '',
+          avatar: 'avatar/CVLoc.jpg',
+          address: 'Đường 3/2 Khu II Đại học Cần Thơ',
           email: 'cvloc@ctu.edu.vn',
         },
       },
@@ -266,9 +237,7 @@ async function createUser() {
           { name: 'TRUONG_BO_PHAN_DAO_TAO_TT_CNPM' },
         ],
       },
-      Deparment: {
-        connect: { name: 'CONG_NGHE_PHAN_MEM' },
-      },
+      department: 'CONG_NGHE_PHAN_MEM' as $Enums.Deparment,
     },
     {
       email: 'lhbao@cit.ctu.edu.vn',
@@ -278,7 +247,8 @@ async function createUser() {
           name: 'TS. Lâm Hoài Bảo',
           about:
             'Lập trình căn bản, Cấu trúc dữ liệu, Phân tích và thiết kế thuật toán - Lập trình .NET - Kiểm chứng mô hình, Tương tác người máy',
-          avatar: '',
+          avatar: 'avatar/LHBao.jpg',
+          address: 'Đường 3/2 Khu II Đại học Cần Thơ',
           email: 'lhbao@cit.ctu.edu.vn',
         },
       },
@@ -289,9 +259,7 @@ async function createUser() {
       positions: {
         connect: [{ name: 'GIANG_VIEN' }],
       },
-      Deparment: {
-        connect: { name: 'CONG_NGHE_PHAN_MEM' },
-      },
+      department: 'CONG_NGHE_PHAN_MEM' as $Enums.Deparment,
     },
     {
       email: 'phcuong@cit.ctu.edu.vn',
@@ -300,7 +268,8 @@ async function createUser() {
         create: {
           name: 'Ths. Phan Huy Cường',
           about: '',
-          avatar: '',
+          avatar: 'avatar/PHCuong.jpg',
+          address: 'Đường 3/2 Khu II Đại học Cần Thơ',
           email: 'phcuong@cit.ctu.edu.vn',
         },
       },
@@ -311,9 +280,7 @@ async function createUser() {
       positions: {
         connect: [{ name: 'GIANG_VIEN' }, { name: 'PHO_GIAM_DOC_TT_ĐT-TH' }],
       },
-      Deparment: {
-        connect: { name: 'CONG_NGHE_PHAN_MEM' },
-      },
+      department: 'CONG_NGHE_PHAN_MEM' as $Enums.Deparment,
     },
     {
       email: 'otmlinh@ctu.edu.vn',
@@ -323,7 +290,8 @@ async function createUser() {
           name: 'Ths. Ông Thị Mỹ Linh',
           about:
             'Cấu trúc dữ liệu - Lập trình .NET - Quản lý quy trình nghiệp vụ',
-          avatar: '',
+          avatar: 'avatar/OTMLinh.jpg',
+          address: 'Đường 3/2 Khu II Đại học Cần Thơ',
           email: 'otmlinh@ctu.edu.vn',
         },
       },
@@ -334,9 +302,7 @@ async function createUser() {
       positions: {
         connect: [{ name: 'GIANG_VIEN' }],
       },
-      Deparment: {
-        connect: { name: 'CONG_NGHE_PHAN_MEM' },
-      },
+      department: 'CONG_NGHE_PHAN_MEM' as $Enums.Deparment,
     },
     {
       email: 'hqthai@cit.ctu.edu.vn',
@@ -346,7 +312,8 @@ async function createUser() {
           name: 'TS. Hồ Quang Thái',
           about:
             'Lập trình căn bản, Cấu trúc dữ liệu - Lập trình .NET, Lập trình Java',
-          avatar: '',
+          avatar: 'avatar/HQThai.jpg',
+          address: 'Đường 3/2 Khu II Đại học Cần Thơ',
           email: 'hqthai@cit.ctu.edu.vn',
         },
       },
@@ -357,9 +324,7 @@ async function createUser() {
       positions: {
         connect: [{ name: 'GIANG_VIEN' }],
       },
-      Deparment: {
-        connect: { name: 'CONG_NGHE_PHAN_MEM' },
-      },
+      department: 'CONG_NGHE_PHAN_MEM' as $Enums.Deparment,
     },
     {
       email: 'tvhoang@cit.ctu.edu.vn',
@@ -369,7 +334,8 @@ async function createUser() {
           name: 'TS. Trần Văn Hoàng',
           about:
             'Lập trình căn bản, Cấu trúc dữ liệu - Phân tích và thiết kế thuật toán - Phân tích yêu cầu phần mềm.',
-          avatar: '',
+          avatar: 'avatar/TVHoang.jpg',
+          address: 'Đường 3/2 Khu II Đại học Cần Thơ',
           email: 'tvhoang@cit.ctu.edu.vn',
         },
       },
@@ -380,9 +346,7 @@ async function createUser() {
       positions: {
         connect: [{ name: 'GIANG_VIEN' }],
       },
-      Deparment: {
-        connect: { name: 'CONG_NGHE_PHAN_MEM' },
-      },
+      department: 'CONG_NGHE_PHAN_MEM' as $Enums.Deparment,
     },
     {
       email: 'hqnghi@cit.ctu.edu.vn',
@@ -392,7 +356,8 @@ async function createUser() {
           name: 'TS. Huỳnh Quang Nghi',
           about:
             'Lập trình căn bản, Cấu trúc dữ liệu - Lập trình .NET, Lập trình Java - Bảo trì phần mềm, Nguyên lý lập trình mô phỏng',
-          avatar: '',
+          avatar: 'avatar/HQNghi.jpg',
+          address: 'Đường 3/2 Khu II Đại học Cần Thơ',
           email: 'hqnghi@cit.ctu.edu.vn',
         },
       },
@@ -403,9 +368,7 @@ async function createUser() {
       positions: {
         connect: [{ name: 'GIANG_VIEN' }, { name: 'THU_KY_KHOA' }],
       },
-      Deparment: {
-        connect: { name: 'CONG_NGHE_PHAN_MEM' },
-      },
+      department: 'CONG_NGHE_PHAN_MEM' as $Enums.Deparment,
     },
     {
       email: 'chgiang@cit.ctu.edu.vn',
@@ -415,7 +378,8 @@ async function createUser() {
           name: 'ThS. Cao Hoàng Giang',
           about:
             'Lập trình căn bản, Cấu trúc dữ liệu - Lập trình .NET, Lập trình Java',
-          avatar: '',
+          avatar: 'avatar/CHGiang.jpg',
+          address: 'Đường 3/2 Khu II Đại học Cần Thơ',
           email: 'chgiang@cit.ctu.edu.vn',
         },
       },
@@ -426,9 +390,7 @@ async function createUser() {
       positions: {
         connect: [{ name: 'GIANG_VIEN' }],
       },
-      Deparment: {
-        connect: { name: 'CONG_NGHE_PHAN_MEM' },
-      },
+      department: 'CONG_NGHE_PHAN_MEM' as $Enums.Deparment,
     },
     {
       email: 'cxphuong@ctu.edu.vn',
@@ -437,7 +399,8 @@ async function createUser() {
         create: {
           name: 'Ths. Châu Xuân Phương',
           about: 'Lập trình căn bản, Cấu trúc dữ liệu',
-          avatar: '',
+          avatar: 'avatar/CXPhuong.jpg',
+          address: 'Đường 3/2 Khu II Đại học Cần Thơ',
           email: 'cxphuong@ctu.edu.vn',
         },
       },
@@ -448,9 +411,7 @@ async function createUser() {
       positions: {
         connect: [{ name: 'GIANG_VIEN' }],
       },
-      Deparment: {
-        connect: { name: 'CONG_NGHE_PHAN_MEM' },
-      },
+      department: 'CONG_NGHE_PHAN_MEM' as $Enums.Deparment,
     },
     {
       email: 'nvlinh@cit.ctu.edu.vn',
@@ -460,7 +421,8 @@ async function createUser() {
           name: 'Ths. Nguyễn Văn Linh',
           about:
             'Lập trình căn bản, Cấu trúc dữ liệu - Phân tích và thiết kế thuật toán',
-          avatar: '',
+          avatar: 'avatar/NVLinh.jpg',
+          address: 'Đường 3/2 Khu II Đại học Cần Thơ',
           email: 'nvlinh@cit.ctu.edu.vn',
         },
       },
@@ -474,9 +436,7 @@ async function createUser() {
           { name: 'GIANG_VIEN_MOI_GIANG' },
         ],
       },
-      Deparment: {
-        connect: { name: 'CONG_NGHE_PHAN_MEM' },
-      },
+      department: 'CONG_NGHE_PHAN_MEM' as $Enums.Deparment,
     },
     {
       email: 'lmbang@cit.ctu.edu.vn',
@@ -485,7 +445,8 @@ async function createUser() {
         create: {
           name: 'Ks. Lê Minh Bằng',
           about: '',
-          avatar: '',
+          avatar: 'avatar/LMBang.jpg',
+          address: 'Đường 3/2 Khu II Đại học Cần Thơ',
           email: 'lmbang@cit.ctu.edu.vn',
         },
       },
@@ -496,9 +457,7 @@ async function createUser() {
       positions: {
         connect: [],
       },
-      Deparment: {
-        connect: { name: 'CONG_NGHE_PHAN_MEM' },
-      },
+      department: 'CONG_NGHE_PHAN_MEM' as $Enums.Deparment,
     },
     {
       email: 'ccdanh@cit.ctu.edu.vn',
@@ -507,7 +466,8 @@ async function createUser() {
         create: {
           name: 'Ks. Cao Công Danh',
           about: '',
-          avatar: '',
+          avatar: 'avatar/CCDanh.jpg',
+          address: 'Đường 3/2 Khu II Đại học Cần Thơ',
           email: 'ccdanh@cit.ctu.edu.vn',
         },
       },
@@ -518,9 +478,7 @@ async function createUser() {
       positions: {
         connect: { name: 'GIANG_VIEN_TRO_GIANG' },
       },
-      Deparment: {
-        connect: { name: 'CONG_NGHE_PHAN_MEM' },
-      },
+      department: 'CONG_NGHE_PHAN_MEM' as $Enums.Deparment,
     },
   ];
 

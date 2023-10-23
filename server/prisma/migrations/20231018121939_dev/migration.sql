@@ -20,6 +20,9 @@ CREATE TYPE "SchemeSetting" AS ENUM ('dark', 'light', 'auto');
 CREATE TYPE "LayoutSetting" AS ENUM ('empty', 'classic', 'classy', 'compact', 'dense', 'futuristic', 'thin', 'centered', 'enterpise', 'material', 'modern');
 
 -- CreateEnum
+CREATE TYPE "Deparment" AS ENUM ('CONG_NGHE_PHAN_MEM', 'CONG_NGHE_THONG_TIN', 'HE_THONG_THONG_TIN', 'KHOA_HOC_MAY_TINH', 'MANG_MAY_TINH_VA_TRUYEN_THONG', 'TRUYEN_THONG_DA_PHUONG_TIEN');
+
+-- CreateEnum
 CREATE TYPE "TaskStatus" AS ENUM ('OPEN', 'IN_PROGRESS', 'RESOLVED', 'CLOSED');
 
 -- CreateEnum
@@ -73,6 +76,7 @@ CREATE TABLE "User" (
     "password" TEXT NOT NULL,
     "isTfaEnabled" BOOLEAN NOT NULL DEFAULT false,
     "tfaSecret" TEXT,
+    "department" "Deparment",
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
 
@@ -80,8 +84,20 @@ CREATE TABLE "User" (
 );
 
 -- CreateTable
+CREATE TABLE "Position" (
+    "position_id" SERIAL NOT NULL,
+    "name" TEXT NOT NULL,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
+
+    CONSTRAINT "Position_pkey" PRIMARY KEY ("position_id")
+);
+
+-- CreateTable
 CREATE TABLE "Info" (
     "userId" INTEGER NOT NULL,
+    "about" TEXT,
+    "address" TEXT,
     "name" TEXT NOT NULL DEFAULT 'New User',
     "email" TEXT NOT NULL,
     "status" "UserStatus" DEFAULT 'ONLINE',
@@ -168,6 +184,12 @@ CREATE TABLE "_PolicyToRole" (
 );
 
 -- CreateTable
+CREATE TABLE "_PositionToUser" (
+    "A" INTEGER NOT NULL,
+    "B" INTEGER NOT NULL
+);
+
+-- CreateTable
 CREATE TABLE "_LabelToTask" (
     "A" INTEGER NOT NULL,
     "B" INTEGER NOT NULL
@@ -190,6 +212,9 @@ CREATE UNIQUE INDEX "User_email_key" ON "User"("email");
 
 -- CreateIndex
 CREATE INDEX "user_email_idx" ON "User"("email");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "Position_name_key" ON "Position"("name");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "Info_userId_key" ON "Info"("userId");
@@ -220,6 +245,12 @@ CREATE UNIQUE INDEX "_PolicyToRole_AB_unique" ON "_PolicyToRole"("A", "B");
 
 -- CreateIndex
 CREATE INDEX "_PolicyToRole_B_index" ON "_PolicyToRole"("B");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "_PositionToUser_AB_unique" ON "_PositionToUser"("A", "B");
+
+-- CreateIndex
+CREATE INDEX "_PositionToUser_B_index" ON "_PositionToUser"("B");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "_LabelToTask_AB_unique" ON "_LabelToTask"("A", "B");
@@ -265,6 +296,12 @@ ALTER TABLE "_PolicyToRole" ADD CONSTRAINT "_PolicyToRole_A_fkey" FOREIGN KEY ("
 
 -- AddForeignKey
 ALTER TABLE "_PolicyToRole" ADD CONSTRAINT "_PolicyToRole_B_fkey" FOREIGN KEY ("B") REFERENCES "Role"("role_id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "_PositionToUser" ADD CONSTRAINT "_PositionToUser_A_fkey" FOREIGN KEY ("A") REFERENCES "Position"("position_id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "_PositionToUser" ADD CONSTRAINT "_PositionToUser_B_fkey" FOREIGN KEY ("B") REFERENCES "User"("user_id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "_LabelToTask" ADD CONSTRAINT "_LabelToTask_A_fkey" FOREIGN KEY ("A") REFERENCES "Label"("id") ON DELETE CASCADE ON UPDATE CASCADE;
