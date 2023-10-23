@@ -5,4 +5,9 @@ export interface User
     email: string;
     avatar?: string;
     status?: string;
+    about?: string;
+    address?: string;
+    phone?: string;
+    positions: string[];
+    department: string;
 }

@@ -3,6 +3,7 @@
     "Project": "Project",
     "Analytics": "Analytics",
 
+    "About": "About",
     "Save": "Save",
     "Cancel": "Cancel",
 
@@ -33,9 +34,16 @@
             "description": "Following information is publicly displayed, be careful!"
           },
           "name": "Name",
+          "name_required": "Name is required",
+          "name_invalid": "Name is invalid",
           "email": "Email",
+          "email_required": "Email is required",
+          "email_invalid": "Email must be in CTU domain",
           "phone": "Phone",
+          "phone_required": "Phone is required",
+          "phone_invalid": "Phone must be in VietNam",
           "address": "Address",
+          "address_required": "Address is required",
           "username": "Username",
           "language": "Language",
           "position": "Position",
@@ -103,5 +111,36 @@
         "title": "Team",
         "description": "Manage your existing team and change roles/permissions"
       }
-    }
+    },
+
+      "GIANG_VIEN": "Giảng Viên",
+      "GIANG_VIEN_CHINH": "Giảng Viên Chính",
+      "GIANG_VIEN_CAO_CAP": "Giảng Viên Cấp Cao",
+      "GIANG_VIEN_MOI_GIANG": "Giảng Viên Mời Giảng",
+      "GIANG_VIEN_TRO_GIANG": "Giảng Viên Trợ Giảng",
+      "TRUONG_KHOA": "Trưởng Khoa",
+      "PHO_TRUONG_KHOA": "Phó Trưởng Khoa",
+      "HIEU_TRUONG": "Hiệu Trưởng",
+      "PHO_HIEU_TRUONG": "Phó Hiểu Trưởng",
+      "PHO_GIAM_DOC_TT_CNPM": "Phó Giám Đốc TT CNPM",
+      "TRUONG_BO_PHAN_DAO_TAO_TT_CNPM": "Trưởng Bộ Phận Đào Tạo TT CNPM",
+      "PHO_GIAM_DOC_TT_ĐT-TH": "Phó Giám Đốc TT ĐT-TH",
+      "GIAM_DINH_TTTT-QTM": "Giám Định TTTT QTM",
+      "THU_KY_KHOA": "Thư Ký Khoa",
+      "TRUONG_PTN": "Trưởng PTN",
+      "PHO_CHU_TICH_BCHCĐ": "Phó Chủ Tịch BCHCĐ",
+      "CHU_TICH_CĐ": "Chủ Tịch CĐ",
+      "PHO_CHU_TICH_CĐ": "Phó Chủ Tịch CĐ",
+      "TO_TRUONG_CĐ": "Tổ Trưởng CĐ",
+      "TO_PHO_CĐ": "Tổ Phó CĐ",
+      "BI_THU_CHI_BO": "Bí Thư Chi Bộ",
+      "CHU_TICH_CĐ_KHOA": "Chủ Tịch CĐ Khoa",
+
+
+      "CONG_NGHE_PHAN_MEM": "Công Nghệ Phần Mềm",
+  "CONG_NGHE_THONG_TIN": "Công Nghệ Thông Tin",
+  "HE_THONG_THONG_TIN": "Hệ Thống Thông Tin",
+  "KHOA_HOC_MAY_TINH": "Khoa Học Máy Tính",
+  "MANG_MAY_TINH_VA_TRUYEN_THONG": "Mạng Máy Tính Và Truyền Thông",
+  "TRUYEN_THONG_DA_PHUONG_TIEN": "Truyền Thông Đa Phương Tiện"
 }

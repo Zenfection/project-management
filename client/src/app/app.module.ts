@@ -18,7 +18,14 @@ import { TranslocoModule } from '@ngneat/transloco';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, HttpClientModule, AppRoutingModule, ProjectModule, SettingsModule, TranslocoModule],
+  imports: [
+    BrowserModule,
+    HttpClientModule,
+    AppRoutingModule,
+    ProjectModule,
+    SettingsModule,
+    TranslocoModule,
+  ],
   providers: [
     {
       provide: DateAdapter,
@@ -27,17 +34,17 @@ import { TranslocoModule } from '@ngneat/transloco';
     provideAnimations(),
     {
       provide: MAT_DATE_FORMATS,
-        useValue: {
-          parse: {
-            dateInput: 'D',
-          },
-          display: {
-            dateInput: 'DDD',
-            monthYearLabel: 'LLL yyyy',
-            dateA11yLabel: 'DD',
-            monthYearA11yLabel: 'LLLL yyyy',
-          },
+      useValue: {
+        parse: {
+          dateInput: 'D',
         },
+        display: {
+          dateInput: 'DDD',
+          monthYearLabel: 'LLL yyyy',
+          dateA11yLabel: 'DD',
+          monthYearA11yLabel: 'LLLL yyyy',
+        },
+      },
     },
 
     // Transloco Config
@@ -47,50 +54,49 @@ import { TranslocoModule } from '@ngneat/transloco';
     provideAuth(),
     provideIcons(),
     provideFuse({
-        mockApi: {
-            delay   : 0,
-            services: mockApiServices,
+      mockApi: {
+        delay: 0,
+        services: mockApiServices,
+      },
+      fuse: {
+        layout: 'modern',
+        scheme: 'light',
+        screens: {
+          sm: '600px',
+          md: '960px',
+          lg: '1280px',
+          xl: '1440px',
         },
-        fuse   : {
-            layout : 'modern',
-            scheme : 'light',
-            screens: {
-                sm: '600px',
-                md: '960px',
-                lg: '1280px',
-                xl: '1440px',
-            },
-            theme  : 'theme-default',
-            themes : [
-                {
-                    id  : 'theme-default',
-                    name: 'Default',
-                },
-                {
-                    id  : 'theme-brand',
-                    name: 'Brand',
-                },
-                {
-                    id  : 'theme-teal',
-                    name: 'Teal',
-                },
-                {
-                    id  : 'theme-rose',
-                    name: 'Rose',
-                },
-                {
-                    id  : 'theme-purple',
-                    name: 'Purple',
-                },
-                {
-                    id  : 'theme-amber',
-                    name: 'Amber',
-                },
-            ],
-        },
-
+        theme: 'theme-default',
+        themes: [
+          {
+            id: 'theme-default',
+            name: 'Default',
+          },
+          {
+            id: 'theme-brand',
+            name: 'Brand',
+          },
+          {
+            id: 'theme-teal',
+            name: 'Teal',
+          },
+          {
+            id: 'theme-rose',
+            name: 'Rose',
+          },
+          {
+            id: 'theme-purple',
+            name: 'Purple',
+          },
+          {
+            id: 'theme-amber',
+            name: 'Amber',
+          },
+        ],
+      },
     }),
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

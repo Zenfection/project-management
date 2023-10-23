@@ -1,77 +1,218 @@
 <div class="w-full max-w-3xl">
-
-    <!-- Form -->
-    <form [formGroup]="accountForm">
-
-        <!-- Section -->
-        <div class="w-full">
-            <div class="text-xl" *transloco="let t">{{t('settings.account.profile.title')}}</div>
-            <div class="text-secondary" *transloco="let t">{{t('settings.account.profile.description')}}</div>
+  <!-- Form -->
+  <form [formGroup]="accountForm">
+    <!-- Section -->
+    <div class="w-full">
+      <div class="text-xl" *transloco="let t">
+        {{ t('settings.account.profile.title') }}
+      </div>
+      <div class="text-secondary" *transloco="let t">
+        {{ t('settings.account.profile.description') }}
+      </div>
+    </div>
+    <div class="mt-8 grid w-full gap-6 sm:grid-cols-4">
+      <fuse-card
+        class="filter-info flex w-full max-w-90 flex-col items-center p-8 pb-6 sm:col-span-2">
+        <!-- Avatar -->
+        <div class="relative w-fit">
+            <img
+              class="h-32 w-32 rounded-full object-cover shadow-lg bg-center"
+              [src]="user.avatar"
+              alt="Card cover image" />
+          <label for="avatar-input-file">
+            <div class="absolute h-10 w-10 p-1 rounded-full flex items-center justify-center right-0 top-3/4 bg-gray-300 cursor-pointer hover:transition-all hover:duration-300 hover:bg-gray-200">
+              <input type="file" id="avatar-input-file" accept="image/*" class="hidden" (change)="updateAvatar($event)" />
+              <mat-icon class="icon-size-5" [svgIcon]="'duotone:pen'"></mat-icon>
+            </div>
+          </label>
         </div>
-        <div class="grid sm:grid-cols-4 gap-6 w-full mt-8">
-            <!-- Name -->
-            <div class="sm:col-span-4">
-                <mat-form-field
-                    class="w-full"
+
+        <div class="mt-8 text-center text-2xl font-semibold leading-tight">
+          {{ this.accountForm.get('name').value }}
+        </div>
+        <div
+          class="mt-1 text-center leading-tight text-primary-500"
+          *transloco="let t">
+          {{ t(user.department) }}
+        </div>
+        <div class="text-secondary mt-1 text-md">{{ user.email }}</div>
+        <hr class="my-6 w-full border-t" />
+        <div class="flex flex-col">
+          <div class="flex items-center">
+            <mat-icon
+              class="mr-3 icon-size-5"
+              [svgIcon]="'duotone:location-dot'"></mat-icon>
+            <span class="leading-none">{{
+              this.accountForm.get('address').value
+            }}</span>
+          </div>
+          <div class="mt-4 flex items-center">
+            <mat-icon
+              class="mr-3 icon-size-5"
+              [svgIcon]="'heroicons_solid:briefcase'"></mat-icon>
+            <span
+              class="leading-none"
+              *ngFor="let position of user.positions; let i = index">
+              <span *transloco="let t">{{ t(position) }}</span>
+              <span *ngIf="i < user.positions.length - 1"> - </span>
+            </span>
+          </div>
+          <div class="mb-4 mt-4 flex items-center">
+            <mat-icon
+              class="mr-3 icon-size-5"
+              [svgIcon]="'duotone:phone-volume'"></mat-icon>
+            <span class="leading-none">{{
+              this.accountForm.get('phone').value
+            }}</span>
+          </div>
+        </div>
+        <hr class="mb-4 mt-0 w-full border-t" />
+        <fuse-card
+          class="filter-testimonial relative flex w-full max-w-80 flex-col p-4">
+          <span
+            class="absolute left-0 top-0 ml-4 font-serif text-7xl leading-none text-primary"
+            >“</span
+          >
+          <div class="mt-2 text-lg italic leading-relaxed">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            {{ this.accountForm.get('about').value }}
+          </div>
+          <div class="mt-4 text-md font-medium text-primary" *transloco="let t">
+            &#8212; {{ t('About') }}
+          </div>
+        </fuse-card>
+      </fuse-card>
+      <!-- Name -->
+      <div class="sm:col-span-2">
+        <mat-form-field
+          class="fuse-mat-emphasized-affix my-2 w-full"
+          [subscriptSizing]="'dynamic'">
+          <mat-label *transloco="let t">{{
+            t('settings.account.name')
+          }}</mat-label>
+          <mat-icon
+            class="icon-size-5"
+            [svgIcon]="'duotone:user'"
+            matPrefix></mat-icon>
+          <input [formControlName]="'name'" matInput />
+
+          <mat-error *ngIf="required('name')">
+            <span *transloco="let t">
+              {{ t('settings.account.name_required') }}
+            </span>
+          </mat-error>
+
+          <mat-error *ngIf="invalidName">
+            <span *transloco="let t">
+              {{ t('settings.account.name_invalid') }}
+            </span>
+          </mat-error>
+
+
+        </mat-form-field>
+
+
+        <!-- Email -->
+        <mat-form-field
+          class="fuse-mat-emphasized-affix my-2 w-full"
+          [subscriptSizing]="'dynamic'">
+          <mat-label *transloco="let t">{{
+            t('settings.account.email')
+          }}</mat-label>
+          <mat-icon
+            class="icon-size-5"
+            [svgIcon]="'duotone:envelope'"
+            matPrefix></mat-icon>
+          <input [formControlName]="'email'" matInput />
+
+          <mat-error *ngIf="accountForm.get('email').hasError('required')">
+            <span *transloco="let t">
+              {{ t('settings.account.email_required') }}
+            </span>
+        </mat-error>
+
+          <mat-error *ngIf="invalidEmail">
+            <span *transloco="let t">
+              {{ t('settings.account.email_invalid') }}
+            </span>
+          </mat-error>
+        </mat-form-field>
+
+        <!-- Phone -->
+        <mat-form-field
+          class="fuse-mat-emphasized-affix my-3 w-full"
+          [subscriptSizing]="'dynamic'">
+          <mat-label *transloco="let t">{{
+            t('settings.account.phone')
+          }}</mat-label>
+          <mat-icon
+            class="icon-size-5"
+            [svgIcon]="'duotone:phone-volume'"
+            matPrefix></mat-icon>
+          <input [formControlName]="'phone'" matInput />
+
+          <mat-error *ngIf="required('phone')">
+            <span *transloco="let t">
+              {{ t('settings.account.phone_required') }}
+            </span>
+          </mat-error>
+
+          <mat-error *ngIf="invalidPhoneNumberVN">
+            <span *transloco="let t">
+              {{ t('settings.account.phone_invalid') }}
+            </span>
+          </mat-error>
+        </mat-form-field>
+
+        <!-- Address -->
+        <mat-form-field
+          class="fuse-mat-emphasized-affix my-3 w-full"
+          [subscriptSizing]="'dynamic'">
+          <mat-label *transloco="let t">{{
+            t('settings.account.address')
+          }}</mat-label>
+          <mat-icon
+            class="icon-size-5"
+            [svgIcon]="'duotone:location-dot'"
+            matPrefix></mat-icon>
+          <input [formControlName]="'address'" matInput />
+
+          <mat-error *ngIf="required('address')">
+            <span *transloco="let t">
+              {{ t('settings.account.address_required') }}
+            </span>
+          </mat-error>
+        </mat-form-field>
+
+        <!-- About -->
+        <mat-form-field class="my-3 w-full" [subscriptSizing]="'dynamic'">
+          <mat-label *transloco="let t">{{
+            t('settings.account.about')
+          }}</mat-label>
+          <textarea
+            matInput
+            [formControlName]="'about'"
+            cdkTextareaAutosize
+            [cdkAutosizeMinRows]="8"></textarea>
+        </mat-form-field>
+
+        <!-- <mat-form-field
+                    class="w-full fuse-mat-emphasized-affix my-2"
                     [subscriptSizing]="'dynamic'">
-                    <mat-label *transloco="let t">{{t('settings.account.name')}}</mat-label>
+                    <mat-label *transloco="let t">{{t('settings.account.language')}}</mat-label>
                     <mat-icon
                         class="icon-size-5"
-                        [svgIcon]="'duotone:user'"
+                        [svgIcon]="'duotone:language'"
                         matPrefix></mat-icon>
-                    <input
-                        [formControlName]="'name'"
-                        matInput>
-                </mat-form-field>
-            </div>
-            <!-- Username -->
-            <div class="sm:col-span-4">
-                <mat-form-field
-                    class="fuse-mat-emphasized-affix w-full"
-                    [subscriptSizing]="'dynamic'">
-                    <mat-label *transloco="let t">{{t('settings.account.username')}}</mat-label>
-                    <div
-                        class="text-secondary"
-                        matPrefix>
-                        ctu.vn.com/
-                    </div>
-                    <input
-                        [formControlName]="'username'"
-                        matInput>
-                </mat-form-field>
-            </div>
-            <!-- Title -->
-            <div class="sm:col-span-2">
-                <mat-form-field
-                    class="w-full"
-                    [subscriptSizing]="'dynamic'">
-                    <mat-label *transloco="let t">{{t('settings.account.position')}}</mat-label>
-                    <mat-icon
-                        class="icon-size-5"
-                        [svgIcon]="'duotone:briefcase'"
-                        matPrefix></mat-icon>
-                    <input
-                        [formControlName]="'title'"
-                        matInput>
-                </mat-form-field>
-            </div>
-            <!-- Company -->
-            <div class="sm:col-span-2">
-                <mat-form-field
-                    class="w-full"
-                    [subscriptSizing]="'dynamic'">
-                    <mat-label *transloco="let t">{{t('settings.account.company')}}</mat-label>
-                    <mat-icon
-                        class="icon-size-5"
-                        [svgIcon]="'duotone:buildings'"
-                        matPrefix></mat-icon>
-                    <input
-                        [formControlName]="'company'"
-                        matInput>
-                </mat-form-field>
-            </div>
-            <!-- About -->
-            <div class="sm:col-span-4">
+                    <mat-select [formControlName]="'language'">
+                        <mat-option [value]="'en'">English</mat-option>
+                        <mat-option [value]="'vi'">Tiếng Việt</mat-option>
+                    </mat-select>
+                </mat-form-field> -->
+      </div>
+
+      <!-- About -->
+      <!-- <div class="sm:col-span-4">
                 <mat-form-field
                     class="w-full"
                     [subscriptSizing]="'dynamic'">
@@ -83,20 +224,20 @@
                         [cdkAutosizeMinRows]="5"></textarea>
                 </mat-form-field>
                 <div class="mt-1 text-md text-hint">Brief description for your profile. Basic HTML and Emoji are allowed.</div>
-            </div>
-        </div>
+            </div> -->
+    </div>
 
-        <!-- Divider -->
-        <div class="my-10 border-t"></div>
+    <!-- Divider -->
+    <!-- <div class="my-10 border-t"></div> -->
 
-        <!-- Section -->
-        <div class="w-full">
+    <!-- Section -->
+    <!-- <div class="w-full">
             <div class="text-xl" *transloco="let t">{{t('settings.account.personal_information.title')}}</div>
             <div class="text-secondary" *transloco="let t">{{t('settings.account.personal_information.description')}}</div>
         </div>
-        <div class="grid sm:grid-cols-4 gap-6 w-full mt-8">
-            <!-- Email -->
-            <div class="sm:col-span-2">
+        <div class="grid sm:grid-cols-4 gap-6 w-full mt-8"> -->
+    <!-- Email -->
+    <!-- <div class="sm:col-span-2">
                 <mat-form-field
                     class="w-full"
                     [subscriptSizing]="'dynamic'">
@@ -109,9 +250,9 @@
                         [formControlName]="'email'"
                         matInput>
                 </mat-form-field>
-            </div>
-            <!-- Phone -->
-            <div class="sm:col-span-2">
+            </div> -->
+    <!-- Phone -->
+    <!-- <div class="sm:col-span-2">
                 <mat-form-field
                     class="w-full"
                     [subscriptSizing]="'dynamic'">
@@ -124,9 +265,9 @@
                         [formControlName]="'phone'"
                         matInput>
                 </mat-form-field>
-            </div>
-            <!-- Country -->
-            <div class="sm:col-span-2">
+            </div> -->
+    <!-- Country -->
+    <!-- <div class="sm:col-span-2">
                 <mat-form-field
                     class="w-full"
                     [subscriptSizing]="'dynamic'">
@@ -144,9 +285,9 @@
                         <mat-option [value]="'italy'">Italy</mat-option>
                     </mat-select>
                 </mat-form-field>
-            </div>
-            <!-- Language -->
-            <div class="sm:col-span-2">
+            </div> -->
+    <!-- Language -->
+    <!-- <div class="sm:col-span-2">
                 <mat-form-field
                     class="w-full"
                     [subscriptSizing]="'dynamic'">
@@ -161,25 +302,27 @@
                     </mat-select>
                 </mat-form-field>
             </div>
-        </div>
+        </div> -->
 
-        <!-- Divider -->
-        <div class="mt-11 mb-10 border-t"></div>
+    <!-- Divider -->
+    <div class="mb-10 mt-11 border-t"></div>
 
-        <!-- Actions -->
-        <div class="flex items-center justify-end">
-            <button
-                mat-stroked-button
-                type="button" *transloco="let t">
-                {{t('Cancel')}}
-            </button>
-            <button
-                class="ml-4"
-                mat-flat-button
-                type="button"
-                [color]="'primary'" *transloco="let t">{{t('Save')}}
-            </button>
-        </div>
-    </form>
-
+    <!-- Actions -->
+    <div class="flex items-center justify-end">
+      <button mat-stroked-button type="button" *transloco="let t">
+        {{ t('Cancel') }}
+      </button>
+      <button
+        class="ml-4"
+        mat-flat-button
+        type="button"
+        [color]="'primary'"
+        [disabled]="accountForm.invalid"
+        *transloco="let t"
+        (click)="handleUpdate()"
+        >
+        {{ t('Save') }}
+      </button>
+    </div>
+  </form>
 </div>

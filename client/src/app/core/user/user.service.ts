@@ -34,8 +34,8 @@ export class UserService {
         );
     }
 
-    update(user: User): Observable<any> {
-        return this._httpClient.patch<User>('api/users/info', user, {
+    update(data: Partial<User>): Observable<any> {
+        return this._httpClient.patch<User>('api/users/info', data, {
           headers: {
             'Authorization': 'Bearer ' + localStorage.getItem('accessToken') ?? ''
           },

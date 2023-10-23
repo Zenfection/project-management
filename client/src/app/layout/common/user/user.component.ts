@@ -10,6 +10,7 @@ import { Router, RouterModule } from '@angular/router';
 import { UserService } from 'app/core/user/user.service';
 import { User } from 'app/core/user/user.types';
 import { Subject, takeUntil } from 'rxjs';
+import { environment } from 'environments/environment.development';
 
 @Component({
     selector       : 'user',
@@ -26,6 +27,8 @@ export class UserComponent implements OnInit, OnDestroy
 
     @Input() showAvatar = true;
     user: User;
+    s3BucketUrl: string = environment.s3_url;
+
 
     private _unsubscribeAll: Subject<any> = new Subject<any>();
 
@@ -53,6 +56,9 @@ export class UserComponent implements OnInit, OnDestroy
             .subscribe((user: User) =>
             {
                 this.user = user;
+                if(!this.user.avatar.includes(this.s3BucketUrl)){
+                  this.user.avatar = `${this.s3BucketUrl}/${this.user.avatar}`
+                }
 
                 // Mark for check
                 this._changeDetectorRef.markForCheck();

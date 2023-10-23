@@ -89,7 +89,13 @@ export class AuthService
                   email: response.info.email,
                   avatar: response.info.avatar,
                   status: response.info.status,
+                  about: response.info.about,
+                  address: response.info.address,
+                  phone: response.info.phone,
+                  positions: response.positions.map((position: any) => position.name),
+                  department: response.department,
                 }
+
                 this._userService.user = userInfo;
 
                 // Store the setting on the setting service
@@ -137,8 +143,6 @@ export class AuthService
                 // Set the authenticated flag to true
                 this._authenticated = true;
 
-
-                // Store the user on the user service
                 // Store the user on the user service
                 const userInfo: User = {
                   id: response.id,
@@ -146,8 +150,14 @@ export class AuthService
                   email: response.info.email,
                   avatar: response.info.avatar,
                   status: response.info.status,
+                  about: response.info.about,
+                  address: response.info.address,
+                  phone: response.info.phone,
+                  positions: response.positions.map((position: any) => position.name),
+                  department: response.department,
                 }
                 this._userService.user = userInfo;
+
 
                 // Store the setting on the setting service
                 const settingInfo: Setting = {
