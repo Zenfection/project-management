@@ -1,18 +1,18 @@
 version: '3.8'
 services:
-  task-server:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    container_name: task-server
-    restart: always
-    ports:
-      - '3000:3000'
-    depends_on:
-      - task-server-postgres
-      - task-server-redis
-    env_file:
-      - .env
+  # task-server:
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile
+  #   container_name: task-server
+  #   restart: always
+  #   ports:
+  #     - '3000:3000'
+  #   depends_on:
+  #     - task-server-postgres
+  #     - task-server-redis
+  #   env_file:
+  #     - .env
 
   task-server-postgres:
     image: postgres:latest
