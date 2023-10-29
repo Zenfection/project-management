@@ -9,7 +9,6 @@ import {
   UseInterceptors,
   UploadedFile,
   ParseFilePipe,
-  MaxFileSizeValidator,
   FileTypeValidator,
 } from '@nestjs/common';
 import { UsersService } from './users.service';
@@ -76,12 +75,30 @@ export class UsersController {
       });
   }
 
+  @Get('tasks')
+  async findTasks(@ActiveUser() user: ActiveUserData) {
+    return this.usersService
+      .findOne(
+        { id: Number(user.sub) },
+        {
+          tasks: {
+            include: {
+              labels: true,
+              todos: true,
+            },
+          },
+        },
+      )
+      .then((user) => {
+        return user.tasks;
+      });
+  }
+
   @Patch('')
   async update(
     @ActiveUser() user: ActiveUserData,
     @Body() updateUser: updateUserDto,
   ) {
-    console.log(user);
     const result = await this.usersService.update({
       where: { id: Number(user.sub) },
       data: updateUser,
@@ -129,9 +146,6 @@ export class UsersController {
     @UploadedFile(
       new ParseFilePipe({
         validators: [
-          new MaxFileSizeValidator({
-            maxSize: 1000000,
-          }),
           new FileTypeValidator({
             fileType: 'image',
           }),

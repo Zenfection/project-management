@@ -66,7 +66,7 @@ enum LayoutSetting {
   futuristic
   thin
   centered
-  enterpise
+  enterprise
   material
   modern
 }
@@ -121,6 +121,8 @@ model User {
   activities   Activity[]
   positions    Position[]
   department   Deparment?
+  ownedPlans   Plan[]     @relation("PlanOwner")
+  memberPlans  Plan[]     @relation("PlanMembers")
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -177,7 +179,33 @@ enum TaskStatus {
   OPEN
   IN_PROGRESS
   RESOLVED
+  COMPLETED
   CLOSED
+}
+
+model CategoryPlan {
+  id        Int      @id @default(autoincrement()) @map("category_plan_id")
+  title     String
+  slug      String   @unique
+  plans     Plan[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Plan {
+  id             Int          @id @default(autoincrement()) @map("plan_id")
+  title          String
+  slug           String       @unique
+  tasks          Task[]
+  members        User[]       @relation("PlanMembers")
+  description    String?
+  category       CategoryPlan @relation(fields: [categoryPlanId], references: [id])
+  categoryPlanId Int
+  owner          User         @relation("PlanOwner", fields: [ownerId], references: [id])
+  ownerId        Int
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model Task {
@@ -186,13 +214,31 @@ model Task {
   description String?
   dueDate     DateTime?
   status      TaskStatus @default(OPEN)
-  assignees   User?      @relation(fields: [assigneeId], references: [id])
+  assignee    User?      @relation(fields: [assigneeId], references: [id])
   assigneeId  Int?
+  plan        Plan       @relation(fields: [planId], references: [id])
+  planId      Int
+  todos       Todo[]
+  files       String[]
   labels      Label[]
+  order       Int
+  priority    Int        @default(0)
   comments    Comment[]
   Activity    Activity[]
-  createdAt   DateTime   @default(now())
-  updatedAt   DateTime   @updatedAt
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Todo {
+  id      Int     @id @default(autoincrement()) @map("todo_id")
+  content String
+  isDone  Boolean @default(false)
+  Task    Task    @relation(fields: [taskId], references: [id])
+  taskId  Int
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model Comment {
@@ -204,17 +250,9 @@ model Comment {
   updatedAt DateTime @updatedAt
 }
 
-enum LabelType {
-  BUG
-  FEATURE
-  IMPROVEMENT
-  QUESTION
-}
-
 model Label {
-  id    Int       @id @default(autoincrement())
-  name  String    @unique
-  type  LabelType
+  id    Int    @id @default(autoincrement())
+  name  String @unique
   tasks Task[]
 }
 

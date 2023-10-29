@@ -6,6 +6,8 @@ import { IamModule } from './iam/iam.module';
 import { ConfigModule } from '@nestjs/config';
 import { UsersModule } from './users/users.module';
 import { CloudModule } from './cloud/cloud.module';
+import { PlansModule } from './plans/plans.module';
+import { TasksModule } from './tasks/tasks.module';
 
 @Module({
   imports: [
@@ -14,6 +16,8 @@ import { CloudModule } from './cloud/cloud.module';
     CloudModule,
     UsersModule,
     IamModule,
+    PlansModule,
+    TasksModule,
   ],
   controllers: [AppController],
   providers: [AppService],

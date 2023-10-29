@@ -17,16 +17,13 @@ CREATE TYPE "ThemeSetting" AS ENUM ('default', 'brand', 'teal', 'rose', 'purple'
 CREATE TYPE "SchemeSetting" AS ENUM ('dark', 'light', 'auto');
 
 -- CreateEnum
-CREATE TYPE "LayoutSetting" AS ENUM ('empty', 'classic', 'classy', 'compact', 'dense', 'futuristic', 'thin', 'centered', 'enterpise', 'material', 'modern');
+CREATE TYPE "LayoutSetting" AS ENUM ('empty', 'classic', 'classy', 'compact', 'dense', 'futuristic', 'thin', 'centered', 'enterprise', 'material', 'modern');
 
 -- CreateEnum
 CREATE TYPE "Deparment" AS ENUM ('CONG_NGHE_PHAN_MEM', 'CONG_NGHE_THONG_TIN', 'HE_THONG_THONG_TIN', 'KHOA_HOC_MAY_TINH', 'MANG_MAY_TINH_VA_TRUYEN_THONG', 'TRUYEN_THONG_DA_PHUONG_TIEN');
 
 -- CreateEnum
-CREATE TYPE "TaskStatus" AS ENUM ('OPEN', 'IN_PROGRESS', 'RESOLVED', 'CLOSED');
-
--- CreateEnum
-CREATE TYPE "LabelType" AS ENUM ('BUG', 'FEATURE', 'IMPROVEMENT', 'QUESTION');
+CREATE TYPE "TaskStatus" AS ENUM ('OPEN', 'IN_PROGRESS', 'RESOLVED', 'COMPLETED', 'CLOSED');
 
 -- CreateEnum
 CREATE TYPE "ActivityType" AS ENUM ('COMMENT', 'STATUS_CHANGE', 'LABEL_CHANGE', 'ASSIGNMENT_CHANGE', 'CLOSE');
@@ -119,6 +116,31 @@ CREATE TABLE "Setting" (
 );
 
 -- CreateTable
+CREATE TABLE "CategoryPlan" (
+    "category_plan_id" SERIAL NOT NULL,
+    "title" TEXT NOT NULL,
+    "slug" TEXT NOT NULL,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
+
+    CONSTRAINT "CategoryPlan_pkey" PRIMARY KEY ("category_plan_id")
+);
+
+-- CreateTable
+CREATE TABLE "Plan" (
+    "plan_id" SERIAL NOT NULL,
+    "title" TEXT NOT NULL,
+    "slug" TEXT NOT NULL,
+    "description" TEXT,
+    "categoryPlanId" INTEGER NOT NULL,
+    "ownerId" INTEGER NOT NULL,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
+
+    CONSTRAINT "Plan_pkey" PRIMARY KEY ("plan_id")
+);
+
+-- CreateTable
 CREATE TABLE "Task" (
     "task_id" SERIAL NOT NULL,
     "title" TEXT NOT NULL,
@@ -126,10 +148,26 @@ CREATE TABLE "Task" (
     "dueDate" TIMESTAMP(3),
     "status" "TaskStatus" NOT NULL DEFAULT 'OPEN',
     "assigneeId" INTEGER,
+    "planId" INTEGER NOT NULL,
+    "files" TEXT[],
+    "order" INTEGER NOT NULL,
+    "priority" INTEGER NOT NULL DEFAULT 0,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
 
     CONSTRAINT "Task_pkey" PRIMARY KEY ("task_id")
+);
+
+-- CreateTable
+CREATE TABLE "Todo" (
+    "todo_id" SERIAL NOT NULL,
+    "content" TEXT NOT NULL,
+    "isDone" BOOLEAN NOT NULL DEFAULT false,
+    "taskId" INTEGER NOT NULL,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
+
+    CONSTRAINT "Todo_pkey" PRIMARY KEY ("todo_id")
 );
 
 -- CreateTable
@@ -147,7 +185,6 @@ CREATE TABLE "Comment" (
 CREATE TABLE "Label" (
     "id" SERIAL NOT NULL,
     "name" TEXT NOT NULL,
-    "type" "LabelType" NOT NULL,
 
     CONSTRAINT "Label_pkey" PRIMARY KEY ("id")
 );
@@ -190,6 +227,12 @@ CREATE TABLE "_PositionToUser" (
 );
 
 -- CreateTable
+CREATE TABLE "_PlanMembers" (
+    "A" INTEGER NOT NULL,
+    "B" INTEGER NOT NULL
+);
+
+-- CreateTable
 CREATE TABLE "_LabelToTask" (
     "A" INTEGER NOT NULL,
     "B" INTEGER NOT NULL
@@ -226,6 +269,12 @@ CREATE UNIQUE INDEX "Info_phone_key" ON "Info"("phone");
 CREATE UNIQUE INDEX "Setting_userId_key" ON "Setting"("userId");
 
 -- CreateIndex
+CREATE UNIQUE INDEX "CategoryPlan_slug_key" ON "CategoryPlan"("slug");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "Plan_slug_key" ON "Plan"("slug");
+
+-- CreateIndex
 CREATE UNIQUE INDEX "Label_name_key" ON "Label"("name");
 
 -- CreateIndex
@@ -253,6 +302,12 @@ CREATE UNIQUE INDEX "_PositionToUser_AB_unique" ON "_PositionToUser"("A", "B");
 CREATE INDEX "_PositionToUser_B_index" ON "_PositionToUser"("B");
 
 -- CreateIndex
+CREATE UNIQUE INDEX "_PlanMembers_AB_unique" ON "_PlanMembers"("A", "B");
+
+-- CreateIndex
+CREATE INDEX "_PlanMembers_B_index" ON "_PlanMembers"("B");
+
+-- CreateIndex
 CREATE UNIQUE INDEX "_LabelToTask_AB_unique" ON "_LabelToTask"("A", "B");
 
 -- CreateIndex
@@ -268,7 +323,19 @@ ALTER TABLE "Info" ADD CONSTRAINT "Info_userId_fkey" FOREIGN KEY ("userId") REFE
 ALTER TABLE "Setting" ADD CONSTRAINT "Setting_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("user_id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
+ALTER TABLE "Plan" ADD CONSTRAINT "Plan_categoryPlanId_fkey" FOREIGN KEY ("categoryPlanId") REFERENCES "CategoryPlan"("category_plan_id") ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "Plan" ADD CONSTRAINT "Plan_ownerId_fkey" FOREIGN KEY ("ownerId") REFERENCES "User"("user_id") ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
 ALTER TABLE "Task" ADD CONSTRAINT "Task_assigneeId_fkey" FOREIGN KEY ("assigneeId") REFERENCES "User"("user_id") ON DELETE SET NULL ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "Task" ADD CONSTRAINT "Task_planId_fkey" FOREIGN KEY ("planId") REFERENCES "Plan"("plan_id") ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "Todo" ADD CONSTRAINT "Todo_taskId_fkey" FOREIGN KEY ("taskId") REFERENCES "Task"("task_id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "Comment" ADD CONSTRAINT "Comment_taskId_fkey" FOREIGN KEY ("taskId") REFERENCES "Task"("task_id") ON DELETE RESTRICT ON UPDATE CASCADE;
@@ -302,6 +369,12 @@ ALTER TABLE "_PositionToUser" ADD CONSTRAINT "_PositionToUser_A_fkey" FOREIGN KE
 
 -- AddForeignKey
 ALTER TABLE "_PositionToUser" ADD CONSTRAINT "_PositionToUser_B_fkey" FOREIGN KEY ("B") REFERENCES "User"("user_id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "_PlanMembers" ADD CONSTRAINT "_PlanMembers_A_fkey" FOREIGN KEY ("A") REFERENCES "Plan"("plan_id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "_PlanMembers" ADD CONSTRAINT "_PlanMembers_B_fkey" FOREIGN KEY ("B") REFERENCES "User"("user_id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "_LabelToTask" ADD CONSTRAINT "_LabelToTask_A_fkey" FOREIGN KEY ("A") REFERENCES "Label"("id") ON DELETE CASCADE ON UPDATE CASCADE;
