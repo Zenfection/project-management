@@ -15,6 +15,7 @@ import { mockApiServices } from './mock-api';
 import { ProjectModule } from './modules/admin/dashboards/project/project.module';
 import { SettingsModule } from './modules/common/settings/settings.module';
 import { TranslocoModule } from '@ngneat/transloco';
+import { PlanModule } from './modules/admin/apps/plan/plan.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -23,6 +24,7 @@ import { TranslocoModule } from '@ngneat/transloco';
     HttpClientModule,
     AppRoutingModule,
     ProjectModule,
+    PlanModule,
     SettingsModule,
     TranslocoModule,
   ],

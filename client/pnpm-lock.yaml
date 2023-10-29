@@ -59,6 +59,9 @@ dependencies:
   ng-apexcharts:
     specifier: 1.7.6
     version: 1.7.6(@angular/common@16.2.7)(@angular/core@16.2.7)(apexcharts@3.40.0)(rxjs@7.8.1)
+  ng-rive:
+    specifier: ^0.3.1
+    version: 0.3.1(@angular/common@16.2.7)(@angular/core@16.2.7)(rxjs@7.8.1)
   ngx-quill:
     specifier: 22.0.0
     version: 22.0.0(@angular/core@16.2.7)(quill@1.3.7)(rxjs@7.8.1)
@@ -4355,6 +4358,10 @@ packages:
       picocolors: 1.0.0
       tslib: 2.6.2
     dev: true
+
+  /@rive-app/canvas-advanced@2.4.0:
+    resolution: {integrity: sha512-9aDyxR7wn6Zb5mkI3FeIVjUnBY7UJQPg2bLVg2T2m3olRJh3BnX6nbgkisQv6WvCiBG/9CYTs5iBpatVZiWR/w==}
+    dev: false
 
   /@schematics/angular@16.2.4:
     resolution: {integrity: sha512-ZFPxn0yihdNcg5UpJvnfxIpv4GuW6nYDkgeIlYb5k/a0dKSW8wE8Akcl1JhJtdKJ0RVcn1OwZDmx028JCbZJLA==}
@@ -8840,6 +8847,20 @@ packages:
       '@angular/common': 16.2.7(@angular/core@16.2.7)(rxjs@7.8.1)
       '@angular/core': 16.2.7(rxjs@7.8.1)(zone.js@0.13.3)
       apexcharts: 3.40.0
+      rxjs: 7.8.1
+      tslib: 2.5.2
+    dev: false
+
+  /ng-rive@0.3.1(@angular/common@16.2.7)(@angular/core@16.2.7)(rxjs@7.8.1):
+    resolution: {integrity: sha512-GR8O/2xhcAoM6cB0UfLAD/16jibZju0NslAI+AxMw9mMIlV/tR9IYgl0chEU2sF9YAfTj83KGf7bqm2Y0fEhVA==}
+    peerDependencies:
+      '@angular/common': '>13.0.0'
+      '@angular/core': '>13.0.0'
+      rxjs: '>7.0.0'
+    dependencies:
+      '@angular/common': 16.2.7(@angular/core@16.2.7)(rxjs@7.8.1)
+      '@angular/core': 16.2.7(rxjs@7.8.1)(zone.js@0.13.3)
+      '@rive-app/canvas-advanced': 2.4.0
       rxjs: 7.8.1
       tslib: 2.5.2
     dev: false

@@ -1,3 +1,4 @@
+import { messages } from './../../../../mock-api/apps/chat/data';
 import { TextFieldModule } from '@angular/cdk/text-field';
 import { NgFor, NgIf } from '@angular/common';
 import {
@@ -27,6 +28,9 @@ import { Setting } from 'app/core/setting/setting.types';
 import { UserService } from 'app/core/user/user.service';
 import { User } from 'app/core/user/user.types';
 import { SettingAccountValidator } from './account.validator';
+import { FuseAlertService } from '@fuse/components/alert';
+import { FuseAlertComponent } from '../../../../../@fuse/components/alert/alert.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @Component({
   selector: 'settings-account',
@@ -41,6 +45,7 @@ import { SettingAccountValidator } from './account.validator';
     MatFormFieldModule,
     MatIconModule,
     MatInputModule,
+    MatTooltipModule,
     TextFieldModule,
     MatSelectModule,
     MatOptionModule,
@@ -48,6 +53,7 @@ import { SettingAccountValidator } from './account.validator';
     NgFor,
     NgIf,
     FuseCardComponent,
+    FuseAlertComponent,
   ],
 })
 export class SettingsAccountComponent implements OnInit {
@@ -62,7 +68,8 @@ export class SettingsAccountComponent implements OnInit {
     private _formBuilder: UntypedFormBuilder,
     private _userSerivce: UserService,
     private _settingService: SettingsService,
-    private _changeDetectorRef: ChangeDetectorRef
+    private _changeDetectorRef: ChangeDetectorRef,
+    private _fuseAlertService: FuseAlertService
   ) {}
 
   // -----------------------------------------------------------------------------------------------------
@@ -89,8 +96,16 @@ export class SettingsAccountComponent implements OnInit {
         SettingAccountValidator.checkName,
       ],
       about: [this.user.about.replaceAll('-', '\n-'), Validators.required],
-      email: [this.user.email, Validators.required, SettingAccountValidator.checkEmail],
-      phone: [this.user.phone, Validators.required, SettingAccountValidator.checkPhoneNumberVN],
+      email: [
+        this.user.email,
+        Validators.required,
+        SettingAccountValidator.checkEmail,
+      ],
+      phone: [
+        this.user.phone,
+        Validators.required,
+        SettingAccountValidator.checkPhoneNumberVN,
+      ],
       address: [this.user.address, Validators.required],
       // language: [this.setting.language, Validators.required],
     });
@@ -123,9 +138,7 @@ export class SettingsAccountComponent implements OnInit {
   }
 
   required(name: string): boolean {
-    return (
-      this.accountForm.get(name).hasError('required')
-    );
+    return this.accountForm.get(name).hasError('required');
   }
 
   minLength(name: string): boolean {
@@ -145,24 +158,44 @@ export class SettingsAccountComponent implements OnInit {
   updateAvatar($event: Event) {
     const file = ($event.target as HTMLInputElement).files[0];
     // url link
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = event => {
-      // called once readAsDataURL is completed
-      this.user.avatar = event.target.result as string;
 
-      // reload user
-      this._changeDetectorRef.markForCheck();
-    };
+    this._userSerivce.updateAvatar(file).subscribe({
+      next: () => {
+        alert('Updated Avatar');
+        // reload user
+        this._changeDetectorRef.markForCheck();
+      },
+      error: err => {
+        console.error(err.messages);
+      },
+    });
   }
 
   handleUpdate() {
-    this._userSerivce.update({
-      email: this.accountForm.get('email').value,
-      name: this.accountForm.get('name').value,
-      about: this.accountForm.get('about').value.replaceAll('\n', '-'),
-      phone: this.accountForm.get('phone').value,
-      address: this.accountForm.get('address').value,
-    }).subscribe();
+    this._userSerivce
+      .update({
+        email: this.accountForm.get('email').value,
+        name: this.accountForm.get('name').value,
+        about: this.accountForm.get('about').value.replaceAll('\n', '-'),
+        phone: this.accountForm.get('phone').value,
+        address: this.accountForm.get('address').value,
+      })
+      .subscribe({
+        next: () => {
+          this._fuseAlertService.show('submit-success');
+          setTimeout(() => {
+            this._fuseAlertService.dismiss('submit-success');
+          }, 3000);
+        },
+
+        error: err => {
+          console.error(err.messages);
+          this._fuseAlertService.show('submit-error');
+
+          setTimeout(() => {
+            this._fuseAlertService.dismiss('submit-error');
+          }, 3000);
+        },
+      });
   }
 }

@@ -11,8 +11,10 @@
       <!-- Header -->
       <div class="m-8 mr-6 flex items-center justify-between sm:my-10">
         <!-- Title -->
-        <div class="text-4xl font-extrabold leading-none tracking-tight" *transloco="let t">
-          {{t('Settings')}}
+        <div
+          class="text-4xl font-extrabold leading-none tracking-tight"
+          *transloco="let t">
+          {{ t('Settings') }}
         </div>
         <!-- Close button -->
         <div class="lg:hidden">
@@ -46,7 +48,8 @@
                 [ngClass]="{
                   'text-primary dark:text-primary-500':
                     selectedPanel && selectedPanel === panel.id
-                }" *transloco="let t">
+                }"
+                *transloco="let t">
                 {{ t(panel.title) }}
               </div>
               <div class="text-secondary mt-0.5" *transloco="let t">
@@ -74,11 +77,11 @@
 
           <!-- Panel title -->
           <div
-            class="ml-2 text-3xl font-bold leading-none tracking-tight lg:ml-0" *transloco="let t">
+            class="ml-2 text-3xl font-bold leading-none tracking-tight lg:ml-0"
+            *transloco="let t">
             {{ t(getPanelInfo(selectedPanel).title) }}
           </div>
         </div>
-
 
         <!-- Load settings panel -->
         <div class="mt-8">

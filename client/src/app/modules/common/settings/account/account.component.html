@@ -15,14 +15,24 @@
         class="filter-info flex w-full max-w-90 flex-col items-center p-8 pb-6 sm:col-span-2">
         <!-- Avatar -->
         <div class="relative w-fit">
-            <img
-              class="h-32 w-32 rounded-full object-cover shadow-lg bg-center"
-              [src]="user.avatar"
-              alt="Card cover image" />
+          <img
+            class="h-32 w-32 rounded-full bg-center object-cover shadow-lg"
+            [src]="user.avatar"
+            alt="Card cover image" />
           <label for="avatar-input-file">
-            <div class="absolute h-10 w-10 p-1 rounded-full flex items-center justify-center right-0 top-3/4 bg-gray-300 cursor-pointer hover:transition-all hover:duration-300 hover:bg-gray-200">
-              <input type="file" id="avatar-input-file" accept="image/*" class="hidden" (change)="updateAvatar($event)" />
-              <mat-icon class="icon-size-5" [svgIcon]="'duotone:pen'"></mat-icon>
+            <div
+              class="absolute right-0 top-3/4 flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-gray-300 p-1 hover:bg-gray-200 hover:transition-all hover:duration-300 dark:bg-slate-200 dark:hover:bg-slate-300">
+              <input
+                type="file"
+                id="avatar-input-file"
+                accept="image/*"
+                class="hidden"
+                (change)="updateAvatar($event)" />
+              <mat-icon
+                class="icon-size-5"
+                [svgIcon]="'duotone:upload'"
+                [matTooltip]="'Upload Avatar'">
+              </mat-icon>
             </div>
           </label>
         </div>
@@ -107,10 +117,7 @@
               {{ t('settings.account.name_invalid') }}
             </span>
           </mat-error>
-
-
         </mat-form-field>
-
 
         <!-- Email -->
         <mat-form-field
@@ -129,7 +136,7 @@
             <span *transloco="let t">
               {{ t('settings.account.email_required') }}
             </span>
-        </mat-error>
+          </mat-error>
 
           <mat-error *ngIf="invalidEmail">
             <span *transloco="let t">
@@ -307,6 +314,26 @@
     <!-- Divider -->
     <div class="mb-10 mt-11 border-t"></div>
 
+    <fuse-alert
+      [appearance]="'soft'"
+      [dismissible]="true"
+      [dismissed]="true"
+      [name]="'submit-success'"
+      [type]="'success'"
+      *transloco="let t">
+      {{ t('update_success') }}
+    </fuse-alert>
+
+    <fuse-alert
+      [appearance]="'soft'"
+      [dismissible]="true"
+      [dismissed]="true"
+      [name]="'submit-error'"
+      [type]="'error'"
+      *transloco="let t">
+      {{ t('update_error') }}
+    </fuse-alert>
+
     <!-- Actions -->
     <div class="flex items-center justify-end">
       <button mat-stroked-button type="button" *transloco="let t">
@@ -319,8 +346,7 @@
         [color]="'primary'"
         [disabled]="accountForm.invalid"
         *transloco="let t"
-        (click)="handleUpdate()"
-        >
+        (click)="handleUpdate()">
         {{ t('Save') }}
       </button>
     </div>

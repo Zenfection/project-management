@@ -4,6 +4,7 @@
     "Analytics": "Phân Tích",
 
     "About": "Giới Thiệu",
+    "All": "Tất Cả",
     "Save": "Lưu",
     "Cancel": "Hủy",
 
@@ -16,11 +17,18 @@
     "Away": "Ở xa",
     "Busy": "Bận",
     "Invisible": "Invisible",
+    "Overview": "Tổng Quan",
+    "Tasks": "Tasks",
+    "Team": "Thành Viên Nhóm",
 
     "you-have": "Bạn có",
     "and": "và",
     "new-messages": "tin nhắn mới",
     "new-tasks": "task mới",
+    "update_success": "Cập nhật thành công",
+    "update_error": "Cập nhật thất bại vì ",
+    "search_by_title_or_description": "Tìm kiếm bằng tiêu đề / mô tả",
+    "owner_plan_content": "Bạn là chủ dự án này",
 
     "settings": {
       "account": {

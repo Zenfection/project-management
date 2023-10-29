@@ -115,15 +115,48 @@ const routes: Routes = [
           {
             path: 'project',
             loadChildren: () =>
-              import('app/modules/admin/dashboards/project/project.module').then(m => m.ProjectModule),
+              import(
+                'app/modules/admin/dashboards/project/project.module'
+              ).then(m => m.ProjectModule),
           },
         ],
       },
 
       {
+        path: 'plan',
+        loadChildren: () =>
+          import('app/modules/admin/apps/plan/plan.module').then(
+            m => m.PlanModule
+          ),
+      },
+
+      {
+        path: 'scrumboard/plan',
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+              import(
+                'app/modules/admin/apps/scrumboard/scrumboard.module'
+              ).then(m => m.ScrumBoardModule),
+          },
+        ],
+      },
+
+      {
+        path: 'tasks',
+        loadChildren: () =>
+          import('app/modules/admin/apps/tasks/tasks.module').then(
+            m => m.TasksModule
+          ),
+      },
+
+      {
         path: 'settings',
         loadChildren: () =>
-          import('app/modules/common/settings/settings.module').then(m => m.SettingsModule),
+          import('app/modules/common/settings/settings.module').then(
+            m => m.SettingsModule
+          ),
       },
 
       // 404 & Catch all
@@ -149,4 +182,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

@@ -1,0 +1,355 @@
+<div class="flex flex-auto">
+  <form
+    class="flex flex-auto flex-col overflow-y-auto p-6 pt-10 sm:p-8 sm:pt-10"
+    [formGroup]="taskForm">
+    <!-- Header -->
+    <div class="-ml-4 -mt-3 flex items-center justify-between">
+      <!-- Mark as ... button -->
+      <button class="pl-3.5 pr-4" mat-button (click)="toggleCompleted()">
+        <!-- Mark as complete -->
+        <ng-container *ngIf="!taskForm.get('completed').value">
+          <div class="flex items-center justify-center">
+            <mat-icon [svgIcon]="'heroicons_outline:check-circle'"></mat-icon>
+            <span class="ml-2 font-semibold">MARK AS COMPLETE</span>
+          </div>
+        </ng-container>
+
+        <!-- Mark as incomplete -->
+        <ng-container *ngIf="taskForm.get('completed').value">
+          <div class="flex items-center justify-center">
+            <mat-icon
+              class="text-primary"
+              [svgIcon]="'heroicons_outline:check-circle'"></mat-icon>
+            <span class="ml-2 font-semibold">MARK AS INCOMPLETE</span>
+          </div>
+        </ng-container>
+      </button>
+
+      <div class="flex items-center">
+        <!-- More menu -->
+        <button mat-icon-button [matMenuTriggerFor]="moreMenu">
+          <mat-icon
+            [svgIcon]="'heroicons_outline:ellipsis-vertical'"></mat-icon>
+        </button>
+        <mat-menu #moreMenu="matMenu">
+          <button mat-menu-item (click)="deleteTask()">
+            <mat-icon [svgIcon]="'heroicons_outline:trash'"></mat-icon>
+            <span>Delete {{ task.type === 'task' ? 'task' : 'section' }}</span>
+          </button>
+        </mat-menu>
+
+        <!-- Close button -->
+        <a mat-icon-button [routerLink]="['../']">
+          <mat-icon [svgIcon]="'heroicons_outline:x-mark'"></mat-icon>
+        </a>
+      </div>
+    </div>
+
+    <mat-divider class="mb-8 mt-6"></mat-divider>
+
+    <!-- Title -->
+    <div>
+      <mat-form-field class="w-full" [subscriptSizing]="'dynamic'">
+        <mat-label>{{
+          task.type === 'task' ? 'Task title' : 'Section title'
+        }}</mat-label>
+        <textarea
+          matInput
+          [formControlName]="'title'"
+          [spellcheck]="false"
+          cdkTextareaAutosize
+          #titleField></textarea>
+      </mat-form-field>
+    </div>
+
+    <!-- Tags -->
+    <div class="mt-8">
+      <div class="mb-1.5 font-medium">Tags</div>
+      <div class="-m-1.5 flex flex-wrap items-center">
+        <!-- Tags -->
+        <ng-container *ngIf="task.tags.length">
+          <ng-container
+            *ngFor="
+              let tag of task.tags | fuseFindByKey: 'id' : tags;
+              trackBy: trackByFn
+            ">
+            <div
+              class="m-1.5 flex items-center justify-center rounded-full bg-gray-100 px-4 leading-9 text-gray-500 dark:bg-gray-700 dark:text-gray-300">
+              <span class="whitespace-nowrap text-md font-medium">{{
+                tag.title
+              }}</span>
+            </div>
+          </ng-container>
+        </ng-container>
+        <div
+          class="m-1.5 flex cursor-pointer items-center justify-center rounded-full bg-gray-100 px-4 leading-9 text-gray-500 dark:bg-gray-700 dark:text-gray-300"
+          (click)="openTagsPanel()"
+          #tagsPanelOrigin>
+          <ng-container *ngIf="task.tags.length">
+            <mat-icon
+              class="icon-size-5"
+              [svgIcon]="'heroicons_solid:pencil-square'"></mat-icon>
+            <span class="ml-1.5 whitespace-nowrap text-md font-medium"
+              >Edit</span
+            >
+          </ng-container>
+
+          <ng-container *ngIf="!task.tags.length">
+            <mat-icon
+              class="icon-size-5"
+              [svgIcon]="'heroicons_solid:plus-circle'"></mat-icon>
+            <span class="ml-1.5 whitespace-nowrap text-md font-medium"
+              >Add</span
+            >
+          </ng-container>
+
+          <!-- Tags panel -->
+          <ng-template #tagsPanel>
+            <div class="bg-card w-60 rounded border shadow-md">
+              <!-- Tags panel header -->
+              <div class="m-3 mr-2 flex items-center">
+                <div class="flex items-center">
+                  <mat-icon
+                    class="icon-size-5"
+                    [svgIcon]="'heroicons_solid:magnifying-glass'"></mat-icon>
+                  <div class="ml-2">
+                    <input
+                      class="w-full min-w-0 border-0 py-1"
+                      type="text"
+                      placeholder="Enter tag name"
+                      (input)="filterTags($event)"
+                      (keydown)="filterTagsInputKeyDown($event)"
+                      [maxLength]="30"
+                      #newTagInput />
+                  </div>
+                </div>
+                <button
+                  class="ml-1"
+                  mat-icon-button
+                  (click)="toggleTagsEditMode()">
+                  <mat-icon
+                    *ngIf="!tagsEditMode"
+                    class="icon-size-5"
+                    [svgIcon]="'heroicons_solid:pencil-square'"></mat-icon>
+                  <mat-icon
+                    *ngIf="tagsEditMode"
+                    class="icon-size-5"
+                    [svgIcon]="'heroicons_solid:check'"></mat-icon>
+                </button>
+              </div>
+              <div class="flex max-h-64 flex-col overflow-y-auto border-t py-2">
+                <!-- Tags -->
+                <ng-container *ngIf="!tagsEditMode">
+                  <ng-container
+                    *ngFor="let tag of filteredTags; trackBy: trackByFn">
+                    <div
+                      class="flex h-10 min-h-10 cursor-pointer items-center pl-1 pr-4 hover:bg-hover"
+                      (click)="toggleTaskTag(tag)"
+                      matRipple>
+                      <mat-checkbox
+                        class="pointer-events-none flex h-10 min-h-10 items-center"
+                        [checked]="task.tags.includes(tag.id)"
+                        [color]="'primary'"
+                        [disableRipple]="true">
+                      </mat-checkbox>
+                      <div class="ml-1">{{ tag.title }}</div>
+                    </div>
+                  </ng-container>
+                </ng-container>
+                <!-- Tags editing -->
+                <ng-container *ngIf="tagsEditMode">
+                  <div class="space-y-2 py-2">
+                    <ng-container
+                      *ngFor="let tag of filteredTags; trackBy: trackByFn">
+                      <div class="flex items-center">
+                        <mat-form-field
+                          class="fuse-mat-dense mx-4 w-full"
+                          [subscriptSizing]="'dynamic'">
+                          <input
+                            matInput
+                            [value]="tag.title"
+                            (input)="updateTagTitle(tag, $event)" />
+                          <button
+                            mat-icon-button
+                            (click)="deleteTag(tag)"
+                            matSuffix>
+                            <mat-icon
+                              class="ml-2 icon-size-5"
+                              [svgIcon]="'heroicons_solid:trash'"></mat-icon>
+                          </button>
+                        </mat-form-field>
+                      </div>
+                    </ng-container>
+                  </div>
+                </ng-container>
+                <!-- Create tag -->
+                <div
+                  class="-ml-0.5 flex h-10 min-h-10 cursor-pointer items-center pl-4 pr-3 leading-none hover:bg-hover"
+                  *ngIf="shouldShowCreateTagButton(newTagInput.value)"
+                  (click)="createTag(newTagInput.value); newTagInput.value = ''"
+                  matRipple>
+                  <mat-icon
+                    class="mr-2 icon-size-5"
+                    [svgIcon]="'heroicons_solid:plus-circle'"></mat-icon>
+                  <div class="break-all">
+                    Create "<b>{{ newTagInput.value }}</b
+                    >"
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+
+    <!-- Priority and Due date -->
+    <div class="mt-8 flex flex-wrap items-center">
+      <!-- Priority -->
+      <div>
+        <div class="font-medium">Priority</div>
+        <div
+          class="mt-1.5 flex cursor-pointer items-center rounded-full px-4 leading-9"
+          [ngClass]="{
+            'bg-green-200 text-green-800 dark:bg-green-500 dark:text-green-100':
+              task.priority === 0,
+            'bg-gray-200 text-gray-800 dark:bg-gray-500 dark:text-gray-100':
+              task.priority === 1,
+            'bg-red-200 text-red-800 dark:bg-red-500 dark:text-red-100':
+              task.priority === 2
+          }"
+          [matMenuTriggerFor]="priorityMenu">
+          <!-- Low -->
+          <ng-container *ngIf="task.priority === 0">
+            <mat-icon
+              class="text-current icon-size-4"
+              [svgIcon]="'heroicons_mini:arrow-long-down'"></mat-icon>
+            <span class="ml-2 mr-1 text-md font-medium">Low</span>
+          </ng-container>
+
+          <!-- Normal -->
+          <ng-container *ngIf="task.priority === 1">
+            <mat-icon
+              class="text-current icon-size-4"
+              [svgIcon]="'heroicons_solid:minus'"></mat-icon>
+            <span class="ml-2 mr-1 text-md font-medium">Normal</span>
+          </ng-container>
+
+          <!-- High -->
+          <ng-container *ngIf="task.priority === 2">
+            <mat-icon
+              class="text-current icon-size-4"
+              [svgIcon]="'heroicons_mini:arrow-long-up'"></mat-icon>
+            <span class="ml-2 mr-1 text-md font-medium">High</span>
+          </ng-container>
+        </div>
+        <mat-menu #priorityMenu="matMenu">
+          <!-- Low -->
+          <button
+            [ngClass]="{ 'bg-hover': task.priority === 0 }"
+            mat-menu-item
+            (click)="setTaskPriority(0)">
+            <span
+              class="inline-flex w-full min-w-30 items-center justify-between leading-5">
+              <span class="font-medium">Low</span>
+              <mat-icon
+                class="mr-0 text-green-600 icon-size-4 dark:text-green-500"
+                [svgIcon]="'heroicons_mini:arrow-long-down'"></mat-icon>
+            </span>
+          </button>
+
+          <!-- Normal -->
+          <button
+            [ngClass]="{ 'bg-hover': task.priority === 1 }"
+            mat-menu-item
+            (click)="setTaskPriority(1)">
+            <span
+              class="inline-flex w-full min-w-30 items-center justify-between leading-5">
+              <span class="font-medium">Normal</span>
+              <mat-icon
+                class="mr-0 text-gray-600 icon-size-4 dark:text-gray-500"
+                [svgIcon]="'heroicons_solid:minus'"></mat-icon>
+            </span>
+          </button>
+
+          <!-- High -->
+          <button
+            [ngClass]="{ 'bg-hover': task.priority === 2 }"
+            mat-menu-item
+            (click)="setTaskPriority(2)">
+            <span
+              class="inline-flex w-full min-w-30 items-center justify-between leading-5">
+              <span class="font-medium">High</span>
+              <mat-icon
+                class="mr-0 text-red-600 icon-size-4 dark:text-red-500"
+                [svgIcon]="'heroicons_mini:arrow-long-up'"></mat-icon>
+            </span>
+          </button>
+        </mat-menu>
+      </div>
+
+      <!-- Due date -->
+      <div class="ml-6">
+        <div class="font-medium">Due date</div>
+        <div
+          class="relative mt-1.5 flex cursor-pointer items-center rounded-full px-4 leading-9"
+          [ngClass]="{
+            'bg-gray-100 text-gray-500 dark:bg-gray-700 dark:text-gray-300':
+              !task.dueDate,
+            'bg-green-200 text-green-800 dark:bg-green-500 dark:text-green-100':
+              task.dueDate && !isOverdue(),
+            'bg-red-200 text-red-800 dark:bg-red-500 dark:text-red-100':
+              task.dueDate && isOverdue()
+          }"
+          (click)="dueDatePicker.open()">
+          <mat-icon
+            class="text-current icon-size-5"
+            [svgIcon]="'heroicons_solid:calendar'"></mat-icon>
+          <span class="ml-2 text-md font-medium">
+            <ng-container *ngIf="task.dueDate">{{
+              task.dueDate | date: 'longDate'
+            }}</ng-container>
+            <ng-container *ngIf="!task.dueDate">Not set</ng-container>
+          </span>
+          <mat-form-field
+            class="fuse-mat-dense pointer-events-none invisible absolute inset-0 -mt-2.5 opacity-0"
+            [subscriptSizing]="'dynamic'">
+            <input
+              matInput
+              [formControlName]="'dueDate'"
+              [matDatepicker]="dueDatePicker" />
+            <mat-datepicker #dueDatePicker>
+              <mat-datepicker-actions>
+                <button
+                  mat-button
+                  (click)="taskForm.get('dueDate').setValue(null)"
+                  matDatepickerCancel>
+                  Clear
+                </button>
+                <button
+                  class=""
+                  mat-flat-button
+                  [color]="'primary'"
+                  matDatepickerApply>
+                  Select
+                </button>
+              </mat-datepicker-actions>
+            </mat-datepicker>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+
+    <!-- Notes -->
+    <div class="mt-8">
+      <mat-form-field class="w-full" [subscriptSizing]="'dynamic'">
+        <mat-label>Notes</mat-label>
+        <textarea
+          matInput
+          [formControlName]="'notes'"
+          [spellcheck]="false"
+          cdkTextareaAutosize></textarea>
+      </mat-form-field>
+    </div>
+  </form>
+</div>

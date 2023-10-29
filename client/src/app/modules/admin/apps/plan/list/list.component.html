@@ -1,0 +1,325 @@
+<div
+  class="absolute inset-0 flex min-w-0 flex-col overflow-y-auto"
+  cdkScrollable>
+  <!-- Header -->
+  <div
+    class="dark relative flex-0 overflow-hidden bg-gray-800 px-4 py-8 sm:p-16">
+    <!-- Background - @formatter:off -->
+    <!-- Rings -->
+    <svg
+      class="pointer-events-none absolute inset-0"
+      viewBox="0 0 960 540"
+      width="100%"
+      height="100%"
+      preserveAspectRatio="xMidYMax slice"
+      xmlns="http://www.w3.org/2000/svg">
+      <g
+        class="text-gray-700 opacity-25"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="100">
+        <circle r="234" cx="196" cy="23"></circle>
+        <circle r="234" cx="790" cy="491"></circle>
+      </g>
+    </svg>
+    <!-- @formatter:on -->
+    <div class="relative z-10 flex flex-col items-center">
+      <h2 class="mt-10 text-xl font-semibold">CTU PROJECT</h2>
+      <div
+        class="mt-1 text-center text-4xl font-extrabold leading-tight tracking-tight sm:text-7xl">
+        Lorem ipsum dolor sit amet consectetur
+      </div>
+      <div
+        class="text-secondary mt-10 max-w-2xl text-center tracking-tight sm:text-2xl">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad doloremque
+        facilis rem iusto recusandae nobis eum animi illo laborum tempora, autem
+        ex corrupti distinctio sed aut enim reiciendis explicabo veritatis?
+      </div>
+    </div>
+    <canvas
+      riv="2117-4173-story-animation"
+      width="1000"
+      height="1000"
+      class="absolute inset-0">
+      <riv-animation name="loading-1" play></riv-animation>
+    </canvas>
+  </div>
+
+  <!-- Main -->
+  <div class="flex flex-auto p-6 sm:p-10">
+    <div class="mx-auto flex w-full max-w-xs flex-auto flex-col sm:max-w-5xl">
+      <!-- Filters -->
+      <div
+        class="flex w-full max-w-xs flex-col items-center justify-between sm:max-w-none sm:flex-row">
+        <mat-form-field class="w-full sm:w-36" [subscriptSizing]="'dynamic'">
+          <mat-select
+            [value]="'all'"
+            (selectionChange)="filterByCategory($event)">
+            <mat-option [value]="'all'">{{ 'All' | transloco }}</mat-option>
+            <ng-container
+              *ngFor="let category of categories; trackBy: trackByFn">
+              <mat-option [value]="category.slug">{{
+                category.title
+              }}</mat-option>
+            </ng-container>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field
+          class="mt-4 w-full sm:ml-4 sm:mt-0 sm:w-72"
+          [subscriptSizing]="'dynamic'">
+          <mat-icon
+            matPrefix
+            class="icon-size-5"
+            [svgIcon]="'duotone:filters'"></mat-icon>
+          <input
+            class="placeholder:text-ellipsis"
+            (input)="filterByQuery(query.value)"
+            placeholder="{{ 'search_by_title_or_description' | transloco }}"
+            matInput
+            #query />
+        </mat-form-field>
+        <fuse-card class="m-4 min-w-[250px]">
+          <div class="grid grid-cols-4 gap-4 p-4">
+            <div class="relative flex flex-col text-center">
+              <span
+                class="text-muted-800 dark:text-muted-100 font-sans text-2xl font-bold">
+                12
+              </span>
+              <p class="text-muted-400 font-sans text-xs">On Track</p>
+              <span
+                class="absolute end-0 top-0 h-2 w-2 rounded-full bg-primary-500"></span>
+            </div>
+            <div class="relative flex flex-col text-center">
+              <span
+                class="text-muted-800 dark:text-muted-100 font-sans text-2xl font-bold">
+                4
+              </span>
+              <p class="text-muted-400 font-sans text-xs">Overdue</p>
+              <span
+                class="absolute end-0 top-0 h-2 w-2 rounded-full bg-amber-500"></span>
+            </div>
+            <div class="relative flex flex-col text-center">
+              <span
+                class="text-muted-800 dark:text-muted-100 font-sans text-2xl font-bold">
+                23
+              </span>
+              <p class="text-muted-400 font-sans text-xs">Total</p>
+              <span
+                class="bg-success-500 absolute end-0 top-0 h-2 w-2 rounded-full"></span>
+            </div>
+            <button
+              class="bg-card flex cursor-pointer items-center justify-center rounded-lg shadow-lg transition-all duration-300 hover:bg-hover">
+              <mat-icon
+                class="transition-all duration-300 icon-size-8 hover:scale-125"
+                [svgIcon]="'heroicons_outline:plus'"></mat-icon>
+            </button>
+          </div>
+        </fuse-card>
+
+        <!-- </BaseCard> -->
+        <mat-slide-toggle
+          class="mt-8 sm:ml-auto sm:mt-0"
+          [color]="'primary'"
+          (change)="toggleCompleted($event)">
+          Hide completed
+        </mat-slide-toggle>
+      </div>
+
+      <ng-container *ngIf="this.filteredPlans.length; else noPlans">
+        <div
+          class="mt-8 grid grid-cols-1 gap-8 sm:mt-10 sm:grid-cols-2 lg:grid-cols-3">
+          <ng-container *ngFor="let plan of filteredPlans; trackBy: trackByFn">
+            <!-- Plan -->
+            <div
+              class="bg-card flex h-96 cursor-pointer flex-col overflow-hidden rounded-2xl shadow-lg transition-all duration-300 hover:-translate-y-2 hover:!border-primary-500"
+              [routerLink]="plan.id">
+              <div class="flex flex-col p-6">
+                <div class="flex items-center justify-between">
+                  <!-- Plan category -->
+                  <ng-container
+                    *ngIf="
+                      plan.category.slug
+                        | fuseFindByKey: 'slug' : categories as category
+                    ">
+                    <div
+                      class="rounded-full px-3 py-0.5 text-sm font-semibold"
+                      [ngClass]="{
+                        'bg-blue-100 text-blue-800 dark:bg-blue-500 dark:text-blue-50':
+                          category.slug === 'phan-mem',
+                        'bg-green-100 text-green-800 dark:bg-green-500 dark:text-green-50':
+                          category.slug === 'phan-cung',
+                        'bg-pink-100 text-pink-800 dark:bg-pink-500 dark:text-pink-50':
+                          category.slug === 'mang-may-tinh',
+                        'bg-amber-100 text-amber-800 dark:bg-amber-500 dark:text-amber-50':
+                          category.slug === 'dao-tao'
+                      }">
+                      {{ category.title }}
+                    </div>
+                  </ng-container>
+                  <!-- Completed at least once -->
+                  <div class="flex items-center">
+                    <ng-container *ngIf="ownerPlan(plan.owner.email)">
+                      <mat-icon
+                        class="text-green-600 icon-size-5"
+                        [svgIcon]="'heroicons_solid:check-badge'"
+                        [matTooltip]="
+                          'owner_plan_content' | transloco
+                        "></mat-icon>
+                    </ng-container>
+                  </div>
+                </div>
+                <!-- Course title & description -->
+                <div class="mt-4 text-lg font-medium">{{ plan.title }}</div>
+                <div class="text-secondary mt-0.5 line-clamp-2">
+                  {{ plan.description }}
+                </div>
+                <div class="my-6 h-1 w-12 border-t-2"></div>
+                <!-- Course time -->
+                <div class="text-secondary flex items-center text-md leading-5">
+                  <mat-icon
+                    class="text-hint icon-size-5"
+                    [svgIcon]="'duotone:clock'"></mat-icon>
+                  <div class="ml-1.5">Due to: 3 months</div>
+                </div>
+                <!-- AttachFile -->
+                <div
+                  class="text-secondary mt-2 flex items-center text-md leading-5">
+                  <mat-icon
+                    class="text-hint icon-size-5"
+                    [svgIcon]="'duotone:paperclip'"></mat-icon>
+                  <div class="ml-1.5">Attach File: 4</div>
+                </div>
+                <!-- Course completion -->
+                <!-- <div
+                  class="text-secondary mt-2 flex items-center text-md leading-5">
+                  <mat-icon
+                    class="text-hint icon-size-5"
+                    [svgIcon]="'duotone:diagram-subtask'"></mat-icon>
+                  <ng-container *ngIf="course.progress.completed === 0">
+                    <div class="ml-1.5">Never completed</div>
+                  </ng-container>
+                  <ng-container *ngIf="course.progress.completed > 0">
+                    <div class="ml-1.5">
+                      <span>Completed</span>
+                      <span class="ml-1"> -->
+                <!-- Once -->
+                <!-- <ng-container *ngIf="course.progress.completed === 1"
+                          >once</ng-container
+                        > -->
+                <!-- Twice -->
+                <!-- <ng-container *ngIf="course.progress.completed === 2"
+                          >twice</ng-container
+                        > -->
+                <!-- Others -->
+                <!-- <ng-container *ngIf="course.progress.completed > 2"
+                          >{{ course.progress.completed }}
+                          {{
+                            course.progress.completed
+                              | i18nPlural
+                                : {
+                                    '=0': 'time',
+                                    '=1': 'time',
+                                    other: 'times'
+                                  }
+                          }}
+                        </ng-container> -->
+                <!-- </span>
+                    </div>
+                  </ng-container>
+                </div> -->
+              </div>
+              <!-- Footer -->
+              <div class="mt-auto flex w-full flex-col">
+                <!-- Course progress -->
+                <div class="relative h-0.5">
+                  <!-- <div
+                    class="absolute inset-x-0 z-10 -mt-3 h-6"
+                    [matTooltip]="
+                      course.progress.currentStep / course.totalSteps | percent
+                    "
+                    [matTooltipPosition]="'above'"
+                    [matTooltipClass]="'-mb-0.5'"></div> -->
+                  <mat-progress-bar
+                    class="h-0.5"
+                    [value]="45"></mat-progress-bar>
+                </div>
+                <div
+                  class="flex items-center justify-between rounded-b-xl border-t bg-gray-50 px-6 py-4 text-right dark:bg-transparent">
+                  <div>
+                    <p class="text-secondary font-sans text-sm">
+                      13 tasks remaining
+                    </p>
+                  </div>
+                  <div class="px-2">
+                    <div class="flex flex-0 items-center -space-x-1.5">
+                      <div *ngFor="let member of plan.members; let i = index">
+                        <img
+                          *ngIf="i < 2"
+                          class="h-8 w-8 flex-0 rounded-full object-cover shadow-sm ring-2 ring-gray-800 ring-offset-1 ring-offset-gray-800 transition-all duration-300 hover:-translate-x-2"
+                          [src]="member.info.avatar"
+                          [matTooltip]="member.info.name"
+                          alt="" />
+                        <div
+                          *ngIf="i === 2"
+                          class="relative inline-flex h-10 w-10 items-center justify-center overflow-hidden rounded-full bg-gray-200 dark:bg-gray-600">
+                          <span
+                            class="font-medium text-gray-600 dark:text-gray-300">
+                            {{ plan.members.length - 2 }}+
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Course launch button -->
+                <!-- <div
+                  class="bg-gray-50 px-6 py-4 text-right dark:bg-transparent">
+                  <a mat-stroked-button [routerLink]="[course.id]">
+                    <span class="inline-flex items-center"> -->
+                <!-- Not started -->
+                <!-- <ng-container *ngIf="course.progress.currentStep === 0"> -->
+                <!-- Never completed -->
+                <!-- <ng-container *ngIf="course.progress.completed === 0">
+                          <span>Start</span>
+                        </ng-container> -->
+                <!-- Completed before -->
+                <!-- <ng-container *ngIf="course.progress.completed > 0">
+                          <span>Start again</span>
+                        </ng-container>
+                      </ng-container> -->
+
+                <!-- Started -->
+                <!-- <ng-container *ngIf="course.progress.currentStep > 0">
+                        <span>Continue</span>
+                      </ng-container>
+
+                      <mat-icon
+                        class="ml-1.5 icon-size-5"
+                        [svgIcon]="
+                          'heroicons_solid:arrow-small-right'
+                        "></mat-icon>
+                    </span>
+                  </a>
+                </div> -->
+              </div>
+            </div>
+          </ng-container>
+        </div>
+      </ng-container>
+
+      <!-- No courses -->
+      <ng-template #noPlans>
+        <div
+          class="flex flex-auto flex-col items-center justify-center bg-gray-100 dark:bg-transparent">
+          <mat-icon
+            class="icon-size-24"
+            [svgIcon]="'heroicons_outline:document-search'"></mat-icon>
+          <div
+            class="text-secondary mt-6 text-2xl font-semibold tracking-tight">
+            No Plan found!
+          </div>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+</div>

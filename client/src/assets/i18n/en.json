@@ -4,6 +4,7 @@
     "Analytics": "Analytics",
 
     "About": "About",
+    "All": "All",
     "Save": "Save",
     "Cancel": "Cancel",
 
@@ -17,12 +18,19 @@
     "Away": "Away",
     "Busy": "Busy",
     "Invisible": "Invisible",
+    "Overview": "Overview",
+    "Tasks": "Tasks",
+    "Team": "Team",
 
 
     "you-have": "You have",
     "and": "and",
     "new-messages": "new message",
     "new-tasks": "new tasks",
+    "update_success": "Update successfully",
+    "update_error": "Update failed because ",
+    "search_by_title_or_description": "Search by title or description",
+    "owner_plan_content": "You are the owner of this plan",
 
 
     "settings": {
