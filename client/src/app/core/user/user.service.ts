@@ -1,20 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { User } from 'app/core/user/user.types';
-import {
-  catchError,
-  map,
-  Observable,
-  ReplaySubject,
-  tap,
-} from 'rxjs';
+import { catchError, map, Observable, ReplaySubject, tap } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class UserService {
   private _user: ReplaySubject<User> = new ReplaySubject<User>(1);
   private updateUser: User;
 
-  constructor(private _httpClient: HttpClient) {}
+  constructor(private readonly _httpClient: HttpClient) {}
 
   /**
    * ? Setter & getter for user
@@ -45,30 +39,34 @@ export class UserService {
       })
       .pipe(
         map(response => {
-          this._user.subscribe(user => {
-            this.updateUser = { ...user, ...response };
-          }).unsubscribe();
+          this._user
+            .subscribe(user => {
+              this.updateUser = { ...user, ...response };
+            })
+            .unsubscribe();
           this._user.next(this.updateUser);
         }),
         catchError((error: any) => new Observable<any>(error))
       );
   }
 
-  updateAvatar(file: File): Observable<any>{
+  updateAvatar(file: File): Observable<any> {
     const formData = new FormData();
     formData.append('file', file);
 
     return this._httpClient
-      .post<User>('api/users/avatar', formData , {
+      .post<User>('api/users/avatar', formData, {
         headers: {
           Authorization: 'Bearer ' + localStorage.getItem('accessToken') ?? '',
         },
       })
       .pipe(
         map(response => {
-          this._user.subscribe(user => {
-            this.updateUser = { ...user, ...response };
-          }).unsubscribe();
+          this._user
+            .subscribe(user => {
+              this.updateUser = { ...user, ...response };
+            })
+            .unsubscribe();
           this._user.next(this.updateUser);
         }),
         catchError((error: any) => new Observable<any>(error))

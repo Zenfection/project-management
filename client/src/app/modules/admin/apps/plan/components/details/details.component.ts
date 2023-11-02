@@ -1,5 +1,12 @@
 import { CdkScrollable } from '@angular/cdk/scrolling';
-import { DOCUMENT, NgClass, NgFor, NgIf } from '@angular/common';
+import {
+  AsyncPipe,
+  DOCUMENT,
+  JsonPipe,
+  NgClass,
+  NgFor,
+  NgIf,
+} from '@angular/common';
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
@@ -26,17 +33,19 @@ import {
 import { FuseCardComponent } from '@fuse/components/card';
 import { FuseFindByKeyPipe } from '@fuse/pipes/find-by-key/find-by-key.pipe';
 import { FuseMediaWatcherService } from '@fuse/services/media-watcher';
-import { PlanService } from 'app/modules/admin/apps/plan/plan.service';
-import {
-  Category,
-  Plan,
-  PlanTasks,
-} from 'app/modules/admin/apps/plan/plan.types';
-import { Subject, takeUntil } from 'rxjs';
+import { PlanService } from 'app/modules/admin/apps/plan/services/plan.service';
+import { Plan } from 'app/modules/admin/apps/plan/models/plan.types';
+import { Observable, Subject, map, takeUntil } from 'rxjs';
 import { RiveCanvas, RiveLinearAnimation } from 'ng-rive';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { TranslocoModule } from '@ngneat/transloco';
 import { User } from 'app/core/user/user.types';
+import { Category } from '../../models/category.types';
+import { PlanTasks } from '../../models/plan-tasks.types';
+import { PlanTasksService } from '../../services/plan-tasks.service';
+import { PlanCategoriesService } from '../../services/plan-categories.service';
+import { Store } from '@ngrx/store';
+import { PlansFacade } from 'app/core/state/plans/plans.facade';
 
 @Component({
   selector: 'plan-details',
@@ -51,6 +60,8 @@ import { User } from 'app/core/user/user.types';
     NgIf,
     NgClass,
     NgFor,
+    AsyncPipe,
+    JsonPipe,
     MatButtonModule,
     MatProgressBarModule,
     MatMenuModule,
@@ -71,6 +82,8 @@ export class PlanDetailsComponent implements OnInit, OnDestroy {
 
   categories: Category[];
   plan: Plan;
+  plan$: Observable<Plan> = this.plansFacade.selectedPlan$;
+
   user: User;
   planTasks: PlanTasks[];
   currentStep = 0;
@@ -86,10 +99,14 @@ export class PlanDetailsComponent implements OnInit, OnDestroy {
     @Inject(DOCUMENT) private _document: Document,
     private _activatedRoute: ActivatedRoute,
     private _planService: PlanService,
+    private _planTaskService: PlanTasksService,
+    private _planCategoriesService: PlanCategoriesService,
     private _changeDetectorRef: ChangeDetectorRef,
     private _elementRef: ElementRef,
     private _router: Router,
-    private _fuseMediaWatcherService: FuseMediaWatcherService
+    private _fuseMediaWatcherService: FuseMediaWatcherService,
+    private plansFacade: PlansFacade,
+    private store: Store
   ) {}
 
   // -----------------------------------------------------------------------------------------------------
@@ -101,7 +118,7 @@ export class PlanDetailsComponent implements OnInit, OnDestroy {
    */
   ngOnInit(): void {
     // Get the categories
-    this._planService.categories$
+    this._planCategoriesService.categories$
       .pipe(takeUntil(this._unsubscribeAll))
       .subscribe((categories: Category[]) => {
         // Get the categories
@@ -111,24 +128,41 @@ export class PlanDetailsComponent implements OnInit, OnDestroy {
         this._changeDetectorRef.markForCheck();
       });
 
+    this.plan$.subscribe(plan => {
+      this.allMembers = [plan.owner, ...plan.members];
+    });
+
+    // this._planService.plan$.subscribe((plan: Plan) => {
+    //   // Get the plan
+    //   this.plan = plan;
+
+    //   this.allMembers = [this.plan.owner, ...this.plan.members];
+
+    //   // Go to step
+    //   // this.goToStep(plan.progress.currentStep);
+
+    //   // Mark for check
+    //   this._changeDetectorRef.markForCheck();
+    // });
+
     // Get the plan
-    this._planService.plan$
-      .pipe(takeUntil(this._unsubscribeAll))
-      .subscribe((plan: Plan) => {
-        // Get the plan
-        this.plan = plan;
+    // this._planService.plan$
+    //   .pipe(takeUntil(this._unsubscribeAll))
+    //   .subscribe((plan: Plan) => {
+    //     // Get the plan
+    //     this.plan = plan;
 
-        this.allMembers = [this.plan.owner, ...this.plan.members];
+    //     this.allMembers = [this.plan.owner, ...this.plan.members];
 
-        // Go to step
-        // this.goToStep(plan.progress.currentStep);
+    //     // Go to step
+    //     // this.goToStep(plan.progress.currentStep);
 
-        // Mark for check
-        this._changeDetectorRef.markForCheck();
-      });
+    //     // Mark for check
+    //     this._changeDetectorRef.markForCheck();
+    //   });
 
     // Get Plan Tasks
-    this._planService.planTasks$
+    this._planTaskService.planTasks$
       .pipe(takeUntil(this._unsubscribeAll))
       .subscribe((planTasks: PlanTasks[]) => {
         this.planTasks = planTasks;

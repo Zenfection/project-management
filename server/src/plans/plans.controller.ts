@@ -60,6 +60,14 @@ export class PlansController {
     return plans.flatMap((plan) => plan['tasks']);
   }
 
+  @Get(':id/tasks/:taskId')
+  async getTask(@Param('id') id: string, @Param('taskId') taskId: string) {
+    const tasks = await this.getTasks(id);
+    const task = tasks.find((task) => task.id === Number(taskId));
+
+    return task;
+  }
+
   @Get()
   async findAll(@ActiveUser() user: ActiveUserData) {
     const plans = await this.plansService.findFilter({

@@ -16,6 +16,7 @@ import { ProjectModule } from './modules/admin/dashboards/project/project.module
 import { SettingsModule } from './modules/common/settings/settings.module';
 import { TranslocoModule } from '@ngneat/transloco';
 import { PlanModule } from './modules/admin/apps/plan/plan.module';
+import { StateModule } from './core/state/state.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -27,6 +28,7 @@ import { PlanModule } from './modules/admin/apps/plan/plan.module';
     PlanModule,
     SettingsModule,
     TranslocoModule,
+    StateModule,
   ],
   providers: [
     {

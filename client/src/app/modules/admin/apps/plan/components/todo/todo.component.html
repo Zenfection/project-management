@@ -1,0 +1,220 @@
+<div class="flex flex-auto">
+  <div
+    class="flex flex-auto flex-col overflow-y-auto border border-slate-200 bg-white p-4 pt-6 dark:border-slate-700 dark:bg-slate-800 sm:p-8 sm:pt-10">
+    <div class="flex h-16 w-full items-center justify-between px-10">
+      <h2
+        class="font-heading text-xl font-semibold text-slate-700 dark:text-white">
+        {{ 'Detail Task' | transloco }}
+      </h2>
+      <!-- Close button -->
+      <button
+        type="button"
+        mat-icon-button
+        [routerLink]="['../']"
+        class="flex h-10 w-10 items-center justify-center rounded-full text-slate-400 transition-colors duration-300 hover:bg-slate-100 hover:text-slate-600 dark:hover:bg-slate-700 dark:hover:text-white">
+        <mat-icon
+          class="icon-size-5"
+          [svgIcon]="'duotone:chevron-right'"></mat-icon>
+      </button>
+    </div>
+
+    <div
+      class="relative h-[calc(100%_-_64px)] w-full overflow-y-auto px-10 py-5">
+      <div>
+        <div class="mb-4 flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            <button type="button" mat-icon-button>
+              <mat-icon
+                class="icon-size-5"
+                [matTooltip]="'Edit Task'"
+                [svgIcon]="'duotone:pen'"></mat-icon>
+            </button>
+            <h4
+              class="font-sans text-xs font-semibold uppercase text-slate-400">
+              Overview
+            </h4>
+          </div>
+          <!-- Task Status -->
+          <div
+            class="m-0 -ms-1 inline-flex h-6 scale-90 items-center gap-1 rounded-full px-3 py-0.5 text-xs font-semibold">
+            <div
+              class="rounded-full px-3 py-0.5 text-sm font-semibold"
+              [ngClass]="{
+                'bg-slate-200 text-slate-800 dark:bg-slate-500 dark:text-slate-50':
+                  task.status === 'OPEN',
+                'bg-blue-200 text-blue-800 dark:bg-blue-500 dark:text-blue-50':
+                  task.status === 'IN_PROGRESS',
+                'bg-amber-200 text-amber-800 dark:bg-amber-500 dark:text-amber-50':
+                  task.status === 'RESOLVED',
+                'bg-green-200 text-green-800 dark:bg-green-500 dark:text-green-50':
+                  task.status === 'COMPLETED',
+                'bg-red-200 text-red-800 dark:bg-red-500 dark:text-red-50':
+                  task.status === 'CLOSED'
+              }">
+              {{ task.status }}
+            </div>
+          </div>
+        </div>
+        <div class="border-b border-slate-200 pb-6 dark:border-slate-700">
+          <!-- Task Name -->
+          <div class="mb-2 text-lg font-medium leading-6">
+            {{ task.title }}
+          </div>
+
+          <!-- Task Description -->
+          <div
+            class="text-sm font-normal leading-6 text-slate-500 dark:text-slate-400">
+            {{ task.description }}
+          </div>
+
+          <!-- Task Assigned -->
+          <div class="mt-4 flex items-center justify-between gap-2">
+            <!-- Avatar User Assigned -->
+            <div class="flex shrink-0 items-center gap-3">
+              <img
+                class="h-7 w-7 flex-0 rounded-full object-cover shadow-sm ring-2 ring-gray-800"
+                [src]="task.assignee.info.avatar"
+                [matTooltip]="task.assignee.info.name"
+                alt="Avatar" />
+              <div>
+                <div class="text-base font-medium leading-5">Assigned to</div>
+                <div class="text-secondary text-md font-normal leading-4">
+                  {{ task.assignee.info.name }}
+                </div>
+              </div>
+            </div>
+
+            <!-- Process Task -->
+            <div class="max-w-30 grow">
+              <div class="mb-2 text-sm leading-none text-slate-400">
+                {{ progressTodo }}% complete
+              </div>
+
+              <mat-progress-bar
+                class="overflow-hidden rounded-full"
+                [color]="
+                  progressTodo === 100
+                    ? 'primary'
+                    : progressTodo >= 50
+                    ? 'accent'
+                    : 'warn'
+                "
+                mode="determinate"
+                [value]="progressTodo" />
+            </div>
+          </div>
+        </div>
+        <div class="border-b border-slate-200 py-6 dark:border-slate-700">
+          <h4 class="font-sans text-sm font-semibold uppercase text-slate-400">
+            Todo List
+          </h4>
+          <ng-container *ngIf="task.todos.length > 0; else noToDo">
+            <div class="mt-6 space-y-4">
+              <div *ngFor="let todo of task.todos">
+                <div class="flex w-full items-center">
+                  <mat-checkbox
+                    color="primary"
+                    [checked]="todo.isDone"
+                    [disabled]="true">
+                    {{ todo.content }}
+                  </mat-checkbox>
+                </div>
+              </div>
+            </div>
+          </ng-container>
+
+          <ng-template #noToDo>
+            <ng-container
+              [ngTemplateOutlet]="notFound"
+              [ngTemplateOutletContext]="{
+                name: 'todo list'
+              }"></ng-container>
+          </ng-template>
+        </div>
+        <div class="border-b border-slate-200 py-6 dark:border-slate-700">
+          <div class="font-sans text-sm font-semibold uppercase text-slate-400">
+            <!-- Attached Files ({{task.}}) -->
+            Attached Files ({{ task.files.length }})
+          </div>
+
+          <ng-container *ngIf="task.files.length > 0; else noFiles">
+          </ng-container>
+
+          <ng-template #noFiles>
+            <ng-container
+              [ngTemplateOutlet]="notFound"
+              [ngTemplateOutletContext]="{
+                name: 'attached files'
+              }"></ng-container>
+          </ng-template>
+        </div>
+        <!-- <div class="border-slate-200 dark:border-slate-700 border-b py-6">
+
+          <div v-if="props.task?.files.length === 0">
+            <div class="text-slate-400 mt-10 flex items-center justify-center">
+              <Icon name="ph:file-thin" class="h-10 w-10" />
+            </div>
+            <div class="mb-6 mt-2 text-center">
+              <BaseHeading as="h4" size="md" weight="light" class="mb-1">
+                <span>Nothing to show</span>
+              </BaseHeading>
+              <BaseParagraph
+                size="xs"
+                lead="tight"
+                class="text-slate-500 dark:text-slate-400 mx-auto max-w-[200px] !font-sans"
+              >
+                <span
+                  >There are no attached files to show in here for now.</span
+                >
+              </BaseParagraph>
+            </div>
+          </div>
+          <div v-else class="mt-6 space-y-4">
+            <div
+              v-for="(file, index) in props.task?.files"
+              :key="index"
+              shape="curved"
+            >
+              <div class="flex w-full items-center gap-2">
+                <img :src="file.icon" :alt="file.name" class="max-w-[40px]" />
+                <div>
+                  <BaseHeading tag="h3" size="sm" weight="medium">
+                    {{ file.name }}
+                  </BaseHeading>
+                  <BaseParagraph size="xs" class="text-slate-400">
+                    <span>{{ file.size }}</span>
+                    <span class="px-1 text-base leading-tight"> &middot; </span>
+                    <span>v{{ file.version }}</span>
+                  </BaseParagraph>
+                </div>
+                <div class="ms-auto">
+                  <BaseButtonIcon
+                    shape="full"
+                    data-nui-tooltip="Download file"
+                    size="sm"
+                  >
+                    <Icon name="lucide:arrow-down" />
+                  </BaseButtonIcon>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #notFound let-name="name">
+  <div class="mt-10 flex items-center justify-center text-slate-400">
+    <mat-icon class="icon-size-10" [svgIcon]="'thin:file-xmark'"></mat-icon>
+  </div>
+  <div class="mb-6 mt-2 text-center">
+    <h4 class="font-sans text-md font-semibold uppercase text-slate-400">
+      <span>Nothing to show</span>
+    </h4>
+    <p class="text-secondary mx-auto max-w-[200px] !font-sans text-sm">
+      <span>There are no {{ name }} to show in here for now.</span>
+    </p>
+  </div>
+</ng-template>

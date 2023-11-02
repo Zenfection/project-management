@@ -1,22 +1,25 @@
-import { tasks } from './../../../../../mock-api/apps/tasks/data';
 import {
   AfterViewInit,
   ChangeDetectionStrategy,
+  ChangeDetectorRef,
   Component,
   OnDestroy,
   OnInit,
   ViewEncapsulation,
 } from '@angular/core';
-import { PlanDetailsComponent } from '../details/details.component';
 import { Subject, filter, takeUntil } from 'rxjs';
 import { OverlayRef } from '@angular/cdk/overlay';
 import { MatDrawerToggleResult } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
-import { RouterLink } from '@angular/router';
-import { NgClass, NgIf } from '@angular/common';
+import { ActivatedRoute, RouterLink } from '@angular/router';
+import { NgClass, NgFor, NgIf, NgTemplateOutlet } from '@angular/common';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { PlanTasks } from '../plan.types';
-import { PlanService } from '../plan.service';
+import { TranslocoModule } from '@ngneat/transloco';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { PlanTasks } from '../../models/plan-tasks.types';
+import { PlanDetailsComponent } from '../details/details.component';
+import { PlanTasksService } from '../../services/plan-tasks.service';
 
 @Component({
   selector: 'plan-todo',
@@ -24,12 +27,25 @@ import { PlanService } from '../plan.service';
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [RouterLink, MatIconModule, NgIf, NgClass, MatTooltipModule],
+  imports: [
+    RouterLink,
+    MatIconModule,
+    MatCheckboxModule,
+    NgIf,
+    NgFor,
+    NgTemplateOutlet,
+    NgClass,
+    MatTooltipModule,
+    MatProgressBarModule,
+    TranslocoModule,
+  ],
 })
 export class PlanTodoComponent implements OnInit, OnDestroy, AfterViewInit {
   constructor(
     private _plansDetailsComponent: PlanDetailsComponent,
-    private _planService: PlanService
+    private _planTasksService: PlanTasksService,
+    private _activatedRoute: ActivatedRoute,
+    private _changeDetectorRef: ChangeDetectorRef
   ) {}
 
   task: PlanTasks;
@@ -40,6 +56,17 @@ export class PlanTodoComponent implements OnInit, OnDestroy, AfterViewInit {
   ngOnInit(): void {
     // Open the drawer
     this._plansDetailsComponent.matDrawer.open();
+
+    // Get the task
+    this._planTasksService.planTask$
+      .pipe(takeUntil(this._unsubscribeAll))
+      .subscribe(task => {
+        // Get the task
+        this.task = task;
+
+        // Mark for check
+        this._changeDetectorRef.markForCheck();
+      });
   }
 
   /**
@@ -75,6 +102,17 @@ export class PlanTodoComponent implements OnInit, OnDestroy, AfterViewInit {
   // -----------------------------------------------------------------------------------------------------
   //! @ Public methods
   // -----------------------------------------------------------------------------------------------------
+
+  /**
+   * Progress Todo
+   */
+  get progressTodo(): number {
+    const percent =
+      (this.task.todos.filter(todo => todo.isDone).length /
+        this.task.todos.length) *
+      100;
+    return percent;
+  }
 
   /**
    * Close the drawer

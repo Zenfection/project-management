@@ -1,7 +1,9 @@
-import { members } from './../../../../../mock-api/apps/scrumboard/data';
+import { PlansFacade } from 'app/core/state/plans/plans.facade';
 import { CdkScrollable } from '@angular/cdk/scrolling';
 import {
+  AsyncPipe,
   I18nPluralPipe,
+  JsonPipe,
   NgClass,
   NgFor,
   NgIf,
@@ -33,10 +35,19 @@ import { FuseFindByKeyPipe } from '@fuse/pipes/find-by-key/find-by-key.pipe';
 import { TranslocoModule } from '@ngneat/transloco';
 import { UserService } from 'app/core/user/user.service';
 import { User } from 'app/core/user/user.types';
-import { PlanService } from 'app/modules/admin/apps/plan/plan.service';
-import { Category, Plan } from 'app/modules/admin/apps/plan/plan.types';
-import { BehaviorSubject, combineLatest, map, Subject, takeUntil } from 'rxjs';
+import { PlanService } from 'app/modules/admin/apps/plan/services/plan.service';
+import {
+  BehaviorSubject,
+  combineLatest,
+  map,
+  Observable,
+  Subject,
+  takeUntil,
+} from 'rxjs';
 import { RiveCanvas, RiveLinearAnimation } from 'ng-rive';
+import { Category } from '../../models/category.types';
+import { Plan } from '../../models/plan.types';
+import { PlanCategoriesService } from '../../services/plan-categories.service';
 
 @Component({
   selector: 'plan-list',
@@ -56,6 +67,8 @@ import { RiveCanvas, RiveLinearAnimation } from 'ng-rive';
     MatInputModule,
     MatSlideToggleModule,
     NgIf,
+    JsonPipe,
+    AsyncPipe,
     NgClass,
     MatTooltipModule,
     MatProgressBarModule,
@@ -70,9 +83,11 @@ import { RiveCanvas, RiveLinearAnimation } from 'ng-rive';
 })
 export class PlanListComponent implements OnInit, OnDestroy {
   categories: Category[];
-  plans: Plan[];
+  plans$: Observable<Plan[]> = this.plansFacade.plans$;
+
   user: User;
   filteredPlans: Plan[];
+
   filters: {
     categorySlug$: BehaviorSubject<string>;
     query$: BehaviorSubject<string>;
@@ -93,7 +108,9 @@ export class PlanListComponent implements OnInit, OnDestroy {
     private _changeDetectorRef: ChangeDetectorRef,
     private _router: Router,
     private _planService: PlanService,
-    private _userService: UserService
+    private _planCategoriesService: PlanCategoriesService,
+    private _userService: UserService,
+    private readonly plansFacade: PlansFacade
   ) {}
 
   // -----------------------------------------------------------------------------------------------------
@@ -105,7 +122,7 @@ export class PlanListComponent implements OnInit, OnDestroy {
    */
   ngOnInit(): void {
     // Get the categories
-    this._planService.categories$
+    this._planCategoriesService.categories$
       .pipe(takeUntil(this._unsubscribeAll))
       .subscribe((categories: Category[]) => {
         this.categories = categories;
@@ -119,16 +136,6 @@ export class PlanListComponent implements OnInit, OnDestroy {
       this.user = user;
     });
 
-    // Get the plans
-    this._planService.plans$
-      .pipe(takeUntil(this._unsubscribeAll))
-      .subscribe((plans: Plan[]) => {
-        this.plans = this.filteredPlans = plans;
-
-        // Mark for check
-        this._changeDetectorRef.markForCheck();
-      });
-
     // Filter the plans
     combineLatest([
       this.filters.categorySlug$,
@@ -136,7 +143,9 @@ export class PlanListComponent implements OnInit, OnDestroy {
       this.filters.hideCompleted$,
     ]).subscribe(([categorySlug, query, hideCompleted]) => {
       // Reset the filtered plans
-      this.filteredPlans = this.plans;
+      this.plans$.subscribe(plans => {
+        this.filteredPlans = plans;
+      });
 
       // Filter by category
       if (categorySlug !== 'all') {

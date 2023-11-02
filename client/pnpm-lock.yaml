@@ -41,6 +41,15 @@ dependencies:
   '@ngneat/transloco':
     specifier: 4.2.7
     version: 4.2.7(@angular/core@16.2.7)(fs-extra@11.1.1)(glob@10.3.10)(rxjs@7.8.1)(typescript@5.1.6)
+  '@ngrx/effects':
+    specifier: 16.3.0
+    version: 16.3.0(@angular/core@16.2.7)(@ngrx/store@16.3.0)(rxjs@7.8.1)
+  '@ngrx/store':
+    specifier: ^16.3.0
+    version: 16.3.0(@angular/core@16.2.7)(rxjs@7.8.1)
+  '@ngrx/store-devtools':
+    specifier: 16.3.0
+    version: 16.3.0(@ngrx/store@16.3.0)(rxjs@7.8.1)
   apexcharts:
     specifier: 3.40.0
     version: 3.40.0
@@ -112,6 +121,9 @@ devDependencies:
   '@compodoc/compodoc':
     specifier: 1.1.21
     version: 1.1.21(typescript@5.1.6)
+  '@ngrx/eslint-plugin':
+    specifier: ^16.3.0
+    version: 16.3.0(eslint@8.50.0)(typescript@5.1.6)
   '@tailwindcss/typography':
     specifier: 0.5.9
     version: 0.5.9(tailwindcss@3.3.3)
@@ -4118,6 +4130,57 @@ packages:
       - typescript
     dev: false
 
+  /@ngrx/effects@16.3.0(@angular/core@16.2.7)(@ngrx/store@16.3.0)(rxjs@7.8.1):
+    resolution: {integrity: sha512-QvN+jJFqBHH6x5eqtFVeMTcotoWMLTrDjK4wW61hmbYafGmBbEnIgikTsn2DSPA67io0DhgDtBHoBKnicy1gEw==}
+    peerDependencies:
+      '@angular/core': ^16.0.0
+      '@ngrx/store': 16.3.0
+      rxjs: ^6.5.3 || ^7.5.0
+    dependencies:
+      '@angular/core': 16.2.7(rxjs@7.8.1)(zone.js@0.13.3)
+      '@ngrx/store': 16.3.0(@angular/core@16.2.7)(rxjs@7.8.1)
+      rxjs: 7.8.1
+      tslib: 2.5.2
+    dev: false
+
+  /@ngrx/eslint-plugin@16.3.0(eslint@8.50.0)(typescript@5.1.6):
+    resolution: {integrity: sha512-AvzmqagmW6fcJQ/4K3c+0YrH78eJjLhAhWvo9qdpzek1723aFfXu3PJGqUiIvQSR+ocVSM3NODq3FMHwNC3dWQ==}
+    peerDependencies:
+      eslint: '>=8.0.0'
+      typescript: '>=4.4.0'
+    dependencies:
+      '@typescript-eslint/experimental-utils': 5.62.0(eslint@8.50.0)(typescript@5.1.6)
+      eslint: 8.50.0
+      eslint-etc: 5.2.1(eslint@8.50.0)(typescript@5.1.6)
+      semver: 7.5.4
+      strip-json-comments: 3.1.1
+      typescript: 5.1.6
+    transitivePeerDependencies:
+      - supports-color
+    dev: true
+
+  /@ngrx/store-devtools@16.3.0(@ngrx/store@16.3.0)(rxjs@7.8.1):
+    resolution: {integrity: sha512-Ou/aXxJmd9UgYliL09hmnlLdk35dJ8S56rJCHgeJlMPb8j0LDR7Olfpsa7Asi63Zvtg2MYZn1p1G0Tsb+0rk/Q==}
+    peerDependencies:
+      '@ngrx/store': 16.3.0
+      rxjs: ^6.5.3 || ^7.5.0
+    dependencies:
+      '@ngrx/store': 16.3.0(@angular/core@16.2.7)(rxjs@7.8.1)
+      rxjs: 7.8.1
+      tslib: 2.5.2
+    dev: false
+
+  /@ngrx/store@16.3.0(@angular/core@16.2.7)(rxjs@7.8.1):
+    resolution: {integrity: sha512-aWQY41M7O0sMpTmM+OOPBPwKQWHhmkCStizFB1GdiGud8DU5fz0BdUiy6o2+feZypMzczqbwTnq+AxxxrWYqoA==}
+    peerDependencies:
+      '@angular/core': ^16.0.0
+      rxjs: ^6.5.3 || ^7.5.0
+    dependencies:
+      '@angular/core': 16.2.7(rxjs@7.8.1)(zone.js@0.13.3)
+      rxjs: 7.8.1
+      tslib: 2.5.2
+    dev: false
+
   /@ngtools/webpack@16.2.4(@angular/compiler-cli@16.2.7)(typescript@5.1.6)(webpack@5.88.2):
     resolution: {integrity: sha512-ILri2xJ6vMUaFxHJABGF/H7/pYoBkuXTFlHCeFee9pHA+EHkxoiwezLf8baiFT3IGOmdG6GOUlfh/4QicGLdTQ==}
     engines: {node: ^16.14.0 || >=18.10.0, npm: ^6.11.0 || ^7.5.6 || >=8.0.0, yarn: '>= 1.13.0'}
@@ -4632,6 +4695,16 @@ packages:
       '@types/node': 20.8.0
     dev: true
 
+  /@types/yargs-parser@21.0.2:
+    resolution: {integrity: sha512-5qcvofLPbfjmBfKaLfj/+f+Sbd6pN4zl7w7VSVI5uz7m9QZTuB2aZAa2uo1wHFBNN2x6g/SoTkXmd8mQnQF2Cw==}
+    dev: true
+
+  /@types/yargs@17.0.29:
+    resolution: {integrity: sha512-nacjqA3ee9zRF/++a3FUY1suHTFKZeHba2n8WeDw9cCVdmzmHpIxyzOJBcpHvvEmS8E9KqWlSnWHUkOrkhWcvA==}
+    dependencies:
+      '@types/yargs-parser': 21.0.2
+    dev: true
+
   /@typescript-eslint/eslint-plugin@5.62.0(@typescript-eslint/parser@5.62.0)(eslint@8.50.0)(typescript@5.1.6):
     resolution: {integrity: sha512-TiZzBSJja/LbhNPvk6yc0JrX9XqhQ0hdh6M2svYfsHGejaKFIAGd9MQ+ERIMzLGlN/kZoYIgdxFV0PuljTKXag==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
@@ -4658,6 +4731,19 @@ packages:
       typescript: 5.1.6
     transitivePeerDependencies:
       - supports-color
+    dev: true
+
+  /@typescript-eslint/experimental-utils@5.62.0(eslint@8.50.0)(typescript@5.1.6):
+    resolution: {integrity: sha512-RTXpeB3eMkpoclG3ZHft6vG/Z30azNHuqY6wKPBHlVMZFuEvrtlEDe8gMqDb+SO+9hjC/pLekeSCryf9vMZlCw==}
+    engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
+    peerDependencies:
+      eslint: ^6.0.0 || ^7.0.0 || ^8.0.0
+    dependencies:
+      '@typescript-eslint/utils': 5.62.0(eslint@8.50.0)(typescript@5.1.6)
+      eslint: 8.50.0
+    transitivePeerDependencies:
+      - supports-color
+      - typescript
     dev: true
 
   /@typescript-eslint/parser@5.62.0(eslint@8.50.0)(typescript@4.9.5):
@@ -6660,6 +6746,21 @@ packages:
       eslint: '>=7.0.0'
     dependencies:
       eslint: 8.50.0
+    dev: true
+
+  /eslint-etc@5.2.1(eslint@8.50.0)(typescript@5.1.6):
+    resolution: {integrity: sha512-lFJBSiIURdqQKq9xJhvSJFyPA+VeTh5xvk24e8pxVL7bwLBtGF60C/KRkLTMrvCZ6DA3kbPuYhLWY0TZMlqTsg==}
+    peerDependencies:
+      eslint: ^8.0.0
+      typescript: '>=4.0.0'
+    dependencies:
+      '@typescript-eslint/experimental-utils': 5.62.0(eslint@8.50.0)(typescript@5.1.6)
+      eslint: 8.50.0
+      tsutils: 3.21.0(typescript@5.1.6)
+      tsutils-etc: 1.4.2(tsutils@3.21.0)(typescript@5.1.6)
+      typescript: 5.1.6
+    transitivePeerDependencies:
+      - supports-color
     dev: true
 
   /eslint-plugin-prettier@5.0.0(eslint-config-prettier@9.0.0)(eslint@8.50.0)(prettier@3.0.3):
@@ -11126,6 +11227,19 @@ packages:
 
   /tslib@2.6.2:
     resolution: {integrity: sha512-AEYxH93jGFPn/a2iVAwW87VuUIkR1FVUKB77NwMF7nBTDkDrrT/Hpt/IrCJ0QXhW27jTBDcf5ZY7w6RiqTMw2Q==}
+    dev: true
+
+  /tsutils-etc@1.4.2(tsutils@3.21.0)(typescript@5.1.6):
+    resolution: {integrity: sha512-2Dn5SxTDOu6YWDNKcx1xu2YUy6PUeKrWZB/x2cQ8vY2+iz3JRembKn/iZ0JLT1ZudGNwQQvtFX9AwvRHbXuPUg==}
+    hasBin: true
+    peerDependencies:
+      tsutils: ^3.0.0
+      typescript: '>=4.0.0'
+    dependencies:
+      '@types/yargs': 17.0.29
+      tsutils: 3.21.0(typescript@5.1.6)
+      typescript: 5.1.6
+      yargs: 17.7.2
     dev: true
 
   /tsutils@3.21.0(typescript@4.9.5):

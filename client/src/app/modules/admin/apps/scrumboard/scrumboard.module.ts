@@ -40,7 +40,7 @@ const boardResolver = (
       router.navigateByUrl(parentUrl);
 
       // Throw an error
-      return throwError(error);
+      return throwError(() => new Error(error));
     })
   );
 };
@@ -71,7 +71,7 @@ const cardResolver = (
       router.navigateByUrl(parentUrl);
 
       // Throw an error
-      return throwError(error);
+      return throwError(() => new Error(error));
     })
   );
 };

@@ -1,4 +1,6 @@
-<div class="absolute inset-0 flex min-w-0 flex-col overflow-hidden">
+<div
+  class="absolute inset-0 flex min-w-0 flex-col overflow-hidden"
+  *ngIf="plan$ | async as plan">
   <mat-drawer-container
     class="bg-card h-full flex-auto dark:bg-transparent"
     (backdropClick)="onBackdropClicked()">
@@ -262,30 +264,32 @@
                   <fuse-card
                     class="flex cursor-pointer flex-col rounded-lg shadow-md hover:border-primary-500 hover:shadow-lg"
                     *ngFor="let task of planTasks">
+                    <div class="absolute top-0 ml-5 mt-5">
+                      <mat-icon
+                        *ngIf="task.status === 'OPEN'"
+                        class="shrink-0 text-slate-600 text-opacity-50 icon-size-6"
+                        [svgIcon]="'duotone:circle-plus'"></mat-icon>
+                      <mat-icon
+                        *ngIf="task.status === 'IN_PROGRESS'"
+                        class="shrink-0 text-blue-500 icon-size-6"
+                        [svgIcon]="'duotone:circle-up'"></mat-icon>
+                      <mat-icon
+                        *ngIf="task.status === 'RESOLVED'"
+                        class="shrink-0 text-orange-600 text-opacity-50 icon-size-6"
+                        [svgIcon]="'duotone:pen-circle'"></mat-icon>
+                      <mat-icon
+                        *ngIf="task.status === 'COMPLETED'"
+                        class="shrink-0 text-green-600 text-opacity-50 icon-size-6"
+                        [svgIcon]="'duotone:circle-check'"></mat-icon>
+                      <mat-icon
+                        *ngIf="task.status === 'CLOSED'"
+                        class="shrink-0 text-red-600 text-opacity-50 icon-size-6"
+                        [svgIcon]="'duotone:circle-xmark'"></mat-icon>
+                    </div>
                     <div
-                      class="flex flex-col items-center p-5 sm:flex-row"
+                      class="ml-8 flex flex-col items-center p-5 sm:flex-row"
                       [routerLink]="[task.id]">
                       <div class="flex flex-col gap-3 sm:flex-row">
-                        <mat-icon
-                          *ngIf="task.status === 'OPEN'"
-                          class="shrink-0 text-gray-600 text-opacity-50 icon-size-5"
-                          [svgIcon]="'duotone:circle-plus'"></mat-icon>
-                        <mat-icon
-                          *ngIf="task.status === 'IN_PROGRESS'"
-                          class="shrink-0 text-blue-500 icon-size-5"
-                          [svgIcon]="'duotone:circle-plus'"></mat-icon>
-                        <mat-icon
-                          *ngIf="task.status === 'RESOLVED'"
-                          class="shrink-0 text-orange-600 text-opacity-50 icon-size-5"
-                          [svgIcon]="'duotone:circle-plus'"></mat-icon>
-                        <mat-icon
-                          *ngIf="task.status === 'COMPLETED'"
-                          class="shrink-0 text-green-600 text-opacity-50 icon-size-5"
-                          [svgIcon]="'duotone:circle-check'"></mat-icon>
-                        <mat-icon
-                          *ngIf="task.status === 'CLOSED'"
-                          class="shrink-0 text-red-600 text-opacity-50 icon-size-5"
-                          [svgIcon]="'duotone:circle-xmark'"></mat-icon>
                         <div
                           class="max-w-120 text-center leading-none sm:text-left">
                           <h4

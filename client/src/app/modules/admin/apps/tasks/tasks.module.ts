@@ -38,7 +38,7 @@ const taskResolver = (
       router.navigateByUrl(parentUrl);
 
       // Throw an error
-      return throwError(error);
+      return throwError(() => new Error(error));
     })
   );
 };
