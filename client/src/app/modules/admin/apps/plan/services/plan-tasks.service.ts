@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { environment } from 'environments/environment.development';
 import {
   BehaviorSubject,
   Observable,
@@ -20,8 +19,6 @@ export class PlanTasksService {
   private _planTask: BehaviorSubject<PlanTasks | null> = new BehaviorSubject(
     null
   );
-  private s3BucketUrl: string = environment.s3_url;
-
   /**
    * Constructor
    */
@@ -53,21 +50,11 @@ export class PlanTasksService {
   //* Get plan tasks
  */
   getPlanTasks(id: string): Observable<PlanTasks[]> {
-    return this._httpClient
-      .get<PlanTasks[]>(`api/plans/${id}/tasks`, {
-        headers: {
-          Authorization: 'Bearer ' + localStorage.getItem('accessToken') ?? '',
-        },
+    return this._httpClient.get<PlanTasks[]>(`api/plans/${id}/tasks`).pipe(
+      tap((response: PlanTasks[]) => {
+        this._planTasks.next(response);
       })
-      .pipe(
-        tap((response: PlanTasks[]) => {
-          response.forEach((task: any) => {
-            task.assignee.info.avatar = `${this.s3BucketUrl}/${task.assignee.info.avatar}`;
-          });
-
-          this._planTasks.next(response);
-        })
-      );
+    );
   }
 
   /**

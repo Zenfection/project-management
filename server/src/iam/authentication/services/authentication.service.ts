@@ -111,6 +111,10 @@ export class AuthenticationService {
       }
       throw error;
     }
+
+    return {
+      message: 'User created',
+    };
   }
 
   async generateToken(user: UserEntity) {

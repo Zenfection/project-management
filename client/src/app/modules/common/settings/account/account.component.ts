@@ -1,6 +1,6 @@
 import { messages } from './../../../../mock-api/apps/chat/data';
 import { TextFieldModule } from '@angular/cdk/text-field';
-import { NgFor, NgIf } from '@angular/common';
+import { AsyncPipe, NgFor, NgIf } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
@@ -31,6 +31,8 @@ import { SettingAccountValidator } from './account.validator';
 import { FuseAlertService } from '@fuse/components/alert';
 import { FuseAlertComponent } from '../../../../../@fuse/components/alert/alert.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { UserFacade } from 'app/core/state/user/user.facade';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'settings-account',
@@ -43,6 +45,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     FormsModule,
     ReactiveFormsModule,
     MatFormFieldModule,
+    AsyncPipe,
     MatIconModule,
     MatInputModule,
     MatTooltipModule,
@@ -59,6 +62,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 export class SettingsAccountComponent implements OnInit {
   accountForm: UntypedFormGroup;
   user: User;
+  user$: Observable<User> = this._userFacade.user$;
   setting: Setting;
 
   /**
@@ -69,7 +73,8 @@ export class SettingsAccountComponent implements OnInit {
     private _userSerivce: UserService,
     private _settingService: SettingsService,
     private _changeDetectorRef: ChangeDetectorRef,
-    private _fuseAlertService: FuseAlertService
+    private _fuseAlertService: FuseAlertService,
+    private readonly _userFacade: UserFacade
   ) {}
 
   // -----------------------------------------------------------------------------------------------------

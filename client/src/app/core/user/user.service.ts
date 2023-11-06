@@ -31,45 +31,33 @@ export class UserService {
   }
 
   update(data: Partial<User>): Observable<any> {
-    return this._httpClient
-      .patch<User>('api/users/info', data, {
-        headers: {
-          Authorization: 'Bearer ' + localStorage.getItem('accessToken') ?? '',
-        },
-      })
-      .pipe(
-        map(response => {
-          this._user
-            .subscribe(user => {
-              this.updateUser = { ...user, ...response };
-            })
-            .unsubscribe();
-          this._user.next(this.updateUser);
-        }),
-        catchError((error: any) => new Observable<any>(error))
-      );
+    return this._httpClient.patch<User>('api/users/info', data).pipe(
+      map(response => {
+        this._user
+          .subscribe(user => {
+            this.updateUser = { ...user, ...response };
+          })
+          .unsubscribe();
+        this._user.next(this.updateUser);
+      }),
+      catchError((error: any) => new Observable<any>(error))
+    );
   }
 
   updateAvatar(file: File): Observable<any> {
     const formData = new FormData();
     formData.append('file', file);
 
-    return this._httpClient
-      .post<User>('api/users/avatar', formData, {
-        headers: {
-          Authorization: 'Bearer ' + localStorage.getItem('accessToken') ?? '',
-        },
-      })
-      .pipe(
-        map(response => {
-          this._user
-            .subscribe(user => {
-              this.updateUser = { ...user, ...response };
-            })
-            .unsubscribe();
-          this._user.next(this.updateUser);
-        }),
-        catchError((error: any) => new Observable<any>(error))
-      );
+    return this._httpClient.post<User>('api/users/avatar', formData).pipe(
+      map(response => {
+        this._user
+          .subscribe(user => {
+            this.updateUser = { ...user, ...response };
+          })
+          .unsubscribe();
+        this._user.next(this.updateUser);
+      }),
+      catchError((error: any) => new Observable<any>(error))
+    );
   }
 }

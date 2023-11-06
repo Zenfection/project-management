@@ -5,6 +5,10 @@ import { reducers } from '.';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
 import { PlansFacade } from './plans/plans.facade';
+import { UserFacade } from './user/user.facade';
+import { SettingEffects } from './setting/setting.effect';
+import { UserEffects } from './user/user.effect';
+import { SettingFacade } from './setting/setting.facade';
 
 @NgModule({
   declarations: [],
@@ -12,8 +16,8 @@ import { PlansFacade } from './plans/plans.facade';
     CommonModule,
     StoreModule.forRoot(reducers),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
-    EffectsModule.forRoot([]),
+    EffectsModule.forRoot([SettingEffects, UserEffects]),
   ],
-  providers: [PlansFacade],
+  providers: [PlansFacade, UserFacade, SettingFacade],
 })
 export class StateModule {}

@@ -41,7 +41,13 @@ dependencies:
   '@ngneat/transloco':
     specifier: 4.2.7
     version: 4.2.7(@angular/core@16.2.7)(fs-extra@11.1.1)(glob@10.3.10)(rxjs@7.8.1)(typescript@5.1.6)
+  '@ngrx/component':
+    specifier: ^16.3.0
+    version: 16.3.0(@angular/common@16.2.7)(@angular/core@16.2.7)(rxjs@7.8.1)
   '@ngrx/effects':
+    specifier: 16.3.0
+    version: 16.3.0(@angular/core@16.2.7)(@ngrx/store@16.3.0)(rxjs@7.8.1)
+  '@ngrx/entity':
     specifier: 16.3.0
     version: 16.3.0(@angular/core@16.2.7)(@ngrx/store@16.3.0)(rxjs@7.8.1)
   '@ngrx/store':
@@ -50,6 +56,9 @@ dependencies:
   '@ngrx/store-devtools':
     specifier: 16.3.0
     version: 16.3.0(@ngrx/store@16.3.0)(rxjs@7.8.1)
+  '@rive-app/canvas-advanced':
+    specifier: ^2.7.0
+    version: 2.7.0
   apexcharts:
     specifier: 3.40.0
     version: 3.40.0
@@ -124,6 +133,9 @@ devDependencies:
   '@ngrx/eslint-plugin':
     specifier: ^16.3.0
     version: 16.3.0(eslint@8.50.0)(typescript@5.1.6)
+  '@ngrx/schematics':
+    specifier: ^16.3.0
+    version: 16.3.0
   '@tailwindcss/typography':
     specifier: 0.5.9
     version: 0.5.9(tailwindcss@3.3.3)
@@ -4130,8 +4142,34 @@ packages:
       - typescript
     dev: false
 
+  /@ngrx/component@16.3.0(@angular/common@16.2.7)(@angular/core@16.2.7)(rxjs@7.8.1):
+    resolution: {integrity: sha512-4PA0XWLey5q8vINBmqSIDwC+JEIRU7vfqRRiF9XzN6fftYTMC4lJLN3EyWRuUSQ8BzOaLzEv6/CJNqhRxVI6SQ==}
+    peerDependencies:
+      '@angular/common': ^16.0.0
+      '@angular/core': ^16.0.0
+      rxjs: ^6.5.3 || ^7.5.0
+    dependencies:
+      '@angular/common': 16.2.7(@angular/core@16.2.7)(rxjs@7.8.1)
+      '@angular/core': 16.2.7(rxjs@7.8.1)(zone.js@0.13.3)
+      rxjs: 7.8.1
+      tslib: 2.5.2
+    dev: false
+
   /@ngrx/effects@16.3.0(@angular/core@16.2.7)(@ngrx/store@16.3.0)(rxjs@7.8.1):
     resolution: {integrity: sha512-QvN+jJFqBHH6x5eqtFVeMTcotoWMLTrDjK4wW61hmbYafGmBbEnIgikTsn2DSPA67io0DhgDtBHoBKnicy1gEw==}
+    peerDependencies:
+      '@angular/core': ^16.0.0
+      '@ngrx/store': 16.3.0
+      rxjs: ^6.5.3 || ^7.5.0
+    dependencies:
+      '@angular/core': 16.2.7(rxjs@7.8.1)(zone.js@0.13.3)
+      '@ngrx/store': 16.3.0(@angular/core@16.2.7)(rxjs@7.8.1)
+      rxjs: 7.8.1
+      tslib: 2.5.2
+    dev: false
+
+  /@ngrx/entity@16.3.0(@angular/core@16.2.7)(@ngrx/store@16.3.0)(rxjs@7.8.1):
+    resolution: {integrity: sha512-o+jhJylWPt9gspzkb61QqHgeBFssDKz4J/EoQcAE217Y1bEBWf6EuleHXiFvAoWKkNqb8eTHRnNGgT0VPE9G+A==}
     peerDependencies:
       '@angular/core': ^16.0.0
       '@ngrx/store': 16.3.0
@@ -4157,6 +4195,10 @@ packages:
       typescript: 5.1.6
     transitivePeerDependencies:
       - supports-color
+    dev: true
+
+  /@ngrx/schematics@16.3.0:
+    resolution: {integrity: sha512-PBCzxBVW5YDr3BGF6Q94Qey4SLq3U2yWfRNZEW4aKHYrQr89BvyZcB9KeCsR4wHOIdvgit1eX0GXBx2ekmqtng==}
     dev: true
 
   /@ngrx/store-devtools@16.3.0(@ngrx/store@16.3.0)(rxjs@7.8.1):
@@ -4424,6 +4466,10 @@ packages:
 
   /@rive-app/canvas-advanced@2.4.0:
     resolution: {integrity: sha512-9aDyxR7wn6Zb5mkI3FeIVjUnBY7UJQPg2bLVg2T2m3olRJh3BnX6nbgkisQv6WvCiBG/9CYTs5iBpatVZiWR/w==}
+    dev: false
+
+  /@rive-app/canvas-advanced@2.7.0:
+    resolution: {integrity: sha512-oVPVLdCVL3lPkO1uq9oJCktWQYTsoo00ANUzto4xwqC1v4aXsrxf3fbgCMyXHVFeXMcMLSUeyG+5hrq+Pj84ag==}
     dev: false
 
   /@schematics/angular@16.2.4:

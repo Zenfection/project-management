@@ -13,11 +13,11 @@ import { FileInterceptor } from '@nestjs/platform-express';
 export class CloudController {
   constructor(private readonly cloudService: CloudService) {}
 
-  //   @Get('buckets')
-  //   async listAllBuckets() {
-  //     const buckets = await this.cloudService.listAllBuckets();
-  //     return buckets.Buckets;
-  //   }
+  @Get('buckets')
+  async listAllBuckets() {
+    const buckets = await this.cloudService.listAllBuckets();
+    return buckets.Buckets;
+  }
 
   @Get('objects')
   async listAllObjects() {

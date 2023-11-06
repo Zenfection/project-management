@@ -48,6 +48,7 @@ import { RiveCanvas, RiveLinearAnimation } from 'ng-rive';
 import { Category } from '../../models/category.types';
 import { Plan } from '../../models/plan.types';
 import { PlanCategoriesService } from '../../services/plan-categories.service';
+import { UserFacade } from 'app/core/state/user/user.facade';
 
 @Component({
   selector: 'plan-list',
@@ -83,9 +84,9 @@ import { PlanCategoriesService } from '../../services/plan-categories.service';
 })
 export class PlanListComponent implements OnInit, OnDestroy {
   categories: Category[];
-  plans$: Observable<Plan[]> = this.plansFacade.plans$;
+  plans$: Observable<Plan[]> = this._plansFacade.plans$;
 
-  user: User;
+  user$: Observable<User> = this._userFacade.user$;
   filteredPlans: Plan[];
 
   filters: {
@@ -107,10 +108,9 @@ export class PlanListComponent implements OnInit, OnDestroy {
     private _activatedRoute: ActivatedRoute,
     private _changeDetectorRef: ChangeDetectorRef,
     private _router: Router,
-    private _planService: PlanService,
     private _planCategoriesService: PlanCategoriesService,
-    private _userService: UserService,
-    private readonly plansFacade: PlansFacade
+    private readonly _plansFacade: PlansFacade,
+    private readonly _userFacade: UserFacade
   ) {}
 
   // -----------------------------------------------------------------------------------------------------
@@ -130,11 +130,6 @@ export class PlanListComponent implements OnInit, OnDestroy {
         // Mark for check
         this._changeDetectorRef.markForCheck();
       });
-
-    // Get the user
-    this._userService.user$.subscribe(user => {
-      this.user = user;
-    });
 
     // Filter the plans
     combineLatest([
@@ -186,8 +181,12 @@ export class PlanListComponent implements OnInit, OnDestroy {
   // @ Public methods
   // -----------------------------------------------------------------------------------------------------
 
-  ownerPlan(email: string): boolean {
-    return this.user.email === email;
+  ownerPlan(email: string): Observable<boolean> {
+    return this.user$.pipe(
+      map(user => {
+        return user.email === email;
+      })
+    );
   }
 
   slideData(data: any, slice: number): any[] {

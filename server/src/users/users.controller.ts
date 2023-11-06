@@ -21,6 +21,7 @@ import { updateInfoDto } from './dto/update-info.dto';
 import { ActiveUser } from '../iam/authentication/decorators/active-user/active-user.decorator';
 import { ActiveUserData } from '../iam/authentication/interfaces/active-user-data.interface';
 import { FileInterceptor } from '@nestjs/platform-express';
+import { TransformInterceptor } from '../cloud/interceptors/transform/transform.interceptor';
 
 @Controller('users')
 export class UsersController {
@@ -31,7 +32,6 @@ export class UsersController {
     return this.usersService.create(createUserDto);
   }
 
-  @Get()
   @Roles(new RoleEntity('ADMIN'))
   @Get()
   async findAll() {
@@ -58,6 +58,7 @@ export class UsersController {
   }
 
   @Get('info')
+  @UseInterceptors(TransformInterceptor)
   async findInfo(@ActiveUser() user: ActiveUserData) {
     return this.usersService
       .findOne({ id: Number(user.sub) }, { info: true })
@@ -111,6 +112,7 @@ export class UsersController {
   }
 
   @Patch('info')
+  @UseInterceptors(TransformInterceptor)
   async updateInfo(
     @Body() updateInfo: updateInfoDto,
     @ActiveUser() user: ActiveUserData,

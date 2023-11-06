@@ -1,45 +1,59 @@
-import { inject, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 
-@Injectable({providedIn: 'root'})
-export class IconsService
-{
-    /**
-     * Constructor
-     */
-    constructor()
-    {
-        const domSanitizer = inject(DomSanitizer);
-        const matIconRegistry = inject(MatIconRegistry);
+@Injectable({ providedIn: 'root' })
+export class IconsService {
+  constructor(
+    private readonly domSanitizer: DomSanitizer,
+    private readonly matIconRegistry: MatIconRegistry
+  ) {
+    this.registerIconSets();
+  }
 
-        // Register icon sets
-        matIconRegistry.addSvgIconSet(domSanitizer.bypassSecurityTrustResourceUrl('assets/icons/material-twotone.svg'));
-        matIconRegistry.addSvgIconSetInNamespace('mat_outline', domSanitizer.bypassSecurityTrustResourceUrl('assets/icons/material-outline.svg'));
-        matIconRegistry.addSvgIconSetInNamespace('mat_solid', domSanitizer.bypassSecurityTrustResourceUrl('assets/icons/material-solid.svg'));
-        matIconRegistry.addSvgIconSetInNamespace('feather', domSanitizer.bypassSecurityTrustResourceUrl('assets/icons/feather.svg'));
-        matIconRegistry.addSvgIconSetInNamespace('heroicons_outline', domSanitizer.bypassSecurityTrustResourceUrl('assets/icons/heroicons-outline.svg'));
-        matIconRegistry.addSvgIconSetInNamespace('heroicons_solid', domSanitizer.bypassSecurityTrustResourceUrl('assets/icons/heroicons-solid.svg'));
-        matIconRegistry.addSvgIconSetInNamespace('heroicons_mini', domSanitizer.bypassSecurityTrustResourceUrl('assets/icons/heroicons-mini.svg'));
+  /**
+   * Register icon sets
+   */
+  private registerIconSets(): void {
+    const iconSets = [
+      { namespace: '', path: 'assets/icons/material-twotone.svg' },
+      { namespace: 'mat_outline', path: 'assets/icons/material-outline.svg' },
+      { namespace: 'mat_solid', path: 'assets/icons/material-solid.svg' },
+      { namespace: 'feather', path: 'assets/icons/feather.svg' },
+      {
+        namespace: 'heroicons_outline',
+        path: 'assets/icons/heroicons-outline.svg',
+      },
+      {
+        namespace: 'heroicons_solid',
+        path: 'assets/icons/heroicons-solid.svg',
+      },
+      { namespace: 'heroicons_mini', path: 'assets/icons/heroicons-mini.svg' },
+      { namespace: 'duotone', path: 'assets/icons/fontawesome/duotone.svg' },
+      { namespace: 'brands', path: 'assets/icons/fontawesome/brands.svg' },
+      { namespace: 'light', path: 'assets/icons/fontawesome/light.svg' },
+      { namespace: 'regular', path: 'assets/icons/fontawesome/regular.svg' },
+      { namespace: 'solid', path: 'assets/icons/fontawesome/solid.svg' },
+      { namespace: 'thin', path: 'assets/icons/fontawesome/thin.svg' },
+      {
+        namespace: 'sharp-light',
+        path: 'assets/icons/fontawesome/sharp-light.svg',
+      },
+      {
+        namespace: 'sharp-regular',
+        path: 'assets/icons/fontawesome/sharp-regular.svg',
+      },
+      {
+        namespace: 'sharp-solid',
+        path: 'assets/icons/fontawesome/sharp-solid.svg',
+      },
+    ];
 
-
-        //TODO Font Awesome Pro
-        matIconRegistry.addSvgIconSetInNamespace('duotone', domSanitizer.bypassSecurityTrustResourceUrl('assets/icons/fontawesome/duotone.svg'));
-
-        matIconRegistry.addSvgIconSetInNamespace('brands', domSanitizer.bypassSecurityTrustResourceUrl('assets/icons/fontawesome/brands.svg'));
-
-        matIconRegistry.addSvgIconSetInNamespace('light', domSanitizer.bypassSecurityTrustResourceUrl('assets/icons/fontawesome/light.svg'));
-
-        matIconRegistry.addSvgIconSetInNamespace('regular', domSanitizer.bypassSecurityTrustResourceUrl('assets/icons/fontawesome/regular.svg'));
-
-        matIconRegistry.addSvgIconSetInNamespace('solid', domSanitizer.bypassSecurityTrustResourceUrl('assets/icons/fontawesome/solid.svg'));
-
-        matIconRegistry.addSvgIconSetInNamespace('thin', domSanitizer.bypassSecurityTrustResourceUrl('assets/icons/fontawesome/thin.svg'));
-
-        matIconRegistry.addSvgIconSetInNamespace('sharp-light', domSanitizer.bypassSecurityTrustResourceUrl('assets/icons/fontawesome/sharp-light.svg'));
-
-        matIconRegistry.addSvgIconSetInNamespace('sharp-regular', domSanitizer.bypassSecurityTrustResourceUrl('assets/icons/fontawesome/sharp-regular.svg'));
-
-        matIconRegistry.addSvgIconSetInNamespace('sharp-solid', domSanitizer.bypassSecurityTrustResourceUrl('assets/icons/fontawesome/sharp-solid.svg'));
-    }
+    iconSets.forEach(iconSet => {
+      this.matIconRegistry.addSvgIconSetInNamespace(
+        iconSet.namespace,
+        this.domSanitizer.bypassSecurityTrustResourceUrl(iconSet.path)
+      );
+    });
+  }
 }

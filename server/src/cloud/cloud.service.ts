@@ -1,4 +1,5 @@
 import {
+  GetObjectCommand,
   ListBucketsCommand,
   ListObjectsV2Command,
   PutObjectCommand,
@@ -7,6 +8,7 @@ import {
 import { Inject, Injectable } from '@nestjs/common';
 import cloudflare_r2Config from './config/cloudflare_r2.config';
 import { ConfigType } from '@nestjs/config';
+import { getSignedUrl } from '@aws-sdk/s3-request-presigner';
 
 @Injectable()
 export class CloudService {
@@ -18,6 +20,7 @@ export class CloudService {
       secretAccessKey: this.cloudflare_r2ConfigService.secret_access_key,
     },
   });
+
   constructor(
     @Inject(cloudflare_r2Config.KEY)
     private readonly cloudflare_r2ConfigService: ConfigType<
@@ -27,6 +30,17 @@ export class CloudService {
 
   async listAllBuckets() {
     return await this.S3.send(new ListBucketsCommand(''));
+  }
+
+  async getObject(path: string): Promise<string> {
+    return await getSignedUrl(
+      this.S3,
+      new GetObjectCommand({
+        Bucket: this.cloudflare_r2ConfigService.bucket_name,
+        Key: path,
+      }),
+      { expiresIn: 3600 },
+    );
   }
 
   async listAllObjects(prefix?: string) {

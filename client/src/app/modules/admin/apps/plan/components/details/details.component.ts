@@ -35,7 +35,7 @@ import { FuseFindByKeyPipe } from '@fuse/pipes/find-by-key/find-by-key.pipe';
 import { FuseMediaWatcherService } from '@fuse/services/media-watcher';
 import { PlanService } from 'app/modules/admin/apps/plan/services/plan.service';
 import { Plan } from 'app/modules/admin/apps/plan/models/plan.types';
-import { Observable, Subject, map, takeUntil } from 'rxjs';
+import { Observable, Subject, takeUntil } from 'rxjs';
 import { RiveCanvas, RiveLinearAnimation } from 'ng-rive';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { TranslocoModule } from '@ngneat/transloco';
@@ -46,6 +46,7 @@ import { PlanTasksService } from '../../services/plan-tasks.service';
 import { PlanCategoriesService } from '../../services/plan-categories.service';
 import { Store } from '@ngrx/store';
 import { PlansFacade } from 'app/core/state/plans/plans.facade';
+import { UserFacade } from 'app/core/state/user/user.facade';
 
 @Component({
   selector: 'plan-details',
@@ -81,8 +82,8 @@ export class PlanDetailsComponent implements OnInit, OnDestroy {
   @ViewChild('matDrawer', { static: true }) matDrawer: MatDrawer;
 
   categories: Category[];
-  plan: Plan;
-  plan$: Observable<Plan> = this.plansFacade.selectedPlan$;
+  plan$: Observable<Plan> = this._plansFacade.selectedPlan$;
+  user$: Observable<User> = this._userFacade.user$;
 
   user: User;
   planTasks: PlanTasks[];
@@ -98,15 +99,14 @@ export class PlanDetailsComponent implements OnInit, OnDestroy {
   constructor(
     @Inject(DOCUMENT) private _document: Document,
     private _activatedRoute: ActivatedRoute,
-    private _planService: PlanService,
     private _planTaskService: PlanTasksService,
     private _planCategoriesService: PlanCategoriesService,
     private _changeDetectorRef: ChangeDetectorRef,
     private _elementRef: ElementRef,
     private _router: Router,
     private _fuseMediaWatcherService: FuseMediaWatcherService,
-    private plansFacade: PlansFacade,
-    private store: Store
+    private _plansFacade: PlansFacade,
+    private _userFacade: UserFacade
   ) {}
 
   // -----------------------------------------------------------------------------------------------------
@@ -131,19 +131,6 @@ export class PlanDetailsComponent implements OnInit, OnDestroy {
     this.plan$.subscribe(plan => {
       this.allMembers = [plan.owner, ...plan.members];
     });
-
-    // this._planService.plan$.subscribe((plan: Plan) => {
-    //   // Get the plan
-    //   this.plan = plan;
-
-    //   this.allMembers = [this.plan.owner, ...this.plan.members];
-
-    //   // Go to step
-    //   // this.goToStep(plan.progress.currentStep);
-
-    //   // Mark for check
-    //   this._changeDetectorRef.markForCheck();
-    // });
 
     // Get the plan
     // this._planService.plan$

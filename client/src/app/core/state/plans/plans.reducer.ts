@@ -1,11 +1,14 @@
 import { Plan } from 'app/modules/admin/apps/plan/models/plan.types';
 import * as PlanActions from './plans.actions';
 import { createFeatureSelector, createSelector } from '@ngrx/store';
+import { PlanTasks } from 'app/modules/admin/apps/plan/models/plan-tasks.types';
 
 //1. Define the shape of state
 export interface PlansState {
   plans: Plan[];
   selectedPlan: Plan | null;
+  // planTasks: PlanTasks[];
+  // selectTasks: PlanTasks | null;
 }
 
 //2. Define the initial state

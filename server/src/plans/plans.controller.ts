@@ -7,6 +7,7 @@ import {
   Param,
   Delete,
   UnauthorizedException,
+  UseInterceptors,
 } from '@nestjs/common';
 import { PlansService } from './plans.service';
 import { CreatePlanDto } from './dto/create-plan.dto';
@@ -15,6 +16,7 @@ import { RoleEntity } from '../users/entity/role.entity';
 import { Roles } from '../iam/authorization/decorators/roles/roles.decorator';
 import { ActiveUser } from '../iam/authentication/decorators/active-user/active-user.decorator';
 import { ActiveUserData } from '../iam/authentication/interfaces/active-user-data.interface';
+import { TransformInterceptor } from '../cloud/interceptors/transform/transform.interceptor';
 
 @Controller('plans')
 export class PlansController {
@@ -31,6 +33,7 @@ export class PlansController {
   }
 
   @Get(':id/tasks')
+  @UseInterceptors(TransformInterceptor)
   async getTasks(@Param('id') id: string) {
     const plans = await this.plansService.findFilter({
       where: {
@@ -69,6 +72,7 @@ export class PlansController {
   }
 
   @Get()
+  @UseInterceptors(TransformInterceptor)
   async findAll(@ActiveUser() user: ActiveUserData) {
     const plans = await this.plansService.findFilter({
       where: {
@@ -124,6 +128,7 @@ export class PlansController {
   }
 
   @Get(':id')
+  @UseInterceptors(TransformInterceptor)
   async findOne(@ActiveUser() user: ActiveUserData, @Param('id') id: string) {
     const plan = await this.plansService.findOne(
       { id: Number(id) },

@@ -148,58 +148,22 @@
               }"></ng-container>
           </ng-template>
         </div>
-        <!-- <div class="border-slate-200 dark:border-slate-700 border-b py-6">
-
-          <div v-if="props.task?.files.length === 0">
-            <div class="text-slate-400 mt-10 flex items-center justify-center">
-              <Icon name="ph:file-thin" class="h-10 w-10" />
-            </div>
-            <div class="mb-6 mt-2 text-center">
-              <BaseHeading as="h4" size="md" weight="light" class="mb-1">
-                <span>Nothing to show</span>
-              </BaseHeading>
-              <BaseParagraph
-                size="xs"
-                lead="tight"
-                class="text-slate-500 dark:text-slate-400 mx-auto max-w-[200px] !font-sans"
-              >
-                <span
-                  >There are no attached files to show in here for now.</span
-                >
-              </BaseParagraph>
-            </div>
+        <!-- Comment -->
+        <div class="py-6">
+          <div class="font-sans text-sm font-semibold uppercase text-slate-400">
+            Comment (0)
           </div>
-          <div v-else class="mt-6 space-y-4">
-            <div
-              v-for="(file, index) in props.task?.files"
-              :key="index"
-              shape="curved"
-            >
-              <div class="flex w-full items-center gap-2">
-                <img :src="file.icon" :alt="file.name" class="max-w-[40px]" />
-                <div>
-                  <BaseHeading tag="h3" size="sm" weight="medium">
-                    {{ file.name }}
-                  </BaseHeading>
-                  <BaseParagraph size="xs" class="text-slate-400">
-                    <span>{{ file.size }}</span>
-                    <span class="px-1 text-base leading-tight"> &middot; </span>
-                    <span>v{{ file.version }}</span>
-                  </BaseParagraph>
-                </div>
-                <div class="ms-auto">
-                  <BaseButtonIcon
-                    shape="full"
-                    data-nui-tooltip="Download file"
-                    size="sm"
-                  >
-                    <Icon name="lucide:arrow-down" />
-                  </BaseButtonIcon>
-                </div>
-              </div>
+          <ng-container>
+            <div v-else class="mt-6 flex flex-col gap-8">
+              <!-- Have Comment -->
             </div>
-          </div>
-        </div> -->
+          </ng-container>
+        </div>
+        <!-- Textarea -->
+        <fuse-card
+          class="filter-post filter-interactive flex w-full max-w-140 flex-col">
+          <div class="mx-6 mb-4 mt-6 flex items-center sm:mx-8"></div>
+        </fuse-card>
       </div>
     </div>
   </div>

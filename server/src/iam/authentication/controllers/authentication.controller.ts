@@ -5,6 +5,7 @@ import {
   HttpStatus,
   Post,
   Res,
+  UseInterceptors,
 } from '@nestjs/common';
 import { AuthenticationService } from '../services/authentication.service';
 import { SignUpDto } from '../dto/sign-up.dto/sign-up.dto';
@@ -19,6 +20,8 @@ import { TfaAuthenticationService } from '../services/tfa-authentication/tfa-aut
 import { Response } from 'express';
 import { toFileStream } from 'qrcode';
 import { SignInWithTokenDto } from '../dto/sign-in-with-token.dto/sign-in-with-token.dto';
+import { User } from '@prisma/client';
+import { TransformInterceptor } from '../../../cloud/interceptors/transform/transform.interceptor';
 
 @Auth(AuthType.None)
 @Controller('authentication')
@@ -34,16 +37,22 @@ export class AuthenticationController {
     return this.authService.signUp(signUpDto);
   }
 
+  @UseInterceptors(TransformInterceptor)
   @HttpCode(HttpStatus.OK)
   @Post('sign-in')
-  signIn(@Body() signInDto: SignInDto) {
-    return this.authService.signIn(signInDto);
+  async signIn(@Body() signInDto: SignInDto): Promise<User> {
+    const user = await this.authService.signIn(signInDto);
+    return user;
   }
 
+  @UseInterceptors(TransformInterceptor)
   @HttpCode(HttpStatus.OK)
   @Post('sign-in-with-token')
-  signInWithToken(@Body() signInWithToken: SignInWithTokenDto) {
-    return this.authService.signInWithToken(signInWithToken);
+  async signInWithToken(
+    @Body() signInWithToken: SignInWithTokenDto,
+  ): Promise<User> {
+    const user = await this.authService.signInWithToken(signInWithToken);
+    return user;
   }
 
   @HttpCode(HttpStatus.OK)

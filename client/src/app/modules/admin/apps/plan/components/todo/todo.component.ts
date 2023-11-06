@@ -9,7 +9,10 @@ import {
 } from '@angular/core';
 import { Subject, filter, takeUntil } from 'rxjs';
 import { OverlayRef } from '@angular/cdk/overlay';
-import { MatDrawerToggleResult } from '@angular/material/sidenav';
+import {
+  MatDrawerToggleResult,
+  MatSidenavModule,
+} from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { NgClass, NgFor, NgIf, NgTemplateOutlet } from '@angular/common';
@@ -20,6 +23,10 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { PlanTasks } from '../../models/plan-tasks.types';
 import { PlanDetailsComponent } from '../details/details.component';
 import { PlanTasksService } from '../../services/plan-tasks.service';
+import { FuseCardComponent } from '@fuse/components/card';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatFormField, MatFormFieldModule } from '@angular/material/form-field';
+import { MatDividerModule } from '@angular/material/divider';
 
 @Component({
   selector: 'plan-todo',
@@ -31,10 +38,15 @@ import { PlanTasksService } from '../../services/plan-tasks.service';
     RouterLink,
     MatIconModule,
     MatCheckboxModule,
+    MatSidenavModule,
     NgIf,
     NgFor,
     NgTemplateOutlet,
     NgClass,
+    FuseCardComponent,
+    MatMenuModule,
+    MatFormFieldModule,
+    MatDividerModule,
     MatTooltipModule,
     MatProgressBarModule,
     TranslocoModule,

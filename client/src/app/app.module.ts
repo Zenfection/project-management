@@ -1,34 +1,31 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { DateAdapter, MAT_DATE_FORMATS } from '@angular/material/core';
 import { LuxonDateAdapter } from '@angular/material-luxon-adapter';
-import { provideTransloco } from './core/transloco/transloco.provider';
 import { provideAuth } from './core/auth/auth.provider';
 import { provideIcons } from './core/icons/icons.provider';
 import { provideFuse } from '@fuse';
 import { mockApiServices } from './mock-api';
 import { ProjectModule } from './modules/admin/dashboards/project/project.module';
 import { SettingsModule } from './modules/common/settings/settings.module';
-import { TranslocoModule } from '@ngneat/transloco';
 import { PlanModule } from './modules/admin/apps/plan/plan.module';
-import { StateModule } from './core/state/state.module';
+import { CoreModule } from './core/core.module';
+import { TranslocoRootModule } from './transloco-root.module';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
-    HttpClientModule,
+    CoreModule,
     AppRoutingModule,
     ProjectModule,
     PlanModule,
     SettingsModule,
-    TranslocoModule,
-    StateModule,
+    TranslocoRootModule,
   ],
   providers: [
     {
@@ -50,9 +47,6 @@ import { StateModule } from './core/state/state.module';
         },
       },
     },
-
-    // Transloco Config
-    provideTransloco(),
 
     // Fuse
     provideAuth(),
