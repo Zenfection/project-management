@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { Setting } from 'app/core/setting/setting.types';
+import { Setting } from 'app/core/models/setting/setting.types';
 import { catchError, map, mergeMap, of } from 'rxjs';
 import { loadSettingSuccess } from './setting.action';
 import * as SettingActions from './setting.action';

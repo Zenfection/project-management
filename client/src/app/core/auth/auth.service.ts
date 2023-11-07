@@ -5,8 +5,7 @@ import { AuthUtils } from 'app/core/auth/auth.utils';
 import { UserService } from 'app/core/user/user.service';
 import { catchError, Observable, of, switchMap, throwError } from 'rxjs';
 import { User } from 'app/core/user/user.types';
-import { SettingsService } from 'app/core/setting/setting.service';
-import { Setting } from 'app/core/setting/setting.types';
+import { Setting } from 'app/core/models/setting/setting.types';
 import { SettingFacade } from '../state/setting/setting.facade';
 
 @Injectable({ providedIn: 'root' })
@@ -16,7 +15,6 @@ export class AuthService {
   constructor(
     private readonly _httpClient: HttpClient,
     private readonly _userService: UserService,
-    private readonly _settingService: SettingsService,
     private readonly _userFacade: UserFacade,
     private readonly _settingFacade: SettingFacade
   ) {}
@@ -104,7 +102,6 @@ export class AuthService {
             scheme: response.setting.scheme,
             layout: response.setting.layout,
           };
-          this._settingService.setting = settingInfo;
           this._settingFacade.loadSettingSuccess(settingInfo);
 
           // Return a new observable with the response
@@ -164,7 +161,6 @@ export class AuthService {
             scheme: response.setting.scheme,
             layout: response.setting.layout,
           };
-          this._settingService.setting = settingInfo;
           this._settingFacade.loadSettingSuccess(settingInfo);
 
           // Return true

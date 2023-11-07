@@ -1,5 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
-import { Setting } from 'app/core/setting/setting.types';
+import { Setting } from 'app/core/models/setting/setting.types';
 import * as SettingActions from './setting.action';
 
 // 1. Define the state interface

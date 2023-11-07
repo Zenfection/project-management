@@ -96,6 +96,7 @@ export class UsersController {
   }
 
   @Patch('')
+  @UseInterceptors(TransformInterceptor)
   async update(
     @ActiveUser() user: ActiveUserData,
     @Body() updateUser: updateUserDto,
@@ -143,6 +144,7 @@ export class UsersController {
 
   @Post('avatar')
   @UseInterceptors(FileInterceptor('file'))
+  @UseInterceptors(TransformInterceptor)
   async uploadAvatar(
     @ActiveUser() user: ActiveUserData,
     @UploadedFile(

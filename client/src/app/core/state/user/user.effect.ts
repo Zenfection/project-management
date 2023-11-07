@@ -49,10 +49,10 @@ export class UserEffects {
         formData.append('file', file);
 
         return this._httpClient.post<User>('api/users/avatar', formData).pipe(
-          map(user => UserActions.updateUserSuccess({ user })),
+          map(user => UserActions.updateAvatarSuccess({ user })),
           catchError(error => {
             console.error(error);
-            return of(UserActions.updateUserFailure({ error }));
+            return of(UserActions.updateAvatarFailure({ error }));
           })
         );
       })

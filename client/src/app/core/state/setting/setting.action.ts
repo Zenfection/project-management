@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { Setting } from 'app/core/setting/setting.types';
+import { Setting } from 'app/core/models/setting/setting.types';
 
 export const loadSetting = createAction('[Setting] Load Setting');
 

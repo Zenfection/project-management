@@ -35,7 +35,6 @@ import { FuseFindByKeyPipe } from '@fuse/pipes/find-by-key/find-by-key.pipe';
 import { TranslocoModule } from '@ngneat/transloco';
 import { UserService } from 'app/core/user/user.service';
 import { User } from 'app/core/user/user.types';
-import { PlanService } from 'app/modules/admin/apps/plan/services/plan.service';
 import {
   BehaviorSubject,
   combineLatest,

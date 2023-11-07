@@ -1,6 +1,5 @@
-import { messages } from './../../../../mock-api/apps/chat/data';
 import { TextFieldModule } from '@angular/cdk/text-field';
-import { AsyncPipe, NgFor, NgIf } from '@angular/common';
+import { NgFor, NgIf } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
@@ -23,9 +22,6 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { FuseCardComponent } from '@fuse/components/card';
 import { TranslocoModule } from '@ngneat/transloco';
-import { SettingsService } from 'app/core/setting/setting.service';
-import { Setting } from 'app/core/setting/setting.types';
-import { UserService } from 'app/core/user/user.service';
 import { User } from 'app/core/user/user.types';
 import { SettingAccountValidator } from './account.validator';
 import { FuseAlertService } from '@fuse/components/alert';
@@ -33,6 +29,7 @@ import { FuseAlertComponent } from '../../../../../@fuse/components/alert/alert.
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { UserFacade } from 'app/core/state/user/user.facade';
 import { Observable } from 'rxjs';
+import { LetDirective } from '@ngrx/component';
 
 @Component({
   selector: 'settings-account',
@@ -45,7 +42,6 @@ import { Observable } from 'rxjs';
     FormsModule,
     ReactiveFormsModule,
     MatFormFieldModule,
-    AsyncPipe,
     MatIconModule,
     MatInputModule,
     MatTooltipModule,
@@ -57,21 +53,19 @@ import { Observable } from 'rxjs';
     NgIf,
     FuseCardComponent,
     FuseAlertComponent,
+    LetDirective,
   ],
 })
 export class SettingsAccountComponent implements OnInit {
   accountForm: UntypedFormGroup;
-  user: User;
   user$: Observable<User> = this._userFacade.user$;
-  setting: Setting;
+  private user: User;
 
   /**
    * Constructor
    */
   constructor(
     private _formBuilder: UntypedFormBuilder,
-    private _userSerivce: UserService,
-    private _settingService: SettingsService,
     private _changeDetectorRef: ChangeDetectorRef,
     private _fuseAlertService: FuseAlertService,
     private readonly _userFacade: UserFacade
@@ -85,12 +79,8 @@ export class SettingsAccountComponent implements OnInit {
    * On init
    */
   ngOnInit(): void {
-    this._userSerivce.user$.subscribe(user => {
+    this._userFacade.user$.subscribe(user => {
       this.user = user;
-    });
-
-    this._settingService.setting$.subscribe(setting => {
-      this.setting = setting;
     });
 
     // Create the form
@@ -162,45 +152,43 @@ export class SettingsAccountComponent implements OnInit {
 
   updateAvatar($event: Event) {
     const file = ($event.target as HTMLInputElement).files[0];
-    // url link
 
-    this._userSerivce.updateAvatar(file).subscribe({
-      next: () => {
-        alert('Updated Avatar');
-        // reload user
-        this._changeDetectorRef.markForCheck();
-      },
-      error: err => {
-        console.error(err.messages);
-      },
-    });
+    this._userFacade.updateAvatar(file);
   }
 
   handleUpdate() {
-    this._userSerivce
-      .update({
-        email: this.accountForm.get('email').value,
-        name: this.accountForm.get('name').value,
-        about: this.accountForm.get('about').value.replaceAll('\n', '-'),
-        phone: this.accountForm.get('phone').value,
-        address: this.accountForm.get('address').value,
-      })
-      .subscribe({
-        next: () => {
-          this._fuseAlertService.show('submit-success');
-          setTimeout(() => {
-            this._fuseAlertService.dismiss('submit-success');
-          }, 3000);
-        },
+    this._userFacade.updateUser({
+      email: this.accountForm.get('email').value,
+      name: this.accountForm.get('name').value,
+      about: this.accountForm.get('about').value.replaceAll('\n', '-'),
+      phone: this.accountForm.get('phone').value,
+      address: this.accountForm.get('address').value,
+    });
 
-        error: err => {
-          console.error(err.messages);
-          this._fuseAlertService.show('submit-error');
+    // this._userSerivce
+    //   .update({
+    //     email: this.accountForm.get('email').value,
+    //     name: this.accountForm.get('name').value,
+    //     about: this.accountForm.get('about').value.replaceAll('\n', '-'),
+    //     phone: this.accountForm.get('phone').value,
+    //     address: this.accountForm.get('address').value,
+    //   })
+    //   .subscribe({
+    //     next: () => {
+    //       this._fuseAlertService.show('submit-success');
+    //       setTimeout(() => {
+    //         this._fuseAlertService.dismiss('submit-success');
+    //       }, 3000);
+    //     },
 
-          setTimeout(() => {
-            this._fuseAlertService.dismiss('submit-error');
-          }, 3000);
-        },
-      });
+    //     error: err => {
+    //       console.error(err.messages);
+    //       this._fuseAlertService.show('submit-error');
+
+    //       setTimeout(() => {
+    //         this._fuseAlertService.dismiss('submit-error');
+    //       }, 3000);
+    //     },
+    //   });
   }
 }

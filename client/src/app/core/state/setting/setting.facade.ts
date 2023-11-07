@@ -1,7 +1,7 @@
 import { loadSettingSuccess, updateSetting } from './setting.action';
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Setting } from 'app/core/setting/setting.types';
+import { Setting } from 'app/core/models/setting/setting.types';
 import { Observable } from 'rxjs';
 import * as fromSetting from './setting.reducer';
 

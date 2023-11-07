@@ -1,11 +1,5 @@
 import { NgClass, NgFor } from '@angular/common';
-import {
-  ChangeDetectorRef,
-  Component,
-  OnDestroy,
-  OnInit,
-  ViewEncapsulation,
-} from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
@@ -15,11 +9,9 @@ import {
   FuseConfig,
   FuseConfigService,
   Scheme,
-  Theme,
   Themes,
 } from '@fuse/services/config';
-import { SettingsService } from 'app/core/setting/setting.service';
-import { Setting } from 'app/core/setting/setting.types';
+import { Setting } from 'app/core/models/setting/setting.types';
 import { SettingFacade } from 'app/core/state/setting/setting.facade';
 
 import { Observable, Subject, takeUntil } from 'rxjs';
@@ -60,46 +52,23 @@ export class SettingsComponent implements OnInit, OnDestroy {
   scheme: 'dark' | 'light' | 'auto';
   theme: string;
   themes: Themes;
-  setting: Setting;
-  setting$: Observable<Setting> = this._settingService.setting$;
+  // setting: Setting;
+  setting$: Observable<Setting> = this._settingFacade.setting$;
   private _unsubscribeAll: Subject<any> = new Subject<any>();
 
   constructor(
     private _router: Router,
     private _fuseConfigService: FuseConfigService,
-    private _settingService: SettingsService,
-    private _settingFacade: SettingFacade,
-    private _changeDetectorRef: ChangeDetectorRef
+    private readonly _settingFacade: SettingFacade
   ) {}
 
   ngOnInit(): void {
-    // Subscribe to config changes
-    // combineLatest([this._fuseConfigService.config$, this._settingService.setting$]).pipe(takeUntil(this._unsubscribeAll)).subscribe(([config, setting]) => {
-
-    //   this.config = config;
-    //   this.config.scheme = setting.scheme
-
-    // })
-
     this._fuseConfigService.config$
       .pipe(takeUntil(this._unsubscribeAll))
       .subscribe((config: FuseConfig) => {
         // Store the config
         this.config = config;
       });
-
-    // Subscribe to setting changes
-    this.setting$.subscribe((setting: Setting) => {
-      this.setting = setting;
-    });
-    // this._settingService.setting$
-    //   .pipe(takeUntil(this._unsubscribeAll))
-    //   .subscribe((setting: Setting) => {
-    //     this.setting = setting;
-
-    //     // Mark for check
-    //     this._changeDetectorRef.markForCheck();
-    //   });
   }
 
   /**
@@ -130,13 +99,7 @@ export class SettingsComponent implements OnInit, OnDestroy {
         queryParamsHandling: 'merge',
       })
       .then(() => {
-        if (!this.setting) return;
-
-        this._settingService
-          .update({
-            layout,
-          })
-          .subscribe();
+        if (!this.setting$) return;
 
         this._settingFacade.updateSetting({ layout });
 
@@ -151,13 +114,8 @@ export class SettingsComponent implements OnInit, OnDestroy {
    * @param scheme
    */
   setScheme(scheme: Scheme): void {
-    if (!this.setting) return;
+    if (!this.setting$) return;
 
-    this._settingService
-      .update({
-        scheme,
-      })
-      .subscribe();
     this._settingFacade.updateSetting({ scheme });
 
     this._fuseConfigService.config = { scheme: scheme as Scheme };
@@ -169,18 +127,12 @@ export class SettingsComponent implements OnInit, OnDestroy {
    * @param theme
    */
   setTheme(theme: string): void {
-    if (!this.setting) return;
+    if (!this.setting$) return;
+
+    this._fuseConfigService.config = { theme };
 
     theme = theme.replace('theme-', '');
 
-    this._settingService
-      .update({
-        theme,
-      })
-      .subscribe();
-
     this._settingFacade.updateSetting({ theme });
-
-    this._fuseConfigService.config = { theme };
   }
 }

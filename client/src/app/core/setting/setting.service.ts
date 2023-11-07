@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable, ReplaySubject, tap } from 'rxjs';
-import { Setting } from './setting.types';
+import { Setting } from '../models/setting/setting.types';
 
 @Injectable({ providedIn: 'root' })
 export class SettingsService {

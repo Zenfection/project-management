@@ -11,7 +11,6 @@ import { provideIcons } from './core/icons/icons.provider';
 import { provideFuse } from '@fuse';
 import { mockApiServices } from './mock-api';
 import { ProjectModule } from './modules/admin/dashboards/project/project.module';
-import { SettingsModule } from './modules/common/settings/settings.module';
 import { PlanModule } from './modules/admin/apps/plan/plan.module';
 import { CoreModule } from './core/core.module';
 import { TranslocoRootModule } from './transloco-root.module';
@@ -24,7 +23,6 @@ import { TranslocoRootModule } from './transloco-root.module';
     AppRoutingModule,
     ProjectModule,
     PlanModule,
-    SettingsModule,
     TranslocoRootModule,
   ],
   providers: [

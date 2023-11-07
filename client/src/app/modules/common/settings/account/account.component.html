@@ -1,6 +1,6 @@
 <div class="w-full max-w-3xl">
   <!-- Form -->
-  <form [formGroup]="accountForm">
+  <form [formGroup]="accountForm" *ngrxLet="user$ as user">
     <!-- Section -->
     <div class="w-full">
       <div class="text-xl" *transloco="let t">

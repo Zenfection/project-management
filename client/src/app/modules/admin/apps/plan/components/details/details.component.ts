@@ -1,12 +1,5 @@
 import { CdkScrollable } from '@angular/cdk/scrolling';
-import {
-  AsyncPipe,
-  DOCUMENT,
-  JsonPipe,
-  NgClass,
-  NgFor,
-  NgIf,
-} from '@angular/common';
+import { DOCUMENT, NgClass, NgFor, NgIf } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
@@ -33,7 +26,6 @@ import {
 import { FuseCardComponent } from '@fuse/components/card';
 import { FuseFindByKeyPipe } from '@fuse/pipes/find-by-key/find-by-key.pipe';
 import { FuseMediaWatcherService } from '@fuse/services/media-watcher';
-import { PlanService } from 'app/modules/admin/apps/plan/services/plan.service';
 import { Plan } from 'app/modules/admin/apps/plan/models/plan.types';
 import { Observable, Subject, takeUntil } from 'rxjs';
 import { RiveCanvas, RiveLinearAnimation } from 'ng-rive';
@@ -44,9 +36,9 @@ import { Category } from '../../models/category.types';
 import { PlanTasks } from '../../models/plan-tasks.types';
 import { PlanTasksService } from '../../services/plan-tasks.service';
 import { PlanCategoriesService } from '../../services/plan-categories.service';
-import { Store } from '@ngrx/store';
 import { PlansFacade } from 'app/core/state/plans/plans.facade';
 import { UserFacade } from 'app/core/state/user/user.facade';
+import { LetDirective } from '@ngrx/component';
 
 @Component({
   selector: 'plan-details',
@@ -61,8 +53,6 @@ import { UserFacade } from 'app/core/state/user/user.facade';
     NgIf,
     NgClass,
     NgFor,
-    AsyncPipe,
-    JsonPipe,
     MatButtonModule,
     MatProgressBarModule,
     MatMenuModule,
@@ -75,6 +65,7 @@ import { UserFacade } from 'app/core/state/user/user.facade';
     RiveLinearAnimation,
     TranslocoModule,
     RouterOutlet,
+    LetDirective,
   ],
 })
 export class PlanDetailsComponent implements OnInit, OnDestroy {
