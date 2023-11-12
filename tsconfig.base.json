@@ -1,0 +1,103 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "esnext",
+    "lib": [
+      "es2020",
+      "dom"
+    ],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@client/auth": [
+        "libs/client/auth/src/index.ts"
+      ],
+      "@client/core-state": [
+        "libs/client/core-state/src/index.ts"
+      ],
+      "@client/core-ui": [
+        "libs/client/core-ui/src/index.ts"
+      ],
+      "@client/shared/interfaces": [
+        "libs/client/shared/interfaces/src/index.ts"
+      ],
+      "@client/ui/auth-ui": [
+        "libs/client/ui/auth-ui/src/index.ts"
+      ],
+      "@client/ui/auth-ui/*": [
+        "libs/client/ui/auth-ui/src/*"
+      ],
+      "@fuse": [
+        "libs/client/fuse/src/index.ts"
+      ],
+      "@fuse/*": [
+        "libs/client/fuse/src/lib/*"
+      ],
+      "@server/cloud/data-access": [
+        "libs/server/cloud/data-access/src/index.ts"
+      ],
+      "@server/cloud/feature": [
+        "libs/server/cloud/feature/src/index.ts"
+      ],
+      "@server/cloud/utils": [
+        "libs/server/cloud/utils/src/index.ts"
+      ],
+      "@server/iam/feature/authentication/data-access": [
+        "libs/server/iam/feature/authentication/data-access/src/index.ts"
+      ],
+      "@server/iam/feature/authentication/feature": [
+        "libs/server/iam/feature/authentication/feature/src/index.ts"
+      ],
+      "@server/iam/feature/authentication/utils": [
+        "libs/server/iam/feature/authentication/utils/src/index.ts"
+      ],
+      "@server/iam/feature/authorization/feature": [
+        "libs/server/iam/feature/authorization/feature/src/index.ts"
+      ],
+      "@server/iam/feature/authorization/utils": [
+        "libs/server/iam/feature/authorization/utils/src/index.ts"
+      ],
+      "@server/iam/utils": [
+        "libs/server/iam/utils/src/index.ts"
+      ],
+      "@server/plans": [
+        "libs/server/plans/src/index.ts"
+      ],
+      "@server/shared/config": [
+        "libs/server/shared/config/src/index.ts"
+      ],
+      "@server/shared/dto": [
+        "libs/server/shared/dto/src/index.ts"
+      ],
+      "@server/shared/entities": [
+        "libs/server/shared/entities/src/index.ts"
+      ],
+      "@server/shared/services": [
+        "libs/server/shared/services/src/index.ts"
+      ],
+      "@server/tasks": [
+        "libs/server/tasks/src/index.ts"
+      ],
+      "@server/users": [
+        "libs/server/users/src/index.ts"
+      ],
+      "@client/shared/services": [
+        "libs/client/shared/services/src/index.ts"
+      ],
+    }
+  },
+  "exclude": [
+    "node_modules",
+    "tmp",
+    "libs/client/fuse/src/lib"
+  ]
+}

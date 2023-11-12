@@ -1,0 +1,31 @@
+{
+  "name": "client-shared-interfaces",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/client/shared/interfaces/src",
+  "prefix": "task-management",
+  "tags": [],
+  "projectType": "library",
+  "targets": {
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": [
+        "{workspaceRoot}/coverage/{projectRoot}"
+      ],
+      "options": {
+        "jestConfig": "libs/client/shared/interfaces/jest.config.ts"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": [
+        "{options.outputFile}"
+      ],
+      "options": {
+        "lintFilePatterns": [
+          "libs/client/shared/interfaces/**/*.ts",
+          "libs/client/shared/interfaces/**/*.html"
+        ]
+      }
+    }
+  }
+}

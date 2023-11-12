@@ -1,0 +1,1 @@
+export * from "./lib/client-core-ui/client-core-ui.component";
