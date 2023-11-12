@@ -12,13 +12,7 @@ import { FuseConfig, FuseConfigService, Scheme } from '@fuse/services/config';
 import { FuseMediaWatcherService } from '@fuse/services/media-watcher';
 import { FusePlatformService } from '@fuse/services/platform';
 import { FUSE_VERSION } from '@fuse/version';
-import {
-  combineLatest,
-  filter,
-  map,
-  Subject,
-  takeUntil,
-} from 'rxjs';
+import { combineLatest, filter, map, Subject, takeUntil } from 'rxjs';
 import { SettingsComponent } from './common/settings/settings.component';
 import { EmptyLayoutComponent } from './layouts/empty/empty.component';
 import { CenteredLayoutComponent } from './layouts/horizontal/centered/centered.component';
@@ -31,6 +25,7 @@ import { CompactLayoutComponent } from './layouts/vertical/compact/compact.compo
 import { DenseLayoutComponent } from './layouts/vertical/dense/dense.component';
 import { FuturisticLayoutComponent } from './layouts/vertical/futuristic/futuristic.component';
 import { ThinLayoutComponent } from './layouts/vertical/thin/thin.component';
+import { SettingFacade } from '@client/core-state';
 
 @Component({
   selector: 'layout',
@@ -72,7 +67,7 @@ export class LayoutComponent implements OnInit, OnDestroy {
     private _fuseConfigService: FuseConfigService,
     private _fuseMediaWatcherService: FuseMediaWatcherService,
     private _fusePlatformService: FusePlatformService,
-    // private _settingSerivce: SettingsService
+    private _settingFacade: SettingFacade,
   ) {}
 
   // -----------------------------------------------------------------------------------------------------
@@ -89,13 +84,13 @@ export class LayoutComponent implements OnInit, OnDestroy {
     // Subscribe to config changes
     this._handleConfigChanges();
 
-    // this._handleSettingChanges();
+    this._handleSettingChanges();
 
     // Subscribe to NavigationEnd event
     this._router.events
       .pipe(
-        filter(event => event instanceof NavigationEnd),
-        takeUntil(this._unsubscribeAll)
+        filter((event) => event instanceof NavigationEnd),
+        takeUntil(this._unsubscribeAll),
       )
       .subscribe(() => {
         // Update the layout
@@ -144,7 +139,7 @@ export class LayoutComponent implements OnInit, OnDestroy {
           }
 
           return options;
-        })
+        }),
       )
       .subscribe((options: { scheme: Scheme; theme: string }) => {
         this.scheme = options.scheme;
@@ -164,21 +159,21 @@ export class LayoutComponent implements OnInit, OnDestroy {
       });
   }
 
-  // private _handleSettingChanges(): void {
-  //   if (this._settingSerivce) {
-  //     combineLatest([
-  //       this._settingSerivce.setting$,
-  //       this._fuseMediaWatcherService.onMediaQueryChange$([
-  //         '(prefers-color-scheme: dark)',
-  //         '(prefers-color-scheme: light)',
-  //       ]),
-  //     ])
-  //       .pipe(takeUntil(this._unsubscribeAll))
-  //       .subscribe(([setting, mql]) => {
-  //         this._updateSettings(setting, mql);
-  //       });
-  //   }
-  // }
+  private _handleSettingChanges(): void {
+    if (this._settingFacade) {
+      combineLatest([
+        this._settingFacade.setting$,
+        this._fuseMediaWatcherService.onMediaQueryChange$([
+          '(prefers-color-scheme: dark)',
+          '(prefers-color-scheme: light)',
+        ]),
+      ])
+        .pipe(takeUntil(this._unsubscribeAll))
+        .subscribe(([setting, mql]) => {
+          this._updateSettings(setting, mql);
+        });
+    }
+  }
 
   private _updateSettings(setting: any, mql: any): void {
     if (setting.scheme !== this.scheme) {
@@ -210,8 +205,8 @@ export class LayoutComponent implements OnInit, OnDestroy {
   private _handleNavigationEnd(): void {
     this._router.events
       .pipe(
-        filter(event => event instanceof NavigationEnd),
-        takeUntil(this._unsubscribeAll)
+        filter((event) => event instanceof NavigationEnd),
+        takeUntil(this._unsubscribeAll),
       )
       .subscribe(() => {
         this._updateLayout();
@@ -222,11 +217,11 @@ export class LayoutComponent implements OnInit, OnDestroy {
     this._renderer2.setAttribute(
       this._document.querySelector('[ng-version]'),
       'fuse-version',
-      FUSE_VERSION
+      FUSE_VERSION,
     );
     this._renderer2.addClass(
       this._document.body,
-      this._fusePlatformService.osName
+      this._fusePlatformService.osName,
     );
   }
 
@@ -270,7 +265,7 @@ export class LayoutComponent implements OnInit, OnDestroy {
     // Also, this will allow overriding the layout in any time so we
     // can have different layouts for different routes.
     const paths = route.pathFromRoot;
-    paths.forEach(path => {
+    paths.forEach((path) => {
       // Check if there is a 'layout' data
       if (
         path.routeConfig &&
@@ -307,7 +302,7 @@ export class LayoutComponent implements OnInit, OnDestroy {
       if (className.startsWith('theme-')) {
         this._document.body.classList.remove(
           className,
-          className.split('-')[1]
+          className.split('-')[1],
         );
       }
     });

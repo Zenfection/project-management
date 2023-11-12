@@ -14,7 +14,6 @@ import {
   FuseVerticalNavigationComponent,
 } from '@fuse/components/navigation';
 import { AvailableLangs, TranslocoService } from '@ngneat/transloco';
-// import { SettingsService } from 'app/core/setting/setting.service';
 import { SettingFacade } from '@client/core-state';
 import { Observable, Subject, take } from 'rxjs';
 import { Setting } from '@client/shared/interfaces';
@@ -45,8 +44,7 @@ export class LanguagesComponent implements OnInit, OnDestroy {
     private _fuseNavigationService: FuseNavigationService,
     private _translocoService: TranslocoService,
     private _settingFacade: SettingFacade,
-  ) {
-  }
+  ) {}
 
   // -----------------------------------------------------------------------------------------------------
   // @ Lifecycle hooks
@@ -66,13 +64,12 @@ export class LanguagesComponent implements OnInit, OnDestroy {
     this.availableLangs = this._translocoService.getAvailableLangs();
 
     // Subscribe to language changes
-    this._translocoService.langChanges$.subscribe((activeLang) =>
-    {
-        // Get the active lang
-        this.activeLang = activeLang;
+    this._translocoService.langChanges$.subscribe((activeLang) => {
+      // Get the active lang
+      this.activeLang = activeLang;
 
-        // Update the navigation
-        this._updateNavigation(activeLang);
+      // Update the navigation
+      this._updateNavigation(activeLang);
     });
 
     // Subscribe to setting changes
@@ -145,7 +142,7 @@ export class LanguagesComponent implements OnInit, OnDestroy {
     // Get the component -> navigation data -> item
     const navComponent =
       this._fuseNavigationService.getComponent<FuseVerticalNavigationComponent>(
-        'mainNavigation'
+        'mainNavigation',
       );
 
     // Return if the navigation component does not exist
@@ -159,13 +156,13 @@ export class LanguagesComponent implements OnInit, OnDestroy {
     // Get the Project dashboard item and update its title
     const projectDashboardItem = this._fuseNavigationService.getItem(
       'dashboards.project',
-      navigation
+      navigation,
     );
     if (projectDashboardItem) {
       this._translocoService
         .selectTranslate('Project')
         .pipe(take(1))
-        .subscribe(translation => {
+        .subscribe((translation) => {
           // Set the title
           projectDashboardItem.title = translation;
 
@@ -177,13 +174,13 @@ export class LanguagesComponent implements OnInit, OnDestroy {
     // Get the Analytics dashboard item and update its title
     const analyticsDashboardItem = this._fuseNavigationService.getItem(
       'dashboards.analytics',
-      navigation
+      navigation,
     );
     if (analyticsDashboardItem) {
       this._translocoService
         .selectTranslate('Analytics')
         .pipe(take(1))
-        .subscribe(translation => {
+        .subscribe((translation) => {
           // Set the title
           analyticsDashboardItem.title = translation;
 

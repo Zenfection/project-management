@@ -1,27 +1,25 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { LuxonDateAdapter } from '@angular/material-luxon-adapter';
 import { DateAdapter, MAT_DATE_FORMATS } from '@angular/material/core';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideFuse } from '@fuse/index';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CoreModule } from './core/core.module';
-import { provideIcons } from './core/icons/icons.provider';
 import { mockApiServices } from './mock-api';
 import { PlanModule } from './modules/admin/apps/plan/plan.module';
 import { ProjectModule } from './modules/admin/dashboards/project/project.module';
-// import { TranslocoRootModule } from './transloco-root.module';
 import { CoreStateModule } from '@client/core-state';
-import { provideAuth } from '@client/auth';
+import { provideAuth } from '@client/core/auth';
 import { TranslocoRootModule } from './transloco-root.module';
+import { provideIcons } from '@client/core/icons';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
-    CoreModule,
+    HttpClientModule,
     CoreStateModule,
     AppRoutingModule,
     ProjectModule,
@@ -49,10 +47,9 @@ import { TranslocoRootModule } from './transloco-root.module';
       },
     },
 
-
-    // Fuse
-    provideAuth(),
     provideIcons(),
+
+    provideAuth(),
     provideFuse({
       mockApi: {
         delay: 0,

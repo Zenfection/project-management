@@ -8,7 +8,7 @@ import {
   withInMemoryScrolling,
   withPreloading,
 } from '@angular/router';
-import { AuthGuard, NoAuthGuard } from '@client/auth';
+import { AuthGuard, NoAuthGuard } from '@client/core/auth';
 import { LayoutComponent } from './layout/layout.component';
 import { initialDataResolver } from './app.resolvers';
 
@@ -38,26 +38,36 @@ const routes: Routes = [
         path: 'confirmation-required',
         loadChildren: () =>
           import(
-            './modules/auth/confirmation-required/confirmation-required.routes'
-          ),
+            './modules/auth/confirmation-required/confirmation-required.module'
+          ).then((m) => m.AuthConfirmationRequiredModule),
       },
       {
         path: 'forgot-password',
         loadChildren: () =>
-          import('./modules/auth/forgot-password/forgot-password.routes'),
+          import('./modules/auth/forgot-password/forgot-password.module').then(
+            (m) => m.AuthForgotPasswordModule,
+          ),
       },
       {
         path: 'reset-password',
         loadChildren: () =>
-          import('./modules/auth/reset-password/reset-password.routes'),
+          import('./modules/auth/reset-password/reset-password.module').then(
+            (m) => m.AuthResetPasswordModule,
+          ),
       },
       {
         path: 'sign-in',
-        loadChildren: () => import('./modules/auth/sign-in/sign-in.routes'),
+        loadChildren: () =>
+          import('./modules/auth/sign-in/sign-in.module').then(
+            (m) => m.AuthSignInModule,
+          ),
       },
       {
         path: 'sign-up',
-        loadChildren: () => import('./modules/auth/sign-up/sign-up.routes'),
+        loadChildren: () =>
+          import('./modules/auth/sign-up/sign-up.module').then(
+            (m) => m.AuthSignUpModule,
+          ),
       },
     ],
   },
@@ -74,12 +84,17 @@ const routes: Routes = [
     children: [
       {
         path: 'sign-out',
-        loadChildren: () => import('./modules/auth/sign-out/sign-out.routes'),
+        loadChildren: () =>
+          import('./modules/auth/sign-out/sign-out.module').then(
+            (m) => m.AuthSignOutModule,
+          ),
       },
       {
         path: 'unlock-session',
         loadChildren: () =>
-          import('./modules/auth/unlock-session/unlock-session.routes'),
+          import('./modules/auth/unlock-session/unlock-session.module').then(
+            (m) => m.AuthUnlockSessionModule,
+          ),
       },
     ],
   },
@@ -115,9 +130,9 @@ const routes: Routes = [
           {
             path: 'project',
             loadChildren: () =>
-              import(
-                './modules/admin/dashboards/project/project.module'
-              ).then(m => m.ProjectModule),
+              import('./modules/admin/dashboards/project/project.module').then(
+                (m) => m.ProjectModule,
+              ),
           },
         ],
       },
@@ -126,7 +141,7 @@ const routes: Routes = [
         path: 'plan',
         loadChildren: () =>
           import('./modules/admin/apps/plan/plan.module').then(
-            m => m.PlanModule
+            (m) => m.PlanModule,
           ),
       },
 
@@ -136,9 +151,9 @@ const routes: Routes = [
           {
             path: '',
             loadChildren: () =>
-              import(
-                './modules/admin/apps/scrumboard/scrumboard.module'
-              ).then(m => m.ScrumBoardModule),
+              import('./modules/admin/apps/scrumboard/scrumboard.module').then(
+                (m) => m.ScrumBoardModule,
+              ),
           },
         ],
       },
@@ -147,7 +162,7 @@ const routes: Routes = [
         path: 'tasks',
         loadChildren: () =>
           import('./modules/admin/apps/tasks/tasks.module').then(
-            m => m.TasksModule
+            (m) => m.TasksModule,
           ),
       },
 
@@ -155,7 +170,7 @@ const routes: Routes = [
         path: 'settings',
         loadChildren: () =>
           import('./modules/common/settings/settings.module').then(
-            m => m.SettingsModule
+            (m) => m.SettingsModule,
           ),
       },
 
@@ -170,7 +185,6 @@ const routes: Routes = [
     ],
   },
 ];
-
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

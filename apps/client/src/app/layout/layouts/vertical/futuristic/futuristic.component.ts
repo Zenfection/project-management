@@ -10,8 +10,8 @@ import {
   FuseVerticalNavigationComponent,
 } from '@fuse/components/navigation';
 import { FuseMediaWatcherService } from '@fuse/services/media-watcher';
-import { NavigationService } from '../../../../core/navigation/navigation.service';
-import { Navigation } from '../../../../core/navigation/navigation.types';
+import { NavigationService } from '@client/core/navigation';
+import { Navigation } from '@client/shared/interfaces';
 import { UserService } from '@client/shared/services';
 import { User } from '@client/shared/interfaces';
 import { LanguagesComponent } from '../../../../layout/common/languages/languages.component';
@@ -60,7 +60,7 @@ export class FuturisticLayoutComponent implements OnInit, OnDestroy {
     private _navigationService: NavigationService,
     private _userService: UserService,
     private _fuseMediaWatcherService: FuseMediaWatcherService,
-    private _fuseNavigationService: FuseNavigationService
+    private _fuseNavigationService: FuseNavigationService,
   ) {}
 
   // -----------------------------------------------------------------------------------------------------
@@ -127,7 +127,7 @@ export class FuturisticLayoutComponent implements OnInit, OnDestroy {
     // Get the navigation
     const navigation =
       this._fuseNavigationService.getComponent<FuseVerticalNavigationComponent>(
-        name
+        name,
       );
 
     if (navigation) {
