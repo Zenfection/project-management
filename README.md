@@ -2,6 +2,10 @@
 
 ## <img src="https://raw.githubusercontent.com/Zenfection/Image/master/2023/09/21-11-17-30-icons8-angularjs.png" title="" alt="icons8-angularjs.png" width="50"> Frontend (Angular 17)
 
+![Graph (2)..png](https://raw.githubusercontent.com/Zenfection/Image/master/2023/11/13-00-07-45-Graph%20(2)..png)
+
+
+
 ## 1. Technology used
 
 | Technology                                                                                                                                                                                              | Description                                                                                                                                                                                                     | Version  | Source                                             |
@@ -26,6 +30,8 @@
 
 ## <img src="https://raw.githubusercontent.com/Zenfection/Image/master/2023/09/21-11-18-12-icons8-nestjs.png" title="" alt="icons8-nestjs.png" width="50"> Backend (NestJS 10)
 
+!['Nx Workspace Graph (1)..png](https://raw.githubusercontent.com/Zenfection/Image/master/2023/11/13-00-06-41-'Nx%20Workspace%20Graph%20(1)..png)
+
 ### 1. Roadmap Evolution
 
 | Status | Task                                                                                     | Commit                                                                                                       | Source                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
@@ -46,8 +52,6 @@
 | ✅      | Build Cloud Storage with Cloudflare R2 and Rate Limiting                                 | [#24a599b](https://github.com/Zenfection/project-management/tree/24a599b3f593fe4f3705c2877edad64e565362b3)   | <img title="" src="https://raw.githubusercontent.com/Zenfection/Image/master/2023/10/23-15-36-56-cloudflare-r2.png" alt="cloudflare-r2.png" width="50">[CloudFlare R2](https://www.cloudflare.com/developer-platform/r2/)<br>[throtter](https://github.com/nestjs/throttler)                                                                                                                                                                                                                                                                                                              |
 | ✅      | Intergated Nx Monorepo                                                                   | [#1b64fab](https://github.com/Zenfection/project-management/commit/1b64fab4be52b3e9d9f3e67af804bfb09ec600c2) | <img src="https://raw.githubusercontent.com/Zenfection/Image/master/2023/11/12-23-41-44-95998d2a-00f2-4e8e-9ebc-0b06de97c37f.webp" title="" alt="95998d2a-00f2-4e8e-9ebc-0b06de97c37f.webp" width="50">[Nx Monorepo](https://nx.dev)                                                                                                                                                                                                                                                                                                                                                      |
 |        | Build SMTP Mailer                                                                        |                                                                                                              |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
-
-
 
 ### 2. Changelog Optimize Code
 
