@@ -34,9 +34,13 @@ import { Plan, User } from '@client/shared/interfaces';
 import { Category } from '../../models/category.types';
 import { PlanTasks } from '../../models/plan-tasks.types';
 import { PlanTasksService } from '../../services/plan-tasks.service';
-import { PlanCategoriesService } from '../../services/plan-categories.service';
-import { UserFacade, PlansFacade  } from '@client/core-state';
+import { UserFacade, PlansFacade } from '@client/core-state';
 import { LetDirective } from '@ngrx/component';
+import {
+  FuseConfirmationConfig,
+  FuseConfirmationService,
+} from '@fuse/services/confirmation';
+import { FuseConfirmationDialogComponent } from '@fuse/services/confirmation/dialog/dialog.component';
 
 @Component({
   selector: 'plan-details',
@@ -70,7 +74,7 @@ export class PlanDetailsComponent implements OnInit, OnDestroy {
   @ViewChild('courseSteps', { static: true }) courseSteps: MatTabGroup;
   @ViewChild('matDrawer', { static: true }) matDrawer: MatDrawer;
 
-  categories: Category[];
+  categories$: Observable<Category[]> = this._plansFacade.categories$;
   plan$: Observable<Plan> = this._plansFacade.selectedPlan$;
   user$: Observable<User> = this._userFacade.user$;
 
@@ -89,13 +93,13 @@ export class PlanDetailsComponent implements OnInit, OnDestroy {
     @Inject(DOCUMENT) private _document: Document,
     private _activatedRoute: ActivatedRoute,
     private _planTaskService: PlanTasksService,
-    private _planCategoriesService: PlanCategoriesService,
     private _changeDetectorRef: ChangeDetectorRef,
     private _elementRef: ElementRef,
     private _router: Router,
     private _fuseMediaWatcherService: FuseMediaWatcherService,
-    private _plansFacade: PlansFacade,
-    private _userFacade: UserFacade
+    private _fuseConfirmationService: FuseConfirmationService,
+    private readonly _plansFacade: PlansFacade,
+    private readonly _userFacade: UserFacade,
   ) {}
 
   // -----------------------------------------------------------------------------------------------------
@@ -106,36 +110,9 @@ export class PlanDetailsComponent implements OnInit, OnDestroy {
    * On init
    */
   ngOnInit(): void {
-    // Get the categories
-    this._planCategoriesService.categories$
-      .pipe(takeUntil(this._unsubscribeAll))
-      .subscribe((categories: Category[]) => {
-        // Get the categories
-        this.categories = categories;
-
-        // Mark for check
-        this._changeDetectorRef.markForCheck();
-      });
-
-    this.plan$.subscribe(plan => {
+    this.plan$.subscribe((plan) => {
       this.allMembers = [plan.owner, ...plan.members];
     });
-
-    // Get the plan
-    // this._planService.plan$
-    //   .pipe(takeUntil(this._unsubscribeAll))
-    //   .subscribe((plan: Plan) => {
-    //     // Get the plan
-    //     this.plan = plan;
-
-    //     this.allMembers = [this.plan.owner, ...this.plan.members];
-
-    //     // Go to step
-    //     // this.goToStep(plan.progress.currentStep);
-
-    //     // Mark for check
-    //     this._changeDetectorRef.markForCheck();
-    //   });
 
     // Get Plan Tasks
     this._planTaskService.planTasks$
@@ -184,8 +161,42 @@ export class PlanDetailsComponent implements OnInit, OnDestroy {
 
   percentCompleteTask(task: PlanTasks): number {
     const percent =
-      (task.todos.filter(todo => todo.isDone).length / task.todos.length) * 100;
+      (task.todos.filter((todo) => todo.isDone).length / task.todos.length) *
+      100;
     return percent;
+  }
+
+  openDeleteConfirmDialog(planId: number): void {
+    const configDialog: FuseConfirmationConfig = {
+      title: 'Delete Plan',
+      message:
+        'Are you sure you want to remove this planpermanently? <span class="font-medium">This action cannot be undone!</span>',
+      icon: {
+        show: true,
+        name: 'duotone:triangle-exclamation',
+        color: 'warn',
+      },
+      actions: {
+        confirm: {
+          show: true,
+          label: 'Remove',
+          color: 'warn',
+        },
+        cancel: {
+          show: true,
+          label: 'Cancel',
+        },
+      },
+      dismissible: true,
+    };
+
+    const dialogRef = this._fuseConfirmationService.open(configDialog);
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result === 'confirmed') {
+        // this._plansFacade.deletePlan(planId);
+      }
+    });
   }
 
   /**

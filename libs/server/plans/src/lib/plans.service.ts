@@ -20,7 +20,16 @@ export class PlansService {
       data: createPlanDto,
     });
 
-    return plan;
+    return this.prismaService.plan.findUnique({
+      where: {
+        id: plan.id,
+      },
+      include: {
+        members: true,
+        owner: true,
+        category: true,
+      },
+    });
   }
 
   findAll(include?: Prisma.PlanInclude): Promise<Plan[]> {

@@ -2,14 +2,14 @@ import { loadUserSuccess, updateAvatar, updateUser } from './user.action';
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { User } from '@client/shared/interfaces';
-import * as fromUser from './user.reducer';
 import { Observable } from 'rxjs';
+import { selectUser } from './user.selector';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserFacade {
-  user$: Observable<User> = this.store.select(fromUser.selectUser);
+  user$: Observable<User> = this.store.select(selectUser);
 
   constructor(private readonly store: Store) {}
 

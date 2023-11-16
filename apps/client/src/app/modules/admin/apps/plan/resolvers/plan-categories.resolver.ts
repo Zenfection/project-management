@@ -1,10 +1,10 @@
 import { inject } from '@angular/core';
 import { ResolveFn } from '@angular/router';
-import { PlanCategoriesService } from '../services/plan-categories.service';
 import { Category } from '../models/category.types';
+import { PlanService } from '../services/plan.service';
 
 export const planCategoriesResolver: ResolveFn<Category[]> = (route, state) => {
-  const planCategoriesService = inject(PlanCategoriesService);
+  const planService = inject(PlanService);
 
-  return planCategoriesService.getCategories();
+  return planService.getCategories();
 };

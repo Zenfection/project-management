@@ -8,6 +8,8 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "importHelpers": true,
+    "strictPropertyInitialization": false,
+    "strictNullChecks": false,
     "target": "es2015",
     "module": "esnext",
     "lib": ["es2020", "dom"],

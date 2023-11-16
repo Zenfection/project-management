@@ -1,30 +1,35 @@
 <div class="absolute inset-0 flex min-w-0 flex-col overflow-hidden">
   <mat-drawer-container
     class="bg-card h-full flex-auto dark:bg-transparent"
-    (backdropClick)="onBackdropClicked()">
+    (backdropClick)="onBackdropClicked()"
+  >
     <mat-drawer
-      class="w-full dark:bg-gray-900 sm:w-128"
+      class="sm:w-128 w-full dark:bg-gray-900"
       [mode]="drawerMode"
       [opened]="false"
       [position]="'end'"
       [disableClose]="true"
-      #matDrawer>
+      #matDrawer
+    >
       <router-outlet></router-outlet>
     </mat-drawer>
 
     <mat-drawer-content class="relative" *ngrxLet="plan$ as plan">
       <div class="absolute end-12 top-2.5 z-20 mr-12 hidden sm:block">
         <fuse-card
-          class="bg-card mt-2 flex w-full max-w-80 cursor-pointer items-center rounded-lg p-2.5 shadow-md transition-all duration-300 hover:dark:bg-hover hover:shadow-2xl">
+          class="bg-card max-w-80 hover:dark:bg-hover mt-2 flex w-full cursor-pointer items-center rounded-lg p-2.5 shadow-md transition-all duration-300 hover:shadow-2xl"
+        >
           <mat-icon
-            class="mr-2 icon-size-6"
-            [svgIcon]="'duotone:square-kanban'"></mat-icon>
+            class="icon-size-6 mr-2"
+            [svgIcon]="'duotone:square-kanban'"
+          ></mat-icon>
           <div class="flex flex-col">
             <div
               class="text-base font-semibold leading-tight"
               [routerLink]="
                 '/scrumboard/plan/2c82225f-2a6c-45d3-b18a-1132712a4234'
-              ">
+              "
+            >
               Open Board
             </div>
           </div>
@@ -34,18 +39,21 @@
         <div
           class="bg-card w-full cursor-pointer rounded-full p-2 shadow-lg transition-all duration-300 hover:rotate-90"
           matRipple
-          [matMenuTriggerFor]="projectsMenu">
+          [matMenuTriggerFor]="projectsMenu"
+        >
           <fuse-card>
             <mat-icon
               class="icon-size-6"
-              [svgIcon]="'duotone:ellipsis'"></mat-icon>
+              [svgIcon]="'duotone:ellipsis'"
+            ></mat-icon>
           </fuse-card>
           <mat-menu #projectsMenu="matMenu" [xPosition]="'before'" class="mt-4">
             <button mat-menu-item class="sm:hidden">
               <div class="flex items-center justify-start gap-3">
                 <mat-icon
-                  class="me-2 block icon-size-5"
-                  [svgIcon]="'duotone:lock'"></mat-icon>
+                  class="icon-size-5 me-2 block"
+                  [svgIcon]="'duotone:lock'"
+                ></mat-icon>
                 <div>
                   <div class="block font-semibold">Board view</div>
                   <div class="text-secondary text-sm">Switch to Board View</div>
@@ -56,8 +64,9 @@
             <button mat-menu-item>
               <div class="flex items-center justify-start gap-3">
                 <mat-icon
-                  class="me-2 block icon-size-5"
-                  [svgIcon]="'duotone:pencil'"></mat-icon>
+                  class="icon-size-5 me-2 block"
+                  [svgIcon]="'duotone:pencil'"
+                ></mat-icon>
                 <div>
                   <div class="block font-semibold">Edit</div>
                   <div class="text-secondary text-sm">Edit this plan</div>
@@ -68,8 +77,9 @@
             <button mat-menu-item>
               <div class="flex items-center justify-start gap-3">
                 <mat-icon
-                  class="me-2 block icon-size-5"
-                  [svgIcon]="'duotone:lock'"></mat-icon>
+                  class="icon-size-5 me-2 block"
+                  [svgIcon]="'duotone:lock'"
+                ></mat-icon>
                 <div>
                   <div class="block font-semibold">Permissions</div>
                   <div class="text-secondary text-sm">Manage permissions</div>
@@ -80,8 +90,9 @@
             <button mat-menu-item>
               <div class="flex items-center justify-start gap-3">
                 <mat-icon
-                  class="me-2 block icon-size-5"
-                  [svgIcon]="'duotone:file'"></mat-icon>
+                  class="icon-size-5 me-2 block"
+                  [svgIcon]="'duotone:file'"
+                ></mat-icon>
                 <div>
                   <div class="block font-semibold">Files</div>
                   <div class="text-secondary text-sm">Manage files</div>
@@ -89,11 +100,12 @@
               </div>
             </button>
             <hr class="my-1 w-full border-t" />
-            <button mat-menu-item>
+            <button mat-menu-item (click)="openDeleteConfirmDialog(plan.id)">
               <div class="flex items-center justify-start gap-3">
                 <mat-icon
-                  class="me-2 block icon-size-5"
-                  [svgIcon]="'duotone:trash'"></mat-icon>
+                  class="icon-size-5 me-2 block"
+                  [svgIcon]="'duotone:trash'"
+                ></mat-icon>
                 <div>
                   <div class="block font-semibold">Deletes</div>
                   <div class="text-secondary text-sm">Delete this project</div>
@@ -110,7 +122,8 @@
           <mat-tab-group
             class="sm:px-2"
             mat-stretch-tabs="false"
-            [animationDuration]="'0'">
+            [animationDuration]="'0'"
+          >
             <!-- Home -->
             <mat-tab label="{{ 'Overview' | transloco }}">
               <ng-template matTabContent>
@@ -119,39 +132,47 @@
                     <fuse-card class="space-y-12 p-10 shadow-lg">
                       <div>
                         <div
-                          class="border-muted-200 dark:border-muted-700 flex flex-col items-center justify-between gap-8 border-b pb-12 sm:flex-row">
-                          <div class="max-w-120">
+                          class="border-muted-200 dark:border-muted-700 flex flex-col items-center justify-between gap-8 border-b pb-12 sm:flex-row"
+                        >
+                          <div class="grow">
                             <!-- Title Plan -->
                             <div class="text-3xl font-semibold leading-10">
                               {{ plan.title }}
                             </div>
                             <!-- Category Plan -->
                             <div
-                              class="text-muted-600 dark:text-muted-400 text-secondary text-xl leading-5">
+                              class="text-muted-600 dark:text-muted-400 text-secondary text-xl leading-5"
+                            >
                               {{ plan.category.title }}
                             </div>
                             <!-- Description Plan -->
                             <div
-                              class="text-muted-400 py-4 text-md font-normal leading-5">
+                              class="text-muted-400 text-md py-4 font-normal leading-5"
+                            >
                               {{ plan.description }}
                             </div>
                             <div
-                              class="flex items-center justify-between gap-2">
+                              class="flex items-center justify-between gap-2"
+                            >
                               <div class="flex items-center justify-center">
                                 <fuse-card
-                                  class="bg-card flex items-center justify-start gap-3 rounded-lg p-3 shadow-md transition-all duration-200 hover:bg-hover">
+                                  class="bg-card hover:bg-hover flex items-center justify-start gap-3 rounded-lg p-3 shadow-md transition-all duration-200"
+                                >
                                   <img
-                                    class="h-8 w-8 flex-0 rounded-full object-cover shadow-sm ring-2 ring-gray-800 ring-offset-1 ring-offset-gray-800"
+                                    class="flex-0 h-8 w-8 rounded-full object-cover shadow-sm ring-2 ring-gray-800 ring-offset-1 ring-offset-gray-800"
                                     [src]="plan.owner.info.avatar"
                                     [matTooltip]="plan.owner.info.name"
-                                    alt="Avatar Owner" />
+                                    alt="Avatar Owner"
+                                  />
                                   <div>
                                     <div
-                                      class="text-base font-medium leading-5">
+                                      class="text-base font-medium leading-5"
+                                    >
                                       {{ plan.owner.info.name }}
                                     </div>
                                     <div
-                                      class="text-secondary text-md font-normal leading-4">
+                                      class="text-secondary text-md font-normal leading-4"
+                                    >
                                       Project owner
                                     </div>
                                   </div>
@@ -159,23 +180,28 @@
                               </div>
                               <div class="px-2">
                                 <div
-                                  class="flex flex-0 items-center -space-x-1.5">
+                                  class="flex-0 flex items-center -space-x-1.5"
+                                >
                                   <div
                                     *ngFor="
                                       let member of plan.members;
                                       let i = index
-                                    ">
+                                    "
+                                  >
                                     <img
                                       *ngIf="i < 2"
-                                      class="h-8 w-8 flex-0 rounded-full object-cover shadow-sm ring-2 ring-gray-800 ring-offset-1 ring-offset-gray-800 transition-all duration-300 hover:-translate-x-2"
+                                      class="flex-0 h-8 w-8 rounded-full object-cover shadow-sm ring-2 ring-gray-800 ring-offset-1 ring-offset-gray-800 transition-all duration-300 hover:-translate-x-2"
                                       [src]="member.info.avatar"
                                       [matTooltip]="member.info.name"
-                                      alt="" />
+                                      alt=""
+                                    />
                                     <div
                                       *ngIf="i === 2"
-                                      class="relative inline-flex h-10 w-10 items-center justify-center overflow-hidden rounded-full bg-gray-200 dark:bg-gray-600">
+                                      class="relative inline-flex h-10 w-10 items-center justify-center overflow-hidden rounded-full bg-gray-200 dark:bg-gray-600"
+                                    >
                                       <span
-                                        class="font-medium text-gray-600 dark:text-gray-300">
+                                        class="font-medium text-gray-600 dark:text-gray-300"
+                                      >
                                         {{ plan.members.length - 2 }}+
                                       </span>
                                     </div>
@@ -188,61 +214,69 @@
                             <canvas riv="work" width="300" height="250">
                               <riv-animation
                                 name="Timeline 1"
-                                play></riv-animation>
+                                play
+                              ></riv-animation>
                             </canvas>
                           </div>
                         </div>
                         <div
-                          class="border-muted-200 dark:border-muted-700 grid gap-4 border-b py-12 sm:grid-cols-4">
+                          class="border-muted-200 dark:border-muted-700 grid gap-4 border-b py-12 sm:grid-cols-4"
+                        >
                           <div>
                             <mat-icon
-                              class="mb-2 text-primary-400 icon-size-6"
-                              [svgIcon]="'duotone:pen-nib'"></mat-icon>
+                              class="text-primary-400 icon-size-6 mb-2"
+                              [svgIcon]="'duotone:pen-nib'"
+                            ></mat-icon>
                             <div class="mb-2 text-base font-medium leading-5">
                               {{ plan.category.title }}
                             </div>
                             <div
-                              class="text-secondary max-w-3/4 text-sm leading-tight">
+                              class="text-secondary max-w-3/4 text-sm leading-tight"
+                            >
                               Lorem, ipsum dolor sit amet consectetur
                               adipisicing elit.
                             </div>
                           </div>
                           <div>
                             <mat-icon
-                              class="mb-2 text-primary-400 icon-size-6"
-                              [svgIcon]="'duotone:hourglass-clock'"></mat-icon>
+                              class="text-primary-400 icon-size-6 mb-2"
+                              [svgIcon]="'duotone:hourglass-clock'"
+                            ></mat-icon>
                             <div class="mb-2 text-base font-medium leading-5">
                               1 tuần Sprint
                             </div>
                             <div
-                              class="text-secondary max-w-3/4 text-sm leading-tight">
+                              class="text-secondary max-w-3/4 text-sm leading-tight"
+                            >
                               Quá trình phát triển sẽ được chia thành các Sprint
                               1 tuần
                             </div>
                           </div>
                           <div>
                             <mat-icon
-                              class="mb-2 text-primary-400 icon-size-6"
-                              [svgIcon]="'duotone:calendar-days'"></mat-icon>
+                              class="text-primary-400 icon-size-6 mb-2"
+                              [svgIcon]="'duotone:calendar-days'"
+                            ></mat-icon>
                             <div class="mb-2 text-base font-medium leading-5">
                               3 Tháng
                             </div>
                             <div
-                              class="text-secondary max-w-3/4 text-sm leading-tight">
+                              class="text-secondary max-w-3/4 text-sm leading-tight"
+                            >
                               Hãy hoàn thành dự án này trong thời gian trên
                             </div>
                           </div>
                           <div>
                             <mat-icon
-                              class="mb-2 text-primary-400 icon-size-6"
-                              [svgIcon]="
-                                'duotone:tent-arrow-down-to-line'
-                              "></mat-icon>
+                              class="text-primary-400 icon-size-6 mb-2"
+                              [svgIcon]="'duotone:tent-arrow-down-to-line'"
+                            ></mat-icon>
                             <div class="mb-2 text-base font-medium leading-5">
                               Cố định
                             </div>
                             <div
-                              class="text-secondary max-w-3/4 text-sm leading-tight">
+                              class="text-secondary max-w-3/4 text-sm leading-tight"
+                            >
                               Chi phí phát triển dự án sẽ được cố định không thể
                               thay đổi
                             </div>
@@ -258,59 +292,73 @@
             <mat-tab label="{{ 'Tasks' | transloco }}">
               <ng-template matTabContent>
                 <div
-                  class="grid w-full min-w-0 grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+                  class="grid w-full min-w-0 grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
+                >
                   <fuse-card
-                    class="flex cursor-pointer flex-col rounded-lg shadow-md hover:border-primary-500 hover:shadow-lg"
-                    *ngFor="let task of planTasks">
+                    class="hover:border-primary-500 flex cursor-pointer flex-col rounded-lg shadow-md hover:shadow-lg"
+                    *ngFor="let task of planTasks"
+                  >
                     <div class="absolute top-0 ml-5 mt-5">
                       <mat-icon
                         *ngIf="task.status === 'OPEN'"
-                        class="shrink-0 text-slate-600 text-opacity-50 icon-size-6"
-                        [svgIcon]="'duotone:circle-plus'"></mat-icon>
+                        class="icon-size-6 shrink-0 text-slate-600 text-opacity-50"
+                        [svgIcon]="'duotone:circle-plus'"
+                      ></mat-icon>
                       <mat-icon
                         *ngIf="task.status === 'IN_PROGRESS'"
-                        class="shrink-0 text-blue-500 icon-size-6"
-                        [svgIcon]="'duotone:circle-up'"></mat-icon>
+                        class="icon-size-6 shrink-0 text-blue-500"
+                        [svgIcon]="'duotone:circle-up'"
+                      ></mat-icon>
                       <mat-icon
                         *ngIf="task.status === 'RESOLVED'"
-                        class="shrink-0 text-orange-600 text-opacity-50 icon-size-6"
-                        [svgIcon]="'duotone:pen-circle'"></mat-icon>
+                        class="icon-size-6 shrink-0 text-orange-600 text-opacity-50"
+                        [svgIcon]="'duotone:pen-circle'"
+                      ></mat-icon>
                       <mat-icon
                         *ngIf="task.status === 'COMPLETED'"
-                        class="shrink-0 text-green-600 text-opacity-50 icon-size-6"
-                        [svgIcon]="'duotone:circle-check'"></mat-icon>
+                        class="icon-size-6 shrink-0 text-green-600 text-opacity-50"
+                        [svgIcon]="'duotone:circle-check'"
+                      ></mat-icon>
                       <mat-icon
                         *ngIf="task.status === 'CLOSED'"
-                        class="shrink-0 text-red-600 text-opacity-50 icon-size-6"
-                        [svgIcon]="'duotone:circle-xmark'"></mat-icon>
+                        class="icon-size-6 shrink-0 text-red-600 text-opacity-50"
+                        [svgIcon]="'duotone:circle-xmark'"
+                      ></mat-icon>
                     </div>
                     <div
                       class="ml-8 flex flex-col items-center p-5 sm:flex-row"
-                      [routerLink]="[task.id]">
+                      [routerLink]="[task.id]"
+                    >
                       <div class="flex flex-col gap-3 sm:flex-row">
                         <div
-                          class="max-w-120 text-center leading-none sm:text-left">
+                          class="max-w-120 text-center leading-none sm:text-left"
+                        >
                           <h4
-                            class="mb-2 font-sans text-lg font-medium leading-tight text-slate-800 dark:text-slate-100">
+                            class="mb-2 font-sans text-lg font-medium leading-tight text-slate-800 dark:text-slate-100"
+                          >
                             {{ task.title }}
                           </h4>
                           <p
-                            class="line-clamp-2 font-sans text-sm leading-4 text-slate-400">
+                            class="line-clamp-2 font-sans text-sm leading-4 text-slate-400"
+                          >
                             {{ task.description }}
                           </p>
                         </div>
                       </div>
                     </div>
                     <div
-                      class="mt-auto flex items-center justify-between gap-2 rounded-b-lg bg-gray-50 px-5 py-3 dark:bg-gray-700/50">
+                      class="mt-auto flex items-center justify-between gap-2 rounded-b-lg bg-gray-50 px-5 py-3 dark:bg-gray-700/50"
+                    >
                       <div class="flex grow items-center gap-2">
                         <div
-                          class="h-7 w-7 overflow-hidden rounded-full border-b-gray-500">
+                          class="h-7 w-7 overflow-hidden rounded-full border-b-gray-500"
+                        >
                           <img
                             class="h-full w-full object-cover"
                             [src]="task.assignee.info.avatar"
                             [matTooltip]="task.assignee.info.name"
-                            alt="Avatar Logo" />
+                            alt="Avatar Logo"
+                          />
                         </div>
                         <!-- <div
                           class="absolute inset-x-0 z-10 -mt-3 h-6"
@@ -321,7 +369,8 @@
                           mode="determinate"
                           class="overflow-hidden rounded-full"
                           [matTooltip]="percentCompleteTask(task) + ' %'"
-                          value="{{ percentCompleteTask(task) }}">
+                          value="{{ percentCompleteTask(task) }}"
+                        >
                         </mat-progress-bar>
                         <!-- process bar -->
                       </div>
@@ -329,13 +378,15 @@
                         <div class="flex items-center gap-1 text-sm">
                           <mat-icon
                             class="icon-size-3.5"
-                            [svgIcon]="'duotone:paperclip'"></mat-icon>
+                            [svgIcon]="'duotone:paperclip'"
+                          ></mat-icon>
                           <span class="font-sans"> 4 </span>
                         </div>
                         <div class="flex items-center gap-1 text-sm">
                           <mat-icon
                             class="icon-size-3.5"
-                            [svgIcon]="'duotone:comment'"></mat-icon>
+                            [svgIcon]="'duotone:comment'"
+                          ></mat-icon>
                           <span class="font-sans"> 3 </span>
                         </div>
                       </div>
@@ -345,10 +396,12 @@
                   <div>
                     <button
                       type="button"
-                      class="group flex h-full w-full items-center justify-center gap-2 rounded-lg border-2 border-dashed border-slate-300 p-6 transition-colors duration-300 hover:border-primary-500 dark:border-slate-800 dark:hover:border-primary-500">
+                      class="hover:border-primary-500 dark:hover:border-primary-500 group flex h-full w-full items-center justify-center gap-2 rounded-lg border-2 border-dashed border-slate-300 p-6 transition-colors duration-300 dark:border-slate-800"
+                    >
                       <span class="block text-center font-sans">
                         <span
-                          class="block text-slate-800 transition-colors duration-300 group-hover:text-primary-500 dark:text-slate-100 dark:group-hover:text-primary-500">
+                          class="group-hover:text-primary-500 dark:group-hover:text-primary-500 block text-slate-800 transition-colors duration-300 dark:text-slate-100"
+                        >
                           Create a new task
                         </span>
                         <span class="text-muted-400 block text-sm">
@@ -366,37 +419,42 @@
                 <span class="inline-flex items-center space-x-2">
                   <span class="">{{ 'Team' | transloco }}</span>
                   <span
-                    class="rounded-full bg-primary-100 px-2 py-1 text-sm text-on-primary-100"
+                    class="bg-primary-100 text-on-primary-100 rounded-full px-2 py-1 text-sm"
                     >{{ allMembers.length }}</span
                   >
                 </span>
               </ng-template>
               <ng-template matTabContent>
                 <div
-                  class="grid w-full min-w-0 grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
+                  class="grid w-full min-w-0 grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5"
+                >
                   <ng-container
-                    *ngFor="let member of allMembers; let i = index">
+                    *ngFor="let member of allMembers; let i = index"
+                  >
                     <div
-                      class="bg-card flex flex-auto flex-col items-center overflow-hidden rounded-2xl shadow transition-all duration-300 ease-in-out hover:shadow-2xl">
+                      class="bg-card flex flex-auto flex-col items-center overflow-hidden rounded-2xl shadow transition-all duration-300 ease-in-out hover:shadow-2xl"
+                    >
                       <!-- Avatar & Info -->
                       <div
-                        class="relative flex w-full flex-auto flex-col p-8 text-center">
+                        class="relative flex w-full flex-auto flex-col p-8 text-center"
+                      >
                         <div class="absolute top-0 mt-4 flex items-center">
                           <ng-container *ngIf="i === 0">
                             <mat-icon
-                              class="text-green-600 icon-size-8"
+                              class="icon-size-8 text-green-600"
                               [svgIcon]="'duotone:badge-check'"
-                              [matTooltip]="
-                                'owner_plan_content' | transloco
-                              "></mat-icon>
+                              [matTooltip]="'owner_plan_content' | transloco"
+                            ></mat-icon>
                           </ng-container>
                         </div>
                         <div
-                          class="mx-auto h-32 w-32 overflow-hidden rounded-full">
+                          class="mx-auto h-32 w-32 overflow-hidden rounded-full"
+                        >
                           <img
                             class="h-full w-full object-cover"
                             [src]="member.info.avatar"
-                            alt="Avatar Logo" />
+                            alt="Avatar Logo"
+                          />
                         </div>
                         <div class="mt-6 font-medium">
                           {{ member.info.name }}
@@ -408,21 +466,25 @@
                       <!-- Email & Phone -->
                       <div class="flex w-full items-center divide-x border-t">
                         <a
-                          class="flex flex-auto items-center justify-center py-4 hover:bg-hover"
+                          class="hover:bg-hover flex flex-auto items-center justify-center py-4"
                           [href]="'mailto:' + member.info.email"
-                          [matTooltip]="member.info.email">
+                          [matTooltip]="member.info.email"
+                        >
                           <mat-icon
                             class="text-hint icon-size-5"
-                            [svgIcon]="'heroicons_solid:envelope'"></mat-icon>
+                            [svgIcon]="'heroicons_solid:envelope'"
+                          ></mat-icon>
                           <span class="ml-2">Email</span>
                         </a>
                         <a
-                          class="flex flex-auto items-center justify-center py-4 hover:bg-hover"
+                          class="hover:bg-hover flex flex-auto items-center justify-center py-4"
                           [href]="'tel:' + member.info.phone"
-                          [matTooltip]="member.info.phone">
+                          [matTooltip]="member.info.phone"
+                        >
                           <mat-icon
                             class="text-hint icon-size-5"
-                            [svgIcon]="'heroicons_solid:phone'">
+                            [svgIcon]="'heroicons_solid:phone'"
+                          >
                           </mat-icon>
                           <span class="ml-2">Call</span>
                         </a>

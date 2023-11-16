@@ -1,28 +1,38 @@
-import { loadPlans, loadPlansSuccess, selectPlan } from './plans.actions';
+import * as PlanAction from './plans.actions';
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Plan } from '@client/shared/interfaces';
+import { Category, CreatePlan, Plan } from '@client/shared/interfaces';
 import { Observable } from 'rxjs';
-import { selectAllPlans, selectSelectedPlan } from './plans.reducer';
+import { Dictionary } from '@ngrx/entity';
+import {
+  selectAllPlans,
+  selectCategories,
+  selectSelectedPlan,
+} from './plans.selector';
 
 @Injectable({
   providedIn: 'root',
 })
 export class PlansFacade {
-  plans$: Observable<Plan[]> = this.store.select(selectAllPlans);
-  selectedPlan$: Observable<Plan | null> = this.store.select(selectSelectedPlan);
+  plans$: Observable<Dictionary<Plan>> = this.store.select(selectAllPlans);
+  categories$: Observable<Category[]> = this.store.select(selectCategories);
+  selectedPlan$: Observable<Plan> = this.store.select(selectSelectedPlan);
 
   constructor(private readonly store: Store) {}
 
-  loadPlans(): void {
-    this.store.dispatch(loadPlans());
+  loadPlansSuccess(plans: Plan[]): void {
+    this.store.dispatch(PlanAction.loadPlansSuccess({ plans }));
   }
 
-  loadPlansSuccess(plans: Plan[]): void {
-    this.store.dispatch(loadPlansSuccess({ plans }));
+  loadCategoriesSuccess(categories: Category[]): void {
+    this.store.dispatch(PlanAction.loadCategoriesSuccess({ categories }));
   }
 
   selectPlan(plan: Plan): void {
-    this.store.dispatch(selectPlan({ plan }));
+    this.store.dispatch(PlanAction.selectPlan({ plan }));
+  }
+
+  createPlan(plan: CreatePlan): void {
+    this.store.dispatch(PlanAction.createPlan({ plan }));
   }
 }

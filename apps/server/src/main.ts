@@ -25,8 +25,8 @@ async function bootstrap() {
   );
 
   const config = new DocumentBuilder()
-    .setTitle('NestJS API')
-    .setDescription('The NestJS API description')
+    .setTitle('CTU Task Management API')
+    .setDescription('The CTU Task Management API description')
     .setVersion('1.0')
     .addTag('nestjs')
     .addBearerAuth()

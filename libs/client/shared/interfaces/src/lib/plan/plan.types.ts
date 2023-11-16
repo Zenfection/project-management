@@ -10,24 +10,23 @@ export interface Plan {
   category: string;
 }
 
-// export interface Course {
-//   id?: string;
-//   title?: string;
-//   slug?: string;
-//   description?: string;
-//   category?: string;
-//   duration?: number;
-//   steps?: {
-//     order?: number;
-//     title?: string;
-//     subtitle?: string;
-//     content?: string;
-//   }[];
-//   totalSteps?: number;
-//   updatedAt?: number;
-//   featured?: boolean;
-//   progress?: {
-//     currentStep?: number;
-//     completed?: number;
-//   };
-// }
+export interface CreatePlan {
+  title: string;
+  slug: string;
+  description: string;
+  owner: {
+    connect: {
+      email: string;
+    };
+  };
+  members: {
+    connect: {
+      email: string;
+    }[];
+  };
+  category: {
+    connect: {
+      slug: string;
+    };
+  };
+}

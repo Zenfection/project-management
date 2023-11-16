@@ -13,7 +13,7 @@ import { PlansService } from './plans.service';
 import { CreatePlanDto } from './dto/create-plan.dto';
 import { UpdatePlanDto } from './dto/update-plan.dto';
 
-import { RoleEntity } from '@server/shared/entities';
+import { RoleEnum } from '@server/shared/entities';
 import { Roles } from '@server/iam/feature/authorization/utils';
 import {
   ActiveUser,
@@ -26,6 +26,7 @@ export class PlansController {
   constructor(private readonly plansService: PlansService) {}
 
   @Post()
+  @Roles(RoleEnum.thu_ky_khoa, RoleEnum.truong_khoa)
   create(@Body() createPlanDto: CreatePlanDto) {
     return this.plansService.create(createPlanDto);
   }
@@ -172,7 +173,9 @@ export class PlansController {
 
     // check if user is member of plan or owner
     if (plan.ownerId !== user.sub) {
-      const member = plan.members.find((member) => member.id === user.sub);
+      const member = plan.members.find(
+        (member: { id: number }) => member.id === user.sub,
+      );
       if (!member) {
         throw new UnauthorizedException('You are not allowed to see this plan');
       }

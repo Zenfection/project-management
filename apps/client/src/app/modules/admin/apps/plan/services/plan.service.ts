@@ -10,38 +10,24 @@ import {
   throwError,
 } from 'rxjs';
 import { PlansFacade } from '@client/core-state';
-import { Plan } from '@client/shared/interfaces';
+import { Category, Member, Plan } from '@client/shared/interfaces';
 
 @Injectable({ providedIn: 'root' })
 export class PlanService {
-  // Private
-  private _plan: BehaviorSubject<Plan | null> = new BehaviorSubject(null);
-  private _plans: BehaviorSubject<Plan[] | null> = new BehaviorSubject(null);
-
   /**
    * Constructor
    */
   constructor(
     private _httpClient: HttpClient,
-    private readonly plansFacade: PlansFacade
+    private readonly plansFacade: PlansFacade,
   ) {}
 
-  // -----------------------------------------------------------------------------------------------------
-  // @ Accessors
-  // -----------------------------------------------------------------------------------------------------
+  private _members: BehaviorSubject<Member[] | null> = new BehaviorSubject(
+    null,
+  );
 
-  /**
-   * Getter for plans
-   */
-  get plans$(): Observable<Plan[]> {
-    return this._plans.asObservable();
-  }
-
-  /**
-   * Getter for plan
-   */
-  get plan$(): Observable<Plan> {
-    return this._plan.asObservable();
+  get members$(): Observable<Member[]> {
+    return this._members.asObservable();
   }
 
   // -----------------------------------------------------------------------------------------------------
@@ -55,9 +41,30 @@ export class PlanService {
     return this._httpClient.get<Plan[]>('api/plans').pipe(
       tap((plans: Plan[]) => {
         this.plansFacade.loadPlansSuccess(plans);
+      }),
+    );
+  }
 
-        this._plans.next(plans);
-      })
+  /**
+   //* Get Members
+   */
+
+  getMembers(): Observable<Member[]> {
+    return this._httpClient.get<Member[]>('api/users/department').pipe(
+      tap((members: Member[]) => {
+        this._members.next(members);
+      }),
+    );
+  }
+
+  /**
+   //* Get categories
+   */
+  getCategories(): Observable<Category[]> {
+    return this._httpClient.get<Category[]>('api/plans/categories').pipe(
+      tap((response: Category[]) => {
+        this.plansFacade.loadCategoriesSuccess(response);
+      }),
     );
   }
 
@@ -66,24 +73,21 @@ export class PlanService {
    */
   getPlanById(id: string): Observable<Plan> {
     return this._httpClient.get<Plan>(`api/plans/${id}`).pipe(
-      map(plan => {
-        this.plansFacade.selectPlan(plan);
-
+      map((plan) => {
         // Return the plan
         return plan;
       }),
-      tap(plan => {
-        this._plan.next(plan);
+      tap((plan) => {
+        this.plansFacade.selectPlan(plan);
       }),
-      switchMap(plan => {
+      switchMap((plan) => {
         if (!plan) {
           return throwError(
-            () => new Error('Could not found plan with id of ' + id + '!')
+            () => new Error('Could not found plan with id of ' + id + '!'),
           );
         }
-
         return of(plan);
-      })
+      }),
     );
   }
 }

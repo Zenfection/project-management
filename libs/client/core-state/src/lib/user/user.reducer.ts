@@ -1,22 +1,13 @@
 import { User } from '@client/shared/interfaces';
 import * as UserActions from './user.action';
-// import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
-import {
-  createFeatureSelector,
-  createReducer,
-  createSelector,
-  on,
-} from '@ngrx/store';
+import { createReducer, on } from '@ngrx/store';
 
 // 1. Define the shape of state
-// export type UserState = EntityState<User>;
 export interface UserState {
   user: User | null;
 }
 
 // 2. Define the initial state
-// export const adapter: EntityAdapter<User> = createEntityAdapter<User>();
-// export const initialState: UserState = adapter.getInitialState();
 export const initialState: UserState = {
   user: null,
 };
@@ -41,11 +32,5 @@ export const userReducer = createReducer<UserState>(
       ...state,
       user: action.user,
     };
-  })
-);
-
-export const selectUserState = createFeatureSelector<UserState>('user');
-export const selectUser = createSelector(
-  selectUserState,
-  (userState: UserState) => userState.user
+  }),
 );

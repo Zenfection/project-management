@@ -10,10 +10,11 @@ import {
 } from 'tailwindcss/colors';
 import { fontFamily as _fontFamily } from 'tailwindcss/defaultTheme';
 const generatePalette = require(
-  resolve(__dirname, '../../libs/client/fuse/src/lib/tailwind/utils/generate-palette')
+  resolve(
+    __dirname,
+    '../../libs/client/fuse/src/lib/tailwind/utils/generate-palette',
+  ),
 );
-
-
 
 /**
  * Custom palettes
@@ -77,7 +78,10 @@ const themes = {
  */
 const config = {
   darkMode: 'class',
-  content: ['apps/client/src/**/*.{html,scss,ts}'],
+  content: [
+    'apps/client/src/**/*.{html,scss,ts}',
+    'libs/client/fuse/src/**/*.{html,scss,ts}',
+  ],
   important: true,
   theme: {
     fontSize: {
@@ -293,9 +297,24 @@ const config = {
   },
   plugins: [
     // Fuse - Tailwind plugins
-    require(resolve(__dirname, '../../libs/client/fuse/src/lib/tailwind/plugins/utilities')),
-    require(resolve(__dirname, '../../libs/client/fuse/src/lib/tailwind/plugins/icon-size')),
-    require(resolve(__dirname, '../../libs/client/fuse/src/lib/tailwind/plugins/theming'))({
+    require(
+      resolve(
+        __dirname,
+        '../../libs/client/fuse/src/lib/tailwind/plugins/utilities',
+      ),
+    ),
+    require(
+      resolve(
+        __dirname,
+        '../../libs/client/fuse/src/lib/tailwind/plugins/icon-size',
+      ),
+    ),
+    require(
+      resolve(
+        __dirname,
+        '../../libs/client/fuse/src/lib/tailwind/plugins/theming',
+      ),
+    )({
       themes,
     }),
 

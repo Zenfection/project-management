@@ -26,12 +26,5 @@ export const settingReducer = createReducer<SettingState>(
       ...state,
       setting: action.setting,
     };
-  })
+  }),
 );
-
-// 4. Define the selectors
-export const selectSettingState = (state: { setting: SettingState }) =>
-  state.setting;
-
-export const selectSetting = (state: { setting: SettingState }) =>
-  state.setting.setting;

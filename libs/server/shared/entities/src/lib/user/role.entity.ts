@@ -2,10 +2,11 @@ import { Role } from '@prisma/client';
 
 export class RoleEntity implements Role {
   name: string;
-
-  constructor(name: string) {
-    this.name = name;
-  }
   id: number;
   description: string;
+}
+
+export enum RoleEnum {
+  thu_ky_khoa = 'THU_KY_KHOA',
+  truong_khoa = 'TRUONG_KHOA',
 }

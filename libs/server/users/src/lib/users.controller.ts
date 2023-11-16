@@ -18,14 +18,13 @@ import {
   updateUserDto,
   updateInfoDto,
 } from '@server/shared/dto';
-import { Roles } from '@server/iam/feature/authorization/utils';
-import { RoleEntity } from '@server/shared/entities';
 import {
   ActiveUser,
   ActiveUserData,
 } from '@server/iam/feature/authentication/utils';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { TransformInterceptor } from '@server/cloud/utils';
+import { MemberResponseInterceptor } from './interceptor/member.interceptor';
 
 @Controller('users')
 export class UsersController {
@@ -36,10 +35,28 @@ export class UsersController {
     return this.usersService.create(createUserDto);
   }
 
-  @Roles(new RoleEntity('ADMIN'))
-  @Get()
-  async findAll() {
-    return this.usersService.findAll();
+  // @Get()
+  // async findAll() {
+  //   return this.usersService.findAll();
+  // }
+
+  @Get('department')
+  @UseInterceptors(MemberResponseInterceptor)
+  async findUserWithDeparment(@ActiveUser() user: ActiveUserData) {
+    const currentUser = await this.usersService.findOne({
+      id: Number(user.sub),
+    });
+    const members = await this.usersService.findFilter({
+      where: {
+        department: currentUser.department,
+      },
+
+      include: {
+        info: true,
+      },
+    });
+
+    return members.filter((member) => member.id !== currentUser.id);
   }
 
   @Get('filter')
@@ -66,7 +83,7 @@ export class UsersController {
   async findInfo(@ActiveUser() user: ActiveUserData) {
     return this.usersService
       .findOne({ id: Number(user.sub) }, { info: true })
-      .then((user: any) => {
+      .then((user) => {
         return user.info;
       });
   }

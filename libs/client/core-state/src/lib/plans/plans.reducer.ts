@@ -1,49 +1,43 @@
+import { EntityAdapter, EntityState, createEntityAdapter } from '@ngrx/entity';
 import * as PlanActions from './plans.actions';
-import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { Plan } from '@client/shared/interfaces';
+import { Category, Plan } from '@client/shared/interfaces';
+import { createReducer, on } from '@ngrx/store';
 
 //1. Define the shape of state
-export interface PlansState {
-  plans: Plan[];
-  selectedPlan: Plan | null;
-  // planTasks: PlanTasks[];
-  // selectTasks: PlanTasks | null;
+export interface PlansState extends EntityState<Plan> {
+  selectedPlan: Plan;
+  categories: Category[];
 }
 
 //2. Define the initial state
-export const initialState: PlansState = {
-  plans: [],
+export const adapter: EntityAdapter<Plan> = createEntityAdapter<Plan>();
+export const initialState: PlansState = adapter.getInitialState({
   selectedPlan: null,
-};
+  categories: [],
+});
 
 //3. Define the reducer function
-export function plansReducer(
-  state: PlansState = initialState,
-  action: any
-): PlansState {
-  switch (action.type) {
-    case PlanActions.loadPlansSuccess.type:
-      return {
-        ...state,
-        plans: action.plans,
-      };
-    case PlanActions.selectPlan.type:
-      return {
-        ...state,
-        selectedPlan: action.plan,
-      };
-    default:
-      return state;
-  }
-}
+export const plansReducer = createReducer(
+  initialState,
+  on(PlanActions.loadPlansSuccess, (state, action): PlansState => {
+    return adapter.setAll(action.plans, state);
+  }),
 
-export const selectPlanState = createFeatureSelector<PlansState>('plans');
-export const selectAllPlans = createSelector(
-  selectPlanState,
-  (planState: PlansState) => planState.plans
-);
+  on(PlanActions.selectPlan, (state, action): PlansState => {
+    return adapter.setOne(action.plan, {
+      ...state,
+      selectedPlan: action.plan,
+    });
+  }),
 
-export const selectSelectedPlan = createSelector(
-  selectPlanState,
-  (planState: PlansState) => planState.selectedPlan
+  on(PlanActions.createPlanSuccess, (state, action): PlansState => {
+    return adapter.addOne(action.plan, state);
+  }),
+
+  on(PlanActions.loadCategoriesSuccess, (state, action): PlansState => {
+    return {
+      ...state,
+      categories: action.categories,
+    };
+  }),
 );

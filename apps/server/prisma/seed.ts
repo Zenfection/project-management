@@ -1,17 +1,15 @@
 import { PrismaClient } from '@prisma/client';
-
-import { dataPosition } from './data/position';
 import { dataUser } from './data/user';
 import { dataPlans } from './data/plan';
 import { dataLabels } from './data/label';
 import { dataPlan } from './data/categories_plan';
 import { dataTask } from './data/task';
+import { dataRole } from './data/role';
 
 const prisma = new PrismaClient();
 
 async function main() {
-  // await createPosition();
-  //   createRole();
+  // await createRole();
   // await createUser();
   // await createCategoriesPlan();
   // await createPlans();
@@ -28,20 +26,19 @@ main()
     process.exit(1);
   });
 
-async function createPosition() {
-  const position = await prisma.position.createMany({
-    data: dataPosition,
+async function createRole() {
+  const role = await prisma.role.createMany({
+    data: dataRole,
     skipDuplicates: true,
   });
+
   console.log(
     '\nCreated ' +
-      position.count +
-      ' position includes: ' +
-      dataPosition.map((item) => item.name).join(', '),
+      role.count +
+      ' role includes: ' +
+      dataRole.map((item) => item.name).join(', '),
   );
 }
-
-const createRole = async () => {};
 
 async function createUser() {
   dataUser.forEach(async (data) => {

@@ -33,7 +33,6 @@ import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { FuseCardComponent } from '@fuse/components/card';
 import { FuseFindByKeyPipe } from '@fuse/pipes/find-by-key/find-by-key.pipe';
 import { TranslocoModule } from '@ngneat/transloco';
-import { UserService } from '@client/shared/services';
 import { User } from '@client/shared/interfaces';
 import {
   BehaviorSubject,
@@ -46,7 +45,10 @@ import {
 import { RiveCanvas, RiveLinearAnimation } from 'ng-rive';
 import { Category } from '../../models/category.types';
 import { Plan } from '../../models/plan.types';
-import { PlanCategoriesService } from '../../services/plan-categories.service';
+import { MatDialog } from '@angular/material/dialog';
+import { PlanNewComponent } from '../new/new.component';
+import { Dictionary } from '@ngrx/entity';
+import { LetDirective } from '@ngrx/component';
 
 @Component({
   selector: 'plan-list',
@@ -78,11 +80,12 @@ import { PlanCategoriesService } from '../../services/plan-categories.service';
     I18nPluralPipe,
     FuseCardComponent,
     TranslocoModule,
+    LetDirective,
   ],
 })
 export class PlanListComponent implements OnInit, OnDestroy {
-  categories: Category[];
-  plans$: Observable<Plan[]> = this._plansFacade.plans$;
+  categories$: Observable<Category[]> = this._plansFacade.categories$;
+  plans$: Observable<Dictionary<Plan>> = this._plansFacade.plans$;
 
   user$: Observable<User> = this._userFacade.user$;
   filteredPlans: Plan[];
@@ -106,9 +109,9 @@ export class PlanListComponent implements OnInit, OnDestroy {
     private _activatedRoute: ActivatedRoute,
     private _changeDetectorRef: ChangeDetectorRef,
     private _router: Router,
-    private _planCategoriesService: PlanCategoriesService,
+    private _matDialog: MatDialog,
     private readonly _plansFacade: PlansFacade,
-    private readonly _userFacade: UserFacade
+    private readonly _userFacade: UserFacade,
   ) {}
 
   // -----------------------------------------------------------------------------------------------------
@@ -119,16 +122,6 @@ export class PlanListComponent implements OnInit, OnDestroy {
    * On init
    */
   ngOnInit(): void {
-    // Get the categories
-    this._planCategoriesService.categories$
-      .pipe(takeUntil(this._unsubscribeAll))
-      .subscribe((categories: Category[]) => {
-        this.categories = categories;
-
-        // Mark for check
-        this._changeDetectorRef.markForCheck();
-      });
-
     // Filter the plans
     combineLatest([
       this.filters.categorySlug$,
@@ -136,24 +129,25 @@ export class PlanListComponent implements OnInit, OnDestroy {
       this.filters.hideCompleted$,
     ]).subscribe(([categorySlug, query, hideCompleted]) => {
       // Reset the filtered plans
-      this.plans$.subscribe(plans => {
-        this.filteredPlans = plans;
+      this.plans$.subscribe((plans) => {
+        this.filteredPlans = Object.values(plans);
+
+        this._changeDetectorRef.markForCheck();
       });
 
       // Filter by category
       if (categorySlug !== 'all') {
         this.filteredPlans = this.filteredPlans.filter(
-          plan => plan.category['slug'] === categorySlug
+          (plan) => plan.category['slug'] === categorySlug,
         );
       }
 
       // Filter by search query
       if (query !== '') {
         this.filteredPlans = this.filteredPlans.filter(
-          plan =>
+          (plan) =>
             plan.title.toLowerCase().includes(query.toLowerCase()) ||
-            plan.description.toLowerCase().includes(query.toLowerCase()) ||
-            plan.category.toLowerCase().includes(query.toLowerCase())
+            plan.description.toLowerCase().includes(query.toLowerCase()),
         );
       }
 
@@ -179,16 +173,25 @@ export class PlanListComponent implements OnInit, OnDestroy {
   // @ Public methods
   // -----------------------------------------------------------------------------------------------------
 
-  ownerPlan(email: string): Observable<boolean> {
+  ownerPlan(email: string) {
     return this.user$.pipe(
-      map(user => {
+      map((user) => {
         return user.email === email;
-      })
+      }),
     );
   }
 
   slideData(data: any, slice: number): any[] {
     return data.slice(0, slice);
+  }
+
+  addNewPlan(): void {
+    this._matDialog.open(PlanNewComponent, {
+      autoFocus: false,
+      data: {
+        plan: null as Plan,
+      },
+    });
   }
 
   /**

@@ -14,7 +14,7 @@ export class AuthService {
     private readonly _httpClient: HttpClient,
     private readonly _userService: UserService,
     private readonly _userFacade: UserFacade,
-    private readonly _settingFacade: SettingFacade
+    private readonly _settingFacade: SettingFacade,
   ) {}
 
   // -----------------------------------------------------------------------------------------------------
@@ -85,7 +85,7 @@ export class AuthService {
             about: response.info.about,
             address: response.info.address,
             phone: response.info.phone,
-            positions: response.positions.map((position: any) => position.name),
+            roles: response.roles.map((role: any) => role.name),
             department: response.department,
           };
 
@@ -104,7 +104,7 @@ export class AuthService {
 
           // Return a new observable with the response
           return of(response);
-        })
+        }),
       );
   }
 
@@ -145,7 +145,7 @@ export class AuthService {
             about: response.info.about,
             address: response.info.address,
             phone: response.info.phone,
-            positions: response.positions.map((position: any) => position.name),
+            roles: response.roles.map((role: any) => role.name),
             department: response.department,
           };
           this._userService.user = userInfo;
@@ -163,7 +163,7 @@ export class AuthService {
 
           // Return true
           return of(true);
-        })
+        }),
       );
   }
 

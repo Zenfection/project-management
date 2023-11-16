@@ -17,8 +17,7 @@ export const dataUser = [
     setting: {
       create: {},
     },
-    roles: {},
-    positions: {
+    roles: {
       connect: [{ name: 'TRUONG_KHOA' }, { name: 'GIANG_VIEN_CHINH' }],
     },
     department: 'CONG_NGHE_PHAN_MEM' as $Enums.Deparment,
@@ -39,8 +38,7 @@ export const dataUser = [
     setting: {
       create: {},
     },
-    roles: {},
-    positions: {
+    roles: {
       connect: [{ name: 'BI_THU_CHI_BO' }, { name: 'PHO_TRUONG_KHOA' }],
     },
     department: 'CONG_NGHE_PHAN_MEM' as $Enums.Deparment,
@@ -61,8 +59,7 @@ export const dataUser = [
     setting: {
       create: {},
     },
-    roles: {},
-    positions: {
+    roles: {
       connect: [{ name: 'GIANG_VIEN_CAO_CAP' }, { name: 'PHO_HIEU_TRUONG' }],
     },
     department: 'CONG_NGHE_PHAN_MEM' as $Enums.Deparment,
@@ -83,8 +80,7 @@ export const dataUser = [
     setting: {
       create: {},
     },
-    roles: {},
-    positions: {
+    roles: {
       connect: [{ name: 'GIANG_VIEN_CHINH' }, { name: 'PHO_CHU_TICH_BCHCĐ' }],
     },
     department: 'CONG_NGHE_PHAN_MEM' as $Enums.Deparment,
@@ -105,8 +101,7 @@ export const dataUser = [
     setting: {
       create: {},
     },
-    roles: {},
-    positions: {
+    roles: {
       connect: [{ name: 'GIANG_VIEN_CHINH' }, { name: 'CHU_TICH_CĐ_KHOA' }],
     },
     department: 'CONG_NGHE_PHAN_MEM' as $Enums.Deparment,
@@ -127,8 +122,7 @@ export const dataUser = [
     setting: {
       create: {},
     },
-    roles: {},
-    positions: {
+    roles: {
       connect: [{ name: 'GIANG_VIEN' }, { name: 'PHO_CHU_TICH_CĐ' }],
     },
     department: 'CONG_NGHE_PHAN_MEM' as $Enums.Deparment,
@@ -148,8 +142,7 @@ export const dataUser = [
     setting: {
       create: {},
     },
-    roles: {},
-    positions: {
+    roles: {
       connect: [{ name: 'GIANG_VIEN' }, { name: 'PHO_GIAM_DOC_TT_CNPM' }],
     },
     department: 'CONG_NGHE_PHAN_MEM' as $Enums.Deparment,
@@ -170,8 +163,7 @@ export const dataUser = [
     setting: {
       create: {},
     },
-    roles: {},
-    positions: {
+    roles: {
       connect: [
         { name: 'GIANG_VIEN' },
         { name: 'TRUONG_BO_PHAN_DAO_TAO_TT_CNPM' },
@@ -195,8 +187,7 @@ export const dataUser = [
     setting: {
       create: {},
     },
-    roles: {},
-    positions: {
+    roles: {
       connect: [{ name: 'GIANG_VIEN' }],
     },
     department: 'CONG_NGHE_PHAN_MEM' as $Enums.Deparment,
@@ -216,8 +207,7 @@ export const dataUser = [
     setting: {
       create: {},
     },
-    roles: {},
-    positions: {
+    roles: {
       connect: [{ name: 'GIANG_VIEN' }, { name: 'PHO_GIAM_DOC_TT_ĐT-TH' }],
     },
     department: 'CONG_NGHE_PHAN_MEM' as $Enums.Deparment,
@@ -238,8 +228,7 @@ export const dataUser = [
     setting: {
       create: {},
     },
-    roles: {},
-    positions: {
+    roles: {
       connect: [{ name: 'GIANG_VIEN' }],
     },
     department: 'CONG_NGHE_PHAN_MEM' as $Enums.Deparment,
@@ -260,8 +249,7 @@ export const dataUser = [
     setting: {
       create: {},
     },
-    roles: {},
-    positions: {
+    roles: {
       connect: [{ name: 'GIANG_VIEN' }],
     },
     department: 'CONG_NGHE_PHAN_MEM' as $Enums.Deparment,
@@ -282,8 +270,7 @@ export const dataUser = [
     setting: {
       create: {},
     },
-    roles: {},
-    positions: {
+    roles: {
       connect: [{ name: 'GIANG_VIEN' }],
     },
     department: 'CONG_NGHE_PHAN_MEM' as $Enums.Deparment,
@@ -304,8 +291,7 @@ export const dataUser = [
     setting: {
       create: {},
     },
-    roles: {},
-    positions: {
+    roles: {
       connect: [{ name: 'GIANG_VIEN' }, { name: 'THU_KY_KHOA' }],
     },
     department: 'CONG_NGHE_PHAN_MEM' as $Enums.Deparment,
@@ -326,8 +312,7 @@ export const dataUser = [
     setting: {
       create: {},
     },
-    roles: {},
-    positions: {
+    roles: {
       connect: [{ name: 'GIANG_VIEN' }],
     },
     department: 'CONG_NGHE_PHAN_MEM' as $Enums.Deparment,
@@ -347,8 +332,7 @@ export const dataUser = [
     setting: {
       create: {},
     },
-    roles: {},
-    positions: {
+    roles: {
       connect: [{ name: 'GIANG_VIEN' }],
     },
     department: 'CONG_NGHE_PHAN_MEM' as $Enums.Deparment,
@@ -369,8 +353,7 @@ export const dataUser = [
     setting: {
       create: {},
     },
-    roles: {},
-    positions: {
+    roles: {
       connect: [{ name: 'GIANG_VIEN_CHINH' }, { name: 'GIANG_VIEN_MOI_GIANG' }],
     },
     department: 'CONG_NGHE_PHAN_MEM' as $Enums.Deparment,
@@ -390,8 +373,7 @@ export const dataUser = [
     setting: {
       create: {},
     },
-    roles: {},
-    positions: {
+    roles: {
       connect: [],
     },
     department: 'CONG_NGHE_PHAN_MEM' as $Enums.Deparment,
@@ -411,8 +393,7 @@ export const dataUser = [
     setting: {
       create: {},
     },
-    roles: {},
-    positions: {
+    roles: {
       connect: { name: 'GIANG_VIEN_TRO_GIANG' },
     },
     department: 'CONG_NGHE_PHAN_MEM' as $Enums.Deparment,

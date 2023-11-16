@@ -1,0 +1,136 @@
+<div class="md:w-160 md:min-w-160 -m-6 flex flex-auto flex-col">
+  <form [formGroup]="planForm" class="px-4 py-10 sm:p-8 md:mx-0">
+    <div class="mx-auto max-w-md">
+      <div class="flex items-center gap-4">
+        <div
+          class="bg-primary-500/20 text-primary-500 flex h-14 w-14 shrink-0 items-center justify-center rounded-full font-sans text-2xl"
+        >
+          <mat-icon
+            class="icon-size-8"
+            [svgIcon]="'duotone:rectangle-history-circle-plus'"
+          ></mat-icon>
+        </div>
+        <div class="block text-xl font-semibold text-gray-700">
+          <span class="text-xl font-medium leading-6">Create a plan</span>
+        </div>
+      </div>
+    </div>
+    <!-- Title -->
+
+    <div class="my-3 flex w-full items-center justify-center gap-4 px-8">
+      <div class="grow">
+        <mat-form-field class="w-full" [subscriptSizing]="'dynamic'">
+          <mat-label>Title</mat-label>
+          <mat-icon
+            class="icon-size-5"
+            [svgIcon]="'duotone:heading'"
+            matPrefix
+          ></mat-icon>
+          <input [formControlName]="'title'" matInput placeholder="Title" />
+        </mat-form-field>
+        <mat-error class="px-8" *ngIf="require('title')">
+          <span> Title không được để trống </span>
+        </mat-error>
+      </div>
+      <div class="flex-none">
+        <mat-form-field
+          class="fuse-mat-dense w-full"
+          [subscriptSizing]="'dynamic'"
+        >
+          <mat-label>Category</mat-label>
+          <mat-select [formControlName]="'category'" class="py-3">
+            @for (category of allCategory; track category) {
+              <mat-option [value]="category.slug">{{
+                category.title
+              }}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <!-- Description -->
+    <mat-form-field class="my-3 w-full px-8" [subscriptSizing]="'dynamic'">
+      <mat-label>Description</mat-label>
+      <mat-icon
+        class="icon-size-5"
+        [svgIcon]="'duotone:bars-sort'"
+        matPrefix
+      ></mat-icon>
+      <textarea
+        [formControlName]="'description'"
+        matInput
+        placeholder="Description"
+      ></textarea>
+      <mat-hint align="end">{{
+        this.planForm.get('description').value.length
+      }}</mat-hint>
+    </mat-form-field>
+
+    <mat-error class="px-8" *ngIf="require('description')">
+      <span> Description không được để trống </span>
+    </mat-error>
+
+    <!-- Members -->
+    <mat-form-field class="my-3 w-full px-8" [subscriptSizing]="'dynamic'">
+      <mat-label>Particular</mat-label>
+      <mat-icon
+        class="icon-size-5 mr-4"
+        [svgIcon]="'duotone:user-group'"
+      ></mat-icon>
+      <mat-chip-grid #chipGrid aria-label="Member selection">
+        @for (member of members; track member) {
+          <mat-chip-row (removed)="remove(member.info.name)">
+            {{ member.info.name }}
+            <button
+              type="button"
+              matChipRemove
+              [attr.aria-label]="'remove ' + member"
+            >
+              <mat-icon>cancel</mat-icon>
+            </button>
+          </mat-chip-row>
+        }
+      </mat-chip-grid>
+      <input
+        placeholder="Add Member..."
+        #memberInput
+        [formControlName]="'members'"
+        [matChipInputFor]="chipGrid"
+        [matAutocomplete]="auto"
+        [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+        matInput
+      />
+      <mat-autocomplete
+        #auto="matAutocomplete"
+        (optionSelected)="selected($event)"
+      >
+        @for (member of filteredMembers | async; track member) {
+          <mat-option [value]="member">{{ member.info.name }}</mat-option>
+        }
+      </mat-autocomplete>
+    </mat-form-field>
+
+    <!-- Divider -->
+    <div class="mb-10 mt-11 border-t"></div>
+    <!-- Actions -->
+    <div class="flex items-center justify-end">
+      <button mat-stroked-button type="button" (click)="closeNewPlan()">
+        {{ 'Cancel' | transloco }}
+      </button>
+      <button
+        class="ml-4"
+        mat-flat-button
+        type="button"
+        [color]="'primary'"
+        [disabled]="planForm.invalid"
+        (click)="handleSubmit()"
+      >
+        {{ 'Submit' | transloco }}
+      </button>
+    </div>
+  </form>
+  <!-- <ng-container *ngIf="plan$ | async as plan">
+
+  </ng-container> -->
+</div>

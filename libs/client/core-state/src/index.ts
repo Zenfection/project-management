@@ -1,10 +1,4 @@
-
-import {
-  ActionReducer,
-  ActionReducerMap,
-  MetaReducer,
-  createSelector,
-} from '@ngrx/store';
+import { ActionReducer, ActionReducerMap, MetaReducer } from '@ngrx/store';
 import * as fromPlans from './lib/plans/plans.reducer';
 import * as fromUser from './lib/user/user.reducer';
 import * as fromSetting from './lib/setting/setting.reducer';
@@ -25,16 +19,6 @@ export interface AppState {
 }
 
 export const selectAppState = (state: AppState) => state;
-
-export const selectPlansState = createSelector(
-  selectAppState,
-  (state: AppState) => state.plans
-);
-
-export const selectUserState = createSelector(
-  selectAppState,
-  (state: AppState) => state.user
-);
 
 export const logger: MetaReducer<AppState> =
   (reducer: ActionReducer<AppState>) => (state, action) => {

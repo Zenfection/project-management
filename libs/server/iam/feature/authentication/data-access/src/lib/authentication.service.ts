@@ -42,7 +42,7 @@ export class AuthenticationService {
 
     const user = await this.userService.findOne(
       { email },
-      { roles: true, info: true, setting: true, positions: true },
+      { roles: true, info: true, setting: true },
     );
 
     if (!user) throw new ConflictException('Email not exists');
@@ -70,27 +70,30 @@ export class AuthenticationService {
 
   async signInWithToken(signInWithToken: SignInWithTokenDto) {
     const { accessToken } = signInWithToken;
-    const { sub } = await this.jwtService.verifyAsync<ActiveUserData>(
-      accessToken,
-      {
-        secret: this.jwtConfiguration.secret,
-        audience: this.jwtConfiguration.audience,
-        issuer: this.jwtConfiguration.issuer,
-      },
-    );
+    try {
+      const { sub } = await this.jwtService.verifyAsync<ActiveUserData>(
+        accessToken,
+        {
+          secret: this.jwtConfiguration.secret,
+          audience: this.jwtConfiguration.audience,
+          issuer: this.jwtConfiguration.issuer,
+        },
+      );
 
-    const user = await this.userService.findOne(
-      { id: sub },
-      { info: true, setting: true, positions: true },
-    );
+      const user = await this.userService.findOne(
+        { id: sub },
+        { info: true, setting: true, roles: true },
+      );
 
-    if (!user) throw new UnauthorizedException('User not found');
+      if (!user) throw new UnauthorizedException('User not found');
 
-    // return ...user.info but map userID to id
-    return {
-      ...user,
-      password: undefined,
-    };
+      return {
+        ...user,
+        password: undefined,
+      };
+    } catch (error) {
+      throw new UnauthorizedException('Invalid access token');
+    }
   }
 
   async signUp(signUpDto: SignUpDto) {

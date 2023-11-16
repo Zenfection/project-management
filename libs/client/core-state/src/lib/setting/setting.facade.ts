@@ -3,16 +3,13 @@ import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Setting } from '@client/shared/interfaces';
 import { Observable } from 'rxjs';
-import * as fromSetting from './setting.reducer';
-
+import { selectSetting } from './setting.selector';
 @Injectable({
   providedIn: 'root',
 })
 export class SettingFacade {
-  setting$: Observable<Setting> = this.store.select(fromSetting.selectSetting);
-  constructor(private readonly store: Store) {
-
-  }
+  setting$: Observable<Setting> = this.store.select(selectSetting);
+  constructor(private readonly store: Store) {}
 
   loadSettingSuccess(setting: Setting): void {
     this.store.dispatch(loadSettingSuccess({ setting }));

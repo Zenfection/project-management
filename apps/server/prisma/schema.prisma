@@ -119,7 +119,6 @@ model User {
   roles        Role[]
   tasks        Task[]
   activities   Activity[]
-  positions    Position[]
   department   Deparment?
   ownedPlans   Plan[]     @relation("PlanOwner")
   memberPlans  Plan[]     @relation("PlanMembers")
@@ -137,15 +136,6 @@ enum Deparment {
   KHOA_HOC_MAY_TINH
   MANG_MAY_TINH_VA_TRUYEN_THONG
   TRUYEN_THONG_DA_PHUONG_TIEN
-}
-
-model Position {
-  id    Int    @id @default(autoincrement()) @map("position_id")
-  name  String @unique
-  users User[]
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
 }
 
 model Info {
