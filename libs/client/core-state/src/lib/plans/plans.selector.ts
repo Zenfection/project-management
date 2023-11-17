@@ -9,10 +9,15 @@ export const selectAllPlans = createSelector(
 
 export const selectSelectedPlan = createSelector(
   selectPlanState,
-  (planState: PlansState) => planState.selectedPlan,
+  (planState: PlansState) => planState.entities[planState.selectedPlanId],
 );
 
 export const selectCategories = createSelector(
   selectPlanState,
   (planState: PlansState) => planState.categories,
+);
+
+export const selectPlanId = createSelector(
+  selectPlanState,
+  (planState: PlansState) => planState.selectedPlanId,
 );

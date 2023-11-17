@@ -22,6 +22,7 @@
     "Tasks": "Tasks",
     "Team": "Thành Viên Nhóm",
     "Detail Task": "Chi Tiết Tác Vụ",
+    "Update": "Cập Nhật",
 
     "you-have": "Bạn có",
     "and": "và",
@@ -31,6 +32,13 @@
     "update_error": "Cập nhật thất bại vì ",
     "search_by_title_or_description": "Tìm kiếm bằng tiêu đề / mô tả",
     "owner_plan_content": "Bạn là chủ dự án này",
+
+
+    "plan": {
+      "edit-plan": "Chỉnh sửa kế hoạch",
+      "create-plan": "Tạo mới kế hoạch",
+      "delete-plan": "Xoá kế hoạch"
+    },
 
     "settings": {
       "account": {

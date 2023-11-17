@@ -5,14 +5,14 @@ import { createReducer, on } from '@ngrx/store';
 
 //1. Define the shape of state
 export interface PlansState extends EntityState<Plan> {
-  selectedPlan: Plan;
+  selectedPlanId: number;
   categories: Category[];
 }
 
 //2. Define the initial state
 export const adapter: EntityAdapter<Plan> = createEntityAdapter<Plan>();
 export const initialState: PlansState = adapter.getInitialState({
-  selectedPlan: null,
+  selectedPlanId: null,
   categories: [],
 });
 
@@ -26,7 +26,7 @@ export const plansReducer = createReducer(
   on(PlanActions.selectPlan, (state, action): PlansState => {
     return adapter.setOne(action.plan, {
       ...state,
-      selectedPlan: action.plan,
+      selectedPlanId: action.plan.id,
     });
   }),
 
@@ -39,5 +39,16 @@ export const plansReducer = createReducer(
       ...state,
       categories: action.categories,
     };
+  }),
+
+  on(PlanActions.updatePlanSuccess, (state, action): PlansState => {
+    return adapter.updateOne(
+      { id: action.plan.id, changes: action.plan },
+      state,
+    );
+  }),
+
+  on(PlanActions.deletePlanSuccess, (state, action): PlansState => {
+    return adapter.removeOne(action.plan.id, state);
   }),
 );

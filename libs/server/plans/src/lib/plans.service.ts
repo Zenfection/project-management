@@ -71,17 +71,22 @@ export class PlansService {
   update(params: {
     where: Prisma.PlanWhereUniqueInput;
     data: UpdatePlanDto;
+    include?: Prisma.PlanInclude;
   }): Promise<Plan> {
-    const { where, data } = params;
-    console.log(data);
+    const { where, data, include } = params;
+
     this.checkEmptyData(data);
+
     return this.prismaService.plan.update({
       where,
       data,
+      include,
     });
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} plan`;
+  remove(where: Prisma.PlanWhereUniqueInput): Promise<Plan> {
+    return this.prismaService.plan.delete({
+      where,
+    });
   }
 }

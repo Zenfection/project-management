@@ -185,6 +185,7 @@ export class PlansController {
   }
 
   @Patch(':id')
+  @UseInterceptors(TransformInterceptor)
   async update(
     @Param('id') id: string,
     @ActiveUser() user: ActiveUserData,
@@ -193,6 +194,7 @@ export class PlansController {
     const plan = await this.plansService.findOne({
       id: Number(id),
     });
+
     if (plan.ownerId !== user.sub) {
       throw new UnauthorizedException(
         'You are not allowed to update this plan',
@@ -202,6 +204,19 @@ export class PlansController {
     const result = await this.plansService.update({
       where: { id: Number(id) },
       data: updatePlanDto,
+      include: {
+        members: {
+          include: {
+            info: true,
+          },
+        },
+        owner: {
+          include: {
+            info: true,
+          },
+        },
+        category: true,
+      },
     });
 
     return result;
@@ -209,6 +224,8 @@ export class PlansController {
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.plansService.remove(+id);
+    return this.plansService.remove({
+      id: Number(id),
+    });
   }
 }

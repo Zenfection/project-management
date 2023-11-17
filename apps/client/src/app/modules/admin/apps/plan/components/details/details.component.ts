@@ -26,7 +26,7 @@ import {
 import { FuseCardComponent } from '@fuse/components/card';
 import { FuseFindByKeyPipe } from '@fuse/pipes/find-by-key/find-by-key.pipe';
 import { FuseMediaWatcherService } from '@fuse/services/media-watcher';
-import { Observable, Subject, takeUntil } from 'rxjs';
+import { Observable, Subject, map, takeUntil } from 'rxjs';
 import { RiveCanvas, RiveLinearAnimation } from 'ng-rive';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { TranslocoModule } from '@ngneat/transloco';
@@ -40,7 +40,9 @@ import {
   FuseConfirmationConfig,
   FuseConfirmationService,
 } from '@fuse/services/confirmation';
-import { FuseConfirmationDialogComponent } from '@fuse/services/confirmation/dialog/dialog.component';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { PlanNewComponent } from '../new/new.component';
+import { cloneDeep } from 'lodash-es';
 
 @Component({
   selector: 'plan-details',
@@ -56,6 +58,7 @@ import { FuseConfirmationDialogComponent } from '@fuse/services/confirmation/dia
     NgClass,
     NgFor,
     MatButtonModule,
+    MatDialogModule,
     MatProgressBarModule,
     MatMenuModule,
     MatTooltipModule,
@@ -98,6 +101,7 @@ export class PlanDetailsComponent implements OnInit, OnDestroy {
     private _router: Router,
     private _fuseMediaWatcherService: FuseMediaWatcherService,
     private _fuseConfirmationService: FuseConfirmationService,
+    private _matDialog: MatDialog,
     private readonly _plansFacade: PlansFacade,
     private readonly _userFacade: UserFacade,
   ) {}
@@ -154,9 +158,12 @@ export class PlanDetailsComponent implements OnInit, OnDestroy {
   // -----------------------------------------------------------------------------------------------------
   // @ Public methods
   // -----------------------------------------------------------------------------------------------------
-  ownerPlan(email: string): boolean {
-    // return this.user.email === email;
-    return true;
+  ownerPlan(email: string) {
+    return this.user$.pipe(
+      map((user) => {
+        return user.email === email;
+      }),
+    );
   }
 
   percentCompleteTask(task: PlanTasks): number {
@@ -166,7 +173,16 @@ export class PlanDetailsComponent implements OnInit, OnDestroy {
     return percent;
   }
 
-  openDeleteConfirmDialog(planId: number): void {
+  editFormDialog(plan: Plan): void {
+    this._matDialog.open(PlanNewComponent, {
+      autoFocus: false,
+      data: {
+        plan: cloneDeep(plan),
+      },
+    });
+  }
+
+  openDeleteConfirmDialog(): void {
     const configDialog: FuseConfirmationConfig = {
       title: 'Delete Plan',
       message:
@@ -194,7 +210,7 @@ export class PlanDetailsComponent implements OnInit, OnDestroy {
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result === 'confirmed') {
-        // this._plansFacade.deletePlan(planId);
+        this._plansFacade.deletePlan();
       }
     });
   }

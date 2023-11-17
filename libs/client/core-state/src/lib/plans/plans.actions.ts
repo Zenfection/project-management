@@ -1,5 +1,10 @@
 import { createAction, props } from '@ngrx/store';
-import { Category, CreatePlan, Plan } from '@client/shared/interfaces';
+import {
+  Category,
+  CreatePlan,
+  Plan,
+  UpdatePlan,
+} from '@client/shared/interfaces';
 
 export const loadPlansSuccess = createAction(
   '[Plan] Load Plans Success',
@@ -29,4 +34,31 @@ export const selectPlan = createAction(
 export const loadCategoriesSuccess = createAction(
   '[Plan] Load Categories Success',
   props<{ categories: Category[] }>(),
+);
+
+export const updatePlan = createAction(
+  '[Plan] Update Plan',
+  props<{ plan: UpdatePlan }>(),
+);
+
+export const updatePlanSuccess = createAction(
+  '[Plan] Update Plan Success',
+  props<{ plan: Plan }>(),
+);
+
+export const updatePlanFailure = createAction(
+  '[Plan] Update Plan Failure',
+  props<{ error: { message: string } }>(),
+);
+
+export const deletePlan = createAction('[Plan] Delete Plan');
+
+export const deletePlanSuccess = createAction(
+  '[Plan] Delete Plan Success',
+  props<{ plan: Plan }>(),
+);
+
+export const deletePlanFailure = createAction(
+  '[Plan] Delete Plan Failure',
+  props<{ error: { message: string } }>(),
 );

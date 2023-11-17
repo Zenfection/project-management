@@ -6,6 +6,7 @@ import {
   ChangeDetectorRef,
   Component,
   ElementRef,
+  Inject,
   OnDestroy,
   OnInit,
   ViewChild,
@@ -20,12 +21,22 @@ import {
 } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatRippleModule } from '@angular/material/core';
-import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import {
+  MAT_DIALOG_DATA,
+  MatDialog,
+  MatDialogModule,
+} from '@angular/material/dialog';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
-import { Category, CreatePlan, Member, Plan } from '@client/shared/interfaces';
+import {
+  Category,
+  CreatePlan,
+  Member,
+  Plan,
+  UpdatePlan,
+} from '@client/shared/interfaces';
 import { TranslocoModule } from '@ngneat/transloco';
 import {
   Observable,
@@ -75,12 +86,12 @@ import { MatSelectModule } from '@angular/material/select';
 })
 export class PlanNewComponent implements OnInit, OnDestroy, AfterContentInit {
   currentEmail: string;
-  plan$: Observable<Plan>;
   planForm: UntypedFormGroup;
   allMembers: Member[];
   members: Member[] = [];
   filteredMembers: Observable<Member[]>;
   allCategory: Category[];
+  plan: Plan;
 
   readonly separatorKeysCodes = [ENTER, COMMA] as const;
 
@@ -90,38 +101,55 @@ export class PlanNewComponent implements OnInit, OnDestroy, AfterContentInit {
   private _unsubscribeAll: Subject<any> = new Subject<any>();
 
   constructor(
+    @Inject(MAT_DIALOG_DATA) private _data: { plan: Plan },
     private _matDialog: MatDialog,
     private _formBuilder: FormBuilder,
     private _changeDetectorRef: ChangeDetectorRef,
     private readonly _plansFacade: PlansFacade,
     private readonly _userFacade: UserFacade,
     private readonly _planService: PlanService,
-  ) {}
+  ) {
+    this.plan = this._data.plan;
+  }
 
   ngOnInit(): void {
+    // Edit Form
+    if (this._data.plan) {
+      this.members = this.plan.members;
+      this.planForm = this._formBuilder.group({
+        title: [this.plan.title || '', Validators.required],
+        description: [this.plan.description || '', Validators.required],
+        category: [this.plan.category['slug'] || '', Validators.required],
+        members: [this.members, Validators.required],
+      });
+    } else {
+      // Add Form
+      this.planForm = this._formBuilder.group({
+        title: ['', Validators.required],
+        description: ['', Validators.required],
+        category: ['', Validators.required],
+        members: [this.members, Validators.required],
+      });
+    }
+
     // Create Plan From
-    this.planForm = this._formBuilder.group({
-      title: ['', Validators.required, Validators.minLength(3)],
-      description: ['', Validators.required],
-      category: ['', Validators.required],
-      members: [this.members, Validators.required],
-    });
 
     //get members
     combineLatest([
       this._planService.getMembers(),
       this._plansFacade.categories$,
-    ]).subscribe(([members, categories]) => {
-      this.allMembers = members;
-      this.allCategory = categories;
-    });
+      this._userFacade.user$,
+    ]).subscribe(([members, categories, user]) => {
+      this.allMembers = members.filter(
+        (member) =>
+          !this.members.some(
+            (selectedMember) => selectedMember.id === member.id,
+          ),
+      );
 
-    //get current user email
-    this._userFacade.user$
-      .pipe(map((user) => user.email))
-      .subscribe((email) => {
-        this.currentEmail = email;
-      });
+      this.allCategory = categories;
+      this.currentEmail = user.email;
+    });
   }
 
   ngAfterContentInit() {
@@ -129,6 +157,7 @@ export class PlanNewComponent implements OnInit, OnDestroy, AfterContentInit {
       startWith(null),
       debounceTime(500),
       map((member: string | null) => {
+        //remove member from this._filter
         return this._filter(member);
       }),
     );
@@ -227,6 +256,40 @@ export class PlanNewComponent implements OnInit, OnDestroy, AfterContentInit {
     this._matDialog.closeAll();
 
     this.planForm.reset();
+  }
+
+  handUpdate(): void {
+    const dataPlan: UpdatePlan = {
+      title: this.planForm.get('title').value,
+      description: this.planForm.get('description').value,
+      slug: this.planForm
+        .get('title')
+        .value.toLowerCase()
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .replace(/ /g, '-'),
+      category: {
+        connect: {
+          slug: this.planForm.get('category').value,
+        },
+      },
+      owner: {
+        connect: {
+          email: this.currentEmail,
+        },
+      },
+      members: {
+        set: [],
+        connect: this.members.map((member) => {
+          return { email: member.info.email };
+        }),
+      },
+    };
+    // transfer dataPlan to json
+
+    this._plansFacade.updatePlan(dataPlan);
+    this._changeDetectorRef.detectChanges();
+    this._matDialog.closeAll();
   }
 
   //? Validate From

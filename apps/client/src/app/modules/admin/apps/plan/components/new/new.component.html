@@ -11,7 +11,10 @@
           ></mat-icon>
         </div>
         <div class="block text-xl font-semibold text-gray-700">
-          <span class="text-xl font-medium leading-6">Create a plan</span>
+          <div class="text-xl font-medium leading-6">
+            <span *ngIf="plan">{{ 'plan.edit-plan' | transloco }}</span>
+            <span *ngIf="!plan">{{ 'plan.create-plan' | transloco }}</span>
+          </div>
         </div>
       </div>
     </div>
@@ -119,6 +122,7 @@
         {{ 'Cancel' | transloco }}
       </button>
       <button
+        *ngIf="!plan; else updateButton"
         class="ml-4"
         mat-flat-button
         type="button"
@@ -130,6 +134,19 @@
       </button>
     </div>
   </form>
+
+  <ng-template #updateButton>
+    <button
+      class="ml-4"
+      mat-flat-button
+      type="button"
+      [color]="'primary'"
+      [disabled]="planForm.invalid"
+      (click)="handUpdate()"
+    >
+      {{ 'Update' | transloco }}
+    </button>
+  </ng-template>
   <!-- <ng-container *ngIf="plan$ | async as plan">
 
   </ng-container> -->

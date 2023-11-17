@@ -1,7 +1,12 @@
 import * as PlanAction from './plans.actions';
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Category, CreatePlan, Plan } from '@client/shared/interfaces';
+import {
+  Category,
+  CreatePlan,
+  Plan,
+  UpdatePlan,
+} from '@client/shared/interfaces';
 import { Observable } from 'rxjs';
 import { Dictionary } from '@ngrx/entity';
 import {
@@ -34,5 +39,13 @@ export class PlansFacade {
 
   createPlan(plan: CreatePlan): void {
     this.store.dispatch(PlanAction.createPlan({ plan }));
+  }
+
+  updatePlan(plan: UpdatePlan): void {
+    this.store.dispatch(PlanAction.updatePlan({ plan }));
+  }
+
+  deletePlan(): void {
+    this.store.dispatch(PlanAction.deletePlan());
   }
 }

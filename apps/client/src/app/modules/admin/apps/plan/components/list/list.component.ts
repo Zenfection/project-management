@@ -34,14 +34,7 @@ import { FuseCardComponent } from '@fuse/components/card';
 import { FuseFindByKeyPipe } from '@fuse/pipes/find-by-key/find-by-key.pipe';
 import { TranslocoModule } from '@ngneat/transloco';
 import { User } from '@client/shared/interfaces';
-import {
-  BehaviorSubject,
-  combineLatest,
-  map,
-  Observable,
-  Subject,
-  takeUntil,
-} from 'rxjs';
+import { BehaviorSubject, combineLatest, map, Observable, Subject } from 'rxjs';
 import { RiveCanvas, RiveLinearAnimation } from 'ng-rive';
 import { Category } from '../../models/category.types';
 import { Plan } from '../../models/plan.types';
@@ -86,7 +79,6 @@ import { LetDirective } from '@ngrx/component';
 export class PlanListComponent implements OnInit, OnDestroy {
   categories$: Observable<Category[]> = this._plansFacade.categories$;
   plans$: Observable<Dictionary<Plan>> = this._plansFacade.plans$;
-
   user$: Observable<User> = this._userFacade.user$;
   filteredPlans: Plan[];
 

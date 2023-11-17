@@ -9,7 +9,6 @@
     "Cancel": "Cancel",
     "Submit": "Submit",
 
-
     "Messages": "Messages",
     "Settings": "Settings",
     "Logout": "Log out",
@@ -23,6 +22,7 @@
     "Tasks": "Tasks",
     "Team": "Team",
     "Detail Task": "Detail Task",
+    "Update": "Update",
 
 
     "you-have": "You have",
@@ -33,6 +33,12 @@
     "update_error": "Update failed because ",
     "search_by_title_or_description": "Search by title or description",
     "owner_plan_content": "You are the owner of this plan",
+
+    "plan": {
+      "edit-plan": "Edit Plan",
+      "create-plan": "Create Plan",
+      "delete-plan": "Delete Plan"
+    },
 
 
     "settings": {

@@ -61,7 +61,7 @@
               </div>
             </button>
             <hr class="my-1 w-full border-t sm:hidden" />
-            <button mat-menu-item>
+            <button type="button" mat-menu-item (click)="editFormDialog(plan)">
               <div class="flex items-center justify-start gap-3">
                 <mat-icon
                   class="icon-size-5 me-2 block"
@@ -100,7 +100,7 @@
               </div>
             </button>
             <hr class="my-1 w-full border-t" />
-            <button mat-menu-item (click)="openDeleteConfirmDialog(plan.id)">
+            <button mat-menu-item (click)="openDeleteConfirmDialog()">
               <div class="flex items-center justify-start gap-3">
                 <mat-icon
                   class="icon-size-5 me-2 block"

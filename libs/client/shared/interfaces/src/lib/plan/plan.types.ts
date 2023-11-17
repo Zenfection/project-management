@@ -30,3 +30,12 @@ export interface CreatePlan {
     };
   };
 }
+
+export interface UpdatePlan extends Partial<CreatePlan> {
+  members: {
+    set: [];
+    connect: {
+      email: string;
+    }[];
+  };
+}
