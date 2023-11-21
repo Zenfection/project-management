@@ -8,7 +8,6 @@ import {
   UpdatePlan,
 } from '@client/shared/interfaces';
 import { Observable } from 'rxjs';
-import { Dictionary } from '@ngrx/entity';
 import {
   selectAllPlans,
   selectCategories,
@@ -19,7 +18,7 @@ import {
   providedIn: 'root',
 })
 export class PlansFacade {
-  plans$: Observable<Dictionary<Plan>> = this.store.select(selectAllPlans);
+  plans$: Observable<Plan[]> = this.store.select(selectAllPlans);
   categories$: Observable<Category[]> = this.store.select(selectCategories);
   selectedPlan$: Observable<Plan> = this.store.select(selectSelectedPlan);
 

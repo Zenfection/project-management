@@ -127,6 +127,7 @@
                   <mat-checkbox
                     class="flex items-center"
                     [color]="'primary'"
+                    [disabled]="disbaleTodo"
                     [(ngModel)]="todo.isDone"
                     (change)="updateTodoOnTask(todo, task)"
                   ></mat-checkbox>

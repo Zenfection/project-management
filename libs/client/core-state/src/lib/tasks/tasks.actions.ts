@@ -14,7 +14,7 @@ export const selectTask = createAction(
 //! Update
 export const updateTask = createAction(
   '[TASKS] Update Tasks',
-  props<{ tasks: UpdateTask }>(),
+  props<{ task: UpdateTask }>(),
 );
 export const updateTaskSuccess = createAction(
   '[TASKS] Update Tasks Success',
@@ -23,6 +23,12 @@ export const updateTaskSuccess = createAction(
 export const updateTasksFailure = createAction(
   '[TASKS] Update Tasks Failure',
   props<{ error: { message: string } }>(),
+);
+
+//! Update Temp Todo
+export const updateTodoSuccess = createAction(
+  '[TASKS] Update Temporary Task',
+  props<{ task: Task }>(),
 );
 
 //! Delete

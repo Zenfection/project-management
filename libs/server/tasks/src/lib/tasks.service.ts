@@ -83,6 +83,14 @@ export class TasksService {
     });
   }
 
+  updateMany(params: { where: Prisma.TaskWhereInput; data: UpdateTaskDto }) {
+    const { where, data } = params;
+    return this.prismaService.task.updateMany({
+      where,
+      data,
+    });
+  }
+
   // remove(id: number) {
   //   return `This action removes a #${id} task`;
   // }

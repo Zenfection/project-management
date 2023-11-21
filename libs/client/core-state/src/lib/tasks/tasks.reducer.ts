@@ -26,10 +26,22 @@ export const tasksReducer = createReducer(
     selectedTaskId,
   })),
 
-  on(TasksActions.updateTaskSuccess, (state, { task }) =>
-    adapter.updateOne(
-      { id: task.id, changes: task },
-      { ...state, selectedTaskId: null },
-    ),
-  ),
+  on(TasksActions.updateTaskSuccess, (state, action): TasksState => {
+    return adapter.updateOne(
+      {
+        id: action.task.id,
+        changes: {
+          todos: action.task.todos,
+        },
+      },
+      state,
+    );
+  }),
+
+  on(TasksActions.updateTodoSuccess, (state, action) => {
+    return adapter.updateOne(
+      { id: action.task.id, changes: action.task },
+      state,
+    );
+  }),
 );

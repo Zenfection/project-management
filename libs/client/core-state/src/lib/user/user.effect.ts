@@ -65,7 +65,6 @@ export class UserEffects {
         return this._httpClient.post<User>('api/users/avatar', formData).pipe(
           map((user) => UserActions.updateAvatarSuccess({ user })),
           tap((user) => {
-            console.log(user);
             this._snackbar.open('Upload avatar successfully.', 'Close', {
               duration: 3000,
             });

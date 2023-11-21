@@ -38,7 +38,6 @@ import { BehaviorSubject, combineLatest, map, Observable, Subject } from 'rxjs';
 import { RiveCanvas, RiveLinearAnimation } from 'ng-rive';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { PlanNewComponent } from '../new/new.component';
-import { Dictionary } from '@ngrx/entity';
 import { LetDirective } from '@ngrx/component';
 
 @Component({
@@ -77,7 +76,7 @@ import { LetDirective } from '@ngrx/component';
 })
 export class PlanListComponent implements OnInit, OnDestroy {
   categories$: Observable<Category[]> = this._plansFacade.categories$;
-  plans$: Observable<Dictionary<Plan>> = this._plansFacade.plans$;
+  plans$: Observable<Plan[]> = this._plansFacade.plans$;
   user$: Observable<User> = this._userFacade.user$;
   filteredPlans: Plan[];
 
@@ -119,10 +118,8 @@ export class PlanListComponent implements OnInit, OnDestroy {
       this.filters.query$,
       this.filters.hideCompleted$,
     ]).subscribe(([categorySlug, query, hideCompleted]) => {
-      // Reset the filtered plans
       this.plans$.subscribe((plans) => {
-        this.filteredPlans = Object.values(plans);
-
+        this.filteredPlans = plans;
         this._changeDetectorRef.markForCheck();
       });
 

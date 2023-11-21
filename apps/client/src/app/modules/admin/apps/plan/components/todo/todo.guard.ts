@@ -4,6 +4,8 @@ import {
   RouterStateSnapshot,
 } from '@angular/router';
 import { PlanTodoComponent } from './todo.component';
+import { inject } from '@angular/core';
+import { TasksFacade } from '@client/core-state';
 
 export const TodoGuardCanDeactivate: CanDeactivateFn<unknown> = (
   component: PlanTodoComponent,
@@ -32,5 +34,7 @@ export const TodoGuardCanDeactivate: CanDeactivateFn<unknown> = (
   }
 
   // otherwise, close the drawer first, and then navigate
-  return component.closeDrawer().then(() => true);
+  return component.closeDrawer().then(() => {
+    return true;
+  });
 };

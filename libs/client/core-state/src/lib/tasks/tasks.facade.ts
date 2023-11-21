@@ -2,16 +2,15 @@ import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { TasksState } from './tasks.reducer';
 import { Observable } from 'rxjs';
-import { Task } from '@client/shared/interfaces';
+import { Task, UpdateTask } from '@client/shared/interfaces';
 import { selectAllTasks, selectSelectedTask } from './tasks.selector';
-import { Dictionary } from '@ngrx/entity';
 import * as TasksActions from './tasks.actions';
 
 @Injectable({
   providedIn: 'root',
 })
 export class TasksFacade {
-  tasks$: Observable<Dictionary<Task>> = this.store.select(selectAllTasks);
+  tasks$: Observable<Task[]> = this.store.select(selectAllTasks);
   selectedTask$: Observable<Task> = this.store.select(selectSelectedTask);
 
   constructor(private readonly store: Store<TasksState>) {}
@@ -22,6 +21,14 @@ export class TasksFacade {
 
   selectTask(selectedTaskId: number): void {
     this.store.dispatch(TasksActions.selectTask({ selectedTaskId }));
+  }
+
+  updateTask(task: UpdateTask): void {
+    this.store.dispatch(TasksActions.updateTask({ task }));
+  }
+
+  updateTodoSuccess(task: Task): void {
+    this.store.dispatch(TasksActions.updateTodoSuccess({ task }));
   }
 
   deleteTaskSuccess(id: number): void {

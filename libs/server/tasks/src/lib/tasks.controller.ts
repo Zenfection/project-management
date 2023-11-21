@@ -19,6 +19,7 @@ import {
   ActiveUserData,
 } from '@server/iam/feature/authentication/utils';
 import { UpdateTaskDto } from './dto/update-task.dto';
+import { AvatarInterceptor } from '@server/cloud/utils';
 
 @Controller('tasks')
 export class TasksController {
@@ -71,6 +72,7 @@ export class TasksController {
   }
 
   @Patch(':id')
+  @UseInterceptors(AvatarInterceptor)
   async updateTask(
     @Param('id') id: string,
     @ActiveUser() user: ActiveUserData,
@@ -79,10 +81,12 @@ export class TasksController {
     // if (await this.tasksService.checkPermission(user.email, Number(id))) {
     //   throw new UnauthorizedException('Permission denied');
     // }
-
     return this.tasksService.update({ id: Number(id) }, updateTaskDto, {
       labels: true,
       todos: true,
+      assignee: {
+        include: { info: true },
+      },
     });
   }
 }

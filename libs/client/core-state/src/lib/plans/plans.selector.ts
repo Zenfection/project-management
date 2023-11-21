@@ -1,11 +1,10 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { PlansState } from './plans.reducer';
+import { PlansState, adapter } from './plans.reducer';
+
+const { selectAll } = adapter.getSelectors();
 
 export const selectPlanState = createFeatureSelector<PlansState>('plans');
-export const selectAllPlans = createSelector(
-  selectPlanState,
-  (planState: PlansState) => planState.entities,
-);
+export const selectAllPlans = createSelector(selectPlanState, selectAll);
 
 export const selectSelectedPlan = createSelector(
   selectPlanState,

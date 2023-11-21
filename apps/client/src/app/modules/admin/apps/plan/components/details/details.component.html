@@ -300,7 +300,7 @@
                 >
                   <fuse-card
                     class="hover:border-primary-500 flex cursor-pointer flex-col rounded-lg shadow-md hover:shadow-lg"
-                    *ngFor="let task of planTasks"
+                    *ngFor="let task of tasks$ | ngrxPush"
                   >
                     <div class="absolute top-0 ml-5 mt-5">
                       <mat-icon
@@ -367,8 +367,8 @@
                         <mat-progress-bar
                           mode="determinate"
                           class="overflow-hidden rounded-full"
-                          [matTooltip]="percentCompleteTask(task) + ' %'"
-                          value="{{ percentCompleteTask(task) }}"
+                          [matTooltip]="percentCompleteTask(task.id) | async"
+                          [value]="percentCompleteTask(task.id) | async"
                         >
                         </mat-progress-bar>
                         <!-- process bar -->

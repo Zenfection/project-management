@@ -22,10 +22,27 @@ export interface Task {
   todos?: Todo[];
 }
 
-export interface CreateTask {}
+export interface CreateTask {
+  title: string;
+  description: string;
+  dueDate: string | Date;
+  status: 'OPEN' | 'IN_PROGRESS' | 'RESOLVED' | 'COMPLETED' | 'CLOSED';
+  assignee: {
+    connect: {
+      email: string;
+    };
+  };
+  plan: {
+    connect: {
+      id: number;
+    };
+  };
+  order: number;
+  priority?: number;
+}
 
 export interface UpdateTask extends Partial<CreateTask> {
-  todo?: {
+  todos?: {
     update: {
       where: Prisma.TodoWhereUniqueInput;
       data: Prisma.TodoUpdateInput;

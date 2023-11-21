@@ -9,6 +9,7 @@ import {
 } from '@angular/core';
 import {
   BehaviorSubject,
+  EMPTY,
   Observable,
   Subject,
   combineLatest,
@@ -46,8 +47,9 @@ import { MatDividerModule } from '@angular/material/divider';
 import { PlansFacade, TasksFacade, UserFacade } from '@client/core-state';
 import { LetDirective } from '@ngrx/component';
 import { FormsModule } from '@angular/forms';
-import { Task, Todo, UpdatePlan } from '@client/shared/interfaces';
-import { clone, cloneDeep } from 'lodash-es';
+import { Task, Todo, UpdateTask } from '@client/shared/interfaces';
+import { cloneDeep } from 'lodash-es';
+import { T } from '@angular/cdk/keycodes';
 
 @Component({
   selector: 'plan-todo',
@@ -88,6 +90,9 @@ export class PlanTodoComponent implements OnInit, OnDestroy, AfterViewInit {
 
   task$: BehaviorSubject<Task> = new BehaviorSubject<Task>(null);
   taskChanged: Subject<Task> = new Subject<Task>();
+  todoChanged: Subject<Todo> = new Subject<Todo>();
+
+  disbaleTodo: boolean = false;
 
   private _tagsPanelOverlayRef: OverlayRef;
   private _unsubscribeAll: Subject<any> = new Subject<any>();
@@ -108,28 +113,35 @@ export class PlanTodoComponent implements OnInit, OnDestroy, AfterViewInit {
       .pipe(
         takeUntil(this._unsubscribeAll),
         debounceTime(500),
-        switchMap((task) => {
-          const dataUpdatePlan: UpdatePlan = {
+        tap((task) => {
+          // this._tasksFacade.updateTask(task);
+        }),
+      )
+      .subscribe();
+
+    this.todoChanged
+      .pipe(
+        takeUntil(this._unsubscribeAll),
+        tap((todo) => {
+          const dataUpdate: UpdateTask = {
             todos: {
               update: {
                 where: {
-                  id: task.id,
+                  id: todo.id,
                 },
                 data: {
-                  isDone: task.todos['isDone'],
+                  isDone: todo.isDone,
+                  content: todo.content,
                 },
               },
             },
           };
-          return of(dataUpdatePlan);
-        }),
-        tap((dataUpdatePlan) => {
-          // this._planFacade.updatePlan(dataUpdatePlan);
-          console.log(dataUpdatePlan);
+          console.log('Gửi');
+          this._tasksFacade.updateTask(dataUpdate);
         }),
       )
       .subscribe(() => {
-        this._changeDetectorRef.markForCheck();
+        this.disbaleTodo = false;
       });
   }
 
@@ -201,11 +213,13 @@ export class PlanTodoComponent implements OnInit, OnDestroy, AfterViewInit {
 
   updateTodoOnTask(todo: Todo, task: Task) {
     if (task.id) {
-      this.taskChanged.next(task);
-    }
+      // const index = task.todos.findIndex((t) => t.id === todo.id);
+      // task.todos[index] = todo;
 
-    // Trigger change detection
-    this._changeDetectorRef.detectChanges();
+      // this.taskChanged.next(task);
+      // this.disbaleTodo = true;
+      this.todoChanged.next(todo);
+    }
   }
 
   /**

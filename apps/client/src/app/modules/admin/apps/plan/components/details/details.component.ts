@@ -6,6 +6,7 @@ import {
   NgClass,
   NgFor,
   NgIf,
+  PercentPipe,
 } from '@angular/common';
 import {
   ChangeDetectionStrategy,
@@ -47,7 +48,6 @@ import {
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { PlanNewComponent } from '../new/new.component';
 import { cloneDeep } from 'lodash-es';
-import { Dictionary } from '@ngrx/entity';
 
 @Component({
   selector: 'plan-details',
@@ -77,6 +77,7 @@ import { Dictionary } from '@ngrx/entity';
     RouterOutlet,
     AsyncPipe,
     LetDirective,
+    PercentPipe,
     PushPipe,
     KeyValuePipe,
   ],
@@ -90,8 +91,7 @@ export class PlanDetailsComponent implements OnInit, OnDestroy {
   user$: Observable<User> = this._userFacade.user$;
 
   user: User;
-  planTasks$: Observable<Dictionary<Task>> = this._tasksFacade.tasks$;
-  planTasks: Task[];
+  tasks$: Observable<Task[]> = this._tasksFacade.tasks$;
 
   currentStep = 0;
   drawerMode: 'over' | 'side' = 'side';
@@ -126,10 +126,6 @@ export class PlanDetailsComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.plan$.subscribe((plan) => {
       this.allMembers = [plan.owner, ...plan.members];
-    });
-
-    this.planTasks$.subscribe((tasks) => {
-      this.planTasks = Object.values(tasks);
     });
 
     // Subscribe to media changes
@@ -183,11 +179,17 @@ export class PlanDetailsComponent implements OnInit, OnDestroy {
     );
   }
 
-  percentCompleteTask(task: Task): number {
-    const percent =
-      (task.todos.filter((todo) => todo.isDone).length / task.todos.length) *
-      100;
-    return percent;
+  percentCompleteTask(taskId: number): Observable<number> {
+    return this.tasks$.pipe(
+      map((tasks) => {
+        const task = tasks.find((task) => task.id === taskId);
+        const percent =
+          (task.todos.filter((todo) => todo.isDone).length /
+            task.todos.length) *
+          100;
+        return percent;
+      }),
+    );
   }
 
   editFormDialog(plan: Plan): void {
