@@ -87,10 +87,7 @@ export class AuthenticationService {
 
       if (!user) throw new UnauthorizedException('User not found');
 
-      return {
-        ...user,
-        password: undefined,
-      };
+      return user;
     } catch (error) {
       throw new UnauthorizedException('Invalid access token');
     }

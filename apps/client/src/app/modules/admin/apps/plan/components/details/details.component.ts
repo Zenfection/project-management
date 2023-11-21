@@ -1,5 +1,12 @@
 import { CdkScrollable } from '@angular/cdk/scrolling';
-import { DOCUMENT, NgClass, NgFor, NgIf } from '@angular/common';
+import {
+  AsyncPipe,
+  DOCUMENT,
+  KeyValuePipe,
+  NgClass,
+  NgFor,
+  NgIf,
+} from '@angular/common';
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
@@ -26,16 +33,13 @@ import {
 import { FuseCardComponent } from '@fuse/components/card';
 import { FuseFindByKeyPipe } from '@fuse/pipes/find-by-key/find-by-key.pipe';
 import { FuseMediaWatcherService } from '@fuse/services/media-watcher';
-import { Observable, Subject, map, takeUntil } from 'rxjs';
+import { Observable, Subject, combineLatest, map, takeUntil } from 'rxjs';
 import { RiveCanvas, RiveLinearAnimation } from 'ng-rive';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { TranslocoModule } from '@ngneat/transloco';
-import { Plan, User } from '@client/shared/interfaces';
-import { Category } from '../../models/category.types';
-import { PlanTasks } from '../../models/plan-tasks.types';
-import { PlanTasksService } from '../../services/plan-tasks.service';
-import { UserFacade, PlansFacade } from '@client/core-state';
-import { LetDirective } from '@ngrx/component';
+import { Category, Plan, Task, User } from '@client/shared/interfaces';
+import { UserFacade, PlansFacade, TasksFacade } from '@client/core-state';
+import { LetDirective, PushPipe } from '@ngrx/component';
 import {
   FuseConfirmationConfig,
   FuseConfirmationService,
@@ -43,6 +47,7 @@ import {
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { PlanNewComponent } from '../new/new.component';
 import { cloneDeep } from 'lodash-es';
+import { Dictionary } from '@ngrx/entity';
 
 @Component({
   selector: 'plan-details',
@@ -70,7 +75,10 @@ import { cloneDeep } from 'lodash-es';
     RiveLinearAnimation,
     TranslocoModule,
     RouterOutlet,
+    AsyncPipe,
     LetDirective,
+    PushPipe,
+    KeyValuePipe,
   ],
 })
 export class PlanDetailsComponent implements OnInit, OnDestroy {
@@ -82,7 +90,9 @@ export class PlanDetailsComponent implements OnInit, OnDestroy {
   user$: Observable<User> = this._userFacade.user$;
 
   user: User;
-  planTasks: PlanTasks[];
+  planTasks$: Observable<Dictionary<Task>> = this._tasksFacade.tasks$;
+  planTasks: Task[];
+
   currentStep = 0;
   drawerMode: 'over' | 'side' = 'side';
   drawerOpened = true;
@@ -95,7 +105,6 @@ export class PlanDetailsComponent implements OnInit, OnDestroy {
   constructor(
     @Inject(DOCUMENT) private _document: Document,
     private _activatedRoute: ActivatedRoute,
-    private _planTaskService: PlanTasksService,
     private _changeDetectorRef: ChangeDetectorRef,
     private _elementRef: ElementRef,
     private _router: Router,
@@ -103,6 +112,7 @@ export class PlanDetailsComponent implements OnInit, OnDestroy {
     private _fuseConfirmationService: FuseConfirmationService,
     private _matDialog: MatDialog,
     private readonly _plansFacade: PlansFacade,
+    private readonly _tasksFacade: TasksFacade,
     private readonly _userFacade: UserFacade,
   ) {}
 
@@ -118,15 +128,9 @@ export class PlanDetailsComponent implements OnInit, OnDestroy {
       this.allMembers = [plan.owner, ...plan.members];
     });
 
-    // Get Plan Tasks
-    this._planTaskService.planTasks$
-      .pipe(takeUntil(this._unsubscribeAll))
-      .subscribe((planTasks: PlanTasks[]) => {
-        this.planTasks = planTasks;
-
-        // Mark for check
-        this._changeDetectorRef.markForCheck();
-      });
+    this.planTasks$.subscribe((tasks) => {
+      this.planTasks = Object.values(tasks);
+    });
 
     // Subscribe to media changes
     this._fuseMediaWatcherService.onMediaChange$
@@ -158,15 +162,28 @@ export class PlanDetailsComponent implements OnInit, OnDestroy {
   // -----------------------------------------------------------------------------------------------------
   // @ Public methods
   // -----------------------------------------------------------------------------------------------------
-  ownerPlan(email: string) {
-    return this.user$.pipe(
-      map((user) => {
-        return user.email === email;
+  get permissionPlan(): Observable<boolean> {
+    return combineLatest([this.user$, this.plan$]).pipe(
+      map(([user, plan]) => {
+        const roles = user.roles.map((role) => role.name);
+        return (
+          roles.includes('TRUONG_KHOA') ||
+          roles.includes('THU_KY_KHOA') ||
+          plan.owner.info.email === user.info.email
+        );
       }),
     );
   }
 
-  percentCompleteTask(task: PlanTasks): number {
+  get ownerPlan(): Observable<boolean> {
+    return combineLatest([this.user$, this.plan$]).pipe(
+      map(([user, plan]) => {
+        return plan.owner.info.email === user.info.email;
+      }),
+    );
+  }
+
+  percentCompleteTask(task: Task): number {
     const percent =
       (task.todos.filter((todo) => todo.isDone).length / task.todos.length) *
       100;

@@ -2,6 +2,6 @@
   "extends": "./tsconfig.json",
   "include": ["src/**/*.ts", "src/app/modules/admin/apps/plan/services/plan-categories.service.temp"],
   "compilerOptions": {
-    "types": ["jest", "node"]
+    "types": ["jest", "node"],
   }
 }

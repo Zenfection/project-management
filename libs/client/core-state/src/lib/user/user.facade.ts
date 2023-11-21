@@ -1,4 +1,4 @@
-import { loadUserSuccess, updateAvatar, updateUser } from './user.action';
+import { loadUserSuccess, updateAvatar, updateUserInfo } from './user.action';
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { User } from '@client/shared/interfaces';
@@ -17,8 +17,8 @@ export class UserFacade {
     this.store.dispatch(loadUserSuccess({ user }));
   }
 
-  updateUser(user: Partial<User>): void {
-    this.store.dispatch(updateUser({ user }));
+  updateUserInfo(user: Partial<User>): void {
+    this.store.dispatch(updateUserInfo({ user }));
   }
 
   updateAvatar(file: File): void {

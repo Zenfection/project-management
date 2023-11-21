@@ -21,16 +21,25 @@ export const userReducer = createReducer<UserState>(
       user: action.user,
     };
   }),
-  on(UserActions.updateUserSuccess, (state, action): UserState => {
+  on(UserActions.updateUserInfoSuccess, (state, action): UserState => {
     return {
       ...state,
-      user: action.user,
+      user: {
+        ...state.user,
+        info: action.user.info,
+      },
     };
   }),
   on(UserActions.updateAvatarSuccess, (state, action): UserState => {
     return {
       ...state,
-      user: action.user,
+      user: {
+        ...state.user,
+        info: {
+          ...state.user.info,
+          avatar: action.user.info.avatar,
+        },
+      },
     };
   }),
 );

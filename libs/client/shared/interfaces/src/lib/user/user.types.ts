@@ -1,12 +1,22 @@
-export interface User {
-  id: string;
+interface Role {
+  id?: number;
   name: string;
-  email: string;
-  avatar?: string;
-  status?: string;
+  description?: string;
+}
+
+export interface Info {
   about?: string;
   address?: string;
+  name?: string;
+  email?: string;
+  status?: string;
+  avatar?: string;
   phone?: string;
-  roles: string[];
+}
+
+export interface User {
+  id: string;
+  info: Info;
+  roles: Role[];
   department: string;
 }

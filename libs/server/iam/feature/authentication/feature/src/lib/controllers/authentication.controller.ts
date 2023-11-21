@@ -27,7 +27,8 @@ import {
 import { Response } from 'express';
 import { toFileStream } from 'qrcode';
 import { User } from '@prisma/client';
-import { TransformInterceptor } from '@server/cloud/utils';
+import { AvatarInterceptor } from '@server/cloud/utils';
+import { UserEntity } from '@server/shared/entities';
 
 @Auth(AuthType.None)
 @Controller('authentication')
@@ -43,22 +44,22 @@ export class AuthenticationController {
     return this.authService.signUp(signUpDto);
   }
 
-  @UseInterceptors(TransformInterceptor)
+  @UseInterceptors(AvatarInterceptor)
   @HttpCode(HttpStatus.OK)
   @Post('sign-in')
   async signIn(@Body() signInDto: SignInDto): Promise<User> {
     const user = await this.authService.signIn(signInDto);
-    return user;
+    return new UserEntity(user);
   }
 
-  @UseInterceptors(TransformInterceptor)
+  @UseInterceptors(AvatarInterceptor)
   @HttpCode(HttpStatus.OK)
   @Post('sign-in-with-token')
   async signInWithToken(
     @Body() signInWithToken: SignInWithTokenDto,
   ): Promise<User> {
     const user = await this.authService.signInWithToken(signInWithToken);
-    return user;
+    return new UserEntity(user);
   }
 
   @HttpCode(HttpStatus.OK)

@@ -9,6 +9,7 @@ import { AuthorizationModule } from '@server/iam/feature/authorization/feature';
 import { UsersModule } from '@server/users';
 import { PlansModule } from '@server/plans';
 import { TasksModule } from '@server/tasks';
+import { TodosModule } from '@server/todos';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { TasksModule } from '@server/tasks';
     UsersModule,
     PlansModule,
     TasksModule,
+    TodosModule,
   ],
   controllers: [AppController],
   providers: [AppService],

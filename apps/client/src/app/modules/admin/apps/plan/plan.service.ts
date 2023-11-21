@@ -9,8 +9,8 @@ import {
   tap,
   throwError,
 } from 'rxjs';
-import { PlansFacade } from '@client/core-state';
-import { Category, Member, Plan } from '@client/shared/interfaces';
+import { PlansFacade, TasksFacade } from '@client/core-state';
+import { Category, Member, Plan, Task } from '@client/shared/interfaces';
 
 @Injectable({ providedIn: 'root' })
 export class PlanService {
@@ -19,7 +19,8 @@ export class PlanService {
    */
   constructor(
     private _httpClient: HttpClient,
-    private readonly plansFacade: PlansFacade,
+    private readonly _plansFacade: PlansFacade,
+    private readonly _tasksFacade: TasksFacade,
   ) {}
 
   private _members: BehaviorSubject<Member[] | null> = new BehaviorSubject(
@@ -40,7 +41,7 @@ export class PlanService {
   getPlans(): Observable<Plan[]> {
     return this._httpClient.get<Plan[]>('api/plans').pipe(
       tap((plans: Plan[]) => {
-        this.plansFacade.loadPlansSuccess(plans);
+        this._plansFacade.loadPlansSuccess(plans);
       }),
     );
   }
@@ -63,7 +64,7 @@ export class PlanService {
   getCategories(): Observable<Category[]> {
     return this._httpClient.get<Category[]>('api/plans/categories').pipe(
       tap((response: Category[]) => {
-        this.plansFacade.loadCategoriesSuccess(response);
+        this._plansFacade.loadCategoriesSuccess(response);
       }),
     );
   }
@@ -78,7 +79,7 @@ export class PlanService {
         return plan;
       }),
       tap((plan) => {
-        this.plansFacade.selectPlan(plan);
+        this._plansFacade.selectPlan(plan);
       }),
       switchMap((plan) => {
         if (!plan) {
@@ -87,6 +88,17 @@ export class PlanService {
           );
         }
         return of(plan);
+      }),
+    );
+  }
+
+  /**
+  //* Get plan tasks
+ */
+  getPlanTasks(id: string): Observable<Task[]> {
+    return this._httpClient.get<Task[]>(`api/plans/${id}/tasks`).pipe(
+      tap((response: Task[]) => {
+        this._tasksFacade.loadTasksSuccess(response);
       }),
     );
   }

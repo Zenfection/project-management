@@ -170,7 +170,9 @@ export class LayoutComponent implements OnInit, OnDestroy {
       ])
         .pipe(takeUntil(this._unsubscribeAll))
         .subscribe(([setting, mql]) => {
-          this._updateSettings(setting, mql);
+          if (setting) {
+            this._updateSettings(setting, mql);
+          }
         });
     }
   }

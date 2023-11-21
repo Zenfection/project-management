@@ -25,21 +25,30 @@ export class CloudService {
     @Inject(cloudflare_r2Config.KEY)
     private readonly cloudflare_r2ConfigService: ConfigType<
       typeof cloudflare_r2Config
-    >
+    >,
   ) {}
 
   async listAllBuckets() {
     return await this.S3.send(new ListBucketsCommand(''));
   }
 
-  async getObject(path: string): Promise<string> {
+  // async getObject(path: string) {
+  //   return await this.S3.send(
+  //     new GetObjectCommand({
+  //       Bucket: this.cloudflare_r2ConfigService.bucket_name,
+  //       Key: path,
+  //     }),
+  //   );
+  // }
+
+  async getObjectSignedUrl(path: string): Promise<string> {
     return await getSignedUrl(
       this.S3,
       new GetObjectCommand({
         Bucket: this.cloudflare_r2ConfigService.bucket_name,
         Key: path,
       }),
-      { expiresIn: 3600 }
+      { expiresIn: 3600 },
     );
   }
 
@@ -48,7 +57,7 @@ export class CloudService {
       new ListObjectsV2Command({
         Bucket: this.cloudflare_r2ConfigService.bucket_name,
         Prefix: prefix ?? '',
-      })
+      }),
     );
   }
 
@@ -58,7 +67,7 @@ export class CloudService {
         Bucket: this.cloudflare_r2ConfigService.bucket_name,
         Key: `${prefix ? `${prefix}/` : ''}${fileName}`,
         Body: file,
-      })
+      }),
     );
   }
 }

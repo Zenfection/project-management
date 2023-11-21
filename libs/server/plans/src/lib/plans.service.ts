@@ -74,6 +74,7 @@ export class PlansService {
     include?: Prisma.PlanInclude;
   }): Promise<Plan> {
     const { where, data, include } = params;
+    console.log(data);
 
     this.checkEmptyData(data);
 

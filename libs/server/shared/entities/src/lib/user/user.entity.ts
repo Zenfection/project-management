@@ -1,7 +1,8 @@
 import { $Enums, User } from '@prisma/client';
 import { ApiProperty } from '@nestjs/swagger';
-import { IsDate, IsEnum, IsOptional } from 'class-validator';
+import { IsDate, IsEnum, IsOptional, IsString } from 'class-validator';
 import { RoleEntity } from './role.entity';
+import { Exclude } from 'class-transformer';
 
 export class UserEntity implements User {
   @ApiProperty()
@@ -11,6 +12,8 @@ export class UserEntity implements User {
   email: string;
 
   @ApiProperty()
+  @IsString()
+  @Exclude()
   password: string;
 
   @ApiProperty()
@@ -35,4 +38,8 @@ export class UserEntity implements User {
 
   @IsDate()
   updatedAt: Date;
+
+  constructor(partial: Partial<UserEntity>) {
+    Object.assign(this, partial);
+  }
 }

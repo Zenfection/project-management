@@ -14,6 +14,8 @@ export const adapter: EntityAdapter<Plan> = createEntityAdapter<Plan>();
 export const initialState: PlansState = adapter.getInitialState({
   selectedPlanId: null,
   categories: [],
+  selectedPlanTasks: [],
+  selectedPlanTasksId: null,
 });
 
 //3. Define the reducer function

@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { Prisma, Task } from '@prisma/client';
 import { CloudService } from '@server/cloud/data-access';
 import { PrismaService } from 'nestjs-prisma';
+import { UpdateTaskDto } from './dto/update-task.dto';
 
 @Injectable()
 export class TasksService {
@@ -14,9 +15,17 @@ export class TasksService {
   // }
 
   async checkPermission(email: string, taskId: number): Promise<boolean> {
+    // Check if user is truong khoa or thu ky khoa and has permission to view this task
     const user = await this.prismaService.user.findUnique({
       where: {
         email,
+        roles: {
+          some: {
+            name: {
+              in: ['TRUONG_KHOA', 'THU_KY_KHOA'],
+            },
+          },
+        },
       },
       select: {
         tasks: {
@@ -62,9 +71,18 @@ export class TasksService {
     });
   }
 
-  // update(id: number, updateTaskDto: UpdateTaskDto) {
-  //   return `This action updates a #${id} task`;
-  // }
+  update(
+    where: Prisma.TaskWhereUniqueInput,
+    data: UpdateTaskDto,
+    include?: Prisma.TaskInclude,
+  ) {
+    return this.prismaService.task.update({
+      where,
+      data,
+      include,
+    });
+  }
+
   // remove(id: number) {
   //   return `This action removes a #${id} task`;
   // }

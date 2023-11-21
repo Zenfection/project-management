@@ -1,3 +1,4 @@
+import { Prisma } from '@prisma/client';
 import { Member } from './member.types';
 
 export interface Plan {
@@ -32,7 +33,13 @@ export interface CreatePlan {
 }
 
 export interface UpdatePlan extends Partial<CreatePlan> {
-  members: {
+  todos?: {
+    update: {
+      where: Prisma.TodoWhereUniqueInput;
+      data: Prisma.TodoUpdateInput;
+    };
+  };
+  members?: {
     set: [];
     connect: {
       email: string;

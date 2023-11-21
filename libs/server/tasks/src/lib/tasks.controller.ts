@@ -8,6 +8,8 @@ import {
   ParseFilePipe,
   FileTypeValidator,
   UnauthorizedException,
+  Patch,
+  Body,
 } from '@nestjs/common';
 import { TasksService } from './tasks.service';
 import { FileInterceptor } from '@nestjs/platform-express';
@@ -16,6 +18,7 @@ import {
   ActiveUser,
   ActiveUserData,
 } from '@server/iam/feature/authentication/utils';
+import { UpdateTaskDto } from './dto/update-task.dto';
 
 @Controller('tasks')
 export class TasksController {
@@ -66,28 +69,20 @@ export class TasksController {
       file.buffer,
     );
   }
-  // @Post()
-  // create(@Body() createTaskDto: CreateTaskDto) {
-  //   return this.tasksService.create(createTaskDto);
-  // }
 
-  // @Get()
-  // findAll() {
-  //   return this.tasksService.findAll();
-  // }
+  @Patch(':id')
+  async updateTask(
+    @Param('id') id: string,
+    @ActiveUser() user: ActiveUserData,
+    @Body() updateTaskDto: UpdateTaskDto,
+  ) {
+    // if (await this.tasksService.checkPermission(user.email, Number(id))) {
+    //   throw new UnauthorizedException('Permission denied');
+    // }
 
-  // @Get(':id')
-  // findOne(@Param('id') id: string) {
-  //   return this.tasksService.findOne(+id);
-  // }
-
-  // @Patch(':id')
-  // update(@Param('id') id: string, @Body() updateTaskDto: UpdateTaskDto) {
-  //   return this.tasksService.update(+id, updateTaskDto);
-  // }
-
-  // @Delete(':id')
-  // remove(@Param('id') id: string) {
-  //   return this.tasksService.remove(+id);
-  // }
+    return this.tasksService.update({ id: Number(id) }, updateTaskDto, {
+      labels: true,
+      todos: true,
+    });
+  }
 }

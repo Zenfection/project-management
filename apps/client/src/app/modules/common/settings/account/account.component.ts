@@ -29,7 +29,7 @@ import { FuseAlertComponent } from '@fuse/components/alert/alert.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { Observable } from 'rxjs';
 import { LetDirective } from '@ngrx/component';
-import { UserFacade } from '@client/core-state'
+import { UserFacade } from '@client/core-state';
 
 @Component({
   selector: 'settings-account',
@@ -68,7 +68,7 @@ export class SettingsAccountComponent implements OnInit {
     private _formBuilder: UntypedFormBuilder,
     private _changeDetectorRef: ChangeDetectorRef,
     private _fuseAlertService: FuseAlertService,
-    private readonly _userFacade: UserFacade
+    private readonly _userFacade: UserFacade,
   ) {}
 
   // -----------------------------------------------------------------------------------------------------
@@ -79,29 +79,29 @@ export class SettingsAccountComponent implements OnInit {
    * On init
    */
   ngOnInit(): void {
-    this._userFacade.user$.subscribe(user => {
+    this._userFacade.user$.subscribe((user) => {
       this.user = user;
     });
 
     // Create the form
     this.accountForm = this._formBuilder.group({
       name: [
-        this.user.name,
+        this.user.info.name,
         Validators.required,
         SettingAccountValidator.checkName,
       ],
-      about: [this.user.about.replace('-', '\n-'), Validators.required],
+      about: [this.user.info.about.replace('-', '\n-'), Validators.required],
       email: [
-        this.user.email,
+        this.user.info.email,
         Validators.required,
         SettingAccountValidator.checkEmail,
       ],
       phone: [
-        this.user.phone,
+        this.user.info.phone,
         Validators.required,
         SettingAccountValidator.checkPhoneNumberVN,
       ],
-      address: [this.user.address, Validators.required],
+      address: [this.user.info.address, Validators.required],
       // language: [this.setting.language, Validators.required],
     });
   }
@@ -157,38 +157,15 @@ export class SettingsAccountComponent implements OnInit {
   }
 
   handleUpdate() {
-    this._userFacade.updateUser({
+    const dataUser = {
       email: this.accountForm.get('email').value,
       name: this.accountForm.get('name').value,
       about: this.accountForm.get('about').value.replaceAll('\n', '-'),
       phone: this.accountForm.get('phone').value,
       address: this.accountForm.get('address').value,
+    };
+    this._userFacade.updateUserInfo({
+      info: dataUser,
     });
-
-    // this._userSerivce
-    //   .update({
-    //     email: this.accountForm.get('email').value,
-    //     name: this.accountForm.get('name').value,
-    //     about: this.accountForm.get('about').value.replaceAll('\n', '-'),
-    //     phone: this.accountForm.get('phone').value,
-    //     address: this.accountForm.get('address').value,
-    //   })
-    //   .subscribe({
-    //     next: () => {
-    //       this._fuseAlertService.show('submit-success');
-    //       setTimeout(() => {
-    //         this._fuseAlertService.dismiss('submit-success');
-    //       }, 3000);
-    //     },
-
-    //     error: err => {
-    //       console.error(err.messages);
-    //       this._fuseAlertService.show('submit-error');
-
-    //       setTimeout(() => {
-    //         this._fuseAlertService.dismiss('submit-error');
-    //       }, 3000);
-    //     },
-    //   });
   }
 }

@@ -47,7 +47,7 @@ export class UserComponent {
    */
   constructor(
     private _router: Router,
-    private readonly _userFacade: UserFacade
+    private readonly _userFacade: UserFacade,
   ) {}
 
   // -----------------------------------------------------------------------------------------------------
@@ -65,10 +65,13 @@ export class UserComponent {
       return;
     }
 
+    const dataUpdate: Partial<User> = {
+      info: {
+        status,
+      },
+    };
     // Update user status
-    this._userFacade.updateUser({
-      status,
-    });
+    this._userFacade.updateUserInfo(dataUpdate);
   }
 
   /**

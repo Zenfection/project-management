@@ -1,3 +1,3 @@
-import { TransformInterceptor } from './lib/interceptors/transform/transform.interceptor';
+import { AvatarInterceptor } from './lib/interceptors/avatar/avatar.interceptor';
 
-export { TransformInterceptor };
+export { AvatarInterceptor };

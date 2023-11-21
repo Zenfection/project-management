@@ -26,7 +26,9 @@ export class MemberResponseInterceptor implements NestInterceptor {
           info: {
             name: user['info'].name,
             email: user['info'].email,
-            avatar: await this.cloudService.getObject(user['info'].avatar),
+            avatar: await this.cloudService.getObjectSignedUrl(
+              user['info'].avatar,
+            ),
             phone: user['info'].phone,
           },
         };

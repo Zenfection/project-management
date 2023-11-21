@@ -77,21 +77,23 @@ export class UsersService {
   update(params: {
     where: Prisma.UserWhereUniqueInput;
     data: updateUserDto;
+    include?: Prisma.UserInclude;
   }): Promise<User> {
-    const { where, data } = params;
-    console.log(where, data);
+    const { where, data, include } = params;
     this.checkEmptyData(data);
     return this.prismaService.user.update({
       where,
       data,
+      include,
     });
   }
 
   async updateInfo(params: {
     where: Prisma.UserWhereUniqueInput;
-    data: updateInfoDto;
+    data: updateUserDto;
+    include?: Prisma.UserInclude;
   }): Promise<User> {
-    const { where, data } = params;
+    const { where, data, include } = params;
 
     this.checkEmptyData(data);
 
@@ -99,12 +101,10 @@ export class UsersService {
       where,
       data: {
         info: {
-          update: data,
+          update: data.info,
         },
       },
-      include: {
-        info: true,
-      },
+      include,
     });
   }
 
@@ -155,10 +155,11 @@ export class UsersService {
         },
         include: {
           info: true,
+          roles: true,
         },
       }),
     ]).then((result) => {
-      return result[1].info;
+      return result[1];
     });
   }
 }

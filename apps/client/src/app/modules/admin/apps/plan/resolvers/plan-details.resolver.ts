@@ -1,24 +1,21 @@
 import { inject } from '@angular/core';
 import { ResolveFn, Router } from '@angular/router';
-import { PlanService } from '../services/plan.service';
-import { PlanTasksService } from '../services/plan-tasks.service';
+import { PlanService } from '../plan.service';
 import { catchError, combineLatest, throwError } from 'rxjs';
-import { Plan } from '../models/plan.types';
-import { PlanTasks } from '../models/plan-tasks.types';
+import { Plan, Task } from '@client/shared/interfaces';
 
-export const planDetailsResolver: ResolveFn<[Plan, PlanTasks[]]> = (
+export const planDetailsResolver: ResolveFn<[Plan, Task[]]> = (
   route,
-  state
+  state,
 ) => {
   const planService = inject(PlanService);
-  const planTaskService = inject(PlanTasksService);
   const router = inject(Router);
 
   return combineLatest([
     planService.getPlanById(route.paramMap.get('id')),
-    planTaskService.getPlanTasks(route.paramMap.get('id')),
+    planService.getPlanTasks(route.paramMap.get('id')),
   ]).pipe(
-    catchError(error => {
+    catchError((error) => {
       // Log the error
       console.error(error);
 
@@ -30,6 +27,6 @@ export const planDetailsResolver: ResolveFn<[Plan, PlanTasks[]]> = (
 
       // Throw an error
       return throwError(() => new Error(error));
-    })
+    }),
   );
 };

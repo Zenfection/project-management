@@ -9,7 +9,7 @@ export const TodoGuardCanDeactivate: CanDeactivateFn<unknown> = (
   component: PlanTodoComponent,
   currentRoute: ActivatedRouteSnapshot,
   currentState: RouterStateSnapshot,
-  nextState: RouterStateSnapshot
+  nextState: RouterStateSnapshot,
 ) => {
   // get the next route
   let nextRoute: ActivatedRouteSnapshot = nextState.root;

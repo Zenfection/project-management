@@ -35,7 +35,11 @@
           </div>
         </fuse-card>
       </div>
-      <div class="absolute end-0 top-2 z-20 mr-12 mt-3">
+      <!-- ToolBar  -->
+      <div
+        class="absolute end-0 top-2 z-20 mr-12 mt-3"
+        *ngIf="permissionPlan || ownerPlan(user.info.email) | async"
+      >
         <div
           class="bg-card w-full cursor-pointer rounded-full p-2 shadow-lg transition-all duration-300 hover:rotate-90"
           matRipple
@@ -48,7 +52,7 @@
             ></mat-icon>
           </fuse-card>
           <mat-menu #projectsMenu="matMenu" [xPosition]="'before'" class="mt-4">
-            <button mat-menu-item class="sm:hidden">
+            <button type="button" mat-menu-item class="sm:hidden">
               <div class="flex items-center justify-start gap-3">
                 <mat-icon
                   class="icon-size-5 me-2 block"
@@ -360,11 +364,6 @@
                             alt="Avatar Logo"
                           />
                         </div>
-                        <!-- <div
-                          class="absolute inset-x-0 z-10 -mt-3 h-6"
-                          [matTooltip]="50 | percent"
-                          [matTooltipPosition]="'above'"
-                          [matTooltipClass]="'-mb-0.5'"></div> -->
                         <mat-progress-bar
                           mode="determinate"
                           class="overflow-hidden rounded-full"

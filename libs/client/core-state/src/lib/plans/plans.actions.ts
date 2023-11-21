@@ -6,6 +6,7 @@ import {
   UpdatePlan,
 } from '@client/shared/interfaces';
 
+//TODO: PLAN ACTIONS -----------
 export const loadPlansSuccess = createAction(
   '[Plan] Load Plans Success',
   props<{ plans: Plan[] }>(),
@@ -31,11 +32,6 @@ export const selectPlan = createAction(
   props<{ plan: Plan }>(),
 );
 
-export const loadCategoriesSuccess = createAction(
-  '[Plan] Load Categories Success',
-  props<{ categories: Category[] }>(),
-);
-
 export const updatePlan = createAction(
   '[Plan] Update Plan',
   props<{ plan: UpdatePlan }>(),
@@ -51,6 +47,13 @@ export const updatePlanFailure = createAction(
   props<{ error: { message: string } }>(),
 );
 
+//TODO Categories Plan Actions
+export const loadCategoriesSuccess = createAction(
+  '[Plan] Load Categories Success',
+  props<{ categories: Category[] }>(),
+);
+
+//! Delete Plan
 export const deletePlan = createAction('[Plan] Delete Plan');
 
 export const deletePlanSuccess = createAction(

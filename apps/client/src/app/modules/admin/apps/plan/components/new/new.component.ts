@@ -52,7 +52,7 @@ import {
   MatAutocompleteSelectedEvent,
 } from '@angular/material/autocomplete';
 import { MatChipsModule } from '@angular/material/chips';
-import { PlanService } from '../../services/plan.service';
+import { PlanService } from '../../plan.service';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { MatSelectModule } from '@angular/material/select';
 
@@ -85,11 +85,11 @@ import { MatSelectModule } from '@angular/material/select';
   ],
 })
 export class PlanNewComponent implements OnInit, OnDestroy, AfterContentInit {
-  currentEmail: string;
   planForm: UntypedFormGroup;
   allMembers: Member[];
   members: Member[] = [];
   filteredMembers: Observable<Member[]>;
+  filteredOwner: Observable<Member[]>;
   allCategory: Category[];
   plan: Plan;
 
@@ -97,6 +97,7 @@ export class PlanNewComponent implements OnInit, OnDestroy, AfterContentInit {
 
   // MemberCtrl = new FormControl('');
   @ViewChild('memberInput') memberInput: ElementRef<HTMLInputElement>;
+  @ViewChild('ownerInput') ownerInput: ElementRef<HTMLInputElement>;
 
   private _unsubscribeAll: Subject<any> = new Subject<any>();
 
@@ -114,13 +115,15 @@ export class PlanNewComponent implements OnInit, OnDestroy, AfterContentInit {
 
   ngOnInit(): void {
     // Edit Form
-    if (this._data.plan) {
+    if (this._data.plan.id) {
       this.members = this.plan.members;
       this.planForm = this._formBuilder.group({
-        title: [this.plan.title || '', Validators.required],
-        description: [this.plan.description || '', Validators.required],
-        category: [this.plan.category['slug'] || '', Validators.required],
+        title: [this.plan.title, Validators.required],
+        description: [this.plan.description, Validators.required],
+        category: [this.plan.category['slug'], Validators.required],
+        owner: [this.plan.owner.info.email, Validators.required],
         members: [this.members, Validators.required],
+        temp: [''],
       });
     } else {
       // Add Form
@@ -128,7 +131,9 @@ export class PlanNewComponent implements OnInit, OnDestroy, AfterContentInit {
         title: ['', Validators.required],
         description: ['', Validators.required],
         category: ['', Validators.required],
+        owner: ['' as string, Validators.required],
         members: [this.members, Validators.required],
+        temp: [''],
       });
     }
 
@@ -138,8 +143,7 @@ export class PlanNewComponent implements OnInit, OnDestroy, AfterContentInit {
     combineLatest([
       this._planService.getMembers(),
       this._plansFacade.categories$,
-      this._userFacade.user$,
-    ]).subscribe(([members, categories, user]) => {
+    ]).subscribe(([members, categories]) => {
       this.allMembers = members.filter(
         (member) =>
           !this.members.some(
@@ -148,7 +152,6 @@ export class PlanNewComponent implements OnInit, OnDestroy, AfterContentInit {
       );
 
       this.allCategory = categories;
-      this.currentEmail = user.email;
     });
   }
 
@@ -157,8 +160,15 @@ export class PlanNewComponent implements OnInit, OnDestroy, AfterContentInit {
       startWith(null),
       debounceTime(500),
       map((member: string | null) => {
-        //remove member from this._filter
         return this._filter(member);
+      }),
+    );
+
+    this.filteredOwner = this.planForm.get('temp').valueChanges.pipe(
+      startWith(null),
+      debounceTime(500),
+      map((owner: string | null) => {
+        return this._filter(owner);
       }),
     );
 
@@ -196,6 +206,13 @@ export class PlanNewComponent implements OnInit, OnDestroy, AfterContentInit {
     this.memberInput.nativeElement.value = '';
 
     this._changeDetectorRef.detectChanges();
+  }
+
+  searchMember(event: Event): void {
+    const keyword = (event.target as HTMLInputElement).value;
+    console.log(keyword);
+    // this.filteredMembers = of(this._filter(keyword));
+    // console.log(this.filteredMembers);
   }
 
   private _filter(value: string | null): Member[] {
@@ -239,7 +256,7 @@ export class PlanNewComponent implements OnInit, OnDestroy, AfterContentInit {
       },
       owner: {
         connect: {
-          email: this.currentEmail,
+          email: this.planForm.get('owner').value,
         },
       },
       members: {
@@ -275,7 +292,7 @@ export class PlanNewComponent implements OnInit, OnDestroy, AfterContentInit {
       },
       owner: {
         connect: {
-          email: this.currentEmail,
+          email: this.planForm.get('owner').value,
         },
       },
       members: {

@@ -32,9 +32,13 @@ export class PlansEffects {
             });
           }),
           catchError((error: { message: string }) => {
-            this.snackBar.open('Failed to create plans.', 'Close', {
-              duration: 3000,
-            });
+            this.snackBar.open(
+              `Failed to create plans because: ${error.message}`,
+              'Close',
+              {
+                duration: 3000,
+              },
+            );
             return of(PlansAction.createPlanFailure({ error }));
           }),
         ),
@@ -56,7 +60,7 @@ export class PlansEffects {
           }),
           catchError((error: { message: string }) => {
             this.snackBar.open(
-              'Failed to update plan.' + error.message,
+              `Failed to update plan because: ${error.message}`,
               'Close',
               {
                 duration: 3000,
@@ -84,9 +88,13 @@ export class PlansEffects {
             this.router.navigate(['plan']);
           }),
           catchError((error: { message: string }) => {
-            this.snackBar.open('Failed to delete plan.', 'Close', {
-              duration: 3000,
-            });
+            this.snackBar.open(
+              `Failed to delete plan because: ${error.message}`,
+              'Close',
+              {
+                duration: 3000,
+              },
+            );
             return of(PlansAction.deletePlanFailure({ error }));
           }),
         ),

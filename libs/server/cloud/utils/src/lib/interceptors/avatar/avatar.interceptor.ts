@@ -9,7 +9,7 @@ import { map } from 'rxjs/operators';
 import { CloudService } from '@server/cloud/data-access';
 
 @Injectable()
-export class TransformInterceptor implements NestInterceptor {
+export class AvatarInterceptor implements NestInterceptor {
   constructor(private cloudService: CloudService) {}
 
   intercept(context: ExecutionContext, next: CallHandler): Observable<any> {
@@ -21,7 +21,7 @@ export class TransformInterceptor implements NestInterceptor {
       if (typeof obj[key] === 'object') {
         obj[key] = await this.replaceAvatars(obj[key]);
       } else if (key === 'avatar') {
-        obj[key] = await this.cloudService.getObject(obj[key]);
+        obj[key] = await this.cloudService.getObjectSignedUrl(obj[key]);
       }
     }
     return obj;

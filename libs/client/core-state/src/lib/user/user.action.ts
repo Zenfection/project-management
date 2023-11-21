@@ -5,40 +5,40 @@ export const loadUser = createAction('[User] Load User');
 
 export const loadUserSuccess = createAction(
   '[User] Load User Success',
-  props<{ user: User }>()
+  props<{ user: User }>(),
 );
 
 export const loadUserFailure = createAction(
   '[User] Load User Failure',
-  props<{ error: any }>()
+  props<{ error: { message: string } }>(),
 );
 
-export const updateUser = createAction(
-  '[User] Update User',
-  props<{ user: Partial<User> }>()
+export const updateUserInfo = createAction(
+  '[User] Update User Info',
+  props<{ user: Partial<User> }>(),
 );
 
-export const updateUserSuccess = createAction(
-  '[User] Update User Success',
-  props<{ user: User }>()
+export const updateUserInfoSuccess = createAction(
+  '[User] Update User Info Success',
+  props<{ user: User }>(),
 );
 
-export const updateUserFailure = createAction(
-  '[User] Update User Failure',
-  props<{ error: any }>()
+export const updateUserInfoFailure = createAction(
+  '[User] Update User Info Failure',
+  props<{ error: { message: string } }>(),
 );
 
 export const updateAvatar = createAction(
   '[User] Update Avatar',
-  props<{ file: File }>()
+  props<{ file: File }>(),
 );
 
 export const updateAvatarSuccess = createAction(
   '[User] Update Avatar Success',
-  props<{ user: User }>()
+  props<{ user: User }>(),
 );
 
 export const updateAvatarFailure = createAction(
   '[User] Update Avatar Failure',
-  props<{ error: any }>()
+  props<{ error: { message: string } }>(),
 );

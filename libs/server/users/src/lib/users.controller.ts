@@ -13,33 +13,27 @@ import {
 } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { Prisma, User } from '@prisma/client';
-import {
-  CreateUserDto,
-  updateUserDto,
-  updateInfoDto,
-} from '@server/shared/dto';
+import { CreateUserDto, updateUserDto } from '@server/shared/dto';
 import {
   ActiveUser,
   ActiveUserData,
 } from '@server/iam/feature/authentication/utils';
 import { FileInterceptor } from '@nestjs/platform-express';
-import { TransformInterceptor } from '@server/cloud/utils';
-import { MemberResponseInterceptor } from './interceptor/member.interceptor';
+import { AvatarInterceptor } from '@server/cloud/utils';
+import { MemberResponseInterceptor } from '@server/tools';
+import { UserEntity } from '@server/shared/entities';
 
 @Controller('users')
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
   @Post()
-  async create(@Body() createUserDto: CreateUserDto) {
-    return this.usersService.create(createUserDto);
+  async create(@Body() createUserDto: CreateUserDto): Promise<User> {
+    const user = await this.usersService.create(createUserDto);
+    return new UserEntity(user);
   }
 
-  // @Get()
-  // async findAll() {
-  //   return this.usersService.findAll();
-  // }
-
+  //? Get all users same department
   @Get('department')
   @UseInterceptors(MemberResponseInterceptor)
   async findUserWithDeparment(@ActiveUser() user: ActiveUserData) {
@@ -79,7 +73,7 @@ export class UsersController {
   }
 
   @Get('info')
-  @UseInterceptors(TransformInterceptor)
+  @UseInterceptors(AvatarInterceptor)
   async findInfo(@ActiveUser() user: ActiveUserData) {
     return this.usersService
       .findOne({ id: Number(user.sub) }, { info: true })
@@ -117,7 +111,7 @@ export class UsersController {
   }
 
   @Patch('')
-  @UseInterceptors(TransformInterceptor)
+  @UseInterceptors(AvatarInterceptor)
   async update(
     @ActiveUser() user: ActiveUserData,
     @Body() updateUser: updateUserDto,
@@ -127,23 +121,24 @@ export class UsersController {
       data: updateUser,
     });
 
-    return {
-      ...result,
-      password: undefined,
-    };
+    return result;
   }
 
   @Patch('info')
-  @UseInterceptors(TransformInterceptor)
+  @UseInterceptors(AvatarInterceptor)
   async updateInfo(
-    @Body() updateInfo: updateInfoDto,
+    @Body() data: updateUserDto,
     @ActiveUser() user: ActiveUserData,
   ) {
-    const result = (await this.usersService.updateInfo({
+    const result = await this.usersService.updateInfo({
       where: { id: Number(user.sub) },
-      data: updateInfo,
-    })) as User & { info: Prisma.InfoGetPayload<{ select: any }> };
-    return result.info;
+      data,
+      include: {
+        roles: true,
+        info: true,
+      },
+    });
+    return new UserEntity(result);
   }
 
   @Patch('setting')
@@ -165,7 +160,7 @@ export class UsersController {
 
   @Post('avatar')
   @UseInterceptors(FileInterceptor('file'))
-  @UseInterceptors(TransformInterceptor)
+  @UseInterceptors(AvatarInterceptor)
   async uploadAvatar(
     @ActiveUser() user: ActiveUserData,
     @UploadedFile(

@@ -2,6 +2,7 @@ import {
   IsBoolean,
   IsEmail,
   IsHash,
+  IsObject,
   IsOptional,
   IsString,
   MinLength,
@@ -31,4 +32,14 @@ export class CreateUserDto implements Prisma.UserCreateInput {
   @IsOptional()
   @IsString()
   tfaSecret?: string;
+
+  @ApiProperty()
+  @IsOptional()
+  @IsObject()
+  info?: Prisma.InfoCreateNestedOneWithoutUserInput;
+
+  @ApiProperty()
+  @IsOptional()
+  @IsObject()
+  setting?: Prisma.SettingCreateNestedOneWithoutUserInput;
 }

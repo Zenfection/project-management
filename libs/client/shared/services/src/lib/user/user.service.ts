@@ -24,23 +24,23 @@ export class UserService {
 
   get(): Observable<User> {
     return this._httpClient.get<User>('api/common/user').pipe(
-      tap(user => {
+      tap((user) => {
         this._user.next(user);
-      })
+      }),
     );
   }
 
   update(data: Partial<User>): Observable<any> {
     return this._httpClient.patch<User>('api/users/info', data).pipe(
-      map(response => {
+      map((response) => {
         this._user
-          .subscribe(user => {
+          .subscribe((user) => {
             this.updateUser = { ...user, ...response };
           })
           .unsubscribe();
         this._user.next(this.updateUser);
       }),
-      catchError((error: any) => new Observable<any>(error))
+      catchError((error: any) => new Observable<any>(error)),
     );
   }
 
@@ -49,15 +49,15 @@ export class UserService {
     formData.append('file', file);
 
     return this._httpClient.post<User>('api/users/avatar', formData).pipe(
-      map(response => {
+      map((response) => {
         this._user
-          .subscribe(user => {
+          .subscribe((user) => {
             this.updateUser = { ...user, ...response };
           })
           .unsubscribe();
         this._user.next(this.updateUser);
       }),
-      catchError((error: any) => new Observable<any>(error))
+      catchError((error: any) => new Observable<any>(error)),
     );
   }
 }

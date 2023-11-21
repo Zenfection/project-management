@@ -7,7 +7,19 @@ import {
   OnInit,
   ViewEncapsulation,
 } from '@angular/core';
-import { Subject, filter, takeUntil } from 'rxjs';
+import {
+  BehaviorSubject,
+  Observable,
+  Subject,
+  combineLatest,
+  debounceTime,
+  filter,
+  map,
+  of,
+  switchMap,
+  takeUntil,
+  tap,
+} from 'rxjs';
 import { OverlayRef } from '@angular/cdk/overlay';
 import {
   MatDrawerToggleResult,
@@ -15,18 +27,27 @@ import {
 } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { ActivatedRoute, RouterLink } from '@angular/router';
-import { NgClass, NgFor, NgIf, NgTemplateOutlet } from '@angular/common';
+import {
+  AsyncPipe,
+  NgClass,
+  NgFor,
+  NgIf,
+  NgTemplateOutlet,
+} from '@angular/common';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { TranslocoModule } from '@ngneat/transloco';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-import { PlanTasks } from '../../models/plan-tasks.types';
 import { PlanDetailsComponent } from '../details/details.component';
-import { PlanTasksService } from '../../services/plan-tasks.service';
 import { FuseCardComponent } from '@fuse/components/card';
 import { MatMenuModule } from '@angular/material/menu';
-import { MatFormField, MatFormFieldModule } from '@angular/material/form-field';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDividerModule } from '@angular/material/divider';
+import { PlansFacade, TasksFacade, UserFacade } from '@client/core-state';
+import { LetDirective } from '@ngrx/component';
+import { FormsModule } from '@angular/forms';
+import { Task, Todo, UpdatePlan } from '@client/shared/interfaces';
+import { clone, cloneDeep } from 'lodash-es';
 
 @Component({
   selector: 'plan-todo',
@@ -46,21 +67,27 @@ import { MatDividerModule } from '@angular/material/divider';
     FuseCardComponent,
     MatMenuModule,
     MatFormFieldModule,
+    FormsModule,
     MatDividerModule,
     MatTooltipModule,
     MatProgressBarModule,
     TranslocoModule,
+    AsyncPipe,
+    LetDirective,
   ],
 })
 export class PlanTodoComponent implements OnInit, OnDestroy, AfterViewInit {
   constructor(
-    private _plansDetailsComponent: PlanDetailsComponent,
-    private _planTasksService: PlanTasksService,
+    private readonly _plansDetailsComponent: PlanDetailsComponent,
     private _activatedRoute: ActivatedRoute,
-    private _changeDetectorRef: ChangeDetectorRef
+    private _changeDetectorRef: ChangeDetectorRef,
+    private readonly _planFacade: PlansFacade,
+    private readonly _tasksFacade: TasksFacade,
+    private readonly _userFafacde: UserFacade,
   ) {}
 
-  task: PlanTasks;
+  task$: BehaviorSubject<Task> = new BehaviorSubject<Task>(null);
+  taskChanged: Subject<Task> = new Subject<Task>();
 
   private _tagsPanelOverlayRef: OverlayRef;
   private _unsubscribeAll: Subject<any> = new Subject<any>();
@@ -69,14 +96,39 @@ export class PlanTodoComponent implements OnInit, OnDestroy, AfterViewInit {
     // Open the drawer
     this._plansDetailsComponent.matDrawer.open();
 
-    // Get the task
-    this._planTasksService.planTask$
+    // Get task
+    this._tasksFacade.selectedTask$
       .pipe(takeUntil(this._unsubscribeAll))
-      .subscribe(task => {
-        // Get the task
-        this.task = task;
+      .subscribe((task) => {
+        this.task$.next(cloneDeep(task));
+      });
 
-        // Mark for check
+    // subscribe to taskChanged
+    this.taskChanged
+      .pipe(
+        takeUntil(this._unsubscribeAll),
+        debounceTime(500),
+        switchMap((task) => {
+          const dataUpdatePlan: UpdatePlan = {
+            todos: {
+              update: {
+                where: {
+                  id: task.id,
+                },
+                data: {
+                  isDone: task.todos['isDone'],
+                },
+              },
+            },
+          };
+          return of(dataUpdatePlan);
+        }),
+        tap((dataUpdatePlan) => {
+          // this._planFacade.updatePlan(dataUpdatePlan);
+          console.log(dataUpdatePlan);
+        }),
+      )
+      .subscribe(() => {
         this._changeDetectorRef.markForCheck();
       });
   }
@@ -89,7 +141,7 @@ export class PlanTodoComponent implements OnInit, OnDestroy, AfterViewInit {
     this._plansDetailsComponent.matDrawer.openedChange
       .pipe(
         takeUntil(this._unsubscribeAll),
-        filter(opened => opened)
+        filter((opened) => opened),
       )
       .subscribe(() => {
         // Focus on the title element
@@ -115,15 +167,45 @@ export class PlanTodoComponent implements OnInit, OnDestroy, AfterViewInit {
   //! @ Public methods
   // -----------------------------------------------------------------------------------------------------
 
+  get permissionTodo(): Observable<boolean> {
+    // chỉ trưởng khoa hoặc thư ký khoa, và chủ dự án này mới có quyền
+    return combineLatest([
+      this._userFafacde.user$,
+      this._planFacade.selectedPlan$,
+    ]).pipe(
+      map(([user, plan]) => {
+        const roles = user.roles.map((role) => role.name);
+        return !(
+          roles.includes('TRUONG_KHOA') ||
+          roles.includes('THU_KY_KHOA') ||
+          user.info.email === plan.owner.info.email
+        );
+      }),
+    );
+  }
+
   /**
    * Progress Todo
    */
-  get progressTodo(): number {
-    const percent =
-      (this.task.todos.filter(todo => todo.isDone).length /
-        this.task.todos.length) *
-      100;
-    return percent;
+  get progressTodo(): Observable<number> {
+    return this.task$.pipe(
+      map((task) => {
+        const percent =
+          (task.todos.filter((todo) => todo.isDone).length /
+            task.todos.length) *
+          100;
+        return percent;
+      }),
+    );
+  }
+
+  updateTodoOnTask(todo: Todo, task: Task) {
+    if (task.id) {
+      this.taskChanged.next(task);
+    }
+
+    // Trigger change detection
+    this._changeDetectorRef.detectChanges();
   }
 
   /**

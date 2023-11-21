@@ -95,7 +95,7 @@
             #query
           />
         </mat-form-field>
-        <fuse-card class="m-4 min-w-[250px]">
+        <fuse-card class="m-4">
           <div class="grid grid-cols-4 gap-4 p-4">
             <div class="relative flex flex-col text-center">
               <span
@@ -132,6 +132,7 @@
             </div>
             <button
               (click)="addNewPlan()"
+              *ngIf="permissionPlan | async"
               type="button"
               name="add-new-plan"
               class="bg-card hover:bg-hover flex cursor-pointer items-center justify-center rounded-lg shadow-lg transition-all duration-300"
@@ -270,6 +271,17 @@
               <div class="mt-auto flex w-full flex-col">
                 <!-- Course progress -->
                 <div class="relative h-0.5">
+                  <div
+                    class="absolute inset-x-0 z-10 h-6"
+                    [matTooltip]="'45%'"
+                    [matTooltipPosition]="'above'"
+                    [matTooltipClass]="'-mb-0.5'"
+                  >
+                    <mat-progress-bar
+                      class="h-0.5"
+                      [value]="45"
+                    ></mat-progress-bar>
+                  </div>
                   <!-- <div
                     class="absolute inset-x-0 z-10 -mt-3 h-6"
                     [matTooltip]="
@@ -277,10 +289,10 @@
                     "
                     [matTooltipPosition]="'above'"
                     [matTooltipClass]="'-mb-0.5'"></div> -->
-                  <mat-progress-bar
+                  <!-- <mat-progress-bar
                     class="h-0.5"
                     [value]="45"
-                  ></mat-progress-bar>
+                  ></mat-progress-bar> -->
                 </div>
                 <div
                   class="flex items-center justify-between rounded-b-xl border-t bg-gray-50 px-6 py-4 text-right dark:bg-transparent"

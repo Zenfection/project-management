@@ -1,16 +1,18 @@
 import { ResolveFn, Router } from '@angular/router';
 import { inject } from '@angular/core';
 import { catchError, throwError } from 'rxjs';
-import { PlanTasks } from '../../models/plan-tasks.types';
-import { PlanTasksService } from '../../services/plan-tasks.service';
+import { TasksFacade } from '@client/core-state';
+import { Task } from '@client/shared/interfaces';
 
-export const TodoResolver: ResolveFn<PlanTasks> = (route, state) => {
-  const planTasksService = inject(PlanTasksService);
+export const TodoResolver: ResolveFn<Task> = (route, state) => {
+  const taskFacade = inject(TasksFacade);
   const router = inject(Router);
 
-  return planTasksService.getPlanTaskById(route.paramMap.get('taskId')).pipe(
+  taskFacade.selectTask(+route.paramMap.get('taskId'));
+
+  return taskFacade.selectedTask$.pipe(
     // Error here means the requested task is not available
-    catchError(error => {
+    catchError((error) => {
       // Log the error
       console.error(error);
 
@@ -22,6 +24,6 @@ export const TodoResolver: ResolveFn<PlanTasks> = (route, state) => {
 
       // Throw an error
       return throwError(() => new Error(error));
-    })
+    }),
   );
 };

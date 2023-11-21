@@ -4,21 +4,24 @@
     <span class="relative">
       <img
         class="h-7 w-7 rounded-full"
-        *ngIf="showAvatar && user.avatar"
-        [src]="user.avatar"
-        alt="User Avatar" />
+        *ngIf="showAvatar && user.info.avatar"
+        [src]="user.info.avatar"
+        alt="User Avatar"
+      />
       <mat-icon
-        *ngIf="!showAvatar || !user.avatar"
-        [svgIcon]="'duotone:circle-user'"></mat-icon>
+        *ngIf="!showAvatar || !user.info.avatar"
+        [svgIcon]="'duotone:circle-user'"
+      ></mat-icon>
       <span
         class="absolute bottom-0 right-0 h-2 w-2 rounded-full"
         [ngClass]="{
-          'mb-px mr-px': !showAvatar || !user.avatar,
-          'bg-green-500': user.status === 'ONLINE',
-          'bg-amber-500': user.status === 'AWAY',
-          'bg-red-500': user.status === 'BUSY',
-          'bg-gray-400': user.status === 'INVISIBLE'
-        }"></span>
+          'mb-px mr-px': !showAvatar || !user.info.avatar,
+          'bg-green-500': user.info.status === 'ONLINE',
+          'bg-amber-500': user.info.status === 'AWAY',
+          'bg-red-500': user.info.status === 'BUSY',
+          'bg-gray-400': user.info.status === 'INVISIBLE'
+        }"
+      ></span>
     </span>
   </button>
 
@@ -26,7 +29,7 @@
     <button mat-menu-item>
       <span class="flex flex-col leading-none">
         <span>Signed in as</span>
-        <span class="mt-1.5 text-md font-medium">{{ user.email }}</span>
+        <span class="text-md mt-1.5 font-medium">{{ user.info.email }}</span>
       </span>
     </button>
     <mat-divider class="my-2"></mat-divider>
@@ -42,17 +45,21 @@
     </button>
     <button mat-menu-item [matMenuTriggerFor]="userStatus">
       <mat-icon
-        *ngIf="user.status === 'ONLINE'"
-        [svgIcon]="'duotone:globe'"></mat-icon>
+        *ngIf="user.info.status === 'ONLINE'"
+        [svgIcon]="'duotone:globe'"
+      ></mat-icon>
       <mat-icon
-        *ngIf="user.status === 'AWAY'"
-        [svgIcon]="'duotone:house-person-leave'"></mat-icon>
+        *ngIf="user.info.status === 'AWAY'"
+        [svgIcon]="'duotone:house-person-leave'"
+      ></mat-icon>
       <mat-icon
-        *ngIf="user.status === 'BUSY'"
-        [svgIcon]="'duotone:face-sleeping'"></mat-icon>
+        *ngIf="user.info.status === 'BUSY'"
+        [svgIcon]="'duotone:face-sleeping'"
+      ></mat-icon>
       <mat-icon
-        *ngIf="user.status === 'INVISIBLE'"
-        [svgIcon]="'duotone:eye-slash'"></mat-icon>
+        *ngIf="user.info.status === 'INVISIBLE'"
+        [svgIcon]="'duotone:eye-slash'"
+      ></mat-icon>
 
       <span *transloco="let t">{{ t('Status') }}</span>
     </button>

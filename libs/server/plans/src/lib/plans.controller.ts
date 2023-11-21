@@ -19,11 +19,15 @@ import {
   ActiveUser,
   ActiveUserData,
 } from '@server/iam/feature/authentication/utils';
-import { TransformInterceptor } from '@server/cloud/utils';
+import { AvatarInterceptor } from '@server/cloud/utils';
+import { TasksService } from '@server/tasks';
 
 @Controller('plans')
 export class PlansController {
-  constructor(private readonly plansService: PlansService) {}
+  constructor(
+    private readonly plansService: PlansService,
+    private readonly tasksService: TasksService,
+  ) {}
 
   @Post()
   @Roles(RoleEnum.thu_ky_khoa, RoleEnum.truong_khoa)
@@ -37,7 +41,7 @@ export class PlansController {
   }
 
   @Get(':id/tasks')
-  @UseInterceptors(TransformInterceptor)
+  @UseInterceptors(AvatarInterceptor)
   async getTasks(@Param('id') id: string) {
     const plans = await this.plansService.findFilter({
       where: {
@@ -75,64 +79,121 @@ export class PlansController {
     return task;
   }
 
-  @Get()
-  @UseInterceptors(TransformInterceptor)
-  async findAll(@ActiveUser() user: ActiveUserData) {
-    const plans = await this.plansService.findFilter({
-      where: {
-        OR: [
-          {
-            ownerId: user.sub,
-          },
-          {
-            members: {
-              some: {
-                id: user.sub,
-              },
-            },
-          },
-        ],
-      },
-      include: {
-        category: true,
-        members: {
-          select: {
-            id: true,
-            email: true,
-            department: true,
-            info: {
-              select: {
-                avatar: true,
-                name: true,
-                email: true,
-                phone: true,
-              },
-            },
-          },
-        },
-        owner: {
-          select: {
-            id: true,
-            email: true,
-            department: true,
-            info: {
-              select: {
-                avatar: true,
-                name: true,
-                email: true,
-                phone: true,
-              },
-            },
-          },
-        },
-      },
+  @Patch(':id/tasks/:taskId')
+  async updateTask(
+    @Param('id') id: string,
+    @Param('taskId') taskId: string,
+    @Body() updateTaskDto: UpdatePlanDto,
+  ) {
+    return this.tasksService.update({ id: Number(taskId) }, updateTaskDto, {
+      labels: true,
+      comments: true,
+      plan: true,
     });
+  }
 
-    return plans;
+  @Get()
+  @UseInterceptors(AvatarInterceptor)
+  async findAll(@ActiveUser() user: ActiveUserData) {
+    // if user is truong khoa or thu ky khoa, return all plans
+    if (
+      user.roles?.includes(RoleEnum.truong_khoa) ||
+      user.roles?.includes(RoleEnum.thu_ky_khoa)
+    ) {
+      const plans = await this.plansService.findFilter({
+        include: {
+          category: true,
+          members: {
+            select: {
+              id: true,
+              email: true,
+              department: true,
+              info: {
+                select: {
+                  avatar: true,
+                  name: true,
+                  email: true,
+                  phone: true,
+                },
+              },
+            },
+          },
+          owner: {
+            select: {
+              id: true,
+              email: true,
+              department: true,
+              info: {
+                select: {
+                  avatar: true,
+                  name: true,
+                  email: true,
+                  phone: true,
+                },
+              },
+            },
+          },
+        },
+      });
+
+      return plans;
+    } else {
+      const plans = await this.plansService.findFilter({
+        where: {
+          OR: [
+            {
+              ownerId: user.sub,
+            },
+            {
+              members: {
+                some: {
+                  id: user.sub,
+                },
+              },
+            },
+          ],
+        },
+        include: {
+          category: true,
+          members: {
+            select: {
+              id: true,
+              email: true,
+              department: true,
+              info: {
+                select: {
+                  avatar: true,
+                  name: true,
+                  email: true,
+                  phone: true,
+                },
+              },
+            },
+          },
+          owner: {
+            select: {
+              id: true,
+              email: true,
+              department: true,
+              info: {
+                select: {
+                  avatar: true,
+                  name: true,
+                  email: true,
+                  phone: true,
+                },
+              },
+            },
+          },
+        },
+      });
+
+      return plans;
+    }
   }
 
   @Get(':id')
-  @UseInterceptors(TransformInterceptor)
+  @UseInterceptors(AvatarInterceptor)
   async findOne(@ActiveUser() user: ActiveUserData, @Param('id') id: string) {
     const plan = await this.plansService.findOne(
       { id: Number(id) },
@@ -172,7 +233,11 @@ export class PlansController {
     );
 
     // check if user is member of plan or owner
-    if (plan.ownerId !== user.sub) {
+    if (
+      plan.ownerId !== user.sub &&
+      !user.roles?.includes(RoleEnum.truong_khoa) &&
+      !user.roles?.includes(RoleEnum.thu_ky_khoa)
+    ) {
       const member = plan.members.find(
         (member: { id: number }) => member.id === user.sub,
       );
@@ -185,7 +250,7 @@ export class PlansController {
   }
 
   @Patch(':id')
-  @UseInterceptors(TransformInterceptor)
+  @UseInterceptors(AvatarInterceptor)
   async update(
     @Param('id') id: string,
     @ActiveUser() user: ActiveUserData,
@@ -195,7 +260,11 @@ export class PlansController {
       id: Number(id),
     });
 
-    if (plan.ownerId !== user.sub) {
+    if (
+      plan.ownerId !== user.sub &&
+      !user.roles?.includes(RoleEnum.truong_khoa) &&
+      !user.roles?.includes(RoleEnum.thu_ky_khoa)
+    ) {
       throw new UnauthorizedException(
         'You are not allowed to update this plan',
       );

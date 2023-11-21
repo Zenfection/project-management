@@ -33,12 +33,10 @@ import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { FuseCardComponent } from '@fuse/components/card';
 import { FuseFindByKeyPipe } from '@fuse/pipes/find-by-key/find-by-key.pipe';
 import { TranslocoModule } from '@ngneat/transloco';
-import { User } from '@client/shared/interfaces';
+import { Category, Plan, User } from '@client/shared/interfaces';
 import { BehaviorSubject, combineLatest, map, Observable, Subject } from 'rxjs';
 import { RiveCanvas, RiveLinearAnimation } from 'ng-rive';
-import { Category } from '../../models/category.types';
-import { Plan } from '../../models/plan.types';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { PlanNewComponent } from '../new/new.component';
 import { Dictionary } from '@ngrx/entity';
 import { LetDirective } from '@ngrx/component';
@@ -67,6 +65,7 @@ import { LetDirective } from '@ngrx/component';
     MatTooltipModule,
     MatProgressBarModule,
     MatButtonModule,
+    MatDialogModule,
     RouterLink,
     FuseFindByKeyPipe,
     PercentPipe,
@@ -165,10 +164,21 @@ export class PlanListComponent implements OnInit, OnDestroy {
   // @ Public methods
   // -----------------------------------------------------------------------------------------------------
 
+  get permissionPlan(): Observable<boolean> {
+    return this.user$.pipe(
+      map((user) => {
+        const roles = user.roles.map((role) => role.name);
+        return roles.some(
+          (role) => role === 'TRUONG_KHOA' || role === 'THU_KY_KHOA',
+        );
+      }),
+    );
+  }
+
   ownerPlan(email: string) {
     return this.user$.pipe(
       map((user) => {
-        return user.email === email;
+        return user.info.email === email;
       }),
     );
   }
@@ -181,8 +191,9 @@ export class PlanListComponent implements OnInit, OnDestroy {
     this._matDialog.open(PlanNewComponent, {
       autoFocus: false,
       data: {
-        plan: null as Plan,
+        plan: {} as Plan,
       },
+      disableClose: true,
     });
   }
 

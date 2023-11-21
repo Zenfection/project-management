@@ -1,7 +1,11 @@
-import { NestFactory, HttpAdapterHost } from '@nestjs/core';
+import { NestFactory, HttpAdapterHost, Reflector } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
-import { HttpStatus, ValidationPipe } from '@nestjs/common';
+import {
+  ClassSerializerInterceptor,
+  HttpStatus,
+  ValidationPipe,
+} from '@nestjs/common';
 import { PrismaClientExceptionFilter } from 'nestjs-prisma';
 
 async function bootstrap() {
@@ -13,6 +17,8 @@ async function bootstrap() {
       whitelist: true,
     }),
   );
+
+  app.useGlobalInterceptors(new ClassSerializerInterceptor(app.get(Reflector)));
 
   const { httpAdapter } = app.get(HttpAdapterHost);
   app.useGlobalFilters(
