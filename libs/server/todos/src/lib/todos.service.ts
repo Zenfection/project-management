@@ -2,7 +2,8 @@ import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { CreateTodoDto } from './dto/create-todo.dto';
 import { UpdateTodoDto } from './dto/update-todo.dto';
 import { PrismaService } from 'nestjs-prisma';
-import { Prisma, Todo } from '@prisma/client';
+import { Prisma } from '@prisma/client';
+import { TodoEntity } from './entities/todo.entity';
 
 @Injectable()
 export class TodosService {
@@ -14,17 +15,13 @@ export class TodosService {
     }
   }
 
-  async checkPermission(userId: string, todoId: string) {}
-
-  async create(createTodoDto: CreateTodoDto): Promise<Todo> {
-    const todo = await this.prismaService.todo.create({
+  create(createTodoDto: CreateTodoDto): Promise<TodoEntity> {
+    return this.prismaService.todo.create({
       data: createTodoDto,
     });
-
-    return todo;
   }
 
-  async findAll(include?: Prisma.TodoInclude): Promise<Todo[]> {
+  findAll(include?: Prisma.TodoInclude): Promise<TodoEntity[]> {
     return this.prismaService.todo.findMany({
       include,
     });
@@ -33,7 +30,7 @@ export class TodosService {
   findOne(params: {
     where: Prisma.TodoWhereUniqueInput;
     include?: Prisma.TodoInclude;
-  }) {
+  }): Promise<TodoEntity | null> {
     const { where, include } = params;
     return this.prismaService.todo.findUnique({
       where,
@@ -48,7 +45,7 @@ export class TodosService {
     where?: Prisma.TodoWhereInput;
     orderBy?: Prisma.TodoOrderByWithRelationInput;
     include?: Prisma.TodoInclude;
-  }): Promise<Todo[]> {
+  }): Promise<TodoEntity[]> {
     const { skip, take, cursor, where, orderBy, include } = params;
     return this.prismaService.todo.findMany({
       skip,
@@ -64,7 +61,7 @@ export class TodosService {
     where: Prisma.TodoWhereUniqueInput;
     data: UpdateTodoDto;
     include?: Prisma.TodoInclude;
-  }): Promise<Todo> {
+  }): Promise<TodoEntity> {
     const { where, data, include } = params;
     this.checkEmptyDataUpdate(data);
     return this.prismaService.todo.update({
@@ -74,7 +71,7 @@ export class TodosService {
     });
   }
 
-  remove(where: Prisma.TodoWhereUniqueInput): Promise<Todo> {
+  remove(where: Prisma.TodoWhereUniqueInput): Promise<TodoEntity> {
     return this.prismaService.todo.delete({
       where,
     });

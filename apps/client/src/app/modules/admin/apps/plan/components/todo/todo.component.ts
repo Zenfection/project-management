@@ -9,15 +9,14 @@ import {
 } from '@angular/core';
 import {
   BehaviorSubject,
-  EMPTY,
   Observable,
   Subject,
   combineLatest,
+  debounce,
   debounceTime,
   filter,
+  interval,
   map,
-  of,
-  switchMap,
   takeUntil,
   tap,
 } from 'rxjs';
@@ -45,11 +44,18 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDividerModule } from '@angular/material/divider';
 import { PlansFacade, TasksFacade, UserFacade } from '@client/core-state';
-import { LetDirective } from '@ngrx/component';
-import { FormsModule } from '@angular/forms';
-import { Task, Todo, UpdateTask } from '@client/shared/interfaces';
+import { LetDirective, PushPipe } from '@ngrx/component';
+import {
+  FormBuilder,
+  FormsModule,
+  ReactiveFormsModule,
+  UntypedFormGroup,
+} from '@angular/forms';
+import { Task, Todo, UpdateTask, User } from '@client/shared/interfaces';
 import { cloneDeep } from 'lodash-es';
-import { T } from '@angular/cdk/keycodes';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { PlanTodoCommentComponent } from './components/comment/comment.component';
 
 @Component({
   selector: 'plan-todo',
@@ -67,15 +73,24 @@ import { T } from '@angular/cdk/keycodes';
     NgTemplateOutlet,
     NgClass,
     FuseCardComponent,
+    ReactiveFormsModule,
+    FormsModule,
     MatMenuModule,
     MatFormFieldModule,
+    MatButtonModule,
     FormsModule,
     MatDividerModule,
     MatTooltipModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatIconModule,
     MatProgressBarModule,
+    FuseCardComponent,
     TranslocoModule,
     AsyncPipe,
     LetDirective,
+    PushPipe,
+    PlanTodoCommentComponent,
   ],
 })
 export class PlanTodoComponent implements OnInit, OnDestroy, AfterViewInit {
@@ -83,12 +98,14 @@ export class PlanTodoComponent implements OnInit, OnDestroy, AfterViewInit {
     private readonly _plansDetailsComponent: PlanDetailsComponent,
     private _activatedRoute: ActivatedRoute,
     private _changeDetectorRef: ChangeDetectorRef,
+    private formBuilder: FormBuilder,
     private readonly _planFacade: PlansFacade,
     private readonly _tasksFacade: TasksFacade,
     private readonly _userFafacde: UserFacade,
   ) {}
 
   task$: BehaviorSubject<Task> = new BehaviorSubject<Task>(null);
+  user$: Observable<User> = this._userFafacde.user$;
   taskChanged: Subject<Task> = new Subject<Task>();
   todoChanged: Subject<Todo> = new Subject<Todo>();
 
@@ -98,6 +115,8 @@ export class PlanTodoComponent implements OnInit, OnDestroy, AfterViewInit {
   private _unsubscribeAll: Subject<any> = new Subject<any>();
 
   ngOnInit(): void {
+    // init comment form
+
     // Open the drawer
     this._plansDetailsComponent.matDrawer.open();
 
@@ -122,22 +141,9 @@ export class PlanTodoComponent implements OnInit, OnDestroy, AfterViewInit {
     this.todoChanged
       .pipe(
         takeUntil(this._unsubscribeAll),
+        debounce(() => interval(300)),
         tap((todo) => {
-          const dataUpdate: UpdateTask = {
-            todos: {
-              update: {
-                where: {
-                  id: todo.id,
-                },
-                data: {
-                  isDone: todo.isDone,
-                  content: todo.content,
-                },
-              },
-            },
-          };
-          console.log('Gửi');
-          this._tasksFacade.updateTask(dataUpdate);
+          this._tasksFacade.updateTodo(todo);
         }),
       )
       .subscribe(() => {
@@ -211,15 +217,18 @@ export class PlanTodoComponent implements OnInit, OnDestroy, AfterViewInit {
     );
   }
 
-  updateTodoOnTask(todo: Todo, task: Task) {
-    if (task.id) {
-      // const index = task.todos.findIndex((t) => t.id === todo.id);
-      // task.todos[index] = todo;
-
-      // this.taskChanged.next(task);
-      // this.disbaleTodo = true;
-      this.todoChanged.next(todo);
-    }
+  updateTodoOnTask(todo: Todo, task: Task, event: InputEvent) {
+    // if event not typing content can this.todoChange.next
+    this.todoChanged.next(todo);
+    this.disbaleTodo = true;
+    // check event focus input
+    // if (event.type === 'focus') {
+    // if (task.id) {
+    // const index = task.todos.findIndex((t) => t.id === todo.id);
+    // task.todos[index] = todo;
+    // this.taskChanged.next(task);
+    // this.disbaleTodo = true;
+    // }
   }
 
   /**

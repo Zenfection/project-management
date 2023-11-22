@@ -123,8 +123,9 @@ model User {
   ownedPlans   Plan[]     @relation("PlanOwner")
   memberPlans  Plan[]     @relation("PlanMembers")
 
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  Comment   Comment[]
 
   @@index([email], name: "user_email_idx")
 }
@@ -236,6 +237,8 @@ model Comment {
   content   String
   task      Task     @relation(fields: [taskId], references: [id])
   taskId    Int
+  user      User     @relation(fields: [userId], references: [id])
+  userId    Int
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }

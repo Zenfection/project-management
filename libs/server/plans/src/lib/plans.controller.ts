@@ -1,25 +1,24 @@
 import {
-  Controller,
-  Get,
-  Post,
   Body,
-  Patch,
-  Param,
+  Controller,
   Delete,
+  Get,
+  Param,
+  Patch,
+  Post,
   UnauthorizedException,
   UseInterceptors,
 } from '@nestjs/common';
+import { CreatePlanDto, UpdatePlanDto } from '@server/shared/dto';
 import { PlansService } from './plans.service';
-import { CreatePlanDto } from './dto/create-plan.dto';
-import { UpdatePlanDto } from './dto/update-plan.dto';
 
-import { RoleEnum } from '@server/shared/entities';
-import { Roles } from '@server/iam/feature/authorization/utils';
+import { AvatarInterceptor } from '@server/cloud/utils';
 import {
   ActiveUser,
   ActiveUserData,
 } from '@server/iam/feature/authentication/utils';
-import { AvatarInterceptor } from '@server/cloud/utils';
+import { Roles } from '@server/iam/feature/authorization/utils';
+import { RoleEnum } from '@server/shared/entities';
 import { TasksService } from '@server/tasks';
 
 @Controller('plans')
@@ -63,6 +62,21 @@ export class PlansController {
             },
             labels: true,
             todos: true,
+            comments: {
+              include: {
+                user: {
+                  select: {
+                    info: {
+                      select: {
+                        email: true,
+                        avatar: true,
+                        name: true,
+                      },
+                    },
+                  },
+                },
+              },
+            },
           },
         },
       },
@@ -79,18 +93,18 @@ export class PlansController {
     return task;
   }
 
-  @Patch(':id/tasks/:taskId')
-  async updateTask(
-    @Param('id') id: string,
-    @Param('taskId') taskId: string,
-    @Body() updateTaskDto: UpdatePlanDto,
-  ) {
-    return this.tasksService.update({ id: Number(taskId) }, updateTaskDto, {
-      labels: true,
-      comments: true,
-      plan: true,
-    });
-  }
+  // @Patch(':id/tasks/:taskId')
+  // async updateTask(
+  //   @Param('id') id: string,
+  //   @Param('taskId') taskId: string,
+  //   @Body() updateTaskDto: UpdatePlanDto,
+  // ) {
+  //   return this.tasksService.update({ id: Number(taskId) }, updateTaskDto, {
+  //     labels: true,
+  //     comments: true,
+  //     plan: true,
+  //   });
+  // }
 
   @Get()
   @UseInterceptors(AvatarInterceptor)

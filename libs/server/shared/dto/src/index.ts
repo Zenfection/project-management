@@ -1,25 +1,23 @@
-import { SignInDto } from './lib/sign-in.dto/sign-in.dto';
-import { SignUpDto } from './lib/sign-up.dto/sign-up.dto';
-import { RefreshTokenDto } from './lib/refresh-token.dto/refresh-token.dto';
-import { SignInWithTokenDto } from './lib/sign-in-with-token.dto/sign-in-with-token.dto';
+export { SignInDto } from './lib/sign-in.dto/sign-in.dto';
+export { SignUpDto } from './lib/sign-up.dto/sign-up.dto';
+export { RefreshTokenDto } from './lib/refresh-token.dto/refresh-token.dto';
+export { SignInWithTokenDto } from './lib/sign-in-with-token.dto/sign-in-with-token.dto';
 
-// USER
-import { CreateUserDto } from './lib/user/create-user.dto';
-import { updateUserDto } from './lib/user/update-user.dto';
-import { CreateInfoDto } from './lib/user/create-info.dto';
-import { updateInfoDto } from './lib/user/update-info.dto';
-// import { createSettingDto } from './lib/user/create-setting.dto';
-// import { updateSettingDto } from './lib/user/update-setting.dto';
+export { CreateUserDto } from './lib/user.dto/create-user.dto';
+export { updateUserDto } from './lib/user.dto/update-user.dto';
+export { CreateInfoDto } from './lib/user.dto/create-info.dto';
+export { updateInfoDto } from './lib/user.dto/update-info.dto';
+// import { createSettingDto } from './lib/user.dto/create-setting.dto';
+// import { updateSettingDto } from './lib/user.dto/update-setting.dto';
 
-// TASKS
+export { CreatePlanDto } from './lib/plan.dto/create-plan.dto';
+export { UpdatePlanDto } from './lib/plan.dto/update-plan.dto';
 
-export {
-  SignInDto,
-  SignUpDto,
-  RefreshTokenDto,
-  SignInWithTokenDto,
-  CreateUserDto,
-  updateUserDto,
-  CreateInfoDto,
-  updateInfoDto,
-};
+export { CreateTaskDto } from './lib/task.dto/create-task.dto';
+export { UpdateTaskDto } from './lib/task.dto/update-task.dto';
+
+export { CreateTodoDto } from './lib/todo.dto/create-todo.dto';
+export { UpdateTodoDto } from './lib/todo.dto/update-todo.dto';
+
+export { CreateCommentDto } from './lib/comment.dto/create-comment.dto';
+export { UpdateCommentDto } from './lib/comment.dto/update-comment.dto';

@@ -4,7 +4,7 @@ export interface Todo {
   id?: number;
   content?: string;
   isDone?: boolean;
-  tasksId?: number;
+  taskId?: number;
 }
 
 export interface CreateTodo {}

@@ -1,8 +1,9 @@
 import { Injectable } from '@nestjs/common';
-import { Prisma, Task } from '@prisma/client';
+import { Prisma } from '@prisma/client';
 import { CloudService } from '@server/cloud/data-access';
 import { PrismaService } from 'nestjs-prisma';
-import { UpdateTaskDto } from './dto/update-task.dto';
+import { CreateTaskDto, UpdateTaskDto } from '@server/shared/dto';
+import { TaskEntity } from '@server/shared/entities';
 
 @Injectable()
 export class TasksService {
@@ -10,9 +11,12 @@ export class TasksService {
     private readonly prismaService: PrismaService,
     private readonly cloudService: CloudService,
   ) {}
-  // create(createTaskDto: CreateTaskDto) {
-  //   return 'This action adds a new task';
-  // }
+
+  create(createTaskDto: CreateTaskDto): Promise<TaskEntity> {
+    return this.prismaService.task.create({
+      data: createTaskDto,
+    });
+  }
 
   async checkPermission(email: string, taskId: number): Promise<boolean> {
     // Check if user is truong khoa or thu ky khoa and has permission to view this task
@@ -39,7 +43,7 @@ export class TasksService {
     return !user || user.tasks.length === 0;
   }
 
-  findAll(include?: Prisma.TaskInclude): Promise<Task[]> {
+  findAll(include?: Prisma.TaskInclude): Promise<TaskEntity[]> {
     return this.prismaService.task.findMany({
       include,
     });
@@ -52,7 +56,7 @@ export class TasksService {
     where?: Prisma.TaskWhereInput;
     orderBy?: Prisma.TaskOrderByWithRelationInput;
     include?: Prisma.TaskInclude;
-  }): Promise<Task[]> {
+  }): Promise<TaskEntity[]> {
     const { skip, take, cursor, where, orderBy, include } = params;
     return this.prismaService.task.findMany({
       skip,
@@ -64,30 +68,26 @@ export class TasksService {
     });
   }
 
-  findOne(where: Prisma.TaskWhereUniqueInput, include?: Prisma.TaskInclude) {
+  findOne(
+    where: Prisma.TaskWhereUniqueInput,
+    include?: Prisma.TaskInclude,
+  ): Promise<TaskEntity | null> {
     return this.prismaService.task.findUnique({
       where,
       include,
     });
   }
 
-  update(
-    where: Prisma.TaskWhereUniqueInput,
-    data: UpdateTaskDto,
-    include?: Prisma.TaskInclude,
-  ) {
+  update(params: {
+    where: Prisma.TaskWhereUniqueInput;
+    data: UpdateTaskDto;
+    include?: Prisma.TaskInclude;
+  }): Promise<TaskEntity> {
+    const { where, data, include } = params;
     return this.prismaService.task.update({
       where,
       data,
       include,
-    });
-  }
-
-  updateMany(params: { where: Prisma.TaskWhereInput; data: UpdateTaskDto }) {
-    const { where, data } = params;
-    return this.prismaService.task.updateMany({
-      where,
-      data,
     });
   }
 

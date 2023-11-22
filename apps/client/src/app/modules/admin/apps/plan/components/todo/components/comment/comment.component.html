@@ -1,0 +1,91 @@
+<fuse-card class="filter-post filter-interactive flex w-full flex-col">
+  <ng-container>
+    <hr class="m-0 border-b" />
+    <div class="mx-4 mb-3 mt-6 flex flex-col sm:mx-8">
+      <div class="flex items-start">
+        <img
+          class="mr-2 h-10 w-10 rounded-full"
+          [src]="(user$ | ngrxPush).info.avatar"
+          [matTooltip]="(user$ | ngrxPush).info.name"
+          alt="Card cover image"
+        />
+        <form [formGroup]="CommentForm" class="w-full">
+          <mat-form-field class="relative w-full" [subscriptSizing]="'dynamic'">
+            <textarea
+              class="border-0 focus:ring-0"
+              [formControlName]="'content'"
+              placeholder="Write a comment..."
+              matInput
+              cdkTextareaAutosize
+              [cdkAutosizeMinRows]="3"
+            ></textarea>
+            <div
+              class="absolute bottom-0 right-0 flex justify-between py-4 pl-3 pr-2"
+            >
+              <mat-icon
+                class="icon-size-5 z-10 cursor-pointer"
+                [ngClass]="{ 'text-blue-800 opacity-100': CommentForm.valid }"
+                [svgIcon]="'duotone:paper-plane-top'"
+              ></mat-icon>
+            </div>
+          </mat-form-field>
+        </form>
+      </div>
+      <div class="-mr-3 ml-auto mt-3 flex items-center">
+        <button type="button" mat-icon-button>
+          <mat-icon
+            class="icon-size-5"
+            [svgIcon]="'solid:paperclip'"
+            [matTooltip]="'Attach File'"
+          ></mat-icon>
+        </button>
+        <!-- <button mat-icon-button>
+          <mat-icon
+            class="icon-size-5"
+            [svgIcon]="'heroicons_solid:face-smile'"
+          ></mat-icon>
+        </button> -->
+        <button type="button" mat-icon-button>
+          <mat-icon
+            class="icon-size-5"
+            [svgIcon]="'solid:image'"
+            [matTooltip]="'Upload Image'"
+          ></mat-icon>
+        </button>
+      </div>
+    </div>
+    <hr class="mx-4 my-0 border-b sm:mx-8" />
+    <div class="max-h-120 overflow-y-auto">
+      <div
+        class="relative mx-4 my-6 flex flex-col sm:mx-8"
+        *ngFor="let comment of task.comments; let i = index"
+      >
+        <div class="flex items-start">
+          <img
+            class="mr-4 h-8 w-8 rounded-full"
+            [src]="comment.user.info.avatar"
+            [matTooltip]="comment.user.info.name"
+            alt="Card cover image"
+          />
+          <div class="mt-0.5 flex flex-col">
+            <span class="font-semibold">
+              {{ comment.user.info.name }}
+            </span>
+            <span class="leading-6">
+              {{ comment.content }}
+            </span>
+            <div class="text-secondary mt-2 flex items-center text-sm">
+              <span class="mr-2 cursor-pointer hover:underline">Like</span>
+              <span class="mr-2 cursor-pointer hover:underline">Reply</span>
+              <span class="mr-2 cursor-pointer hover:underline"
+                >Hide replies</span
+              >
+              <span class="mr-2">&bull;</span>
+              <span>{{ comment.createdAt | timeElapsed }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</fuse-card>

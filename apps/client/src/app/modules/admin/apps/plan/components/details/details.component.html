@@ -379,14 +379,18 @@
                             class="icon-size-3.5"
                             [svgIcon]="'duotone:paperclip'"
                           ></mat-icon>
-                          <span class="font-sans"> 4 </span>
+                          <span class="font-sans">
+                            {{ task.files.length }}
+                          </span>
                         </div>
                         <div class="flex items-center gap-1 text-sm">
                           <mat-icon
                             class="icon-size-3.5"
                             [svgIcon]="'duotone:comment'"
                           ></mat-icon>
-                          <span class="font-sans"> 3 </span>
+                          <span class="font-sans">
+                            {{ task.comments.length }}
+                          </span>
                         </div>
                       </div>
                     </div>

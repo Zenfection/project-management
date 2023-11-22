@@ -1,4 +1,4 @@
-import { Task, UpdateTask } from '@client/shared/interfaces';
+import { Task, Todo, UpdateTask } from '@client/shared/interfaces';
 import { createAction, props } from '@ngrx/store';
 
 export const loadTasksSuccess = createAction(
@@ -25,10 +25,20 @@ export const updateTasksFailure = createAction(
   props<{ error: { message: string } }>(),
 );
 
+export const updateTodo = createAction(
+  '[TASKS] Update Temporary Task',
+  props<{ todo: Todo }>(),
+);
+
+export const updateTodoFailure = createAction(
+  '[TASKS] Update Temporary Task Failure',
+  props<{ error: { message: string } }>(),
+);
+
 //! Update Temp Todo
 export const updateTodoSuccess = createAction(
-  '[TASKS] Update Temporary Task',
-  props<{ task: Task }>(),
+  '[TASKS] Update Todo Task',
+  props<{ todo: Todo }>(),
 );
 
 //! Delete

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { TasksState } from './tasks.reducer';
 import { Observable } from 'rxjs';
-import { Task, UpdateTask } from '@client/shared/interfaces';
+import { Task, Todo, UpdateTask } from '@client/shared/interfaces';
 import { selectAllTasks, selectSelectedTask } from './tasks.selector';
 import * as TasksActions from './tasks.actions';
 
@@ -27,8 +27,8 @@ export class TasksFacade {
     this.store.dispatch(TasksActions.updateTask({ task }));
   }
 
-  updateTodoSuccess(task: Task): void {
-    this.store.dispatch(TasksActions.updateTodoSuccess({ task }));
+  updateTodo(todo: Todo): void {
+    this.store.dispatch(TasksActions.updateTodo({ todo }));
   }
 
   deleteTaskSuccess(id: number): void {

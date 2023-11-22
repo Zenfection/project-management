@@ -1,25 +1,25 @@
 import {
-  Controller,
-  Get,
-  Post,
-  Param,
-  UseInterceptors,
-  UploadedFile,
-  ParseFilePipe,
-  FileTypeValidator,
-  UnauthorizedException,
-  Patch,
   Body,
+  Controller,
+  FileTypeValidator,
+  Get,
+  Param,
+  ParseFilePipe,
+  Patch,
+  Post,
+  UnauthorizedException,
+  UploadedFile,
+  UseInterceptors,
 } from '@nestjs/common';
-import { TasksService } from './tasks.service';
 import { FileInterceptor } from '@nestjs/platform-express';
+import { TasksService } from './tasks.service';
 
+import { AvatarInterceptor } from '@server/cloud/utils';
 import {
   ActiveUser,
   ActiveUserData,
 } from '@server/iam/feature/authentication/utils';
-import { UpdateTaskDto } from './dto/update-task.dto';
-import { AvatarInterceptor } from '@server/cloud/utils';
+import { UpdateTaskDto } from '@server/shared/dto';
 
 @Controller('tasks')
 export class TasksController {
@@ -38,7 +38,7 @@ export class TasksController {
 
     return this.tasksService.findOne(
       { id: Number(id) },
-      { labels: true, todos: true },
+      { labels: true, todos: true, comments: true },
     );
   }
 
@@ -81,11 +81,17 @@ export class TasksController {
     // if (await this.tasksService.checkPermission(user.email, Number(id))) {
     //   throw new UnauthorizedException('Permission denied');
     // }
-    return this.tasksService.update({ id: Number(id) }, updateTaskDto, {
-      labels: true,
-      todos: true,
-      assignee: {
-        include: { info: true },
+
+    return this.tasksService.update({
+      where: { id: Number(id) },
+      data: updateTaskDto,
+      include: {
+        labels: true,
+        todos: true,
+        assignee: {
+          include: { info: true },
+        },
+        comments: true,
       },
     });
   }

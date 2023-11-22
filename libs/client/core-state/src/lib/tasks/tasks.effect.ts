@@ -9,16 +9,14 @@ import * as TasksAction from './tasks.actions';
 import {
   catchError,
   concatMap,
-  debounceTime,
-  exhaustMap,
+  groupBy,
   map,
   mergeMap,
   of,
   switchMap,
-  tap,
   withLatestFrom,
 } from 'rxjs';
-import { Task } from '@client/shared/interfaces';
+import { Task, Todo } from '@client/shared/interfaces';
 import { selectSelectTaskId } from './tasks.selector';
 
 @Injectable()
@@ -35,21 +33,74 @@ export class TasksEffects {
     return this.actions$.pipe(
       ofType(TasksAction.updateTask),
       withLatestFrom(this.store.select(selectSelectTaskId)),
-      exhaustMap(([action, taskId]) =>
-        this._httpClient.patch<Task>(`api/tasks/${taskId}`, action.task).pipe(
-          map((task) => TasksAction.updateTaskSuccess({ task })),
-          catchError((error: { message: string }) => {
-            this.snackBar.open(
-              `Failed to update task because: ${error.message}`,
-              'Close',
-              {
-                duration: 3000,
-              },
-            );
-            return of(TasksAction.updateTasksFailure({ error }));
+      groupBy(([action, taskId]) => taskId),
+      mergeMap((group$) => {
+        return group$.pipe(
+          concatMap(([action, taskId]) => {
+            return this._httpClient
+              .patch<Task>(`api/tasks/${taskId}`, action.task)
+              .pipe(
+                map((task) => TasksAction.updateTaskSuccess({ task })),
+                catchError((error: { message: string }) => {
+                  this.snackBar.open(
+                    `Failed to update task because: ${error.message}`,
+                    'Close',
+                    {
+                      duration: 3000,
+                    },
+                  );
+                  return of(TasksAction.updateTasksFailure({ error }));
+                }),
+              );
           }),
-        ),
-      ),
+        );
+      }),
     );
   });
+
+  updateTodo$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(TasksAction.updateTodo),
+      switchMap((action) => {
+        return this._httpClient
+          .patch<Todo>(`api/todos/${action.todo.id}`, action.todo)
+          .pipe(
+            map((todo) => TasksAction.updateTodoSuccess({ todo })),
+            catchError((error: { message: string }) => {
+              this.snackBar.open(
+                `Failed to update todo because: ${error.message}`,
+                'Close',
+                {
+                  duration: 3000,
+                },
+              );
+              return of(TasksAction.updateTodoFailure({ error }));
+            }),
+          );
+      }),
+    );
+  });
+
+  // updateTask$ = createEffect(() => {
+  //   return this.actions$.pipe(
+  //     ofType(TasksAction.updateTask),
+  //     withLatestFrom(this.store.select(selectSelectTaskId)),
+  //     groupBy(([action, taskId]) => taskId),
+  //     mergeMap((group$) =>
+  //       this._httpClient.patch<Task>(`api/tasks/${taskId}`, action.task).pipe(
+  //         map((task) => TasksAction.updateTaskSuccess({ task })),
+  //         catchError((error: { message: string }) => {
+  //           this.snackBar.open(
+  //             `Failed to update task because: ${error.message}`,
+  //             'Close',
+  //             {
+  //               duration: 3000,
+  //             },
+  //           );
+  //           return of(TasksAction.updateTasksFailure({ error }));
+  //         }),
+  //       ),
+  //     ),
+  //   );
+  // });
 }

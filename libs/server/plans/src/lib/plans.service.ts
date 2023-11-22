@@ -2,8 +2,7 @@ import { Injectable, UnauthorizedException } from '@nestjs/common';
 
 import { PrismaService } from 'nestjs-prisma';
 import { Plan, Prisma } from '@prisma/client';
-import { UpdatePlanDto } from './dto/update-plan.dto';
-import { CreatePlanDto } from './dto/create-plan.dto';
+import { UpdatePlanDto, CreatePlanDto } from '@server/shared/dto';
 
 @Injectable()
 export class PlansService {

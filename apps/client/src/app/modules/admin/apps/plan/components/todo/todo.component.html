@@ -129,7 +129,7 @@
                     [color]="'primary'"
                     [disabled]="disbaleTodo"
                     [(ngModel)]="todo.isDone"
-                    (change)="updateTodoOnTask(todo, task)"
+                    (change)="updateTodoOnTask(todo, task, $event)"
                   ></mat-checkbox>
                   <input
                     aria-label="Task"
@@ -140,7 +140,7 @@
                     }"
                     [placeholder]="'Task'"
                     [(ngModel)]="todo.content"
-                    (input)="updateTodoOnTask(todo, task)"
+                    (input)="updateTodoOnTask(todo, task, $event)"
                   />
                   <mat-icon
                     class="icon-size-5 ml-auto hidden cursor-pointer group-hover:flex"
@@ -166,19 +166,6 @@
                 />
               </div>
             </div>
-            <!-- <div class="mt-6 space-y-4">
-              <div *ngFor="let todo of task.todos">
-                <div class="flex w-full items-center">
-                  <mat-checkbox
-                    color="primary"
-                    [checked]="todo.isDone"
-                    [disabled]="true"
-                  >
-                    {{ todo.content }}
-                  </mat-checkbox>
-                </div>
-              </div>
-            </div> -->
           </ng-container>
 
           <ng-template #noToDo>
@@ -209,22 +196,7 @@
           </ng-template>
         </div>
         <!-- Comment -->
-        <div class="py-6">
-          <div class="font-sans text-sm font-semibold uppercase text-slate-400">
-            Comment (0)
-          </div>
-          <ng-container>
-            <div v-else class="mt-6 flex flex-col gap-8">
-              <!-- Have Comment -->
-            </div>
-          </ng-container>
-        </div>
-        <!-- Textarea -->
-        <fuse-card
-          class="filter-post filter-interactive max-w-140 flex w-full flex-col"
-        >
-          <div class="mx-6 mb-4 mt-6 flex items-center sm:mx-8"></div>
-        </fuse-card>
+        <plan-todo-comment [task]="task"></plan-todo-comment>
       </div>
     </div>
   </div>

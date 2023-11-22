@@ -55,9 +55,11 @@
       "@server/shared/entities": ["libs/server/shared/entities/src/index.ts"],
       "@server/shared/services": ["libs/server/shared/services/src/index.ts"],
       "@server/tasks": ["libs/server/tasks/src/index.ts"],
+      "@server/todos": ["libs/server/todos/src/index.ts"],
       "@server/tools": ["libs/server/tools/src/index.ts"],
       "@server/users": ["libs/server/users/src/index.ts"],
-      "@server/todos": ["libs/server/todos/src/index.ts"]
+      "@tools": ["tools/src/index.ts"],
+      "@server/comments": ["libs/server/comments/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp", "libs/client/fuse/src/lib"]

@@ -1,19 +1,12 @@
 // USER
-import { InfoEntity } from './lib/user/info.entity';
-import { UserEntity } from './lib/user/user.entity';
-import { SettingEntity } from './lib/user/setting.entity';
-import { RoleEntity, RoleEnum } from './lib/user/role.entity';
+export { InfoEntity } from './lib/user.entity/info.entity';
+export { UserEntity } from './lib/user.entity/user.entity';
+export { SettingEntity } from './lib/user.entity/setting.entity';
+export { RoleEntity, RoleEnum } from './lib/user.entity/role.entity';
 
 // PLANS
-import { PlanEntity } from './lib/plan/plan.entity';
+export { PlanEntity } from './lib/plan.entity/plan.entity';
 
-// TASKS
+export { TaskEntity } from './lib/task.entity/task.entity';
 
-export {
-  InfoEntity,
-  UserEntity,
-  SettingEntity,
-  RoleEntity,
-  PlanEntity,
-  RoleEnum,
-};
+export { CommentEntity } from './lib/comment.entity/comment.entity';
