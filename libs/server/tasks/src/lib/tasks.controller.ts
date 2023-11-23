@@ -19,7 +19,7 @@ import {
   ActiveUser,
   ActiveUserData,
 } from '@server/iam/feature/authentication/utils';
-import { UpdateTaskDto } from '@server/shared/dto';
+import { CreateTaskDto, UpdateTaskDto } from '@server/shared/dto';
 
 @Controller('tasks')
 export class TasksController {
@@ -40,6 +40,24 @@ export class TasksController {
       { id: Number(id) },
       { labels: true, todos: true, comments: true },
     );
+  }
+
+  @Post()
+  createTask(
+    @ActiveUser() user: ActiveUserData,
+    @Body() createTaskDto: CreateTaskDto,
+  ) {
+    return this.tasksService.create({
+      data: createTaskDto,
+      include: {
+        labels: true,
+        todos: true,
+        comments: true,
+        assignee: {
+          select: { info: true },
+        },
+      },
+    });
   }
 
   @Post(':id/file')

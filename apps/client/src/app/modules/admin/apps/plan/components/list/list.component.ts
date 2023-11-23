@@ -37,8 +37,8 @@ import { Category, Plan, User } from '@client/shared/interfaces';
 import { BehaviorSubject, combineLatest, map, Observable, Subject } from 'rxjs';
 import { RiveCanvas, RiveLinearAnimation } from 'ng-rive';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
-import { PlanNewComponent } from '../new/new.component';
 import { LetDirective } from '@ngrx/component';
+import { PlanDialogComponent } from '../dialogs/plan.dialog/dialog-plan.component';
 
 @Component({
   selector: 'plan-list',
@@ -185,7 +185,7 @@ export class PlanListComponent implements OnInit, OnDestroy {
   }
 
   addNewPlan(): void {
-    this._matDialog.open(PlanNewComponent, {
+    this._matDialog.open(PlanDialogComponent, {
       autoFocus: false,
       data: {
         plan: {} as Plan,

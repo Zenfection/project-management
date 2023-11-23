@@ -16,12 +16,14 @@ import { TodoGuardCanDeactivate } from './components/todo/todo.guard';
 import { planCategoriesResolver } from './resolvers/plan-categories.resolver';
 import { planDetailsResolver } from './resolvers/plan-details.resolver';
 import { planListResolver } from './resolvers/plan-list.resolver';
+import { planMembersResolver } from './resolvers/plan-members.resolver';
 
 const routes: Routes = [
   {
     path: '',
     component: PlanComponent,
     resolve: {
+      members: planMembersResolver,
       categories: planCategoriesResolver,
     },
     children: [
@@ -60,7 +62,7 @@ const routes: Routes = [
     provideRouter(
       routes,
       withPreloading(PreloadAllModules),
-      withInMemoryScrolling({ scrollPositionRestoration: 'enabled' })
+      withInMemoryScrolling({ scrollPositionRestoration: 'enabled' }),
     ),
   ],
   exports: [RouterModule],

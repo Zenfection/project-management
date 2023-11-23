@@ -2,7 +2,6 @@ import { CdkScrollable } from '@angular/cdk/scrolling';
 import {
   AsyncPipe,
   DOCUMENT,
-  KeyValuePipe,
   NgClass,
   NgFor,
   NgIf,
@@ -20,34 +19,29 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
-import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatDrawer, MatSidenavModule } from '@angular/material/sidenav';
 import { MatTabGroup, MatTabsModule } from '@angular/material/tabs';
-import {
-  ActivatedRoute,
-  Router,
-  RouterLink,
-  RouterOutlet,
-} from '@angular/router';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
+import { PlansFacade, UserFacade } from '@client/core-state';
+import { Category, Plan, User } from '@client/shared/interfaces';
 import { FuseCardComponent } from '@fuse/components/card';
 import { FuseFindByKeyPipe } from '@fuse/pipes/find-by-key/find-by-key.pipe';
-import { FuseMediaWatcherService } from '@fuse/services/media-watcher';
-import { Observable, Subject, combineLatest, map, takeUntil } from 'rxjs';
-import { RiveCanvas, RiveLinearAnimation } from 'ng-rive';
-import { MatTooltipModule } from '@angular/material/tooltip';
-import { TranslocoModule } from '@ngneat/transloco';
-import { Category, Plan, Task, User } from '@client/shared/interfaces';
-import { UserFacade, PlansFacade, TasksFacade } from '@client/core-state';
-import { LetDirective, PushPipe } from '@ngrx/component';
 import {
   FuseConfirmationConfig,
   FuseConfirmationService,
 } from '@fuse/services/confirmation';
-import { MatDialog, MatDialogModule } from '@angular/material/dialog';
-import { PlanNewComponent } from '../new/new.component';
+import { FuseMediaWatcherService } from '@fuse/services/media-watcher';
+import { TranslocoModule } from '@ngneat/transloco';
+import { LetDirective, PushPipe } from '@ngrx/component';
 import { cloneDeep } from 'lodash-es';
+import { Observable, Subject, combineLatest, map, takeUntil } from 'rxjs';
+import { PlanDialogComponent } from '../dialogs/plan.dialog/dialog-plan.component';
+import { PlanTaskDialogComponent } from '../dialogs/task.dialog/task-dialog.component';
+import { PlanDetailsTabsModule } from './tabs/plan-details-tabs.module';
 
 @Component({
   selector: 'plan-details',
@@ -56,30 +50,26 @@ import { cloneDeep } from 'lodash-es';
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
   imports: [
+    PlanDetailsTabsModule,
     MatSidenavModule,
-    RouterLink,
     MatIconModule,
     NgIf,
     NgClass,
     NgFor,
     MatButtonModule,
     MatDialogModule,
-    MatProgressBarModule,
     MatMenuModule,
     MatTooltipModule,
     CdkScrollable,
     MatTabsModule,
     FuseFindByKeyPipe,
     FuseCardComponent,
-    RiveCanvas,
-    RiveLinearAnimation,
     TranslocoModule,
     RouterOutlet,
     AsyncPipe,
     LetDirective,
     PercentPipe,
     PushPipe,
-    KeyValuePipe,
   ],
 })
 export class PlanDetailsComponent implements OnInit, OnDestroy {
@@ -91,12 +81,10 @@ export class PlanDetailsComponent implements OnInit, OnDestroy {
   user$: Observable<User> = this._userFacade.user$;
 
   user: User;
-  tasks$: Observable<Task[]> = this._tasksFacade.tasks$;
 
   currentStep = 0;
   drawerMode: 'over' | 'side' = 'side';
   drawerOpened = true;
-  allMembers: any[];
   private _unsubscribeAll: Subject<any> = new Subject<any>();
 
   /**
@@ -112,7 +100,6 @@ export class PlanDetailsComponent implements OnInit, OnDestroy {
     private _fuseConfirmationService: FuseConfirmationService,
     private _matDialog: MatDialog,
     private readonly _plansFacade: PlansFacade,
-    private readonly _tasksFacade: TasksFacade,
     private readonly _userFacade: UserFacade,
   ) {}
 
@@ -124,10 +111,6 @@ export class PlanDetailsComponent implements OnInit, OnDestroy {
    * On init
    */
   ngOnInit(): void {
-    this.plan$.subscribe((plan) => {
-      this.allMembers = [plan.owner, ...plan.members];
-    });
-
     // Subscribe to media changes
     this._fuseMediaWatcherService.onMediaChange$
       .pipe(takeUntil(this._unsubscribeAll))
@@ -179,21 +162,8 @@ export class PlanDetailsComponent implements OnInit, OnDestroy {
     );
   }
 
-  percentCompleteTask(taskId: number): Observable<number> {
-    return this.tasks$.pipe(
-      map((tasks) => {
-        const task = tasks.find((task) => task.id === taskId);
-        const percent =
-          (task.todos.filter((todo) => todo.isDone).length /
-            task.todos.length) *
-          100;
-        return percent;
-      }),
-    );
-  }
-
   editFormDialog(plan: Plan): void {
-    this._matDialog.open(PlanNewComponent, {
+    this._matDialog.open(PlanDialogComponent, {
       autoFocus: false,
       data: {
         plan: cloneDeep(plan),

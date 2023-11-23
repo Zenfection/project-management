@@ -1,0 +1,126 @@
+<div class="grid grid-cols-12 gap-6">
+  <div class="ltablet:col-span-8 col-span-12 lg:col-span-8">
+    <fuse-card class="space-y-12 p-10 shadow-lg">
+      <div>
+        <div
+          class="border-muted-200 dark:border-muted-700 flex flex-col items-center justify-between gap-8 border-b pb-12 sm:flex-row"
+        >
+          <div class="grow">
+            <!-- Title Plan -->
+            <div class="text-3xl font-semibold leading-10">
+              {{ plan.title }}
+            </div>
+            <!-- Category Plan -->
+            <div
+              class="text-muted-600 dark:text-muted-400 text-secondary text-xl leading-5"
+            >
+              {{ plan.category.title }}
+            </div>
+            <!-- Description Plan -->
+            <div class="text-muted-400 text-md py-4 font-normal leading-5">
+              {{ plan.description }}
+            </div>
+            <div class="flex items-center justify-between gap-2">
+              <div class="flex items-center justify-center">
+                <fuse-card
+                  class="bg-card hover:bg-hover flex items-center justify-start gap-3 rounded-lg p-3 shadow-md transition-all duration-200"
+                >
+                  <img
+                    class="flex-0 h-8 w-8 rounded-full object-cover shadow-sm ring-2 ring-gray-800 ring-offset-1 ring-offset-gray-800"
+                    [src]="plan.owner.info.avatar"
+                    [matTooltip]="plan.owner.info.name"
+                    alt="Avatar Owner"
+                  />
+                  <div>
+                    <div class="text-base font-medium leading-5">
+                      {{ plan.owner.info.name }}
+                    </div>
+                    <div class="text-secondary text-md font-normal leading-4">
+                      Project owner
+                    </div>
+                  </div>
+                </fuse-card>
+              </div>
+              <div class="px-2">
+                <div class="flex-0 flex items-center -space-x-1.5">
+                  <div *ngFor="let member of plan.members; let i = index">
+                    <img
+                      *ngIf="i < 2"
+                      class="flex-0 h-8 w-8 rounded-full object-cover shadow-sm ring-2 ring-gray-800 ring-offset-1 ring-offset-gray-800 transition-all duration-300 hover:-translate-x-2"
+                      [src]="member.info.avatar"
+                      [matTooltip]="member.info.name"
+                      alt=""
+                    />
+                    <div
+                      *ngIf="i === 2"
+                      class="relative inline-flex h-10 w-10 items-center justify-center overflow-hidden rounded-full bg-gray-200 dark:bg-gray-600"
+                    >
+                      <span
+                        class="font-medium text-gray-600 dark:text-gray-300"
+                      >
+                        {{ plan.members.length - 2 }}+
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="w-full shrink-0 sm:w-72">
+            <canvas riv="work" width="300" height="250">
+              <riv-animation name="Timeline 1" play></riv-animation>
+            </canvas>
+          </div>
+        </div>
+        <div
+          class="border-muted-200 dark:border-muted-700 grid gap-4 border-b py-12 sm:grid-cols-4"
+        >
+          <div>
+            <mat-icon
+              class="text-primary-400 icon-size-6 mb-2"
+              [svgIcon]="'duotone:pen-nib'"
+            ></mat-icon>
+            <div class="mb-2 text-base font-medium leading-5">
+              {{ plan.category.title }}
+            </div>
+            <div class="text-secondary max-w-3/4 text-sm leading-tight">
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+            </div>
+          </div>
+          <div>
+            <mat-icon
+              class="text-primary-400 icon-size-6 mb-2"
+              [svgIcon]="'duotone:hourglass-clock'"
+            ></mat-icon>
+            <div class="mb-2 text-base font-medium leading-5">
+              1 tuần Sprint
+            </div>
+            <div class="text-secondary max-w-3/4 text-sm leading-tight">
+              Quá trình phát triển sẽ được chia thành các Sprint 1 tuần
+            </div>
+          </div>
+          <div>
+            <mat-icon
+              class="text-primary-400 icon-size-6 mb-2"
+              [svgIcon]="'duotone:calendar-days'"
+            ></mat-icon>
+            <div class="mb-2 text-base font-medium leading-5">3 Tháng</div>
+            <div class="text-secondary max-w-3/4 text-sm leading-tight">
+              Hãy hoàn thành dự án này trong thời gian trên
+            </div>
+          </div>
+          <div>
+            <mat-icon
+              class="text-primary-400 icon-size-6 mb-2"
+              [svgIcon]="'duotone:tent-arrow-down-to-line'"
+            ></mat-icon>
+            <div class="mb-2 text-base font-medium leading-5">Cố định</div>
+            <div class="text-secondary max-w-3/4 text-sm leading-tight">
+              Chi phí phát triển dự án sẽ được cố định không thể thay đổi
+            </div>
+          </div>
+        </div>
+      </div>
+    </fuse-card>
+  </div>
+</div>

@@ -1,8 +1,9 @@
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 
+import { Prisma } from '@prisma/client';
+import { CreatePlanDto, UpdatePlanDto } from '@server/shared/dto';
+import { PlanEntity } from '@server/shared/entities';
 import { PrismaService } from 'nestjs-prisma';
-import { Plan, Prisma } from '@prisma/client';
-import { UpdatePlanDto, CreatePlanDto } from '@server/shared/dto';
 
 @Injectable()
 export class PlansService {
@@ -14,7 +15,7 @@ export class PlansService {
     }
   }
 
-  async create(createPlanDto: CreatePlanDto): Promise<Plan> {
+  async create(createPlanDto: CreatePlanDto): Promise<PlanEntity> {
     const plan = await this.prismaService.plan.create({
       data: createPlanDto,
     });
@@ -31,7 +32,8 @@ export class PlansService {
     });
   }
 
-  findAll(include?: Prisma.PlanInclude): Promise<Plan[]> {
+  findAll(params: { include?: Prisma.PlanInclude }): Promise<PlanEntity[]> {
+    const { include } = params;
     return this.prismaService.plan.findMany({
       include,
     });
@@ -44,7 +46,7 @@ export class PlansService {
     where?: Prisma.PlanWhereInput;
     orderBy?: Prisma.PlanOrderByWithRelationInput;
     include?: Prisma.PlanInclude;
-  }): Promise<Plan[]> {
+  }): Promise<PlanEntity[]> {
     const { skip, take, cursor, where, orderBy, include } = params;
     return this.prismaService.plan.findMany({
       skip,
@@ -56,7 +58,10 @@ export class PlansService {
     });
   }
 
-  findOne(where: Prisma.PlanWhereUniqueInput, include?: Prisma.PlanInclude) {
+  findOne(
+    where: Prisma.PlanWhereUniqueInput,
+    include?: Prisma.PlanInclude,
+  ): Promise<PlanEntity | null> {
     return this.prismaService.plan.findUnique({
       where,
       include,
@@ -71,7 +76,7 @@ export class PlansService {
     where: Prisma.PlanWhereUniqueInput;
     data: UpdatePlanDto;
     include?: Prisma.PlanInclude;
-  }): Promise<Plan> {
+  }): Promise<PlanEntity> {
     const { where, data, include } = params;
     console.log(data);
 
@@ -84,7 +89,7 @@ export class PlansService {
     });
   }
 
-  remove(where: Prisma.PlanWhereUniqueInput): Promise<Plan> {
+  remove(where: Prisma.PlanWhereUniqueInput): Promise<PlanEntity> {
     return this.prismaService.plan.delete({
       where,
     });

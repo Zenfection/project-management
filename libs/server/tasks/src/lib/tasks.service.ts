@@ -12,9 +12,14 @@ export class TasksService {
     private readonly cloudService: CloudService,
   ) {}
 
-  create(createTaskDto: CreateTaskDto): Promise<TaskEntity> {
+  create(params: {
+    data: CreateTaskDto;
+    include?: Prisma.TaskInclude;
+  }): Promise<TaskEntity> {
+    const { data, include } = params;
     return this.prismaService.task.create({
-      data: createTaskDto,
+      data,
+      include,
     });
   }
 

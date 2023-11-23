@@ -252,7 +252,7 @@ export class PlansController {
       !user.roles?.includes(RoleEnum.truong_khoa) &&
       !user.roles?.includes(RoleEnum.thu_ky_khoa)
     ) {
-      const member = plan.members.find(
+      const member = plan['members'].find(
         (member: { id: number }) => member.id === user.sub,
       );
       if (!member) {

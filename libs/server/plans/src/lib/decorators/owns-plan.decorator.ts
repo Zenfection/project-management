@@ -9,13 +9,17 @@ export const OwnsPlan = createParamDecorator(
     const user = request.user;
 
     const planId = request.params.id; // Lấy plan id từ params
+    console.log(planId);
+    console.log(user);
 
-    // Lấy thông tin plan dựa trên plan id
-    const plan = planSe;
+    return true;
 
-    // So sánh id của chủ sở hữu plan với id của user
-    const isOwner = plan.ownerId === user.userId;
+    // // Lấy thông tin plan dựa trên plan id
+    // const plan = planSe;
 
-    return isOwner;
+    // // So sánh id của chủ sở hữu plan với id của user
+    // const isOwner = plan.ownerId === user.userId;
+
+    // return isOwner;
   },
 );

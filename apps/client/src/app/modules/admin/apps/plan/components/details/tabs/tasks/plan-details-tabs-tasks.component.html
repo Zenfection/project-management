@@ -1,0 +1,115 @@
+<div
+  class="grid w-full min-w-0 grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
+  *ngrxLet="tasks$ as tasks"
+>
+  <fuse-card
+    class="hover:border-primary-500 flex cursor-pointer flex-col rounded-lg shadow-md hover:shadow-lg"
+    *ngFor="let task of tasks"
+  >
+    <div class="absolute top-0 ml-5 mt-5">
+      <mat-icon
+        *ngIf="task.status === 'OPEN'"
+        class="icon-size-6 shrink-0 text-slate-600 text-opacity-50"
+        [svgIcon]="'duotone:circle-plus'"
+      ></mat-icon>
+      <mat-icon
+        *ngIf="task.status === 'IN_PROGRESS'"
+        class="icon-size-6 shrink-0 text-blue-500"
+        [svgIcon]="'duotone:circle-up'"
+      ></mat-icon>
+      <mat-icon
+        *ngIf="task.status === 'RESOLVED'"
+        class="icon-size-6 shrink-0 text-orange-600 text-opacity-50"
+        [svgIcon]="'duotone:pen-circle'"
+      ></mat-icon>
+      <mat-icon
+        *ngIf="task.status === 'COMPLETED'"
+        class="icon-size-6 shrink-0 text-green-600 text-opacity-50"
+        [svgIcon]="'duotone:circle-check'"
+      ></mat-icon>
+      <mat-icon
+        *ngIf="task.status === 'CLOSED'"
+        class="icon-size-6 shrink-0 text-red-600 text-opacity-50"
+        [svgIcon]="'duotone:circle-xmark'"
+      ></mat-icon>
+    </div>
+    <div
+      class="ml-8 flex flex-col items-center p-5 sm:flex-row"
+      [routerLink]="[task.id]"
+    >
+      <div class="flex flex-col gap-3 sm:flex-row">
+        <div class="max-w-120 text-center leading-none sm:text-left">
+          <h4
+            class="mb-2 font-sans text-lg font-medium leading-tight text-slate-800 dark:text-slate-100"
+          >
+            {{ task.title }}
+          </h4>
+          <p class="line-clamp-2 font-sans text-sm leading-4 text-slate-400">
+            {{ task.description }}
+          </p>
+        </div>
+      </div>
+    </div>
+    <div
+      class="mt-auto flex items-center justify-between gap-2 rounded-b-lg bg-gray-50 px-5 py-3 dark:bg-gray-700/50"
+    >
+      <div class="flex grow items-center gap-2">
+        <div class="h-7 w-7 overflow-hidden rounded-full border-b-gray-500">
+          <img
+            class="h-full w-full object-cover"
+            [src]="task.assignee.info.avatar"
+            [matTooltip]="task.assignee.info.name"
+            alt="Avatar Logo"
+          />
+        </div>
+        <mat-progress-bar
+          mode="determinate"
+          class="overflow-hidden rounded-full"
+          [matTooltip]="percentCompleteTask(task.id) | async"
+          [value]="percentCompleteTask(task.id) | async"
+        >
+        </mat-progress-bar>
+        <!-- process bar -->
+      </div>
+      <div class="flex items-center gap-4 text-gray-400">
+        <div class="flex items-center gap-1 text-sm">
+          <mat-icon
+            class="icon-size-3.5"
+            [svgIcon]="'duotone:paperclip'"
+          ></mat-icon>
+          <span class="font-sans">
+            {{ task.files.length }}
+          </span>
+        </div>
+        <div class="flex items-center gap-1 text-sm">
+          <mat-icon
+            class="icon-size-3.5"
+            [svgIcon]="'duotone:comment'"
+          ></mat-icon>
+          <span class="font-sans">
+            {{ task.comments.length }}
+          </span>
+        </div>
+      </div>
+    </div>
+  </fuse-card>
+  <!-- Invite -->
+  <div *ngIf="permissionPlan | async">
+    <button
+      type="button"
+      (click)="openTaskDialog()"
+      class="hover:border-primary-500 dark:hover:border-primary-500 group flex h-full w-full items-center justify-center gap-2 rounded-lg border-2 border-dashed border-slate-300 p-6 transition-colors duration-300 dark:border-slate-800"
+    >
+      <span class="block text-center font-sans">
+        <span
+          class="group-hover:text-primary-500 dark:group-hover:text-primary-500 block text-slate-800 transition-colors duration-300 dark:text-slate-100"
+        >
+          Create a new task
+        </span>
+        <span class="text-muted-400 block text-sm">
+          Add a new task to your project
+        </span>
+      </span>
+    </button>
+  </div>
+</div>

@@ -52,16 +52,18 @@ import {
   MatAutocompleteSelectedEvent,
 } from '@angular/material/autocomplete';
 import { MatChipsModule } from '@angular/material/chips';
-import { PlanService } from '../../plan.service';
+import { PlanService } from '../../../plan.service';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { MatSelectModule } from '@angular/material/select';
+import { fuseAnimations } from '@fuse/animations';
 
 @Component({
-  selector: 'plan-new',
-  templateUrl: './new.component.html',
+  selector: 'plan-dialog',
+  templateUrl: './diolog-plan.component.html',
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
+  animations: fuseAnimations,
   imports: [
     NgIf,
     MatButtonModule,
@@ -84,7 +86,9 @@ import { MatSelectModule } from '@angular/material/select';
     TranslocoModule,
   ],
 })
-export class PlanNewComponent implements OnInit, OnDestroy, AfterContentInit {
+export class PlanDialogComponent
+  implements OnInit, OnDestroy, AfterContentInit
+{
   planForm: UntypedFormGroup;
   allMembers: Member[];
   members: Member[] = [];
@@ -141,7 +145,7 @@ export class PlanNewComponent implements OnInit, OnDestroy, AfterContentInit {
 
     //get members
     combineLatest([
-      this._planService.getMembers(),
+      this._planService.members$,
       this._plansFacade.categories$,
     ]).subscribe(([members, categories]) => {
       this.allMembers = members.filter(

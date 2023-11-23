@@ -8,16 +8,19 @@ import {
   IsObject,
   IsOptional,
   IsString,
+  Min,
+  MinLength,
 } from 'class-validator';
 
 export class CreateTaskDto implements Prisma.TaskCreateInput {
   @ApiProperty()
   @IsString()
+  @MinLength(3)
   title: string;
 
   @ApiProperty()
   @IsString()
-  @IsOptional()
+  @MinLength(5)
   description?: string;
 
   @ApiProperty()
@@ -30,6 +33,7 @@ export class CreateTaskDto implements Prisma.TaskCreateInput {
 
   @ApiProperty()
   @IsArray()
+  @IsOptional()
   files?: string[] | Prisma.TaskCreatefilesInput;
 
   @ApiProperty()
@@ -41,23 +45,32 @@ export class CreateTaskDto implements Prisma.TaskCreateInput {
   @IsOptional()
   priority?: number;
 
-  // createdAt?: string | Date;
-  // updatedAt?: string | Date;
+  @ApiProperty()
   @IsObject()
+  @IsOptional()
   assignee?: Prisma.UserCreateNestedOneWithoutTasksInput;
 
+  @ApiProperty()
   @IsObject()
   plan: Prisma.PlanCreateNestedOneWithoutTasksInput;
 
+  @ApiProperty()
+  @IsOptional()
   @IsObject()
   todos?: Prisma.TodoCreateNestedManyWithoutTaskInput;
 
+  @ApiProperty()
+  @IsOptional()
   @IsObject()
   labels?: Prisma.LabelCreateNestedManyWithoutTasksInput;
 
+  @ApiProperty()
+  @IsOptional()
   @IsObject()
   comments?: Prisma.CommentCreateNestedManyWithoutTaskInput;
 
+  @ApiProperty()
+  @IsOptional()
   @IsObject()
   Activity?: Prisma.ActivityCreateNestedManyWithoutTaskInput;
 }

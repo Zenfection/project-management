@@ -174,6 +174,14 @@ const routes: Routes = [
           ),
       },
 
+      {
+        path: 'contacts',
+        loadChildren: () =>
+          import('./modules/admin/apps/contacts/contacts.module').then(
+            (m) => m.ContactsModule,
+          ),
+      },
+
       // 404 & Catch all
       {
         path: '404-not-found',

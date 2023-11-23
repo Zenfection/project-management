@@ -1,0 +1,814 @@
+<div class="flex w-full flex-col">
+  <!-- View mode -->
+  <ng-container *ngIf="!editMode">
+    <!-- Header -->
+    <div
+      class="bg-accent-100 dark:bg-accent-700 relative h-40 w-full px-8 sm:h-48 sm:px-12"
+    >
+      <!-- Background -->
+      <ng-container *ngIf="contact.background">
+        <img
+          class="absolute inset-0 h-full w-full object-cover"
+          [src]="contact.background"
+          alt="contact background"
+        />
+      </ng-container>
+      <!-- Close button -->
+      <div class="mx-auto flex w-full max-w-3xl items-center justify-end pt-6">
+        <a mat-icon-button [matTooltip]="'Close'" [routerLink]="['../']">
+          <mat-icon
+            class="text-white"
+            [svgIcon]="'heroicons_outline:x-mark'"
+          ></mat-icon>
+        </a>
+      </div>
+    </div>
+
+    <!-- Contact -->
+    <div
+      class="relative flex flex-auto flex-col items-center p-6 pt-0 sm:p-12 sm:pt-0"
+    >
+      <div class="w-full max-w-3xl">
+        <!-- Avatar and actions -->
+        <div class="-mt-16 flex flex-auto items-end">
+          <!-- Avatar -->
+          <div
+            class="ring-bg-card flex h-32 w-32 items-center justify-center overflow-hidden rounded-full ring-4"
+          >
+            <img
+              class="h-full w-full object-cover"
+              *ngIf="contact.avatar"
+              [src]="contact.avatar"
+              alt="Avatar"
+            />
+            <div
+              class="flex h-full w-full items-center justify-center overflow-hidden rounded bg-gray-200 text-8xl font-bold uppercase leading-none text-gray-600 dark:bg-gray-700 dark:text-gray-200"
+              *ngIf="!contact.avatar"
+            >
+              {{ contact.name.charAt(0) }}
+            </div>
+          </div>
+          <!-- Actions -->
+          <div class="mb-1 ml-auto flex items-center">
+            <button mat-stroked-button (click)="toggleEditMode(true)">
+              <mat-icon
+                class="icon-size-5"
+                [svgIcon]="'heroicons_solid:pencil-square'"
+              ></mat-icon>
+              <span class="ml-2">Edit</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Name -->
+        <div class="mt-3 truncate text-4xl font-bold">{{ contact.name }}</div>
+
+        <!-- Tags -->
+        <ng-container *ngIf="contact.tags.length">
+          <div class="mt-2 flex flex-wrap items-center">
+            <!-- Tag -->
+            <ng-container
+              *ngFor="
+                let tag of contact.tags | fuseFindByKey: 'id' : tags;
+                trackBy: trackByFn
+              "
+            >
+              <div
+                class="mb-3 mr-3 flex items-center justify-center rounded-full bg-gray-100 px-3 py-1 leading-normal text-gray-500 dark:bg-gray-700 dark:text-gray-300"
+              >
+                <span class="whitespace-nowrap text-sm font-medium">{{
+                  tag.title
+                }}</span>
+              </div>
+            </ng-container>
+          </div>
+        </ng-container>
+
+        <div class="mt-4 flex flex-col space-y-8 border-t pt-6">
+          <!-- Title -->
+          <ng-container *ngIf="contact.title">
+            <div class="flex sm:items-center">
+              <mat-icon [svgIcon]="'heroicons_outline:briefcase'"></mat-icon>
+              <div class="ml-6 leading-6">{{ contact.title }}</div>
+            </div>
+          </ng-container>
+
+          <!-- Company -->
+          <ng-container *ngIf="contact.company">
+            <div class="flex sm:items-center">
+              <mat-icon
+                [svgIcon]="'heroicons_outline:building-office-2'"
+              ></mat-icon>
+              <div class="ml-6 leading-6">{{ contact.company }}</div>
+            </div>
+          </ng-container>
+
+          <!-- Emails -->
+          <ng-container *ngIf="contact.emails.length">
+            <div class="flex">
+              <mat-icon [svgIcon]="'heroicons_outline:envelope'"></mat-icon>
+              <div class="ml-6 min-w-0 space-y-1">
+                <ng-container
+                  *ngFor="let email of contact.emails; trackBy: trackByFn"
+                >
+                  <div class="flex items-center leading-6">
+                    <a
+                      class="text-primary-500 hover:underline"
+                      [href]="'mailto:' + email.email"
+                      target="_blank"
+                    >
+                      {{ email.email }}
+                    </a>
+                    <div
+                      class="text-md text-secondary truncate"
+                      *ngIf="email.label"
+                    >
+                      <span class="mx-2">&bull;</span>
+                      <span class="font-medium">{{ email.label }}</span>
+                    </div>
+                  </div>
+                </ng-container>
+              </div>
+            </div>
+          </ng-container>
+
+          <!-- Phone -->
+          <ng-container *ngIf="contact.phoneNumbers.length">
+            <div class="flex">
+              <mat-icon [svgIcon]="'heroicons_outline:phone'"></mat-icon>
+              <div class="ml-6 min-w-0 space-y-1">
+                <ng-container
+                  *ngFor="
+                    let phoneNumber of contact.phoneNumbers;
+                    trackBy: trackByFn
+                  "
+                >
+                  <div class="flex items-center leading-6">
+                    <div
+                      class="hidden h-4 w-6 overflow-hidden sm:flex"
+                      [matTooltip]="getCountryByIso(phoneNumber.country).name"
+                      [style.background]="
+                        'url(\'/assets/images/apps/contacts/flags.png\') no-repeat 0 0'
+                      "
+                      [style.backgroundSize]="'24px 3876px'"
+                      [style.backgroundPosition]="
+                        getCountryByIso(phoneNumber.country).flagImagePos
+                      "
+                    ></div>
+                    <div class="font-mono sm:ml-3">
+                      {{ getCountryByIso(phoneNumber.country).code }}
+                    </div>
+                    <div class="ml-2.5 font-mono">
+                      {{ phoneNumber.phoneNumber }}
+                    </div>
+                    <div
+                      class="text-md text-secondary truncate"
+                      *ngIf="phoneNumber.label"
+                    >
+                      <span class="mx-2">&bull;</span>
+                      <span class="font-medium">{{ phoneNumber.label }}</span>
+                    </div>
+                  </div>
+                </ng-container>
+              </div>
+            </div>
+          </ng-container>
+
+          <!-- Address -->
+          <ng-container *ngIf="contact.address">
+            <div class="flex sm:items-center">
+              <mat-icon [svgIcon]="'heroicons_outline:map-pin'"></mat-icon>
+              <div class="ml-6 leading-6">{{ contact.address }}</div>
+            </div>
+          </ng-container>
+
+          <!-- Birthday -->
+          <ng-container *ngIf="contact.birthday">
+            <div class="flex sm:items-center">
+              <mat-icon [svgIcon]="'heroicons_outline:cake'"></mat-icon>
+              <div class="ml-6 leading-6">
+                {{ contact.birthday | date: 'longDate' }}
+              </div>
+            </div>
+          </ng-container>
+
+          <!-- Notes -->
+          <ng-container *ngIf="contact.notes">
+            <div class="flex">
+              <mat-icon
+                [svgIcon]="'heroicons_outline:bars-3-bottom-left'"
+              ></mat-icon>
+              <div
+                class="prose prose-sm ml-6 max-w-none"
+                [innerHTML]="contact.notes"
+              ></div>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+
+  <!-- Edit mode -->
+  <ng-container *ngIf="editMode">
+    <!-- Header -->
+    <div
+      class="bg-accent-100 dark:bg-accent-700 relative h-40 w-full px-8 sm:h-48 sm:px-12"
+    >
+      <!-- Background -->
+      <ng-container *ngIf="contact.background">
+        <img
+          class="absolute inset-0 h-full w-full object-cover"
+          [src]="contact.background"
+          alt="contact background"
+        />
+      </ng-container>
+      <!-- Close button -->
+      <div class="mx-auto flex w-full max-w-3xl items-center justify-end pt-6">
+        <a mat-icon-button [matTooltip]="'Close'" [routerLink]="['../']">
+          <mat-icon
+            class="text-white"
+            [svgIcon]="'heroicons_outline:x-mark'"
+          ></mat-icon>
+        </a>
+      </div>
+    </div>
+
+    <!-- Contact form -->
+    <div class="relative flex flex-auto flex-col items-center px-6 sm:px-12">
+      <div class="w-full max-w-3xl">
+        <form [formGroup]="contactForm">
+          <!-- Avatar -->
+          <div class="-mt-16 flex flex-auto items-end">
+            <div
+              class="ring-bg-card relative flex h-32 w-32 items-center justify-center overflow-hidden rounded-full ring-4"
+            >
+              <!-- Upload / Remove avatar -->
+              <div class="absolute inset-0 z-10 bg-black bg-opacity-50"></div>
+              <div
+                class="absolute inset-0 z-20 flex items-center justify-center"
+              >
+                <div>
+                  <input
+                    id="avatar-file-input"
+                    class="pointer-events-none invisible absolute h-0 w-0 opacity-0"
+                    type="file"
+                    [multiple]="false"
+                    [accept]="'image/jpeg, image/png'"
+                    (change)="uploadAvatar(avatarFileInput.files)"
+                    #avatarFileInput
+                  />
+                  <label
+                    class="hover:bg-hover flex h-10 w-10 cursor-pointer items-center justify-center rounded-full"
+                    for="avatar-file-input"
+                    matRipple
+                  >
+                    <mat-icon
+                      class="text-white"
+                      [svgIcon]="'heroicons_outline:camera'"
+                    ></mat-icon>
+                  </label>
+                </div>
+                <div>
+                  <button mat-icon-button (click)="removeAvatar()">
+                    <mat-icon
+                      class="text-white"
+                      [svgIcon]="'heroicons_outline:trash'"
+                    ></mat-icon>
+                  </button>
+                </div>
+              </div>
+              <!-- Image/Letter -->
+              <img
+                class="h-full w-full object-cover"
+                *ngIf="contact.avatar"
+                [src]="contact.avatar"
+              />
+              <div
+                class="flex h-full w-full items-center justify-center overflow-hidden rounded bg-gray-200 text-8xl font-bold uppercase leading-none text-gray-600 dark:bg-gray-700 dark:text-gray-200"
+                *ngIf="!contact.avatar"
+              >
+                {{ contact.name.charAt(0) }}
+              </div>
+            </div>
+          </div>
+
+          <!-- Name -->
+          <div class="mt-8">
+            <mat-form-field class="w-full" [subscriptSizing]="'dynamic'">
+              <mat-label>Name</mat-label>
+              <mat-icon
+                matPrefix
+                class="icon-size-5 hidden sm:flex"
+                [svgIcon]="'heroicons_solid:user-circle'"
+              ></mat-icon>
+              <input
+                matInput
+                [formControlName]="'name'"
+                [placeholder]="'Name'"
+                [spellcheck]="false"
+              />
+            </mat-form-field>
+          </div>
+
+          <!-- Tags -->
+          <div class="-m-1.5 mt-6 flex flex-wrap items-center">
+            <!-- Tags -->
+            <ng-container *ngIf="contact.tags.length">
+              <ng-container
+                *ngFor="
+                  let tag of contact.tags | fuseFindByKey: 'id' : tags;
+                  trackBy: trackByFn
+                "
+              >
+                <div
+                  class="m-1.5 flex items-center justify-center rounded-full bg-gray-100 px-4 leading-9 text-gray-500 dark:bg-gray-700 dark:text-gray-300"
+                >
+                  <span class="text-md whitespace-nowrap font-medium">{{
+                    tag.title
+                  }}</span>
+                </div>
+              </ng-container>
+            </ng-container>
+            <!-- Tags panel and its button -->
+            <div
+              class="m-1.5 flex cursor-pointer items-center justify-center rounded-full bg-gray-100 px-4 leading-9 text-gray-500 dark:bg-gray-700 dark:text-gray-300"
+              (click)="openTagsPanel()"
+              #tagsPanelOrigin
+            >
+              <ng-container *ngIf="contact.tags.length">
+                <mat-icon
+                  class="icon-size-5"
+                  [svgIcon]="'heroicons_solid:pencil-square'"
+                ></mat-icon>
+                <span class="text-md ml-1.5 whitespace-nowrap font-medium"
+                  >Edit</span
+                >
+              </ng-container>
+
+              <ng-container *ngIf="!contact.tags.length">
+                <mat-icon
+                  class="icon-size-5"
+                  [svgIcon]="'heroicons_solid:plus-circle'"
+                ></mat-icon>
+                <span class="text-md ml-1.5 whitespace-nowrap font-medium"
+                  >Add</span
+                >
+              </ng-container>
+
+              <!-- Tags panel -->
+              <ng-template #tagsPanel>
+                <div class="bg-card w-60 rounded border shadow-md">
+                  <!-- Tags panel header -->
+                  <div class="m-3 mr-2 flex items-center">
+                    <div class="flex items-center">
+                      <mat-icon
+                        class="icon-size-5"
+                        [svgIcon]="'heroicons_solid:magnifying-glass'"
+                      ></mat-icon>
+                      <div class="ml-2">
+                        <input
+                          class="w-full min-w-0 border-0 py-1"
+                          type="text"
+                          placeholder="Enter tag name"
+                          (input)="filterTags($event)"
+                          (keydown)="filterTagsInputKeyDown($event)"
+                          [maxLength]="30"
+                          #newTagInput
+                        />
+                      </div>
+                    </div>
+                    <button
+                      class="ml-1"
+                      mat-icon-button
+                      (click)="toggleTagsEditMode()"
+                    >
+                      <mat-icon
+                        *ngIf="!tagsEditMode"
+                        class="icon-size-5"
+                        [svgIcon]="'heroicons_solid:pencil-square'"
+                      ></mat-icon>
+                      <mat-icon
+                        *ngIf="tagsEditMode"
+                        class="icon-size-5"
+                        [svgIcon]="'heroicons_solid:check'"
+                      ></mat-icon>
+                    </button>
+                  </div>
+                  <div
+                    class="flex max-h-64 flex-col overflow-y-auto border-t py-2"
+                  >
+                    <!-- Tags -->
+                    <ng-container *ngIf="!tagsEditMode">
+                      <ng-container
+                        *ngFor="let tag of filteredTags; trackBy: trackByFn"
+                      >
+                        <div
+                          class="min-h-10 hover:bg-hover flex h-10 cursor-pointer items-center pl-1 pr-4"
+                          (click)="toggleContactTag(tag)"
+                          matRipple
+                        >
+                          <mat-checkbox
+                            class="min-h-10 pointer-events-none flex h-10 items-center"
+                            [checked]="contact.tags.includes(tag.id)"
+                            [color]="'primary'"
+                            [disableRipple]="true"
+                          >
+                          </mat-checkbox>
+                          <div>{{ tag.title }}</div>
+                        </div>
+                      </ng-container>
+                    </ng-container>
+                    <!-- Tags editing -->
+                    <ng-container *ngIf="tagsEditMode">
+                      <div class="space-y-2 py-2">
+                        <ng-container
+                          *ngFor="let tag of filteredTags; trackBy: trackByFn"
+                        >
+                          <div class="flex items-center">
+                            <mat-form-field
+                              class="fuse-mat-dense mx-4 w-full"
+                              [subscriptSizing]="'dynamic'"
+                            >
+                              <input
+                                matInput
+                                [value]="tag.title"
+                                (input)="updateTagTitle(tag, $event)"
+                              />
+                              <button
+                                mat-icon-button
+                                (click)="deleteTag(tag)"
+                                matSuffix
+                              >
+                                <mat-icon
+                                  class="icon-size-5 ml-2"
+                                  [svgIcon]="'heroicons_solid:trash'"
+                                ></mat-icon>
+                              </button>
+                            </mat-form-field>
+                          </div>
+                        </ng-container>
+                      </div>
+                    </ng-container>
+                    <!-- Create tag -->
+                    <div
+                      class="min-h-10 hover:bg-hover -ml-0.5 flex h-10 cursor-pointer items-center pl-4 pr-3 leading-none"
+                      *ngIf="shouldShowCreateTagButton(newTagInput.value)"
+                      (click)="
+                        createTag(newTagInput.value); newTagInput.value = ''
+                      "
+                      matRipple
+                    >
+                      <mat-icon
+                        class="icon-size-5 mr-2"
+                        [svgIcon]="'heroicons_solid:plus-circle'"
+                      ></mat-icon>
+                      <div class="break-all">
+                        Create "<b>{{ newTagInput.value }}</b
+                        >"
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </ng-template>
+            </div>
+          </div>
+
+          <!-- Title -->
+          <div class="mt-8">
+            <mat-form-field class="w-full" [subscriptSizing]="'dynamic'">
+              <mat-label>Title</mat-label>
+              <mat-icon
+                matPrefix
+                class="icon-size-5 hidden sm:flex"
+                [svgIcon]="'heroicons_solid:briefcase'"
+              ></mat-icon>
+              <input
+                matInput
+                [formControlName]="'title'"
+                [placeholder]="'Job title'"
+              />
+            </mat-form-field>
+          </div>
+
+          <!-- Company -->
+          <div class="mt-8">
+            <mat-form-field class="w-full" [subscriptSizing]="'dynamic'">
+              <mat-label>Company</mat-label>
+              <mat-icon
+                matPrefix
+                class="icon-size-5 hidden sm:flex"
+                [svgIcon]="'heroicons_solid:building-office-2'"
+              ></mat-icon>
+              <input
+                matInput
+                [formControlName]="'company'"
+                [placeholder]="'Company'"
+              />
+            </mat-form-field>
+          </div>
+
+          <!-- Emails -->
+          <div class="mt-8">
+            <div class="space-y-4">
+              <ng-container
+                *ngFor="
+                  let email of contactForm.get('emails')['controls'];
+                  let i = index;
+                  let first = first;
+                  let last = last;
+                  trackBy: trackByFn
+                "
+              >
+                <div class="flex">
+                  <mat-form-field
+                    class="flex-auto"
+                    [subscriptSizing]="'dynamic'"
+                  >
+                    <mat-label *ngIf="first">Email</mat-label>
+                    <mat-icon
+                      matPrefix
+                      class="icon-size-5 hidden sm:flex"
+                      [svgIcon]="'heroicons_solid:envelope'"
+                    ></mat-icon>
+                    <input
+                      matInput
+                      [formControl]="email.get('email')"
+                      [placeholder]="'Email address'"
+                      [spellcheck]="false"
+                    />
+                  </mat-form-field>
+                  <mat-form-field
+                    class="max-w-24 sm:max-w-40 ml-2 w-full flex-auto sm:ml-4"
+                    [subscriptSizing]="'dynamic'"
+                  >
+                    <mat-label *ngIf="first">Label</mat-label>
+                    <mat-icon
+                      matPrefix
+                      class="icon-size-5 hidden sm:flex"
+                      [svgIcon]="'heroicons_solid:tag'"
+                    ></mat-icon>
+                    <input
+                      matInput
+                      [formControl]="email.get('label')"
+                      [placeholder]="'Label'"
+                    />
+                  </mat-form-field>
+                  <!-- Remove email -->
+                  <ng-container *ngIf="!(first && last)">
+                    <div
+                      class="flex w-10 items-center pl-2"
+                      [ngClass]="{ 'mt-6': first }"
+                    >
+                      <button
+                        class="min-h-8 h-8 w-8"
+                        mat-icon-button
+                        (click)="removeEmailField(i)"
+                        matTooltip="Remove"
+                      >
+                        <mat-icon
+                          class="icon-size-5"
+                          [svgIcon]="'heroicons_solid:trash'"
+                        ></mat-icon>
+                      </button>
+                    </div>
+                  </ng-container>
+                </div>
+              </ng-container>
+            </div>
+            <div
+              class="group -ml-4 mt-2 inline-flex cursor-pointer items-center rounded px-4 py-2"
+              (click)="addEmailField()"
+            >
+              <mat-icon
+                class="icon-size-5"
+                [svgIcon]="'heroicons_solid:plus-circle'"
+              ></mat-icon>
+              <span
+                class="text-secondary ml-2 font-medium group-hover:underline"
+                >Add an email address</span
+              >
+            </div>
+          </div>
+
+          <!-- Phone numbers -->
+          <div class="mt-8">
+            <div class="space-y-4">
+              <ng-container
+                *ngFor="
+                  let phoneNumber of contactForm.get('phoneNumbers')[
+                    'controls'
+                  ];
+                  let i = index;
+                  let first = first;
+                  let last = last;
+                  trackBy: trackByFn
+                "
+              >
+                <div class="relative flex">
+                  <mat-form-field
+                    class="flex-auto"
+                    [subscriptSizing]="'dynamic'"
+                  >
+                    <mat-label *ngIf="first">Phone</mat-label>
+                    <input
+                      matInput
+                      [formControl]="phoneNumber.get('phoneNumber')"
+                      [placeholder]="'Phone'"
+                    />
+                    <mat-select
+                      class="mr-1.5"
+                      [formControl]="phoneNumber.get('country')"
+                      matPrefix
+                    >
+                      <mat-select-trigger>
+                        <span class="flex items-center">
+                          <span
+                            class="mr-1 hidden h-4 w-6 overflow-hidden sm:flex"
+                            [style.background]="
+                              'url(\'/assets/images/apps/contacts/flags.png\') no-repeat 0 0'
+                            "
+                            [style.backgroundSize]="'24px 3876px'"
+                            [style.backgroundPosition]="
+                              getCountryByIso(phoneNumber.get('country').value)
+                                .flagImagePos
+                            "
+                          ></span>
+                          <span class="text-default font-medium sm:mx-0.5">{{
+                            getCountryByIso(phoneNumber.get('country').value)
+                              .code
+                          }}</span>
+                        </span>
+                      </mat-select-trigger>
+                      <ng-container
+                        *ngFor="let country of countries; trackBy: trackByFn"
+                      >
+                        <mat-option [value]="country.iso">
+                          <span class="flex items-center">
+                            <span
+                              class="h-4 w-6 overflow-hidden"
+                              [style.background]="
+                                'url(\'/assets/images/apps/contacts/flags.png\') no-repeat 0 0'
+                              "
+                              [style.backgroundSize]="'24px 3876px'"
+                              [style.backgroundPosition]="country.flagImagePos"
+                            ></span>
+                            <span class="ml-2">{{ country.name }}</span>
+                            <span class="ml-2 font-medium">{{
+                              country.code
+                            }}</span>
+                          </span>
+                        </mat-option>
+                      </ng-container>
+                    </mat-select>
+                  </mat-form-field>
+                  <mat-form-field
+                    class="max-w-24 sm:max-w-40 ml-2 w-full flex-auto sm:ml-4"
+                    [subscriptSizing]="'dynamic'"
+                  >
+                    <mat-label *ngIf="first">Label</mat-label>
+                    <mat-icon
+                      matPrefix
+                      class="icon-size-5 hidden sm:flex"
+                      [svgIcon]="'heroicons_solid:tag'"
+                    ></mat-icon>
+                    <input
+                      matInput
+                      [formControl]="phoneNumber.get('label')"
+                      [placeholder]="'Label'"
+                    />
+                  </mat-form-field>
+                  <!-- Remove phone number -->
+                  <ng-container *ngIf="!(first && last)">
+                    <div
+                      class="flex w-10 items-center pl-2"
+                      [ngClass]="{ 'mt-6': first }"
+                    >
+                      <button
+                        class="min-h-8 h-8 w-8"
+                        mat-icon-button
+                        (click)="removePhoneNumberField(i)"
+                        matTooltip="Remove"
+                      >
+                        <mat-icon
+                          class="icon-size-5"
+                          [svgIcon]="'heroicons_solid:trash'"
+                        ></mat-icon>
+                      </button>
+                    </div>
+                  </ng-container>
+                </div>
+              </ng-container>
+            </div>
+            <div
+              class="group -ml-4 mt-2 inline-flex cursor-pointer items-center rounded px-4 py-2"
+              (click)="addPhoneNumberField()"
+            >
+              <mat-icon
+                class="icon-size-5"
+                [svgIcon]="'heroicons_solid:plus-circle'"
+              ></mat-icon>
+              <span
+                class="text-secondary ml-2 font-medium group-hover:underline"
+                >Add a phone number</span
+              >
+            </div>
+          </div>
+
+          <!-- Address -->
+          <div class="mt-8">
+            <mat-form-field class="w-full" [subscriptSizing]="'dynamic'">
+              <mat-label>Address</mat-label>
+              <mat-icon
+                matPrefix
+                class="icon-size-5 hidden sm:flex"
+                [svgIcon]="'heroicons_solid:map-pin'"
+              ></mat-icon>
+              <input
+                matInput
+                [formControlName]="'address'"
+                [placeholder]="'Address'"
+              />
+            </mat-form-field>
+          </div>
+
+          <!-- Birthday -->
+          <div class="mt-8">
+            <mat-form-field class="w-full" [subscriptSizing]="'dynamic'">
+              <mat-label>Birthday</mat-label>
+              <mat-icon
+                matPrefix
+                class="icon-size-5 hidden sm:flex"
+                [svgIcon]="'heroicons_solid:cake'"
+              ></mat-icon>
+              <input
+                matInput
+                [matDatepicker]="birthdayDatepicker"
+                [formControlName]="'birthday'"
+                [placeholder]="'Birthday'"
+              />
+              <mat-datepicker-toggle matSuffix [for]="birthdayDatepicker">
+              </mat-datepicker-toggle>
+              <mat-datepicker #birthdayDatepicker></mat-datepicker>
+            </mat-form-field>
+          </div>
+
+          <!-- Notes -->
+          <div class="mt-8">
+            <mat-form-field class="w-full" [subscriptSizing]="'dynamic'">
+              <mat-label>Notes</mat-label>
+              <mat-icon
+                matPrefix
+                class="icon-size-5 hidden sm:flex"
+                [svgIcon]="'heroicons_solid:bars-3-bottom-left'"
+              ></mat-icon>
+              <textarea
+                matInput
+                [formControlName]="'notes'"
+                [placeholder]="'Notes'"
+                [rows]="5"
+                [spellcheck]="false"
+                cdkTextareaAutosize
+              ></textarea>
+            </mat-form-field>
+          </div>
+
+          <!-- Actions -->
+          <div
+            class="-mx-6 mt-10 flex items-center border-t bg-gray-50 py-4 pl-1 pr-4 dark:bg-transparent sm:-mx-12 sm:pl-7 sm:pr-12"
+          >
+            <!-- Delete -->
+            <button
+              mat-button
+              [color]="'warn'"
+              [matTooltip]="'Delete'"
+              (click)="deleteContact()"
+            >
+              Delete
+            </button>
+            <!-- Cancel -->
+            <button
+              class="ml-auto"
+              mat-button
+              [matTooltip]="'Cancel'"
+              (click)="toggleEditMode(false)"
+            >
+              Cancel
+            </button>
+            <!-- Save -->
+            <button
+              class="ml-2"
+              mat-flat-button
+              [color]="'primary'"
+              [disabled]="contactForm.invalid"
+              [matTooltip]="'Save'"
+              (click)="updateContact()"
+            >
+              Save
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </ng-container>
+</div>

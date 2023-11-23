@@ -1,13 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { $Enums, Prisma, Task } from '@prisma/client';
-import {
-  IsArray,
-  IsDate,
-  IsEnum,
-  IsNumber,
-  IsOptional,
-  IsString,
-} from 'class-validator';
+import { $Enums, Task } from '@prisma/client';
+import { IsArray, IsDate, IsEnum, IsNumber, IsString } from 'class-validator';
 
 export class TaskEntity implements Task {
   @ApiProperty()

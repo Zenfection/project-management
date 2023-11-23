@@ -26,7 +26,7 @@ export interface CreateTask {
   title: string;
   description: string;
   dueDate: string | Date;
-  status: 'OPEN' | 'IN_PROGRESS' | 'RESOLVED' | 'COMPLETED' | 'CLOSED';
+  status?: 'OPEN' | 'IN_PROGRESS' | 'RESOLVED' | 'COMPLETED' | 'CLOSED';
   assignee: {
     connect: {
       email: string;
@@ -37,7 +37,7 @@ export interface CreateTask {
       id: number;
     };
   };
-  order: number;
+  order?: number;
   priority?: number;
 }
 

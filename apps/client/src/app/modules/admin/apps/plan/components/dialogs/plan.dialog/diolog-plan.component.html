@@ -28,7 +28,7 @@
       ></mat-icon>
       <input [formControlName]="'title'" matInput placeholder="Title" />
     </mat-form-field>
-    <mat-error class="px-8" *ngIf="require('title')">
+    <mat-error class="px-8" *ngIf="require('title')" @expandCollapse>
       <span> Title không được để trống </span>
     </mat-error>
 
@@ -49,8 +49,7 @@
         this.planForm.get('description').value.length
       }}</mat-hint>
     </mat-form-field>
-
-    <mat-error class="px-8" *ngIf="require('description')">
+    <mat-error class="px-8" *ngIf="require('description')" @expandCollapse>
       <span> Description không được để trống </span>
     </mat-error>
 

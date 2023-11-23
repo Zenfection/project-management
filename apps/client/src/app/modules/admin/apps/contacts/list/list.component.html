@@ -1,0 +1,158 @@
+<div class="absolute inset-0 flex min-w-0 flex-col overflow-hidden">
+  <mat-drawer-container
+    class="bg-card h-full flex-auto dark:bg-transparent"
+    (backdropClick)="onBackdropClicked()"
+  >
+    <!-- Drawer -->
+    <mat-drawer
+      class="md:w-160 w-full dark:bg-gray-900"
+      [mode]="drawerMode"
+      [opened]="false"
+      [position]="'end'"
+      [disableClose]="true"
+      #matDrawer
+    >
+      <router-outlet></router-outlet>
+    </mat-drawer>
+
+    <mat-drawer-content class="flex flex-col">
+      <!-- Main -->
+      <div class="flex-auto">
+        <!-- Header -->
+        <div
+          class="flex flex-auto flex-col justify-between border-b px-6 py-8 sm:flex-row md:flex-col md:px-8"
+        >
+          <!-- Title -->
+          <div>
+            <div class="text-4xl font-extrabold leading-none tracking-tight">
+              Contacts
+            </div>
+            <div class="text-secondary ml-0.5 font-medium">
+              <ng-container *ngIf="contactsCount > 0">
+                {{ contactsCount }}
+              </ng-container>
+              {{
+                contactsCount
+                  | i18nPlural
+                    : {
+                        '=0': 'No contacts',
+                        '=1': 'contact',
+                        other: 'contacts'
+                      }
+              }}
+            </div>
+          </div>
+
+          <!-- Main actions -->
+          <div class="mt-4 flex items-center sm:mt-0 md:mt-4">
+            <!-- Search -->
+            <div class="flex-auto">
+              <mat-form-field
+                class="fuse-mat-dense fuse-mat-rounded min-w-50 w-full"
+                subscriptSizing="dynamic"
+              >
+                <mat-icon
+                  class="icon-size-5"
+                  matPrefix
+                  [svgIcon]="'heroicons_solid:magnifying-glass'"
+                ></mat-icon>
+                <input
+                  matInput
+                  [formControl]="searchInputControl"
+                  [autocomplete]="'off'"
+                  placeholder="Search contacts"
+                />
+              </mat-form-field>
+            </div>
+            <!-- Add contact button -->
+            <button
+              class="ml-4"
+              mat-flat-button
+              [color]="'primary'"
+              (click)="createContact()"
+            >
+              <mat-icon [svgIcon]="'heroicons_outline:plus'"></mat-icon>
+              <span class="ml-2 mr-1">Add</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Contacts list -->
+        <div class="relative">
+          <ng-container *ngIf="contacts$ | async as contacts">
+            <ng-container *ngIf="contacts.length; else noContacts">
+              <ng-container
+                *ngFor="
+                  let contact of contacts;
+                  let i = index;
+                  trackBy: trackByFn
+                "
+              >
+                <!-- Group -->
+                <ng-container
+                  *ngIf="
+                    i === 0 ||
+                    contact.name.charAt(0) !== contacts[i - 1].name.charAt(0)
+                  "
+                >
+                  <div
+                    class="text-secondary sticky top-0 z-10 -mt-px border-b border-t bg-gray-50 px-6 py-1 font-medium uppercase dark:bg-gray-900 md:px-8"
+                  >
+                    {{ contact.name.charAt(0) }}
+                  </div>
+                </ng-container>
+                <!-- Contact -->
+                <a
+                  class="z-20 flex cursor-pointer items-center border-b px-6 py-4 md:px-8"
+                  [ngClass]="{
+                    'dark:hover:bg-hover hover:bg-gray-100':
+                      !selectedContact || selectedContact.id !== contact.id,
+                    'bg-primary-50 dark:bg-hover':
+                      selectedContact && selectedContact.id === contact.id
+                  }"
+                  [routerLink]="['./', contact.id]"
+                >
+                  <div
+                    class="flex-0 flex h-10 w-10 items-center justify-center overflow-hidden rounded-full"
+                  >
+                    <ng-container *ngIf="contact.avatar">
+                      <img
+                        class="h-full w-full object-cover"
+                        [src]="contact.avatar"
+                        alt="Contact avatar"
+                      />
+                    </ng-container>
+                    <ng-container *ngIf="!contact.avatar">
+                      <div
+                        class="flex h-full w-full items-center justify-center rounded-full bg-gray-200 text-lg uppercase text-gray-600 dark:bg-gray-700 dark:text-gray-200"
+                      >
+                        {{ contact.name.charAt(0) }}
+                      </div>
+                    </ng-container>
+                  </div>
+                  <div class="ml-4 min-w-0">
+                    <div class="truncate font-medium leading-5">
+                      {{ contact.name }}
+                    </div>
+                    <div class="text-secondary truncate leading-5">
+                      {{ contact.title }}
+                    </div>
+                  </div>
+                </a>
+              </ng-container>
+            </ng-container>
+          </ng-container>
+
+          <!-- No contacts -->
+          <ng-template #noContacts>
+            <div
+              class="border-t p-8 text-center text-4xl font-semibold tracking-tight sm:p-16"
+            >
+              There are no contacts!
+            </div>
+          </ng-template>
+        </div>
+      </div>
+    </mat-drawer-content>
+  </mat-drawer-container>
+</div>

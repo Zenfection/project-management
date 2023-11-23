@@ -1,0 +1,61 @@
+<div
+  class="grid w-full min-w-0 grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5"
+>
+  <ng-container *ngFor="let member of allMember; let i = index">
+    <div
+      class="bg-card flex flex-auto flex-col items-center overflow-hidden rounded-2xl shadow transition-all duration-300 ease-in-out hover:shadow-2xl"
+    >
+      <!-- Avatar & Info -->
+      <div class="relative flex w-full flex-auto flex-col p-8 text-center">
+        <div class="absolute top-0 mt-4 flex items-center">
+          <ng-container *ngIf="i === 0">
+            <mat-icon
+              class="icon-size-8 text-green-600"
+              [svgIcon]="'duotone:badge-check'"
+              [matTooltip]="'owner_plan_content' | transloco"
+            ></mat-icon>
+          </ng-container>
+        </div>
+        <div class="mx-auto h-32 w-32 overflow-hidden rounded-full">
+          <img
+            class="h-full w-full object-cover"
+            [src]="member.info.avatar"
+            alt="Avatar Logo"
+          />
+        </div>
+        <div class="mt-6 font-medium">
+          {{ member.info.name }}
+        </div>
+        <div class="text-secondary">
+          {{ member.department | transloco }}
+        </div>
+      </div>
+      <!-- Email & Phone -->
+      <div class="flex w-full items-center divide-x border-t">
+        <a
+          class="hover:bg-hover flex flex-auto items-center justify-center py-4"
+          [href]="'mailto:' + member.info.email"
+          [matTooltip]="member.info.email"
+        >
+          <mat-icon
+            class="text-hint icon-size-5"
+            [svgIcon]="'heroicons_solid:envelope'"
+          ></mat-icon>
+          <span class="ml-2">Email</span>
+        </a>
+        <a
+          class="hover:bg-hover flex flex-auto items-center justify-center py-4"
+          [href]="'tel:' + member.info.phone"
+          [matTooltip]="member.info.phone"
+        >
+          <mat-icon
+            class="text-hint icon-size-5"
+            [svgIcon]="'heroicons_solid:phone'"
+          >
+          </mat-icon>
+          <span class="ml-2">Call</span>
+        </a>
+      </div>
+    </div>
+  </ng-container>
+</div>
