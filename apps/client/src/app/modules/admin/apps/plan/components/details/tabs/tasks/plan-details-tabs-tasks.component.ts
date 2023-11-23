@@ -1,7 +1,7 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { TasksFacade } from '@client/core-state';
-import { Task } from '@client/shared/interfaces';
+import { PlansFacade, TasksFacade } from '@client/core-state';
+import { Task, Member } from '@client/shared/interfaces';
 import { Observable, map } from 'rxjs';
 import { PlanTaskDialogComponent } from '../../../dialogs/task.dialog/task-dialog.component';
 
@@ -9,14 +9,25 @@ import { PlanTaskDialogComponent } from '../../../dialogs/task.dialog/task-dialo
   selector: 'plan-details-tabs-tasks',
   templateUrl: './plan-details-tabs-tasks.component.html',
 })
-export class PlanDetailsTabsTasksComponent {
+export class PlanDetailsTabsTasksComponent implements OnInit {
   tasks$: Observable<Task[]> = this._taskFacade.tasks$;
+  planId: number;
+  members: Member[];
+
   @Input() permissionPlan: boolean;
 
   constructor(
     private _matDialog: MatDialog,
     private readonly _taskFacade: TasksFacade,
+    private readonly _planFacade: PlansFacade,
   ) {}
+
+  ngOnInit(): void {
+    this._planFacade.selectedPlan$.subscribe((plan) => {
+      this.planId = plan.id;
+      this.members = plan.members;
+    });
+  }
 
   percentCompleteTask(taskId: number): Observable<number> {
     return this.tasks$.pipe(
@@ -37,6 +48,8 @@ export class PlanDetailsTabsTasksComponent {
       disableClose: true,
       data: {
         task: {},
+        planId: this.planId,
+        members: this.members,
       },
     });
   }

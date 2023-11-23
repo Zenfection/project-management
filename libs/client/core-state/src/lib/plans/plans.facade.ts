@@ -11,6 +11,7 @@ import { Observable } from 'rxjs';
 import {
   selectAllPlans,
   selectCategories,
+  selectPlanId,
   selectSelectedPlan,
 } from './plans.selector';
 
@@ -21,6 +22,7 @@ export class PlansFacade {
   plans$: Observable<Plan[]> = this.store.select(selectAllPlans);
   categories$: Observable<Category[]> = this.store.select(selectCategories);
   selectedPlan$: Observable<Plan> = this.store.select(selectSelectedPlan);
+  selectedPlanId$: Observable<number> = this.store.select(selectPlanId);
 
   constructor(private readonly store: Store) {}
 

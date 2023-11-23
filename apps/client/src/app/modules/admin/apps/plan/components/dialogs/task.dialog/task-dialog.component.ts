@@ -28,7 +28,7 @@ import {
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
-import { TasksFacade } from '@client/core-state';
+import { PlansFacade, TasksFacade } from '@client/core-state';
 import { CreateTask, Member, Task } from '@client/shared/interfaces';
 import { fuseAnimations } from '@fuse/animations';
 import { TranslocoModule } from '@ngneat/transloco';
@@ -70,7 +70,6 @@ export class PlanTaskDialogComponent
 {
   taskForm: UntypedFormGroup;
   task: Task;
-  members: Member[];
   filterMembers$: Observable<Member[]>;
 
   ownerSearch = new FormControl('');
@@ -78,21 +77,28 @@ export class PlanTaskDialogComponent
   private _unsubscribeAll: Subject<any> = new Subject<any>();
 
   constructor(
-    @Inject(MAT_DIALOG_DATA) private _data: { task: Task },
+    @Inject(MAT_DIALOG_DATA)
+    private _data: { task: Task; planId: number; members: Member[] },
     private _fromBuilder: FormBuilder,
     private _matDialog: MatDialog,
     private _changeDetectorRef: ChangeDetectorRef,
     private readonly _taskFacade: TasksFacade,
+    private readonly _planFacade: PlansFacade,
     private readonly _planService: PlanService,
   ) {
     this.task = this._data.task;
   }
 
   ngOnInit(): void {
-    // Get members
-    this._planService.members$.subscribe((members) => {
-      this.members = members;
-    });
+    // Get members and selectTaskid
+    // combineLatest([
+    //   this._planFacade.selectedPlanId$,
+    //   this._planService.members$,
+    // ]).subscribe(([planId, members]) => {
+    //   console.log(planId);
+    //   this.members = members;
+    //   this.planId = planId;
+    // });
 
     // Edit Form
     if (this._data.task.id) {
@@ -137,9 +143,9 @@ export class PlanTaskDialogComponent
         .toLowerCase()
         .normalize('NFD')
         .replace(/[\u0300-\u036f]/g, '');
-      console.log(this.members);
+      console.log(this._data.members);
 
-      return this.members.filter((member) =>
+      return this._data.members.filter((member) =>
         member.info.name
           .toLowerCase()
           .normalize('NFD')
@@ -147,7 +153,7 @@ export class PlanTaskDialogComponent
           .includes(value),
       );
     } else {
-      return this.members;
+      return this._data.members;
     }
   }
 
@@ -183,11 +189,19 @@ export class PlanTaskDialogComponent
       },
       plan: {
         connect: {
-          id: this.task.planId,
+          id: this._data.planId,
         },
       },
+      priority: this.taskForm.get('priority').value,
+      order: this.task.order ? this.task.order + 1 : 0,
+      status: 'OPEN',
     };
-    console.log(data);
+
+    this._taskFacade.createTask(data);
+    this.taskForm.reset();
+    this.closeDialog();
+
+    this._changeDetectorRef.markForCheck();
   }
 
   handleUpdate(): void {

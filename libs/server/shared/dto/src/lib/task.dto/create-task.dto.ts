@@ -3,12 +3,12 @@ import { $Enums, Prisma } from '@prisma/client';
 import {
   IsArray,
   IsDate,
+  IsDateString,
   IsEnum,
   IsNumber,
   IsObject,
   IsOptional,
   IsString,
-  Min,
   MinLength,
 } from 'class-validator';
 
@@ -24,7 +24,7 @@ export class CreateTaskDto implements Prisma.TaskCreateInput {
   description?: string;
 
   @ApiProperty()
-  @IsDate()
+  @IsDateString()
   dueDate?: Date;
 
   @ApiProperty()

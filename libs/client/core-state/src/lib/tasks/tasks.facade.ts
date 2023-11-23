@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { TasksState } from './tasks.reducer';
 import { Observable } from 'rxjs';
-import { Task, Todo, UpdateTask } from '@client/shared/interfaces';
+import { CreateTask, Task, Todo, UpdateTask } from '@client/shared/interfaces';
 import { selectAllTasks, selectSelectedTask } from './tasks.selector';
 import * as TasksActions from './tasks.actions';
 
@@ -21,6 +21,10 @@ export class TasksFacade {
 
   selectTask(selectedTaskId: number): void {
     this.store.dispatch(TasksActions.selectTask({ selectedTaskId }));
+  }
+
+  createTask(createTaskData: CreateTask): void {
+    this.store.dispatch(TasksActions.createTask({ createTaskData }));
   }
 
   updateTask(task: UpdateTask): void {

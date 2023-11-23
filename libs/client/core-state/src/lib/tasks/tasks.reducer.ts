@@ -26,6 +26,10 @@ export const tasksReducer = createReducer(
     selectedTaskId,
   })),
 
+  on(TasksActions.createTaskSuccess, (state, action) => {
+    return adapter.addOne(action.task, state);
+  }),
+
   on(TasksActions.updateTaskSuccess, (state, action): TasksState => {
     return adapter.updateOne(
       {

@@ -43,6 +43,7 @@ export class TasksController {
   }
 
   @Post()
+  @UseInterceptors(AvatarInterceptor)
   createTask(
     @ActiveUser() user: ActiveUserData,
     @Body() createTaskDto: CreateTaskDto,

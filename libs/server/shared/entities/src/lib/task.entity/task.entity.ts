@@ -1,6 +1,13 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { $Enums, Task } from '@prisma/client';
-import { IsArray, IsDate, IsEnum, IsNumber, IsString } from 'class-validator';
+import {
+  IsArray,
+  IsDate,
+  IsDateString,
+  IsEnum,
+  IsNumber,
+  IsString,
+} from 'class-validator';
 
 export class TaskEntity implements Task {
   @ApiProperty()
@@ -16,7 +23,7 @@ export class TaskEntity implements Task {
   description: string;
 
   @ApiProperty()
-  @IsDate()
+  @IsDateString()
   dueDate: Date;
 
   @ApiProperty()

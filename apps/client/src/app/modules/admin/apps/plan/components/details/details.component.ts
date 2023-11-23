@@ -40,7 +40,6 @@ import { LetDirective, PushPipe } from '@ngrx/component';
 import { cloneDeep } from 'lodash-es';
 import { Observable, Subject, combineLatest, map, takeUntil } from 'rxjs';
 import { PlanDialogComponent } from '../dialogs/plan.dialog/dialog-plan.component';
-import { PlanTaskDialogComponent } from '../dialogs/task.dialog/task-dialog.component';
 import { PlanDetailsTabsModule } from './tabs/plan-details-tabs.module';
 
 @Component({

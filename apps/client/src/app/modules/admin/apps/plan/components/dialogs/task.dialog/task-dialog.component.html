@@ -158,18 +158,12 @@
           [subscriptSizing]="'dynamic'"
         >
           <mat-label>Priority</mat-label>
-          <mat-chip-list
-            [formControlName]="'priority'"
-            aria-label="Priority"
-            class="flex flex-wrap gap-2"
-          >
-            <mat-select [formControlName]="'priority'" class="py-3">
-              <mat-option [value]="0">None</mat-option>
-              <mat-option [value]="1">Low</mat-option>
-              <mat-option [value]="2">Medium</mat-option>
-              <mat-option [value]="3">High</mat-option>
-            </mat-select>
-          </mat-chip-list>
+          <mat-select [formControlName]="'priority'" class="py-3">
+            <mat-option [value]="0">None</mat-option>
+            <mat-option [value]="1">Low</mat-option>
+            <mat-option [value]="2">Medium</mat-option>
+            <mat-option [value]="3">High</mat-option>
+          </mat-select>
         </mat-form-field>
       </div>
     </div>

@@ -29,6 +29,29 @@ export class TasksEffects {
     private router: Router,
   ) {}
 
+  createTask$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(TasksAction.createTask),
+      switchMap((action) => {
+        return this._httpClient
+          .post<Task>('api/tasks', action.createTaskData)
+          .pipe(
+            map((task) => TasksAction.createTaskSuccess({ task })),
+            catchError((error: { message: string }) => {
+              this.snackBar.open(
+                `Failed to create task because: ${error.message}`,
+                'Close',
+                {
+                  duration: 3000,
+                },
+              );
+              return of(TasksAction.createTaskFailure({ error }));
+            }),
+          );
+      }),
+    );
+  });
+
   updateTask$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(TasksAction.updateTask),
@@ -80,27 +103,4 @@ export class TasksEffects {
       }),
     );
   });
-
-  // updateTask$ = createEffect(() => {
-  //   return this.actions$.pipe(
-  //     ofType(TasksAction.updateTask),
-  //     withLatestFrom(this.store.select(selectSelectTaskId)),
-  //     groupBy(([action, taskId]) => taskId),
-  //     mergeMap((group$) =>
-  //       this._httpClient.patch<Task>(`api/tasks/${taskId}`, action.task).pipe(
-  //         map((task) => TasksAction.updateTaskSuccess({ task })),
-  //         catchError((error: { message: string }) => {
-  //           this.snackBar.open(
-  //             `Failed to update task because: ${error.message}`,
-  //             'Close',
-  //             {
-  //               duration: 3000,
-  //             },
-  //           );
-  //           return of(TasksAction.updateTasksFailure({ error }));
-  //         }),
-  //       ),
-  //     ),
-  //   );
-  // });
 }
