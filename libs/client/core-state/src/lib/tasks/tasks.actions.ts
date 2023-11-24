@@ -1,4 +1,10 @@
-import { CreateTask, Task, Todo, UpdateTask } from '@client/shared/interfaces';
+import {
+  CreateTask,
+  CreateTodo,
+  Task,
+  Todo,
+  UpdateTask,
+} from '@client/shared/interfaces';
 import { createAction, props } from '@ngrx/store';
 
 export const loadTasksSuccess = createAction(
@@ -25,7 +31,23 @@ export const createTaskFailure = createAction(
   props<{ error: { message: string } }>(),
 );
 
-//! Update
+//! Create Todo
+export const createTodo = createAction(
+  '[TASKS] Create Temporary Task',
+  props<{ createTodoData: CreateTodo }>(),
+);
+
+export const createTodoSuccess = createAction(
+  '[TASKS] Create Temporary Task Success',
+  props<{ todo: Todo }>(),
+);
+
+export const createTodoFailure = createAction(
+  '[TASKS] Create Temporary Task Failure',
+  props<{ error: { message: string } }>(),
+);
+
+//! Update Task
 export const updateTask = createAction(
   '[TASKS] Update Tasks',
   props<{ task: UpdateTask }>(),

@@ -30,6 +30,21 @@ export const tasksReducer = createReducer(
     return adapter.addOne(action.task, state);
   }),
 
+  on(TasksActions.createTodoSuccess, (state, action) => {
+    const taskId = action.todo.taskId;
+    const task = state.entities[taskId];
+    const todos = [...task.todos, action.todo];
+    const updatedTask = { ...task, todos };
+
+    return adapter.updateOne(
+      {
+        id: taskId,
+        changes: updatedTask,
+      },
+      state,
+    );
+  }),
+
   on(TasksActions.updateTaskSuccess, (state, action): TasksState => {
     return adapter.updateOne(
       {
@@ -45,7 +60,6 @@ export const tasksReducer = createReducer(
   on(TasksActions.updateTodoSuccess, (state, action) => {
     const taskId = action.todo.taskId;
     const task = state.entities[taskId];
-    console.log(taskId, task);
     const todos = task.todos.map((todo) =>
       todo.id === action.todo.id ? action.todo : todo,
     );

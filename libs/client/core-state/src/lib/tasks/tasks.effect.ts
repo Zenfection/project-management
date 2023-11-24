@@ -52,6 +52,29 @@ export class TasksEffects {
     );
   });
 
+  createTodo$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(TasksAction.createTodo),
+      switchMap((action) => {
+        return this._httpClient
+          .post<Todo>('api/todos', action.createTodoData)
+          .pipe(
+            map((todo) => TasksAction.createTodoSuccess({ todo })),
+            catchError((error: { message: string }) => {
+              this.snackBar.open(
+                `Failed to create todo because: ${error.message}`,
+                'Close',
+                {
+                  duration: 3000,
+                },
+              );
+              return of(TasksAction.createTodoFailure({ error }));
+            }),
+          );
+      }),
+    );
+  });
+
   updateTask$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(TasksAction.updateTask),

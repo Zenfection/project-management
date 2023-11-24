@@ -1,10 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { AuthUtils } from './auth.utils';
+import { SettingFacade, UserFacade } from '@client/core-state';
+import { Setting, User } from '@client/shared/interfaces';
 import { UserService } from '@client/shared/services';
 import { catchError, Observable, of, switchMap, throwError } from 'rxjs';
-import { User, Setting } from '@client/shared/interfaces';
-import { UserFacade, SettingFacade } from '@client/core-state';
+import { AuthUtils } from './auth.utils';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
@@ -237,6 +237,9 @@ export class AuthService {
 
             // Set the authenticated flag to true
             this._authenticated = true;
+
+            // refresh page
+            window.location.reload();
 
             // Return true
             return of(true);

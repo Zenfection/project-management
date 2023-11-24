@@ -19,7 +19,6 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
-import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatDrawer, MatSidenavModule } from '@angular/material/sidenav';
@@ -30,17 +29,12 @@ import { PlansFacade, UserFacade } from '@client/core-state';
 import { Category, Plan, User } from '@client/shared/interfaces';
 import { FuseCardComponent } from '@fuse/components/card';
 import { FuseFindByKeyPipe } from '@fuse/pipes/find-by-key/find-by-key.pipe';
-import {
-  FuseConfirmationConfig,
-  FuseConfirmationService,
-} from '@fuse/services/confirmation';
 import { FuseMediaWatcherService } from '@fuse/services/media-watcher';
 import { TranslocoModule } from '@ngneat/transloco';
 import { LetDirective, PushPipe } from '@ngrx/component';
-import { cloneDeep } from 'lodash-es';
 import { Observable, Subject, combineLatest, map, takeUntil } from 'rxjs';
-import { PlanDialogComponent } from '../dialogs/plan.dialog/dialog-plan.component';
 import { PlanDetailsTabsModule } from './tabs/plan-details-tabs.module';
+import { PlanDetailsToolbarModule } from './toolbar/plan-details-toolbar.module';
 
 @Component({
   selector: 'plan-details',
@@ -49,6 +43,7 @@ import { PlanDetailsTabsModule } from './tabs/plan-details-tabs.module';
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
   imports: [
+    PlanDetailsToolbarModule,
     PlanDetailsTabsModule,
     MatSidenavModule,
     MatIconModule,
@@ -56,7 +51,6 @@ import { PlanDetailsTabsModule } from './tabs/plan-details-tabs.module';
     NgClass,
     NgFor,
     MatButtonModule,
-    MatDialogModule,
     MatMenuModule,
     MatTooltipModule,
     CdkScrollable,
@@ -96,8 +90,6 @@ export class PlanDetailsComponent implements OnInit, OnDestroy {
     private _elementRef: ElementRef,
     private _router: Router,
     private _fuseMediaWatcherService: FuseMediaWatcherService,
-    private _fuseConfirmationService: FuseConfirmationService,
-    private _matDialog: MatDialog,
     private readonly _plansFacade: PlansFacade,
     private readonly _userFacade: UserFacade,
   ) {}
@@ -159,48 +151,6 @@ export class PlanDetailsComponent implements OnInit, OnDestroy {
         return plan.owner.info.email === user.info.email;
       }),
     );
-  }
-
-  editFormDialog(plan: Plan): void {
-    this._matDialog.open(PlanDialogComponent, {
-      autoFocus: false,
-      data: {
-        plan: cloneDeep(plan),
-      },
-    });
-  }
-
-  openDeleteConfirmDialog(): void {
-    const configDialog: FuseConfirmationConfig = {
-      title: 'Delete Plan',
-      message:
-        'Are you sure you want to remove this planpermanently? <span class="font-medium">This action cannot be undone!</span>',
-      icon: {
-        show: true,
-        name: 'duotone:triangle-exclamation',
-        color: 'warn',
-      },
-      actions: {
-        confirm: {
-          show: true,
-          label: 'Remove',
-          color: 'warn',
-        },
-        cancel: {
-          show: true,
-          label: 'Cancel',
-        },
-      },
-      dismissible: true,
-    };
-
-    const dialogRef = this._fuseConfirmationService.open(configDialog);
-
-    dialogRef.afterClosed().subscribe((result) => {
-      if (result === 'confirmed') {
-        this._plansFacade.deletePlan();
-      }
-    });
   }
 
   /**

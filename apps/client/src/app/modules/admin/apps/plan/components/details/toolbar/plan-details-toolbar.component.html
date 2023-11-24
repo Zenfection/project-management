@@ -1,0 +1,77 @@
+<div class="absolute end-0 top-2 z-20 mr-12 mt-3">
+  <div
+    class="bg-card w-full cursor-pointer rounded-full p-2 shadow-lg transition-all duration-300 hover:rotate-90"
+    matRipple
+    [matMenuTriggerFor]="projectsMenu"
+  >
+    <fuse-card>
+      <mat-icon class="icon-size-6" [svgIcon]="'duotone:ellipsis'"></mat-icon>
+    </fuse-card>
+    <mat-menu #projectsMenu="matMenu" [xPosition]="'before'" class="mt-4">
+      <button type="button" mat-menu-item class="sm:hidden">
+        <div class="flex items-center justify-start gap-3">
+          <mat-icon
+            class="icon-size-5 me-2 block"
+            [svgIcon]="'duotone:lock'"
+          ></mat-icon>
+          <div>
+            <div class="block font-semibold">Board view</div>
+            <div class="text-secondary text-sm">Switch to Board View</div>
+          </div>
+        </div>
+      </button>
+      <hr class="my-1 w-full border-t sm:hidden" />
+      <button type="button" mat-menu-item (click)="editFormDialog(plan)">
+        <div class="flex items-center justify-start gap-3">
+          <mat-icon
+            class="icon-size-5 me-2 block"
+            [svgIcon]="'duotone:pencil'"
+          ></mat-icon>
+          <div>
+            <div class="block font-semibold">Edit</div>
+            <div class="text-secondary text-sm">Edit this plan</div>
+          </div>
+        </div>
+      </button>
+      <hr class="my-1 w-full border-t" />
+      <button mat-menu-item>
+        <div class="flex items-center justify-start gap-3">
+          <mat-icon
+            class="icon-size-5 me-2 block"
+            [svgIcon]="'duotone:lock'"
+          ></mat-icon>
+          <div>
+            <div class="block font-semibold">Permissions</div>
+            <div class="text-secondary text-sm">Manage permissions</div>
+          </div>
+        </div>
+      </button>
+      <hr class="my-1 w-full border-t" />
+      <button mat-menu-item>
+        <div class="flex items-center justify-start gap-3">
+          <mat-icon
+            class="icon-size-5 me-2 block"
+            [svgIcon]="'duotone:file'"
+          ></mat-icon>
+          <div>
+            <div class="block font-semibold">Files</div>
+            <div class="text-secondary text-sm">Manage files</div>
+          </div>
+        </div>
+      </button>
+      <hr class="my-1 w-full border-t" />
+      <button mat-menu-item (click)="openDeleteConfirmDialog()">
+        <div class="flex items-center justify-start gap-3">
+          <mat-icon
+            class="icon-size-5 me-2 block"
+            [svgIcon]="'duotone:trash'"
+          ></mat-icon>
+          <div>
+            <div class="block font-semibold">Deletes</div>
+            <div class="text-secondary text-sm">Delete this project</div>
+          </div>
+        </div>
+      </button>
+    </mat-menu>
+  </div>
+</div>

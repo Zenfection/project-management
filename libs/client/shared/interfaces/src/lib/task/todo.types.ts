@@ -7,7 +7,13 @@ export interface Todo {
   taskId?: number;
 }
 
-export interface CreateTodo {}
+export interface CreateTodo {
+  content: string;
+  isDone: boolean;
+  Task: {
+    connect: { id: number };
+  };
+}
 
 export interface UpdateTodo extends Partial<CreateTodo> {
   todos: {

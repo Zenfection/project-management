@@ -3,9 +3,7 @@ import {
   CanDeactivateFn,
   RouterStateSnapshot,
 } from '@angular/router';
-import { PlanTodoComponent } from './todo.component';
-import { inject } from '@angular/core';
-import { TasksFacade } from '@client/core-state';
+import { PlanTodoComponent } from '../todo.component';
 
 export const TodoGuardCanDeactivate: CanDeactivateFn<unknown> = (
   component: PlanTodoComponent,

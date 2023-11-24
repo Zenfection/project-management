@@ -3,7 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { PlansFacade, TasksFacade } from '@client/core-state';
 import { Task, Member } from '@client/shared/interfaces';
 import { Observable, map } from 'rxjs';
-import { PlanTaskDialogComponent } from '../../../dialogs/task.dialog/task-dialog.component';
+import { PlanDialogsTaskComponent } from '../../../dialogs/task/plan-dialogs-task.component';
 
 @Component({
   selector: 'plan-details-tabs-tasks',
@@ -43,7 +43,7 @@ export class PlanDetailsTabsTasksComponent implements OnInit {
   }
 
   openTaskDialog(): void {
-    this._matDialog.open(PlanTaskDialogComponent, {
+    this._matDialog.open(PlanDialogsTaskComponent, {
       autoFocus: false,
       disableClose: true,
       data: {

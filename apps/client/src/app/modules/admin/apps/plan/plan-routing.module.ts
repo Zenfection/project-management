@@ -7,12 +7,12 @@ import {
   withInMemoryScrolling,
   withPreloading,
 } from '@angular/router';
-import { PlanComponent } from './plan.component';
-import { PlanListComponent } from './components/list/list.component';
 import { PlanDetailsComponent } from './components/details/details.component';
+import { PlanListComponent } from './components/list/list.component';
+import { TodoGuardCanDeactivate } from './components/todo/guards/todo.guard';
+import { TodoResolver } from './components/todo/resolvers/todo.resolver';
 import { PlanTodoComponent } from './components/todo/todo.component';
-import { TodoResolver } from './components/todo/todo.resolver';
-import { TodoGuardCanDeactivate } from './components/todo/todo.guard';
+import { PlanComponent } from './plan.component';
 import { planCategoriesResolver } from './resolvers/plan-categories.resolver';
 import { planDetailsResolver } from './resolvers/plan-details.resolver';
 import { planListResolver } from './resolvers/plan-list.resolver';

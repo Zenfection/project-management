@@ -1,3 +1,5 @@
+import { OverlayRef } from '@angular/cdk/overlay';
+import { AsyncPipe, NgClass, NgFor, NgIf } from '@angular/common';
 import {
   AfterViewInit,
   ChangeDetectionStrategy,
@@ -7,55 +9,29 @@ import {
   OnInit,
   ViewEncapsulation,
 } from '@angular/core';
-import {
-  BehaviorSubject,
-  Observable,
-  Subject,
-  combineLatest,
-  debounce,
-  debounceTime,
-  filter,
-  interval,
-  map,
-  takeUntil,
-  tap,
-} from 'rxjs';
-import { OverlayRef } from '@angular/cdk/overlay';
+import { FormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
 import {
   MatDrawerToggleResult,
   MatSidenavModule,
 } from '@angular/material/sidenav';
-import { MatIconModule } from '@angular/material/icon';
 import { ActivatedRoute, RouterLink } from '@angular/router';
-import {
-  AsyncPipe,
-  NgClass,
-  NgFor,
-  NgIf,
-  NgTemplateOutlet,
-} from '@angular/common';
-import { MatTooltipModule } from '@angular/material/tooltip';
+import { PlansFacade, UserFacade } from '@client/core-state';
 import { TranslocoModule } from '@ngneat/transloco';
-import { MatProgressBarModule } from '@angular/material/progress-bar';
-import { MatCheckboxModule } from '@angular/material/checkbox';
-import { PlanDetailsComponent } from '../details/details.component';
-import { FuseCardComponent } from '@fuse/components/card';
-import { MatMenuModule } from '@angular/material/menu';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatDividerModule } from '@angular/material/divider';
-import { PlansFacade, TasksFacade, UserFacade } from '@client/core-state';
-import { LetDirective, PushPipe } from '@ngrx/component';
+import { PushPipe } from '@ngrx/component';
 import {
-  FormBuilder,
-  FormsModule,
-  ReactiveFormsModule,
-  UntypedFormGroup,
-} from '@angular/forms';
-import { Task, Todo, UpdateTask, User } from '@client/shared/interfaces';
-import { cloneDeep } from 'lodash-es';
-import { MatInputModule } from '@angular/material/input';
-import { MatButtonModule } from '@angular/material/button';
-import { PlanTodoCommentComponent } from './components/comment/comment.component';
+  Observable,
+  Subject,
+  combineLatest,
+  filter,
+  map,
+  takeUntil,
+} from 'rxjs';
+import { PlanDetailsComponent } from '../details/details.component';
+import { PlanTodoNotFoundComponent } from './components/not-found/not-found.component';
+import { PlanTodoModeViewComponent } from './mode/view/plan-todo-mode-view.component';
 
 @Component({
   selector: 'plan-todo',
@@ -64,33 +40,21 @@ import { PlanTodoCommentComponent } from './components/comment/comment.component
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
   imports: [
+    PlanTodoNotFoundComponent,
+    PlanTodoModeViewComponent,
     RouterLink,
     MatIconModule,
-    MatCheckboxModule,
     MatSidenavModule,
     NgIf,
     NgFor,
-    NgTemplateOutlet,
     NgClass,
-    FuseCardComponent,
-    ReactiveFormsModule,
-    FormsModule,
     MatMenuModule,
-    MatFormFieldModule,
     MatButtonModule,
     FormsModule,
-    MatDividerModule,
-    MatTooltipModule,
-    MatFormFieldModule,
-    MatInputModule,
     MatIconModule,
-    MatProgressBarModule,
-    FuseCardComponent,
     TranslocoModule,
     AsyncPipe,
-    LetDirective,
     PushPipe,
-    PlanTodoCommentComponent,
   ],
 })
 export class PlanTodoComponent implements OnInit, OnDestroy, AfterViewInit {
@@ -98,18 +62,11 @@ export class PlanTodoComponent implements OnInit, OnDestroy, AfterViewInit {
     private readonly _plansDetailsComponent: PlanDetailsComponent,
     private _activatedRoute: ActivatedRoute,
     private _changeDetectorRef: ChangeDetectorRef,
-    private formBuilder: FormBuilder,
     private readonly _planFacade: PlansFacade,
-    private readonly _tasksFacade: TasksFacade,
     private readonly _userFafacde: UserFacade,
   ) {}
 
-  task$: BehaviorSubject<Task> = new BehaviorSubject<Task>(null);
-  user$: Observable<User> = this._userFafacde.user$;
-  taskChanged: Subject<Task> = new Subject<Task>();
-  todoChanged: Subject<Todo> = new Subject<Todo>();
-
-  disbaleTodo: boolean = false;
+  editMode: boolean = false;
 
   private _tagsPanelOverlayRef: OverlayRef;
   private _unsubscribeAll: Subject<any> = new Subject<any>();
@@ -119,36 +76,6 @@ export class PlanTodoComponent implements OnInit, OnDestroy, AfterViewInit {
 
     // Open the drawer
     this._plansDetailsComponent.matDrawer.open();
-
-    // Get task
-    this._tasksFacade.selectedTask$
-      .pipe(takeUntil(this._unsubscribeAll))
-      .subscribe((task) => {
-        this.task$.next(cloneDeep(task));
-      });
-
-    // subscribe to taskChanged
-    this.taskChanged
-      .pipe(
-        takeUntil(this._unsubscribeAll),
-        debounceTime(500),
-        tap((task) => {
-          // this._tasksFacade.updateTask(task);
-        }),
-      )
-      .subscribe();
-
-    this.todoChanged
-      .pipe(
-        takeUntil(this._unsubscribeAll),
-        debounce(() => interval(300)),
-        tap((todo) => {
-          this._tasksFacade.updateTodo(todo);
-        }),
-      )
-      .subscribe(() => {
-        this.disbaleTodo = false;
-      });
   }
 
   /**
@@ -200,35 +127,6 @@ export class PlanTodoComponent implements OnInit, OnDestroy, AfterViewInit {
         );
       }),
     );
-  }
-
-  /**
-   * Progress Todo
-   */
-  get progressTodo(): Observable<number> {
-    return this.task$.pipe(
-      map((task) => {
-        const percent =
-          (task.todos.filter((todo) => todo.isDone).length /
-            task.todos.length) *
-          100;
-        return percent;
-      }),
-    );
-  }
-
-  updateTodoOnTask(todo: Todo, task: Task, event: InputEvent) {
-    // if event not typing content can this.todoChange.next
-    this.todoChanged.next(todo);
-    this.disbaleTodo = true;
-    // check event focus input
-    // if (event.type === 'focus') {
-    // if (task.id) {
-    // const index = task.todos.findIndex((t) => t.id === todo.id);
-    // task.todos[index] = todo;
-    // this.taskChanged.next(task);
-    // this.disbaleTodo = true;
-    // }
   }
 
   /**

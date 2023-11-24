@@ -40,8 +40,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatChipsModule } from '@angular/material/chips';
 
 @Component({
-  selector: 'plan-task-dialog',
-  templateUrl: './task-dialog.component.html',
+  selector: 'plan-dialog-task',
+  templateUrl: './plan-dialogs-task.component.html',
   standalone: true,
   animations: fuseAnimations,
   imports: [
@@ -65,7 +65,7 @@ import { MatChipsModule } from '@angular/material/chips';
     DatePipe,
   ],
 })
-export class PlanTaskDialogComponent
+export class PlanDialogsTaskComponent
   implements OnInit, OnDestroy, AfterViewInit
 {
   taskForm: UntypedFormGroup;
@@ -90,16 +90,6 @@ export class PlanTaskDialogComponent
   }
 
   ngOnInit(): void {
-    // Get members and selectTaskid
-    // combineLatest([
-    //   this._planFacade.selectedPlanId$,
-    //   this._planService.members$,
-    // ]).subscribe(([planId, members]) => {
-    //   console.log(planId);
-    //   this.members = members;
-    //   this.planId = planId;
-    // });
-
     // Edit Form
     if (this._data.task.id) {
       this.taskForm = this._fromBuilder.group({
@@ -143,7 +133,6 @@ export class PlanTaskDialogComponent
         .toLowerCase()
         .normalize('NFD')
         .replace(/[\u0300-\u036f]/g, '');
-      console.log(this._data.members);
 
       return this._data.members.filter((member) =>
         member.info.name
@@ -198,7 +187,6 @@ export class PlanTaskDialogComponent
     };
 
     this._taskFacade.createTask(data);
-    this.taskForm.reset();
     this.closeDialog();
 
     this._changeDetectorRef.markForCheck();
