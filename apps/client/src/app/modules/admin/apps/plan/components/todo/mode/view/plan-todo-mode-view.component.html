@@ -70,20 +70,20 @@
     <!-- Process Task -->
     <div class="max-w-30 grow">
       <div class="mb-2 text-sm leading-none text-slate-400">
-        {{ progressTodo | async }}% complete
+        {{ progressTodo | async | percent }}% complete
       </div>
 
       <mat-progress-bar
         class="overflow-hidden rounded-full"
         [color]="
-          (progressTodo | async) === 100
+          (progressTodo | async) === 1
             ? 'primary'
-            : (progressTodo | async) >= 50
+            : (progressTodo | async) >= 0.5
               ? 'accent'
               : 'warn'
         "
         mode="determinate"
-        [value]="progressTodo | async"
+        [value]="(progressTodo | async) * 100"
       />
     </div>
   </div>

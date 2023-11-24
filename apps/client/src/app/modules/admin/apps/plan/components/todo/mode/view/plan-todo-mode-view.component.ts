@@ -1,4 +1,4 @@
-import { AsyncPipe, NgClass, NgFor, NgIf } from '@angular/common';
+import { AsyncPipe, NgClass, NgFor, NgIf, PercentPipe } from '@angular/common';
 import {
   Component,
   Input,
@@ -48,6 +48,7 @@ import { FormsModule } from '@angular/forms';
     LetDirective,
     PushPipe,
     AsyncPipe,
+    PercentPipe,
   ],
 })
 export class PlanTodoModeViewComponent implements OnInit, OnDestroy {
@@ -95,11 +96,9 @@ export class PlanTodoModeViewComponent implements OnInit, OnDestroy {
     return this.task$.pipe(
       map((task) => {
         if (task.todos.length === 0) return 0;
-        const percent =
-          (task.todos.filter((todo) => todo.isDone).length /
-            task.todos.length) *
-          100;
-        return Number(percent.toFixed(0));
+        return (
+          task.todos.filter((todo) => todo.isDone).length / task.todos.length
+        );
       }),
     );
   }

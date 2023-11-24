@@ -1,13 +1,11 @@
-export interface Comment {
-  id: number;
-  content: string;
+import { Comment as CommentPrisma, Prisma } from '@prisma/client';
+import { Info } from '../user/user.types';
+
+export interface Comment extends CommentPrisma {
   user: {
-    info: {
-      email: string;
-      avatar: string;
-      name: string;
-    };
+    info: Info;
   };
-  createdAt: Date;
-  updatedAt: Date;
 }
+
+export interface CreateComent extends Prisma.CommentCreateInput {}
+export interface UpdateComment extends Prisma.CommentUpdateInput {}

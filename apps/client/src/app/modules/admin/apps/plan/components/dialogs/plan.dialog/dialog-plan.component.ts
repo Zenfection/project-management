@@ -31,7 +31,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import {
-  Category,
+  CategoryPlan,
   CreatePlan,
   Member,
   Plan,
@@ -94,7 +94,7 @@ export class PlanDialogComponent
   members: Member[] = [];
   filteredMembers: Observable<Member[]>;
   filteredOwner: Observable<Member[]>;
-  allCategory: Category[];
+  allCategory: CategoryPlan[];
   plan: Plan;
 
   readonly separatorKeysCodes = [ENTER, COMMA] as const;

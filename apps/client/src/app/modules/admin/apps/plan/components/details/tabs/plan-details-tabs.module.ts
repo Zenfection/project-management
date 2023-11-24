@@ -1,4 +1,4 @@
-import { AsyncPipe, NgClass, NgFor, NgIf } from '@angular/common';
+import { AsyncPipe, NgClass, NgFor, NgIf, PercentPipe } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
@@ -33,6 +33,7 @@ import { PlanDetailsTabsTeamComponent } from './team/plan-details-tabs-team.comp
     LetDirective,
     TranslocoModule,
     AsyncPipe,
+    PercentPipe,
   ],
   exports: [
     PlanDetailsTabsOverviewComponent,

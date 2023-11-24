@@ -65,8 +65,8 @@
         <mat-progress-bar
           mode="determinate"
           class="overflow-hidden rounded-full"
-          [matTooltip]="percentCompleteTask(task.id) | async"
-          [value]="percentCompleteTask(task.id) | async"
+          [matTooltip]="percentCompleteTask(task.id) | async | percent"
+          [value]="(percentCompleteTask(task.id) | async) * 100"
         >
         </mat-progress-bar>
         <!-- process bar -->

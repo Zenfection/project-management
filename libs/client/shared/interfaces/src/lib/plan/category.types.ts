@@ -1,5 +1,3 @@
-export interface Category {
-  id?: string;
-  title?: string;
-  slug?: string;
-}
+import { CategoryPlan as PrismaCategoryPlan } from '@prisma/client';
+
+export interface CategoryPlan extends PrismaCategoryPlan {}

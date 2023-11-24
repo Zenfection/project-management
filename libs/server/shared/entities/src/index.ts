@@ -1,12 +1,24 @@
+import { TodoEntity } from './lib/todo.entity/todo.entity';
+
 // USER
-export { InfoEntity } from './lib/user.entity/info.entity';
-export { UserEntity } from './lib/user.entity/user.entity';
-export { SettingEntity } from './lib/user.entity/setting.entity';
-export { RoleEntity, RoleEnum } from './lib/user.entity/role.entity';
+import { InfoEntity } from './lib/user.entity/info.entity';
+import { RoleEntity, RoleEnum } from './lib/user.entity/role.entity';
+import { SettingEntity } from './lib/user.entity/setting.entity';
+import { UserEntity } from './lib/user.entity/user.entity';
 
 // PLANS
-export { PlanEntity } from './lib/plan.entity/plan.entity';
+import { CommentEntity } from './lib/comment.entity/comment.entity';
+import { PlanEntity } from './lib/plan.entity/plan.entity';
+import { TaskEntity } from './lib/task.entity/task.entity';
 
-export { TaskEntity } from './lib/task.entity/task.entity';
-
-export { CommentEntity } from './lib/comment.entity/comment.entity';
+export {
+  CommentEntity,
+  InfoEntity,
+  PlanEntity,
+  RoleEntity,
+  RoleEnum,
+  SettingEntity,
+  TaskEntity,
+  TodoEntity,
+  UserEntity,
+};

@@ -1,6 +1,6 @@
 import { Prisma } from '@prisma/client';
 import { Member } from './member.types';
-import { Category } from './category.types';
+import { CategoryPlan } from './category.types';
 
 export interface Plan {
   id: number;
@@ -9,7 +9,7 @@ export interface Plan {
   description: string;
   owner: Member;
   members: Member[];
-  category: Category;
+  category: CategoryPlan;
 }
 
 export interface CreatePlan {

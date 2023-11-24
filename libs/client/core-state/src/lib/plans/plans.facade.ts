@@ -2,7 +2,7 @@ import * as PlanAction from './plans.actions';
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import {
-  Category,
+  CategoryPlan,
   CreatePlan,
   Plan,
   UpdatePlan,
@@ -20,7 +20,7 @@ import {
 })
 export class PlansFacade {
   plans$: Observable<Plan[]> = this.store.select(selectAllPlans);
-  categories$: Observable<Category[]> = this.store.select(selectCategories);
+  categories$: Observable<CategoryPlan[]> = this.store.select(selectCategories);
   selectedPlan$: Observable<Plan> = this.store.select(selectSelectedPlan);
   selectedPlanId$: Observable<number> = this.store.select(selectPlanId);
 
@@ -30,7 +30,7 @@ export class PlansFacade {
     this.store.dispatch(PlanAction.loadPlansSuccess({ plans }));
   }
 
-  loadCategoriesSuccess(categories: Category[]): void {
+  loadCategoriesSuccess(categories: CategoryPlan[]): void {
     this.store.dispatch(PlanAction.loadCategoriesSuccess({ categories }));
   }
 

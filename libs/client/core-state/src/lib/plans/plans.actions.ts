@@ -1,6 +1,6 @@
 import { createAction, props } from '@ngrx/store';
 import {
-  Category,
+  CategoryPlan,
   CreatePlan,
   Plan,
   UpdatePlan,
@@ -50,7 +50,7 @@ export const updatePlanFailure = createAction(
 //TODO Categories Plan Actions
 export const loadCategoriesSuccess = createAction(
   '[Plan] Load Categories Success',
-  props<{ categories: Category[] }>(),
+  props<{ categories: CategoryPlan[] }>(),
 );
 
 //! Delete Plan

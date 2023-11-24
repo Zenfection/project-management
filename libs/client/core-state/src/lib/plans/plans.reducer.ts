@@ -1,12 +1,12 @@
 import { EntityAdapter, EntityState, createEntityAdapter } from '@ngrx/entity';
 import * as PlanActions from './plans.actions';
-import { Category, Plan } from '@client/shared/interfaces';
+import { CategoryPlan, Plan } from '@client/shared/interfaces';
 import { createReducer, on } from '@ngrx/store';
 
 //1. Define the shape of state
 export interface PlansState extends EntityState<Plan> {
   selectedPlanId: number;
-  categories: Category[];
+  categories: CategoryPlan[];
 }
 
 //2. Define the initial state

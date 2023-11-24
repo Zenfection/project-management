@@ -1,4 +1,3 @@
-export interface Label {
-  id: number;
-  name: string;
-}
+import { Label as LabelPrisma } from '@prisma/client';
+
+export interface Label extends LabelPrisma {}

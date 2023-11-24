@@ -33,10 +33,9 @@ export class PlanDetailsTabsTasksComponent implements OnInit {
     return this.tasks$.pipe(
       map((tasks) => {
         const task = tasks.find((task) => task.id === taskId);
+        if (task.todos.length === 0) return 0;
         const percent =
-          (task.todos.filter((todo) => todo.isDone).length /
-            task.todos.length) *
-          100;
+          task.todos.filter((todo) => todo.isDone).length / task.todos.length;
         return percent;
       }),
     );

@@ -33,7 +33,7 @@ import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { FuseCardComponent } from '@fuse/components/card';
 import { FuseFindByKeyPipe } from '@fuse/pipes/find-by-key/find-by-key.pipe';
 import { TranslocoModule } from '@ngneat/transloco';
-import { Category, Plan, User } from '@client/shared/interfaces';
+import { CategoryPlan, Plan, User } from '@client/shared/interfaces';
 import { BehaviorSubject, combineLatest, map, Observable, Subject } from 'rxjs';
 import { RiveCanvas, RiveLinearAnimation } from 'ng-rive';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
@@ -75,7 +75,7 @@ import { PlanDialogComponent } from '../dialogs/plan.dialog/dialog-plan.componen
   ],
 })
 export class PlanListComponent implements OnInit, OnDestroy {
-  categories$: Observable<Category[]> = this._plansFacade.categories$;
+  categories$: Observable<CategoryPlan[]> = this._plansFacade.categories$;
   plans$: Observable<Plan[]> = this._plansFacade.plans$;
   user$: Observable<User> = this._userFacade.user$;
   filteredPlans: Plan[];

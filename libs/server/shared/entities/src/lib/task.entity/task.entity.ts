@@ -6,6 +6,7 @@ import {
   IsDateString,
   IsEnum,
   IsNumber,
+  IsOptional,
   IsString,
 } from 'class-validator';
 
@@ -49,6 +50,18 @@ export class TaskEntity implements Task {
   @ApiProperty()
   @IsNumber()
   priority: number;
+
+  // @ApiProperty()
+  // @IsOptional()
+  // todos?: import('../todo.entity/todo.entity').TodoEntity[];
+
+  // @ApiProperty()
+  // @IsOptional()
+  // comments?: import('../comment.entity/comment.entity').CommentEntity[];
+
+  // @ApiProperty()
+  // @IsOptional()
+  // labels?: import('../label.entity/label.entity').LabelEntity[];
 
   @ApiProperty()
   @IsDate()

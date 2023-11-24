@@ -26,7 +26,7 @@ import { MatTabGroup, MatTabsModule } from '@angular/material/tabs';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
 import { PlansFacade, UserFacade } from '@client/core-state';
-import { Category, Plan, User } from '@client/shared/interfaces';
+import { CategoryPlan, Plan, User } from '@client/shared/interfaces';
 import { FuseCardComponent } from '@fuse/components/card';
 import { FuseFindByKeyPipe } from '@fuse/pipes/find-by-key/find-by-key.pipe';
 import { FuseMediaWatcherService } from '@fuse/services/media-watcher';
@@ -69,7 +69,7 @@ export class PlanDetailsComponent implements OnInit, OnDestroy {
   @ViewChild('courseSteps', { static: true }) courseSteps: MatTabGroup;
   @ViewChild('matDrawer', { static: true }) matDrawer: MatDrawer;
 
-  categories$: Observable<Category[]> = this._plansFacade.categories$;
+  categories$: Observable<CategoryPlan[]> = this._plansFacade.categories$;
   plan$: Observable<Plan> = this._plansFacade.selectedPlan$;
   user$: Observable<User> = this._userFacade.user$;
 
