@@ -1,0 +1,29 @@
+<!-- Actions -->
+<div
+  class="-mx-6 mt-10 flex items-center border-t bg-gray-50 py-4 pl-1 pr-4 dark:bg-transparent sm:-mx-12 sm:pl-7 sm:pr-12"
+>
+  <!-- Delete -->
+  <button type="button" mat-button [color]="'warn'" (click)="deleteTask()">
+    Delete
+  </button>
+  <!-- Cancel -->
+  <button
+    type="button"
+    class="ml-auto"
+    mat-button
+    (click)="toggleEditMode(false)"
+  >
+    {{ 'Cancel' | transloco }}
+  </button>
+  <!-- Save -->
+  <button
+    type="submit"
+    class="ml-2"
+    mat-flat-button
+    [color]="'primary'"
+    [disabled]="taskForm.invalid"
+    (click)="updateTask()"
+  >
+    {{ 'Save' | transloco }}
+  </button>
+</div>

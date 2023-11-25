@@ -14,6 +14,8 @@ export class PlanDetailsTabsTasksComponent implements OnInit {
   planId: number;
   members: Member[];
 
+  tasks: Task[];
+
   @Input() permissionPlan: boolean;
 
   constructor(
@@ -23,6 +25,10 @@ export class PlanDetailsTabsTasksComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.tasks$.subscribe((tasks) => {
+      this.tasks = tasks;
+    });
+
     this._planFacade.selectedPlan$.subscribe((plan) => {
       this.planId = plan.id;
       this.members = plan.members;

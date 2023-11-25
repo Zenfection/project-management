@@ -19,15 +19,19 @@
               cdkTextareaAutosize
               [cdkAutosizeMinRows]="3"
             ></textarea>
-            <div
+            <button
+              type="submit"
+              mat-button
               class="absolute bottom-0 right-0 flex justify-between py-4 pl-3 pr-2"
+              [disabled]="!CommentForm.valid"
+              (click)="onSubmit()"
             >
               <mat-icon
                 class="icon-size-5 z-10 cursor-pointer"
                 [ngClass]="{ 'text-blue-800 opacity-100': CommentForm.valid }"
                 [svgIcon]="'duotone:paper-plane-top'"
               ></mat-icon>
-            </div>
+            </button>
           </mat-form-field>
         </form>
       </div>
@@ -39,12 +43,6 @@
             [matTooltip]="'Attach File'"
           ></mat-icon>
         </button>
-        <!-- <button mat-icon-button>
-          <mat-icon
-            class="icon-size-5"
-            [svgIcon]="'heroicons_solid:face-smile'"
-          ></mat-icon>
-        </button> -->
         <button type="button" mat-icon-button>
           <mat-icon
             class="icon-size-5"

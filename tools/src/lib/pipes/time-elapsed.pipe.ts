@@ -13,13 +13,13 @@ export class TimeElapsedPipe implements PipeTransform {
       return 'Just now';
     }
     const intervals = {
-      year: 31536000,
-      month: 2592000,
-      week: 604800,
-      day: 86400,
-      hour: 3600,
-      minute: 60,
-      second: 1,
+      y: 31536000,
+      m: 2592000,
+      w: 604800,
+      d: 86400,
+      h: 3600,
+      min: 60,
+      s: 1,
     };
 
     let counter;

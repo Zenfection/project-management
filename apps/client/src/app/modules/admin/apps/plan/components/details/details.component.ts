@@ -35,6 +35,7 @@ import { LetDirective, PushPipe } from '@ngrx/component';
 import { Observable, Subject, combineLatest, map, takeUntil } from 'rxjs';
 import { PlanDetailsTabsModule } from './tabs/plan-details-tabs.module';
 import { PlanDetailsToolbarModule } from './toolbar/plan-details-toolbar.module';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'plan-details',
@@ -45,6 +46,7 @@ import { PlanDetailsToolbarModule } from './toolbar/plan-details-toolbar.module'
   imports: [
     PlanDetailsToolbarModule,
     PlanDetailsTabsModule,
+    DragDropModule,
     MatSidenavModule,
     MatIconModule,
     NgIf,

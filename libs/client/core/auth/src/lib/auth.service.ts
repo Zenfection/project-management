@@ -142,13 +142,6 @@ export class AuthService {
           // Store the user on the user service
           const userInfo: User = {
             id: response.id,
-            // name: response.info.name,
-            // email: response.info.email,
-            // avatar: response.info.avatar,
-            // status: response.info.status,
-            // about: response.info.about,
-            // address: response.info.address,
-            // phone: response.info.phone,
             info: response.info,
             roles: response.roles,
             department: response.department,

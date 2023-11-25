@@ -12,6 +12,8 @@ import { RiveModule } from 'ng-rive';
 import { PlanDetailsTabsOverviewComponent } from './overview/plan-detail-tabs-overview.component';
 import { PlanDetailsTabsTasksComponent } from './tasks/plan-details-tabs-tasks.component';
 import { PlanDetailsTabsTeamComponent } from './team/plan-details-tabs-team.component';
+import { DragDropModule } from '@angular/cdk/drag-drop';
+import { SortByOrder } from '@tools';
 
 @NgModule({
   declarations: [
@@ -20,6 +22,7 @@ import { PlanDetailsTabsTeamComponent } from './team/plan-details-tabs-team.comp
     PlanDetailsTabsTasksComponent,
   ],
   imports: [
+    DragDropModule,
     FuseCardComponent,
     RiveModule,
     MatIconModule,
@@ -34,6 +37,7 @@ import { PlanDetailsTabsTeamComponent } from './team/plan-details-tabs-team.comp
     TranslocoModule,
     AsyncPipe,
     PercentPipe,
+    SortByOrder,
   ],
   exports: [
     PlanDetailsTabsOverviewComponent,

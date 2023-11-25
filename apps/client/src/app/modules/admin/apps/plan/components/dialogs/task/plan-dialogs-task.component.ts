@@ -127,6 +127,12 @@ export class PlanDialogsTaskComponent
     );
   }
 
+  dueDateFilter = (d: Date | null): boolean => {
+    const date = d || new Date();
+
+    return date >= new Date();
+  };
+
   private _filter(value: string): Member[] {
     if (typeof value === 'string') {
       value = value

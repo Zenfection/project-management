@@ -1,6 +1,7 @@
 import {
   Body,
   Controller,
+  Delete,
   FileTypeValidator,
   Get,
   Param,
@@ -112,6 +113,13 @@ export class TasksController {
         },
         comments: true,
       },
+    });
+  }
+
+  @Delete(':id')
+  async removeTask(@Param('id') id: string) {
+    return this.tasksService.remove({
+      id: Number(id),
     });
   }
 }

@@ -9,8 +9,6 @@ export const OwnsPlan = createParamDecorator(
     const user = request.user;
 
     const planId = request.params.id; // Lấy plan id từ params
-    console.log(planId);
-    console.log(user);
 
     return true;
 

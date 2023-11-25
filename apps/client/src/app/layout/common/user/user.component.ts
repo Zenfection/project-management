@@ -16,6 +16,7 @@ import { User } from '@client/shared/interfaces';
 import { Observable } from 'rxjs';
 import { LetDirective } from '@ngrx/component';
 import { UserFacade } from '@client/core-state';
+import { UserStatus } from '@prisma/client';
 
 @Component({
   selector: 'user',

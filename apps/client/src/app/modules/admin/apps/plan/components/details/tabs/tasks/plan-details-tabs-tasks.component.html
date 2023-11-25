@@ -1,10 +1,10 @@
 <div
-  class="grid w-full min-w-0 grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
+  class="grid w-full min-w-0 grid-cols-1 gap-6 overflow-hidden sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
   *ngrxLet="tasks$ as tasks"
 >
   <fuse-card
-    class="hover:border-primary-500 flex cursor-pointer flex-col rounded-lg shadow-md hover:shadow-lg"
-    *ngFor="let task of tasks"
+    class="hover:border-primary-500 flex cursor-pointer flex-col rounded-lg shadow-md transition-all duration-100 hover:shadow-lg"
+    *ngFor="let task of tasks | sortByOrder; trackBy: trackByFn"
   >
     <div class="absolute top-0 ml-5 mt-5">
       <mat-icon

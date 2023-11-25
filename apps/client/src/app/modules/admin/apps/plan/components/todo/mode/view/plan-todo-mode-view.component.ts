@@ -5,6 +5,8 @@ import {
   OnDestroy,
   OnInit,
   ChangeDetectorRef,
+  EventEmitter,
+  Output,
 } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
@@ -28,6 +30,7 @@ import { PlanTodoCommentComponent } from '../../components/comment/comment.compo
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'plan-todo-mode-view',
@@ -38,7 +41,9 @@ import { FormsModule } from '@angular/forms';
     PlanTodoCommentComponent,
     MatIconModule,
     MatCheckboxModule,
+    MatTooltipModule,
     MatInputModule,
+    MatButtonModule,
     MatTooltipModule,
     MatProgressBarModule,
     FormsModule,
@@ -53,6 +58,7 @@ import { FormsModule } from '@angular/forms';
 })
 export class PlanTodoModeViewComponent implements OnInit, OnDestroy {
   @Input() permissionTodo: boolean;
+  @Output() editMode: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   task$: BehaviorSubject<Task> = new BehaviorSubject<Task>(null);
   todoChanged: Subject<Todo> = new Subject<Todo>();
@@ -90,6 +96,13 @@ export class PlanTodoModeViewComponent implements OnInit, OnDestroy {
   }
 
   /**
+   * Change View Mode
+   */
+  toggleEditMode(value: boolean) {
+    this.editMode.emit(value);
+  }
+
+  /**
    * Progress Todo
    */
   get progressTodo(): Observable<number> {
@@ -103,8 +116,7 @@ export class PlanTodoModeViewComponent implements OnInit, OnDestroy {
     );
   }
 
-  updateTodoOnTask(todo: Todo, task: Task, event: InputEvent) {
-    // if event not typing content can this.todoChange.next
+  updateTodoOnTask(todo: Todo) {
     this.todoChanged.next(todo);
     this.disbaleTodo = true;
   }
@@ -115,7 +127,7 @@ export class PlanTodoModeViewComponent implements OnInit, OnDestroy {
     const createTodoData: CreateTodo = {
       content: value,
       isDone: false,
-      Task: {
+      task: {
         connect: { id: task.id },
       },
     };
@@ -124,6 +136,6 @@ export class PlanTodoModeViewComponent implements OnInit, OnDestroy {
   }
 
   removeTodoOnTask(todoId: number) {
-    // this._tasksFacade.removeTodoOnTask(todo);
+    this._tasksFacade.deleteTodo(todoId);
   }
 }

@@ -13,5 +13,5 @@ export class CreateTodoDto implements Prisma.TodoCreateInput {
 
   @ApiProperty()
   @IsObject()
-  Task: Prisma.TaskCreateNestedOneWithoutTodosInput;
+  task: Prisma.TaskCreateNestedOneWithoutTodosInput;
 }

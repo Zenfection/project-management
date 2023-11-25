@@ -18,7 +18,7 @@ import {
   MatSidenavModule,
 } from '@angular/material/sidenav';
 import { ActivatedRoute, RouterLink } from '@angular/router';
-import { PlansFacade, UserFacade } from '@client/core-state';
+import { PlansFacade, TasksFacade, UserFacade } from '@client/core-state';
 import { TranslocoModule } from '@ngneat/transloco';
 import { PushPipe } from '@ngrx/component';
 import {
@@ -32,6 +32,8 @@ import {
 import { PlanDetailsComponent } from '../details/details.component';
 import { PlanTodoNotFoundComponent } from './components/not-found/not-found.component';
 import { PlanTodoModeViewComponent } from './mode/view/plan-todo-mode-view.component';
+import { PlanTodoModeEditComponent } from './mode/edit/plan-todo-mode-edit.component';
+import { Task } from '@client/shared/interfaces';
 
 @Component({
   selector: 'plan-todo',
@@ -42,6 +44,7 @@ import { PlanTodoModeViewComponent } from './mode/view/plan-todo-mode-view.compo
   imports: [
     PlanTodoNotFoundComponent,
     PlanTodoModeViewComponent,
+    PlanTodoModeEditComponent,
     RouterLink,
     MatIconModule,
     MatSidenavModule,
@@ -58,10 +61,13 @@ import { PlanTodoModeViewComponent } from './mode/view/plan-todo-mode-view.compo
   ],
 })
 export class PlanTodoComponent implements OnInit, OnDestroy, AfterViewInit {
+  task$: Observable<Task> = this._tasksFacade.selectedTask$;
+
   constructor(
     private readonly _plansDetailsComponent: PlanDetailsComponent,
     private _activatedRoute: ActivatedRoute,
     private _changeDetectorRef: ChangeDetectorRef,
+    private readonly _tasksFacade: TasksFacade,
     private readonly _planFacade: PlansFacade,
     private readonly _userFafacde: UserFacade,
   ) {}

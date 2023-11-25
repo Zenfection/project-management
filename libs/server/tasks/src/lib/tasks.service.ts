@@ -96,9 +96,12 @@ export class TasksService {
     });
   }
 
-  // remove(id: number) {
-  //   return `This action removes a #${id} task`;
-  // }
+  remove(where: Prisma.TaskWhereUniqueInput) {
+    console.log(where);
+    return this.prismaService.task.delete({
+      where,
+    });
+  }
 
   async uploadFile(
     where: Prisma.TaskWhereUniqueInput,

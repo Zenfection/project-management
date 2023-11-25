@@ -26,11 +26,20 @@
     <div
       class="relative h-[calc(100%_-_64px)] w-full overflow-y-auto px-10 py-5"
     >
-      <ng-container *ngIf="!editMode">
+      <ng-container *ngIf="!editMode; else editForm">
         <plan-todo-mode-view
           [permissionTodo]="permissionTodo | async"
+          (editMode)="editMode = $event"
         ></plan-todo-mode-view>
       </ng-container>
+
+      <ng-template #editForm>
+        <plan-todo-mode-edit
+          [permissionTodo]="permissionTodo | async"
+          [task]="task$ | async"
+          (editMode)="editMode = $event"
+        ></plan-todo-mode-edit>
+      </ng-template>
     </div>
   </div>
 </div>

@@ -225,7 +225,7 @@ model Todo {
   id      Int     @id @default(autoincrement()) @map("todo_id")
   content String
   isDone  Boolean @default(false)
-  task    Task    @relation(fields: [taskId], references: [id])
+  task    Task    @relation(fields: [taskId], references: [id], onDelete: Cascade)
   taskId  Int
 
   createdAt DateTime @default(now())

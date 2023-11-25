@@ -30,6 +30,23 @@ export const tasksReducer = createReducer(
     return adapter.addOne(action.task, state);
   }),
 
+  on(TasksActions.updateTaskSuccess, (state, action): TasksState => {
+    return adapter.updateOne(
+      {
+        id: action.task.id,
+        changes: {
+          todos: action.task.todos,
+        },
+      },
+      state,
+    );
+  }),
+
+  on(TasksActions.deleteTaskSuccess, (state, action) => {
+    return adapter.removeOne(action.task.id, state);
+  }),
+
+  //! TODO REDUCER
   on(TasksActions.createTodoSuccess, (state, action) => {
     const taskId = action.todo.taskId;
     const task = state.entities[taskId];
@@ -45,18 +62,6 @@ export const tasksReducer = createReducer(
     );
   }),
 
-  on(TasksActions.updateTaskSuccess, (state, action): TasksState => {
-    return adapter.updateOne(
-      {
-        id: action.task.id,
-        changes: {
-          todos: action.task.todos,
-        },
-      },
-      state,
-    );
-  }),
-
   on(TasksActions.updateTodoSuccess, (state, action) => {
     const taskId = action.todo.taskId;
     const task = state.entities[taskId];
@@ -64,6 +69,39 @@ export const tasksReducer = createReducer(
       todo.id === action.todo.id ? action.todo : todo,
     );
     const updatedTask = { ...task, todos };
+    return adapter.updateOne(
+      {
+        id: taskId,
+        changes: updatedTask,
+      },
+      state,
+    );
+  }),
+
+  on(TasksActions.deleteTodoSuccess, (state, action) => {
+    const taskId = action.todo.taskId;
+    const task = state.entities[taskId];
+    // remove todo from task
+    const todos = task.todos.filter((todo) => todo.id !== action.todo.id);
+    const updatedTask = { ...task, todos };
+    return adapter.updateOne(
+      {
+        id: taskId,
+        changes: updatedTask,
+      },
+      state,
+    );
+  }),
+
+  //! FILES REDUCER
+
+  //! COMMENT REDUCER
+  on(TasksActions.createCommentSuccess, (state, action) => {
+    const taskId = action.comment.taskId;
+    const task = state.entities[taskId];
+    const comments = [...task.comments, action.comment];
+    const updatedTask = { ...task, comments };
+
     return adapter.updateOne(
       {
         id: taskId,

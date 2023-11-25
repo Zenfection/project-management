@@ -15,12 +15,10 @@ import {
 export class CreateTaskDto implements Prisma.TaskCreateInput {
   @ApiProperty()
   @IsString()
-  @MinLength(3)
   title: string;
 
   @ApiProperty()
   @IsString()
-  @MinLength(5)
   description?: string;
 
   @ApiProperty()

@@ -1,11 +1,13 @@
 <div class="mb-4 flex items-center justify-between" *ngrxLet="task$ as task">
   <div class="flex items-center gap-2">
-    <button type="button" mat-icon-button>
-      <mat-icon
-        class="icon-size-5"
-        [matTooltip]="'Edit Task'"
-        [svgIcon]="'duotone:pen'"
-      ></mat-icon>
+    <button
+      type="button"
+      mat-mini-fab
+      (click)="toggleEditMode(true)"
+      class="overflow-hidden rounded-full bg-slate-200 text-slate-700 opacity-80 transition-all duration-200 hover:border-2 hover:border-dashed hover:border-slate-500 hover:opacity-100 dark:bg-slate-700 dark:text-slate-50 dark:hover:border-slate-500"
+      [matTooltip]="'Edit Task'"
+    >
+      <mat-icon class="icon-size-5" [svgIcon]="'duotone:pen'"></mat-icon>
     </button>
     <h4 class="font-sans text-xs font-semibold uppercase text-slate-400">
       Overview
@@ -102,9 +104,9 @@
           <mat-checkbox
             class="flex items-center"
             [color]="'primary'"
-            [disabled]="disbaleTodo"
+            [disabled]="disbaleTodo || permissionTodo"
             [(ngModel)]="todo.isDone"
-            (change)="updateTodoOnTask(todo, task, $event)"
+            (change)="updateTodoOnTask(todo)"
           ></mat-checkbox>
           <input
             aria-label="Task"
@@ -115,16 +117,17 @@
             }"
             [placeholder]="'Task'"
             [(ngModel)]="todo.content"
-            (input)="updateTodoOnTask(todo, task, $event)"
+            (input)="updateTodoOnTask(todo)"
           />
           <mat-icon
+            *ngIf="!permissionTodo"
             class="icon-size-5 ml-auto hidden cursor-pointer group-hover:flex"
             [svgIcon]="'heroicons_solid:x-mark'"
-            (click)="removeTaskFromNote(todo.id)"
+            (click)="removeTodoOnTask(todo.id)"
           ></mat-icon>
         </div>
       </ng-container>
-      <div class="flex items-center">
+      <div class="flex items-center" *ngIf="!permissionTodo">
         <mat-icon
           class="icon-size-5 text-hint -ml-0.5"
           [svgIcon]="'heroicons_solid:plus'"

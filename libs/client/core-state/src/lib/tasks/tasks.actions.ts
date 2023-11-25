@@ -1,4 +1,6 @@
 import {
+  Comment,
+  CreateComment,
   CreateTask,
   CreateTodo,
   Task,
@@ -77,13 +79,44 @@ export const updateTodoSuccess = createAction(
   props<{ todo: Todo }>(),
 );
 
-//! Delete
-export const deleteTask = createAction('[TASKS] Delete Task');
+//! Delete Task
+export const deleteTask = createAction(
+  '[TASKS] Delete Task',
+  props<{ id: number }>(),
+);
 export const deleteTaskSuccess = createAction(
   '[TASKS] Delete Task Success',
-  props<{ id: number }>(),
+  props<{ task: Task }>(),
 );
 export const deleteTaskFailure = createAction(
   '[TASKS] Delete Task Failure',
+  props<{ error: { message: string } }>(),
+);
+
+//! Delete Todo
+export const deleteTodo = createAction(
+  '[TASKS] Delete Todo',
+  props<{ id: number }>(),
+);
+export const deleteTodoSuccess = createAction(
+  '[TASKS] Delete Todo Success',
+  props<{ todo: Todo }>(),
+);
+export const deleteTodoFailure = createAction(
+  '[TASKS] Delete Todo Failure',
+  props<{ error: { message: string } }>(),
+);
+
+//! Create Comment
+export const createComment = createAction(
+  '[TASKS] Create Comment',
+  props<{ createCommentData: CreateComment }>(),
+);
+export const createCommentSuccess = createAction(
+  '[TASKS] Create Comment Success',
+  props<{ comment: Comment }>(),
+);
+export const createCommentFailure = createAction(
+  '[TASKS] Create Comment Failure',
   props<{ error: { message: string } }>(),
 );

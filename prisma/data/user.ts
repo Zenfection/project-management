@@ -1,12 +1,13 @@
 import { $Enums } from '@prisma/client';
 
 export const dataUser = [
+  //! CONG NGHE PHAN MEM
   {
     email: 'tmthai@cit.ctu.edu.vn',
     password: '$2b$10$n.MYQjX46ah9sutf2rADPu3.BFI/5D3TWf3OyHxBtN4q4qWNUqXvK',
     info: {
       create: {
-        name: 'TS. Trương Minh Thái',
+        name: 'Trương Minh Thái',
         about:
           'Cấu trúc dữ liệu, Quản lý dự án phần mềm - Nguyên lý xây dựng phần mềm - Nền tảng phần mềm nhúng và IoT',
         avatar: 'avatar/TMTHAI.jpg',
@@ -27,7 +28,7 @@ export const dataUser = [
     password: '$2b$10$n.MYQjX46ah9sutf2rADPu3.BFI/5D3TWf3OyHxBtN4q4qWNUqXvK',
     info: {
       create: {
-        name: 'ThS. Võ Huỳnh Trâm',
+        name: 'Võ Huỳnh Trâm',
         about:
           'Lập trình căn bản, Cấu trúc dữ liệu - Phân tích và thiết kế thuật toán - Phân tích yêu cầu phần mềm, Quản lý dự án phần mềm',
         avatar: 'avatar/VHTram.jpg',
@@ -48,7 +49,7 @@ export const dataUser = [
     password: '$2b$10$n.MYQjX46ah9sutf2rADPu3.BFI/5D3TWf3OyHxBtN4q4qWNUqXvK',
     info: {
       create: {
-        name: 'PGs. TS. Huỳnh Xuân Hiệp',
+        name: 'Huỳnh Xuân Hiệp',
         about:
           'Nhập môn công nghệ phần mềm, Quản lý dự án phần mềm - Phân tích yêu cầu phần mềm, Kiến trúc và thiết kế phần mềm - Phát triển phần mềm nhúng',
         avatar: 'avatar/HXHiep.jpg',
@@ -69,7 +70,7 @@ export const dataUser = [
     password: '$2b$10$n.MYQjX46ah9sutf2rADPu3.BFI/5D3TWf3OyHxBtN4q4qWNUqXvK',
     info: {
       create: {
-        name: 'ThS. Trương Thị Thanh Tuyền',
+        name: 'Trương Thị Thanh Tuyền',
         about:
           'Lập trình căn bản, Cấu trúc dữ liệu - Hệ thống Multi-Agent, Nguyên lý lập trình mô phỏng',
         avatar: 'avatar/TTTTuyen.jpg',
@@ -90,7 +91,7 @@ export const dataUser = [
     password: '$2b$10$n.MYQjX46ah9sutf2rADPu3.BFI/5D3TWf3OyHxBtN4q4qWNUqXvK',
     info: {
       create: {
-        name: 'TS. Phan Phương Lan',
+        name: 'Phan Phương Lan',
         about:
           'Lập trình căn bản, Cấu trúc dữ liệu - Nhập môn công nghệ phần mềm, Quản lý dự án phần mềm - Bảo trì phần mềm',
         avatar: 'avatar/PPLan.jpg',
@@ -111,7 +112,7 @@ export const dataUser = [
     password: '$2b$10$n.MYQjX46ah9sutf2rADPu3.BFI/5D3TWf3OyHxBtN4q4qWNUqXvK',
     info: {
       create: {
-        name: 'TS. Nguyễn Công Danh',
+        name: 'Nguyễn Công Danh',
         about:
           'Lập trình căn bản, Cấu trúc dữ liệu - Phát triển phần mềm tác nghiệp, Phát triển ứng dụng Windows - Đảm bảo chất lượng và kiểm thử phần mềm',
         avatar: 'avatar/NCDanh.jpg',
@@ -132,7 +133,7 @@ export const dataUser = [
     password: '$2b$10$n.MYQjX46ah9sutf2rADPu3.BFI/5D3TWf3OyHxBtN4q4qWNUqXvK',
     info: {
       create: {
-        name: 'TS. Trương Xuân Việt',
+        name: 'Trương Xuân Việt',
         about: 'Phân tích yêu cầu phần mềm - Nguyên lý xây dựng phần mềm',
         avatar: 'avatar/TXViet.jpg',
         address: 'Đường 3/2 Khu II Đại học Cần Thơ',
@@ -152,7 +153,7 @@ export const dataUser = [
     password: '$2b$10$n.MYQjX46ah9sutf2rADPu3.BFI/5D3TWf3OyHxBtN4q4qWNUqXvK',
     info: {
       create: {
-        name: 'TS. Cù Vĩnh Lộc',
+        name: 'Cù Vĩnh Lộc',
         about:
           'Cấu trúc dữ liệu - Lập trình Java - Kiến trúc thiết kế phần mềm',
         avatar: 'avatar/CVLoc.jpg',
@@ -176,7 +177,7 @@ export const dataUser = [
     password: '$2b$10$n.MYQjX46ah9sutf2rADPu3.BFI/5D3TWf3OyHxBtN4q4qWNUqXvK',
     info: {
       create: {
-        name: 'TS. Lâm Hoài Bảo',
+        name: 'Lâm Hoài Bảo',
         about:
           'Lập trình căn bản, Cấu trúc dữ liệu, Phân tích và thiết kế thuật toán - Lập trình .NET - Kiểm chứng mô hình, Tương tác người máy',
         avatar: 'avatar/LHBao.jpg',
@@ -197,7 +198,7 @@ export const dataUser = [
     password: '$2b$10$n.MYQjX46ah9sutf2rADPu3.BFI/5D3TWf3OyHxBtN4q4qWNUqXvK',
     info: {
       create: {
-        name: 'Ths. Phan Huy Cường',
+        name: 'Phan Huy Cường',
         about: '',
         avatar: 'avatar/PHCuong.jpg',
         address: 'Đường 3/2 Khu II Đại học Cần Thơ',
@@ -217,7 +218,7 @@ export const dataUser = [
     password: '$2b$10$n.MYQjX46ah9sutf2rADPu3.BFI/5D3TWf3OyHxBtN4q4qWNUqXvK',
     info: {
       create: {
-        name: 'Ths. Ông Thị Mỹ Linh',
+        name: 'Ông Thị Mỹ Linh',
         about:
           'Cấu trúc dữ liệu - Lập trình .NET - Quản lý quy trình nghiệp vụ',
         avatar: 'avatar/OTMLinh.jpg',
@@ -238,7 +239,7 @@ export const dataUser = [
     password: '$2b$10$n.MYQjX46ah9sutf2rADPu3.BFI/5D3TWf3OyHxBtN4q4qWNUqXvK',
     info: {
       create: {
-        name: 'TS. Hồ Quang Thái',
+        name: 'Hồ Quang Thái',
         about:
           'Lập trình căn bản, Cấu trúc dữ liệu - Lập trình .NET, Lập trình Java',
         avatar: 'avatar/HQThai.jpg',
@@ -259,7 +260,7 @@ export const dataUser = [
     password: '$2b$10$n.MYQjX46ah9sutf2rADPu3.BFI/5D3TWf3OyHxBtN4q4qWNUqXvK',
     info: {
       create: {
-        name: 'TS. Trần Văn Hoàng',
+        name: 'Trần Văn Hoàng',
         about:
           'Lập trình căn bản, Cấu trúc dữ liệu - Phân tích và thiết kế thuật toán - Phân tích yêu cầu phần mềm.',
         avatar: 'avatar/TVHoang.jpg',
@@ -280,7 +281,7 @@ export const dataUser = [
     password: '$2b$10$n.MYQjX46ah9sutf2rADPu3.BFI/5D3TWf3OyHxBtN4q4qWNUqXvK',
     info: {
       create: {
-        name: 'TS. Huỳnh Quang Nghi',
+        name: 'Huỳnh Quang Nghi',
         about:
           'Lập trình căn bản, Cấu trúc dữ liệu - Lập trình .NET, Lập trình Java - Bảo trì phần mềm, Nguyên lý lập trình mô phỏng',
         avatar: 'avatar/HQNghi.jpg',
@@ -301,7 +302,7 @@ export const dataUser = [
     password: '$2b$10$n.MYQjX46ah9sutf2rADPu3.BFI/5D3TWf3OyHxBtN4q4qWNUqXvK',
     info: {
       create: {
-        name: 'ThS. Cao Hoàng Giang',
+        name: 'Cao Hoàng Giang',
         about:
           'Lập trình căn bản, Cấu trúc dữ liệu - Lập trình .NET, Lập trình Java',
         avatar: 'avatar/CHGiang.jpg',
@@ -322,7 +323,7 @@ export const dataUser = [
     password: '$2b$10$n.MYQjX46ah9sutf2rADPu3.BFI/5D3TWf3OyHxBtN4q4qWNUqXvK',
     info: {
       create: {
-        name: 'Ths. Châu Xuân Phương',
+        name: 'Châu Xuân Phương',
         about: 'Lập trình căn bản, Cấu trúc dữ liệu',
         avatar: 'avatar/CXPhuong.jpg',
         address: 'Đường 3/2 Khu II Đại học Cần Thơ',
@@ -342,7 +343,7 @@ export const dataUser = [
     password: '$2b$10$n.MYQjX46ah9sutf2rADPu3.BFI/5D3TWf3OyHxBtN4q4qWNUqXvK',
     info: {
       create: {
-        name: 'Ths. Nguyễn Văn Linh',
+        name: 'Nguyễn Văn Linh',
         about:
           'Lập trình căn bản, Cấu trúc dữ liệu - Phân tích và thiết kế thuật toán',
         avatar: 'avatar/NVLinh.jpg',
@@ -363,7 +364,7 @@ export const dataUser = [
     password: '$2b$10$n.MYQjX46ah9sutf2rADPu3.BFI/5D3TWf3OyHxBtN4q4qWNUqXvK',
     info: {
       create: {
-        name: 'Ks. Lê Minh Bằng',
+        name: 'Lê Minh Bằng',
         about: '',
         avatar: 'avatar/LMBang.jpg',
         address: 'Đường 3/2 Khu II Đại học Cần Thơ',
@@ -383,7 +384,7 @@ export const dataUser = [
     password: '$2b$10$n.MYQjX46ah9sutf2rADPu3.BFI/5D3TWf3OyHxBtN4q4qWNUqXvK',
     info: {
       create: {
-        name: 'Ks. Cao Công Danh',
+        name: 'Cao Công Danh',
         about: '',
         avatar: 'avatar/CCDanh.jpg',
         address: 'Đường 3/2 Khu II Đại học Cần Thơ',

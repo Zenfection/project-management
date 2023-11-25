@@ -3,7 +3,6 @@ interface Role {
   name: string;
   description?: string;
 }
-
 export interface Info {
   about?: string;
   address?: string;

@@ -3,6 +3,7 @@ import { Store } from '@ngrx/store';
 import { TasksState } from './tasks.reducer';
 import { Observable } from 'rxjs';
 import {
+  CreateComment,
   CreateTask,
   CreateTodo,
   Task,
@@ -45,7 +46,16 @@ export class TasksFacade {
     this.store.dispatch(TasksActions.updateTodo({ todo }));
   }
 
-  deleteTaskSuccess(id: number): void {
-    this.store.dispatch(TasksActions.deleteTaskSuccess({ id }));
+  deleteTodo(id: number): void {
+    this.store.dispatch(TasksActions.deleteTodo({ id }));
+  }
+
+  deleteTask(id: number): void {
+    this.store.dispatch(TasksActions.deleteTask({ id }));
+  }
+
+  //! Comments
+  createComment(createCommentData: CreateComment) {
+    this.store.dispatch(TasksActions.createComment({ createCommentData }));
   }
 }

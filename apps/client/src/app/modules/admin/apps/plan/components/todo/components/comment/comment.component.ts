@@ -3,6 +3,7 @@ import {
   ChangeDetectionStrategy,
   Component,
   Input,
+  OnDestroy,
   OnInit,
   ViewEncapsulation,
 } from '@angular/core';
@@ -15,9 +16,9 @@ import {
   UntypedFormGroup,
   Validators,
 } from '@angular/forms';
-import { UserFacade } from '@client/core-state';
-import { Observable } from 'rxjs';
-import { Task, User } from '@client/shared/interfaces';
+import { TasksFacade, UserFacade } from '@client/core-state';
+import { Observable, Subject, map } from 'rxjs';
+import { CreateComment, Task, User } from '@client/shared/interfaces';
 import { LetDirective, PushPipe } from '@ngrx/component';
 import { MatInputModule } from '@angular/material/input';
 import { MatTooltipModule } from '@angular/material/tooltip';
@@ -53,20 +54,47 @@ import { TimeElapsedPipe } from '@tools';
     DatePipe,
   ],
 })
-export class PlanTodoCommentComponent implements OnInit {
+export class PlanTodoCommentComponent implements OnInit, OnDestroy {
   @Input() task: Task;
 
   user$: Observable<User> = this._userFacade.user$;
   CommentForm: UntypedFormGroup;
 
+  private userId: number;
+  private _unsubscribeAll: Subject<any> = new Subject();
+
   constructor(
     private readonly _userFacade: UserFacade,
+    private readonly _tasksFacade: TasksFacade,
     private readonly _formBuilder: FormBuilder,
   ) {}
 
   ngOnInit(): void {
+    this.user$.subscribe((user) => {
+      this.userId = Number(user.id);
+    });
+
     this.CommentForm = this._formBuilder.group({
       content: ['', Validators.required],
     });
+  }
+
+  ngOnDestroy(): void {
+    this._unsubscribeAll.next(null);
+    this._unsubscribeAll.complete();
+  }
+
+  onSubmit(): void {
+    const dataComment: CreateComment = {
+      content: this.CommentForm.value.content,
+      task: {
+        connect: { id: this.task.id },
+      },
+      user: {
+        connect: { id: this.userId },
+      },
+    };
+
+    this._tasksFacade.createComment(dataComment);
   }
 }

@@ -7,5 +7,5 @@ export interface Comment extends CommentPrisma {
   };
 }
 
-export interface CreateComent extends Prisma.CommentCreateInput {}
+export interface CreateComment extends Prisma.CommentCreateInput {}
 export interface UpdateComment extends Prisma.CommentUpdateInput {}

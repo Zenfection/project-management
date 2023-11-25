@@ -14,4 +14,4 @@ export interface Task extends TaskPrisma {
 }
 
 export interface CreateTask extends Prisma.TaskCreateInput {}
-export interface UpdateTask extends Prisma.PlanUpdateInput {}
+export interface UpdateTask extends Prisma.TaskUpdateInput {}

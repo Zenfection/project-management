@@ -8,9 +8,9 @@
   "version": "1.0.0",
   "license": "MIT",
   "scripts": {
-    "prisma:migrate": "prisma migrate dev --schema=apps/server/prisma/schema.prisma",
-    "prisma:generate": "prisma generate --schema=apps/server/prisma/schema.prisma",
-    "prisma:seed": "ts-node apps/server/prisma/seed.ts",
+    "prisma:migrate": "prisma migrate dev",
+    "prisma:generate": "prisma generate",
+    "prisma:seed": "ts-node prisma/seed.ts",
     "serve:server": "nx serve server",
     "build:server": "nx build server",
     "test:server": "nx test server",
@@ -161,6 +161,6 @@
     "typescript": "~5.2.2"
   },
   "prisma": {
-    "schema": "apps/server/prisma/schema.prisma"
+    "schema": "prisma/schema.prisma"
   }
 }
