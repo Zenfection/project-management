@@ -9,7 +9,6 @@ export const dataTask = [
     plan: {
       connect: { slug: 'xay-dung-he-thong-quan-ly-nhan-su' },
     },
-    files: [],
     priority: 0,
     todos: {
       create: [{ content: 'Tạo API Login' }, { content: 'Tạo API Register' }],
@@ -26,7 +25,6 @@ export const dataTask = [
     plan: {
       connect: { slug: 'xay-dung-he-thong-quan-ly-nhan-su' },
     },
-    files: [],
     priority: 1,
     todos: {
       create: [

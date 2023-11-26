@@ -1,3 +1,42 @@
+<!-- Todo Edit Form -->
+<form [formGroup]="taskForm">
+  <mat-form-field class="my-3 w-full" [subscriptSizing]="'dynamic'">
+    <mat-label>Title</mat-label>
+    <mat-icon
+      class="icon-size-5"
+      [svgIcon]="'duotone:heading'"
+      matPrefix
+    ></mat-icon>
+    <input [formControlName]="'title'" matInput placeholder="Title" />
+    <mat-error *ngIf="require('title')">
+      <span> Title không được để trống </span>
+    </mat-error>
+  </mat-form-field>
+
+  <!-- Description -->
+  <mat-form-field class="my-3 w-full" [subscriptSizing]="'dynamic'">
+    <mat-label>Description</mat-label>
+    <mat-icon
+      class="icon-size-5"
+      [svgIcon]="'duotone:bars-sort'"
+      matPrefix
+    ></mat-icon>
+    <textarea
+      [formControlName]="'description'"
+      matInput
+      cdkTextareaAutosize
+      [cdkAutosizeMinRows]="4"
+      placeholder="Description"
+    ></textarea>
+    <mat-hint align="end">{{
+      this.taskForm.get('description').value.length
+    }}</mat-hint>
+    <mat-error *ngIf="require('description')" @expandCollapse>
+      <span> Description không được để trống </span>
+    </mat-error>
+  </mat-form-field>
+</form>
+
 <!-- Actions -->
 <div
   class="-mx-6 mt-10 flex items-center border-t bg-gray-50 py-4 pl-1 pr-4 dark:bg-transparent sm:-mx-12 sm:pl-7 sm:pr-12"

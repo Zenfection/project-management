@@ -34,9 +34,7 @@ export const tasksReducer = createReducer(
     return adapter.updateOne(
       {
         id: action.task.id,
-        changes: {
-          todos: action.task.todos,
-        },
+        changes: action.task,
       },
       state,
     );

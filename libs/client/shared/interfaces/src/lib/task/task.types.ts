@@ -8,6 +8,7 @@ export interface Task extends TaskPrisma {
   todos?: Todo[];
   comments?: Comment[];
   labels?: Label[];
+  files?: File[];
   assignee: {
     info: Info;
   };

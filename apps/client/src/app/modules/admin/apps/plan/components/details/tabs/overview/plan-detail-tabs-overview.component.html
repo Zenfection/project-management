@@ -3,7 +3,7 @@
     <fuse-card class="space-y-12 p-10 shadow-lg">
       <div>
         <div
-          class="border-muted-200 dark:border-muted-700 flex flex-col items-center justify-between gap-8 border-b pb-12 sm:flex-row"
+          class="flex flex-col items-center justify-between gap-8 border-b border-slate-200 pb-12 dark:border-slate-700 sm:flex-row"
         >
           <div class="grow">
             <!-- Title Plan -->
@@ -11,13 +11,11 @@
               {{ plan.title }}
             </div>
             <!-- Category Plan -->
-            <div
-              class="text-muted-600 dark:text-muted-400 text-secondary text-xl leading-5"
-            >
+            <div class="text-secondary text-xl leading-5 dark:text-slate-400">
               {{ plan.category.title }}
             </div>
             <!-- Description Plan -->
-            <div class="text-muted-400 text-md py-4 font-normal leading-5">
+            <div class="text-md py-4 font-normal leading-5 text-slate-400">
               {{ plan.description }}
             </div>
             <div class="flex items-center justify-between gap-2">
@@ -73,7 +71,7 @@
           </div>
         </div>
         <div
-          class="border-muted-200 dark:border-muted-700 grid gap-4 border-b py-12 sm:grid-cols-4"
+          class="grid gap-4 border-b border-slate-200 py-12 dark:border-slate-700 sm:grid-cols-4"
         >
           <div>
             <mat-icon
@@ -121,6 +119,30 @@
           </div>
         </div>
       </div>
+    </fuse-card>
+  </div>
+  <div class="ltablet:col-span-4 col-span-12 lg:col-span-4">
+    <fuse-card
+      class="bg-card flex flex-auto flex-col overflow-hidden rounded-2xl border-slate-200 p-4 shadow-md transition-all duration-300 hover:shadow-2xl sm:col-span-3 lg:col-span-4"
+    >
+      <div
+        class="mb-2 truncate text-center text-lg font-medium leading-6 tracking-tight"
+      >
+        Team Distribution
+      </div>
+      <apx-chart
+        class="h-80 w-full flex-auto"
+        [chart]="chartTeamDistribution.chart"
+        [colors]="chartTeamDistribution.colors"
+        [dataLabels]="chartTeamDistribution.dataLabels"
+        [markers]="chartTeamDistribution.markers"
+        [plotOptions]="chartTeamDistribution.plotOptions"
+        [series]="chartTeamDistribution.series"
+        [stroke]="chartTeamDistribution.stroke"
+        [tooltip]="chartTeamDistribution.tooltip"
+        [xaxis]="chartTeamDistribution.xaxis"
+        [yaxis]="chartTeamDistribution.yaxis"
+      ></apx-chart>
     </fuse-card>
   </div>
 </div>

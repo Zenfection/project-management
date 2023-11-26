@@ -62,6 +62,7 @@ export class PlansController {
             },
             labels: true,
             todos: true,
+            files: true,
             comments: {
               include: {
                 user: {

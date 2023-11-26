@@ -14,6 +14,7 @@ import { PlanDetailsTabsTasksComponent } from './tasks/plan-details-tabs-tasks.c
 import { PlanDetailsTabsTeamComponent } from './team/plan-details-tabs-team.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { SortByOrder } from '@tools';
+import { NgApexchartsModule } from 'ng-apexcharts';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { SortByOrder } from '@tools';
     AsyncPipe,
     PercentPipe,
     SortByOrder,
+    NgApexchartsModule,
   ],
   exports: [
     PlanDetailsTabsOverviewComponent,

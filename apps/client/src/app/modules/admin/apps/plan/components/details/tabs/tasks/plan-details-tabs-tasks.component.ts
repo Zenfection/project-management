@@ -26,6 +26,7 @@ export class PlanDetailsTabsTasksComponent implements OnInit {
 
   ngOnInit(): void {
     this.tasks$.subscribe((tasks) => {
+      console.log(tasks);
       this.tasks = tasks;
     });
 

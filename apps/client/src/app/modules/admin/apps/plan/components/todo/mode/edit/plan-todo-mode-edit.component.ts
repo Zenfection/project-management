@@ -1,3 +1,4 @@
+import { NgClass, NgFor, NgIf } from '@angular/common';
 import {
   Component,
   EventEmitter,
@@ -21,6 +22,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { TasksFacade } from '@client/core-state';
 import { Task, UpdateTask } from '@client/shared/interfaces';
+import { fuseAnimations } from '@fuse/animations';
 import { FuseConfirmationService } from '@fuse/services/confirmation';
 import { TranslocoModule } from '@ngneat/transloco';
 import { Observable, Subject, tap } from 'rxjs';
@@ -30,6 +32,9 @@ import { Observable, Subject, tap } from 'rxjs';
   templateUrl: './plan-todo-mode-edit.component.html',
   standalone: true,
   imports: [
+    NgIf,
+    NgClass,
+    NgFor,
     FormsModule,
     ReactiveFormsModule,
     MatIconModule,
@@ -40,6 +45,7 @@ import { Observable, Subject, tap } from 'rxjs';
     MatDatepickerModule,
     TranslocoModule,
   ],
+  animations: fuseAnimations,
 })
 export class PlanTodoModeEditComponent implements OnInit, OnDestroy {
   @Input() permissionTodo: boolean;
@@ -115,5 +121,13 @@ export class PlanTodoModeEditComponent implements OnInit, OnDestroy {
       },
     };
     this._taskFacade.updateTask(dataTask);
+    this.toggleEditMode(false);
+  }
+
+  require(name: string): boolean {
+    return (
+      this.taskForm.get(name).hasError('required') &&
+      this.taskForm.get(name).touched
+    );
   }
 }

@@ -1,12 +1,10 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { $Enums, Task } from '@prisma/client';
 import {
-  IsArray,
   IsDate,
   IsDateString,
   IsEnum,
   IsNumber,
-  IsOptional,
   IsString,
 } from 'class-validator';
 
@@ -38,10 +36,6 @@ export class TaskEntity implements Task {
   @ApiProperty()
   @IsNumber()
   planId: number;
-
-  @ApiProperty()
-  @IsArray()
-  files: string[];
 
   @ApiProperty()
   @IsNumber()

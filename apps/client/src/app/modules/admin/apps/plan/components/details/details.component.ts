@@ -22,7 +22,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatDrawer, MatSidenavModule } from '@angular/material/sidenav';
-import { MatTabGroup, MatTabsModule } from '@angular/material/tabs';
+import { MatTabsModule } from '@angular/material/tabs';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
 import { PlansFacade, UserFacade } from '@client/core-state';
@@ -68,7 +68,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
   ],
 })
 export class PlanDetailsComponent implements OnInit, OnDestroy {
-  @ViewChild('courseSteps', { static: true }) courseSteps: MatTabGroup;
+  // @ViewChild('courseSteps', { static: true }) courseSteps: MatTabGroup;
   @ViewChild('matDrawer', { static: true }) matDrawer: MatDrawer;
 
   categories$: Observable<CategoryPlan[]> = this._plansFacade.categories$;
@@ -77,7 +77,7 @@ export class PlanDetailsComponent implements OnInit, OnDestroy {
 
   user: User;
 
-  currentStep = 0;
+  // currentStep = 0;
   drawerMode: 'over' | 'side' = 'side';
   drawerOpened = true;
   private _unsubscribeAll: Subject<any> = new Subject<any>();
@@ -134,6 +134,7 @@ export class PlanDetailsComponent implements OnInit, OnDestroy {
   // -----------------------------------------------------------------------------------------------------
   // @ Public methods
   // -----------------------------------------------------------------------------------------------------
+
   get permissionPlan(): Observable<boolean> {
     return combineLatest([this.user$, this.plan$]).pipe(
       map(([user, plan]) => {
@@ -171,48 +172,48 @@ export class PlanDetailsComponent implements OnInit, OnDestroy {
    *
    * @param step
    */
-  goToStep(step: number): void {
-    // Set the current step
-    this.currentStep = step;
+  // goToStep(step: number): void {
+  //   // Set the current step
+  //   this.currentStep = step;
 
-    // Go to the step
-    this.courseSteps.selectedIndex = this.currentStep;
+  //   // Go to the step
+  //   this.courseSteps.selectedIndex = this.currentStep;
 
-    // Mark for check
-    this._changeDetectorRef.markForCheck();
-  }
+  //   // Mark for check
+  //   this._changeDetectorRef.markForCheck();
+  // }
 
   /**
    * Go to previous step
    */
-  goToPreviousStep(): void {
-    // Return if we already on the first step
-    if (this.currentStep === 0) {
-      return;
-    }
+  // goToPreviousStep(): void {
+  //   // Return if we already on the first step
+  //   if (this.currentStep === 0) {
+  //     return;
+  //   }
 
-    // Go to step
-    this.goToStep(this.currentStep - 1);
+  //   // Go to step
+  //   this.goToStep(this.currentStep - 1);
 
-    // Scroll the current step selector from sidenav into view
-    this._scrollCurrentStepElementIntoView();
-  }
+  //   // Scroll the current step selector from sidenav into view
+  //   this._scrollCurrentStepElementIntoView();
+  // }
 
   /**
    * Go to next step
    */
-  goToNextStep(): void {
-    // Return if we already on the last step
-    // if (this.currentStep === this.plan.totalSteps - 1) {
-    //   return;
-    // }
+  // goToNextStep(): void {
+  //   // Return if we already on the last step
+  //   // if (this.currentStep === this.plan.totalSteps - 1) {
+  //   //   return;
+  //   // }
 
-    // Go to step
-    this.goToStep(this.currentStep + 1);
+  //   // Go to step
+  //   this.goToStep(this.currentStep + 1);
 
-    // Scroll the current step selector from sidenav into view
-    this._scrollCurrentStepElementIntoView();
-  }
+  //   // Scroll the current step selector from sidenav into view
+  //   this._scrollCurrentStepElementIntoView();
+  // }
 
   /**
    * Track by function for ngFor loops
@@ -237,18 +238,18 @@ export class PlanDetailsComponent implements OnInit, OnDestroy {
    *
    * @private
    */
-  private _scrollCurrentStepElementIntoView(): void {
-    // Wrap everything into setTimeout so we can make sure that the 'current-step' class points to correct element
-    setTimeout(() => {
-      // Get the current step element and scroll it into view
-      const currentStepElement =
-        this._document.getElementsByClassName('current-step')[0];
-      if (currentStepElement) {
-        currentStepElement.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start',
-        });
-      }
-    });
-  }
+  // private _scrollCurrentStepElementIntoView(): void {
+  //   // Wrap everything into setTimeout so we can make sure that the 'current-step' class points to correct element
+  //   setTimeout(() => {
+  //     // Get the current step element and scroll it into view
+  //     const currentStepElement =
+  //       this._document.getElementsByClassName('current-step')[0];
+  //     if (currentStepElement) {
+  //       currentStepElement.scrollIntoView({
+  //         behavior: 'smooth',
+  //         block: 'start',
+  //       });
+  //     }
+  //   });
+  // }
 }

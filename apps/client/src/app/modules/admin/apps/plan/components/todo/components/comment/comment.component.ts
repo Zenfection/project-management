@@ -96,5 +96,7 @@ export class PlanTodoCommentComponent implements OnInit, OnDestroy {
     };
 
     this._tasksFacade.createComment(dataComment);
+
+    this.CommentForm.reset();
   }
 }

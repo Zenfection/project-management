@@ -19,7 +19,7 @@ export class TimeElapsedPipe implements PipeTransform {
       d: 86400,
       h: 3600,
       min: 60,
-      s: 1,
+      sec: 1,
     };
 
     let counter;

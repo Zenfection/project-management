@@ -103,25 +103,25 @@ export class TasksService {
     });
   }
 
-  async uploadFile(
-    where: Prisma.TaskWhereUniqueInput,
-    taskID: number,
-    fileName: string,
-    fileBuffer: Buffer,
-  ) {
-    const prefix = `tasks/${taskID}`;
-    return Promise.all([
-      this.cloudService.upload(fileName, fileBuffer, prefix),
-      this.prismaService.task.update({
-        where,
-        data: {
-          files: {
-            push: `${prefix}/${fileName}`,
-          },
-        },
-      }),
-    ]).then((result) => {
-      return result[1];
-    });
-  }
+  // async uploadFile(
+  //   where: Prisma.TaskWhereUniqueInput,
+  //   taskID: number,
+  //   fileName: string,
+  //   fileBuffer: Buffer,
+  // ) {
+  //   const prefix = `tasks/${taskID}`;
+  //   return Promise.all([
+  //     this.cloudService.upload(fileName, fileBuffer, prefix),
+  //     this.prismaService.task.update({
+  //       where,
+  //       data: {
+  //         files: {
+  //           push: `${prefix}/${fileName}`,
+  //         },
+  //       },
+  //     }),
+  //   ]).then((result) => {
+  //     return result[1];
+  //   });
+  // }
 }

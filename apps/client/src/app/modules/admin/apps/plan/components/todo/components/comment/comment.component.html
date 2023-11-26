@@ -36,13 +36,24 @@
         </form>
       </div>
       <div class="-mr-3 ml-auto mt-3 flex items-center">
-        <button type="button" mat-icon-button>
+        <label
+          for="input-file"
+          class="cursor-pointer overflow-hidden p-2 transition-all duration-300 hover:rounded-full hover:bg-slate-200"
+        >
+          <input
+            placeholder="Add a file"
+            type="file"
+            id="input-file"
+            accept="image/*"
+            class="hidden"
+          />
           <mat-icon
             class="icon-size-5"
             [svgIcon]="'solid:paperclip'"
             [matTooltip]="'Attach File'"
           ></mat-icon>
-        </button>
+        </label>
+
         <button type="button" mat-icon-button>
           <mat-icon
             class="icon-size-5"

@@ -30,9 +30,9 @@ export class CreateTaskDto implements Prisma.TaskCreateInput {
   status?: $Enums.TaskStatus;
 
   @ApiProperty()
-  @IsArray()
+  @IsObject()
   @IsOptional()
-  files?: string[] | Prisma.TaskCreatefilesInput;
+  files?: Prisma.FileCreateNestedManyWithoutTaskInput;
 
   @ApiProperty()
   @IsNumber()

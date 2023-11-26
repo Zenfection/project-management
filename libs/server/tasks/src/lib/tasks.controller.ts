@@ -39,7 +39,7 @@ export class TasksController {
 
     return this.tasksService.findOne(
       { id: Number(id) },
-      { labels: true, todos: true, comments: true },
+      { labels: true, todos: true, comments: true, files: true },
     );
   }
 
@@ -55,41 +55,40 @@ export class TasksController {
         labels: true,
         todos: true,
         comments: true,
-        assignee: {
-          select: { info: true },
-        },
+        files: true,
+        assignee: { select: { info: true } },
       },
     });
   }
 
-  @Post(':id/file')
-  @UseInterceptors(FileInterceptor('file'))
-  async uploadAvatar(
-    @Param('id') id: string,
-    @ActiveUser() user: ActiveUserData,
-    @UploadedFile(
-      new ParseFilePipe({
-        validators: [
-          new FileTypeValidator({
-            fileType:
-              '.(doc|docx|log|odt|pages|rtf|txt|csv|key|pps|ppt|pptx|tar|xml|json|pdf|xls|xlsx|db|sql|rar|gz|zip)',
-          }),
-        ],
-      }),
-    )
-    file: Express.Multer.File,
-  ) {
-    if (await this.tasksService.checkPermission(user.email, Number(id))) {
-      throw new UnauthorizedException('Permission denied');
-    }
+  // @Post(':id/file')
+  // @UseInterceptors(FileInterceptor('file'))
+  // async uploadFile(
+  //   @Param('id') id: string,
+  //   @ActiveUser() user: ActiveUserData,
+  //   @UploadedFile(
+  //     new ParseFilePipe({
+  //       validators: [
+  //         new FileTypeValidator({
+  //           fileType:
+  //             '.(doc|docx|log|odt|pages|rtf|txt|csv|key|pps|ppt|pptx|tar|xml|json|pdf|xls|xlsx|db|sql|rar|gz|zip)',
+  //         }),
+  //       ],
+  //     }),
+  //   )
+  //   file: Express.Multer.File,
+  // ) {
+  //   if (await this.tasksService.checkPermission(user.email, Number(id))) {
+  //     throw new UnauthorizedException('Permission denied');
+  //   }
 
-    return this.tasksService.uploadFile(
-      { id: Number(id) },
-      Number(id),
-      file.originalname,
-      file.buffer,
-    );
-  }
+  //   return this.tasksService.uploadFile(
+  //     { id: Number(id) },
+  //     Number(id),
+  //     file.originalname,
+  //     file.buffer,
+  //   );
+  // }
 
   @Patch(':id')
   @UseInterceptors(AvatarInterceptor)
@@ -108,9 +107,8 @@ export class TasksController {
       include: {
         labels: true,
         todos: true,
-        assignee: {
-          include: { info: true },
-        },
+        files: true,
+        assignee: { include: { info: true } },
         comments: true,
       },
     });
