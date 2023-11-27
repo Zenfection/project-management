@@ -21,3 +21,6 @@ export { UpdateTodoDto } from './lib/todo.dto/update-todo.dto';
 
 export { CreateCommentDto } from './lib/comment.dto/create-comment.dto';
 export { UpdateCommentDto } from './lib/comment.dto/update-comment.dto';
+
+export { CreateLabelDto } from './lib/label.dto/create-label.dto';
+export { UpdateLabelDto } from './lib/label.dto/update-label.dto';

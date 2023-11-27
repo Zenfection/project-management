@@ -15,6 +15,7 @@ import { PlanDetailsTabsTeamComponent } from './team/plan-details-tabs-team.comp
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { SortByOrder } from '@tools';
 import { NgApexchartsModule } from 'ng-apexcharts';
+import { CoreUIModule } from '@client/core-ui';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { NgApexchartsModule } from 'ng-apexcharts';
     PlanDetailsTabsTasksComponent,
   ],
   imports: [
+    CoreUIModule,
     DragDropModule,
     FuseCardComponent,
     RiveModule,

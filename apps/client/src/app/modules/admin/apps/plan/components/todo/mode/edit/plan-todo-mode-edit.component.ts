@@ -21,17 +21,19 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { TasksFacade } from '@client/core-state';
-import { Task, UpdateTask } from '@client/shared/interfaces';
+import { Label, Task, UpdateTask } from '@client/shared/interfaces';
 import { fuseAnimations } from '@fuse/animations';
 import { FuseConfirmationService } from '@fuse/services/confirmation';
 import { TranslocoModule } from '@ngneat/transloco';
-import { Observable, Subject, tap } from 'rxjs';
+import { Subject } from 'rxjs';
+import { PlanExtrasLabelsComponent } from '../../../extras/labels/plan-extras-labels.component';
 
 @Component({
   selector: 'plan-todo-mode-edit',
   templateUrl: './plan-todo-mode-edit.component.html',
   standalone: true,
   imports: [
+    PlanExtrasLabelsComponent,
     NgIf,
     NgClass,
     NgFor,
@@ -67,6 +69,7 @@ export class PlanTodoModeEditComponent implements OnInit, OnDestroy {
       description: [this.task.description, Validators.required],
       dueDate: [this.task.dueDate, Validators.required],
       status: [this.task.status, Validators.required],
+      labels: [this.task.labels],
       assignee: [this.task.assignee.info.email, Validators.required],
     });
   }
@@ -107,7 +110,7 @@ export class PlanTodoModeEditComponent implements OnInit, OnDestroy {
   }
 
   updateTask(): void {
-    // this._taskFacade.updateTask();
+    console.log(this.taskForm.get('labels').value);
     const dataTask: UpdateTask = {
       title: this.taskForm.value.title,
       description: this.taskForm.value.description,
@@ -116,6 +119,11 @@ export class PlanTodoModeEditComponent implements OnInit, OnDestroy {
       priority: this.task.priority,
       // order
       // files
+      labels: {
+        connect: this.taskForm.value.labels.map((label: Label) => ({
+          id: label.id,
+        })),
+      },
       assignee: {
         connect: { email: this.taskForm.value.assignee },
       },

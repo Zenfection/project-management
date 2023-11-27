@@ -10,7 +10,13 @@ import {
   throwError,
 } from 'rxjs';
 import { PlansFacade, TasksFacade } from '@client/core-state';
-import { CategoryPlan, Member, Plan, Task } from '@client/shared/interfaces';
+import {
+  CategoryPlan,
+  Label,
+  Member,
+  Plan,
+  Task,
+} from '@client/shared/interfaces';
 
 @Injectable({ providedIn: 'root' })
 export class PlanService {
@@ -65,6 +71,17 @@ export class PlanService {
     return this._httpClient.get<CategoryPlan[]>('api/plans/categories').pipe(
       tap((response: CategoryPlan[]) => {
         this._plansFacade.loadCategoriesSuccess(response);
+      }),
+    );
+  }
+
+  /**
+   //* Get labels
+   */
+  getLabels(): Observable<Label[]> {
+    return this._httpClient.get<Label[]>('api/labels').pipe(
+      tap((response: Label[]) => {
+        this._tasksFacade.loadLabelsSuccess(response);
       }),
     );
   }

@@ -2,7 +2,7 @@
   "name": "client-core-ui",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/client/core-ui/src",
-  "prefix": "task-management",
+  "prefix": "",
   "tags": [],
   "projectType": "library",
   "targets": {

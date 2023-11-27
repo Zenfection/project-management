@@ -7,6 +7,11 @@ export const selectTaskState = createFeatureSelector<TasksState>('tasks');
 
 export const selectAllTasks = createSelector(selectTaskState, selectAll);
 
+export const selectLabels = createSelector(
+  selectTaskState,
+  (tasksState: TasksState) => tasksState.labels,
+);
+
 export const selectSelectedTask = createSelector(
   selectTaskState,
   (tasksState: TasksState) => tasksState.entities[tasksState.selectedTaskId],

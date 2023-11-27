@@ -11,6 +11,7 @@ import { PlansModule } from '@server/plans';
 import { TasksModule } from '@server/tasks';
 import { TodosModule } from '@server/todos';
 import { CommentsModule } from '@server/comments';
+import { LabelsModule } from '@server/labels';
 
 @Module({
   imports: [
@@ -24,6 +25,7 @@ import { CommentsModule } from '@server/comments';
     TasksModule,
     TodosModule,
     CommentsModule,
+    LabelsModule,
   ],
   controllers: [AppController],
   providers: [AppService],

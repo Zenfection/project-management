@@ -131,10 +131,12 @@ export class AuthService {
           // in using the token, you should generate a new one on the server
           // side and attach it to the response object. Then the following
           // piece of code can replace the token with the refreshed one.
-          // if ( response.accessToken )
-          // {
-          //     this.accessToken = response.accessToken;
-          // }
+          if (response.accessToken) {
+            this.accessToken = response.accessToken;
+          }
+          if (response.refreshToken) {
+            this.refreshToken = response.refreshToken;
+          }
 
           // Set the authenticated flag to true
           this._authenticated = true;

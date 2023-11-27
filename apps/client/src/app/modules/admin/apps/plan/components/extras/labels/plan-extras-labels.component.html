@@ -1,0 +1,134 @@
+<div class="flex flex-wrap items-center">
+  <!-- Labels -->
+  <ng-container *ngIf="task.labels.length > 0">
+    <ng-container *ngFor="let label of task.labels; trackBy: trackByFn">
+      <div
+        class="m-1.5 flex items-center justify-center rounded-full bg-gray-100 px-4 leading-9 text-gray-500 dark:bg-gray-700 dark:text-gray-300"
+      >
+        <span class="text-md whitespace-nowrap font-medium">{{
+          label.name
+        }}</span>
+      </div>
+    </ng-container>
+  </ng-container>
+  <!-- Labels panel and its button -->
+  <div
+    class="m-1.5 flex cursor-pointer items-center justify-center rounded-full bg-gray-100 px-4 leading-9 text-gray-500 dark:bg-gray-700 dark:text-gray-300"
+    (click)="openLabelsPanel()"
+    (keydown.enter)="openLabelsPanel()"
+    tabindex="0"
+    #labelsPanelOrigin
+  >
+    <ng-container *ngIf="!task.labels.length; else haveLabels">
+      <mat-icon
+        class="icon-size-5"
+        [svgIcon]="'duotone:circle-plus'"
+      ></mat-icon>
+      <span class="text-md ml-1.5 whitespace-nowrap font-medium">Add</span>
+    </ng-container>
+
+    <ng-template #haveLabels>
+      <ng-container>
+        <mat-icon
+          class="icon-size-5"
+          [svgIcon]="'heroicons_solid:pencil-square'"
+        ></mat-icon>
+        <span class="text-md ml-1.5 whitespace-nowrap font-medium">Edit</span>
+      </ng-container>
+    </ng-template>
+
+    <!-- Labels panel -->
+    <ng-template #labelsPanel>
+      <div class="bg-card w-60 rounded border shadow-md">
+        <!-- Labels panel header -->
+        <div class="m-3 mr-2 flex items-center">
+          <div class="flex items-center">
+            <mat-icon
+              class="icon-size-5"
+              [svgIcon]="'heroicons_solid:magnifying-glass'"
+            ></mat-icon>
+            <div class="ml-2">
+              <input
+                class="w-full min-w-0 border-0 py-1"
+                type="text"
+                placeholder="Enter label name"
+                (input)="filterLabels($event)"
+                (keydown)="filterLabelsInputKeyDown($event)"
+                [maxLength]="30"
+                #newLabelInput
+              />
+            </div>
+          </div>
+          <button class="ml-1" mat-icon-button (click)="toggleLabelsEditMode()">
+            <mat-icon
+              *ngIf="!tagsEditMode"
+              class="icon-size-5"
+              [svgIcon]="'heroicons_solid:pencil-square'"
+            ></mat-icon>
+            <mat-icon
+              *ngIf="tagsEditMode"
+              class="icon-size-5"
+              [svgIcon]="'heroicons_solid:check'"
+            ></mat-icon>
+          </button>
+        </div>
+        <div class="flex max-h-64 flex-col overflow-y-auto border-t py-2">
+          <!-- Tags -->
+          <ng-container *ngIf="!labelsEditMode">
+            <ng-container
+              *ngFor="let label of filteredLabels; trackBy: trackByFn"
+            >
+              <div
+                class="min-h-10 hover:bg-hover flex h-10 cursor-pointer items-center pl-1 pr-4"
+                (click)="toggleTaskLabel(label)"
+                (keydown.enter)="toggleTaskLabel(label)"
+                tabindex="0"
+                matRipple
+              >
+                <mat-checkbox
+                  class="min-h-10 pointer-events-none flex h-10 items-center"
+                  [checked]="checkedLabels(label)"
+                  [color]="'primary'"
+                  [disableRipple]="true"
+                >
+                </mat-checkbox>
+                <div>{{ label.name }}</div>
+              </div>
+            </ng-container>
+          </ng-container>
+
+          <!-- Labels editing -->
+          <ng-container *ngIf="labelsEditMode">
+            <div class="space-y-2 py-2">
+              <ng-container
+                *ngFor="let label of filterLabels; trackBy: trackByFn"
+              >
+                <div class="flex items-center">
+                  <mat-form-field
+                    class="fuse-mat-dense mx-4 w-full"
+                    [subscriptSizing]="'dynamic'"
+                  >
+                    <input
+                      placeholder="Enter label name"
+                      matInput
+                      [value]="label.name"
+                      (input)="updateTagTitle(tag, $event)"
+                    />
+                    <button mat-icon-button (click)="deleteTag(tag)" matSuffix>
+                      <mat-icon
+                        class="icon-size-5 ml-2"
+                        [svgIcon]="'heroicons_solid:trash'"
+                      ></mat-icon>
+                    </button>
+                  </mat-form-field>
+                </div>
+              </ng-container>
+            </div>
+          </ng-container>
+
+          <!-- Create labels -->
+        </div>
+      </div>
+    </ng-template>
+  </div>
+</div>

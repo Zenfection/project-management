@@ -3,6 +3,7 @@ import {
   CreateComment,
   CreateTask,
   CreateTodo,
+  Label,
   Task,
   Todo,
   UpdateTask,
@@ -12,6 +13,11 @@ import { createAction, props } from '@ngrx/store';
 export const loadTasksSuccess = createAction(
   '[TASKS] Load Tasks Success',
   props<{ tasks: Task[] }>(),
+);
+
+export const loadLabelsSuccess = createAction(
+  '[TASKS] Load Labels Success',
+  props<{ labels: Label[] }>(),
 );
 
 export const selectTask = createAction(

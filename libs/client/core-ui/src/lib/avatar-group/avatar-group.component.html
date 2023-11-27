@@ -1,0 +1,17 @@
+<ng-container *ngFor="let member of members.slice(0, size); trackBy: trackByFn">
+  <img
+    class="flex-0 h-8 w-8 rounded-full object-cover shadow-sm ring-2 ring-gray-800 ring-offset-1 ring-offset-gray-800 transition-all duration-300 hover:-translate-x-2"
+    [src]="member.info.avatar"
+    [matTooltip]="member.info.name"
+    alt="Member avatar"
+  />
+</ng-container>
+<ng-container *ngIf="members.length > size">
+  <div
+    class="flex-0 ring-bg-card flex h-10 w-10 items-center justify-center rounded-full bg-gray-200 text-gray-500 ring ring-offset-1 ring-offset-transparent"
+  >
+    <div class="text-md font-semibold">
+      <span>+{{ members.slice(size).length }}</span>
+    </div>
+  </div>
+</ng-container>

@@ -13,6 +13,12 @@
     </mat-error>
   </mat-form-field>
 
+  <!-- Labels -->
+  <plan-extras-labels
+    [task]="task"
+    (labelsChange)="taskForm.get('labels').patchValue($event)"
+  ></plan-extras-labels>
+
   <!-- Description -->
   <mat-form-field class="my-3 w-full" [subscriptSizing]="'dynamic'">
     <mat-label>Description</mat-label>

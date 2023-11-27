@@ -6,4 +6,5 @@ export { Todo, CreateTodo, UpdateTodo } from './lib/task/todo.types';
 export { Member } from './lib/plan/member.types';
 export { Comment, CreateComment, UpdateComment } from './lib/task/comment.type';
 export { CategoryPlan } from './lib/plan/category.types';
+export { Label } from './lib/task/label.type';
 export { Navigation } from './lib/navigation/navigation.types';

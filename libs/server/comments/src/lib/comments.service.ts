@@ -44,21 +44,14 @@ export class CommentsService {
   findAll(params: {
     include?: Prisma.CommentInclude;
   }): Promise<CommentEntity[]> {
-    const { include } = params;
-    return this.prismaService.comment.findMany({
-      include,
-    });
+    return this.prismaService.comment.findMany(params);
   }
 
   findOne(params: {
     where: Prisma.CommentWhereUniqueInput;
     include?: Prisma.CommentInclude;
   }): Promise<CommentEntity | null> {
-    const { where, include } = params;
-    return this.prismaService.comment.findUnique({
-      where,
-      include,
-    });
+    return this.prismaService.comment.findUnique(params);
   }
 
   findFilter(params: {
@@ -69,15 +62,7 @@ export class CommentsService {
     orderBy?: Prisma.CommentOrderByWithRelationInput;
     include?: Prisma.CommentInclude;
   }): Promise<CommentEntity[]> {
-    const { skip, take, cursor, where, orderBy, include } = params;
-    return this.prismaService.comment.findMany({
-      skip,
-      take,
-      cursor,
-      where,
-      orderBy,
-      include,
-    });
+    return this.prismaService.comment.findMany(params);
   }
 
   update(params: {
@@ -85,18 +70,13 @@ export class CommentsService {
     data: UpdateCommentDto;
     include?: Prisma.CommentInclude;
   }): Promise<CommentEntity> {
-    const { where, data, include } = params;
-    this.checkEmptyDataUpdate(data);
-    return this.prismaService.comment.update({
-      where,
-      data,
-      include,
-    });
+    this.checkEmptyDataUpdate(params.data);
+    return this.prismaService.comment.update(params);
   }
 
-  remove(where: Prisma.CommentWhereUniqueInput): Promise<CommentEntity> {
-    return this.prismaService.comment.delete({
-      where,
-    });
+  remove(params: {
+    where: Prisma.CommentWhereUniqueInput;
+  }): Promise<CommentEntity> {
+    return this.prismaService.comment.delete(params);
   }
 }

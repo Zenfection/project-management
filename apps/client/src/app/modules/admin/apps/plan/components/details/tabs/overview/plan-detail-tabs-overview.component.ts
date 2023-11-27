@@ -61,10 +61,9 @@ export class PlanDetailsTabsOverviewComponent
       // Calculate the percentage of each member
       this.dataChart.series[0].data = this.dataChart.series[0].data.map(
         (data) => {
-          return (data / totalTodo) * 100;
+          return Number(((data / totalTodo) * 100).toFixed(0));
         },
       );
-      console.log(this.dataChart);
     });
   }
 
@@ -81,6 +80,9 @@ export class PlanDetailsTabsOverviewComponent
         type: 'radar',
         sparkline: {
           enabled: true,
+        },
+        toolbar: {
+          show: true,
         },
       },
       colors: ['#818CF8'],
@@ -99,14 +101,21 @@ export class PlanDetailsTabsOverviewComponent
         offsetY: -15,
       },
       markers: {
-        strokeColors: '#818CF8',
-        strokeWidth: 4,
+        // strokeColors: '#818CF8',
+        // strokeWidth: 4,
+        size: 4,
+        colors: ['#fff'],
+        strokeColors: ['#818CF8'],
+        strokeWidth: 2,
       },
       plotOptions: {
         radar: {
           polygons: {
             strokeColors: 'var(--fuse-border)',
             connectorColors: 'var(--fuse-border)',
+            fill: {
+              colors: ['#f8f8f8', '#fff'],
+            },
           },
         },
       },
@@ -120,6 +129,7 @@ export class PlanDetailsTabsOverviewComponent
           formatter: (val: number): string => `${val}%`,
         },
       },
+
       xaxis: {
         labels: {
           show: true,

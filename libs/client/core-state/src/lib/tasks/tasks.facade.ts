@@ -10,20 +10,30 @@ import {
   Todo,
   UpdateTask,
 } from '@client/shared/interfaces';
-import { selectAllTasks, selectSelectedTask } from './tasks.selector';
+import {
+  selectAllTasks,
+  selectLabels,
+  selectSelectedTask,
+} from './tasks.selector';
 import * as TasksActions from './tasks.actions';
+import { Label } from '@prisma/client';
 
 @Injectable({
   providedIn: 'root',
 })
 export class TasksFacade {
   tasks$: Observable<Task[]> = this.store.select(selectAllTasks);
+  labels$: Observable<Label[]> = this.store.select(selectLabels);
   selectedTask$: Observable<Task> = this.store.select(selectSelectedTask);
 
   constructor(private readonly store: Store<TasksState>) {}
 
   loadTasksSuccess(tasks: Task[]): void {
     this.store.dispatch(TasksActions.loadTasksSuccess({ tasks }));
+  }
+
+  loadLabelsSuccess(labels: Label[]): void {
+    this.store.dispatch(TasksActions.loadLabelsSuccess({ labels }));
   }
 
   selectTask(selectedTaskId: number): void {

@@ -40,27 +40,11 @@
                 </fuse-card>
               </div>
               <div class="px-2">
-                <div class="flex-0 flex items-center -space-x-1.5">
-                  <div *ngFor="let member of plan.members; let i = index">
-                    <img
-                      *ngIf="i < 2"
-                      class="flex-0 h-8 w-8 rounded-full object-cover shadow-sm ring-2 ring-gray-800 ring-offset-1 ring-offset-gray-800 transition-all duration-300 hover:-translate-x-2"
-                      [src]="member.info.avatar"
-                      [matTooltip]="member.info.name"
-                      alt=""
-                    />
-                    <div
-                      *ngIf="i === 2"
-                      class="relative inline-flex h-10 w-10 items-center justify-center overflow-hidden rounded-full bg-gray-200 dark:bg-gray-600"
-                    >
-                      <span
-                        class="font-medium text-gray-600 dark:text-gray-300"
-                      >
-                        {{ plan.members.length - 2 }}+
-                      </span>
-                    </div>
-                  </div>
-                </div>
+                <avatar-group
+                  class="flex items-center -space-x-1.5"
+                  [members]="plan.members"
+                  [size]="3"
+                ></avatar-group>
               </div>
             </div>
           </div>

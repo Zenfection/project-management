@@ -13,8 +13,8 @@ async function main() {
   // await createUser();
   // await createCategoriesPlan();
   // await createPlans();
-  // await createLabels();
-  await createTasks();
+  await createLabels();
+  // await createTasks();
 }
 
 main()
@@ -94,19 +94,19 @@ async function createPlans() {
   );
 }
 
-// async function createLabels() {
-//   await prisma.label.createMany({
-//     data: dataLabels,
-//     skipDuplicates: true,
-//   });
+async function createLabels() {
+  await prisma.label.createMany({
+    data: dataLabels,
+    skipDuplicates: true,
+  });
 
-//   console.log(
-//     '\nCreated ' +
-//       dataLabels.length +
-//       ' label includes: ' +
-//       dataLabels.map((item) => item.name).join(', '),
-//   );
-// }
+  console.log(
+    '\nCreated ' +
+      dataLabels.length +
+      ' label includes: ' +
+      dataLabels.map((item) => item.name).join(', '),
+  );
+}
 
 async function createTasks() {
   dataTask.forEach(async (data) => {

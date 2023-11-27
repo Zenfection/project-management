@@ -17,6 +17,7 @@ import { planCategoriesResolver } from './resolvers/plan-categories.resolver';
 import { planDetailsResolver } from './resolvers/plan-details.resolver';
 import { planListResolver } from './resolvers/plan-list.resolver';
 import { planMembersResolver } from './resolvers/plan-members.resolver';
+import { planLabelsResolver } from './resolvers/plan-labels.resolver';
 
 const routes: Routes = [
   {
@@ -25,6 +26,7 @@ const routes: Routes = [
     resolve: {
       members: planMembersResolver,
       categories: planCategoriesResolver,
+      labels: planLabelsResolver,
     },
     children: [
       {
@@ -39,7 +41,7 @@ const routes: Routes = [
         path: ':id',
         component: PlanDetailsComponent,
         resolve: {
-          course: planDetailsResolver,
+          task: planDetailsResolver,
         },
         children: [
           {

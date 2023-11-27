@@ -33,6 +33,7 @@
       ],
       "@server/cloud/feature": ["libs/server/cloud/feature/src/index.ts"],
       "@server/cloud/utils": ["libs/server/cloud/utils/src/index.ts"],
+      "@server/comments": ["libs/server/comments/src/index.ts"],
       "@server/iam/feature/authentication/data-access": [
         "libs/server/iam/feature/authentication/data-access/src/index.ts"
       ],
@@ -59,7 +60,7 @@
       "@server/tools": ["libs/server/tools/src/index.ts"],
       "@server/users": ["libs/server/users/src/index.ts"],
       "@tools": ["tools/src/index.ts"],
-      "@server/comments": ["libs/server/comments/src/index.ts"]
+      "@server/labels": ["libs/server/labels/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp", "libs/client/fuse/src/lib"]

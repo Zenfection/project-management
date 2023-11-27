@@ -19,6 +19,9 @@ import {
   Validators,
 } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatOptionModule, MatRippleModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import {
   MAT_DIALOG_DATA,
@@ -28,16 +31,13 @@ import {
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
-import { PlansFacade, TasksFacade } from '@client/core-state';
+import { MatSelectModule } from '@angular/material/select';
+import { TasksFacade } from '@client/core-state';
 import { CreateTask, Member, Task } from '@client/shared/interfaces';
 import { fuseAnimations } from '@fuse/animations';
 import { TranslocoModule } from '@ngneat/transloco';
 import { DateTime } from 'luxon';
 import { Observable, Subject, map, startWith } from 'rxjs';
-import { PlanService } from '../../../plan.service';
-import { MatOptionModule } from '@angular/material/core';
-import { MatSelectModule } from '@angular/material/select';
-import { MatChipsModule } from '@angular/material/chips';
 
 @Component({
   selector: 'plan-dialog-task',
@@ -54,6 +54,8 @@ import { MatChipsModule } from '@angular/material/chips';
     MatFormFieldModule,
     MatIconModule,
     MatDatepickerModule,
+    MatRippleModule,
+    MatCheckboxModule,
     MatDialogModule,
     MatChipsModule,
     MatSelectModule,
@@ -83,8 +85,6 @@ export class PlanDialogsTaskComponent
     private _matDialog: MatDialog,
     private _changeDetectorRef: ChangeDetectorRef,
     private readonly _taskFacade: TasksFacade,
-    private readonly _planFacade: PlansFacade,
-    private readonly _planService: PlanService,
   ) {
     this.task = this._data.task;
   }
@@ -95,6 +95,7 @@ export class PlanDialogsTaskComponent
       this.taskForm = this._fromBuilder.group({
         title: [this._data.task.title, Validators.required],
         description: [this._data.task.description, Validators.required],
+        labels: [this._data.task.labels],
         dueDate: [this._data.task.dueDate, Validators.required],
         assignee: [this._data.task.assignee, Validators.required],
       });
@@ -103,6 +104,7 @@ export class PlanDialogsTaskComponent
       this.taskForm = this._fromBuilder.group({
         title: ['', Validators.required],
         description: ['', Validators.required],
+        labels: [[]],
         dueDate: [null, Validators.required],
         assignee: ['', Validators.required],
         priority: ['', Validators.required],

@@ -67,7 +67,7 @@ export class CommentsController {
     }
 
     return this.commentsService.remove({
-      id: Number(id),
+      where: { id: Number(id) },
     });
   }
 

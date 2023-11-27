@@ -10,6 +10,7 @@ import { UserEntity } from './lib/user.entity/user.entity';
 import { CommentEntity } from './lib/comment.entity/comment.entity';
 import { PlanEntity } from './lib/plan.entity/plan.entity';
 import { TaskEntity } from './lib/task.entity/task.entity';
+import { LabelEntity } from './lib/label.entity/label.entity';
 
 export {
   CommentEntity,
@@ -21,4 +22,5 @@ export {
   TaskEntity,
   TodoEntity,
   UserEntity,
+  LabelEntity,
 };
