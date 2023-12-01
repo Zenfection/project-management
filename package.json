@@ -8,6 +8,7 @@
   "version": "1.0.0",
   "license": "MIT",
   "scripts": {
+    "docker:compose": "docker-compose up -d",
     "prisma:migrate": "prisma migrate dev",
     "prisma:generate": "prisma generate",
     "prisma:seed": "ts-node prisma/seed.ts",
