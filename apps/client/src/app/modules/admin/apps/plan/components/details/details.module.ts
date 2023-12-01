@@ -16,12 +16,14 @@ import { LetDirective, PushPipe } from '@ngrx/component';
 import { PlanDetailsComponent } from './details.component';
 import { PlanDetailsTabsModule } from './tabs/plan-details-tabs.module';
 import { PlanDetailsToolbarModule } from './toolbar/plan-details-toolbar.module';
+import { PlanTodoModule } from '../todo/todo.module';
 
 @NgModule({
   declarations: [PlanDetailsComponent],
   imports: [
     PlanDetailsToolbarModule,
     PlanDetailsTabsModule,
+    PlanTodoModule,
     DragDropModule,
     MatSidenavModule,
     MatIconModule,

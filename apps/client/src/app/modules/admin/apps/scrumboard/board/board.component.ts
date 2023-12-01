@@ -11,12 +11,14 @@ import { CdkScrollable } from '@angular/cdk/scrolling';
 import { AsyncPipe, DatePipe, NgClass, NgFor, NgIf } from '@angular/common';
 import {
   ChangeDetectionStrategy,
+  ChangeDetectorRef,
   Component,
   OnDestroy,
   OnInit,
   ViewEncapsulation,
 } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { RouterLink, RouterOutlet } from '@angular/router';
@@ -29,7 +31,8 @@ import { TaskStatus } from '@prisma/client';
 import { SortByPositionPipe } from '@tools';
 import { cloneDeep } from 'lodash-es';
 import { DateTime } from 'luxon';
-import { Observable, Subject, map } from 'rxjs';
+import { Observable, Subject, takeUntil } from 'rxjs';
+import { PlanDialogsTaskComponent } from '../../plan/components/dialogs/task/plan-dialogs-task.component';
 import { List } from '../scrumboard.models';
 import { ScrumboardBoardAddCardComponent } from './add-card/add-card.component';
 
@@ -47,6 +50,7 @@ import { ScrumboardBoardAddCardComponent } from './add-card/add-card.component';
     CdkScrollable,
     CdkDropList,
     CdkDropListGroup,
+    MatDialogModule,
     NgFor,
     CdkDrag,
     CdkDragHandle,
@@ -65,7 +69,8 @@ import { ScrumboardBoardAddCardComponent } from './add-card/add-card.component';
 })
 export class ScrumboardBoardComponent implements OnInit, OnDestroy {
   plan$: Observable<Plan> = this._plansFacade.selectedPlan$;
-  tasks$: Observable<Task[]> = cloneDeep(this._tasksFacade.tasks$);
+
+  tasks: Task[];
 
   lists: string[];
 
@@ -80,6 +85,8 @@ export class ScrumboardBoardComponent implements OnInit, OnDestroy {
    */
   constructor(
     private _fuseConfirmationService: FuseConfirmationService,
+    private changeDetectorRef: ChangeDetectorRef,
+    private _matDialog: MatDialog,
     private readonly _plansFacade: PlansFacade,
     private readonly _tasksFacade: TasksFacade,
   ) {}
@@ -92,6 +99,15 @@ export class ScrumboardBoardComponent implements OnInit, OnDestroy {
    * On init
    */
   ngOnInit(): void {
+    // INIT TASKS
+    this._tasksFacade.tasks$
+      .pipe(takeUntil(this._unsubscribeAll))
+      .subscribe((tasks) => {
+        this.tasks = cloneDeep(tasks);
+
+        this.changeDetectorRef.markForCheck();
+      });
+
     // INIT LISTS
     this.lists = ['OPEN', 'IN_PROGRESS', 'RESOLVED', 'COMPLETED', 'CLOSED'];
   }
@@ -105,22 +121,14 @@ export class ScrumboardBoardComponent implements OnInit, OnDestroy {
     this._unsubscribeAll.complete();
   }
 
-  totalTaskInList(list: any): Observable<number> {
-    return this.tasks$.pipe(
-      map((tasks) =>
-        tasks.reduce((acc, task) => acc + (task.status === list ? 1 : 0), 0),
-      ),
-    );
+  totalTaskInList(list: string): number {
+    return this.tasks.filter((task) => task.status === list).length;
   }
 
-  tasksInList(list: any): Observable<Task[]> {
-    return this.tasks$.pipe(
-      map((tasks) =>
-        tasks
-          .filter((task) => task.status === list)
-          .sort((a, b) => a.position - b.position),
-      ),
-    );
+  tasksInList(list: string): Task[] {
+    return this.tasks
+      .filter((task) => task.status === list)
+      .sort((a, b) => a.position - b.position);
   }
 
   // -----------------------------------------------------------------------------------------------------
@@ -128,20 +136,18 @@ export class ScrumboardBoardComponent implements OnInit, OnDestroy {
   // -----------------------------------------------------------------------------------------------------
 
   /**
-   * Add new card
+   * Add new task
    */
-  addCard(list: List, title: string): void {
-    // Create a new card model
-    // const card = new Card({
-    //   boardId: this.board.id,
-    //   listId: list.id,
-    //   position: list.cards.length
-    //     ? list.cards[list.cards.length - 1].position + this._positionStep
-    //     : this._positionStep,
-    //   title: title,
-    // });
-    // // Save the card
-    // this._scrumboardService.createCard(card).subscribe();
+  addTask(title: string): void {
+    this._matDialog.open(PlanDialogsTaskComponent, {
+      autoFocus: false,
+      disableClose: true,
+      data: {
+        task: {
+          title: title,
+        },
+      },
+    });
   }
 
   /**

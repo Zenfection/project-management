@@ -12,7 +12,14 @@ import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PlansFacade, UserFacade } from '@client/core-state';
 import { CategoryPlan, Plan, User } from '@client/shared/interfaces';
-import { BehaviorSubject, Observable, Subject, combineLatest, map } from 'rxjs';
+import {
+  BehaviorSubject,
+  Observable,
+  Subject,
+  combineLatest,
+  map,
+  takeUntil,
+} from 'rxjs';
 import { PlanDialogsPlanComponent } from '../dialogs/plan/plan-dialog-plan.component';
 
 @Component({
@@ -110,9 +117,10 @@ export class PlanListComponent implements OnInit, OnDestroy {
 
   get totalTasks(): Observable<number> {
     return this.plans$.pipe(
+      takeUntil(this._unsubscribeAll),
       map((plans) => {
-        return plans.reduce((acc, plan) => {
-          return acc + plan._count.tasks;
+        return plans?.reduce((acc, plan) => {
+          return acc + plan?._count?.tasks;
         }, 0);
       }),
     );
@@ -120,11 +128,12 @@ export class PlanListComponent implements OnInit, OnDestroy {
 
   get overDueTask(): Observable<number> {
     return this.plans$.pipe(
+      takeUntil(this._unsubscribeAll),
       map((plans) => {
-        return plans.reduce((acc, plan) => {
+        return plans?.reduce((acc, plan) => {
           return (
             acc +
-            plan.tasks.reduce((taskAcc, task) => {
+            plan.tasks?.reduce((taskAcc, task) => {
               return taskAcc + (task.dueDate < new Date() ? 1 : 0);
             }, 0)
           );
@@ -135,7 +144,7 @@ export class PlanListComponent implements OnInit, OnDestroy {
 
   TotalFile(tasks: Partial<Plan>): number {
     if (tasks && Array.isArray(tasks)) {
-      return tasks.reduce((taskAcc, task) => {
+      return tasks?.reduce((taskAcc, task) => {
         return taskAcc + task._count.files;
       }, 0);
     }
@@ -145,7 +154,7 @@ export class PlanListComponent implements OnInit, OnDestroy {
 
   deadLineDueTo(tasks: Partial<Plan>): Date {
     if (tasks && Array.isArray(tasks)) {
-      return tasks.reduce((taskAcc, task) => {
+      return tasks?.reduce((taskAcc, task) => {
         return taskAcc > task.dueDate ? taskAcc : task.dueDate;
       }, new Date());
     }

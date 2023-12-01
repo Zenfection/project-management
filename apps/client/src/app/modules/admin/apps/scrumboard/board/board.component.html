@@ -60,27 +60,24 @@
               <div
                 class="min-w-6 text-secondary ml-4 flex items-center justify-center rounded-full bg-gray-300 text-sm font-semibold leading-6 dark:bg-gray-700"
               >
-                {{ totalTaskInList(list) | async }}
+                {{ totalTaskInList(list) }}
               </div>
             </div>
 
             <!-- Cards -->
             <div
-              class="bg-opacity-12 mt-2 rounded-xl bg-gray-400 dark:border dark:bg-transparent"
+              class="bg-opacity-12 my-2 rounded-xl bg-gray-400 dark:border dark:bg-transparent"
             >
               <div
                 [id]="list"
                 class="p-3 pb-0"
                 cdkDropList
-                [cdkDropListData]="tasksInList(list) | async"
+                [cdkDropListData]="tasksInList(list)"
                 (cdkDropListDropped)="taskDropped($event)"
               >
                 <!-- Task -->
                 <ng-container
-                  *ngFor="
-                    let task of tasksInList(list) | async;
-                    trackBy: trackByFn
-                  "
+                  *ngFor="let task of tasksInList(list); trackBy: trackByFn"
                 >
                   <a
                     class="bg-card mb-3 flex flex-col items-start space-y-3 overflow-hidden rounded-lg p-5 shadow"
@@ -132,12 +129,16 @@
                   </a>
                 </ng-container>
               </div>
+
               <!-- New card -->
               <scrumboard-board-add-card
-                (saved)="addCard(list, $event)"
+                *ngIf="list === 'OPEN'"
+                (saved)="addTask($event)"
                 [buttonTitle]="'Thêm Task'"
               >
               </scrumboard-board-add-card>
+
+              <div *ngIf="list !== 'OPEN'" class="p-1"></div>
             </div>
           </div>
         </ng-container>

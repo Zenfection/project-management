@@ -26,13 +26,12 @@ import { FuseCardComponent } from '@fuse';
 import { FuseFindByKeyPipe } from '@fuse/pipes/find-by-key/find-by-key.pipe';
 import { TranslocoModule } from '@ngneat/transloco';
 import { LetDirective } from '@ngrx/component';
-import { RiveCanvas, RiveLinearAnimation } from 'ng-rive';
+import { RiveModule } from 'ng-rive';
 
 @NgModule({
   declarations: [PlanListComponent],
   imports: [
-    RiveCanvas,
-    RiveLinearAnimation,
+    RiveModule,
     CdkScrollable,
     MatFormFieldModule,
     MatSelectModule,

@@ -15,11 +15,19 @@ import {
   Validators,
 } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
-import { TasksFacade } from '@client/core-state';
+import { PlansFacade, TasksFacade } from '@client/core-state';
 import { CreateTask, Member, Task } from '@client/shared/interfaces';
 import { fuseAnimations } from '@fuse/animations';
 import { DateTime } from 'luxon';
-import { Observable, Subject, map, startWith, takeUntil } from 'rxjs';
+import {
+  Observable,
+  Subject,
+  debounceTime,
+  map,
+  of,
+  startWith,
+  takeUntil,
+} from 'rxjs';
 
 @Component({
   selector: 'plan-dialog-task',
@@ -34,6 +42,9 @@ export class PlanDialogsTaskComponent
 
   taskForm: UntypedFormGroup;
   task: Task;
+  members: Member[];
+  planId: number;
+
   filterMembers$: Observable<Member[]>;
 
   private readonly _positionStep: number = 65536;
@@ -46,6 +57,7 @@ export class PlanDialogsTaskComponent
     private _matDialog: MatDialog,
     private _changeDetectorRef: ChangeDetectorRef,
     private readonly _taskFacade: TasksFacade,
+    private readonly _planFacade: PlansFacade,
   ) {
     this.task = this._data.task;
   }
@@ -68,6 +80,16 @@ export class PlanDialogsTaskComponent
   }
 
   ngOnInit(): void {
+    this.filterMembers$ = of([]);
+
+    // get members and planId
+    this._planFacade.selectedPlan$
+      .pipe(takeUntil(this._unsubscribeAll))
+      .subscribe((plan) => {
+        this.planId = plan.id;
+        this.members = plan.members;
+      });
+
     // Get Next Position
     this.getNextPosition();
 
@@ -83,7 +105,7 @@ export class PlanDialogsTaskComponent
     } else {
       // Create Form
       this.taskForm = this._fromBuilder.group({
-        title: ['', Validators.required],
+        title: [this._data.task.title || '', Validators.required],
         description: ['', Validators.required],
         labels: [[]],
         dueDate: [null, Validators.required],
@@ -117,13 +139,17 @@ export class PlanDialogsTaskComponent
   };
 
   private _filter(value: string): Member[] {
+    if (!this.members) {
+      return [];
+    }
+
     if (typeof value === 'string') {
       value = value
         .toLowerCase()
         .normalize('NFD')
         .replace(/[\u0300-\u036f]/g, '');
 
-      return this._data.members.filter((member) =>
+      return this.members.filter((member) =>
         member.info.name
           .toLowerCase()
           .normalize('NFD')
@@ -131,7 +157,7 @@ export class PlanDialogsTaskComponent
           .includes(value),
       );
     } else {
-      return this._data.members;
+      return this.members;
     }
   }
 
@@ -167,7 +193,7 @@ export class PlanDialogsTaskComponent
       },
       plan: {
         connect: {
-          id: this._data.planId,
+          id: this.planId,
         },
       },
       position: 0,

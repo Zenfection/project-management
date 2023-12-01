@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { PlansFacade, TasksFacade } from '@client/core-state';
-import { Task, Member } from '@client/shared/interfaces';
+import { TasksFacade } from '@client/core-state';
+import { Task } from '@client/shared/interfaces';
 import { Observable, map } from 'rxjs';
 import { PlanDialogsTaskComponent } from '../../../dialogs/task/plan-dialogs-task.component';
 
@@ -11,8 +11,6 @@ import { PlanDialogsTaskComponent } from '../../../dialogs/task/plan-dialogs-tas
 })
 export class PlanDetailsTabsTasksComponent implements OnInit {
   tasks$: Observable<Task[]> = this._taskFacade.tasks$;
-  planId: number;
-  members: Member[];
 
   tasks: Task[];
 
@@ -21,17 +19,11 @@ export class PlanDetailsTabsTasksComponent implements OnInit {
   constructor(
     private _matDialog: MatDialog,
     private readonly _taskFacade: TasksFacade,
-    private readonly _planFacade: PlansFacade,
   ) {}
 
   ngOnInit(): void {
     this.tasks$.subscribe((tasks) => {
       this.tasks = tasks;
-    });
-
-    this._planFacade.selectedPlan$.subscribe((plan) => {
-      this.planId = plan.id;
-      this.members = plan.members;
     });
   }
 
@@ -53,8 +45,6 @@ export class PlanDetailsTabsTasksComponent implements OnInit {
       disableClose: true,
       data: {
         task: {},
-        planId: this.planId,
-        members: this.members,
       },
     });
   }

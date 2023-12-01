@@ -42,6 +42,7 @@
         ex corrupti distinctio sed aut enim reiciendis explicabo veritatis?
       </div>
     </div>
+
     <canvas
       riv="2117-4173-story-animation"
       width="1000"
@@ -264,7 +265,7 @@
                 >
                   <div>
                     <p class="text-secondary font-sans text-sm">
-                      {{ plan._count.tasks }}
+                      {{ plan?._count?.tasks }}
                       {{ 'plan.tasks_remaining' | transloco }}
                     </p>
                   </div>

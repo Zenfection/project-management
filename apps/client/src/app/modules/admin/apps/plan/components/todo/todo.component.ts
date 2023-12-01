@@ -1,5 +1,4 @@
 import { OverlayRef } from '@angular/cdk/overlay';
-import { AsyncPipe, NgClass, NgFor, NgIf } from '@angular/common';
 import {
   AfterViewInit,
   ChangeDetectionStrategy,
@@ -9,18 +8,10 @@ import {
   OnInit,
   ViewEncapsulation,
 } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
-import { MatMenuModule } from '@angular/material/menu';
-import {
-  MatDrawerToggleResult,
-  MatSidenavModule,
-} from '@angular/material/sidenav';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { MatDrawerToggleResult } from '@angular/material/sidenav';
+import { ActivatedRoute } from '@angular/router';
 import { PlansFacade, TasksFacade, UserFacade } from '@client/core-state';
-import { TranslocoModule } from '@ngneat/transloco';
-import { PushPipe } from '@ngrx/component';
+import { Task } from '@client/shared/interfaces';
 import {
   Observable,
   Subject,
@@ -30,35 +21,12 @@ import {
   takeUntil,
 } from 'rxjs';
 import { PlanDetailsComponent } from '../details/details.component';
-import { PlanTodoNotFoundComponent } from './components/not-found/not-found.component';
-import { PlanTodoModeViewComponent } from './mode/view/plan-todo-mode-view.component';
-import { PlanTodoModeEditComponent } from './mode/edit/plan-todo-mode-edit.component';
-import { Task } from '@client/shared/interfaces';
 
 @Component({
   selector: 'plan-todo',
   templateUrl: './todo.component.html',
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [
-    PlanTodoNotFoundComponent,
-    PlanTodoModeViewComponent,
-    PlanTodoModeEditComponent,
-    RouterLink,
-    MatIconModule,
-    MatSidenavModule,
-    NgIf,
-    NgFor,
-    NgClass,
-    MatMenuModule,
-    MatButtonModule,
-    FormsModule,
-    MatIconModule,
-    TranslocoModule,
-    AsyncPipe,
-    PushPipe,
-  ],
 })
 export class PlanTodoComponent implements OnInit, OnDestroy, AfterViewInit {
   task$: Observable<Task> = this._tasksFacade.selectedTask$;

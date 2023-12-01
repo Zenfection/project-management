@@ -136,20 +136,22 @@
                 [formControl]="ownerSearch"
               />
             </mat-form-field>
-            @for (member of filterMembers$ | async; track member) {
-              <mat-option [value]="member.info.email">
+            <ng-container *ngIf="filterMembers$ | async as members">
+              <mat-option
+                *ngFor="let member of members"
+                [value]="member.info.email"
+              >
                 <div class="flex items-center justify-center gap-2">
                   <img
-                    class="flex-0 h-8 w-8 rounded-full object-cover ring-1 ring-gray-500 ring-offset-1 ring-offset-gray-500"
+                    class="h-8 w-8 rounded-full ring-1 ring-gray-500 ring-offset-1"
                     [src]="member.info.avatar"
                     alt="Avatar Member"
                   />
-                  <span class="text-base font-medium leading-5">{{
-                    member.info.name
-                  }}</span>
+
+                  <span>{{ member.info.name }}</span>
                 </div>
               </mat-option>
-            }
+            </ng-container>
           </mat-select>
         </mat-form-field>
       </div>
