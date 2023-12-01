@@ -36,7 +36,7 @@ export class CreateTaskDto implements Prisma.TaskCreateInput {
 
   @ApiProperty()
   @IsNumber()
-  order: number;
+  position: number;
 
   @ApiProperty()
   @IsNumber()

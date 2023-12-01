@@ -30,8 +30,18 @@ export class PlansController {
 
   @Post()
   @Roles(RoleEnum.thu_ky_khoa, RoleEnum.truong_khoa)
-  create(@Body() createPlanDto: CreatePlanDto) {
-    return this.plansService.create(createPlanDto);
+  async create(@Body() createPlanDto: CreatePlanDto) {
+    const plan = await this.plansService.create(createPlanDto);
+    return this.plansService.findOne({
+      where: {
+        id: plan.id,
+      },
+      include: {
+        members: true,
+        owner: true,
+        category: true,
+      },
+    });
   }
 
   @Get('categories')
@@ -48,6 +58,9 @@ export class PlansController {
       },
       include: {
         tasks: {
+          orderBy: {
+            position: 'asc',
+          },
           include: {
             assignee: {
               select: {
@@ -118,6 +131,20 @@ export class PlansController {
       const plans = await this.plansService.findFilter({
         include: {
           category: true,
+          tasks: {
+            select: {
+              dueDate: true,
+              _count: {
+                select: {
+                  todos: true,
+                  files: true,
+                },
+              },
+            },
+          },
+          _count: {
+            select: { tasks: true },
+          },
           members: {
             select: {
               id: true,
@@ -169,6 +196,20 @@ export class PlansController {
           ],
         },
         include: {
+          tasks: {
+            select: {
+              dueDate: true,
+              _count: {
+                select: {
+                  todos: true,
+                  files: true,
+                },
+              },
+            },
+          },
+          _count: {
+            select: { tasks: true },
+          },
           category: true,
           members: {
             select: {
@@ -210,9 +251,9 @@ export class PlansController {
   @Get(':id')
   @UseInterceptors(AvatarInterceptor)
   async findOne(@ActiveUser() user: ActiveUserData, @Param('id') id: string) {
-    const plan = await this.plansService.findOne(
-      { id: Number(id) },
-      {
+    const plan = await this.plansService.findOne({
+      where: { id: Number(id) },
+      include: {
         category: true,
         members: {
           select: {
@@ -245,7 +286,7 @@ export class PlansController {
           },
         },
       },
-    );
+    });
 
     // check if user is member of plan or owner
     if (
@@ -272,7 +313,7 @@ export class PlansController {
     @Body() updatePlanDto: UpdatePlanDto,
   ) {
     const plan = await this.plansService.findOne({
-      id: Number(id),
+      where: { id: Number(id) },
     });
 
     if (
@@ -309,7 +350,7 @@ export class PlansController {
   @Delete(':id')
   remove(@Param('id') id: string) {
     return this.plansService.remove({
-      id: Number(id),
+      where: { id: Number(id) },
     });
   }
 }

@@ -139,7 +139,7 @@ CREATE TABLE "Task" (
     "status" "TaskStatus" NOT NULL DEFAULT 'OPEN',
     "assigneeId" INTEGER,
     "planId" INTEGER NOT NULL,
-    "order" INTEGER NOT NULL,
+    "position" INTEGER NOT NULL,
     "priority" INTEGER NOT NULL DEFAULT 0,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,

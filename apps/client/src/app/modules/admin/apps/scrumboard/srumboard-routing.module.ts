@@ -1,18 +1,10 @@
-import { NgModule, inject } from '@angular/core';
-import {
-  ActivatedRouteSnapshot,
-  Router,
-  RouterModule,
-  RouterStateSnapshot,
-  Routes,
-} from '@angular/router';
-import { ScrumboardBoardsComponent } from './boards/boards.component';
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { planDetailsResolver } from '../plan/resolvers/plan-details.resolver';
 import { planListResolver } from '../plan/resolvers/plan-list.resolver';
 import { ScrumboardBoardComponent } from './board/board.component';
+import { ScrumboardBoardsComponent } from './boards/boards.component';
 import { ScrumboardCardComponent } from './card/card.component';
-import { Observable, catchError, throwError } from 'rxjs';
-import { Board } from './scrumboard.models';
-import { ScrumboardService } from './scrumboard.service';
 
 /**
  * Board resolver
@@ -20,30 +12,30 @@ import { ScrumboardService } from './scrumboard.service';
  * @param route
  * @param state
  */
-const boardResolver = (
-  route: ActivatedRouteSnapshot,
-  state: RouterStateSnapshot,
-): Observable<Board> => {
-  const scrumboardService = inject(ScrumboardService);
-  const router = inject(Router);
+// const boardResolver = (
+//   route: ActivatedRouteSnapshot,
+//   state: RouterStateSnapshot,
+// ): Observable<Board> => {
+//   const scrumboardService = inject(ScrumboardService);
+//   const router = inject(Router);
 
-  return scrumboardService.getBoard(route.paramMap.get('boardId')).pipe(
-    // Error here means the requested board is not available
-    catchError((error) => {
-      // Log the error
-      console.error(error);
+//   return scrumboardService.getBoard(route.paramMap.get('boardId')).pipe(
+//     // Error here means the requested board is not available
+//     catchError((error) => {
+//       // Log the error
+//       console.error(error);
 
-      // Get the parent url
-      const parentUrl = state.url.split('/').slice(0, -1).join('/');
+//       // Get the parent url
+//       const parentUrl = state.url.split('/').slice(0, -1).join('/');
 
-      // Navigate to there
-      router.navigateByUrl(parentUrl);
+//       // Navigate to there
+//       router.navigateByUrl(parentUrl);
 
-      // Throw an error
-      return throwError(() => new Error(error));
-    }),
-  );
-};
+//       // Throw an error
+//       return throwError(() => new Error(error));
+//     }),
+//   );
+// };
 
 /**
  * Card resolver
@@ -51,30 +43,30 @@ const boardResolver = (
  * @param route
  * @param state
  */
-const cardResolver = (
-  route: ActivatedRouteSnapshot,
-  state: RouterStateSnapshot,
-) => {
-  const scrumboardService = inject(ScrumboardService);
-  const router = inject(Router);
+// const cardResolver = (
+//   route: ActivatedRouteSnapshot,
+//   state: RouterStateSnapshot,
+// ) => {
+//   const scrumboardService = inject(ScrumboardService);
+//   const router = inject(Router);
 
-  return scrumboardService.getCard(route.paramMap.get('cardId')).pipe(
-    // Error here means the requested card is not available
-    catchError((error) => {
-      // Log the error
-      console.error(error);
+//   return scrumboardService.getCard(route.paramMap.get('cardId')).pipe(
+//     // Error here means the requested card is not available
+//     catchError((error) => {
+//       // Log the error
+//       console.error(error);
 
-      // Get the parent url
-      const parentUrl = state.url.split('/').slice(0, -1).join('/');
+//       // Get the parent url
+//       const parentUrl = state.url.split('/').slice(0, -1).join('/');
 
-      // Navigate to there
-      router.navigateByUrl(parentUrl);
+//       // Navigate to there
+//       router.navigateByUrl(parentUrl);
 
-      // Throw an error
-      return throwError(() => new Error(error));
-    }),
-  );
-};
+//       // Throw an error
+//       return throwError(() => new Error(error));
+//     }),
+//   );
+// };
 
 const routes: Routes = [
   {
@@ -85,18 +77,16 @@ const routes: Routes = [
     },
   },
   {
-    path: ':boardId',
+    path: ':id',
     component: ScrumboardBoardComponent,
     resolve: {
-      board: boardResolver,
+      plan: planDetailsResolver,
     },
     children: [
       {
         path: 'card/:cardId',
         component: ScrumboardCardComponent,
-        resolve: {
-          card: cardResolver,
-        },
+        resolve: {},
       },
     ],
   },

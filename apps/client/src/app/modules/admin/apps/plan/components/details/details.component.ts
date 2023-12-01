@@ -1,12 +1,4 @@
-import { CdkScrollable } from '@angular/cdk/scrolling';
-import {
-  AsyncPipe,
-  DOCUMENT,
-  NgClass,
-  NgFor,
-  NgIf,
-  PercentPipe,
-} from '@angular/common';
+import { DOCUMENT } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
@@ -18,54 +10,18 @@ import {
   ViewChild,
   ViewEncapsulation,
 } from '@angular/core';
-import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
-import { MatMenuModule } from '@angular/material/menu';
-import { MatDrawer, MatSidenavModule } from '@angular/material/sidenav';
-import { MatTabsModule } from '@angular/material/tabs';
-import { MatTooltipModule } from '@angular/material/tooltip';
-import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
+import { MatDrawer } from '@angular/material/sidenav';
+import { ActivatedRoute, Router } from '@angular/router';
 import { PlansFacade, UserFacade } from '@client/core-state';
 import { CategoryPlan, Plan, User } from '@client/shared/interfaces';
-import { FuseCardComponent } from '@fuse/components/card';
-import { FuseFindByKeyPipe } from '@fuse/pipes/find-by-key/find-by-key.pipe';
 import { FuseMediaWatcherService } from '@fuse/services/media-watcher';
-import { TranslocoModule } from '@ngneat/transloco';
-import { LetDirective, PushPipe } from '@ngrx/component';
 import { Observable, Subject, combineLatest, map, takeUntil } from 'rxjs';
-import { PlanDetailsTabsModule } from './tabs/plan-details-tabs.module';
-import { PlanDetailsToolbarModule } from './toolbar/plan-details-toolbar.module';
-import { DragDropModule } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'plan-details',
   templateUrl: './details.component.html',
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [
-    PlanDetailsToolbarModule,
-    PlanDetailsTabsModule,
-    DragDropModule,
-    MatSidenavModule,
-    MatIconModule,
-    NgIf,
-    NgClass,
-    NgFor,
-    MatButtonModule,
-    MatMenuModule,
-    MatTooltipModule,
-    CdkScrollable,
-    MatTabsModule,
-    FuseFindByKeyPipe,
-    FuseCardComponent,
-    TranslocoModule,
-    RouterOutlet,
-    AsyncPipe,
-    LetDirective,
-    PercentPipe,
-    PushPipe,
-  ],
 })
 export class PlanDetailsComponent implements OnInit, OnDestroy {
   // @ViewChild('courseSteps', { static: true }) courseSteps: MatTabGroup;

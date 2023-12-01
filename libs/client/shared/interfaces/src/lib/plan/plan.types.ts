@@ -10,6 +10,15 @@ export interface Plan {
   owner: Member;
   members: Member[];
   category: CategoryPlan;
+
+  tasks: {
+    dueDate: Date;
+    _count: {
+      todos: number;
+      files: number;
+    };
+  }[];
+  _count: { tasks: number };
 }
 
 export interface CreatePlan {

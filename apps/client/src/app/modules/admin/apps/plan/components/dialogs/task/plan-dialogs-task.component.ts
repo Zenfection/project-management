@@ -1,5 +1,3 @@
-import { TextFieldModule } from '@angular/cdk/text-field';
-import { AsyncPipe, DatePipe, NgClass, NgFor, NgIf } from '@angular/common';
 import {
   AfterViewInit,
   ChangeDetectorRef,
@@ -13,69 +11,32 @@ import {
 import {
   FormBuilder,
   FormControl,
-  FormsModule,
-  ReactiveFormsModule,
   UntypedFormGroup,
   Validators,
 } from '@angular/forms';
-import { MatButtonModule } from '@angular/material/button';
-import { MatCheckboxModule } from '@angular/material/checkbox';
-import { MatChipsModule } from '@angular/material/chips';
-import { MatOptionModule, MatRippleModule } from '@angular/material/core';
-import { MatDatepickerModule } from '@angular/material/datepicker';
-import {
-  MAT_DIALOG_DATA,
-  MatDialog,
-  MatDialogModule,
-} from '@angular/material/dialog';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatIconModule } from '@angular/material/icon';
-import { MatInputModule } from '@angular/material/input';
-import { MatSelectModule } from '@angular/material/select';
+import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { TasksFacade } from '@client/core-state';
 import { CreateTask, Member, Task } from '@client/shared/interfaces';
 import { fuseAnimations } from '@fuse/animations';
-import { TranslocoModule } from '@ngneat/transloco';
 import { DateTime } from 'luxon';
-import { Observable, Subject, map, startWith } from 'rxjs';
+import { Observable, Subject, map, startWith, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'plan-dialog-task',
   templateUrl: './plan-dialogs-task.component.html',
-  standalone: true,
   animations: fuseAnimations,
-  imports: [
-    NgIf,
-    NgFor,
-    NgClass,
-    ReactiveFormsModule,
-    FormsModule,
-    MatInputModule,
-    MatFormFieldModule,
-    MatIconModule,
-    MatDatepickerModule,
-    MatRippleModule,
-    MatCheckboxModule,
-    MatDialogModule,
-    MatChipsModule,
-    MatSelectModule,
-    MatButtonModule,
-    MatOptionModule,
-    TextFieldModule,
-    TranslocoModule,
-    AsyncPipe,
-    DatePipe,
-  ],
 })
 export class PlanDialogsTaskComponent
   implements OnInit, OnDestroy, AfterViewInit
 {
+  @ViewChild('ownerInput') ownerInput: ElementRef<HTMLInputElement>;
+  ownerSearch = new FormControl('');
+
   taskForm: UntypedFormGroup;
   task: Task;
   filterMembers$: Observable<Member[]>;
 
-  ownerSearch = new FormControl('');
-  @ViewChild('ownerInput') ownerInput: ElementRef<HTMLInputElement>;
+  private readonly _positionStep: number = 65536;
   private _unsubscribeAll: Subject<any> = new Subject<any>();
 
   constructor(
@@ -89,7 +50,27 @@ export class PlanDialogsTaskComponent
     this.task = this._data.task;
   }
 
+  private getNextPosition() {
+    this._taskFacade.tasks$
+      .pipe(
+        takeUntil(this._unsubscribeAll),
+        map((tasks) => {
+          // filter all tasks with status OPEN
+          const openTasks = tasks.filter((task) => task.status === 'OPEN');
+          return openTasks.length
+            ? openTasks[openTasks.length - 1].position + this._positionStep
+            : this._positionStep;
+        }),
+      )
+      .subscribe((position) => {
+        this._taskFacade.loadNextPosition(position);
+      });
+  }
+
   ngOnInit(): void {
+    // Get Next Position
+    this.getNextPosition();
+
     // Edit Form
     if (this._data.task.id) {
       this.taskForm = this._fromBuilder.group({
@@ -189,18 +170,19 @@ export class PlanDialogsTaskComponent
           id: this._data.planId,
         },
       },
+      position: 0,
       priority: this.taskForm.get('priority').value,
-      order: this.task.order ? this.task.order + 1 : 0,
       status: 'OPEN',
     };
+
+    // Get next position
+    this._taskFacade.nextPosition$.subscribe((position) => {
+      data.position = position;
+    });
 
     this._taskFacade.createTask(data);
     this.closeDialog();
 
     this._changeDetectorRef.markForCheck();
-  }
-
-  handleUpdate(): void {
-    console.log('update');
   }
 }

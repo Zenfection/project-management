@@ -7,7 +7,7 @@ import {
   FuseConfirmationService,
 } from '@fuse/services/confirmation';
 import { cloneDeep } from 'lodash-es';
-import { PlanDialogComponent } from '../../dialogs/plan.dialog/dialog-plan.component';
+import { PlanDialogsPlanComponent } from '../../dialogs/plan/plan-dialog-plan.component';
 
 @Component({
   selector: 'plan-details-toolbar',
@@ -23,7 +23,7 @@ export class PlanDetailsToolbarComponent {
   ) {}
 
   editFormDialog(plan: Plan): void {
-    this._matDialog.open(PlanDialogComponent, {
+    this._matDialog.open(PlanDialogsPlanComponent, {
       autoFocus: false,
       data: {
         plan: cloneDeep(plan),

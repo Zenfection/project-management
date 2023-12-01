@@ -13,7 +13,7 @@ import { PlanDetailsTabsOverviewComponent } from './overview/plan-detail-tabs-ov
 import { PlanDetailsTabsTasksComponent } from './tasks/plan-details-tabs-tasks.component';
 import { PlanDetailsTabsTeamComponent } from './team/plan-details-tabs-team.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
-import { SortByOrder } from '@tools';
+import { SortByPositionPipe } from '@tools';
 import { NgApexchartsModule } from 'ng-apexcharts';
 import { CoreUIModule } from '@client/core-ui';
 
@@ -40,7 +40,7 @@ import { CoreUIModule } from '@client/core-ui';
     TranslocoModule,
     AsyncPipe,
     PercentPipe,
-    SortByOrder,
+    SortByPositionPipe,
     NgApexchartsModule,
   ],
   exports: [

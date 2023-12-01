@@ -24,7 +24,6 @@ export class TasksService {
   }
 
   async checkPermission(email: string, taskId: number): Promise<boolean> {
-    // Check if user is truong khoa or thu ky khoa and has permission to view this task
     const user = await this.prismaService.user.findUnique({
       where: {
         email,

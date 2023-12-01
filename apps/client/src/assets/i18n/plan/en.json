@@ -1,0 +1,16 @@
+{
+    "all": "All",
+    "phan-mem": "Software",
+    "phan-cung": "Hardware",
+    "dao-tao": "Training",
+    "mang-may-tinh": "Network",
+
+    "on_track": "On Track",
+    "overdue": "Overdue",
+    "total": "Total",
+
+    "search_plan": "Search by title or description",
+    "hide_completed": "Hide completed",
+
+    "tasks_remaining": "tasks remaining"
+}

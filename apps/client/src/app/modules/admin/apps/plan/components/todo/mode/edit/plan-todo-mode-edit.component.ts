@@ -26,14 +26,12 @@ import { fuseAnimations } from '@fuse/animations';
 import { FuseConfirmationService } from '@fuse/services/confirmation';
 import { TranslocoModule } from '@ngneat/transloco';
 import { Subject } from 'rxjs';
-import { PlanExtrasLabelsComponent } from '../../../extras/labels/plan-extras-labels.component';
 
 @Component({
   selector: 'plan-todo-mode-edit',
   templateUrl: './plan-todo-mode-edit.component.html',
   standalone: true,
   imports: [
-    PlanExtrasLabelsComponent,
     NgIf,
     NgClass,
     NgFor,

@@ -12,6 +12,11 @@ export const selectLabels = createSelector(
   (tasksState: TasksState) => tasksState.labels,
 );
 
+export const selectNextPosition = createSelector(
+  selectTaskState,
+  (tasksState: TasksState) => tasksState.nextPosition,
+);
+
 export const selectSelectedTask = createSelector(
   selectTaskState,
   (tasksState: TasksState) => tasksState.entities[tasksState.selectedTaskId],

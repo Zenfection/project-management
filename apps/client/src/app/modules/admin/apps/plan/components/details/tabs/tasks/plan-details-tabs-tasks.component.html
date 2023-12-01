@@ -4,7 +4,7 @@
 >
   <fuse-card
     class="hover:border-primary-500 flex cursor-pointer flex-col rounded-lg shadow-md transition-all duration-100 hover:shadow-lg"
-    *ngFor="let task of tasks | sortByOrder; trackBy: trackByFn"
+    *ngFor="let task of tasks | sortByPosition; trackBy: trackByFn"
   >
     <div class="absolute top-0 ml-5 mt-5">
       <mat-icon

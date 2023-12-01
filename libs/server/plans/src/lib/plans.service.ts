@@ -15,20 +15,9 @@ export class PlansService {
     }
   }
 
-  async create(createPlanDto: CreatePlanDto): Promise<PlanEntity> {
-    const plan = await this.prismaService.plan.create({
+  create(createPlanDto: CreatePlanDto): Promise<PlanEntity> {
+    return this.prismaService.plan.create({
       data: createPlanDto,
-    });
-
-    return this.prismaService.plan.findUnique({
-      where: {
-        id: plan.id,
-      },
-      include: {
-        members: true,
-        owner: true,
-        category: true,
-      },
     });
   }
 
@@ -47,25 +36,14 @@ export class PlansService {
     orderBy?: Prisma.PlanOrderByWithRelationInput;
     include?: Prisma.PlanInclude;
   }): Promise<PlanEntity[]> {
-    const { skip, take, cursor, where, orderBy, include } = params;
-    return this.prismaService.plan.findMany({
-      skip,
-      take,
-      cursor,
-      where,
-      orderBy,
-      include,
-    });
+    return this.prismaService.plan.findMany(params);
   }
 
-  findOne(
-    where: Prisma.PlanWhereUniqueInput,
-    include?: Prisma.PlanInclude,
-  ): Promise<PlanEntity | null> {
-    return this.prismaService.plan.findUnique({
-      where,
-      include,
-    });
+  findOne(params: {
+    where: Prisma.PlanWhereUniqueInput;
+    include?: Prisma.PlanInclude;
+  }): Promise<PlanEntity | null> {
+    return this.prismaService.plan.findUnique(params);
   }
 
   getCategories() {
@@ -77,20 +55,11 @@ export class PlansService {
     data: UpdatePlanDto;
     include?: Prisma.PlanInclude;
   }): Promise<PlanEntity> {
-    const { where, data, include } = params;
-
-    this.checkEmptyData(data);
-
-    return this.prismaService.plan.update({
-      where,
-      data,
-      include,
-    });
+    this.checkEmptyData(params.data);
+    return this.prismaService.plan.update(params);
   }
 
-  remove(where: Prisma.PlanWhereUniqueInput): Promise<PlanEntity> {
-    return this.prismaService.plan.delete({
-      where,
-    });
+  remove(params: { where: Prisma.PlanWhereUniqueInput }): Promise<PlanEntity> {
+    return this.prismaService.plan.delete(params);
   }
 }

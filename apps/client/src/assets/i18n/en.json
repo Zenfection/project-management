@@ -4,14 +4,13 @@
     "Analytics": "Analytics",
 
     "About": "About",
-    "All": "All",
     "Save": "Save",
     "Cancel": "Cancel",
     "Submit": "Submit",
 
     "Messages": "Messages",
     "Settings": "Settings",
-    "Logout": "Log out",
+    "Logout": "Logout",
     "Profile": "Profile",
     "Status": "Status",
     "Online": "Online",
@@ -32,7 +31,6 @@
     "new-tasks": "new tasks",
     "update_success": "Update successfully",
     "update_error": "Update failed because ",
-    "search_by_title_or_description": "Search by title or description",
     "owner_plan_content": "You are the owner of this plan",
 
     "plan": {
@@ -153,11 +151,10 @@
       "BI_THU_CHI_BO": "Bí Thư Chi Bộ",
       "CHU_TICH_CĐ_KHOA": "Chủ Tịch CĐ Khoa",
 
-
       "CONG_NGHE_PHAN_MEM": "Công Nghệ Phần Mềm",
-  "CONG_NGHE_THONG_TIN": "Công Nghệ Thông Tin",
-  "HE_THONG_THONG_TIN": "Hệ Thống Thông Tin",
-  "KHOA_HOC_MAY_TINH": "Khoa Học Máy Tính",
-  "MANG_MAY_TINH_VA_TRUYEN_THONG": "Mạng Máy Tính Và Truyền Thông",
-  "TRUYEN_THONG_DA_PHUONG_TIEN": "Truyền Thông Đa Phương Tiện"
+      "CONG_NGHE_THONG_TIN": "Công Nghệ Thông Tin",
+      "HE_THONG_THONG_TIN": "Hệ Thống Thông Tin",
+      "KHOA_HOC_MAY_TINH": "Khoa Học Máy Tính",
+      "MANG_MAY_TINH_VA_TRUYEN_THONG": "Mạng Máy Tính Và Truyền Thông",
+      "TRUYEN_THONG_DA_PHUONG_TIEN": "Truyền Thông Đa Phương Tiện"
 }

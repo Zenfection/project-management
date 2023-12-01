@@ -1,4 +1,4 @@
-import { NgModule } from "@angular/core";
+import { NgModule } from '@angular/core';
 import { NgClass, NgFor, NgSwitch, NgSwitchCase } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -8,24 +8,36 @@ import { SettingsNotificationsComponent } from './notifications/notifications.co
 import { SettingsPlanBillingComponent } from './plan-billing/plan-billing.component';
 import { SettingsSecurityComponent } from './security/security.component';
 import { SettingsTeamComponent } from './team/team.component';
-import { RouterModule, Routes } from "@angular/router";
-import { SettingsComponent } from "./settings.component";
-import { TranslocoModule } from "@ngneat/transloco";
+import { RouterModule, Routes } from '@angular/router';
+import { SettingsComponent } from './settings.component';
+import { TranslocoModule } from '@ngneat/transloco';
 
 const routes: Routes = [
-    {
-        path     : '',
-        component: SettingsComponent,
-    },
-]
-
+  {
+    path: '',
+    component: SettingsComponent,
+  },
+];
 
 @NgModule({
   declarations: [SettingsComponent],
-    imports        : [RouterModule.forChild(routes), TranslocoModule,MatSidenavModule, MatButtonModule, MatIconModule, NgFor, NgClass, NgSwitch, NgSwitchCase, SettingsAccountComponent, SettingsSecurityComponent, SettingsPlanBillingComponent, SettingsNotificationsComponent, SettingsTeamComponent],
-    providers: [],
-    exports: [SettingsComponent],
+  imports: [
+    RouterModule.forChild(routes),
+    TranslocoModule,
+    MatSidenavModule,
+    MatButtonModule,
+    MatIconModule,
+    NgFor,
+    NgClass,
+    NgSwitch,
+    NgSwitchCase,
+    SettingsAccountComponent,
+    SettingsSecurityComponent,
+    SettingsPlanBillingComponent,
+    SettingsNotificationsComponent,
+    SettingsTeamComponent,
+  ],
+  providers: [],
+  exports: [SettingsComponent],
 })
-
 export class SettingsModule {}
-

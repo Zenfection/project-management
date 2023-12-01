@@ -6,7 +6,7 @@
   <div
     class="flex-0 dark relative overflow-hidden bg-gray-800 px-4 py-8 sm:p-16"
   >
-    <!-- Background - @formatter:off -->
+    <!-- Background -->
     <!-- Rings -->
     <svg
       class="pointer-events-none absolute inset-0"
@@ -68,13 +68,15 @@
             [value]="'all'"
             (selectionChange)="filterByCategory($event)"
           >
-            <mat-option [value]="'all'">{{ 'All' | transloco }}</mat-option>
+            <mat-option [value]="'all'" *transloco="let t; scope: 'plan'">{{
+              t('plan.all')
+            }}</mat-option>
             <ng-container
               *ngFor="let category of categories; trackBy: trackByFn"
             >
-              <mat-option [value]="category.slug">{{
-                category.title
-              }}</mat-option>
+              <mat-option [value]="category.slug">
+                {{ 'plan.' + category.slug | transloco }}
+              </mat-option>
             </ng-container>
           </mat-select>
         </mat-form-field>
@@ -90,7 +92,7 @@
           <input
             class="placeholder:text-ellipsis"
             (input)="filterByQuery(query.value)"
-            placeholder="{{ 'search_by_title_or_description' | transloco }}"
+            placeholder="{{ 'plan.search_plan' | transloco }}"
             matInput
             #query
           />
@@ -101,9 +103,11 @@
               <span
                 class="text-muted-800 dark:text-muted-100 font-sans text-2xl font-bold"
               >
-                12
+                4
               </span>
-              <p class="text-muted-400 font-sans text-xs">On Track</p>
+              <p class="text-muted-400 font-sans text-xs">
+                {{ 'plan.on_track' | transloco }}
+              </p>
               <span
                 class="bg-primary-500 absolute end-0 top-0 h-2 w-2 rounded-full"
               ></span>
@@ -112,9 +116,11 @@
               <span
                 class="text-muted-800 dark:text-muted-100 font-sans text-2xl font-bold"
               >
-                4
+                {{ overDueTask | async }}
               </span>
-              <p class="text-muted-400 font-sans text-xs">Overdue</p>
+              <p class="text-muted-400 font-sans text-xs">
+                {{ 'plan.overdue' | transloco }}
+              </p>
               <span
                 class="absolute end-0 top-0 h-2 w-2 rounded-full bg-amber-500"
               ></span>
@@ -123,9 +129,11 @@
               <span
                 class="text-muted-800 dark:text-muted-100 font-sans text-2xl font-bold"
               >
-                23
+                {{ totalTasks | async }}
               </span>
-              <p class="text-muted-400 font-sans text-xs">Total</p>
+              <p class="text-muted-400 font-sans text-xs">
+                {{ 'plan.total' | transloco }}
+              </p>
               <span
                 class="bg-success-500 absolute end-0 top-0 h-2 w-2 rounded-full"
               ></span>
@@ -151,7 +159,7 @@
           [color]="'primary'"
           (change)="toggleCompleted($event)"
         >
-          Hide completed
+          {{ 'plan.hide_completed' | transloco }}
         </mat-slide-toggle>
       </div>
 
@@ -190,7 +198,9 @@
                           category.slug === 'dao-tao'
                       }"
                     >
-                      {{ category.title }}
+                      <span>
+                        {{ 'plan.' + category.slug | transloco }}
+                      </span>
                     </div>
                   </ng-container>
                   <!-- Completed at least once -->
@@ -216,7 +226,9 @@
                     class="text-hint icon-size-5"
                     [svgIcon]="'duotone:clock'"
                   ></mat-icon>
-                  <div class="ml-1.5">Due to: 3 months</div>
+                  <div class="ml-1.5">
+                    Due to: {{ deadLineDueTo(plan.tasks) | date: 'dd/MM/yyyy' }}
+                  </div>
                 </div>
                 <!-- AttachFile -->
                 <div
@@ -226,50 +238,14 @@
                     class="text-hint icon-size-5"
                     [svgIcon]="'duotone:paperclip'"
                   ></mat-icon>
-                  <div class="ml-1.5">Attach File: 4</div>
+                  <div class="ml-1.5">
+                    Attach File: {{ TotalFile(plan.tasks) }}
+                  </div>
                 </div>
-                <!-- Course completion -->
-                <!-- <div
-                  class="text-secondary mt-2 flex items-center text-md leading-5">
-                  <mat-icon
-                    class="text-hint icon-size-5"
-                    [svgIcon]="'duotone:diagram-subtask'"></mat-icon>
-                  <ng-container *ngIf="course.progress.completed === 0">
-                    <div class="ml-1.5">Never completed</div>
-                  </ng-container>
-                  <ng-container *ngIf="course.progress.completed > 0">
-                    <div class="ml-1.5">
-                      <span>Completed</span>
-                      <span class="ml-1"> -->
-                <!-- Once -->
-                <!-- <ng-container *ngIf="course.progress.completed === 1"
-                          >once</ng-container
-                        > -->
-                <!-- Twice -->
-                <!-- <ng-container *ngIf="course.progress.completed === 2"
-                          >twice</ng-container
-                        > -->
-                <!-- Others -->
-                <!-- <ng-container *ngIf="course.progress.completed > 2"
-                          >{{ course.progress.completed }}
-                          {{
-                            course.progress.completed
-                              | i18nPlural
-                                : {
-                                    '=0': 'time',
-                                    '=1': 'time',
-                                    other: 'times'
-                                  }
-                          }}
-                        </ng-container> -->
-                <!-- </span>
-                    </div>
-                  </ng-container>
-                </div> -->
               </div>
               <!-- Footer -->
               <div class="mt-auto flex w-full flex-col">
-                <!-- Course progress -->
+                <!--  progress -->
                 <div class="relative h-0.5">
                   <div
                     class="absolute inset-x-0 z-10 h-6"
@@ -282,24 +258,14 @@
                       [value]="45"
                     ></mat-progress-bar>
                   </div>
-                  <!-- <div
-                    class="absolute inset-x-0 z-10 -mt-3 h-6"
-                    [matTooltip]="
-                      course.progress.currentStep / course.totalSteps | percent
-                    "
-                    [matTooltipPosition]="'above'"
-                    [matTooltipClass]="'-mb-0.5'"></div> -->
-                  <!-- <mat-progress-bar
-                    class="h-0.5"
-                    [value]="45"
-                  ></mat-progress-bar> -->
                 </div>
                 <div
                   class="flex items-center justify-between rounded-b-xl border-t bg-gray-50 px-6 py-4 text-right dark:bg-transparent"
                 >
                   <div>
                     <p class="text-secondary font-sans text-sm">
-                      13 tasks remaining
+                      {{ plan._count.tasks }}
+                      {{ 'plan.tasks_remaining' | transloco }}
                     </p>
                   </div>
                   <div class="px-2">
@@ -326,36 +292,6 @@
                     </div>
                   </div>
                 </div>
-                <!-- Course launch button -->
-                <!-- <div
-                  class="bg-gray-50 px-6 py-4 text-right dark:bg-transparent">
-                  <a mat-stroked-button [routerLink]="[course.id]">
-                    <span class="inline-flex items-center"> -->
-                <!-- Not started -->
-                <!-- <ng-container *ngIf="course.progress.currentStep === 0"> -->
-                <!-- Never completed -->
-                <!-- <ng-container *ngIf="course.progress.completed === 0">
-                          <span>Start</span>
-                        </ng-container> -->
-                <!-- Completed before -->
-                <!-- <ng-container *ngIf="course.progress.completed > 0">
-                          <span>Start again</span>
-                        </ng-container>
-                      </ng-container> -->
-
-                <!-- Started -->
-                <!-- <ng-container *ngIf="course.progress.currentStep > 0">
-                        <span>Continue</span>
-                      </ng-container>
-
-                      <mat-icon
-                        class="ml-1.5 icon-size-5"
-                        [svgIcon]="
-                          'heroicons_solid:arrow-small-right'
-                        "></mat-icon>
-                    </span>
-                  </a>
-                </div> -->
               </div>
             </div>
           </ng-container>

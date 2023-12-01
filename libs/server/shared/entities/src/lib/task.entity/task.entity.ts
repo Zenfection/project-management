@@ -39,7 +39,7 @@ export class TaskEntity implements Task {
 
   @ApiProperty()
   @IsNumber()
-  order: number;
+  position: number;
 
   @ApiProperty()
   @IsNumber()

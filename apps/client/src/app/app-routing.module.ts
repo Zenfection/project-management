@@ -146,7 +146,7 @@ const routes: Routes = [
       },
 
       {
-        path: 'scrumboard/plan',
+        path: 'scrumboard',
         children: [
           {
             path: '',

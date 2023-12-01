@@ -5,12 +5,12 @@ import { Task } from '@client/shared/interfaces';
 import { catchError, throwError } from 'rxjs';
 
 export const TodoResolver: ResolveFn<Task> = (route, state) => {
-  const taskFacade = inject(TasksFacade);
+  const tasksFacade = inject(TasksFacade);
   const router = inject(Router);
 
-  taskFacade.selectTask(+route.paramMap.get('taskId'));
+  tasksFacade.selectTask(+route.paramMap.get('taskId'));
 
-  return taskFacade.selectedTask$.pipe(
+  return tasksFacade.selectedTask$.pipe(
     // Error here means the requested task is not available
     catchError((error) => {
       // Log the error

@@ -1,8 +1,6 @@
-import { TextFieldModule } from '@angular/cdk/text-field';
-import { AsyncPipe, NgClass, NgFor, NgIf } from '@angular/common';
+import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import {
   AfterContentInit,
-  ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
   ElementRef,
@@ -10,26 +8,11 @@ import {
   OnDestroy,
   OnInit,
   ViewChild,
-  ViewEncapsulation,
 } from '@angular/core';
-import {
-  FormBuilder,
-  FormsModule,
-  ReactiveFormsModule,
-  UntypedFormGroup,
-  Validators,
-} from '@angular/forms';
-import { MatButtonModule } from '@angular/material/button';
-import { MatRippleModule } from '@angular/material/core';
-import {
-  MAT_DIALOG_DATA,
-  MatDialog,
-  MatDialogModule,
-} from '@angular/material/dialog';
-import { MatDividerModule } from '@angular/material/divider';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatIconModule } from '@angular/material/icon';
-import { MatInputModule } from '@angular/material/input';
+import { FormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
+import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
+import { PlansFacade, UserFacade } from '@client/core-state';
 import {
   CategoryPlan,
   CreatePlan,
@@ -37,7 +20,7 @@ import {
   Plan,
   UpdatePlan,
 } from '@client/shared/interfaces';
-import { TranslocoModule } from '@ngneat/transloco';
+import { fuseAnimations } from '@fuse/animations';
 import {
   Observable,
   Subject,
@@ -46,47 +29,14 @@ import {
   map,
   startWith,
 } from 'rxjs';
-import { PlansFacade, UserFacade } from '@client/core-state';
-import {
-  MatAutocompleteModule,
-  MatAutocompleteSelectedEvent,
-} from '@angular/material/autocomplete';
-import { MatChipsModule } from '@angular/material/chips';
 import { PlanService } from '../../../plan.service';
-import { COMMA, ENTER } from '@angular/cdk/keycodes';
-import { MatSelectModule } from '@angular/material/select';
-import { fuseAnimations } from '@fuse/animations';
 
 @Component({
   selector: 'plan-dialog',
-  templateUrl: './diolog-plan.component.html',
-  encapsulation: ViewEncapsulation.None,
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
+  templateUrl: './plan-diolog-plan.component.html',
   animations: fuseAnimations,
-  imports: [
-    NgIf,
-    MatButtonModule,
-    MatIconModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatButtonModule,
-    MatDividerModule,
-    MatAutocompleteModule,
-    MatSelectModule,
-    MatChipsModule,
-    FormsModule,
-    ReactiveFormsModule,
-    TextFieldModule,
-    NgFor,
-    NgClass,
-    MatRippleModule,
-    MatDialogModule,
-    AsyncPipe,
-    TranslocoModule,
-  ],
 })
-export class PlanDialogComponent
+export class PlanDialogsPlanComponent
   implements OnInit, OnDestroy, AfterContentInit
 {
   planForm: UntypedFormGroup;

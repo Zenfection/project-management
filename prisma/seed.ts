@@ -13,8 +13,8 @@ async function main() {
   // await createUser();
   // await createCategoriesPlan();
   // await createPlans();
-  await createLabels();
-  // await createTasks();
+  // await createLabels();
+  await createTasks();
 }
 
 main()

@@ -212,7 +212,7 @@ model Task {
   todos       Todo[]
   files       File[]
   labels      Label[]
-  order       Int
+  position    Int
   priority    Int        @default(0)
   comments    Comment[]
   Activity    Activity[]

@@ -9,11 +9,11 @@ export const dataTask = [
     plan: {
       connect: { slug: 'xay-dung-he-thong-quan-ly-nhan-su' },
     },
-    priority: 0,
+    priority: 1,
     todos: {
       create: [{ content: 'Tạo API Login' }, { content: 'Tạo API Register' }],
     },
-    order: 1,
+    position: 65536,
   },
   {
     title: 'Xây dựng quản lý nhân sự',
@@ -32,6 +32,6 @@ export const dataTask = [
         { content: 'Tạo API sửa nhân sự' },
       ],
     },
-    order: 2,
+    position: 131072,
   },
 ];

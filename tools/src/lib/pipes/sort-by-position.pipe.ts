@@ -1,13 +1,13 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'sortByOrder',
+  name: 'sortByPosition',
   standalone: true,
 })
-export class SortByOrder implements PipeTransform {
+export class SortByPositionPipe implements PipeTransform {
   transform(arr: any[]) {
     arr.sort((a, b) => {
-      return a.order - b.order;
+      return a.position - b.position;
     });
     return arr;
   }

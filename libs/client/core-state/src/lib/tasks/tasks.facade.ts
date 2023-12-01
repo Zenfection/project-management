@@ -13,6 +13,7 @@ import {
 import {
   selectAllTasks,
   selectLabels,
+  selectNextPosition,
   selectSelectedTask,
 } from './tasks.selector';
 import * as TasksActions from './tasks.actions';
@@ -25,6 +26,7 @@ export class TasksFacade {
   tasks$: Observable<Task[]> = this.store.select(selectAllTasks);
   labels$: Observable<Label[]> = this.store.select(selectLabels);
   selectedTask$: Observable<Task> = this.store.select(selectSelectedTask);
+  nextPosition$: Observable<number> = this.store.select(selectNextPosition);
 
   constructor(private readonly store: Store<TasksState>) {}
 
@@ -34,6 +36,10 @@ export class TasksFacade {
 
   loadLabelsSuccess(labels: Label[]): void {
     this.store.dispatch(TasksActions.loadLabelsSuccess({ labels }));
+  }
+
+  loadNextPosition(nextPosition: number): void {
+    this.store.dispatch(TasksActions.loadNextPosition({ nextPosition }));
   }
 
   selectTask(selectedTaskId: number): void {

@@ -1,7 +1,7 @@
 import { Overlay, OverlayRef } from '@angular/cdk/overlay';
 import { TemplatePortal } from '@angular/cdk/portal';
-import { NgClass, NgFor, NgIf } from '@angular/common';
 import {
+  ChangeDetectionStrategy,
   Component,
   ElementRef,
   EventEmitter,
@@ -14,16 +14,8 @@ import {
   ViewChild,
   ViewContainerRef,
 } from '@angular/core';
-import { MatButtonModule } from '@angular/material/button';
-import { MatCheckboxModule } from '@angular/material/checkbox';
-import { MatRippleModule } from '@angular/material/core';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatIconModule } from '@angular/material/icon';
-import { MatInputModule } from '@angular/material/input';
-import { MatMenuModule } from '@angular/material/menu';
 import { TasksFacade } from '@client/core-state';
 import { Task } from '@client/shared/interfaces';
-import { TranslocoModule } from '@ngneat/transloco';
 import { Label } from '@prisma/client';
 import { cloneDeep } from 'lodash-es';
 import { Observable, Subject, takeUntil } from 'rxjs';
@@ -31,21 +23,7 @@ import { Observable, Subject, takeUntil } from 'rxjs';
 @Component({
   selector: 'plan-extras-labels',
   templateUrl: './plan-extras-labels.component.html',
-  standalone: true,
-  imports: [
-    NgFor,
-    NgIf,
-    NgClass,
-    MatIconModule,
-    MatRippleModule,
-    MatMenuModule,
-    MatCheckboxModule,
-    MatIconModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatButtonModule,
-    TranslocoModule,
-  ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PlanExtrasLabelsComponent implements OnInit, OnDestroy {
   @Input() task: Task;

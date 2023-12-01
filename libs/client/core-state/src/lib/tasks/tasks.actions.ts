@@ -20,6 +20,11 @@ export const loadLabelsSuccess = createAction(
   props<{ labels: Label[] }>(),
 );
 
+export const loadNextPosition = createAction(
+  '[TASKS] Load Next Position',
+  props<{ nextPosition: number }>(),
+);
+
 export const selectTask = createAction(
   '[TASKS] Select Task',
   props<{ selectedTaskId: number }>(),

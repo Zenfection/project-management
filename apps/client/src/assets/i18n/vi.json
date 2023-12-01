@@ -4,7 +4,6 @@
     "Analytics": "Phân Tích",
 
     "About": "Giới Thiệu",
-    "All": "Tất Cả",
     "Save": "Lưu",
     "Cancel": "Hủy",
     "Submit": "Xác Nhận",
@@ -31,7 +30,6 @@
     "new-tasks": "task mới",
     "update_success": "Cập nhật thành công",
     "update_error": "Cập nhật thất bại vì ",
-    "search_by_title_or_description": "Tìm kiếm bằng tiêu đề / mô tả",
     "owner_plan_content": "Bạn là chủ dự án này",
 
 

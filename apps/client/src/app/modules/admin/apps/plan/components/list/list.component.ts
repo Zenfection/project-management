@@ -1,14 +1,3 @@
-import { PlansFacade, UserFacade } from '@client/core-state';
-import { CdkScrollable } from '@angular/cdk/scrolling';
-import {
-  AsyncPipe,
-  I18nPluralPipe,
-  JsonPipe,
-  NgClass,
-  NgFor,
-  NgIf,
-  PercentPipe,
-} from '@angular/common';
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
@@ -17,62 +6,20 @@ import {
   OnInit,
   ViewEncapsulation,
 } from '@angular/core';
-import { MatButtonModule } from '@angular/material/button';
-import { MatOptionModule } from '@angular/material/core';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatIconModule } from '@angular/material/icon';
-import { MatInputModule } from '@angular/material/input';
-import { MatProgressBarModule } from '@angular/material/progress-bar';
-import { MatSelectChange, MatSelectModule } from '@angular/material/select';
-import {
-  MatSlideToggleChange,
-  MatSlideToggleModule,
-} from '@angular/material/slide-toggle';
-import { MatTooltipModule } from '@angular/material/tooltip';
-import { ActivatedRoute, Router, RouterLink } from '@angular/router';
-import { FuseCardComponent } from '@fuse/components/card';
-import { FuseFindByKeyPipe } from '@fuse/pipes/find-by-key/find-by-key.pipe';
-import { TranslocoModule } from '@ngneat/transloco';
+import { MatDialog } from '@angular/material/dialog';
+import { MatSelectChange } from '@angular/material/select';
+import { MatSlideToggleChange } from '@angular/material/slide-toggle';
+import { ActivatedRoute, Router } from '@angular/router';
+import { PlansFacade, UserFacade } from '@client/core-state';
 import { CategoryPlan, Plan, User } from '@client/shared/interfaces';
-import { BehaviorSubject, combineLatest, map, Observable, Subject } from 'rxjs';
-import { RiveCanvas, RiveLinearAnimation } from 'ng-rive';
-import { MatDialog, MatDialogModule } from '@angular/material/dialog';
-import { LetDirective } from '@ngrx/component';
-import { PlanDialogComponent } from '../dialogs/plan.dialog/dialog-plan.component';
+import { BehaviorSubject, Observable, Subject, combineLatest, map } from 'rxjs';
+import { PlanDialogsPlanComponent } from '../dialogs/plan/plan-dialog-plan.component';
 
 @Component({
   selector: 'plan-list',
   templateUrl: './list.component.html',
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [
-    RiveCanvas,
-    RiveLinearAnimation,
-    CdkScrollable,
-    MatFormFieldModule,
-    MatSelectModule,
-    MatOptionModule,
-    NgFor,
-    MatIconModule,
-    MatInputModule,
-    MatSlideToggleModule,
-    NgIf,
-    JsonPipe,
-    AsyncPipe,
-    NgClass,
-    MatTooltipModule,
-    MatProgressBarModule,
-    MatButtonModule,
-    MatDialogModule,
-    RouterLink,
-    FuseFindByKeyPipe,
-    PercentPipe,
-    I18nPluralPipe,
-    FuseCardComponent,
-    TranslocoModule,
-    LetDirective,
-  ],
 })
 export class PlanListComponent implements OnInit, OnDestroy {
   categories$: Observable<CategoryPlan[]> = this._plansFacade.categories$;
@@ -161,6 +108,51 @@ export class PlanListComponent implements OnInit, OnDestroy {
   // @ Public methods
   // -----------------------------------------------------------------------------------------------------
 
+  get totalTasks(): Observable<number> {
+    return this.plans$.pipe(
+      map((plans) => {
+        return plans.reduce((acc, plan) => {
+          return acc + plan._count.tasks;
+        }, 0);
+      }),
+    );
+  }
+
+  get overDueTask(): Observable<number> {
+    return this.plans$.pipe(
+      map((plans) => {
+        return plans.reduce((acc, plan) => {
+          return (
+            acc +
+            plan.tasks.reduce((taskAcc, task) => {
+              return taskAcc + (task.dueDate < new Date() ? 1 : 0);
+            }, 0)
+          );
+        }, 0);
+      }),
+    );
+  }
+
+  TotalFile(tasks: Partial<Plan>): number {
+    if (tasks && Array.isArray(tasks)) {
+      return tasks.reduce((taskAcc, task) => {
+        return taskAcc + task._count.files;
+      }, 0);
+    }
+    // Handle the case when tasks is undefined or not an array
+    return 0;
+  }
+
+  deadLineDueTo(tasks: Partial<Plan>): Date {
+    if (tasks && Array.isArray(tasks)) {
+      return tasks.reduce((taskAcc, task) => {
+        return taskAcc > task.dueDate ? taskAcc : task.dueDate;
+      }, new Date());
+    }
+    // Handle the case when tasks is undefined or not an array
+    return new Date();
+  }
+
   get permissionPlan(): Observable<boolean> {
     return this.user$.pipe(
       map((user) => {
@@ -185,7 +177,7 @@ export class PlanListComponent implements OnInit, OnDestroy {
   }
 
   addNewPlan(): void {
-    this._matDialog.open(PlanDialogComponent, {
+    this._matDialog.open(PlanDialogsPlanComponent, {
       autoFocus: false,
       data: {
         plan: {} as Plan,
