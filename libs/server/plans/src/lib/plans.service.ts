@@ -15,6 +15,46 @@ export class PlansService {
     }
   }
 
+  async checkIsOwner(id: number, planId: number): Promise<boolean> {
+    return this.prismaService.user
+      .findUnique({
+        where: {
+          id,
+        },
+        select: {
+          ownedPlans: {
+            where: {
+              id: planId,
+            },
+          },
+        },
+      })
+      .then((user) => {
+        if (!user) return false;
+        return user.ownedPlans.length > 0;
+      });
+  }
+
+  async checkIsMember(id: number, planId: number): Promise<boolean> {
+    return this.prismaService.user
+      .findUnique({
+        where: {
+          id,
+        },
+        select: {
+          memberPlans: {
+            where: {
+              id: planId,
+            },
+          },
+        },
+      })
+      .then((user) => {
+        if (!user) return false;
+        return user.memberPlans.length > 0;
+      });
+  }
+
   create(createPlanDto: CreatePlanDto): Promise<PlanEntity> {
     return this.prismaService.plan.create({
       data: createPlanDto,

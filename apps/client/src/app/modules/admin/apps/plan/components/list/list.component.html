@@ -81,6 +81,7 @@
             </ng-container>
           </mat-select>
         </mat-form-field>
+
         <mat-form-field
           class="mt-4 w-full sm:ml-4 sm:mt-0 sm:w-72"
           [subscriptSizing]="'dynamic'"
@@ -98,15 +99,16 @@
             #query
           />
         </mat-form-field>
+
         <fuse-card class="m-4">
           <div class="grid grid-cols-4 gap-4 p-4">
             <div class="relative flex flex-col text-center">
               <span
-                class="text-muted-800 dark:text-muted-100 font-sans text-2xl font-bold"
+                class="font-sans text-2xl font-bold text-slate-800 dark:text-slate-100"
               >
                 4
               </span>
-              <p class="text-muted-400 font-sans text-xs">
+              <p class="font-sans text-sm text-slate-400">
                 {{ 'plan.on_track' | transloco }}
               </p>
               <span
@@ -115,11 +117,11 @@
             </div>
             <div class="relative flex flex-col text-center">
               <span
-                class="text-muted-800 dark:text-muted-100 font-sans text-2xl font-bold"
+                class="font-sans text-2xl font-bold text-slate-800 dark:text-slate-100"
               >
                 {{ overDueTask | async }}
               </span>
-              <p class="text-muted-400 font-sans text-xs">
+              <p class="font-sans text-sm text-slate-400">
                 {{ 'plan.overdue' | transloco }}
               </p>
               <span
@@ -128,17 +130,21 @@
             </div>
             <div class="relative flex flex-col text-center">
               <span
-                class="text-muted-800 dark:text-muted-100 font-sans text-2xl font-bold"
+                class="font-sans text-2xl font-bold text-slate-800 dark:text-slate-100"
               >
-                {{ totalTasks | async }}
+                {{ completeTask | async }}
               </span>
-              <p class="text-muted-400 font-sans text-xs">
-                {{ 'plan.total' | transloco }}
+              <span
+                class="absolute end-0 top-0 h-2 w-2 rounded-full bg-green-500"
+              ></span>
+              <p class="font-sans text-sm text-slate-400">
+                {{ 'plan.completed' | transloco }}
               </p>
               <span
                 class="bg-success-500 absolute end-0 top-0 h-2 w-2 rounded-full"
               ></span>
             </div>
+
             <button
               (click)="addNewPlan()"
               *ngIf="permissionPlan | async"
@@ -172,7 +178,7 @@
             <!-- Plan -->
             <div
               class="bg-card hover:!border-primary-500 flex h-96 cursor-pointer flex-col overflow-hidden rounded-2xl shadow-lg transition-all duration-300 hover:-translate-y-2"
-              [routerLink]="plan.id"
+              [routerLink]="plan?.id"
             >
               <div class="flex flex-col p-6">
                 <div
@@ -250,13 +256,13 @@
                 <div class="relative h-0.5">
                   <div
                     class="absolute inset-x-0 z-10 h-6"
-                    [matTooltip]="'45%'"
+                    [matTooltip]="processPlan(plan) | percent"
                     [matTooltipPosition]="'above'"
                     [matTooltipClass]="'-mb-0.5'"
                   >
                     <mat-progress-bar
                       class="h-0.5"
-                      [value]="45"
+                      [value]="processPlan(plan) * 100"
                     ></mat-progress-bar>
                   </div>
                 </div>
@@ -265,7 +271,7 @@
                 >
                   <div>
                     <p class="text-secondary font-sans text-sm">
-                      {{ plan?._count?.tasks }}
+                      {{ TaskInProcess(plan) }}
                       {{ 'plan.tasks_remaining' | transloco }}
                     </p>
                   </div>

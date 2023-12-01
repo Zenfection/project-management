@@ -33,6 +33,7 @@ export const plansReducer = createReducer(
   }),
 
   on(PlanActions.createPlanSuccess, (state, action): PlansState => {
+    console.log(action.plan);
     return adapter.addOne(action.plan, state);
   }),
 

@@ -1,4 +1,4 @@
-import { Prisma } from '@prisma/client';
+import { Prisma, TaskStatus } from '@prisma/client';
 import { Member } from './member.types';
 import { CategoryPlan } from './category.types';
 
@@ -12,6 +12,7 @@ export interface Plan {
   category: CategoryPlan;
 
   tasks: {
+    status: TaskStatus;
     dueDate: Date;
     _count: {
       todos: number;

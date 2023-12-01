@@ -22,7 +22,7 @@ import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { RouterLink, RouterOutlet } from '@angular/router';
-import { PlansFacade, TasksFacade } from '@client/core-state';
+import { PlansFacade, TasksFacade, UserFacade } from '@client/core-state';
 import { Plan, Task, UpdateTask } from '@client/shared/interfaces';
 import { FuseConfirmationService } from '@fuse/services/confirmation';
 import { TranslocoModule } from '@ngneat/transloco';
@@ -31,7 +31,7 @@ import { TaskStatus } from '@prisma/client';
 import { SortByPositionPipe } from '@tools';
 import { cloneDeep } from 'lodash-es';
 import { DateTime } from 'luxon';
-import { Observable, Subject, takeUntil } from 'rxjs';
+import { Observable, Subject, combineLatest, map, takeUntil } from 'rxjs';
 import { PlanDialogsTaskComponent } from '../../plan/components/dialogs/task/plan-dialogs-task.component';
 import { List } from '../scrumboard.models';
 import { ScrumboardBoardAddCardComponent } from './add-card/add-card.component';
@@ -88,6 +88,7 @@ export class ScrumboardBoardComponent implements OnInit, OnDestroy {
     private changeDetectorRef: ChangeDetectorRef,
     private _matDialog: MatDialog,
     private readonly _plansFacade: PlansFacade,
+    private readonly _userFacade: UserFacade,
     private readonly _tasksFacade: TasksFacade,
   ) {}
 
@@ -119,6 +120,19 @@ export class ScrumboardBoardComponent implements OnInit, OnDestroy {
     // Unsubscribe from all subscriptions
     this._unsubscribeAll.next(null);
     this._unsubscribeAll.complete();
+  }
+
+  get permissionPlan(): Observable<boolean> {
+    return combineLatest([this._userFacade.user$, this.plan$]).pipe(
+      map(([user, plan]) => {
+        const roles = user.roles.map((role) => role.name);
+        return (
+          roles.includes('TRUONG_KHOA') ||
+          roles.includes('THU_KY_KHOA') ||
+          plan.owner.info.email === user.info.email
+        );
+      }),
+    );
   }
 
   totalTaskInList(list: string): number {

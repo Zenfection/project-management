@@ -8,6 +8,12 @@
     "Cancel": "Hủy",
     "Submit": "Xác Nhận",
 
+    "OPEN": "MỞ",
+    "IN_PROGRESS": "ĐANG TIẾN HÀNH",
+    "COMPLETED": "ĐÃ HOÀN THÀNH",
+    "RESOLVED": "ĐÃ GIẢI QUYẾT",
+    "CLOSED": "ĐÓNG",
+
     "Messages": "Tin Nhắn",
     "Settings": "Cài Đặt",
     "Logout": "Đăng Xuất",

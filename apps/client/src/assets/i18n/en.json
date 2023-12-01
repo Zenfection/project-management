@@ -8,6 +8,12 @@
     "Cancel": "Cancel",
     "Submit": "Submit",
 
+    "OPEN": "OPEN",
+    "IN_PROGRESS": "IN PROGRESS",
+    "COMPLETED": "COMPLETED",
+    "RESOLVED": "RESOLVED",
+    "CLOSED": "CLOSED",
+
     "Messages": "Messages",
     "Settings": "Settings",
     "Logout": "Logout",

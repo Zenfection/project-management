@@ -8,9 +8,10 @@
     "on_track": "On Track",
     "overdue": "Overdue",
     "total": "Total",
+    "completed": "Completed",
 
     "search_plan": "Search by title or description",
-    "hide_completed": "Hide completed",
+    "hide_completed": "Hide Empty Plans",
 
     "tasks_remaining": "tasks remaining"
 }

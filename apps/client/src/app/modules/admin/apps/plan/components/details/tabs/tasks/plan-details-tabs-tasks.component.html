@@ -9,26 +9,31 @@
     <div class="absolute top-0 ml-5 mt-5">
       <mat-icon
         *ngIf="task.status === 'OPEN'"
+        [matTooltip]="task.status | transloco"
         class="icon-size-6 shrink-0 text-slate-600 text-opacity-50"
         [svgIcon]="'duotone:circle-plus'"
       ></mat-icon>
       <mat-icon
         *ngIf="task.status === 'IN_PROGRESS'"
+        [matTooltip]="task.status | transloco"
         class="icon-size-6 shrink-0 text-blue-500"
         [svgIcon]="'duotone:circle-up'"
       ></mat-icon>
       <mat-icon
         *ngIf="task.status === 'RESOLVED'"
+        [matTooltip]="task.status | transloco"
         class="icon-size-6 shrink-0 text-orange-600 text-opacity-50"
         [svgIcon]="'duotone:pen-circle'"
       ></mat-icon>
       <mat-icon
         *ngIf="task.status === 'COMPLETED'"
+        [matTooltip]="task.status | transloco"
         class="icon-size-6 shrink-0 text-green-600 text-opacity-50"
         [svgIcon]="'duotone:circle-check'"
       ></mat-icon>
       <mat-icon
         *ngIf="task.status === 'CLOSED'"
+        [matTooltip]="task.status | transloco"
         class="icon-size-6 shrink-0 text-red-600 text-opacity-50"
         [svgIcon]="'duotone:circle-xmark'"
       ></mat-icon>

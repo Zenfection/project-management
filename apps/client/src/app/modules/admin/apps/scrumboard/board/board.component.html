@@ -54,7 +54,7 @@
                 class="focus-within:border-primary flex w-full cursor-text items-center rounded-md border border-transparent px-3 py-2 focus-within:bg-white focus-within:shadow-sm dark:focus-within:bg-gray-900"
               >
                 <span class="w-full bg-transparent font-medium leading-5">
-                  {{ list }}
+                  {{ list | transloco }}
                 </span>
               </div>
               <div
@@ -83,6 +83,7 @@
                     class="bg-card mb-3 flex flex-col items-start space-y-3 overflow-hidden rounded-lg p-5 shadow"
                     [routerLink]="['card', task.id]"
                     cdkDrag
+                    [cdkDragDisabled]="(permissionPlan | async) === false"
                   >
                     <!-- Title -->
                     <div class="text-lg font-medium leading-5">

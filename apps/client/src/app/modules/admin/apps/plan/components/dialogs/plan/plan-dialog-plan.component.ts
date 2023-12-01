@@ -12,7 +12,7 @@ import {
 import { FormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
-import { PlansFacade, UserFacade } from '@client/core-state';
+import { PlansFacade } from '@client/core-state';
 import {
   CategoryPlan,
   CreatePlan,
@@ -49,7 +49,6 @@ export class PlanDialogsPlanComponent
 
   readonly separatorKeysCodes = [ENTER, COMMA] as const;
 
-  // MemberCtrl = new FormControl('');
   @ViewChild('memberInput') memberInput: ElementRef<HTMLInputElement>;
   @ViewChild('ownerInput') ownerInput: ElementRef<HTMLInputElement>;
 
@@ -59,9 +58,7 @@ export class PlanDialogsPlanComponent
     @Inject(MAT_DIALOG_DATA) private _data: { plan: Plan },
     private _matDialog: MatDialog,
     private _formBuilder: FormBuilder,
-    private _changeDetectorRef: ChangeDetectorRef,
     private readonly _plansFacade: PlansFacade,
-    private readonly _userFacade: UserFacade,
     private readonly _planService: PlanService,
   ) {
     this.plan = this._data.plan;
@@ -112,7 +109,7 @@ export class PlanDialogsPlanComponent
   ngAfterContentInit() {
     this.filteredMembers = this.planForm.get('members').valueChanges.pipe(
       startWith(null),
-      debounceTime(500),
+      debounceTime(100),
       map((member: string | null) => {
         return this._filter(member);
       }),
@@ -125,8 +122,6 @@ export class PlanDialogsPlanComponent
         return this._filter(owner);
       }),
     );
-
-    this._changeDetectorRef.markForCheck();
   }
 
   ngOnDestroy(): void {
@@ -147,8 +142,6 @@ export class PlanDialogsPlanComponent
     if (index >= 0) {
       this.members.splice(index, 1);
     }
-
-    this._changeDetectorRef.detectChanges();
   }
 
   selected(event: MatAutocompleteSelectedEvent): void {
@@ -158,15 +151,6 @@ export class PlanDialogsPlanComponent
     this.members.push(find);
     this.allMembers.splice(this.allMembers.indexOf(find), 1);
     this.memberInput.nativeElement.value = '';
-
-    this._changeDetectorRef.detectChanges();
-  }
-
-  searchMember(event: Event): void {
-    const keyword = (event.target as HTMLInputElement).value;
-    console.log(keyword);
-    // this.filteredMembers = of(this._filter(keyword));
-    // console.log(this.filteredMembers);
   }
 
   private _filter(value: string | null): Member[] {
@@ -222,11 +206,8 @@ export class PlanDialogsPlanComponent
 
     this._plansFacade.createPlan(dataPlan);
 
-    this._changeDetectorRef.detectChanges();
-
-    this._matDialog.closeAll();
-
     this.planForm.reset();
+    this._matDialog.closeAll();
   }
 
   handUpdate(): void {
@@ -256,10 +237,10 @@ export class PlanDialogsPlanComponent
         }),
       },
     };
-    // transfer dataPlan to json
 
     this._plansFacade.updatePlan(dataPlan);
-    this._changeDetectorRef.detectChanges();
+
+    this.planForm.reset();
     this._matDialog.closeAll();
   }
 

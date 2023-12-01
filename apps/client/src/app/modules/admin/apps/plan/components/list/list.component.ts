@@ -71,35 +71,37 @@ export class PlanListComponent implements OnInit, OnDestroy {
       this.filters.categorySlug$,
       this.filters.query$,
       this.filters.hideCompleted$,
-    ]).subscribe(([categorySlug, query, hideCompleted]) => {
-      this.plans$.subscribe((plans) => {
+      this.plans$,
+    ])
+      .pipe(takeUntil(this._unsubscribeAll))
+      .subscribe(([categorySlug, query, hideCompleted, plans]) => {
         this.filteredPlans = plans;
+
+        // Filter by category
+        if (categorySlug !== 'all') {
+          this.filteredPlans = this.filteredPlans.filter(
+            (plan) => plan.category['slug'] === categorySlug,
+          );
+        }
+
+        // Filter by search query
+        if (query !== '') {
+          this.filteredPlans = this.filteredPlans.filter(
+            (plan) =>
+              plan.title.toLowerCase().includes(query.toLowerCase()) ||
+              plan.description.toLowerCase().includes(query.toLowerCase()),
+          );
+        }
+
+        // Filter by completed
+        if (hideCompleted) {
+          this.filteredPlans = this.filteredPlans.filter(
+            (plan) => this.TaskInProcess(plan) > 0,
+          );
+        }
+
         this._changeDetectorRef.markForCheck();
       });
-
-      // Filter by category
-      if (categorySlug !== 'all') {
-        this.filteredPlans = this.filteredPlans.filter(
-          (plan) => plan.category['slug'] === categorySlug,
-        );
-      }
-
-      // Filter by search query
-      if (query !== '') {
-        this.filteredPlans = this.filteredPlans.filter(
-          (plan) =>
-            plan.title.toLowerCase().includes(query.toLowerCase()) ||
-            plan.description.toLowerCase().includes(query.toLowerCase()),
-        );
-      }
-
-      // Filter by completed
-      if (hideCompleted) {
-        // this.filteredPlans = this.filteredPlans.filter(
-        //   plan => plan.progress.completed === 0
-        // );
-      }
-    });
   }
 
   /**
@@ -115,13 +117,21 @@ export class PlanListComponent implements OnInit, OnDestroy {
   // @ Public methods
   // -----------------------------------------------------------------------------------------------------
 
-  get totalTasks(): Observable<number> {
+  get completeTask(): Observable<number> {
     return this.plans$.pipe(
-      takeUntil(this._unsubscribeAll),
       map((plans) => {
-        return plans?.reduce((acc, plan) => {
-          return acc + plan?._count?.tasks;
+        if (!plans) return 0;
+
+        const total = plans.reduce((total, plan) => {
+          const tasks = plan.tasks || [];
+
+          const completed = tasks.filter((task) => {
+            return task.status === 'COMPLETED' || task.status === 'CLOSED';
+          });
+
+          return total + completed.length;
         }, 0);
+        return total;
       }),
     );
   }
@@ -130,11 +140,12 @@ export class PlanListComponent implements OnInit, OnDestroy {
     return this.plans$.pipe(
       takeUntil(this._unsubscribeAll),
       map((plans) => {
+        if (!plans) return 0;
         return plans?.reduce((acc, plan) => {
           return (
             acc +
             plan.tasks?.reduce((taskAcc, task) => {
-              return taskAcc + (task.dueDate < new Date() ? 1 : 0);
+              return taskAcc + (new Date(task.dueDate) < new Date() ? 1 : 0);
             }, 0)
           );
         }, 0);
@@ -142,23 +153,43 @@ export class PlanListComponent implements OnInit, OnDestroy {
     );
   }
 
+  processPlan(plan: Partial<Plan>): number {
+    const tasks = plan.tasks || [];
+    if (tasks.length === 0) return 0;
+
+    const completedTasks = tasks.filter((task) => {
+      return task.status === 'COMPLETED' || task.status === 'CLOSED';
+    });
+
+    return Number((completedTasks.length / tasks.length).toFixed(2));
+  }
+
+  TaskInProcess(plan: Partial<Plan>): number {
+    const tasks = plan.tasks || [];
+    if (tasks.length === 0) return 0;
+
+    const completedTasks = tasks.filter((task) => {
+      return task.status === 'COMPLETED' || task.status === 'CLOSED';
+    });
+
+    return tasks.length - completedTasks.length;
+  }
+
   TotalFile(tasks: Partial<Plan>): number {
-    if (tasks && Array.isArray(tasks)) {
+    if (tasks && Array.isArray(tasks) && tasks.length > 0) {
       return tasks?.reduce((taskAcc, task) => {
         return taskAcc + task._count.files;
       }, 0);
     }
-    // Handle the case when tasks is undefined or not an array
     return 0;
   }
 
   deadLineDueTo(tasks: Partial<Plan>): Date {
-    if (tasks && Array.isArray(tasks)) {
+    if (tasks && Array.isArray(tasks) && tasks.length > 0) {
       return tasks?.reduce((taskAcc, task) => {
         return taskAcc > task.dueDate ? taskAcc : task.dueDate;
       }, new Date());
     }
-    // Handle the case when tasks is undefined or not an array
     return new Date();
   }
 

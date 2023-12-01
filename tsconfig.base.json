@@ -50,6 +50,7 @@
         "libs/server/iam/feature/authorization/utils/src/index.ts"
       ],
       "@server/iam/utils": ["libs/server/iam/utils/src/index.ts"],
+      "@server/labels": ["libs/server/labels/src/index.ts"],
       "@server/plans": ["libs/server/plans/src/index.ts"],
       "@server/shared/config": ["libs/server/shared/config/src/index.ts"],
       "@server/shared/dto": ["libs/server/shared/dto/src/index.ts"],
@@ -60,7 +61,7 @@
       "@server/tools": ["libs/server/tools/src/index.ts"],
       "@server/users": ["libs/server/users/src/index.ts"],
       "@tools": ["tools/src/index.ts"],
-      "@server/labels": ["libs/server/labels/src/index.ts"]
+      "libs/server/chats": ["libs/server/chats/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp", "libs/client/fuse/src/lib"]

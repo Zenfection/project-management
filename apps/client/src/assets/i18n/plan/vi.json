@@ -8,9 +8,10 @@
   "on_track": "Đang làm",
   "overdue": "Quá hạn",
   "total": "Tổng số",
+  "completed": "Hoàn thành",
 
   "search_plan": "Tìm kiếm bằng tiêu đề / mô tả",
-  "hide_completed": "Ẩn các kế hoạch đã hoàn thành",
+  "hide_completed": "Ẩn 0 tác vụ",
 
   "tasks_remaining": "tác vụ còn lại"
 

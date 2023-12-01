@@ -6,12 +6,11 @@ import {
   Param,
   Patch,
   Post,
-  UnauthorizedException,
+  UseGuards,
   UseInterceptors,
 } from '@nestjs/common';
 import { CreatePlanDto, UpdatePlanDto } from '@server/shared/dto';
 import { PlansService } from './plans.service';
-
 import { AvatarInterceptor } from '@server/cloud/utils';
 import {
   ActiveUser,
@@ -19,17 +18,15 @@ import {
 } from '@server/iam/feature/authentication/utils';
 import { Roles } from '@server/iam/feature/authorization/utils';
 import { RoleEnum } from '@server/shared/entities';
-import { TasksService } from '@server/tasks';
+import { PlanPermissionGuard } from './guards/plan-permission.guard';
 
 @Controller('plans')
 export class PlansController {
-  constructor(
-    private readonly plansService: PlansService,
-    private readonly tasksService: TasksService,
-  ) {}
+  constructor(private readonly plansService: PlansService) {}
 
   @Post()
   @Roles(RoleEnum.thu_ky_khoa, RoleEnum.truong_khoa)
+  @UseInterceptors(AvatarInterceptor)
   async create(@Body() createPlanDto: CreatePlanDto) {
     const plan = await this.plansService.create(createPlanDto);
     return this.plansService.findOne({
@@ -37,8 +34,8 @@ export class PlansController {
         id: plan.id,
       },
       include: {
-        members: true,
-        owner: true,
+        members: { select: { info: true } },
+        owner: { select: { info: true } },
         category: true,
       },
     });
@@ -62,33 +59,13 @@ export class PlansController {
             position: 'asc',
           },
           include: {
-            assignee: {
-              select: {
-                info: {
-                  select: {
-                    email: true,
-                    avatar: true,
-                    name: true,
-                  },
-                },
-              },
-            },
+            assignee: { select: { info: true } },
             labels: true,
             todos: true,
             files: true,
             comments: {
               include: {
-                user: {
-                  select: {
-                    info: {
-                      select: {
-                        email: true,
-                        avatar: true,
-                        name: true,
-                      },
-                    },
-                  },
-                },
+                user: { select: { info: true } },
               },
             },
           },
@@ -99,25 +76,12 @@ export class PlansController {
     return plans.flatMap((plan) => plan['tasks']);
   }
 
-  @Get(':id/tasks/:taskId')
-  async getTask(@Param('id') id: string, @Param('taskId') taskId: string) {
-    const tasks = await this.getTasks(id);
-    const task = tasks.find((task) => task.id === Number(taskId));
+  // @Get(':id/tasks/:taskId')
+  // async getTask(@Param('id') id: string, @Param('taskId') taskId: string) {
+  //   const tasks = await this.getTasks(id);
+  //   const task = tasks.find((task) => task.id === Number(taskId));
 
-    return task;
-  }
-
-  // @Patch(':id/tasks/:taskId')
-  // async updateTask(
-  //   @Param('id') id: string,
-  //   @Param('taskId') taskId: string,
-  //   @Body() updateTaskDto: UpdatePlanDto,
-  // ) {
-  //   return this.tasksService.update({ id: Number(taskId) }, updateTaskDto, {
-  //     labels: true,
-  //     comments: true,
-  //     plan: true,
-  //   });
+  //   return task;
   // }
 
   @Get()
@@ -133,6 +97,7 @@ export class PlansController {
           category: true,
           tasks: {
             select: {
+              status: true,
               dueDate: true,
               _count: {
                 select: {
@@ -146,34 +111,10 @@ export class PlansController {
             select: { tasks: true },
           },
           members: {
-            select: {
-              id: true,
-              email: true,
-              department: true,
-              info: {
-                select: {
-                  avatar: true,
-                  name: true,
-                  email: true,
-                  phone: true,
-                },
-              },
-            },
+            select: { info: true },
           },
           owner: {
-            select: {
-              id: true,
-              email: true,
-              department: true,
-              info: {
-                select: {
-                  avatar: true,
-                  name: true,
-                  email: true,
-                  phone: true,
-                },
-              },
-            },
+            select: { info: true },
           },
         },
       });
@@ -198,6 +139,7 @@ export class PlansController {
         include: {
           tasks: {
             select: {
+              status: true,
               dueDate: true,
               _count: {
                 select: {
@@ -212,34 +154,10 @@ export class PlansController {
           },
           category: true,
           members: {
-            select: {
-              id: true,
-              email: true,
-              department: true,
-              info: {
-                select: {
-                  avatar: true,
-                  name: true,
-                  email: true,
-                  phone: true,
-                },
-              },
-            },
+            select: { info: true },
           },
           owner: {
-            select: {
-              id: true,
-              email: true,
-              department: true,
-              info: {
-                select: {
-                  avatar: true,
-                  name: true,
-                  email: true,
-                  phone: true,
-                },
-              },
-            },
+            select: { info: true },
           },
         },
       });
@@ -249,97 +167,35 @@ export class PlansController {
   }
 
   @Get(':id')
+  @UseGuards(PlanPermissionGuard)
   @UseInterceptors(AvatarInterceptor)
-  async findOne(@ActiveUser() user: ActiveUserData, @Param('id') id: string) {
+  async findOne(@Param('id') id: string) {
     const plan = await this.plansService.findOne({
       where: { id: Number(id) },
       include: {
         category: true,
         members: {
-          select: {
-            id: true,
-            email: true,
-            department: true,
-            info: {
-              select: {
-                avatar: true,
-                name: true,
-                email: true,
-                phone: true,
-              },
-            },
-          },
+          select: { info: true },
         },
         owner: {
-          select: {
-            id: true,
-            email: true,
-            department: true,
-            info: {
-              select: {
-                avatar: true,
-                name: true,
-                email: true,
-                phone: true,
-              },
-            },
-          },
+          select: { info: true },
         },
       },
     });
-
-    // check if user is member of plan or owner
-    if (
-      plan.ownerId !== user.sub &&
-      !user.roles?.includes(RoleEnum.truong_khoa) &&
-      !user.roles?.includes(RoleEnum.thu_ky_khoa)
-    ) {
-      const member = plan['members'].find(
-        (member: { id: number }) => member.id === user.sub,
-      );
-      if (!member) {
-        throw new UnauthorizedException('You are not allowed to see this plan');
-      }
-    }
 
     return plan;
   }
 
   @Patch(':id')
   @UseInterceptors(AvatarInterceptor)
-  async update(
-    @Param('id') id: string,
-    @ActiveUser() user: ActiveUserData,
-    @Body() updatePlanDto: UpdatePlanDto,
-  ) {
-    const plan = await this.plansService.findOne({
-      where: { id: Number(id) },
-    });
-
-    if (
-      plan.ownerId !== user.sub &&
-      !user.roles?.includes(RoleEnum.truong_khoa) &&
-      !user.roles?.includes(RoleEnum.thu_ky_khoa)
-    ) {
-      throw new UnauthorizedException(
-        'You are not allowed to update this plan',
-      );
-    }
-
+  @UseGuards(PlanPermissionGuard)
+  async update(@Param('id') id: string, @Body() updatePlanDto: UpdatePlanDto) {
     const result = await this.plansService.update({
       where: { id: Number(id) },
       data: updatePlanDto,
       include: {
-        members: {
-          include: {
-            info: true,
-          },
-        },
-        owner: {
-          include: {
-            info: true,
-          },
-        },
+        members: { select: { info: true } },
+        owner: { select: { info: true } },
         category: true,
       },
     });
@@ -348,6 +204,7 @@ export class PlansController {
   }
 
   @Delete(':id')
+  @UseGuards(PlanPermissionGuard)
   remove(@Param('id') id: string) {
     return this.plansService.remove({
       where: { id: Number(id) },

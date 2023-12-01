@@ -8,7 +8,8 @@
     [mode]="'over'"
     [name]="'mainNavigation'"
     [navigation]="navigation.default"
-    [opened]="false">
+    [opened]="false"
+  >
     <!-- Navigation header hook -->
     <ng-container fuseVerticalNavigationContentHeader>
       <!-- Logo -->
@@ -16,7 +17,8 @@
         <img
           class="w-24"
           src="assets/images/logo/logo-text-on-dark.svg"
-          alt="Logo image" />
+          alt="Logo image"
+        />
       </div>
     </ng-container>
   </fuse-vertical-navigation>
@@ -26,7 +28,8 @@
 <div class="flex w-full min-w-0 flex-auto flex-col">
   <!-- Header -->
   <div
-    class="bg-card relative z-49 flex h-16 w-full flex-0 items-center px-4 shadow dark:border-b dark:bg-transparent dark:shadow-none print:hidden sm:h-20 md:px-6">
+    class="bg-card z-49 flex-0 relative flex h-16 w-full items-center px-4 shadow dark:border-b dark:bg-transparent dark:shadow-none print:hidden sm:h-20 md:px-6"
+  >
     <ng-container *ngIf="!isScreenSmall">
       <!-- Logo -->
       <div class="mx-2 flex items-center lg:mr-8">
@@ -34,22 +37,26 @@
           <img
             class="w-28 dark:hidden"
             src="assets/images/logo/logo-text.svg"
-            alt="Logo Text" />
+            alt="Logo Text"
+          />
           <img
             class="hidden w-28 dark:flex"
             src="assets/images/logo/logo-text-on-dark.svg"
-            alt="Logo Text on Dark" />
+            alt="Logo Text on Dark"
+          />
         </div>
         <img
           class="flex w-8 lg:hidden"
           src="assets/images/logo/logo.svg"
-          alt="Logo" />
+          alt="Logo"
+        />
       </div>
       <!-- Horizontal navigation -->
       <fuse-horizontal-navigation
         class="mr-2"
         [name]="'mainNavigation'"
-        [navigation]="navigation.horizontal"></fuse-horizontal-navigation>
+        [navigation]="navigation.horizontal"
+      ></fuse-horizontal-navigation>
     </ng-container>
     <!-- Navigation toggle button -->
     <ng-container *ngIf="isScreenSmall">
@@ -67,7 +74,8 @@
       <notifications></notifications>
       <button class="lg:hidden" mat-icon-button (click)="quickChat.toggle()">
         <mat-icon
-          [svgIcon]="'heroicons_outline:chat-bubble-left-right'"></mat-icon>
+          [svgIcon]="'heroicons_outline:chat-bubble-left-right'"
+        ></mat-icon>
       </button>
       <user></user>
     </div>
@@ -82,9 +90,11 @@
 
   <!-- Footer -->
   <footer
-    class="bg-card relative z-49 flex h-14 w-full flex-0 items-center border-t px-4 dark:bg-transparent print:hidden sm:h-20 md:px-6">
+    class="bg-card z-49 flex-0 relative flex h-14 w-full items-center border-t px-4 dark:bg-transparent print:hidden sm:h-20 md:px-6"
+  >
     <div
-      class="dark:bg-muted-900 absolute inset-x-0 -top-4 mx-auto flex h-9 w-14 items-center justify-center">
+      class="dark:bg-muted-900 absolute inset-x-0 -top-4 mx-auto flex h-9 w-14 items-center justify-center"
+    >
       <img
         class="h-14 w-14"
         src="assets/images/logo/logo.svg"
@@ -92,7 +102,8 @@
         height="32"
         width="32"
         loading="lazy"
-        decoding="async" />
+        decoding="async"
+      />
     </div>
     <span class="text-secondary font-medium"
       >Zenfection &copy; {{ currentYear }}</span
