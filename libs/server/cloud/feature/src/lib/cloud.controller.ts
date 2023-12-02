@@ -8,7 +8,6 @@ import {
 } from '@nestjs/common';
 import { CloudService } from '@server/cloud/data-access';
 import { FileInterceptor } from '@nestjs/platform-express';
-import { Express } from 'express';
 
 @Controller('cloud')
 export class CloudController {

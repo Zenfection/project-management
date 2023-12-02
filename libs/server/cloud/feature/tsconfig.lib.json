@@ -3,8 +3,8 @@
   "compilerOptions": {
     "outDir": "../../../../dist/out-tsc",
     "declaration": true,
-    "types": ["node", "Multer"],
-    "target": "es2021",
+    "types": ["node"],
+    "target": "ES2022",
     "strictNullChecks": false,
     "noImplicitAny": false,
     "strictBindCallApply": true,

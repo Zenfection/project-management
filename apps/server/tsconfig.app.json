@@ -8,7 +8,7 @@
       "Multer"
     ],
     "emitDecoratorMetadata": true,
-    "target": "es2021"
+    "target": "ES2021"
   },
   "exclude": [
     "jest.config.ts",
