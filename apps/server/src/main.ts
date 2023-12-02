@@ -7,9 +7,16 @@ import {
   ValidationPipe,
 } from '@nestjs/common';
 import { PrismaClientExceptionFilter } from 'nestjs-prisma';
+import { readFileSync } from 'fs';
+import { resolve } from 'path';
+
+const httpsOptions = {
+  key: readFileSync(resolve('cert/key.pem')),
+  cert: readFileSync(resolve('cert/cert.pem')),
+};
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create(AppModule, { httpsOptions });
 
   app.enableCors({
     origin: '*',
