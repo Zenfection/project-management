@@ -9,16 +9,17 @@
   "license": "MIT",
   "scripts": {
     "docker:compose": "docker-compose up -d",
-    "prisma:migrate": "prisma migrate dev",
-    "prisma:generate": "prisma generate",
-    "prisma:seed": "ts-node prisma/seed.ts",
+    "prisma:migrate": "npx prisma migrate dev",
+    "prisma:generate": "npx prisma generate",
+    "prisma:seed": "npx ts-node prisma/seed.ts",
     "serve:server": "nx serve server",
     "build:server": "nx build server",
     "test:server": "nx test server",
     "serve:client": "nx serve client",
     "build:client": "nx build client",
     "test:client": "nx test client",
-    "serve": "concurrently \"pnpm serve:client\" \"pnpm serve:server\""
+    "serve:all": "concurrently \"pnpm serve:client\" \"pnpm serve:server\"",
+    "build:all": "concurrently \"pnpm build:client\" \"pnpm build:server\""
   },
   "private": true,
   "dependencies": {
