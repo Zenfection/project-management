@@ -22,6 +22,7 @@ import { FileInterceptor } from '@nestjs/platform-express';
 import { AvatarInterceptor } from '@server/cloud/utils';
 import { MemberResponseInterceptor } from '@server/tools';
 import { UserEntity } from '@server/shared/entities';
+import { Express } from 'express';
 
 @Controller('users')
 export class UsersController {

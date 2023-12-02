@@ -8,6 +8,7 @@ import {
 } from '@nestjs/common';
 import { CloudService } from '@server/cloud/data-access';
 import { FileInterceptor } from '@nestjs/platform-express';
+import { Express } from 'express';
 
 @Controller('cloud')
 export class CloudController {
@@ -35,7 +36,7 @@ export class CloudController {
   @UseInterceptors(FileInterceptor('file'))
   uploadFile(
     @UploadedFile()
-    file: Express.Multer.File
+    file: Express.Multer.File,
   ) {
     this.cloudService.upload(file.originalname, file.buffer);
   }
