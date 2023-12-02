@@ -12,7 +12,7 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
   app.enableCors({
-    origin: '*',
+    origin: ['http://localhost:4200', 'https://ctu-task.zenfection.com'],
     allowedHeaders: '*',
     methods: '*',
     credentials: true,
