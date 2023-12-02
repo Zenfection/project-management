@@ -7,16 +7,27 @@ import {
   ValidationPipe,
 } from '@nestjs/common';
 import { PrismaClientExceptionFilter } from 'nestjs-prisma';
-import { readFileSync } from 'fs';
-import { resolve } from 'path';
-
-const httpsOptions = {
-  key: readFileSync(resolve('cert/key.pem')),
-  cert: readFileSync(resolve('cert/cert.pem')),
-};
+// import { readFileSync } from 'fs';
+// import { resolve } from 'path';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule, { httpsOptions });
+  const app = await NestFactory.create(AppModule);
+
+  app.setGlobalPrefix('api');
+
+  // check if production
+  // if (process.env.NODE_ENV === 'production') {
+  //   const httpsOptions = {
+  //     key: readFileSync(resolve('cert/key.pem')),
+  //     cert: readFileSync(resolve('cert/cert.pem')),
+  //   };
+  //   app = await NestFactory.create(AppModule, { httpsOptions });
+  //   app.enableCors({
+  //     origin: '*',
+  //     credentials: true,
+  //     methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
+  //   });
+  // }
 
   app.enableCors({
     origin: '*',

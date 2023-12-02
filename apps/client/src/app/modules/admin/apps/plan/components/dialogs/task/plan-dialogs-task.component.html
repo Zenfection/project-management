@@ -1,5 +1,5 @@
-<div class="md:w-160 md:min-w-160 -m-6 flex flex-auto flex-col">
-  <form [formGroup]="taskForm" class="px-4 py-10 sm:p-8 md:mx-0">
+<div class="md:w-160 md:min-w-160 flex flex-auto flex-col sm:-m-6">
+  <form [formGroup]="taskForm" class="sm:p-8 md:mx-0">
     <!-- Header Form -->
     <div class="mx-auto max-w-md">
       <div class="flex items-center gap-4">
@@ -21,7 +21,9 @@
     </div>
 
     <!-- Title & DueDate -->
-    <div class="my-3 flex w-full items-center justify-center gap-4 px-8">
+    <div
+      class="my-3 flex w-full flex-col items-center justify-center gap-4 sm:flex-row sm:px-4 md:px-8"
+    >
       <mat-form-field class="w-full grow" [subscriptSizing]="'dynamic'">
         <mat-label>Title</mat-label>
         <mat-icon
@@ -36,7 +38,7 @@
       </mat-form-field>
 
       <!-- Due date -->
-      <div class="flex-none">
+      <div class="w-full flex-none sm:w-auto">
         <div class="font-medium">Due date</div>
         <div
           class="relative mt-1 flex cursor-pointer items-center rounded-md px-4 py-1.5 leading-9"
@@ -99,7 +101,10 @@
     </div>
 
     <!-- Description -->
-    <mat-form-field class="my-3 w-full px-8" [subscriptSizing]="'dynamic'">
+    <mat-form-field
+      class="my-3 w-full sm:px-4 md:px-8"
+      [subscriptSizing]="'dynamic'"
+    >
       <mat-label>Description</mat-label>
       <mat-icon
         class="icon-size-5"
@@ -120,42 +125,44 @@
     </mat-form-field>
 
     <!-- Assigned To and Priorty  -->
-    <div class="my-3 flex w-full items-center justify-center gap-4 px-8">
-      <div class="grow">
-        <mat-form-field
-          class="fuse-mat-dense w-full"
-          [subscriptSizing]="'dynamic'"
-        >
-          <mat-label>Assigned To</mat-label>
-          <mat-select [formControlName]="'assignee'" class="py-3">
-            <mat-form-field class="my-3 w-full rounded-lg px-4 shadow-md">
-              <input
-                matInput
-                #ownerInput
-                placeholder="Search..."
-                [formControl]="ownerSearch"
-              />
-            </mat-form-field>
-            <ng-container *ngIf="filterMembers$ | async as members">
-              <mat-option
-                *ngFor="let member of members"
-                [value]="member.info.email"
+    <div
+      class="my-3 flex w-full flex-col items-center justify-center gap-4 sm:flex-row sm:px-4 md:px-8"
+    >
+      <mat-form-field
+        class="fuse-mat-dense w-full grow"
+        [subscriptSizing]="'dynamic'"
+      >
+        <mat-label>Assigned To</mat-label>
+        <mat-select [formControlName]="'assignee'" class="py-3">
+          <mat-form-field class="my-3 w-full rounded-lg px-4 shadow-md">
+            <input
+              matInput
+              #ownerInput
+              placeholder="Search..."
+              [formControl]="ownerSearch"
+            />
+          </mat-form-field>
+          <ng-container *ngIf="filterMembers$ | async as members">
+            <mat-option
+              *ngFor="let member of members"
+              [value]="member.info.email"
+            >
+              <div
+                class="flex items-center justify-center gap-2 border-t-gray-400"
               >
-                <div class="flex items-center justify-center gap-2">
-                  <img
-                    class="h-8 w-8 rounded-full ring-1 ring-gray-500 ring-offset-1"
-                    [src]="member.info.avatar"
-                    alt="Avatar Member"
-                  />
+                <img
+                  class="h-8 w-8 rounded-full ring-1 ring-gray-500 ring-offset-1"
+                  [src]="member.info.avatar"
+                  alt="Avatar Member"
+                />
 
-                  <span>{{ member.info.name }}</span>
-                </div>
-              </mat-option>
-            </ng-container>
-          </mat-select>
-        </mat-form-field>
-      </div>
-      <div class="flex-none">
+                <span>{{ member.info.name }}</span>
+              </div>
+            </mat-option>
+          </ng-container>
+        </mat-select>
+      </mat-form-field>
+      <div class="w-full flex-none sm:w-auto">
         <mat-form-field
           class="fuse-mat-dense w-full"
           [subscriptSizing]="'dynamic'"

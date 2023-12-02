@@ -17,7 +17,7 @@ export class AuthInterceptor implements HttpInterceptor {
 
   intercept(
     req: HttpRequest<any>,
-    next: HttpHandler
+    next: HttpHandler,
   ): Observable<HttpEvent<any>> {
     let newReq = req;
 
@@ -28,7 +28,7 @@ export class AuthInterceptor implements HttpInterceptor {
       newReq = req.clone({
         headers: req.headers.set(
           'Authorization',
-          'Bearer ' + this.authService.accessToken
+          'Bearer ' + this.authService.accessToken,
         ),
       });
     }
@@ -40,7 +40,7 @@ export class AuthInterceptor implements HttpInterceptor {
           location.reload();
         }
         return throwError(() => new Error(error.message));
-      })
+      }),
     );
   }
 }
