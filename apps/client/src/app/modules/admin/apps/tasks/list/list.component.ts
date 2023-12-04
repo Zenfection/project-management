@@ -1,19 +1,5 @@
-import {
-  CdkDrag,
-  CdkDragDrop,
-  CdkDragHandle,
-  CdkDragPreview,
-  CdkDropList,
-  moveItemInArray,
-} from '@angular/cdk/drag-drop';
-import {
-  DatePipe,
-  DOCUMENT,
-  NgClass,
-  NgFor,
-  NgIf,
-  TitleCasePipe,
-} from '@angular/common';
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
+import { DOCUMENT } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
@@ -24,48 +10,23 @@ import {
   ViewChild,
   ViewEncapsulation,
 } from '@angular/core';
-import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
-import { MatDrawer, MatSidenavModule } from '@angular/material/sidenav';
-import { MatTooltipModule } from '@angular/material/tooltip';
-import {
-  ActivatedRoute,
-  Router,
-  RouterLink,
-  RouterOutlet,
-} from '@angular/router';
+import { MatDrawer } from '@angular/material/sidenav';
+import { ActivatedRoute, Router } from '@angular/router';
 import {
   FuseNavigationService,
   FuseVerticalNavigationComponent,
 } from '@fuse/components/navigation';
 import { FuseMediaWatcherService } from '@fuse/services/media-watcher';
-import { filter, fromEvent, Subject, takeUntil } from 'rxjs';
-import { Tag, Task } from '../tasks.types';
+import { Observable, Subject, filter, fromEvent, takeUntil } from 'rxjs';
 import { TasksService } from '../tasks.service';
+import { Tag, Task } from '../tasks.types';
+import { TasksFacade } from '@client/core-state';
 
 @Component({
   selector: 'tasks-list',
   templateUrl: './list.component.html',
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [
-    MatSidenavModule,
-    RouterOutlet,
-    NgIf,
-    MatButtonModule,
-    MatTooltipModule,
-    MatIconModule,
-    CdkDropList,
-    NgFor,
-    CdkDrag,
-    NgClass,
-    CdkDragPreview,
-    CdkDragHandle,
-    RouterLink,
-    TitleCasePipe,
-    DatePipe,
-  ],
 })
 export class TasksListComponent implements OnInit, OnDestroy {
   @ViewChild('matDrawer', { static: true }) matDrawer: MatDrawer;
@@ -74,6 +35,9 @@ export class TasksListComponent implements OnInit, OnDestroy {
   selectedTask: Task;
   tags: Tag[];
   tasks: Task[];
+
+  allTasks$: Observable<any[]> = this._tasksFacade.tasks$;
+
   tasksCount: any = {
     completed: 0,
     incomplete: 0,
@@ -91,7 +55,8 @@ export class TasksListComponent implements OnInit, OnDestroy {
     private _router: Router,
     private _tasksService: TasksService,
     private _fuseMediaWatcherService: FuseMediaWatcherService,
-    private _fuseNavigationService: FuseNavigationService
+    private _fuseNavigationService: FuseNavigationService,
+    private readonly _tasksFacade: TasksFacade,
   ) {}
 
   // -----------------------------------------------------------------------------------------------------
@@ -120,10 +85,10 @@ export class TasksListComponent implements OnInit, OnDestroy {
 
         // Update the counts
         this.tasksCount.total = this.tasks.filter(
-          task => task.type === 'task'
+          (task) => task.type === 'task',
         ).length;
         this.tasksCount.completed = this.tasks.filter(
-          task => task.type === 'task' && task.completed
+          (task) => task.type === 'task' && task.completed,
         ).length;
         this.tasksCount.incomplete =
           this.tasksCount.total - this.tasksCount.completed;
@@ -136,7 +101,7 @@ export class TasksListComponent implements OnInit, OnDestroy {
           // Get the component -> navigation data -> item
           const mainNavigationComponent =
             this._fuseNavigationService.getComponent<FuseVerticalNavigationComponent>(
-              'mainNavigation'
+              'mainNavigation',
             );
 
           // If the main navigation component exists...
@@ -144,7 +109,7 @@ export class TasksListComponent implements OnInit, OnDestroy {
             const mainNavigation = mainNavigationComponent.navigation;
             const menuItem = this._fuseNavigationService.getItem(
               'apps.tasks',
-              mainNavigation
+              mainNavigation,
             );
 
             // Update the subtitle of the item
@@ -170,7 +135,7 @@ export class TasksListComponent implements OnInit, OnDestroy {
     this._fuseMediaWatcherService
       .onMediaQueryChange$('(min-width: 1440px)')
       .pipe(takeUntil(this._unsubscribeAll))
-      .subscribe(state => {
+      .subscribe((state) => {
         // Calculate the drawer mode
         this.drawerMode = state.matches ? 'side' : 'over';
 
@@ -183,10 +148,10 @@ export class TasksListComponent implements OnInit, OnDestroy {
       .pipe(
         takeUntil(this._unsubscribeAll),
         filter<KeyboardEvent>(
-          event =>
+          (event) =>
             (event.ctrlKey === true || event.metaKey) && // Ctrl or Cmd
-            (event.key === '/' || event.key === '.') // '/' or '.' key
-        )
+            (event.key === '/' || event.key === '.'), // '/' or '.' key
+        ),
       )
       .subscribe((event: KeyboardEvent) => {
         // If the '/' pressed
@@ -232,7 +197,7 @@ export class TasksListComponent implements OnInit, OnDestroy {
    */
   createTask(type: 'task' | 'section'): void {
     // Create the task
-    this._tasksService.createTask(type).subscribe(newTask => {
+    this._tasksService.createTask(type).subscribe((newTask) => {
       // Go to the new task
       this._router.navigate(['./', newTask.id], {
         relativeTo: this._activatedRoute,
@@ -270,7 +235,7 @@ export class TasksListComponent implements OnInit, OnDestroy {
     moveItemInArray(
       event.container.data,
       event.previousIndex,
-      event.currentIndex
+      event.currentIndex,
     );
 
     // Save the new order

@@ -35,7 +35,7 @@
       </div>
       <!-- ToolBar  -->
       <plan-details-toolbar
-        *ngIf="permissionPlan || ownerPlan(user.info.email) | async"
+        *ngIf="permissionPlan | async"
         [plan]="plan$ | ngrxPush"
       ></plan-details-toolbar>
 
@@ -76,7 +76,9 @@
                 </span>
               </ng-template>
               <ng-template matTabContent>
-                <plan-details-tabs-team></plan-details-tabs-team>
+                <plan-details-tabs-team
+                  [members]="plan.members"
+                ></plan-details-tabs-team>
               </ng-template>
             </mat-tab>
           </mat-tab-group>

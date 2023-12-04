@@ -34,7 +34,7 @@ export class FuseVerticalNavigationAsideItemComponent implements OnChanges, OnIn
     @Input() name: string;
     @Input() skipChildren: boolean;
 
-    active = false;
+    active: boolean = false;
     private _fuseVerticalNavigationComponent: FuseVerticalNavigationComponent;
     private _unsubscribeAll: Subject<any> = new Subject<any>();
 

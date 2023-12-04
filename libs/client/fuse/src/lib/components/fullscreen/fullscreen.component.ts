@@ -20,7 +20,7 @@ export class FuseFullscreenComponent implements OnInit
     @Input() tooltip: string;
     private _fsDoc: FSDocument;
     private _fsDocEl: FSDocumentElement;
-    private _isFullscreen = false;
+    private _isFullscreen: boolean = false;
 
     /**
      * Constructor

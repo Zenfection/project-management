@@ -29,10 +29,10 @@ export class FuseAlertComponent implements OnChanges, OnInit, OnDestroy
     /* eslint-enable @typescript-eslint/naming-convention */
 
     @Input() appearance: FuseAlertAppearance = 'soft';
-    @Input() dismissed = false;
-    @Input() dismissible = false;
+    @Input() dismissed: boolean = false;
+    @Input() dismissible: boolean = false;
     @Input() name: string = this._fuseUtilsService.randomId();
-    @Input() showIcon = true;
+    @Input() showIcon: boolean = true;
     @Input() type: FuseAlertType = 'primary';
     @Output() readonly dismissedChanged: EventEmitter<boolean> = new EventEmitter<boolean>();
 

@@ -1,15 +1,17 @@
 <div class="absolute inset-0 flex min-w-0 flex-col overflow-hidden">
   <mat-drawer-container
     class="bg-card h-full flex-auto dark:bg-transparent"
-    (backdropClick)="onBackdropClicked()">
+    (backdropClick)="onBackdropClicked()"
+  >
     <!-- Drawer -->
     <mat-drawer
-      class="w-full dark:bg-gray-900 sm:w-128"
+      class="sm:w-128 w-full dark:bg-gray-900"
       [mode]="drawerMode"
       [opened]="false"
       [position]="'end'"
       [disableClose]="true"
-      #matDrawer>
+      #matDrawer
+    >
       <router-outlet></router-outlet>
     </mat-drawer>
 
@@ -18,7 +20,8 @@
       <div class="flex flex-auto flex-col">
         <!-- Header -->
         <div
-          class="flex flex-col items-start px-6 py-8 sm:flex-row sm:items-center sm:justify-between md:px-8">
+          class="flex flex-col items-start px-6 py-8 sm:flex-row sm:items-center sm:justify-between md:px-8"
+        >
           <!-- Title -->
           <div>
             <div class="text-4xl font-extrabold leading-none tracking-tight">
@@ -40,7 +43,8 @@
               mat-flat-button
               [color]="'accent'"
               (click)="createTask('section')"
-              [matTooltip]="'Shortcut: Ctrl + .'">
+              [matTooltip]="'Shortcut: Ctrl + .'"
+            >
               <mat-icon [svgIcon]="'heroicons_outline:plus'"></mat-icon>
               <span class="ml-2 mr-1">Add Section</span>
             </button>
@@ -50,7 +54,8 @@
               mat-flat-button
               [color]="'primary'"
               (click)="createTask('task')"
-              [matTooltip]="'Shortcut: Ctrl + /'">
+              [matTooltip]="'Shortcut: Ctrl + /'"
+            >
               <mat-icon [svgIcon]="'heroicons_outline:plus'"></mat-icon>
               <span class="ml-2 mr-1">Add Task</span>
             </button>
@@ -63,13 +68,15 @@
             class="divide-y"
             cdkDropList
             [cdkDropListData]="tasks"
-            (cdkDropListDropped)="dropped($event)">
+            (cdkDropListDropped)="dropped($event)"
+          >
             <!-- Task -->
             <ng-container
-              *ngFor="let task of tasks; let first = first; trackBy: trackByFn">
+              *ngFor="let task of tasks; let first = first; trackBy: trackByFn"
+            >
               <div
                 [id]="'task-' + task.id"
-                class="group w-full select-none dark:hover:bg-hover hover:bg-gray-100"
+                class="dark:hover:bg-hover group w-full select-none hover:bg-gray-100"
                 [ngClass]="{
                   'h-12 bg-gray-50 text-lg font-semibold dark:bg-transparent':
                     task.type === 'section',
@@ -78,26 +85,31 @@
                 }"
                 [class.border-t]="first"
                 cdkDrag
-                [cdkDragLockAxis]="'y'">
+                [cdkDragLockAxis]="'y'"
+              >
                 <!-- Drag preview -->
-                <div class="flex h-0 w-0 flex-0" *cdkDragPreview></div>
+                <div class="flex-0 flex h-0 w-0" *cdkDragPreview></div>
 
                 <!-- Task content -->
                 <div class="relative flex h-full items-center pl-10">
                   <!-- Selected indicator -->
                   <ng-container
-                    *ngIf="selectedTask && selectedTask.id === task.id">
+                    *ngIf="selectedTask && selectedTask.id === task.id"
+                  >
                     <div
-                      class="absolute -bottom-px -top-px right-0 z-10 flex w-1 flex-0 bg-primary"></div>
+                      class="flex-0 bg-primary absolute -bottom-px -top-px right-0 z-10 flex w-1"
+                    ></div>
                   </ng-container>
 
                   <!-- Drag handle -->
                   <div
                     class="absolute inset-y-0 left-0 flex w-8 cursor-move items-center justify-center md:hidden md:group-hover:flex"
-                    cdkDragHandle>
+                    cdkDragHandle
+                  >
                     <mat-icon
                       class="text-hint icon-size-5"
-                      [svgIcon]="'heroicons_solid:bars-3'"></mat-icon>
+                      [svgIcon]="'heroicons_solid:bars-3'"
+                    ></mat-icon>
                   </div>
 
                   <!-- Complete task button -->
@@ -105,23 +117,27 @@
                     class="-ml-2.5 mr-2 leading-none"
                     *ngIf="task.type === 'task'"
                     (click)="toggleCompleted(task)"
-                    mat-icon-button>
+                    mat-icon-button
+                  >
                     <ng-container *ngIf="task.completed">
                       <mat-icon
                         class="text-primary"
-                        [svgIcon]="'heroicons_outline:check-circle'"></mat-icon>
+                        [svgIcon]="'heroicons_outline:check-circle'"
+                      ></mat-icon>
                     </ng-container>
                     <ng-container *ngIf="!task.completed">
                       <mat-icon
                         class="text-hint"
-                        [svgIcon]="'heroicons_outline:check-circle'"></mat-icon>
+                        [svgIcon]="'heroicons_outline:check-circle'"
+                      ></mat-icon>
                     </ng-container>
                   </button>
 
                   <!-- Task link -->
                   <a
                     class="flex h-full min-w-0 flex-auto items-center pr-7"
-                    [routerLink]="[task.id]">
+                    [routerLink]="[task.id]"
+                  >
                     <!-- Title & Placeholder -->
                     <div class="mr-2 flex-auto truncate">
                       <ng-container *ngIf="task.title">
@@ -138,22 +154,25 @@
                       <div class="mr-3 h-4 w-4">
                         <!-- Low -->
                         <mat-icon
-                          class="text-green-600 icon-size-4 dark:text-green-400"
+                          class="icon-size-4 text-green-600 dark:text-green-400"
                           *ngIf="task.priority === 0"
                           [svgIcon]="'heroicons_mini:arrow-long-down'"
-                          [title]="'Low'"></mat-icon>
+                          [title]="'Low'"
+                        ></mat-icon>
                         <!-- High -->
                         <mat-icon
-                          class="text-red-600 icon-size-4 dark:text-red-400"
+                          class="icon-size-4 text-red-600 dark:text-red-400"
                           *ngIf="task.priority === 2"
                           [svgIcon]="'heroicons_mini:arrow-long-up'"
-                          [title]="'High'"></mat-icon>
+                          [title]="'High'"
+                        ></mat-icon>
                       </div>
                     </ng-container>
                     <!-- Due date -->
                     <div
                       class="text-secondary whitespace-nowrap text-sm"
-                      *ngIf="task.type === 'task'">
+                      *ngIf="task.type === 'task'"
+                    >
                       {{ task.dueDate | date: 'LLL dd' }}
                     </div>
                   </a>
@@ -165,14 +184,15 @@
 
         <ng-template #noTasks>
           <div
-            class="flex flex-auto flex-col items-center justify-center bg-gray-100 dark:bg-transparent">
+            class="flex flex-auto flex-col items-center justify-center bg-gray-100 dark:bg-transparent"
+          >
             <mat-icon
               class="icon-size-24"
-              [svgIcon]="
-                'heroicons_outline:clipboard-document-list'
-              "></mat-icon>
+              [svgIcon]="'heroicons_outline:clipboard-document-list'"
+            ></mat-icon>
             <div
-              class="text-secondary mt-4 text-2xl font-semibold tracking-tight">
+              class="text-secondary mt-4 text-2xl font-semibold tracking-tight"
+            >
               Add a task to start planning!
             </div>
           </div>

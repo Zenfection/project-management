@@ -3,6 +3,7 @@ export { User } from './lib/user/user.types';
 export { Plan, CreatePlan, UpdatePlan } from './lib/plan/plan.types';
 export { Task, CreateTask, UpdateTask } from './lib/task/task.types';
 export { Todo, CreateTodo, UpdateTodo } from './lib/task/todo.types';
+export { File, CreateFile, UpdateFile } from './lib/task/file.types';
 export { Member } from './lib/plan/member.types';
 export { Comment, CreateComment, UpdateComment } from './lib/task/comment.type';
 export { CategoryPlan } from './lib/plan/category.types';

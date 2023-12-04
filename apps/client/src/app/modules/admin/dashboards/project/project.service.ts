@@ -2,44 +2,38 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
 
-@Injectable({providedIn: 'root'})
-export class ProjectService
-{
-    private _data: BehaviorSubject<any> = new BehaviorSubject(null);
+@Injectable({ providedIn: 'root' })
+export class ProjectService {
+  private _data: BehaviorSubject<any> = new BehaviorSubject(null);
 
-    /**
-     * Constructor
-     */
-    constructor(private _httpClient: HttpClient)
-    {
-    }
+  /**
+   * Constructor
+   */
+  constructor(private _httpClient: HttpClient) {}
 
-    // -----------------------------------------------------------------------------------------------------
-    // @ Accessors
-    // -----------------------------------------------------------------------------------------------------
+  // -----------------------------------------------------------------------------------------------------
+  // @ Accessors
+  // -----------------------------------------------------------------------------------------------------
 
-    /**
-     * Getter for data
-     */
-    get data$(): Observable<any>
-    {
-        return this._data.asObservable();
-    }
+  /**
+   * Getter for data
+   */
+  get data$(): Observable<any> {
+    return this._data.asObservable();
+  }
 
-    // -----------------------------------------------------------------------------------------------------
-    // @ Public methods
-    // -----------------------------------------------------------------------------------------------------
+  // -----------------------------------------------------------------------------------------------------
+  // @ Public methods
+  // -----------------------------------------------------------------------------------------------------
 
-    /**
-     * Get data
-     */
-    getData(): Observable<any>
-    {
-        return this._httpClient.get('api/dashboards/project').pipe(
-            tap((response: any) =>
-            {
-                this._data.next(response);
-            }),
-        );
-    }
+  /**
+   * Get data
+   */
+  getData(): Observable<any> {
+    return this._httpClient.get('api/dashboards/project').pipe(
+      tap((response: any) => {
+        this._data.next(response);
+      }),
+    );
+  }
 }

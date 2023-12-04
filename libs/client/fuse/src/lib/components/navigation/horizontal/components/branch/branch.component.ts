@@ -24,7 +24,7 @@ export class FuseHorizontalNavigationBranchItemComponent implements OnInit, OnDe
     static ngAcceptInputType_child: BooleanInput;
     /* eslint-enable @typescript-eslint/naming-convention */
 
-    @Input() child = false;
+    @Input() child: boolean = false;
     @Input() item: FuseNavigationItem;
     @Input() name: string;
     @ViewChild('matMenu', {static: true}) matMenu: MatMenu;

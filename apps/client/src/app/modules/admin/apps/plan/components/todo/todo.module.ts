@@ -9,16 +9,16 @@ import { RouterLink } from '@angular/router';
 import { TranslocoModule } from '@ngneat/transloco';
 import { PushPipe } from '@ngrx/component';
 import { PlanTodoNotFoundComponent } from './components/not-found/not-found.component';
-import { PlanTodoModeEditComponent } from './mode/edit/plan-todo-mode-edit.component';
-import { PlanTodoModeViewComponent } from './mode/view/plan-todo-mode-view.component';
 import { PlanTodoComponent } from './todo.component';
+import { PlanTodoModeViewModule } from './mode/view/plan-todo.mode-view.module';
+import { PlanTodoModeEditModule } from './mode/edit/plan-todo-mode-edit.module';
 
 @NgModule({
   declarations: [PlanTodoComponent],
   imports: [
     PlanTodoNotFoundComponent,
-    PlanTodoModeViewComponent,
-    PlanTodoModeEditComponent,
+    PlanTodoModeViewModule,
+    PlanTodoModeEditModule,
     RouterLink,
     MatIconModule,
     MatSidenavModule,

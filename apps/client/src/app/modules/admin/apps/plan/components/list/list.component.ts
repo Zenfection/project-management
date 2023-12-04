@@ -9,7 +9,6 @@ import {
 import { MatDialog } from '@angular/material/dialog';
 import { MatSelectChange } from '@angular/material/select';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
-import { ActivatedRoute, Router } from '@angular/router';
 import { PlansFacade, UserFacade } from '@client/core-state';
 import { CategoryPlan, Plan, User } from '@client/shared/interfaces';
 import {
@@ -50,9 +49,7 @@ export class PlanListComponent implements OnInit, OnDestroy {
    * Constructor
    */
   constructor(
-    private _activatedRoute: ActivatedRoute,
     private _changeDetectorRef: ChangeDetectorRef,
-    private _router: Router,
     private _matDialog: MatDialog,
     private readonly _plansFacade: PlansFacade,
     private readonly _userFacade: UserFacade,
@@ -194,12 +191,9 @@ export class PlanListComponent implements OnInit, OnDestroy {
   }
 
   get permissionPlan(): Observable<boolean> {
-    return this.user$.pipe(
-      map((user) => {
-        const roles = user.roles.map((role) => role.name);
-        return roles.some(
-          (role) => role === 'TRUONG_KHOA' || role === 'THU_KY_KHOA',
-        );
+    return this._userFacade.isAdmin$.pipe(
+      map((isAdmin) => {
+        return isAdmin;
       }),
     );
   }

@@ -49,9 +49,10 @@
           "apps/client/src/styles/vendors.scss",
           "libs/client/fuse/src/lib/styles/main.scss",
           "apps/client/src/styles/styles.scss",
-          "apps/client/src/styles/tailwind.scss"
+          "apps/client/src/styles/tailwind.scss",
         ],
-        "scripts": []
+        "scripts": [
+        ]
       },
       "configurations": {
         "production": {

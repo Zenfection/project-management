@@ -1,4 +1,3 @@
-import { NgClass, NgFor, NgIf } from '@angular/common';
 import {
   Component,
   EventEmitter,
@@ -7,46 +6,16 @@ import {
   OnInit,
   Output,
 } from '@angular/core';
-import {
-  FormBuilder,
-  FormGroup,
-  FormsModule,
-  ReactiveFormsModule,
-  Validators,
-} from '@angular/forms';
-import { MatButtonModule } from '@angular/material/button';
-import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatIconModule } from '@angular/material/icon';
-import { MatInputModule } from '@angular/material/input';
-import { MatTooltipModule } from '@angular/material/tooltip';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TasksFacade } from '@client/core-state';
 import { Label, Task, UpdateTask } from '@client/shared/interfaces';
 import { fuseAnimations } from '@fuse/animations';
 import { FuseConfirmationService } from '@fuse/services/confirmation';
-import { TranslocoModule } from '@ngneat/transloco';
 import { Subject } from 'rxjs';
-import { PlanExtrasModule } from '../../../extras/extras.module';
 
 @Component({
   selector: 'plan-todo-mode-edit',
   templateUrl: './plan-todo-mode-edit.component.html',
-  standalone: true,
-  imports: [
-    PlanExtrasModule,
-    NgIf,
-    NgClass,
-    NgFor,
-    FormsModule,
-    ReactiveFormsModule,
-    MatIconModule,
-    MatButtonModule,
-    MatInputModule,
-    MatFormFieldModule,
-    MatTooltipModule,
-    MatDatepickerModule,
-    TranslocoModule,
-  ],
   animations: fuseAnimations,
 })
 export class PlanTodoModeEditComponent implements OnInit, OnDestroy {

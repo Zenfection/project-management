@@ -7,7 +7,7 @@ export const defaultNavigation: FuseNavigationItem[] = [
     title: 'Dashboard',
     type: 'basic',
     icon: 'duotone:gauge',
-    link: '/dashboards/project',
+    link: '/dashboards',
   },
   {
     id: 'project',
@@ -17,27 +17,34 @@ export const defaultNavigation: FuseNavigationItem[] = [
     link: '/plan',
   },
   {
-    id: 'Todo',
-    title: 'Todo',
-    type: 'group',
-    icon: 'duotone:clipboard-list-check',
-    children: [
-      {
-        id: 'tasks',
-        title: 'Tasks',
-        type: 'basic',
-        icon: 'duotone:list-check',
-        link: '/tasks',
-      },
-      {
-        id: 'scrumboard',
-        title: 'Scrumboard',
-        type: 'basic',
-        icon: 'duotone:square-kanban',
-        link: 'scrumboard/plan',
-      },
-    ],
+    id: 'scrumboard',
+    title: 'Scrumboard',
+    type: 'basic',
+    icon: 'duotone:square-kanban',
+    link: 'scrumboard/plan',
   },
+  // {
+  //   id: 'Todo',
+  //   title: 'Todo',
+  //   type: 'group',
+  //   icon: 'duotone:clipboard-list-check',
+  //   children: [
+  //     {
+  //       id: 'tasks',
+  //       title: 'Tasks',
+  //       type: 'basic',
+  //       icon: 'duotone:list-check',
+  //       link: '/tasks',
+  //     },
+  //     {
+  //       id: 'scrumboard',
+  //       title: 'Scrumboard',
+  //       type: 'basic',
+  //       icon: 'duotone:square-kanban',
+  //       link: 'scrumboard/plan',
+  //     },
+  //   ],
+  // },
   {
     id: 'settings',
     title: 'Settings',
@@ -52,7 +59,7 @@ export const compactNavigation: FuseNavigationItem[] = [
     title: 'Dashboard',
     type: 'basic',
     icon: 'duotone:gauge',
-    link: '/dashboards/project',
+    link: '/dashboards',
   },
   {
     id: 'project',
@@ -69,6 +76,7 @@ export const compactNavigation: FuseNavigationItem[] = [
     icon: 'duotone:list-check',
     link: '/tasks',
   },
+
   {
     id: 'scrumboard',
     title: 'Scrumboard',
@@ -91,7 +99,7 @@ export const futuristicNavigation: FuseNavigationItem[] = [
     title: 'Dashboard',
     type: 'basic',
     icon: 'duotone:gauge',
-    link: '/dashboards/project',
+    link: '/dashboards',
   },
   {
     id: 'project',
@@ -101,27 +109,34 @@ export const futuristicNavigation: FuseNavigationItem[] = [
     link: '/plan',
   },
   {
-    id: 'Todo',
-    title: 'Todo',
-    type: 'group',
-    icon: 'duotone:clipboard-list-check',
-    children: [
-      {
-        id: 'tasks',
-        title: 'Tasks',
-        type: 'basic',
-        icon: 'duotone:list-check',
-        link: '/tasks',
-      },
-      {
-        id: 'scrumboard',
-        title: 'Scrumboard',
-        type: 'basic',
-        icon: 'duotone:square-kanban',
-        link: 'scrumboard/plan',
-      },
-    ],
+    id: 'scrumboard',
+    title: 'Scrumboard',
+    type: 'basic',
+    icon: 'duotone:square-kanban',
+    link: 'scrumboard/plan',
   },
+  // {
+  //   id: 'Todo',
+  //   title: 'Todo',
+  //   type: 'group',
+  //   icon: 'duotone:clipboard-list-check',
+  //   children: [
+  //     {
+  //       id: 'tasks',
+  //       title: 'Tasks',
+  //       type: 'basic',
+  //       icon: 'duotone:list-check',
+  //       link: '/tasks',
+  //     },
+  //     {
+  //       id: 'scrumboard',
+  //       title: 'Scrumboard',
+  //       type: 'basic',
+  //       icon: 'duotone:square-kanban',
+  //       link: 'scrumboard/plan',
+  //     },
+  //   ],
+  // },
   {
     id: 'settings',
     title: 'Settings',
@@ -136,7 +151,7 @@ export const horizontalNavigation: FuseNavigationItem[] = [
     title: 'Dashboard',
     type: 'basic',
     icon: 'duotone:gauge',
-    link: '/dashboards/project',
+    link: '/dashboards',
   },
   {
     id: 'project',
@@ -146,27 +161,34 @@ export const horizontalNavigation: FuseNavigationItem[] = [
     link: '/plan',
   },
   {
-    id: 'Todo',
-    title: 'Todo',
-    type: 'group',
-    icon: 'duotone:clipboard-list-check',
-    children: [
-      {
-        id: 'tasks',
-        title: 'Tasks',
-        type: 'basic',
-        icon: 'duotone:list-check',
-        link: '/tasks',
-      },
-      {
-        id: 'scrumboard',
-        title: 'Scrumboard',
-        type: 'basic',
-        icon: 'duotone:square-kanban',
-        link: 'scrumboard/plan',
-      },
-    ],
+    id: 'scrumboard',
+    title: 'Scrumboard',
+    type: 'basic',
+    icon: 'duotone:square-kanban',
+    link: 'scrumboard',
   },
+  // {
+  //   id: 'Todo',
+  //   title: 'Todo',
+  //   type: 'group',
+  //   icon: 'duotone:clipboard-list-check',
+  //   children: [
+  //     {
+  //       id: 'tasks',
+  //       title: 'Tasks',
+  //       type: 'basic',
+  //       icon: 'duotone:list-check',
+  //       link: '/tasks',
+  //     },
+  //     {
+  //       id: 'scrumboard',
+  //       title: 'Scrumboard',
+  //       type: 'basic',
+  //       icon: 'duotone:square-kanban',
+  //       link: 'scrumboard/plan',
+  //     },
+  //   ],
+  // },
   {
     id: 'settings',
     title: 'Settings',

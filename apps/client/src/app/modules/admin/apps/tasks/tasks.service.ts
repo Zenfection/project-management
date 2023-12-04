@@ -1,8 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Tag, Task } from '../../../../modules/admin/apps/tasks/tasks.types';
+import { Task as TaskEntity } from '@client/shared/interfaces';
 import {
   BehaviorSubject,
+  catchError,
   filter,
   map,
   Observable,
@@ -12,6 +14,7 @@ import {
   tap,
   throwError,
 } from 'rxjs';
+import { TasksFacade } from '@client/core-state';
 
 @Injectable({ providedIn: 'root' })
 export class TasksService {
@@ -23,11 +26,28 @@ export class TasksService {
   /**
    * Constructor
    */
-  constructor(private _httpClient: HttpClient) {}
+  constructor(
+    private _httpClient: HttpClient,
+    private readonly _tasksFacade: TasksFacade,
+  ) {}
 
   // -----------------------------------------------------------------------------------------------------
   // @ Accessors
   // -----------------------------------------------------------------------------------------------------
+
+  /**
+   * Get Tasks
+   */
+  getAllTasks(): Observable<TaskEntity[]> {
+    return this._httpClient.get<TaskEntity[]>('api/tasks').pipe(
+      tap((response: TaskEntity[]) => {
+        this._tasksFacade.loadTasksSuccess(response);
+      }),
+      catchError((error) => {
+        return throwError(() => new Error(error));
+      }),
+    );
+  }
 
   /**
    * Getter for tags

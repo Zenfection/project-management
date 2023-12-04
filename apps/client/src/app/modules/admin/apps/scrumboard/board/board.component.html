@@ -13,7 +13,7 @@
     </div>
     <!-- Actions -->
     <div class="mt-6 flex shrink-0 items-center sm:ml-4 sm:mt-0">
-      <a mat-stroked-button [routerLink]="['..']">
+      <a mat-stroked-button [routerLink]="'/plan/' + (plan$ | ngrxPush).id">
         <mat-icon
           class="icon-size-5"
           [svgIcon]="'heroicons_solid:view-columns'"

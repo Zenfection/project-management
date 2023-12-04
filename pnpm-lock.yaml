@@ -117,8 +117,8 @@ importers:
         specifier: ~0.5.3
         version: 0.5.3
       apexcharts:
-        specifier: ^3.44.0
-        version: 3.44.0
+        specifier: ^3.44.1
+        version: 3.44.1
       axios:
         specifier: ^1.6.2
         version: 1.6.2
@@ -160,7 +160,7 @@ importers:
         version: 0.22.0(@nestjs/common@10.2.10)(@prisma/client@5.6.0)(prisma@5.6.0)
       ng-apexcharts:
         specifier: ^1.8.0
-        version: 1.8.0(@angular/common@17.0.5)(@angular/core@17.0.5)(apexcharts@3.44.0)(rxjs@7.8.1)
+        version: 1.8.0(@angular/common@17.0.5)(@angular/core@17.0.5)(apexcharts@3.44.1)(rxjs@7.8.1)
       ng-rive:
         specifier: ^0.3.1
         version: 0.3.1(@angular/common@17.0.5)(@angular/core@17.0.5)(rxjs@7.8.1)
@@ -185,6 +185,15 @@ importers:
       quill:
         specifier: ^1.3.7
         version: 1.3.7
+      quill-emoji:
+        specifier: ^0.2.0
+        version: 0.2.0(quill@1.3.7)
+      quill-image-resize-module:
+        specifier: ^3.0.0
+        version: 3.0.0
+      quill-mention:
+        specifier: ^4.1.0
+        version: 4.1.0
       reflect-metadata:
         specifier: ^0.1.13
         version: 0.1.13
@@ -8400,8 +8409,6 @@ packages:
     resolution: {integrity: sha512-S2Hw0TtNkMJhIabBwIojKL9YHO5T0n5eNqWJ7Lrlel/zDbftQpxpapi8tZs3X1HWa+u+QeydGmzzNU0m09+Rcg==}
     engines: {node: '>=0.4.2'}
     requiresBuild: true
-    dev: true
-    optional: true
 
   /ansi-colors@4.1.3:
     resolution: {integrity: sha512-/6w/C21Pm1A7aZitlI5Ni/2J6FFQN8i1Cvz3kHABAAbw93v/NlvKdVOqz7CCWz/3iv/JplRSEEZ83XION15ovw==}
@@ -8478,8 +8485,8 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
-  /apexcharts@3.44.0:
-    resolution: {integrity: sha512-u7Xzrbcxc2yWznN78Jh5NMCYVAsWDfBjRl5ea++rVzFAqjU2hLz4RgKIFwYOBDRQtW1e/Qz8azJTqIJ1+Vu9Qg==}
+  /apexcharts@3.44.1:
+    resolution: {integrity: sha512-nWd6bWf8E+c3YOsB0j0R4MOebMv1rBRWsK6aA11jF+pbag9IuBl4zrT4L42fxmDdLMcf5t3trWIXiGJmbLi2tA==}
     dependencies:
       '@yr/monotone-cubic-spline': 1.0.3
       svg.draggable.js: 2.2.2
@@ -9359,6 +9366,15 @@ packages:
       libphonenumber-js: 1.10.49
       validator: 13.11.0
 
+  /clean-css@3.4.28:
+    resolution: {integrity: sha512-aTWyttSdI2mYi07kWqHi24NUU9YlELFKGOAgFzZjDN1064DMAOy2FBuoyGmkKRlXkbpXd0EVHmiVkbKhKoirTw==}
+    engines: {node: '>=0.10.0'}
+    hasBin: true
+    dependencies:
+      commander: 2.8.1
+      source-map: 0.4.4
+    dev: false
+
   /clean-stack@2.2.0:
     resolution: {integrity: sha512-4diC9HaTE+KRAMWhDhrGOECgWZxoevMc5TlkObMqNSsVU62PYzXZ/SMTjzyGAFF1YusgxGcSWTEXBhp0CPwQ1A==}
     engines: {node: '>=6'}
@@ -9509,6 +9525,13 @@ packages:
 
   /commander@2.20.3:
     resolution: {integrity: sha512-GpVkmM8vF2vQUkj2LvZmD35JxeJOLCwJ9cUkugyk2nuhbv3+mJvpLYYt+0+USMxE+oj+ey/lJEnhZw75x/OMcQ==}
+
+  /commander@2.8.1:
+    resolution: {integrity: sha512-+pJLBFVk+9ZZdlAOB5WuIElVPPth47hILFkmGym57aq8kwxsowvByvB0DHs1vQAhyMZzdcpTtF0VDKGkSDR4ZQ==}
+    engines: {node: '>= 0.6.x'}
+    dependencies:
+      graceful-readlink: 1.0.1
+    dev: false
 
   /commander@4.1.1:
     resolution: {integrity: sha512-NOKm8xhkzAjzFx8B2v5OAHT+u5pRQc2UCa2Vq9jYL/31o2wi9mxBA7LIFs3sV5VSC49z6pEhfbMULvShKj26WA==}
@@ -10381,6 +10404,17 @@ packages:
   /emittery@0.13.1:
     resolution: {integrity: sha512-DeWwawk6r5yR9jFgnDKYt4sLS0LmHJJi3ZOnb5/JdbYwj3nW+FxQnHIjhBKz8YLC7oRNPVM9NQ47I3CVx34eqQ==}
     engines: {node: '>=12'}
+
+  /emoji-data-css@1.0.1:
+    resolution: {integrity: sha512-+fV7z7bDAMx4FrnC1YyIhi3yBURSkNETxwEstw7kl/cmwzF2vGiT0aRWipoWPtmM2fdD9ezvRai9DUEKBlT6YA==}
+    dependencies:
+      clean-css: 3.4.28
+      emoji-datasource: 2.4.4
+    dev: false
+
+  /emoji-datasource@2.4.4:
+    resolution: {integrity: sha512-Uyb23tvxUSlPiRQaK1ot+uOlLv1ivd/gcI8x+cqvLCRRMoan8waXXPrXU6UtASpORzcwCOA9dGlzqzLXw+WL7Q==}
+    dev: false
 
   /emoji-regex@8.0.0:
     resolution: {integrity: sha512-MSjYzcWNOA0ewAHpz0MxpYFvwg6yjy1NG3xteoqz644VCo/RPgnr1/GGt+ic3iJTzQ8Eu3TdM14SawnVUmGE6A==}
@@ -11424,6 +11458,11 @@ packages:
   /functions-have-names@1.2.3:
     resolution: {integrity: sha512-xckBUXyTIqT97tq2x2AMb+g163b5JFysYk0x4qxNFwbfQkmNZoiRHb6sPzI9/QV33WeuvVYBUIiD4NzNIyqaRQ==}
 
+  /fuse.js@3.6.1:
+    resolution: {integrity: sha512-hT9yh/tiinkmirKrlv4KWOjztdoZo1mx9Qh4KvWqC7isoXwdUY3PNWUxceF4/qO9R6riA2C29jdTOeQOIROjgw==}
+    engines: {node: '>=6'}
+    dev: false
+
   /gauge@3.0.2:
     resolution: {integrity: sha512-+5J6MS/5XksCuXq++uFRsnUd7Ovu1XenbeuIuNRJxYWjgQbPuFhT14lAvsWfqfAmnwluf1OwMjz39HjfLPci0Q==}
     engines: {node: '>=10'}
@@ -11627,6 +11666,10 @@ packages:
 
   /graceful-fs@4.2.11:
     resolution: {integrity: sha512-RbJ5/jmFcNNCcDV5o9eTnBLJ/HszWV0P73bc+Ff4nS/rJj+YaS6IGyiOL0VoBYX+l1Wrl3k63h/KrH+nhJ0XvQ==}
+
+  /graceful-readlink@1.0.1:
+    resolution: {integrity: sha512-8tLu60LgxF6XpdbK8OW3FA+IfTNBn1ZHGHKF4KQbEeSkajYw5PlYJcKluntgegDPTg8UkHjpet1T82vk6TQ68w==}
+    dev: false
 
   /graphemer@1.4.0:
     resolution: {integrity: sha512-EtKwoO6kxCL9WO5xipiHTZlSzBm7WLT627TqC/uVRd0HKmq8NXyebnNYxDoBi7wt8eTWrUrKXCOVaFq9x1kgag==}
@@ -13838,7 +13881,7 @@ packages:
     resolution: {integrity: sha512-CXdUiJembsNjuToQvxayPZF9Vqht7hewsvy2sOWafLvi2awflj9mOC6bHIg50orX8IJvWKY9wYQ/zB2kogPslQ==}
     dev: true
 
-  /ng-apexcharts@1.8.0(@angular/common@17.0.5)(@angular/core@17.0.5)(apexcharts@3.44.0)(rxjs@7.8.1):
+  /ng-apexcharts@1.8.0(@angular/common@17.0.5)(@angular/core@17.0.5)(apexcharts@3.44.1)(rxjs@7.8.1):
     resolution: {integrity: sha512-NwJuMLHoLm52LSzM08RXV6oOOTyUYREAV53WHVGs+L2qi8UWbxCz19hX0kk+F/xFLEhhuiLegO3T1v30jLbKSQ==}
     peerDependencies:
       '@angular/common': '>=13.0.0'
@@ -13848,7 +13891,7 @@ packages:
     dependencies:
       '@angular/common': 17.0.5(@angular/core@17.0.5)(rxjs@7.8.1)
       '@angular/core': 17.0.5(rxjs@7.8.1)(zone.js@0.14.2)
-      apexcharts: 3.44.0
+      apexcharts: 3.44.1
       rxjs: 7.8.1
       tslib: 2.6.2
     dev: false
@@ -15313,6 +15356,30 @@ packages:
       fast-diff: 1.1.2
     dev: false
 
+  /quill-emoji@0.2.0(quill@1.3.7):
+    resolution: {integrity: sha512-0kqHKTFA9hk1Vf5g32KBm/NYZal6n9N/ATmk13Hka/XYsgrEIaShSR84B5VMB7bg5o9+TMeIzc+wey5OP7hv+A==}
+    peerDependencies:
+      quill: ^1.3.5
+    dependencies:
+      emoji-data-css: 1.0.1
+      fuse.js: 3.6.1
+      quill: 1.3.7
+    dev: false
+
+  /quill-image-resize-module@3.0.0:
+    resolution: {integrity: sha512-1TZBnUxU/WIx5dPyVjQ9yN7C6mLZSp04HyWBEMqT320DIq4MW4JgzlOPDZX5ZpBM3bU6sacU4kTLUc8VgYQZYw==}
+    dependencies:
+      lodash: 4.17.21
+      quill: 1.3.7
+      raw-loader: 0.5.1
+    dev: false
+
+  /quill-mention@4.1.0:
+    resolution: {integrity: sha512-dT8HLYeuGU8yjjUr5SgdOusFSqQ7FQt/DWefz4V/L2omJsZ9CVYWepg3GyqV/evNDV7LQtfM7cadxtYD2bi2ew==}
+    dependencies:
+      quill: 1.3.7
+    dev: false
+
   /quill@1.3.7:
     resolution: {integrity: sha512-hG/DVzh/TiknWtE6QmWAF/pxoZKYxfe3J/d/+ShUWkDvvkZQVTPeVmUJVu1uE6DDooC4fWTiCLh84ul89oNz5g==}
     dependencies:
@@ -15364,6 +15431,10 @@ packages:
       http-errors: 2.0.0
       iconv-lite: 0.4.24
       unpipe: 1.0.0
+
+  /raw-loader@0.5.1:
+    resolution: {integrity: sha512-sf7oGoLuaYAScB4VGr0tzetsYlS8EJH6qnTCfQ/WVEa89hALQ4RQfCKt5xCyPQKPDUbVUAIP1QsxAwfAjlDp7Q==}
+    dev: false
 
   /react-is@18.2.0:
     resolution: {integrity: sha512-xWGDIW6x921xtzPkhiULtthJHoJvBbF3q26fzloPCK0hsvxtPVelvftw3zjbHWSkR2km9Z+4uxbDDK/6Zw9B8w==}
@@ -16144,6 +16215,13 @@ packages:
       amdefine: 1.0.1
     dev: true
     optional: true
+
+  /source-map@0.4.4:
+    resolution: {integrity: sha512-Y8nIfcb1s/7DcobUz1yOO1GSp7gyL+D9zLHDehT7iRESqGSxjJ448Sg7rvfgsRJCnKLdSl11uGf0s9X80cH0/A==}
+    engines: {node: '>=0.8.0'}
+    dependencies:
+      amdefine: 1.0.1
+    dev: false
 
   /source-map@0.5.7:
     resolution: {integrity: sha512-LbrmJOMUSdEVxIKvdcJzQC+nQhe8FUZQTXQy6+I75skNgn3OoQ0DZA8YnFa7gp8tqtL3KPf1kmo0R5DoApeSGQ==}

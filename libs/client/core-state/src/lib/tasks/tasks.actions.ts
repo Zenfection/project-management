@@ -77,7 +77,7 @@ export const updateTasksFailure = createAction(
 //! Update Todo
 export const updateTodo = createAction(
   '[TASKS] Update Temporary Task',
-  props<{ todo: Todo }>(),
+  props<{ todo: Partial<Todo> }>(),
 );
 
 export const updateTodoFailure = createAction(

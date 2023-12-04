@@ -15,11 +15,11 @@
             />
           </div>
           <div class="ml-4 flex min-w-0 flex-col">
-            <ng-container *transloco="let t">
+            <ng-container>
               <div
                 class="truncate text-2xl font-semibold leading-7 tracking-tight md:text-5xl md:leading-snug"
               >
-                {{ t('welcome-back') }}, {{ user.info.name }}
+                {{ 'welcome-back' | transloco }}, {{ user.info.name }}
               </div>
             </ng-container>
             <div class="flex items-center">
@@ -38,7 +38,7 @@
           </div>
         </div>
         <!-- Actions -->
-        <div class="mt-6 flex items-center space-x-3 sm:ml-2 sm:mt-0">
+        <!-- <div class="mt-6 flex items-center space-x-3 sm:ml-2 sm:mt-0">
           <button class="bg-accent" mat-flat-button [color]="'accent'">
             <mat-icon
               class="icon-size-5"
@@ -58,7 +58,7 @@
               >{{ t('Settings') }}</span
             >
           </button>
-        </div>
+        </div> -->
       </div>
       <!-- Project selector -->
       <div

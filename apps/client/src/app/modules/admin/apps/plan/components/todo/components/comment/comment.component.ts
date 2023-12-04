@@ -1,4 +1,3 @@
-import { MatButtonModule } from '@angular/material/button';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -7,58 +6,51 @@ import {
   OnInit,
   ViewEncapsulation,
 } from '@angular/core';
-import { MatIconModule } from '@angular/material/icon';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import {
-  FormBuilder,
-  FormsModule,
-  ReactiveFormsModule,
-  UntypedFormGroup,
-  Validators,
-} from '@angular/forms';
+import { FormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { TasksFacade, UserFacade } from '@client/core-state';
-import { Observable, Subject, map } from 'rxjs';
-import { CreateComment, Task, User } from '@client/shared/interfaces';
-import { LetDirective, PushPipe } from '@ngrx/component';
-import { MatInputModule } from '@angular/material/input';
-import { MatTooltipModule } from '@angular/material/tooltip';
-import { DatePipe, NgClass, NgFor, NgIf } from '@angular/common';
-import { MatDividerModule } from '@angular/material/divider';
-import { FuseCardComponent } from '@fuse';
-import { MatMenuModule } from '@angular/material/menu';
-import { TimeElapsedPipe } from '@tools';
+import { Comment, CreateComment, User } from '@client/shared/interfaces';
+import { Observable, Subject } from 'rxjs';
 
 @Component({
   selector: 'plan-todo-comment',
   templateUrl: './comment.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
-  standalone: true,
-  imports: [
-    MatButtonModule,
-    NgIf,
-    NgFor,
-    NgClass,
-    MatIconModule,
-    MatFormFieldModule,
-    MatMenuModule,
-    FormsModule,
-    ReactiveFormsModule,
-    MatInputModule,
-    MatDividerModule,
-    MatTooltipModule,
-    FuseCardComponent,
-    PushPipe,
-    LetDirective,
-    TimeElapsedPipe,
-    DatePipe,
-  ],
 })
 export class PlanTodoCommentComponent implements OnInit, OnDestroy {
-  @Input() task: Task;
+  @Input() comments: Comment[];
+  @Input() taskId: number;
+
+  selectedFile: File = null;
+  filePreview: string | ArrayBuffer;
+  minRows: number = 3;
+
+  quillModules: any = {
+    toolbar: [
+      ['bold', 'italic', 'underline'],
+      [{ align: [] }],
+      ['clean'],
+      ['link'],
+    ],
+  };
 
   user$: Observable<User> = this._userFacade.user$;
   CommentForm: UntypedFormGroup;
+
+  customImageUpload(image: ArrayBuffer): void {
+    console.log(image);
+  }
+
+  onFileSelected(event): void {
+    this.selectedFile = event.target.files[0];
+
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      this.filePreview = e.target.result;
+    };
+    reader.readAsDataURL(this.selectedFile);
+    this.minRows = 5;
+  }
 
   private userId: number;
   private _unsubscribeAll: Subject<any> = new Subject();
@@ -88,7 +80,7 @@ export class PlanTodoCommentComponent implements OnInit, OnDestroy {
     const dataComment: CreateComment = {
       content: this.CommentForm.value.content,
       task: {
-        connect: { id: this.task.id },
+        connect: { id: this.taskId },
       },
       user: {
         connect: { id: this.userId },

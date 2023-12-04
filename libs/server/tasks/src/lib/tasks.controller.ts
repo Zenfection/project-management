@@ -21,10 +21,25 @@ import {
   ActiveUserData,
 } from '@server/iam/feature/authentication/utils';
 import { CreateTaskDto, UpdateTaskDto } from '@server/shared/dto';
+import { RoleEnum } from '@server/shared/entities';
 
 @Controller('tasks')
 export class TasksController {
   constructor(private readonly tasksService: TasksService) {}
+
+  @Get()
+  async getTasks(@ActiveUser() user: ActiveUserData) {
+    return this.tasksService.findFilter({
+      where: { assignee: { email: user.email } },
+      include: {
+        labels: true,
+        todos: true,
+        comments: true,
+        files: true,
+        assignee: { select: { info: true } },
+      },
+    });
+  }
 
   @Get(':id')
   async getTask(@Param('id') id: string, @ActiveUser() user: ActiveUserData) {

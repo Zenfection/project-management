@@ -11,9 +11,10 @@ import {
 import { AuthGuard, NoAuthGuard } from '@client/core/auth';
 import { LayoutComponent } from './layout/layout.component';
 import { initialDataResolver } from './app.resolvers';
+import { AdminAccessGuard } from '@client/core/auth';
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: 'dashboards/project' },
+  { path: '', pathMatch: 'full', redirectTo: 'plan' },
 
   // After the user signs in, the sign-in page will redirect the user to the 'signed-in-redirect'
   // path. Below is another redirection for that path to redirect the user to the desired
@@ -21,7 +22,7 @@ const routes: Routes = [
   {
     path: 'signed-in-redirect',
     pathMatch: 'full',
-    redirectTo: 'dashboards/project',
+    redirectTo: 'dashboards',
   },
 
   // Auth routes for guests
@@ -126,15 +127,11 @@ const routes: Routes = [
     children: [
       {
         path: 'dashboards',
-        children: [
-          {
-            path: 'project',
-            loadChildren: () =>
-              import('./modules/admin/dashboards/project/project.module').then(
-                (m) => m.ProjectModule,
-              ),
-          },
-        ],
+        loadChildren: () =>
+          import('./modules/admin/dashboards/project/project.module').then(
+            (m) => m.ProjectModule,
+          ),
+        canActivate: [AdminAccessGuard],
       },
 
       {
@@ -158,13 +155,13 @@ const routes: Routes = [
         ],
       },
 
-      {
-        path: 'tasks',
-        loadChildren: () =>
-          import('./modules/admin/apps/tasks/tasks.module').then(
-            (m) => m.TasksModule,
-          ),
-      },
+      // {
+      //   path: 'tasks',
+      //   loadChildren: () =>
+      //     import('./modules/admin/apps/tasks/tasks.module').then(
+      //       (m) => m.TasksModule,
+      //     ),
+      // },
 
       {
         path: 'settings',

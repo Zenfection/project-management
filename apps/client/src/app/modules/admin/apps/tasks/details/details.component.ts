@@ -101,7 +101,7 @@ export class TasksDetailsComponent implements OnInit, AfterViewInit, OnDestroy {
     private _tasksListComponent: TasksListComponent,
     private _tasksService: TasksService,
     private _overlay: Overlay,
-    private _viewContainerRef: ViewContainerRef
+    private _viewContainerRef: ViewContainerRef,
   ) {}
 
   // -----------------------------------------------------------------------------------------------------
@@ -169,14 +169,14 @@ export class TasksDetailsComponent implements OnInit, AfterViewInit, OnDestroy {
     // Update task when there is a value change on the task form
     this.taskForm.valueChanges
       .pipe(
-        tap(value => {
+        tap((value) => {
           // Update the task object
           this.task = assign(this.task, value);
         }),
         debounceTime(300),
-        takeUntil(this._unsubscribeAll)
+        takeUntil(this._unsubscribeAll),
       )
-      .subscribe(value => {
+      .subscribe((value) => {
         // Update the task on the server
         this._tasksService.updateTask(value.id, value).subscribe();
 
@@ -188,7 +188,7 @@ export class TasksDetailsComponent implements OnInit, AfterViewInit, OnDestroy {
     this._router.events
       .pipe(
         takeUntil(this._unsubscribeAll),
-        filter(event => event instanceof NavigationEnd)
+        filter((event) => event instanceof NavigationEnd),
       )
       .subscribe(() => {
         // Focus on the title field
@@ -204,7 +204,7 @@ export class TasksDetailsComponent implements OnInit, AfterViewInit, OnDestroy {
     this._tasksListComponent.matDrawer.openedChange
       .pipe(
         takeUntil(this._unsubscribeAll),
-        filter(opened => opened)
+        filter((opened) => opened),
       )
       .subscribe(() => {
         // Focus on the title element
@@ -282,7 +282,7 @@ export class TasksDetailsComponent implements OnInit, AfterViewInit, OnDestroy {
     // Create a portal from the template
     const templatePortal = new TemplatePortal(
       this._tagsPanel,
-      this._viewContainerRef
+      this._viewContainerRef,
     );
 
     // Attach the portal to the overlay
@@ -330,8 +330,8 @@ export class TasksDetailsComponent implements OnInit, AfterViewInit, OnDestroy {
     const value = event.target.value.toLowerCase();
 
     // Filter the tags
-    this.filteredTags = this.tags.filter(tag =>
-      tag.title.toLowerCase().includes(value)
+    this.filteredTags = this.tags.filter((tag) =>
+      tag.title.toLowerCase().includes(value),
     );
   }
 
@@ -360,7 +360,7 @@ export class TasksDetailsComponent implements OnInit, AfterViewInit, OnDestroy {
 
     // If there is a tag...
     const tag = this.filteredTags[0];
-    const isTagApplied = this.task.tags.find(id => id === tag.id);
+    const isTagApplied = this.task.tags.find((id) => id === tag.id);
 
     // If the found tag is already applied to the task...
     if (isTagApplied) {
@@ -383,7 +383,7 @@ export class TasksDetailsComponent implements OnInit, AfterViewInit, OnDestroy {
     };
 
     // Create tag on the server
-    this._tasksService.createTag(tag).subscribe(response => {
+    this._tasksService.createTag(tag).subscribe((response) => {
       // Add the tag to the task
       this.addTagToTask(response);
     });
@@ -446,8 +446,8 @@ export class TasksDetailsComponent implements OnInit, AfterViewInit, OnDestroy {
   deleteTagFromTask(tag: Tag): void {
     // Remove the tag
     this.task.tags.splice(
-      this.task.tags.findIndex(item => item === tag.id),
-      1
+      this.task.tags.findIndex((item) => item === tag.id),
+      1,
     );
 
     // Update the task form
@@ -479,7 +479,7 @@ export class TasksDetailsComponent implements OnInit, AfterViewInit, OnDestroy {
     return !(
       inputValue === '' ||
       this.tags.findIndex(
-        tag => tag.title.toLowerCase() === inputValue.toLowerCase()
+        (tag) => tag.title.toLowerCase() === inputValue.toLowerCase(),
       ) > -1
     );
   }
@@ -521,14 +521,14 @@ export class TasksDetailsComponent implements OnInit, AfterViewInit, OnDestroy {
     });
 
     // Subscribe to the confirmation dialog closed action
-    confirmation.afterClosed().subscribe(result => {
+    confirmation.afterClosed().subscribe((result) => {
       // If the confirm button pressed...
       if (result === 'confirmed') {
         // Get the current task's id
         const id = this.task.id;
 
         // Get the next/previous task's id
-        const currentTaskIndex = this.tasks.findIndex(item => item.id === id);
+        const currentTaskIndex = this.tasks.findIndex((item) => item.id === id);
         const nextTaskIndex =
           currentTaskIndex +
           (currentTaskIndex === this.tasks.length - 1 ? -1 : 1);
@@ -538,7 +538,7 @@ export class TasksDetailsComponent implements OnInit, AfterViewInit, OnDestroy {
             : this.tasks[nextTaskIndex].id;
 
         // Delete the task
-        this._tasksService.deleteTask(id).subscribe(isDeleted => {
+        this._tasksService.deleteTask(id).subscribe((isDeleted) => {
           // Return if the task wasn't deleted...
           if (!isDeleted) {
             return;

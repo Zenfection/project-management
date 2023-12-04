@@ -11,6 +11,17 @@ export const planDetailsResolver: ResolveFn<[Plan, Task[]]> = (
   const planService = inject(PlanService);
   const router = inject(Router);
 
+  if (isNaN(Number(route.params.id))) {
+    // Get the parent url
+    const parentUrl = state.url.split('/').slice(0, -1).join('/');
+
+    // Navigate to there
+    router.navigateByUrl(parentUrl);
+
+    // Throw an error
+    return throwError(() => new Error('id not number'));
+  }
+
   return combineLatest([
     planService.getPlanById(route.paramMap.get('id')),
     planService.getPlanTasks(route.paramMap.get('id')),

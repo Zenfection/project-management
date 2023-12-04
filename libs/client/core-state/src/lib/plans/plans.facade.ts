@@ -9,6 +9,7 @@ import {
 } from '@client/shared/interfaces';
 import { Observable } from 'rxjs';
 import {
+  isOwnerSelectedPlan,
   selectAllPlans,
   selectCategories,
   selectPlanId,
@@ -23,6 +24,8 @@ export class PlansFacade {
   categories$: Observable<CategoryPlan[]> = this.store.select(selectCategories);
   selectedPlan$: Observable<Plan> = this.store.select(selectSelectedPlan);
   selectedPlanId$: Observable<number> = this.store.select(selectPlanId);
+  isOwnerSelectedPlan$: Observable<boolean> =
+    this.store.select(isOwnerSelectedPlan);
 
   constructor(private readonly store: Store) {}
 

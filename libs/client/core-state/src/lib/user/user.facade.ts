@@ -3,13 +3,14 @@ import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { User } from '@client/shared/interfaces';
 import { Observable } from 'rxjs';
-import { selectUser } from './user.selector';
+import { selectIsAdmin, selectUser } from './user.selector';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserFacade {
   user$: Observable<User> = this.store.select(selectUser);
+  isAdmin$: Observable<boolean> = this.store.select(selectIsAdmin);
 
   constructor(private readonly store: Store) {}
 

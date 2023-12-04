@@ -37,14 +37,14 @@ export class FuseVerticalNavigationComponent implements OnChanges, OnInit, After
     /* eslint-enable @typescript-eslint/naming-convention */
 
     @Input() appearance: FuseVerticalNavigationAppearance = 'default';
-    @Input() autoCollapse = true;
-    @Input() inner = false;
+    @Input() autoCollapse: boolean = true;
+    @Input() inner: boolean = false;
     @Input() mode: FuseVerticalNavigationMode = 'side';
     @Input() name: string = this._fuseUtilsService.randomId();
     @Input() navigation: FuseNavigationItem[];
-    @Input() opened = true;
+    @Input() opened: boolean = true;
     @Input() position: FuseVerticalNavigationPosition = 'left';
-    @Input() transparentOverlay = false;
+    @Input() transparentOverlay: boolean = false;
     @Output() readonly appearanceChanged: EventEmitter<FuseVerticalNavigationAppearance> = new EventEmitter<FuseVerticalNavigationAppearance>();
     @Output() readonly modeChanged: EventEmitter<FuseVerticalNavigationMode> = new EventEmitter<FuseVerticalNavigationMode>();
     @Output() readonly openedChanged: EventEmitter<boolean> = new EventEmitter<boolean>();
@@ -55,11 +55,11 @@ export class FuseVerticalNavigationComponent implements OnChanges, OnInit, After
     onCollapsableItemCollapsed: ReplaySubject<FuseNavigationItem> = new ReplaySubject<FuseNavigationItem>(1);
     onCollapsableItemExpanded: ReplaySubject<FuseNavigationItem> = new ReplaySubject<FuseNavigationItem>(1);
     onRefreshed: ReplaySubject<boolean> = new ReplaySubject<boolean>(1);
-    private _animationsEnabled = false;
+    private _animationsEnabled: boolean = false;
     private _asideOverlay: HTMLElement;
     private readonly _handleAsideOverlayClick: any;
     private readonly _handleOverlayClick: any;
-    private _hovered = false;
+    private _hovered: boolean = false;
     private _mutationObserver: MutationObserver;
     private _overlay: HTMLElement;
     private _player: AnimationPlayer;

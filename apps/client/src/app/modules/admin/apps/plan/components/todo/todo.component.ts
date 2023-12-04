@@ -89,16 +89,11 @@ export class PlanTodoComponent implements OnInit, OnDestroy, AfterViewInit {
   get permissionTodo(): Observable<boolean> {
     // chỉ trưởng khoa hoặc thư ký khoa, và chủ dự án này mới có quyền
     return combineLatest([
-      this._userFafacde.user$,
-      this._planFacade.selectedPlan$,
+      this._userFafacde.isAdmin$,
+      this._tasksFacade.isOwnerSelectedTask$,
     ]).pipe(
-      map(([user, plan]) => {
-        const roles = user.roles.map((role) => role.name);
-        return !(
-          roles.includes('TRUONG_KHOA') ||
-          roles.includes('THU_KY_KHOA') ||
-          user.info.email === plan.owner.info.email
-        );
+      map(([isAdmin, isOwner]) => {
+        return isAdmin || isOwner;
       }),
     );
   }

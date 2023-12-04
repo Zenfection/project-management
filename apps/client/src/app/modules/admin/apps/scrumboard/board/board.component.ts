@@ -123,14 +123,12 @@ export class ScrumboardBoardComponent implements OnInit, OnDestroy {
   }
 
   get permissionPlan(): Observable<boolean> {
-    return combineLatest([this._userFacade.user$, this.plan$]).pipe(
-      map(([user, plan]) => {
-        const roles = user.roles.map((role) => role.name);
-        return (
-          roles.includes('TRUONG_KHOA') ||
-          roles.includes('THU_KY_KHOA') ||
-          plan.owner.info.email === user.info.email
-        );
+    return combineLatest([
+      this._userFacade.isAdmin$,
+      this._plansFacade.isOwnerSelectedPlan$,
+    ]).pipe(
+      map(([isAdmin, isOwner]) => {
+        return isAdmin || isOwner;
       }),
     );
   }

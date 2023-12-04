@@ -21,7 +21,7 @@ export class FuseScrollbarDirective implements OnChanges, OnInit, OnDestroy
     static ngAcceptInputType_fuseScrollbar: BooleanInput;
     /* eslint-enable @typescript-eslint/naming-convention */
 
-    @Input() fuseScrollbar = true;
+    @Input() fuseScrollbar: boolean = true;
     @Input() fuseScrollbarOptions: PerfectScrollbar.Options;
 
     private _animation: number;
@@ -184,7 +184,7 @@ export class FuseScrollbarDirective implements OnChanges, OnInit, OnDestroy
      *
      * @param prefix
      */
-    geometry(prefix = 'scroll'): ScrollbarGeometry
+    geometry(prefix: string = 'scroll'): ScrollbarGeometry
     {
         return new ScrollbarGeometry(
             this._elementRef.nativeElement[prefix + 'Left'],
@@ -198,7 +198,7 @@ export class FuseScrollbarDirective implements OnChanges, OnInit, OnDestroy
      *
      * @param absolute
      */
-    position(absolute = false): ScrollbarPosition
+    position(absolute: boolean = false): ScrollbarPosition
     {
         let scrollbarPosition;
 
@@ -275,7 +275,7 @@ export class FuseScrollbarDirective implements OnChanges, OnInit, OnDestroy
      * @param offset
      * @param speed
      */
-    scrollToTop(offset = 0, speed?: number): void
+    scrollToTop(offset: number = 0, speed?: number): void
     {
         this.animateScrolling('scrollTop', offset, speed);
     }
@@ -286,7 +286,7 @@ export class FuseScrollbarDirective implements OnChanges, OnInit, OnDestroy
      * @param offset
      * @param speed
      */
-    scrollToBottom(offset = 0, speed?: number): void
+    scrollToBottom(offset: number = 0, speed?: number): void
     {
         const top = this._elementRef.nativeElement.scrollHeight - this._elementRef.nativeElement.clientHeight;
         this.animateScrolling('scrollTop', top - offset, speed);
@@ -298,7 +298,7 @@ export class FuseScrollbarDirective implements OnChanges, OnInit, OnDestroy
      * @param offset
      * @param speed
      */
-    scrollToLeft(offset = 0, speed?: number): void
+    scrollToLeft(offset: number = 0, speed?: number): void
     {
         this.animateScrolling('scrollLeft', offset, speed);
     }
@@ -309,7 +309,7 @@ export class FuseScrollbarDirective implements OnChanges, OnInit, OnDestroy
      * @param offset
      * @param speed
      */
-    scrollToRight(offset = 0, speed?: number): void
+    scrollToRight(offset: number = 0, speed?: number): void
     {
         const left = this._elementRef.nativeElement.scrollWidth - this._elementRef.nativeElement.clientWidth;
         this.animateScrolling('scrollLeft', left - offset, speed);
@@ -323,7 +323,7 @@ export class FuseScrollbarDirective implements OnChanges, OnInit, OnDestroy
      * @param ignoreVisible If true, scrollToElement won't happen if element is already inside the current viewport
      * @param speed
      */
-    scrollToElement(qs: string, offset = 0, ignoreVisible = false, speed?: number): void
+    scrollToElement(qs: string, offset: number = 0, ignoreVisible: boolean = false, speed?: number): void
     {
         const element = this._elementRef.nativeElement.querySelector(qs);
 

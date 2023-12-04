@@ -10,7 +10,7 @@ import { SettingsSecurityComponent } from './security/security.component';
 import { SettingsTeamComponent } from './team/team.component';
 import { RouterModule, Routes } from '@angular/router';
 import { SettingsComponent } from './settings.component';
-import { TranslocoModule } from '@ngneat/transloco';
+import { TranslocoModule, provideTranslocoScope } from '@ngneat/transloco';
 
 const routes: Routes = [
   {
@@ -37,7 +37,7 @@ const routes: Routes = [
     SettingsNotificationsComponent,
     SettingsTeamComponent,
   ],
-  providers: [],
+  providers: [provideTranslocoScope('settings')],
   exports: [SettingsComponent],
 })
 export class SettingsModule {}

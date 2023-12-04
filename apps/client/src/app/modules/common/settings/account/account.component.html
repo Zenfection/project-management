@@ -3,11 +3,11 @@
   <form [formGroup]="accountForm" *ngrxLet="user$ as user">
     <!-- Section -->
     <div class="w-full">
-      <div class="text-xl" *transloco="let t">
-        {{ t('settings.account.profile.title') }}
+      <div class="text-xl">
+        {{ 'settings.account.profile.title' | transloco }}
       </div>
-      <div class="text-secondary" *transloco="let t">
-        {{ t('settings.account.profile.description') }}
+      <div class="text-secondary">
+        {{ 'settings.account.profile.description' | transloco }}
       </div>
     </div>
     <div class="mt-8 grid w-full gap-6 sm:grid-cols-4">
@@ -120,14 +120,14 @@
           <input [formControlName]="'name'" matInput />
 
           <mat-error *ngIf="required('name')">
-            <span *transloco="let t">
-              {{ t('settings.account.name_required') }}
+            <span>
+              {{ 'settings.account.name_required' | transloco }}
             </span>
           </mat-error>
 
           <mat-error *ngIf="invalidName">
-            <span *transloco="let t">
-              {{ t('settings.account.name_invalid') }}
+            <span>
+              {{ 'settings.account.name_invalid' | transloco }}
             </span>
           </mat-error>
         </mat-form-field>
