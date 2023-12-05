@@ -4,6 +4,7 @@ import { Store } from '@ngrx/store';
 import {
   CategoryPlan,
   CreatePlan,
+  Member,
   Plan,
   UpdatePlan,
 } from '@client/shared/interfaces';
@@ -12,6 +13,7 @@ import {
   isOwnerSelectedPlan,
   selectAllPlans,
   selectCategories,
+  selectMembersSelectedPlan,
   selectPlanId,
   selectSelectedPlan,
 } from './plans.selector';
@@ -26,6 +28,9 @@ export class PlansFacade {
   selectedPlanId$: Observable<number> = this.store.select(selectPlanId);
   isOwnerSelectedPlan$: Observable<boolean> =
     this.store.select(isOwnerSelectedPlan);
+  selectMembersSelectedPlan$: Observable<Member[]> = this.store.select(
+    selectMembersSelectedPlan,
+  );
 
   constructor(private readonly store: Store) {}
 

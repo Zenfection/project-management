@@ -7,7 +7,6 @@ import * as TasksActions from './tasks.actions';
 export interface TasksState extends EntityState<Task> {
   selectedTaskId: number;
   labels: Label[];
-  nextPosition: number;
 }
 
 // 2 define the initial state
@@ -15,7 +14,6 @@ export const adapter: EntityAdapter<Task> = createEntityAdapter<Task>();
 export const initialTasksState: TasksState = adapter.getInitialState({
   selectedTaskId: null,
   labels: [],
-  nextPosition: 65535,
 });
 
 // 3 define the reducer function
@@ -30,11 +28,6 @@ export const tasksReducer = createReducer(
     labels: action.labels,
   })),
 
-  on(TasksActions.loadNextPosition, (state, action) => ({
-    ...state,
-    nextPosition: action.nextPosition,
-  })),
-
   on(TasksActions.selectTask, (state, action) => ({
     ...state,
     selectedTaskId: action.selectedTaskId,
@@ -45,6 +38,7 @@ export const tasksReducer = createReducer(
   }),
 
   on(TasksActions.updateTaskSuccess, (state, action): TasksState => {
+    console.log(action.task);
     return adapter.updateOne(
       {
         id: action.task.id,

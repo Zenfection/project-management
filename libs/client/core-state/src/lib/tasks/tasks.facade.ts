@@ -41,10 +41,6 @@ export class TasksFacade {
     this.store.dispatch(TasksActions.loadLabelsSuccess({ labels }));
   }
 
-  loadNextPosition(nextPosition: number): void {
-    this.store.dispatch(TasksActions.loadNextPosition({ nextPosition }));
-  }
-
   selectTask(selectedTaskId: number): void {
     this.store.dispatch(TasksActions.selectTask({ selectedTaskId }));
   }

@@ -1,45 +1,23 @@
 import {
-  AfterViewInit,
   ChangeDetectorRef,
   Component,
-  ElementRef,
   Inject,
   OnDestroy,
   OnInit,
-  ViewChild,
 } from '@angular/core';
-import {
-  FormBuilder,
-  FormControl,
-  UntypedFormGroup,
-  Validators,
-} from '@angular/forms';
+import { FormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { PlansFacade, TasksFacade } from '@client/core-state';
 import { CreateTask, Member, Task } from '@client/shared/interfaces';
 import { fuseAnimations } from '@fuse/animations';
-import { DateTime } from 'luxon';
-import {
-  Observable,
-  Subject,
-  debounceTime,
-  map,
-  of,
-  startWith,
-  takeUntil,
-} from 'rxjs';
+import { Observable, Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'plan-dialog-task',
   templateUrl: './plan-dialogs-task.component.html',
   animations: fuseAnimations,
 })
-export class PlanDialogsTaskComponent
-  implements OnInit, OnDestroy, AfterViewInit
-{
-  @ViewChild('ownerInput') ownerInput: ElementRef<HTMLInputElement>;
-  ownerSearch = new FormControl('');
-
+export class PlanDialogsTaskComponent implements OnInit, OnDestroy {
   taskForm: UntypedFormGroup;
   task: Task;
   members: Member[];
@@ -47,7 +25,7 @@ export class PlanDialogsTaskComponent
 
   filterMembers$: Observable<Member[]>;
 
-  private readonly _positionStep: number = 65536;
+  private nextPosition: number;
   private _unsubscribeAll: Subject<any> = new Subject<any>();
 
   constructor(
@@ -62,26 +40,7 @@ export class PlanDialogsTaskComponent
     this.task = this._data.task;
   }
 
-  private getNextPosition() {
-    this._taskFacade.tasks$
-      .pipe(
-        takeUntil(this._unsubscribeAll),
-        map((tasks) => {
-          // filter all tasks with status OPEN
-          const openTasks = tasks.filter((task) => task.status === 'OPEN');
-          return openTasks.length
-            ? openTasks[openTasks.length - 1].position + this._positionStep
-            : this._positionStep;
-        }),
-      )
-      .subscribe((position) => {
-        this._taskFacade.loadNextPosition(position);
-      });
-  }
-
   ngOnInit(): void {
-    this.filterMembers$ = of([]);
-
     // get members and planId
     this._planFacade.selectedPlan$
       .pipe(takeUntil(this._unsubscribeAll))
@@ -91,7 +50,11 @@ export class PlanDialogsTaskComponent
       });
 
     // Get Next Position
-    this.getNextPosition();
+    this._taskFacade.nextPosition$
+      .pipe(takeUntil(this._unsubscribeAll))
+      .subscribe((position) => {
+        this.nextPosition = position;
+      });
 
     // Edit Form
     if (this._data.task.id) {
@@ -125,49 +88,12 @@ export class PlanDialogsTaskComponent
     this._unsubscribeAll.complete();
   }
 
-  ngAfterViewInit(): void {
-    this.filterMembers$ = this.ownerSearch.valueChanges.pipe(
-      startWith(''),
-      map((value) => this._filter(value)),
-    );
+  selectAssignee(email: string): void {
+    this.taskForm.get('assignee').setValue(email);
   }
 
-  dueDateFilter = (d: Date | null): boolean => {
-    const date = d || new Date();
-
-    return date >= new Date();
-  };
-
-  private _filter(value: string): Member[] {
-    if (!this.members) {
-      return [];
-    }
-
-    if (typeof value === 'string') {
-      value = value
-        .toLowerCase()
-        .normalize('NFD')
-        .replace(/[\u0300-\u036f]/g, '');
-
-      return this.members.filter((member) =>
-        member.info.name
-          .toLowerCase()
-          .normalize('NFD')
-          .replace(/[\u0300-\u036f]/g, '')
-          .includes(value),
-      );
-    } else {
-      return this.members;
-    }
-  }
-
-  /**
-   * Check if the given date is overdue
-   */
-  isOverdue(date: string): boolean {
-    return (
-      DateTime.fromISO(date).startOf('day') < DateTime.now().startOf('day')
-    );
+  selectDueDate(date: Date): void {
+    this.taskForm.get('dueDate').setValue(date);
   }
 
   require(name: string) {
@@ -196,15 +122,10 @@ export class PlanDialogsTaskComponent
           id: this.planId,
         },
       },
-      position: 0,
+      position: this.nextPosition,
       priority: this.taskForm.get('priority').value,
       status: 'OPEN',
     };
-
-    // Get next position
-    this._taskFacade.nextPosition$.subscribe((position) => {
-      data.position = position;
-    });
 
     this._taskFacade.createTask(data);
     this.closeDialog();

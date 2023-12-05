@@ -1,4 +1,5 @@
 import {
+  ChangeDetectorRef,
   Component,
   EventEmitter,
   Input,
@@ -8,7 +9,7 @@ import {
 } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TasksFacade } from '@client/core-state';
-import { Label, Task, UpdateTask } from '@client/shared/interfaces';
+import { Label, Member, Task, UpdateTask } from '@client/shared/interfaces';
 import { fuseAnimations } from '@fuse/animations';
 import { FuseConfirmationService } from '@fuse/services/confirmation';
 import { Subject } from 'rxjs';
@@ -21,6 +22,7 @@ import { Subject } from 'rxjs';
 export class PlanTodoModeEditComponent implements OnInit, OnDestroy {
   @Input() permissionTodo: boolean;
   @Input() task: Task;
+  @Input() members: Member[];
   @Output() editMode: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   taskForm: FormGroup;
@@ -30,6 +32,7 @@ export class PlanTodoModeEditComponent implements OnInit, OnDestroy {
     private readonly _taskFacade: TasksFacade,
     private readonly _fuseConfirmationService: FuseConfirmationService,
     private _formBuilder: FormBuilder,
+    private _changeDetectorRef: ChangeDetectorRef,
   ) {}
 
   ngOnInit(): void {
@@ -53,6 +56,14 @@ export class PlanTodoModeEditComponent implements OnInit, OnDestroy {
   */
   toggleEditMode(value: boolean): void {
     this.editMode.emit(value);
+  }
+
+  selectAssignee(event: string): void {
+    this.taskForm.get('assignee').setValue(event);
+  }
+
+  selectDueDate(event: string): void {
+    this.taskForm.get('dueDate').setValue(event);
   }
 
   deleteTask(): void {
@@ -98,6 +109,7 @@ export class PlanTodoModeEditComponent implements OnInit, OnDestroy {
       },
     };
     this._taskFacade.updateTask(dataTask);
+    this._changeDetectorRef.markForCheck();
     this.toggleEditMode(false);
   }
 

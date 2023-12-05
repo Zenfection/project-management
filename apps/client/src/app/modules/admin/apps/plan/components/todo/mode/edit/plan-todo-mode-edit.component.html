@@ -14,10 +14,31 @@
   </mat-form-field>
 
   <!-- Labels -->
-  <plan-extras-labels
-    [task]="task"
-    (labelsChange)="taskForm.get('labels').patchValue($event)"
-  ></plan-extras-labels>
+  <div class="my-3 w-full">
+    <plan-extras-labels
+      [task]="task"
+      (labelsChange)="taskForm.get('labels').patchValue($event)"
+    ></plan-extras-labels>
+  </div>
+
+  <!-- DueToDate -->
+  <div class="my-3 w-full">
+    <plan-extras-dueto
+      [dueDate]="taskForm.get('dueDate').value"
+      (dueDateChange)="selectDueDate($event)"
+    ></plan-extras-dueto>
+  </div>
+
+  <!-- Assigned To -->
+  <div class="my-3 w-full">
+    <plan-extras-assign-to
+      class="w-full"
+      [members]="members"
+      [ownerEmail]="task.assignee.info.email"
+      (selectedMember)="selectAssignee($event)"
+    >
+    </plan-extras-assign-to>
+  </div>
 
   <!-- Description -->
   <mat-form-field class="my-3 w-full" [subscriptSizing]="'dynamic'">

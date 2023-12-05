@@ -12,6 +12,11 @@ export const selectSelectedPlan = createSelector(
   (planState: PlansState) => planState.entities[planState.selectedPlanId],
 );
 
+export const selectMembersSelectedPlan = createSelector(
+  selectSelectedPlan,
+  (selectedPlan) => selectedPlan.members,
+);
+
 export const isOwnerSelectedPlan = createSelector(
   selectSelectedPlan,
   selectUser,

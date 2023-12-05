@@ -1,0 +1,51 @@
+<div class="font-medium">Due date</div>
+<div
+  class="relative mt-1 flex cursor-pointer items-center rounded-md px-4 py-1.5 leading-9"
+  [ngClass]="{
+    'bg-gray-100 text-gray-500 dark:bg-gray-700 dark:text-gray-300': !dueDate,
+    'bg-green-200 text-green-800 dark:bg-green-500 dark:text-green-100':
+      dueDate && !isOverdue(dueDate.toString()),
+    'bg-red-200 text-red-800 dark:bg-red-500 dark:text-red-100':
+      dueDate && isOverdue(dueDate.toString())
+  }"
+  (click)="dueDatePicker.open()"
+  (keydown.enter)="dueDatePicker.open()"
+  tabindex="0"
+>
+  <mat-icon
+    class="icon-size-5 text-current"
+    [svgIcon]="'heroicons_solid:calendar'"
+  ></mat-icon>
+  <span class="text-md ml-2 font-medium">
+    <ng-container *ngIf="dueDate">{{
+      dueDate | date: 'longDate'
+    }}</ng-container>
+    <ng-container *ngIf="!dueDate">Not set</ng-container>
+  </span>
+  <mat-form-field
+    class="fuse-mat-dense pointer-events-none invisible absolute inset-0 -mt-2.5 opacity-0"
+    [subscriptSizing]="'dynamic'"
+  >
+    <input
+      placeholder="Due date"
+      matInput
+      [value]="dueDate"
+      (dateChange)="handleDueDateChange($event.value)"
+      [matDatepicker]="dueDatePicker"
+      [matDatepickerFilter]="dueDateFilter"
+    />
+    <mat-datepicker #dueDatePicker>
+      <mat-datepicker-actions>
+        <button type="button" mat-button matDatepickerCancel>Clear</button>
+        <button
+          type="button"
+          mat-flat-button
+          [color]="'primary'"
+          matDatepickerApply
+        >
+          Select
+        </button>
+      </mat-datepicker-actions>
+    </mat-datepicker>
+  </mat-form-field>
+</div>

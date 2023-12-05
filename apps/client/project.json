@@ -32,6 +32,8 @@
           "apps/client/src/favicon-16x16.png",
           "apps/client/src/favicon-32x32.png",
           "apps/client/src/assets",
+          "apps/client/src/assets/fonts",
+          "apps/client/src/assets/styles",
           {
             "glob": "_redirects",
             "input": "apps/client/src",
@@ -49,7 +51,7 @@
           "apps/client/src/styles/vendors.scss",
           "libs/client/fuse/src/lib/styles/main.scss",
           "apps/client/src/styles/styles.scss",
-          "apps/client/src/styles/tailwind.scss",
+          "apps/client/src/styles/tailwind.scss"
         ],
         "scripts": [
         ]
@@ -68,6 +70,7 @@
               "maximumError": "90kb"
             }
           ],
+          "optimization": true,
           "outputHashing": "all"
         },
         "development": {

@@ -2,16 +2,14 @@ import { OverlayRef } from '@angular/cdk/overlay';
 import {
   AfterViewInit,
   ChangeDetectionStrategy,
-  ChangeDetectorRef,
   Component,
   OnDestroy,
   OnInit,
   ViewEncapsulation,
 } from '@angular/core';
 import { MatDrawerToggleResult } from '@angular/material/sidenav';
-import { ActivatedRoute } from '@angular/router';
 import { PlansFacade, TasksFacade, UserFacade } from '@client/core-state';
-import { Task } from '@client/shared/interfaces';
+import { Member, Task } from '@client/shared/interfaces';
 import {
   Observable,
   Subject,
@@ -30,13 +28,12 @@ import { PlanDetailsComponent } from '../details/details.component';
 })
 export class PlanTodoComponent implements OnInit, OnDestroy, AfterViewInit {
   task$: Observable<Task> = this._tasksFacade.selectedTask$;
+  members$: Observable<Member[]> = this._plansFacade.selectMembersSelectedPlan$;
 
   constructor(
     private readonly _plansDetailsComponent: PlanDetailsComponent,
-    private _activatedRoute: ActivatedRoute,
-    private _changeDetectorRef: ChangeDetectorRef,
     private readonly _tasksFacade: TasksFacade,
-    private readonly _planFacade: PlansFacade,
+    private readonly _plansFacade: PlansFacade,
     private readonly _userFafacde: UserFacade,
   ) {}
 
@@ -83,11 +80,10 @@ export class PlanTodoComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   // -----------------------------------------------------------------------------------------------------
-  //! @ Public methods
+  // @ Public methods
   // -----------------------------------------------------------------------------------------------------
 
   get permissionTodo(): Observable<boolean> {
-    // chỉ trưởng khoa hoặc thư ký khoa, và chủ dự án này mới có quyền
     return combineLatest([
       this._userFafacde.isAdmin$,
       this._tasksFacade.isOwnerSelectedTask$,

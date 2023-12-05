@@ -1,4 +1,5 @@
 import {
+  AfterContentInit,
   ChangeDetectionStrategy,
   Component,
   Input,
@@ -17,39 +18,22 @@ import { Observable, Subject } from 'rxjs';
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
 })
-export class PlanTodoCommentComponent implements OnInit, OnDestroy {
+export class PlanTodoCommentComponent
+  implements OnInit, OnDestroy, AfterContentInit
+{
   @Input() comments: Comment[];
   @Input() taskId: number;
 
   selectedFile: File = null;
   filePreview: string | ArrayBuffer;
-  minRows: number = 3;
 
-  quillModules: any = {
-    toolbar: [
-      ['bold', 'italic', 'underline'],
-      [{ align: [] }],
-      ['clean'],
-      ['link'],
-    ],
-  };
+  quillModules: any;
 
   user$: Observable<User> = this._userFacade.user$;
   CommentForm: UntypedFormGroup;
 
   customImageUpload(image: ArrayBuffer): void {
     console.log(image);
-  }
-
-  onFileSelected(event): void {
-    this.selectedFile = event.target.files[0];
-
-    const reader = new FileReader();
-    reader.onload = (e) => {
-      this.filePreview = e.target.result;
-    };
-    reader.readAsDataURL(this.selectedFile);
-    this.minRows = 5;
   }
 
   private userId: number;
@@ -60,6 +44,17 @@ export class PlanTodoCommentComponent implements OnInit, OnDestroy {
     private readonly _tasksFacade: TasksFacade,
     private readonly _formBuilder: FormBuilder,
   ) {}
+
+  ngAfterContentInit(): void {
+    this.quillModules = {
+      toolbar: [
+        ['bold', 'italic', 'underline'],
+        [{ align: [] }],
+        ['clean'],
+        ['link'],
+      ],
+    };
+  }
 
   ngOnInit(): void {
     this.user$.subscribe((user) => {

@@ -37,6 +37,7 @@
         <plan-todo-mode-edit
           [permissionTodo]="permissionTodo | async"
           [task]="task$ | async"
+          [members]="members$ | async"
           (editMode)="editMode = $event"
         ></plan-todo-mode-edit>
       </ng-template>

@@ -1,7 +1,6 @@
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import {
   AfterContentInit,
-  ChangeDetectorRef,
   Component,
   ElementRef,
   Inject,

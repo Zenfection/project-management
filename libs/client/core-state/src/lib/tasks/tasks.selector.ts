@@ -13,10 +13,12 @@ export const selectLabels = createSelector(
   (tasksState: TasksState) => tasksState.labels,
 );
 
-export const selectNextPosition = createSelector(
-  selectTaskState,
-  (tasksState: TasksState) => tasksState.nextPosition,
-);
+export const selectNextPosition = createSelector(selectAllTasks, (tasks) => {
+  const openTasks = tasks.filter((task) => task.status === 'OPEN');
+  return openTasks.length
+    ? openTasks[openTasks.length - 1].position + 65536
+    : 65536;
+});
 
 export const selectSelectedTask = createSelector(
   selectTaskState,

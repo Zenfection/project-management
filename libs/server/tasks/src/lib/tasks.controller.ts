@@ -2,17 +2,13 @@ import {
   Body,
   Controller,
   Delete,
-  FileTypeValidator,
   Get,
   Param,
-  ParseFilePipe,
   Patch,
   Post,
   UnauthorizedException,
-  UploadedFile,
   UseInterceptors,
 } from '@nestjs/common';
-import { FileInterceptor } from '@nestjs/platform-express';
 import { TasksService } from './tasks.service';
 
 import { AvatarInterceptor } from '@server/cloud/utils';
@@ -21,7 +17,6 @@ import {
   ActiveUserData,
 } from '@server/iam/feature/authentication/utils';
 import { CreateTaskDto, UpdateTaskDto } from '@server/shared/dto';
-import { RoleEnum } from '@server/shared/entities';
 
 @Controller('tasks')
 export class TasksController {
@@ -109,13 +104,8 @@ export class TasksController {
   @UseInterceptors(AvatarInterceptor)
   async updateTask(
     @Param('id') id: string,
-    @ActiveUser() user: ActiveUserData,
     @Body() updateTaskDto: UpdateTaskDto,
   ) {
-    // if (await this.tasksService.checkPermission(user.email, Number(id))) {
-    //   throw new UnauthorizedException('Permission denied');
-    // }
-
     return this.tasksService.update({
       where: { id: Number(id) },
       data: updateTaskDto,
@@ -123,8 +113,15 @@ export class TasksController {
         labels: true,
         todos: true,
         files: true,
-        assignee: { include: { info: true } },
-        comments: true,
+        assignee: { select: { info: true } },
+        comments: {
+          select: {
+            user: { select: { info: true } },
+            content: true,
+            createdAt: true,
+            updatedAt: true,
+          },
+        },
       },
     });
   }

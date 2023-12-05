@@ -14,7 +14,7 @@ import { initialDataResolver } from './app.resolvers';
 import { AdminAccessGuard } from '@client/core/auth';
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: 'plan' },
+  { path: '', pathMatch: 'full', redirectTo: 'dashboards' },
 
   // After the user signs in, the sign-in page will redirect the user to the 'signed-in-redirect'
   // path. Below is another redirection for that path to redirect the user to the desired
@@ -193,13 +193,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  providers: [
-    provideRouter(
-      routes,
-      withPreloading(PreloadAllModules),
-      withInMemoryScrolling({ scrollPositionRestoration: 'enabled' }),
-    ),
-  ],
+  providers: [],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

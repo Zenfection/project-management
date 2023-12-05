@@ -65,38 +65,43 @@
     <div
       class="my-3 flex w-full flex-col items-center justify-center gap-4 px-2 sm:flex-row sm:px-4 md:px-8"
     >
-      <div class="w-full grow">
-        <mat-form-field
-          class="fuse-mat-dense w-full"
-          [subscriptSizing]="'dynamic'"
+      <!-- <div class="w-full grow">
+        <plan-extras-assign-to
+          [members]="allMembers"
+          [ownerEmail]="plan.owner.info.email"
         >
-          <mat-label>Assigned To</mat-label>
-          <mat-select [formControlName]="'owner'" class="py-3">
-            <mat-form-field class="my-3 w-full rounded-lg px-4 shadow-md">
-              <input
-                matInput
-                #ownerInput
-                [formControlName]="'temp'"
-                placeholder="Search..."
-              />
-            </mat-form-field>
-            @for (member of filteredOwner | async; track member) {
-              <mat-option [value]="member.info.email">
-                <div class="flex items-center justify-center gap-2">
-                  <img
-                    class="flex-0 h-8 w-8 rounded-full object-cover ring-1 ring-gray-500 ring-offset-1 ring-offset-gray-500"
-                    [src]="member.info.avatar"
-                    alt="Avatar Member"
-                  />
-                  <span class="text-base font-medium leading-5">{{
-                    member.info.name
-                  }}</span>
-                </div>
-              </mat-option>
-            }
-          </mat-select>
-        </mat-form-field>
-      </div>
+        </plan-extras-assign-to>
+      </div> -->
+      <mat-form-field
+        class="fuse-mat-dense w-full"
+        [subscriptSizing]="'dynamic'"
+      >
+        <mat-label>Assigned To</mat-label>
+        <mat-select [formControlName]="'owner'" class="py-3">
+          <mat-form-field class="my-3 w-full rounded-lg px-4 shadow-md">
+            <input
+              matInput
+              #ownerInput
+              [formControlName]="'temp'"
+              placeholder="Search..."
+            />
+          </mat-form-field>
+          @for (member of filteredOwner | async; track member) {
+            <mat-option [value]="member.info.email">
+              <div class="flex items-center justify-center gap-2">
+                <img
+                  class="flex-0 h-8 w-8 rounded-full object-cover ring-1 ring-gray-500 ring-offset-1 ring-offset-gray-500"
+                  [src]="member.info.avatar"
+                  alt="Avatar Member"
+                />
+                <span class="text-base font-medium leading-5">{{
+                  member.info.name
+                }}</span>
+              </div>
+            </mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
 
       <div class="w-full flex-none sm:w-auto">
         <mat-form-field

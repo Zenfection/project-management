@@ -1,24 +1,46 @@
-import { AsyncPipe, NgClass, NgFor, NgIf, PercentPipe } from '@angular/common';
+import {
+  AsyncPipe,
+  DatePipe,
+  NgClass,
+  NgFor,
+  NgIf,
+  PercentPipe,
+} from '@angular/common';
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { FuseCardComponent } from '@fuse';
 import { LetDirective, PushPipe } from '@ngrx/component';
-import { PlanTodoListCheckModule } from '../../components/list-check/list-check.module';
+import { TimeElapsedPipe } from '@tools';
+import { QuillModule } from 'ngx-quill';
+import { PlanTodoAttachFilesModule } from '../../components/attach-files/attach-files.module';
+import { PlanTodoCommentComponent } from '../../components/comment/comment.component';
+import { PlanTodoListCheckComponent } from '../../components/list-check/list-check.component';
 import { PlanTodoNotFoundComponent } from '../../components/not-found/not-found.component';
 import { PlanTodoModeViewComponent } from './plan-todo-mode-view.component';
-import { PlanTodoCommentModule } from '../../components/comment/comment.module';
-import { PlanTodoAttachFilesModule } from '../../components/attach-files/attach-files.module';
-import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   imports: [
+    QuillModule.forRoot(),
+    MatFormFieldModule,
+    ReactiveFormsModule,
+    FuseCardComponent,
+    TimeElapsedPipe,
+    DatePipe,
+    MatIconModule,
     PlanTodoNotFoundComponent,
-    PlanTodoListCheckModule,
     PlanTodoAttachFilesModule,
-    PlanTodoCommentModule,
     MatIconModule,
     MatButtonModule,
+    MatCheckboxModule,
+    MatInputModule,
+    FormsModule,
     MatTooltipModule,
     MatProgressBarModule,
     NgClass,
@@ -29,7 +51,15 @@ import { MatButtonModule } from '@angular/material/button';
     AsyncPipe,
     PercentPipe,
   ],
-  declarations: [PlanTodoModeViewComponent],
-  exports: [PlanTodoModeViewComponent],
+  declarations: [
+    PlanTodoModeViewComponent,
+    PlanTodoListCheckComponent,
+    PlanTodoCommentComponent,
+  ],
+  exports: [
+    PlanTodoModeViewComponent,
+    PlanTodoListCheckComponent,
+    PlanTodoCommentComponent,
+  ],
 })
 export class PlanTodoModeViewModule {}

@@ -10,8 +10,8 @@
     >
       <mat-icon class="icon-size-5" [svgIcon]="'duotone:pen'"></mat-icon>
     </button>
-    <h4 class="font-sans text-xs font-semibold uppercase text-slate-400">
-      Overview
+    <h4 class="text-md font-sans font-semibold uppercase text-slate-400">
+      Deadline: {{ (task$ | ngrxPush).dueDate | date: 'dd/MM/yyyy' }}
     </h4>
   </div>
   <!-- Task Status -->
@@ -37,6 +37,22 @@
     </div>
   </div>
 </div>
+
+<ng-container *ngIf="(task$ | ngrxPush).labels.length">
+  <div class="my-3 border-b border-slate-200 pb-6 dark:border-slate-700">
+    <div class="-mx-1 -mb-2 flex flex-wrap">
+      <ng-container
+        *ngFor="let label of (task$ | ngrxPush).labels; trackBy: trackByFn"
+      >
+        <div
+          class="mx-1 mb-2 rounded-full bg-gray-100 px-3 py-0.5 text-sm font-medium text-gray-500 dark:bg-gray-700 dark:text-gray-300"
+        >
+          {{ label.name }}
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</ng-container>
 
 <div
   class="border-b border-slate-200 pb-6 dark:border-slate-700"

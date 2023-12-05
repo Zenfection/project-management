@@ -1,0 +1,33 @@
+<mat-form-field
+  class="fuse-mat-dense w-full grow"
+  [subscriptSizing]="'dynamic'"
+>
+  <mat-label>Assigned To</mat-label>
+  <mat-select
+    [value]="ownerEmail"
+    class="py-3"
+    (selectionChange)="handleSelectionChange($event)"
+  >
+    <mat-form-field class="my-3 w-full rounded-lg px-4 shadow-md">
+      <input
+        matInput
+        #ownerInput
+        placeholder="Search..."
+        [formControl]="ownerSearch"
+      />
+    </mat-form-field>
+    <ng-container *ngIf="filterMembers$ | async as members">
+      <mat-option *ngFor="let member of members" [value]="member.info.email">
+        <div class="flex items-center justify-center gap-2 border-t-gray-400">
+          <img
+            class="h-8 w-8 rounded-full ring-1 ring-gray-500 ring-offset-1"
+            [src]="member.info.avatar"
+            alt="Avatar Member"
+          />
+
+          <span>{{ member.info.name }}</span>
+        </div>
+      </mat-option>
+    </ng-container>
+  </mat-select>
+</mat-form-field>

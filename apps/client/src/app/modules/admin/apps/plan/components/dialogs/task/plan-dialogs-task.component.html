@@ -39,64 +39,10 @@
 
       <!-- Due date -->
       <div class="w-full flex-none sm:w-auto">
-        <div class="font-medium">Due date</div>
-        <div
-          class="relative mt-1 flex cursor-pointer items-center rounded-md px-4 py-1.5 leading-9"
-          [ngClass]="{
-            'bg-gray-100 text-gray-500 dark:bg-gray-700 dark:text-gray-300':
-              !task.dueDate,
-            'bg-green-200 text-green-800 dark:bg-green-500 dark:text-green-100':
-              task.dueDate && !isOverdue(task.dueDate.toString()),
-            'bg-red-200 text-red-800 dark:bg-red-500 dark:text-red-100':
-              task.dueDate && isOverdue(task.dueDate.toString())
-          }"
-          (click)="dueDatePicker.open()"
-          (keydown.enter)="dueDatePicker.open()"
-          tabindex="0"
-        >
-          <mat-icon
-            class="icon-size-5 text-current"
-            [svgIcon]="'heroicons_solid:calendar'"
-          ></mat-icon>
-          <span class="text-md ml-2 font-medium">
-            <ng-container *ngIf="task.dueDate">{{
-              task.dueDate | date: 'longDate'
-            }}</ng-container>
-            <ng-container *ngIf="!task.dueDate">Not set</ng-container>
-          </span>
-          <mat-form-field
-            class="fuse-mat-dense pointer-events-none invisible absolute inset-0 -mt-2.5 opacity-0"
-            [subscriptSizing]="'dynamic'"
-          >
-            <input
-              placeholder="Due date"
-              matInput
-              [formControlName]="'dueDate'"
-              [matDatepicker]="dueDatePicker"
-              [matDatepickerFilter]="dueDateFilter"
-            />
-            <mat-datepicker #dueDatePicker>
-              <mat-datepicker-actions>
-                <button
-                  type="button"
-                  mat-button
-                  (click)="taskForm.get('dueDate').setValue(null)"
-                  matDatepickerCancel
-                >
-                  Clear
-                </button>
-                <button
-                  type="button"
-                  mat-flat-button
-                  [color]="'primary'"
-                  matDatepickerApply
-                >
-                  Select
-                </button>
-              </mat-datepicker-actions>
-            </mat-datepicker>
-          </mat-form-field>
-        </div>
+        <plan-extras-dueto
+          [dueDate]="task.dueDate"
+          (dueDateChange)="selectDueDate($event)"
+        ></plan-extras-dueto>
       </div>
     </div>
 
@@ -128,40 +74,13 @@
     <div
       class="my-3 flex w-full flex-col items-center justify-center gap-4 sm:flex-row sm:px-4 md:px-8"
     >
-      <mat-form-field
-        class="fuse-mat-dense w-full grow"
-        [subscriptSizing]="'dynamic'"
+      <plan-extras-assign-to
+        class="w-full"
+        [members]="members"
+        (selectedMember)="selectAssignee($event)"
       >
-        <mat-label>Assigned To</mat-label>
-        <mat-select [formControlName]="'assignee'" class="py-3">
-          <mat-form-field class="my-3 w-full rounded-lg px-4 shadow-md">
-            <input
-              matInput
-              #ownerInput
-              placeholder="Search..."
-              [formControl]="ownerSearch"
-            />
-          </mat-form-field>
-          <ng-container *ngIf="filterMembers$ | async as members">
-            <mat-option
-              *ngFor="let member of members"
-              [value]="member.info.email"
-            >
-              <div
-                class="flex items-center justify-center gap-2 border-t-gray-400"
-              >
-                <img
-                  class="h-8 w-8 rounded-full ring-1 ring-gray-500 ring-offset-1"
-                  [src]="member.info.avatar"
-                  alt="Avatar Member"
-                />
+      </plan-extras-assign-to>
 
-                <span>{{ member.info.name }}</span>
-              </div>
-            </mat-option>
-          </ng-container>
-        </mat-select>
-      </mat-form-field>
       <div class="w-full flex-none sm:w-auto">
         <mat-form-field
           class="fuse-mat-dense w-full"

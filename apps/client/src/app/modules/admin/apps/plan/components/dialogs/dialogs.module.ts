@@ -17,15 +17,14 @@ import { MatSelectModule } from '@angular/material/select';
 import { TranslocoModule } from '@ngneat/transloco';
 import { PlanDialogsPlanComponent } from './plan/plan-dialog-plan.component';
 import { PlanDialogsTaskComponent } from './task/plan-dialogs-task.component';
+import { PlanExtrasModule } from '../extras/extras.module';
 
 @NgModule({
   declarations: [PlanDialogsTaskComponent, PlanDialogsPlanComponent],
   imports: [
+    PlanExtrasModule,
     MatDividerModule,
     MatAutocompleteModule,
-    NgIf,
-    NgFor,
-    NgClass,
     ReactiveFormsModule,
     FormsModule,
     MatInputModule,
@@ -41,6 +40,9 @@ import { PlanDialogsTaskComponent } from './task/plan-dialogs-task.component';
     MatOptionModule,
     TextFieldModule,
     TranslocoModule,
+    NgIf,
+    NgFor,
+    NgClass,
     AsyncPipe,
     DatePipe,
   ],

@@ -1,65 +1,69 @@
-<fuse-card class="filter-post filter-interactive flex w-full flex-col">
-  <ng-container>
-    <hr class="m-0 border-b" />
-    <form [formGroup]="CommentForm" class="px-3 py-4">
-      <div class="relative">
-        <quill-editor
-          class="w-full"
-          [formControlName]="'content'"
-          [bounds]="'self'"
-          [modules]="quillModules"
-        >
-        </quill-editor>
-
-        <button
-          type="submit"
-          mat-icon-button
-          class="absolute bottom-0 right-0 m-3"
-          [disabled]="!CommentForm.valid"
-          (click)="onSubmit()"
-        >
-          <mat-icon
-            class="icon-size-5 z-10 cursor-pointer"
-            [ngClass]="{ 'text-blue-800 opacity-100': CommentForm.valid }"
-            [svgIcon]="'duotone:paper-plane-top'"
-          ></mat-icon>
-        </button>
-      </div>
-    </form>
-
-    <hr class="mx-4 my-0 border-b sm:mx-8" />
-
-    <div class="max-h-120 overflow-y-auto">
-      <div
-        class="relative mx-4 my-6 flex flex-col sm:mx-8"
-        *ngFor="let comment of comments; let i = index"
+<div class="border-b border-slate-200 py-6 dark:border-slate-700">
+  <div class="font-sans text-sm font-semibold uppercase text-slate-400">
+    Comments ({{ comments.length }})
+  </div>
+  <form [formGroup]="CommentForm" class="px-3 py-4">
+    <div class="relative">
+      <quill-editor
+        class="w-full"
+        [formControlName]="'content'"
+        [bounds]="'Monospace'"
+        [modules]="quillModules"
       >
-        <div class="flex items-start">
-          <img
-            class="mr-4 h-8 w-8 rounded-full"
-            [src]="comment.user.info.avatar"
-            [matTooltip]="comment.user.info.name"
-            alt="Card cover image"
-          />
-          <div class="mt-0.5 flex flex-col">
-            <span class="font-semibold">
-              {{ comment.user.info.name }}
-            </span>
+      </quill-editor>
 
-            <quill-view
-              class="leading-6"
-              [innerHTML]="comment.content"
-            ></quill-view>
+      <button
+        type="submit"
+        mat-icon-button
+        class="absolute bottom-0 right-0 m-3"
+        [disabled]="!CommentForm.valid"
+        (click)="onSubmit()"
+      >
+        <mat-icon
+          class="icon-size-5 z-10 cursor-pointer"
+          [ngClass]="{ 'text-blue-800 opacity-100': CommentForm.valid }"
+          [svgIcon]="'duotone:paper-plane-top'"
+        ></mat-icon>
+      </button>
+    </div>
+  </form>
+  <hr class="mx-4 my-1 border-b sm:mx-8" />
+  <fuse-card
+    class="filter-post bg-card hover:bg-hover filter-interactive flex w-full flex-col border-b border-slate-200 py-6 dark:border-slate-700"
+  >
+    <ng-container>
+      <div class="max-h-120 overflow-y-auto">
+        <div
+          class="relative mx-4 my-6 flex flex-col sm:mx-8"
+          *ngFor="let comment of comments; let i = index"
+        >
+          <div class="flex items-start">
+            <img
+              class="mr-4 h-8 w-8 rounded-full"
+              [src]="comment.user.info.avatar"
+              [matTooltip]="comment.user.info.name"
+              alt="Card cover image"
+            />
+            <div class="mt-0.5 flex flex-col">
+              <span class="font-semibold">
+                {{ comment.user.info.name }}
+              </span>
 
-            <div class="text-secondary mt-2 flex items-center text-sm">
-              <span class="mr-2 cursor-pointer hover:underline">Like</span>
-              <span class="mr-2 cursor-pointer hover:underline">Reply</span>
-              <span class="mr-2">&bull;</span>
-              <span>{{ comment.createdAt | timeElapsed }}</span>
+              <quill-view
+                class="leading-6"
+                [innerHTML]="comment.content"
+              ></quill-view>
+
+              <div class="text-secondary mt-2 flex items-center text-sm">
+                <span class="mr-2 cursor-pointer hover:underline">Like</span>
+                <span class="mr-2 cursor-pointer hover:underline">Reply</span>
+                <span class="mr-2">&bull;</span>
+                <span>{{ comment.createdAt | timeElapsed }}</span>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </ng-container>
-</fuse-card>
+    </ng-container>
+  </fuse-card>
+</div>
