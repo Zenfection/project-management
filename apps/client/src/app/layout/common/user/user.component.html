@@ -39,9 +39,7 @@
     </button>
     <button mat-menu-item>
       <mat-icon [svgIcon]="'duotone:gear'"></mat-icon>
-      <span [routerLink]="['/settings']" *transloco="let t">{{
-        t('Settings')
-      }}</span>
+      <a [routerLink]="['/settings']">{{ 'Settings' | transloco }}</a>
     </button>
     <button mat-menu-item [matMenuTriggerFor]="userStatus">
       <mat-icon

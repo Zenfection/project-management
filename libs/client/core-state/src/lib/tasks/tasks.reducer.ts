@@ -38,7 +38,6 @@ export const tasksReducer = createReducer(
   }),
 
   on(TasksActions.updateTaskSuccess, (state, action): TasksState => {
-    console.log(action.task);
     return adapter.updateOne(
       {
         id: action.task.id,

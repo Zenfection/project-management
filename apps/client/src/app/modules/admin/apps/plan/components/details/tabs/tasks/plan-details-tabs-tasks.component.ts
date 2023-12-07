@@ -1,4 +1,10 @@
-import { Component, Input, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Input,
+  OnInit,
+  ViewEncapsulation,
+} from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { TasksFacade } from '@client/core-state';
 import { Task } from '@client/shared/interfaces';
@@ -8,6 +14,8 @@ import { PlanDialogsTaskComponent } from '../../../dialogs/task/plan-dialogs-tas
 @Component({
   selector: 'plan-details-tabs-tasks',
   templateUrl: './plan-details-tabs-tasks.component.html',
+  encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PlanDetailsTabsTasksComponent implements OnInit {
   tasks$: Observable<Task[]> = this._taskFacade.tasks$;

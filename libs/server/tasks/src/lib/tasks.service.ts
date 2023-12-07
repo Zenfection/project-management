@@ -96,7 +96,6 @@ export class TasksService {
   }
 
   remove(where: Prisma.TaskWhereUniqueInput) {
-    console.log(where);
     return this.prismaService.task.delete({
       where,
     });

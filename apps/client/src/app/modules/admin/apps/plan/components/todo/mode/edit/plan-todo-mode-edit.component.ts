@@ -90,7 +90,6 @@ export class PlanTodoModeEditComponent implements OnInit, OnDestroy {
   }
 
   updateTask(): void {
-    console.log(this.taskForm.get('labels').value);
     const dataTask: UpdateTask = {
       title: this.taskForm.value.title,
       description: this.taskForm.value.description,

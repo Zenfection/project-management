@@ -7,7 +7,7 @@ import {
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { throwError, Observable } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { catchError, switchMap } from 'rxjs/operators';
 import { AuthService } from './auth.service';
 import { AuthUtils } from './auth.utils';
 
@@ -36,11 +36,44 @@ export class AuthInterceptor implements HttpInterceptor {
     return next.handle(newReq).pipe(
       catchError((error: HttpErrorResponse) => {
         if (error.status === 401) {
-          this.authService.signOut();
-          location.reload();
+          if (
+            this.authService.refreshToken &&
+            !AuthUtils.isTokenExpired(this.authService.refreshToken)
+          ) {
+            return this.authService.refreshTokenWhenExpired().pipe(
+              switchMap(() => {
+                // Retry the failed request with the new access token
+                newReq = newReq = req.clone({
+                  headers: req.headers.set(
+                    'Authorization',
+                    'Bearer ' + this.authService.accessToken,
+                  ),
+                });
+                return next.handle(newReq);
+              }),
+              catchError((error) => {
+                this.authService.signOut();
+                location.reload();
+                return throwError(() => new Error(error));
+              }),
+            );
+          } else {
+            this.authService.signOut();
+            location.reload();
+          }
         }
         return throwError(() => new Error(error.message));
       }),
     );
+
+    // return next.handle(newReq).pipe(
+    //   catchError((error: HttpErrorResponse) => {
+    //     if (error.status === 401) {
+    //       this.authService.signOut();
+    //       location.reload();
+    //     }
+    //     return throwError(() => new Error(error.message));
+    //   }),
+    // );
   }
 }

@@ -3,10 +3,7 @@ import { CanActivateChildFn, CanActivateFn, Router } from '@angular/router';
 import { UserFacade } from '@client/core-state';
 import { map } from 'rxjs';
 
-export const AdminAccessGuard: CanActivateFn | CanActivateChildFn = (
-  route,
-  state,
-) => {
+export const AdminAccessGuard: CanActivateFn | CanActivateChildFn = () => {
   const router: Router = inject(Router);
   const userFacade = inject(UserFacade);
 
@@ -16,7 +13,7 @@ export const AdminAccessGuard: CanActivateFn | CanActivateChildFn = (
         return true;
       }
 
-      router.navigate(['/']);
+      router.navigate(['/plan']);
       return false;
     }),
   );

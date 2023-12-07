@@ -3,7 +3,16 @@ import { Injectable } from '@angular/core';
 import { SettingFacade, UserFacade } from '@client/core-state';
 import { Setting, User } from '@client/shared/interfaces';
 import { UserService } from '@client/shared/services';
-import { catchError, Observable, of, switchMap, throwError } from 'rxjs';
+import {
+  Observable,
+  catchError,
+  map,
+  of,
+  retry,
+  switchMap,
+  tap,
+  throwError,
+} from 'rxjs';
 import { AuthUtils } from './auth.utils';
 
 @Injectable({ providedIn: 'root' })
@@ -122,15 +131,10 @@ export class AuthService {
         accessToken: this.accessToken,
       })
       .pipe(
+        retry(3),
         catchError(() => of(false)),
         switchMap((response: any) => {
-          // Replace the access token with the new one if it's available on
-          // the response object.
-          //
-          // This is an added optional step for better security. Once you sign
-          // in using the token, you should generate a new one on the server
-          // side and attach it to the response object. Then the following
-          // piece of code can replace the token with the refreshed one.
+          // store accessToken and reFreshToken
           if (response.accessToken) {
             this.accessToken = response.accessToken;
           }
@@ -216,35 +220,37 @@ export class AuthService {
     if (this._authenticated) return of(true);
 
     // Check the access token availability
-    if (!this.accessToken) return of(false);
-
-    // Check the access token expire date
-    if (AuthUtils.isTokenExpired(this.accessToken)) {
-      return this._httpClient
-        .post('api/authentication/refresh-token', {
-          refreshToken: this.refreshToken,
-        })
-        .pipe(
-          switchMap((response: any) => {
-            // Store the access and refresh tokens in the local storage
-            this.accessToken = response.accessToken;
-            this.refreshToken = response.refreshToken;
-
-            // Set the authenticated flag to true
-            this._authenticated = true;
-
-            // refresh page
-            window.location.reload();
-
-            // Return true
-            return of(true);
-          }),
-        );
-      // return of(false);
-      // this.
+    if (!this.accessToken) {
+      // Check the access token expire date
+      if (AuthUtils.isTokenExpired(this.accessToken) && this.refreshToken) {
+        return this.refreshTokenWhenExpired();
+      }
+      return of(false);
     }
 
     // If the access token exists, and it didn't expire, sign in using it
     return this.signInUsingToken();
+  }
+
+  refreshTokenWhenExpired(): Observable<boolean> {
+    return this._httpClient
+      .post('api/authentication/refresh-token', {
+        refreshToken: this.refreshToken,
+      })
+      .pipe(
+        tap((response: any) => {
+          // Store the access and refresh tokens in the local storage
+          if (response.accessToken) {
+            this.accessToken = response.accessToken;
+          }
+          if (response.refreshToken) {
+            this.refreshToken = response.refreshToken;
+          }
+          // Set the authenticated flag to true
+          this._authenticated = true;
+        }),
+        map(() => true),
+        catchError(() => of(false)),
+      );
   }
 }

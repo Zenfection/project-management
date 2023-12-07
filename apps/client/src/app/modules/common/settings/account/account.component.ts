@@ -2,7 +2,6 @@ import { TextFieldModule } from '@angular/cdk/text-field';
 import { NgFor, NgIf } from '@angular/common';
 import {
   ChangeDetectionStrategy,
-  ChangeDetectorRef,
   Component,
   OnInit,
   ViewEncapsulation,
@@ -20,16 +19,17 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
-import { FuseCardComponent } from '@fuse/components/card';
-import { TranslocoModule } from '@ngneat/transloco';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { UserFacade } from '@client/core-state';
 import { User } from '@client/shared/interfaces';
-import { SettingAccountValidator } from './account.validator';
+import { ValidateFormsService } from '@client/shared/services';
 import { FuseAlertService } from '@fuse/components/alert';
 import { FuseAlertComponent } from '@fuse/components/alert/alert.component';
-import { MatTooltipModule } from '@angular/material/tooltip';
-import { Observable } from 'rxjs';
+import { FuseCardComponent } from '@fuse/components/card';
+import { TranslocoModule } from '@ngneat/transloco';
 import { LetDirective } from '@ngrx/component';
-import { UserFacade } from '@client/core-state';
+import { Observable } from 'rxjs';
+import { SettingAccountValidator } from './account.validator';
 
 @Component({
   selector: 'settings-account',
@@ -66,8 +66,8 @@ export class SettingsAccountComponent implements OnInit {
    */
   constructor(
     private _formBuilder: UntypedFormBuilder,
-    private _changeDetectorRef: ChangeDetectorRef,
     private _fuseAlertService: FuseAlertService,
+    private readonly _validateFormsService: ValidateFormsService,
     private readonly _userFacade: UserFacade,
   ) {}
 
@@ -133,26 +133,19 @@ export class SettingsAccountComponent implements OnInit {
   }
 
   required(name: string): boolean {
-    return this.accountForm.get(name).hasError('required');
+    return this._validateFormsService.required(this.accountForm.get(name));
   }
 
   minLength(name: string): boolean {
-    return (
-      this.accountForm.get(name).hasError('minlength') &&
-      this.accountForm.get(name).dirty
-    );
+    return this._validateFormsService.minLength(this.accountForm.get(name));
   }
 
   maxLength(name: string): boolean {
-    return (
-      this.accountForm.get(name).hasError('maxlength') &&
-      this.accountForm.get(name).dirty
-    );
+    return this._validateFormsService.maxLength(this.accountForm.get(name));
   }
 
   updateAvatar($event: Event) {
     const file = ($event.target as HTMLInputElement).files[0];
-
     this._userFacade.updateAvatar(file);
   }
 

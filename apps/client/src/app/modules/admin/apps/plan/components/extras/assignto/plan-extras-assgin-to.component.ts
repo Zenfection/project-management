@@ -33,7 +33,6 @@ export class PlanExtrasAssignToComponent implements AfterViewInit {
   }
 
   handleSelectionChange(event: MatSelectChange) {
-    console.log(event);
     this.selectedMember.emit(event.value);
   }
 

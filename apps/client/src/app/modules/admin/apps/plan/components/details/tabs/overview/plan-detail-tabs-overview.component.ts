@@ -1,4 +1,11 @@
-import { AfterContentInit, Component, Input, OnInit } from '@angular/core';
+import {
+  AfterContentInit,
+  ChangeDetectionStrategy,
+  Component,
+  Input,
+  OnInit,
+  ViewEncapsulation,
+} from '@angular/core';
 import { TasksFacade } from '@client/core-state';
 import { Plan } from '@client/shared/interfaces';
 import { ApexOptions } from 'ng-apexcharts';
@@ -14,6 +21,8 @@ interface ChartDataTeamDistribution {
 @Component({
   selector: 'plan-details-tabs-overview',
   templateUrl: './plan-detail-tabs-overview.component.html',
+  encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PlanDetailsTabsOverviewComponent
   implements OnInit, AfterContentInit

@@ -105,7 +105,7 @@
             class="fuse-mat-button-large mt-6 w-full"
             mat-flat-button
             [color]="'primary'"
-            [disabled]="signInForm.disabled"
+            [disabled]="signInForm.disabled || signInForm.invalid"
             (click)="signIn()"
           >
             <span *ngIf="!signInForm.disabled"> Sign in </span>

@@ -1,4 +1,9 @@
-import { Component, Input } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Input,
+  ViewEncapsulation,
+} from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { PlansFacade } from '@client/core-state';
 import { Plan } from '@client/shared/interfaces';
@@ -12,6 +17,8 @@ import { PlanDialogsPlanComponent } from '../../dialogs/plan/plan-dialog-plan.co
 @Component({
   selector: 'plan-details-toolbar',
   templateUrl: './plan-details-toolbar.component.html',
+  encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PlanDetailsToolbarComponent {
   @Input() plan: Plan;

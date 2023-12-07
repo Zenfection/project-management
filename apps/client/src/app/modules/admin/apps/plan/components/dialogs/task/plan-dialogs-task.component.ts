@@ -1,9 +1,11 @@
 import {
+  ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
   Inject,
   OnDestroy,
   OnInit,
+  ViewEncapsulation,
 } from '@angular/core';
 import { FormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
@@ -16,6 +18,8 @@ import { Observable, Subject, takeUntil } from 'rxjs';
   selector: 'plan-dialog-task',
   templateUrl: './plan-dialogs-task.component.html',
   animations: fuseAnimations,
+  encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PlanDialogsTaskComponent implements OnInit, OnDestroy {
   taskForm: UntypedFormGroup;

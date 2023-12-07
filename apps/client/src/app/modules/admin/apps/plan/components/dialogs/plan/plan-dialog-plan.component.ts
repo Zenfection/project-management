@@ -1,12 +1,14 @@
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import {
   AfterContentInit,
+  ChangeDetectionStrategy,
   Component,
   ElementRef,
   Inject,
   OnDestroy,
   OnInit,
   ViewChild,
+  ViewEncapsulation,
 } from '@angular/core';
 import { FormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
@@ -33,6 +35,8 @@ import { PlanService } from '../../../plan.service';
 @Component({
   selector: 'plan-dialog',
   templateUrl: './plan-diolog-plan.component.html',
+  encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   animations: fuseAnimations,
 })
 export class PlanDialogsPlanComponent
@@ -204,9 +208,8 @@ export class PlanDialogsPlanComponent
     };
 
     this._plansFacade.createPlan(dataPlan);
-
-    this.planForm.reset();
     this._matDialog.closeAll();
+    this.planForm.reset();
   }
 
   handUpdate(): void {
