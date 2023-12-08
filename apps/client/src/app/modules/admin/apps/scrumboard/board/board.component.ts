@@ -146,6 +146,16 @@ export class ScrumboardBoardComponent implements OnInit, OnDestroy {
   // -----------------------------------------------------------------------------------------------------
   // @ Public methods
   // -----------------------------------------------------------------------------------------------------
+  openDetailTask(task: Task): void {
+    this._tasksFacade.selectTask(task.id);
+    this._matDialog.open(PlanDialogsTaskComponent, {
+      autoFocus: false,
+      data: {
+        task: task,
+        planId: task.planId,
+      },
+    });
+  }
 
   /**
    * Add new task

@@ -77,6 +77,7 @@
       <plan-extras-assign-to
         class="w-full"
         [members]="members"
+        [ownerEmail]="this.taskForm.get('assignee').value"
         (selectedMember)="selectAssignee($event)"
       >
       </plan-extras-assign-to>
@@ -124,7 +125,7 @@
       type="button"
       [color]="'primary'"
       [disabled]="taskForm.invalid"
-      (click)="handleSubmit()"
+      (click)="handleUpdate()"
     >
       {{ 'Update' | transloco }}
     </button>

@@ -81,7 +81,7 @@
                 >
                   <a
                     class="bg-card mb-3 flex flex-col items-start space-y-3 overflow-hidden rounded-lg p-5 shadow"
-                    [routerLink]="['card', task.id]"
+                    (click)="openDetailTask(task)"
                     cdkDrag
                     [cdkDragDisabled]="(permissionPlan | async) === false"
                   >

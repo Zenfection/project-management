@@ -10,7 +10,12 @@ import {
 import { FormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { PlansFacade, TasksFacade } from '@client/core-state';
-import { CreateTask, Member, Task } from '@client/shared/interfaces';
+import {
+  CreateTask,
+  Member,
+  Task,
+  UpdateTask,
+} from '@client/shared/interfaces';
 import { fuseAnimations } from '@fuse/animations';
 import { Observable, Subject, takeUntil } from 'rxjs';
 
@@ -67,7 +72,8 @@ export class PlanDialogsTaskComponent implements OnInit, OnDestroy {
         description: [this._data.task.description, Validators.required],
         labels: [this._data.task.labels],
         dueDate: [this._data.task.dueDate, Validators.required],
-        assignee: [this._data.task.assignee, Validators.required],
+        assignee: [this._data.task.assignee.info.email, Validators.required],
+        priority: [this._data.task.priority, Validators.required],
       });
     } else {
       // Create Form
@@ -134,6 +140,24 @@ export class PlanDialogsTaskComponent implements OnInit, OnDestroy {
     this._taskFacade.createTask(data);
     this.closeDialog();
 
+    this._changeDetectorRef.markForCheck();
+  }
+
+  handleUpdate(): void {
+    const dataUpdate: UpdateTask = {
+      title: this.taskForm.get('title').value,
+      description: this.taskForm.get('description').value,
+      dueDate: this.taskForm.get('dueDate').value,
+      assignee: {
+        connect: {
+          email: this.taskForm.get('assignee').value,
+        },
+      },
+      priority: this.taskForm.get('priority').value,
+    };
+
+    this._taskFacade.updateTask(dataUpdate);
+    this.closeDialog();
     this._changeDetectorRef.markForCheck();
   }
 }
