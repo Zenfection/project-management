@@ -11,7 +11,7 @@ datasource db {
 // ? enum policy
 enum PolicyType {
   ALLOW
-  DENYf
+  DENY
 }
 
 enum Operator {
