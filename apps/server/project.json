@@ -19,7 +19,6 @@
         "assets": [
           "apps/server/src/assets"
         ],
-        "isolatedConfig": true,
         "webpackConfig": "apps/server/webpack.config.js"
       },
       "configurations": {
