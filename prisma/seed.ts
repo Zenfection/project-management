@@ -9,12 +9,12 @@ import { dataRole } from './data/role';
 const prisma = new PrismaClient();
 
 async function main() {
-  // await createRole();
-  // await createUser();
-  // await createCategoriesPlan();
-  // await createPlans();
-  // await createLabels();
-  await createTasks();
+  await createRole();
+  await createUser();
+  await createCategoriesPlan();
+  await createPlans();
+  await createLabels();
+  // await createTasks();
 }
 
 main()

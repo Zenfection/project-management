@@ -20,7 +20,7 @@ CREATE TYPE "SchemeSetting" AS ENUM ('dark', 'light', 'auto');
 CREATE TYPE "LayoutSetting" AS ENUM ('empty', 'classic', 'classy', 'compact', 'dense', 'futuristic', 'thin', 'centered', 'enterprise', 'material', 'modern');
 
 -- CreateEnum
-CREATE TYPE "Deparment" AS ENUM ('CONG_NGHE_PHAN_MEM', 'CONG_NGHE_THONG_TIN', 'HE_THONG_THONG_TIN', 'KHOA_HOC_MAY_TINH', 'MANG_MAY_TINH_VA_TRUYEN_THONG', 'TRUYEN_THONG_DA_PHUONG_TIEN');
+CREATE TYPE "Department" AS ENUM ('CONG_NGHE_PHAN_MEM', 'CONG_NGHE_THONG_TIN', 'HE_THONG_THONG_TIN', 'KHOA_HOC_MAY_TINH', 'MANG_MAY_TINH_VA_TRUYEN_THONG', 'TRUYEN_THONG_DA_PHUONG_TIEN');
 
 -- CreateEnum
 CREATE TYPE "TaskStatus" AS ENUM ('OPEN', 'IN_PROGRESS', 'RESOLVED', 'COMPLETED', 'CLOSED');
@@ -73,7 +73,7 @@ CREATE TABLE "User" (
     "password" TEXT NOT NULL,
     "isTfaEnabled" BOOLEAN NOT NULL DEFAULT false,
     "tfaSecret" TEXT,
-    "department" "Deparment",
+    "department" "Department",
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
 

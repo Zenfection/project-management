@@ -37,7 +37,7 @@ export class UsersController {
   //? Get all users same department
   @Get('department')
   @UseInterceptors(MemberResponseInterceptor)
-  async findUserWithDeparment(@ActiveUser() user: ActiveUserData) {
+  async findUserWithDepartment(@ActiveUser() user: ActiveUserData) {
     const currentUser = await this.usersService.findOne({
       id: Number(user.sub),
     });

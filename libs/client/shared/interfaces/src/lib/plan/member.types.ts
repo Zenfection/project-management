@@ -1,6 +1,6 @@
 export interface Member {
   id: number;
-  deparment: string;
+  department: string;
   info: {
     name: string;
     avatar: string;

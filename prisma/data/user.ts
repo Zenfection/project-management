@@ -21,7 +21,7 @@ export const dataUser = [
     roles: {
       connect: [{ name: 'TRUONG_KHOA' }, { name: 'GIANG_VIEN_CHINH' }],
     },
-    department: 'CONG_NGHE_PHAN_MEM' as $Enums.Deparment,
+    department: 'CONG_NGHE_PHAN_MEM' as $Enums.Department,
   },
   {
     email: 'vhtram@cit.ctu.edu.vn',
@@ -42,7 +42,7 @@ export const dataUser = [
     roles: {
       connect: [{ name: 'BI_THU_CHI_BO' }, { name: 'PHO_TRUONG_KHOA' }],
     },
-    department: 'CONG_NGHE_PHAN_MEM' as $Enums.Deparment,
+    department: 'CONG_NGHE_PHAN_MEM' as $Enums.Department,
   },
   {
     email: 'hxhiep@cit.ctu.edu.vn',
@@ -63,7 +63,7 @@ export const dataUser = [
     roles: {
       connect: [{ name: 'GIANG_VIEN_CAO_CAP' }, { name: 'PHO_HIEU_TRUONG' }],
     },
-    department: 'CONG_NGHE_PHAN_MEM' as $Enums.Deparment,
+    department: 'CONG_NGHE_PHAN_MEM' as $Enums.Department,
   },
   {
     email: 'ttttuyen@cit.ctu.edu.vn',
@@ -84,7 +84,7 @@ export const dataUser = [
     roles: {
       connect: [{ name: 'GIANG_VIEN_CHINH' }, { name: 'PHO_CHU_TICH_BCHCĐ' }],
     },
-    department: 'CONG_NGHE_PHAN_MEM' as $Enums.Deparment,
+    department: 'CONG_NGHE_PHAN_MEM' as $Enums.Department,
   },
   {
     email: 'pplan@cit.ctu.edu.vn',
@@ -105,7 +105,7 @@ export const dataUser = [
     roles: {
       connect: [{ name: 'GIANG_VIEN_CHINH' }, { name: 'CHU_TICH_CĐ_KHOA' }],
     },
-    department: 'CONG_NGHE_PHAN_MEM' as $Enums.Deparment,
+    department: 'CONG_NGHE_PHAN_MEM' as $Enums.Department,
   },
   {
     email: 'ncdanh@cit.ctu.edu.vn',
@@ -126,7 +126,7 @@ export const dataUser = [
     roles: {
       connect: [{ name: 'GIANG_VIEN' }, { name: 'PHO_CHU_TICH_CĐ' }],
     },
-    department: 'CONG_NGHE_PHAN_MEM' as $Enums.Deparment,
+    department: 'CONG_NGHE_PHAN_MEM' as $Enums.Department,
   },
   {
     email: 'txviet@cit.ctu.edu.vn',
@@ -146,7 +146,7 @@ export const dataUser = [
     roles: {
       connect: [{ name: 'GIANG_VIEN' }, { name: 'PHO_GIAM_DOC_TT_CNPM' }],
     },
-    department: 'CONG_NGHE_PHAN_MEM' as $Enums.Deparment,
+    department: 'CONG_NGHE_PHAN_MEM' as $Enums.Department,
   },
   {
     email: 'cvloc@cit.ctu.edu.vn',
@@ -170,7 +170,7 @@ export const dataUser = [
         { name: 'TRUONG_BO_PHAN_DAO_TAO_TT_CNPM' },
       ],
     },
-    department: 'CONG_NGHE_PHAN_MEM' as $Enums.Deparment,
+    department: 'CONG_NGHE_PHAN_MEM' as $Enums.Department,
   },
   {
     email: 'lhbao@cit.ctu.edu.vn',
@@ -191,7 +191,7 @@ export const dataUser = [
     roles: {
       connect: [{ name: 'GIANG_VIEN' }],
     },
-    department: 'CONG_NGHE_PHAN_MEM' as $Enums.Deparment,
+    department: 'CONG_NGHE_PHAN_MEM' as $Enums.Department,
   },
   {
     email: 'phcuong@cit.ctu.edu.vn',
@@ -211,7 +211,7 @@ export const dataUser = [
     roles: {
       connect: [{ name: 'GIANG_VIEN' }, { name: 'PHO_GIAM_DOC_TT_ĐT-TH' }],
     },
-    department: 'CONG_NGHE_PHAN_MEM' as $Enums.Deparment,
+    department: 'CONG_NGHE_PHAN_MEM' as $Enums.Department,
   },
   {
     email: 'otmlinh@cit.ctu.edu.vn',
@@ -232,7 +232,7 @@ export const dataUser = [
     roles: {
       connect: [{ name: 'GIANG_VIEN' }],
     },
-    department: 'CONG_NGHE_PHAN_MEM' as $Enums.Deparment,
+    department: 'CONG_NGHE_PHAN_MEM' as $Enums.Department,
   },
   {
     email: 'hqthai@cit.ctu.edu.vn',
@@ -253,7 +253,7 @@ export const dataUser = [
     roles: {
       connect: [{ name: 'GIANG_VIEN' }],
     },
-    department: 'CONG_NGHE_PHAN_MEM' as $Enums.Deparment,
+    department: 'CONG_NGHE_PHAN_MEM' as $Enums.Department,
   },
   {
     email: 'tvhoang@cit.ctu.edu.vn',
@@ -274,7 +274,7 @@ export const dataUser = [
     roles: {
       connect: [{ name: 'GIANG_VIEN' }],
     },
-    department: 'CONG_NGHE_PHAN_MEM' as $Enums.Deparment,
+    department: 'CONG_NGHE_PHAN_MEM' as $Enums.Department,
   },
   {
     email: 'hqnghi@cit.ctu.edu.vn',
@@ -295,7 +295,7 @@ export const dataUser = [
     roles: {
       connect: [{ name: 'GIANG_VIEN' }, { name: 'THU_KY_KHOA' }],
     },
-    department: 'CONG_NGHE_PHAN_MEM' as $Enums.Deparment,
+    department: 'CONG_NGHE_PHAN_MEM' as $Enums.Department,
   },
   {
     email: 'chgiang@cit.ctu.edu.vn',
@@ -316,7 +316,7 @@ export const dataUser = [
     roles: {
       connect: [{ name: 'GIANG_VIEN' }],
     },
-    department: 'CONG_NGHE_PHAN_MEM' as $Enums.Deparment,
+    department: 'CONG_NGHE_PHAN_MEM' as $Enums.Department,
   },
   {
     email: 'cxphuong@cit.ctu.edu.vn',
@@ -336,7 +336,7 @@ export const dataUser = [
     roles: {
       connect: [{ name: 'GIANG_VIEN' }],
     },
-    department: 'CONG_NGHE_PHAN_MEM' as $Enums.Deparment,
+    department: 'CONG_NGHE_PHAN_MEM' as $Enums.Department,
   },
   {
     email: 'nvlinh@cit.ctu.edu.vn',
@@ -357,7 +357,7 @@ export const dataUser = [
     roles: {
       connect: [{ name: 'GIANG_VIEN_CHINH' }, { name: 'GIANG_VIEN_MOI_GIANG' }],
     },
-    department: 'CONG_NGHE_PHAN_MEM' as $Enums.Deparment,
+    department: 'CONG_NGHE_PHAN_MEM' as $Enums.Department,
   },
   {
     email: 'lmbang@cit.ctu.edu.vn',
@@ -377,7 +377,7 @@ export const dataUser = [
     roles: {
       connect: [],
     },
-    department: 'CONG_NGHE_PHAN_MEM' as $Enums.Deparment,
+    department: 'CONG_NGHE_PHAN_MEM' as $Enums.Department,
   },
   {
     email: 'ccdanh@cit.ctu.edu.vn',
@@ -397,6 +397,6 @@ export const dataUser = [
     roles: {
       connect: { name: 'GIANG_VIEN_TRO_GIANG' },
     },
-    department: 'CONG_NGHE_PHAN_MEM' as $Enums.Deparment,
+    department: 'CONG_NGHE_PHAN_MEM' as $Enums.Department,
   },
 ];

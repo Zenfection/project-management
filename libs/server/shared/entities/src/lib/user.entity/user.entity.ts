@@ -30,8 +30,8 @@ export class UserEntity implements User {
   roles: RoleEntity[];
 
   @ApiProperty()
-  @IsEnum($Enums.Deparment)
-  department: $Enums.Deparment;
+  @IsEnum($Enums.Department)
+  department: $Enums.Department;
 
   @IsDate()
   createdAt: Date;
