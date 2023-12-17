@@ -110,12 +110,6 @@ importers:
       '@prisma/client':
         specifier: ^5.7.0
         version: 5.7.0(prisma@5.7.0)
-      '@prisma/extension-accelerate':
-        specifier: ^0.6.2
-        version: 0.6.2(@prisma/client@5.7.0)
-      '@prisma/extension-pulse':
-        specifier: ^0.1.8
-        version: 0.1.8(@prisma/client@5.7.0)
       '@rive-app/canvas-advanced':
         specifier: ^2.8.3
         version: 2.8.3
@@ -6816,27 +6810,6 @@ packages:
       '@prisma/engines-version': 5.7.0-41.79fb5193cf0a8fdbef536e4b4a159cad677ab1b9
       '@prisma/fetch-engine': 5.7.0
       '@prisma/get-platform': 5.7.0
-
-  /@prisma/extension-accelerate@0.6.2(@prisma/client@5.7.0):
-    resolution: {integrity: sha512-KIBVPeWt8qaSg7wQ+TXmCVeUDoW75whtXcdS9dbHxRoO2OWFH5I9+qbkHBhx5Wj/h1wQpS8usuxGnsZqiBjUpQ==}
-    engines: {node: '>=16'}
-    peerDependencies:
-      '@prisma/client': '>=4.16.1'
-    dependencies:
-      '@prisma/client': 5.7.0(prisma@5.7.0)
-    dev: false
-
-  /@prisma/extension-pulse@0.1.8(@prisma/client@5.7.0):
-    resolution: {integrity: sha512-oWOldt1uJSuAVOws1T8QP13n8qH5agaIdcMfHK44/+VRJXAu/cKZt9y7iNx1K8FtgezCaszRXlLgkE5Yf4VDmQ==}
-    peerDependencies:
-      '@prisma/client': '>=4.16.1'
-    dependencies:
-      '@prisma/client': 5.7.0(prisma@5.7.0)
-      ws: 8.14.2
-    transitivePeerDependencies:
-      - bufferutil
-      - utf-8-validate
-    dev: false
 
   /@prisma/fetch-engine@5.7.0:
     resolution: {integrity: sha512-zIn/qmO+N/3FYe7/L9o+yZseIU8ivh4NdPKSkQRIHfg2QVTVMnbhGoTcecbxfVubeTp+DjcbjS0H9fCuM4W04w==}

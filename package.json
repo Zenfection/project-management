@@ -57,8 +57,6 @@
     "@ngrx/store-devtools": "^17.0.1",
     "@nx/angular": "17.2.5",
     "@prisma/client": "^5.7.0",
-    "@prisma/extension-accelerate": "^0.6.2",
-    "@prisma/extension-pulse": "^0.1.8",
     "@rive-app/canvas-advanced": "^2.8.3",
     "@swc/helpers": "~0.5.3",
     "apexcharts": "^3.45.0",

@@ -1,6 +1,5 @@
-import { type ExtendedPrismaClient } from './../../../../../apps/server/src/prisma.extension';
 import { Inject, Injectable, UnauthorizedException } from '@nestjs/common';
-import { CustomPrismaService } from 'nestjs-prisma';
+import { PrismaService } from 'nestjs-prisma';
 import { Prisma, User } from '@prisma/client';
 import {
   CreateUserDto,
@@ -12,9 +11,7 @@ import { CloudService } from '@server/cloud/data-access';
 @Injectable()
 export class UsersService {
   constructor(
-    @Inject('PrismaService')
-    private readonly prismaService: CustomPrismaService<ExtendedPrismaClient>,
-    // private readonly prismaService: PrismaService,
+    private readonly prismaService: PrismaService,
     private readonly cloudService: CloudService,
   ) {}
 
@@ -25,18 +22,18 @@ export class UsersService {
   }
 
   async create(createUserDto: CreateUserDto): Promise<User> {
-    const user = await this.prismaService.client.user.create({
+    const user = await this.prismaService.user.create({
       data: createUserDto,
     });
 
-    await this.prismaService.client.info.create({
+    await this.prismaService.info.create({
       data: {
         userId: user.id,
         email: user.email,
       },
     });
 
-    await this.prismaService.client.setting.create({
+    await this.prismaService.setting.create({
       data: {
         userId: user.id,
       },
@@ -46,7 +43,7 @@ export class UsersService {
   }
 
   findAll(include?: Prisma.UserInclude): Promise<User[]> {
-    return this.prismaService.client.user.findMany({
+    return this.prismaService.user.findMany({
       include,
     });
   }
@@ -60,7 +57,7 @@ export class UsersService {
     include?: Prisma.UserInclude;
   }): Promise<User[]> {
     const { skip, take, cursor, where, orderBy, include } = params;
-    return this.prismaService.client.user.findMany({
+    return this.prismaService.user.findMany({
       skip,
       take,
       cursor,
@@ -71,7 +68,7 @@ export class UsersService {
   }
 
   findOne(where: Prisma.UserWhereUniqueInput, include?: Prisma.UserInclude) {
-    return this.prismaService.client.user.findUnique({
+    return this.prismaService.user.findUnique({
       where,
       include,
     });
@@ -84,7 +81,7 @@ export class UsersService {
   }): Promise<User> {
     const { where, data, include } = params;
     this.checkEmptyData(data);
-    return this.prismaService.client.user.update({
+    return this.prismaService.user.update({
       where,
       data,
       include,
@@ -100,7 +97,7 @@ export class UsersService {
 
     this.checkEmptyData(data);
 
-    return await this.prismaService.client.user.update({
+    return await this.prismaService.user.update({
       where,
       data: {
         info: {
@@ -119,7 +116,7 @@ export class UsersService {
 
     this.checkEmptyData(data);
 
-    return this.prismaService.client.user.update({
+    return this.prismaService.user.update({
       where,
       data: {
         setting: {
@@ -133,7 +130,7 @@ export class UsersService {
   }
 
   remove(where: Prisma.UserWhereUniqueInput): Promise<User> {
-    return this.prismaService.client.user.delete({
+    return this.prismaService.user.delete({
       where,
     });
   }
@@ -147,7 +144,7 @@ export class UsersService {
     const prefix = `data/${email}/avatar`;
     return Promise.all([
       this.cloudService.upload(fileName, fileBuffer, prefix),
-      this.prismaService.client.user.update({
+      this.prismaService.user.update({
         where,
         data: {
           info: {
