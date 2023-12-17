@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { PrismaModule } from 'nestjs-prisma';
+import { CustomPrismaModule, PrismaModule } from 'nestjs-prisma';
 import { ConfigModule } from '@nestjs/config';
 import { CloudModule } from '@server/cloud/feature';
 import { AuthenticationModule } from '@server/iam/feature/authentication/feature';
@@ -12,10 +12,17 @@ import { TasksModule } from '@server/tasks';
 import { TodosModule } from '@server/todos';
 import { CommentsModule } from '@server/comments';
 import { LabelsModule } from '@server/labels';
+import { extendedPrismaClient } from './prisma.extension';
 
 @Module({
   imports: [
-    PrismaModule.forRoot(),
+    CustomPrismaModule.forRootAsync({
+      name: 'PrismaService',
+      useFactory: () => {
+        return extendedPrismaClient;
+      },
+    }),
+    // PrismaModule.forRoot(),
     ConfigModule.forRoot(),
     CloudModule,
     AuthenticationModule,

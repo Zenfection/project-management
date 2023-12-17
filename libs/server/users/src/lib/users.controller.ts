@@ -38,9 +38,12 @@ export class UsersController {
   @Get('department')
   @UseInterceptors(MemberResponseInterceptor)
   async findUserWithDepartment(@ActiveUser() user: ActiveUserData) {
+    if (!user) return [];
+
     const currentUser = await this.usersService.findOne({
       id: Number(user.sub),
     });
+
     const members = await this.usersService.findFilter({
       where: {
         department: currentUser.department,
