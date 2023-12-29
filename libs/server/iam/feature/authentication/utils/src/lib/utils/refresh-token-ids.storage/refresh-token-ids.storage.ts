@@ -19,7 +19,11 @@ export class RefreshTokenIdsStorage
   private redisClient: redisClient;
 
   onApplicationBootstrap() {
-    this.redisClient = new redisClient(process.env.REDIS_URL);
+    this.redisClient = new redisClient(process.env['REDIS_URL']);
+    if (!this.redisClient) {
+      console.log('Redis client not connected');
+      return;
+    }
   }
   onApplicationShutdown() {
     this.redisClient.quit();

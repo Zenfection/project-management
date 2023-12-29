@@ -56,8 +56,13 @@ export class AuthenticationController {
   @HttpCode(HttpStatus.OK)
   @Post('sign-in-with-token')
   async signInWithToken(
+    // @AccessToken() activeToken: string,
     @Body() signInWithToken: SignInWithTokenDto,
   ): Promise<User> {
+    // const signInWithToken: SignInWithTokenDto = {
+    //   accessToken: activeToken,
+    // };
+
     const user = await this.authService.signInWithToken(signInWithToken);
     return new UserEntity(user);
   }

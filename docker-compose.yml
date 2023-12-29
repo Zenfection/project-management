@@ -1,41 +1,27 @@
 version: '3.8'
 services:
-  # task-server:
-  #   build:
-  #     context: .
-  #     dockerfile: Dockerfile
-  #   container_name: task-server
-  #   restart: always
-  #   ports:
-  #     - '3000:3000'
-  #   depends_on:
-  #     - task-server-postgres
-  #     - task-server-redis
-  #   env_file:
-  #     - .env
-
-  task-server-postgres:
+  task-postgres:
     image: postgres:latest
-    container_name: task-server-postgres
+    container_name: task-postgres
     restart: always
     ports:
       - '5432:5432'
     env_file:
       - .env
     volumes:
-      - task-server-postgres:/var/lib/postgresql/data
+      - task-postgres:/var/lib/postgresql/data
 
-  task-server-redis:
+  task-redis:
     image: redis:latest
-    container_name: task-server-redis
+    container_name: task-redis
     restart: always
     ports:
       - '6379:6379'
     volumes:
-      - task-server-redis:/var/lib/redis/data
+      - task-redis:/var/lib/redis/data
 
 volumes:
-  task-server-postgres:
+  task-postgres:
     name: postgres-db
-  task-server-redis:
+  task-redis:
     name: redis-db

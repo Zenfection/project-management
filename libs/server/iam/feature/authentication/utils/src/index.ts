@@ -1,6 +1,8 @@
 import { ActiveUser } from './lib/decorators/active-user/active-user.decorator';
 import { ActiveUserData } from './lib/interfaces/active-user-data.interface';
 
+import { AccessToken } from './lib/decorators/auth/access-token.decorator';
+
 // ENUM
 import { AuthType } from './lib/enums/auth-type.enum';
 
@@ -22,6 +24,7 @@ import { RefreshTokenIdsStorageError } from './lib/utils/refresh-token-ids.stora
 export {
   ActiveUser,
   ActiveUserData,
+  AccessToken,
   AuthType,
   Auth,
   AccessTokenGuard,

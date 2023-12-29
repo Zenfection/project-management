@@ -6,11 +6,10 @@ import { UserService } from '@client/shared/services';
 import {
   Observable,
   catchError,
-  map,
+  exhaustMap,
   of,
   retry,
   switchMap,
-  tap,
   throwError,
 } from 'rxjs';
 import { AuthUtils } from './auth.utils';
@@ -35,6 +34,7 @@ export class AuthService {
    */
 
   set accessToken(token: string) {
+    localStorage.removeItem('accessToken');
     localStorage.setItem('accessToken', token);
   }
 
@@ -43,6 +43,7 @@ export class AuthService {
   }
 
   set refreshToken(token: string) {
+    localStorage.removeItem('refreshToken');
     localStorage.setItem('refreshToken', token);
   }
 
@@ -134,14 +135,6 @@ export class AuthService {
         retry(3),
         catchError(() => of(false)),
         switchMap((response: any) => {
-          // store accessToken and reFreshToken
-          if (response.accessToken) {
-            this.accessToken = response.accessToken;
-          }
-          if (response.refreshToken) {
-            this.refreshToken = response.refreshToken;
-          }
-
           // Set the authenticated flag to true
           this._authenticated = true;
 
@@ -217,40 +210,45 @@ export class AuthService {
    */
   check(): Observable<boolean> {
     // Check if the user is logged in
-    if (this._authenticated) return of(true);
+    if (this._authenticated) {
+      if (AuthUtils.isTokenExpired(this.accessToken) && this.refreshToken) {
+        return this.refreshTokenWhenExpired().pipe(
+          exhaustMap((response) => {
+            this.accessToken = response.accessToken;
+            this.refreshToken = response.refreshToken;
+
+            return of(true);
+          }),
+          catchError(() => of(false)),
+        );
+      }
+      return of(true);
+    }
 
     // Check the access token availability
     if (!this.accessToken) {
-      // Check the access token expire date
-      if (AuthUtils.isTokenExpired(this.accessToken) && this.refreshToken) {
-        return this.refreshTokenWhenExpired();
-      }
       return of(false);
     }
 
     // If the access token exists, and it didn't expire, sign in using it
-    return this.signInUsingToken();
-  }
+    if (AuthUtils.isTokenExpired(this.accessToken)) {
+      return this.refreshTokenWhenExpired().pipe(
+        exhaustMap((response) => {
+          this.accessToken = response.accessToken;
+          this.refreshToken = response.refreshToken;
 
-  refreshTokenWhenExpired(): Observable<boolean> {
-    return this._httpClient
-      .post('api/authentication/refresh-token', {
-        refreshToken: this.refreshToken,
-      })
-      .pipe(
-        tap((response: any) => {
-          // Store the access and refresh tokens in the local storage
-          if (response.accessToken) {
-            this.accessToken = response.accessToken;
-          }
-          if (response.refreshToken) {
-            this.refreshToken = response.refreshToken;
-          }
-          // Set the authenticated flag to true
-          this._authenticated = true;
+          return this.signInUsingToken();
         }),
-        map(() => true),
         catchError(() => of(false)),
       );
+    } else {
+      return this.signInUsingToken();
+    }
+  }
+
+  refreshTokenWhenExpired(): Observable<any> {
+    return this._httpClient.post('api/authentication/refresh-token', {
+      refreshToken: this.refreshToken,
+    });
   }
 }
